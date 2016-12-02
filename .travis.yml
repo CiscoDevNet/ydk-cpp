@@ -1,0 +1,33 @@
+sudo: required
+
+matrix:
+    include:
+        - os: linux
+          dist: trusty
+          language: python
+          python: 2.7
+        - os: osx
+          language: generic
+
+before_install:
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update  ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install curl libssh pcre xml2  ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libssh && brew link libssh ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update > /dev/null; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y bison curl flex git libboost-all-dev libboost-log-dev libcurl4-openssl-dev libpcre3-dev libpcre++-dev libssh-dev libtool libxml2-dev libxslt1-dev pkg-config python-dev python-pip python3-dev python-lxml python3-lxml python-virtualenv software-properties-common unzip  zlib1g-dev cmake > /dev/null; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; fi
+# Install gcc-5 and g++5 for modern c++
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update && sudo apt-get install gcc-5 g++-5 -y && sudo ln -f -s /usr/bin/g++-5 /usr/bin/g++ && sudo ln -f -s /usr/bin/gcc-5 /usr/bin/gcc; fi
+
+script:
+    - cd core/ydk
+    - mkdir build && cd build && cmake .. && sudo make install test
+
+    - cd ../../..
+    - cd ietf
+    - mkdir build && cd build && cmake .. && sudo make install
+
+    - cd ../..
+    - cd openconfig
+    - mkdir build && cd build && cmake .. && sudo make install
+
