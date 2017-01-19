@@ -48,25 +48,29 @@ YDK uses ``cmake`` as the build system of choice. To install the ``core`` packag
 ```
   ydk-cpp$ cd core/ydk
   core$ mkdir build && cd build
-  build$ cmake .. && sudo make install
+  build$ cmake .. && make -j8
+  build$ sudo make install
 ```
 Once you have installed the ``core`` package, you can install one or more model bundles.  Note that some bundles have dependencies on other bundles.  Those dependencies are already captured in the bundle package. To install the IETF bundle, execute
 ```
   core$ cd ../../ietf
   ietf$ mkdir build && cd build
-  build$ cmake .. && sudo make install
+  build$ cmake .. && make -j8
+  build$ sudo make install
 ```
 To install the openconfig bundle, execute
 ```
   ietf$ cd ../openconfig
   openconfig$ mkdir build && cd build
-  build$ cmake .. && sudo make install
+  build$ cmake .. && make -j8
+  build$ sudo make install
 ```
 To install the cisco-ios-xr bundle, execute
 ```
   openconfig$ cd ../cisco-ios-xr
   cisco-ios-xr$ mkdir build && cd build
-  build$ cmake .. && sudo make install
+  build$ cmake .. && make -j8
+  build$ sudo make install
   build$ cd ../..
 ```
 
