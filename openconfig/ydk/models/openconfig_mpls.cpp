@@ -215,7 +215,7 @@ EntityPath Mpls::Global::MplsInterfaceAttributes::Interface::Config::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -303,7 +303,7 @@ EntityPath Mpls::Global::MplsInterfaceAttributes::Interface::State::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -383,8 +383,8 @@ bool Mpls::Global::MplsInterfaceAttributes::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Global::MplsInterfaceAttributes::Interface::get_segment_path() const
@@ -631,9 +631,9 @@ bool Mpls::Global::has_data() const
 bool Mpls::Global::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (mpls_interface_attributes !=  nullptr && is_set(mpls_interface_attributes->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (mpls_interface_attributes !=  nullptr && mpls_interface_attributes->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Global::get_segment_path() const
@@ -803,7 +803,7 @@ EntityPath Mpls::TeGlobalAttributes::Srlg::Srlg_::Config::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -907,7 +907,7 @@ EntityPath Mpls::TeGlobalAttributes::Srlg::Srlg_::State::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1005,7 +1005,7 @@ EntityPath Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1093,7 +1093,7 @@ EntityPath Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1173,8 +1173,8 @@ bool Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::has_
 {
     return is_set(operation)
 	|| is_set(from_address.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::get_segment_path() const
@@ -1191,7 +1191,7 @@ EntityPath Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1324,7 +1324,7 @@ EntityPath Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1425,9 +1425,9 @@ bool Mpls::TeGlobalAttributes::Srlg::Srlg_::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (static_srlg_members !=  nullptr && is_set(static_srlg_members->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (static_srlg_members !=  nullptr && static_srlg_members->has_operation());
 }
 
 std::string Mpls::TeGlobalAttributes::Srlg::Srlg_::get_segment_path() const
@@ -1683,17 +1683,17 @@ Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::~Config()
 
 bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::has_data() const
 {
-    for (auto const & leaf : down_thresholds.getValues())
+    for (auto const & leaf : down_thresholds.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : up_down_thresholds.getValues())
+    for (auto const & leaf : up_down_thresholds.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : up_thresholds.getValues())
+    for (auto const & leaf : up_thresholds.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1705,25 +1705,28 @@ bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::has_data() const
 
 bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::has_operation() const
 {
-    for (auto const & leaf : down_thresholds.getValues())
+    for (auto const & leaf : down_thresholds.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : up_down_thresholds.getValues())
+    for (auto const & leaf : up_down_thresholds.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : up_thresholds.getValues())
+    for (auto const & leaf : up_thresholds.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(delta_percentage.operation)
+	|| is_set(down_thresholds.operation)
 	|| is_set(threshold_specification.operation)
-	|| is_set(threshold_type.operation);
+	|| is_set(threshold_type.operation)
+	|| is_set(up_down_thresholds.operation)
+	|| is_set(up_thresholds.operation);
 }
 
 std::string Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::get_segment_path() const
@@ -1830,17 +1833,17 @@ Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::~State()
 
 bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::has_data() const
 {
-    for (auto const & leaf : down_thresholds.getValues())
+    for (auto const & leaf : down_thresholds.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : up_down_thresholds.getValues())
+    for (auto const & leaf : up_down_thresholds.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : up_thresholds.getValues())
+    for (auto const & leaf : up_thresholds.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1852,25 +1855,28 @@ bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::has_data() const
 
 bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::has_operation() const
 {
-    for (auto const & leaf : down_thresholds.getValues())
+    for (auto const & leaf : down_thresholds.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : up_down_thresholds.getValues())
+    for (auto const & leaf : up_down_thresholds.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : up_thresholds.getValues())
+    for (auto const & leaf : up_thresholds.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(delta_percentage.operation)
+	|| is_set(down_thresholds.operation)
 	|| is_set(threshold_specification.operation)
-	|| is_set(threshold_type.operation);
+	|| is_set(threshold_type.operation)
+	|| is_set(up_down_thresholds.operation)
+	|| is_set(up_thresholds.operation);
 }
 
 std::string Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::get_segment_path() const
@@ -1986,8 +1992,8 @@ bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::has_data() const
 bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::TeGlobalAttributes::IgpFloodingBandwidth::get_segment_path() const
@@ -2128,7 +2134,7 @@ EntityPath Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2216,7 +2222,7 @@ EntityPath Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2296,8 +2302,8 @@ bool Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::has_operation() cons
 {
     return is_set(operation)
 	|| is_set(admin_group_name.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::get_segment_path() const
@@ -2731,8 +2737,8 @@ bool Mpls::TeGlobalAttributes::TeLspTimers::has_data() const
 bool Mpls::TeGlobalAttributes::TeLspTimers::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::TeGlobalAttributes::TeLspTimers::get_segment_path() const
@@ -2871,10 +2877,10 @@ bool Mpls::TeGlobalAttributes::has_data() const
 bool Mpls::TeGlobalAttributes::has_operation() const
 {
     return is_set(operation)
-	|| (igp_flooding_bandwidth !=  nullptr && is_set(igp_flooding_bandwidth->operation))
-	|| (mpls_admin_groups !=  nullptr && is_set(mpls_admin_groups->operation))
-	|| (srlg !=  nullptr && is_set(srlg->operation))
-	|| (te_lsp_timers !=  nullptr && is_set(te_lsp_timers->operation));
+	|| (igp_flooding_bandwidth !=  nullptr && igp_flooding_bandwidth->has_operation())
+	|| (mpls_admin_groups !=  nullptr && mpls_admin_groups->has_operation())
+	|| (srlg !=  nullptr && srlg->has_operation())
+	|| (te_lsp_timers !=  nullptr && te_lsp_timers->has_operation());
 }
 
 std::string Mpls::TeGlobalAttributes::get_segment_path() const
@@ -3038,12 +3044,12 @@ Mpls::TeInterfaceAttributes::Interface::Config::~Config()
 
 bool Mpls::TeInterfaceAttributes::Interface::Config::has_data() const
 {
-    for (auto const & leaf : admin_group.getValues())
+    for (auto const & leaf : admin_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : srlg_membership.getValues())
+    for (auto const & leaf : srlg_membership.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3054,18 +3060,20 @@ bool Mpls::TeInterfaceAttributes::Interface::Config::has_data() const
 
 bool Mpls::TeInterfaceAttributes::Interface::Config::has_operation() const
 {
-    for (auto const & leaf : admin_group.getValues())
+    for (auto const & leaf : admin_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : srlg_membership.getValues())
+    for (auto const & leaf : srlg_membership.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(admin_group.operation)
 	|| is_set(name.operation)
+	|| is_set(srlg_membership.operation)
 	|| is_set(te_metric.operation);
 }
 
@@ -3083,7 +3091,7 @@ EntityPath Mpls::TeInterfaceAttributes::Interface::Config::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3160,12 +3168,12 @@ Mpls::TeInterfaceAttributes::Interface::State::~State()
 
 bool Mpls::TeInterfaceAttributes::Interface::State::has_data() const
 {
-    for (auto const & leaf : admin_group.getValues())
+    for (auto const & leaf : admin_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : srlg_membership.getValues())
+    for (auto const & leaf : srlg_membership.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3176,18 +3184,20 @@ bool Mpls::TeInterfaceAttributes::Interface::State::has_data() const
 
 bool Mpls::TeInterfaceAttributes::Interface::State::has_operation() const
 {
-    for (auto const & leaf : admin_group.getValues())
+    for (auto const & leaf : admin_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : srlg_membership.getValues())
+    for (auto const & leaf : srlg_membership.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(admin_group.operation)
 	|| is_set(name.operation)
+	|| is_set(srlg_membership.operation)
 	|| is_set(te_metric.operation);
 }
 
@@ -3205,7 +3215,7 @@ EntityPath Mpls::TeInterfaceAttributes::Interface::State::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3284,17 +3294,17 @@ Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::~Config()
 
 bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::has_data() const
 {
-    for (auto const & leaf : down_thresholds.getValues())
+    for (auto const & leaf : down_thresholds.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : up_down_thresholds.getValues())
+    for (auto const & leaf : up_down_thresholds.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : up_thresholds.getValues())
+    for (auto const & leaf : up_thresholds.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3306,25 +3316,28 @@ bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::has_d
 
 bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::has_operation() const
 {
-    for (auto const & leaf : down_thresholds.getValues())
+    for (auto const & leaf : down_thresholds.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : up_down_thresholds.getValues())
+    for (auto const & leaf : up_down_thresholds.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : up_thresholds.getValues())
+    for (auto const & leaf : up_thresholds.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(delta_percentage.operation)
+	|| is_set(down_thresholds.operation)
 	|| is_set(threshold_specification.operation)
-	|| is_set(threshold_type.operation);
+	|| is_set(threshold_type.operation)
+	|| is_set(up_down_thresholds.operation)
+	|| is_set(up_thresholds.operation);
 }
 
 std::string Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::get_segment_path() const
@@ -3341,7 +3354,7 @@ EntityPath Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3431,17 +3444,17 @@ Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::~State()
 
 bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::has_data() const
 {
-    for (auto const & leaf : down_thresholds.getValues())
+    for (auto const & leaf : down_thresholds.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : up_down_thresholds.getValues())
+    for (auto const & leaf : up_down_thresholds.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : up_thresholds.getValues())
+    for (auto const & leaf : up_thresholds.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3453,25 +3466,28 @@ bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::has_da
 
 bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::has_operation() const
 {
-    for (auto const & leaf : down_thresholds.getValues())
+    for (auto const & leaf : down_thresholds.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : up_down_thresholds.getValues())
+    for (auto const & leaf : up_down_thresholds.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : up_thresholds.getValues())
+    for (auto const & leaf : up_thresholds.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(delta_percentage.operation)
+	|| is_set(down_thresholds.operation)
 	|| is_set(threshold_specification.operation)
-	|| is_set(threshold_type.operation);
+	|| is_set(threshold_type.operation)
+	|| is_set(up_down_thresholds.operation)
+	|| is_set(up_thresholds.operation);
 }
 
 std::string Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::get_segment_path() const
@@ -3488,7 +3504,7 @@ EntityPath Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3587,8 +3603,8 @@ bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::has_data() co
 bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::get_segment_path() const
@@ -3605,7 +3621,7 @@ EntityPath Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3726,9 +3742,9 @@ bool Mpls::TeInterfaceAttributes::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (igp_flooding_bandwidth !=  nullptr && is_set(igp_flooding_bandwidth->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (igp_flooding_bandwidth !=  nullptr && igp_flooding_bandwidth->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::TeInterfaceAttributes::Interface::get_segment_path() const
@@ -4060,7 +4076,7 @@ Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::~Session()
 
 bool Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::has_data() const
 {
-    for (auto const & leaf : associated_lsps.getValues())
+    for (auto const & leaf : associated_lsps.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4078,7 +4094,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::has_data() cons
 
 bool Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::has_operation() const
 {
-    for (auto const & leaf : associated_lsps.getValues())
+    for (auto const & leaf : associated_lsps.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -4088,6 +4104,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::has_operation()
 	|| is_set(destination_port.operation)
 	|| is_set(source_address.operation)
 	|| is_set(source_port.operation)
+	|| is_set(associated_lsps.operation)
 	|| is_set(label_in.operation)
 	|| is_set(label_out.operation)
 	|| is_set(status.operation)
@@ -4334,8 +4351,8 @@ bool Mpls::SignalingProtocols::RsvpTe::Sessions::has_data() const
 bool Mpls::SignalingProtocols::RsvpTe::Sessions::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Sessions::get_segment_path() const
@@ -4748,8 +4765,8 @@ bool Mpls::SignalingProtocols::RsvpTe::Neighbors::has_data() const
 bool Mpls::SignalingProtocols::RsvpTe::Neighbors::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Neighbors::get_segment_path() const
@@ -5070,8 +5087,8 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::has_data() const
 bool Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::get_segment_path() const
@@ -5376,8 +5393,8 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::has_data() const
 bool Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::get_segment_path() const
@@ -5682,8 +5699,8 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::Hellos::has_data() const
 bool Mpls::SignalingProtocols::RsvpTe::Global::Hellos::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Global::Hellos::get_segment_path() const
@@ -6047,7 +6064,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::State::has_data() const
 bool Mpls::SignalingProtocols::RsvpTe::Global::State::has_operation() const
 {
     return is_set(operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Global::State::get_segment_path() const
@@ -6163,10 +6180,10 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::has_data() const
 bool Mpls::SignalingProtocols::RsvpTe::Global::has_operation() const
 {
     return is_set(operation)
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (hellos !=  nullptr && is_set(hellos->operation))
-	|| (soft_preemption !=  nullptr && is_set(soft_preemption->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (hellos !=  nullptr && hellos->has_operation())
+	|| (soft_preemption !=  nullptr && soft_preemption->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Global::get_segment_path() const
@@ -6350,7 +6367,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6436,7 +6453,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6577,7 +6594,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6745,7 +6762,7 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::ha
     return is_set(operation)
 	|| is_set(active_reservation_count.operation)
 	|| is_set(highwater_mark.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::get_segment_path() const
@@ -6762,7 +6779,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6899,7 +6916,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hel
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6987,7 +7004,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hel
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7063,8 +7080,8 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::h
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::get_segment_path() const
@@ -7081,7 +7098,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hel
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7205,7 +7222,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Aut
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7293,7 +7310,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Aut
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7369,8 +7386,8 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentic
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::get_segment_path() const
@@ -7387,7 +7404,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Aut
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7508,7 +7525,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Sub
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7588,7 +7605,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Sub
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7659,8 +7676,8 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscript
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::get_segment_path() const
@@ -7677,7 +7694,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Sub
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7801,7 +7818,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Pro
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7889,7 +7906,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Pro
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7965,8 +7982,8 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protectio
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::get_segment_path() const
@@ -7983,7 +8000,7 @@ EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Pro
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8119,12 +8136,12 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::has_opera
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (authentication !=  nullptr && is_set(authentication->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (hellos !=  nullptr && is_set(hellos->operation))
-	|| (protection !=  nullptr && is_set(protection->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (subscription !=  nullptr && is_set(subscription->operation));
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (hellos !=  nullptr && hellos->has_operation())
+	|| (protection !=  nullptr && protection->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (subscription !=  nullptr && subscription->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::get_segment_path() const
@@ -8468,10 +8485,10 @@ bool Mpls::SignalingProtocols::RsvpTe::has_data() const
 bool Mpls::SignalingProtocols::RsvpTe::has_operation() const
 {
     return is_set(operation)
-	|| (global !=  nullptr && is_set(global->operation))
-	|| (interface_attributes !=  nullptr && is_set(interface_attributes->operation))
-	|| (neighbors !=  nullptr && is_set(neighbors->operation))
-	|| (sessions !=  nullptr && is_set(sessions->operation));
+	|| (global !=  nullptr && global->has_operation())
+	|| (interface_attributes !=  nullptr && interface_attributes->has_operation())
+	|| (neighbors !=  nullptr && neighbors->has_operation())
+	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::get_segment_path() const
@@ -8658,7 +8675,7 @@ EntityPath Mpls::SignalingProtocols::SegmentRouting::Srgb::Config::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8755,7 +8772,7 @@ EntityPath Mpls::SignalingProtocols::SegmentRouting::Srgb::State::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8853,8 +8870,8 @@ bool Mpls::SignalingProtocols::SegmentRouting::Srgb::has_operation() const
     return is_set(operation)
 	|| is_set(lower_bound.operation)
 	|| is_set(upper_bound.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::SegmentRouting::Srgb::get_segment_path() const
@@ -9002,7 +9019,7 @@ EntityPath Mpls::SignalingProtocols::SegmentRouting::Interfaces::Config::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9082,7 +9099,7 @@ EntityPath Mpls::SignalingProtocols::SegmentRouting::Interfaces::State::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9140,12 +9157,12 @@ Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::~Con
 
 bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::has_data() const
 {
-    for (auto const & leaf : advertise.getValues())
+    for (auto const & leaf : advertise.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : groups.getValues())
+    for (auto const & leaf : groups.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9155,17 +9172,19 @@ bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config:
 
 bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::has_operation() const
 {
-    for (auto const & leaf : advertise.getValues())
+    for (auto const & leaf : advertise.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : groups.getValues())
+    for (auto const & leaf : groups.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(advertise.operation)
+	|| is_set(groups.operation);
 }
 
 std::string Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::get_segment_path() const
@@ -9182,7 +9201,7 @@ EntityPath Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::C
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9247,12 +9266,12 @@ Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::~Stat
 
 bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::has_data() const
 {
-    for (auto const & leaf : advertise.getValues())
+    for (auto const & leaf : advertise.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : groups.getValues())
+    for (auto const & leaf : groups.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9262,17 +9281,19 @@ bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::
 
 bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::has_operation() const
 {
-    for (auto const & leaf : advertise.getValues())
+    for (auto const & leaf : advertise.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : groups.getValues())
+    for (auto const & leaf : groups.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(advertise.operation)
+	|| is_set(groups.operation);
 }
 
 std::string Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::get_segment_path() const
@@ -9289,7 +9310,7 @@ EntityPath Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9367,8 +9388,8 @@ bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::has_dat
 bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::get_segment_path() const
@@ -9385,7 +9406,7 @@ EntityPath Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9506,9 +9527,9 @@ bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface.operation)
-	|| (adjacency_sid !=  nullptr && is_set(adjacency_sid->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (adjacency_sid !=  nullptr && adjacency_sid->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::SegmentRouting::Interfaces::get_segment_path() const
@@ -9876,7 +9897,7 @@ bool Mpls::SignalingProtocols::Ldp::has_data() const
 bool Mpls::SignalingProtocols::Ldp::has_operation() const
 {
     return is_set(operation)
-	|| (timers !=  nullptr && is_set(timers->operation));
+	|| (timers !=  nullptr && timers->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::Ldp::get_segment_path() const
@@ -9987,9 +10008,9 @@ bool Mpls::SignalingProtocols::has_data() const
 bool Mpls::SignalingProtocols::has_operation() const
 {
     return is_set(operation)
-	|| (ldp !=  nullptr && is_set(ldp->operation))
-	|| (rsvp_te !=  nullptr && is_set(rsvp_te->operation))
-	|| (segment_routing !=  nullptr && is_set(segment_routing->operation));
+	|| (ldp !=  nullptr && ldp->has_operation())
+	|| (rsvp_te !=  nullptr && rsvp_te->has_operation())
+	|| (segment_routing !=  nullptr && segment_routing->has_operation());
 }
 
 std::string Mpls::SignalingProtocols::get_segment_path() const
@@ -10150,7 +10171,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10230,7 +10251,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::State::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10316,7 +10337,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10412,7 +10433,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10497,8 +10518,8 @@ bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::has_
 {
     return is_set(operation)
 	|| is_set(index_.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::get_segment_path() const
@@ -10515,7 +10536,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10646,8 +10667,8 @@ bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::has_operation() const
     }
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::get_segment_path() const
@@ -10855,7 +10876,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Config::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11018,7 +11039,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::State::Counters::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11163,7 +11184,7 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::State::has_operation() const
 	|| is_set(soft_preemption.operation)
 	|| is_set(source.operation)
 	|| is_set(type.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::State::get_segment_path() const
@@ -11180,7 +11201,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::State::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11361,7 +11382,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::Config::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11449,7 +11470,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::State::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11546,7 +11567,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Config
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11658,7 +11679,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::State:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11764,7 +11785,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overfl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11860,7 +11881,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overfl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11941,8 +11962,8 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::ha
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::get_segment_path() const
@@ -11959,7 +11980,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overfl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12086,7 +12107,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12182,7 +12203,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12263,8 +12284,8 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::h
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::get_segment_path() const
@@ -12281,7 +12302,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12403,10 +12424,10 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::has_data() c
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (overflow !=  nullptr && is_set(overflow->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (underflow !=  nullptr && is_set(underflow->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (overflow !=  nullptr && overflow->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (underflow !=  nullptr && underflow->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::get_segment_path() const
@@ -12423,7 +12444,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12586,9 +12607,9 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::has_data() const
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::has_operation() const
 {
     return is_set(operation)
-	|| (auto_bandwidth !=  nullptr && is_set(auto_bandwidth->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (auto_bandwidth !=  nullptr && auto_bandwidth->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::get_segment_path() const
@@ -12605,7 +12626,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12749,7 +12770,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::Config::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12829,7 +12850,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::State::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12936,7 +12957,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13088,7 +13109,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13216,7 +13237,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13307,7 +13328,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13392,8 +13413,8 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 {
     return is_set(operation)
 	|| is_set(secondary_path.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::get_segment_path() const
@@ -13410,7 +13431,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13543,7 +13564,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13623,17 +13644,17 @@ Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::Admin
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::Config::has_data() const
 {
-    for (auto const & leaf : exclude_group.getValues())
+    for (auto const & leaf : exclude_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : include_all_group.getValues())
+    for (auto const & leaf : include_all_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : include_any_group.getValues())
+    for (auto const & leaf : include_any_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -13643,22 +13664,25 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::Config::has_operation() const
 {
-    for (auto const & leaf : exclude_group.getValues())
+    for (auto const & leaf : exclude_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : include_all_group.getValues())
+    for (auto const & leaf : include_all_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : include_any_group.getValues())
+    for (auto const & leaf : include_any_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(exclude_group.operation)
+	|| is_set(include_all_group.operation)
+	|| is_set(include_any_group.operation);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::Config::get_segment_path() const
@@ -13675,7 +13699,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13747,17 +13771,17 @@ Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::Admin
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::State::has_data() const
 {
-    for (auto const & leaf : exclude_group.getValues())
+    for (auto const & leaf : exclude_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : include_all_group.getValues())
+    for (auto const & leaf : include_all_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : include_any_group.getValues())
+    for (auto const & leaf : include_any_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -13767,22 +13791,25 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::State::has_operation() const
 {
-    for (auto const & leaf : exclude_group.getValues())
+    for (auto const & leaf : exclude_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : include_all_group.getValues())
+    for (auto const & leaf : include_all_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : include_any_group.getValues())
+    for (auto const & leaf : include_any_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(exclude_group.operation)
+	|| is_set(include_all_group.operation)
+	|| is_set(include_any_group.operation);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::State::get_segment_path() const
@@ -13799,7 +13826,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13883,8 +13910,8 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::get_segment_path() const
@@ -13901,7 +13928,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14027,10 +14054,10 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (admin_groups !=  nullptr && is_set(admin_groups->operation))
-	|| (candidate_secondary_paths !=  nullptr && is_set(candidate_secondary_paths->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (admin_groups !=  nullptr && admin_groups->has_operation())
+	|| (candidate_secondary_paths !=  nullptr && candidate_secondary_paths->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::get_segment_path() const
@@ -14047,7 +14074,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14246,7 +14273,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14398,7 +14425,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14502,17 +14529,17 @@ Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Adm
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::Config::has_data() const
 {
-    for (auto const & leaf : exclude_group.getValues())
+    for (auto const & leaf : exclude_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : include_all_group.getValues())
+    for (auto const & leaf : include_all_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : include_any_group.getValues())
+    for (auto const & leaf : include_any_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14522,22 +14549,25 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::Config::has_operation() const
 {
-    for (auto const & leaf : exclude_group.getValues())
+    for (auto const & leaf : exclude_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : include_all_group.getValues())
+    for (auto const & leaf : include_all_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : include_any_group.getValues())
+    for (auto const & leaf : include_any_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(exclude_group.operation)
+	|| is_set(include_all_group.operation)
+	|| is_set(include_any_group.operation);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::Config::get_segment_path() const
@@ -14554,7 +14584,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14626,17 +14656,17 @@ Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Adm
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::State::has_data() const
 {
-    for (auto const & leaf : exclude_group.getValues())
+    for (auto const & leaf : exclude_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : include_all_group.getValues())
+    for (auto const & leaf : include_all_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : include_any_group.getValues())
+    for (auto const & leaf : include_any_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14646,22 +14676,25 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::State::has_operation() const
 {
-    for (auto const & leaf : exclude_group.getValues())
+    for (auto const & leaf : exclude_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : include_all_group.getValues())
+    for (auto const & leaf : include_all_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : include_any_group.getValues())
+    for (auto const & leaf : include_any_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(exclude_group.operation)
+	|| is_set(include_all_group.operation)
+	|| is_set(include_any_group.operation);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::State::get_segment_path() const
@@ -14678,7 +14711,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14762,8 +14795,8 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::get_segment_path() const
@@ -14780,7 +14813,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14901,9 +14934,9 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (admin_groups !=  nullptr && is_set(admin_groups->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (admin_groups !=  nullptr && admin_groups->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::get_segment_path() const
@@ -14920,7 +14953,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15080,8 +15113,8 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::has_operation() c
             return true;
     }
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::get_segment_path() const
@@ -15098,7 +15131,7 @@ EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15279,10 +15312,10 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::has_operation() const
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(type.operation)
-	|| (bandwidth !=  nullptr && is_set(bandwidth->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (p2p_tunnel_attributes !=  nullptr && is_set(p2p_tunnel_attributes->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (p2p_tunnel_attributes !=  nullptr && p2p_tunnel_attributes->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::get_segment_path() const
@@ -15597,7 +15630,7 @@ Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp::~P2PLsp()
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp::has_data() const
 {
-    for (auto const & leaf : fec_address.getValues())
+    for (auto const & leaf : fec_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -15607,12 +15640,13 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp::has_
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp::has_operation() const
 {
-    for (auto const & leaf : fec_address.getValues())
+    for (auto const & leaf : fec_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(fec_address.operation);
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp::get_segment_path() const
@@ -15857,9 +15891,9 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::has_operatio
     return is_set(operation)
 	|| is_set(ldp_type.operation)
 	|| is_set(tunnel_type.operation)
-	|| (mp2mp_lsp !=  nullptr && is_set(mp2mp_lsp->operation))
-	|| (p2mp_lsp !=  nullptr && is_set(p2mp_lsp->operation))
-	|| (p2p_lsp !=  nullptr && is_set(p2p_lsp->operation));
+	|| (mp2mp_lsp !=  nullptr && mp2mp_lsp->has_operation())
+	|| (p2mp_lsp !=  nullptr && p2mp_lsp->has_operation())
+	|| (p2p_lsp !=  nullptr && p2p_lsp->has_operation());
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::get_segment_path() const
@@ -16016,7 +16050,7 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::has_data() const
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::has_operation() const
 {
     return is_set(operation)
-	|| (tunnel !=  nullptr && is_set(tunnel->operation));
+	|| (tunnel !=  nullptr && tunnel->has_operation());
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::get_segment_path() const
@@ -16131,7 +16165,7 @@ EntityPath Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tun
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16211,7 +16245,7 @@ EntityPath Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tun
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16297,7 +16331,7 @@ EntityPath Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tun
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16393,7 +16427,7 @@ EntityPath Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tun
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16474,8 +16508,8 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::get_segment_path() const
@@ -16492,7 +16526,7 @@ EntityPath Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tun
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16613,9 +16647,9 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P
 {
     return is_set(operation)
 	|| is_set(fec_address.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (prefix_sid !=  nullptr && is_set(prefix_sid->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (prefix_sid !=  nullptr && prefix_sid->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::get_segment_path() const
@@ -16879,7 +16913,7 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::h
 {
     return is_set(operation)
 	|| is_set(tunnel_type.operation)
-	|| (p2p_lsp !=  nullptr && is_set(p2p_lsp->operation));
+	|| (p2p_lsp !=  nullptr && p2p_lsp->has_operation());
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::get_segment_path() const
@@ -16985,7 +17019,7 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::has_data(
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::has_operation() const
 {
     return is_set(operation)
-	|| (tunnel !=  nullptr && is_set(tunnel->operation));
+	|| (tunnel !=  nullptr && tunnel->has_operation());
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::get_segment_path() const
@@ -17085,8 +17119,8 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::has_data() const
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (ldp !=  nullptr && is_set(ldp->operation))
-	|| (segment_routing !=  nullptr && is_set(segment_routing->operation));
+	|| (ldp !=  nullptr && ldp->has_operation())
+	|| (segment_routing !=  nullptr && segment_routing->has_operation());
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::get_segment_path() const
@@ -17210,7 +17244,7 @@ bool Mpls::Lsps::UnconstrainedPath::has_data() const
 bool Mpls::Lsps::UnconstrainedPath::has_operation() const
 {
     return is_set(operation)
-	|| (path_setup_protocol !=  nullptr && is_set(path_setup_protocol->operation));
+	|| (path_setup_protocol !=  nullptr && path_setup_protocol->has_operation());
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::get_segment_path() const
@@ -17331,7 +17365,7 @@ EntityPath Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17427,7 +17461,7 @@ EntityPath Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17523,7 +17557,7 @@ EntityPath Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17613,9 +17647,9 @@ bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (egress !=  nullptr && is_set(egress->operation))
-	|| (ingress !=  nullptr && is_set(ingress->operation))
-	|| (transit !=  nullptr && is_set(transit->operation));
+	|| (egress !=  nullptr && egress->has_operation())
+	|| (ingress !=  nullptr && ingress->has_operation())
+	|| (transit !=  nullptr && transit->has_operation());
 }
 
 std::string Mpls::Lsps::StaticLsps::LabelSwitchedPath::get_segment_path() const
@@ -17885,9 +17919,9 @@ bool Mpls::Lsps::has_data() const
 bool Mpls::Lsps::has_operation() const
 {
     return is_set(operation)
-	|| (constrained_path !=  nullptr && is_set(constrained_path->operation))
-	|| (static_lsps !=  nullptr && is_set(static_lsps->operation))
-	|| (unconstrained_path !=  nullptr && is_set(unconstrained_path->operation));
+	|| (constrained_path !=  nullptr && constrained_path->has_operation())
+	|| (static_lsps !=  nullptr && static_lsps->has_operation())
+	|| (unconstrained_path !=  nullptr && unconstrained_path->has_operation());
 }
 
 std::string Mpls::Lsps::get_segment_path() const
@@ -18054,11 +18088,11 @@ bool Mpls::has_data() const
 bool Mpls::has_operation() const
 {
     return is_set(operation)
-	|| (global !=  nullptr && is_set(global->operation))
-	|| (lsps !=  nullptr && is_set(lsps->operation))
-	|| (signaling_protocols !=  nullptr && is_set(signaling_protocols->operation))
-	|| (te_global_attributes !=  nullptr && is_set(te_global_attributes->operation))
-	|| (te_interface_attributes !=  nullptr && is_set(te_interface_attributes->operation));
+	|| (global !=  nullptr && global->has_operation())
+	|| (lsps !=  nullptr && lsps->has_operation())
+	|| (signaling_protocols !=  nullptr && signaling_protocols->has_operation())
+	|| (te_global_attributes !=  nullptr && te_global_attributes->has_operation())
+	|| (te_interface_attributes !=  nullptr && te_interface_attributes->has_operation());
 }
 
 std::string Mpls::get_segment_path() const
@@ -18075,7 +18109,7 @@ EntityPath Mpls::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -18258,77 +18292,77 @@ ExternallyQueriedIdentity::~ExternallyQueriedIdentity()
 }
 
 
-const Enum::Value MplsSrlgFloodingTypeEnum::FLOODED_SRLG {0, "FLOODED-SRLG"};
-const Enum::Value MplsSrlgFloodingTypeEnum::STATIC_SRLG {1, "STATIC-SRLG"};
+const Enum::YLeaf MplsSrlgFloodingTypeEnum::FLOODED_SRLG {0, "FLOODED-SRLG"};
+const Enum::YLeaf MplsSrlgFloodingTypeEnum::STATIC_SRLG {1, "STATIC-SRLG"};
 
-const Enum::Value MplsHopTypeEnum::LOOSE {0, "LOOSE"};
-const Enum::Value MplsHopTypeEnum::STRICT {1, "STRICT"};
+const Enum::YLeaf MplsHopTypeEnum::LOOSE {0, "LOOSE"};
+const Enum::YLeaf MplsHopTypeEnum::STRICT {1, "STRICT"};
 
-const Enum::Value CspfTieBreakingEnum::RANDOM {0, "RANDOM"};
-const Enum::Value CspfTieBreakingEnum::LEAST_FILL {1, "LEAST_FILL"};
-const Enum::Value CspfTieBreakingEnum::MOST_FILL {2, "MOST_FILL"};
+const Enum::YLeaf CspfTieBreakingEnum::RANDOM {0, "RANDOM"};
+const Enum::YLeaf CspfTieBreakingEnum::LEAST_FILL {1, "LEAST_FILL"};
+const Enum::YLeaf CspfTieBreakingEnum::MOST_FILL {2, "MOST_FILL"};
 
-const Enum::Value TeMetricTypeEnum::IGP {0, "IGP"};
+const Enum::YLeaf TeMetricTypeEnum::IGP {0, "IGP"};
 
-const Enum::Value TeBandwidthTypeEnum::SPECIFIED {0, "SPECIFIED"};
-const Enum::Value TeBandwidthTypeEnum::AUTO {1, "AUTO"};
+const Enum::YLeaf TeBandwidthTypeEnum::SPECIFIED {0, "SPECIFIED"};
+const Enum::YLeaf TeBandwidthTypeEnum::AUTO {1, "AUTO"};
 
-const Enum::Value Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdTypeEnum::DELTA {0, "DELTA"};
-const Enum::Value Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdTypeEnum::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdTypeEnum::DELTA {0, "DELTA"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdTypeEnum::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
 
-const Enum::Value Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
-const Enum::Value Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
 
-const Enum::Value Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdTypeEnum::DELTA {0, "DELTA"};
-const Enum::Value Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdTypeEnum::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdTypeEnum::DELTA {0, "DELTA"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdTypeEnum::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
 
-const Enum::Value Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdSpecificationEnum::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
-const Enum::Value Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdSpecificationEnum::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdSpecificationEnum::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdSpecificationEnum::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
 
-const Enum::Value Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdTypeEnum::DELTA {0, "DELTA"};
-const Enum::Value Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdTypeEnum::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdTypeEnum::DELTA {0, "DELTA"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdTypeEnum::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
 
-const Enum::Value Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
-const Enum::Value Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
 
-const Enum::Value Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdTypeEnum::DELTA {0, "DELTA"};
-const Enum::Value Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdTypeEnum::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdTypeEnum::DELTA {0, "DELTA"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdTypeEnum::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
 
-const Enum::Value Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecificationEnum::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
-const Enum::Value Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecificationEnum::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecificationEnum::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecificationEnum::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
 
-const Enum::Value Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::StatusEnum::UP {0, "UP"};
-const Enum::Value Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::StatusEnum::DOWN {1, "DOWN"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::StatusEnum::UP {0, "UP"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::StatusEnum::DOWN {1, "DOWN"};
 
-const Enum::Value Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::TypeEnum::SOURCE {0, "SOURCE"};
-const Enum::Value Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::TypeEnum::TRANSIT {1, "TRANSIT"};
-const Enum::Value Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::TypeEnum::DESTINATION {2, "DESTINATION"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::TypeEnum::SOURCE {0, "SOURCE"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::TypeEnum::TRANSIT {1, "TRANSIT"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::TypeEnum::DESTINATION {2, "DESTINATION"};
 
-const Enum::Value Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::NeighborStatusEnum::UP {0, "UP"};
-const Enum::Value Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::NeighborStatusEnum::DOWN {1, "DOWN"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::NeighborStatusEnum::UP {0, "UP"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::NeighborStatusEnum::DOWN {1, "DOWN"};
 
-const Enum::Value Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::AdvertiseEnum::PROTECTED {0, "PROTECTED"};
-const Enum::Value Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::AdvertiseEnum::UNPROTECTED {1, "UNPROTECTED"};
+const Enum::YLeaf Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::AdvertiseEnum::PROTECTED {0, "PROTECTED"};
+const Enum::YLeaf Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::AdvertiseEnum::UNPROTECTED {1, "UNPROTECTED"};
 
-const Enum::Value Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::AdvertiseEnum::PROTECTED {0, "PROTECTED"};
-const Enum::Value Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::AdvertiseEnum::UNPROTECTED {1, "UNPROTECTED"};
+const Enum::YLeaf Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::AdvertiseEnum::PROTECTED {0, "PROTECTED"};
+const Enum::YLeaf Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::AdvertiseEnum::UNPROTECTED {1, "UNPROTECTED"};
 
-const Enum::Value Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::LdpTypeEnum::BASIC {0, "BASIC"};
-const Enum::Value Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::LdpTypeEnum::TARGETED {1, "TARGETED"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::LdpTypeEnum::BASIC {0, "BASIC"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::LdpTypeEnum::TARGETED {1, "TARGETED"};
 
-const Enum::Value Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::TypeEnum::INDEX {0, "INDEX"};
-const Enum::Value Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::TypeEnum::ABSOLUTE {1, "ABSOLUTE"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::TypeEnum::INDEX {0, "INDEX"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::TypeEnum::ABSOLUTE {1, "ABSOLUTE"};
 
-const Enum::Value Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehaviorEnum::EXPLICIT_NULL {0, "EXPLICIT-NULL"};
-const Enum::Value Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehaviorEnum::UNCHANGED {1, "UNCHANGED"};
-const Enum::Value Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehaviorEnum::PHP {2, "PHP"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehaviorEnum::EXPLICIT_NULL {0, "EXPLICIT-NULL"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehaviorEnum::UNCHANGED {1, "UNCHANGED"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehaviorEnum::PHP {2, "PHP"};
 
-const Enum::Value Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::TypeEnum::INDEX {0, "INDEX"};
-const Enum::Value Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::TypeEnum::ABSOLUTE {1, "ABSOLUTE"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::TypeEnum::INDEX {0, "INDEX"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::TypeEnum::ABSOLUTE {1, "ABSOLUTE"};
 
-const Enum::Value Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehaviorEnum::EXPLICIT_NULL {0, "EXPLICIT-NULL"};
-const Enum::Value Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehaviorEnum::UNCHANGED {1, "UNCHANGED"};
-const Enum::Value Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehaviorEnum::PHP {2, "PHP"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehaviorEnum::EXPLICIT_NULL {0, "EXPLICIT-NULL"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehaviorEnum::UNCHANGED {1, "UNCHANGED"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehaviorEnum::PHP {2, "PHP"};
 
 
 }

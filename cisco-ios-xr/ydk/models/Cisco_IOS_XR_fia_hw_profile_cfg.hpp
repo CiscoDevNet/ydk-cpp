@@ -26,6 +26,7 @@ class HwModuleProfileConfig : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Profile : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class HwModuleProfileConfig : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class TcamTable : public Entity
@@ -56,6 +58,7 @@ class HwModuleProfileConfig : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class FibTable : public Entity
             {
                 public:
@@ -69,6 +72,7 @@ class HwModuleProfileConfig : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Ipv4Address : public Entity
@@ -86,6 +90,7 @@ class HwModuleProfileConfig : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Ipv4Unicast : public Entity
                     {
                         public:
@@ -99,8 +104,9 @@ class HwModuleProfileConfig : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipv4_unicast_percent; //type: uint32
 
+
+                            YLeaf ipv4_unicast_percent; //type: uint32
 
                         class Ipv4UnicastPrefixLengths : public Entity
                         {
@@ -117,6 +123,7 @@ class HwModuleProfileConfig : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Ipv4UnicastPrefixLength : public Entity
                             {
                                 public:
@@ -130,9 +137,10 @@ class HwModuleProfileConfig : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix_length; //type: uint32
-                                    Value ipv4_unicast_prefix_percent; //type: string
 
+
+                                    YLeaf prefix_length; //type: uint32
+                                    YLeaf ipv4_unicast_prefix_percent; //type: string
 
 
 
@@ -172,6 +180,7 @@ class HwModuleProfileConfig : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Ipv6Unicast : public Entity
                     {
                         public:
@@ -185,8 +194,9 @@ class HwModuleProfileConfig : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipv6_unicast_percent; //type: uint32
 
+
+                            YLeaf ipv6_unicast_percent; //type: uint32
 
                         class Ipv6UnicastPrefixLengths : public Entity
                         {
@@ -203,6 +213,7 @@ class HwModuleProfileConfig : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Ipv6UnicastPrefixLength : public Entity
                             {
                                 public:
@@ -216,9 +227,10 @@ class HwModuleProfileConfig : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix_length; //type: uint32
-                                    Value ipv6_unicast_prefix_percent; //type: string
 
+
+                                    YLeaf prefix_length; //type: uint32
+                                    YLeaf ipv6_unicast_prefix_percent; //type: string
 
 
 

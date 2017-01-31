@@ -26,6 +26,7 @@ class Aaa : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Usernames : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Aaa : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Username : public Entity
         {
             public:
@@ -54,9 +56,10 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value secret; //type: string
 
+
+                YLeaf name; //type: string
+                YLeaf secret; //type: string
 
             class UsergroupUnderUsernames : public Entity
             {
@@ -73,6 +76,7 @@ class Aaa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class UsergroupUnderUsername : public Entity
                 {
                     public:
@@ -86,8 +90,9 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
 
+
+                        YLeaf name; //type: string
 
 
 

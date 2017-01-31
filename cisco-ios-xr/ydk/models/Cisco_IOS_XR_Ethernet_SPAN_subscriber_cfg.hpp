@@ -14,20 +14,20 @@ namespace Cisco_IOS_XR_Ethernet_SPAN_subscriber_cfg {
 class SpanTrafficDirectionEnum : public Enum
 {
     public:
-        static const Enum::Value rx_only;
-        static const Enum::Value tx_only;
+        static const Enum::YLeaf rx_only;
+        static const Enum::YLeaf tx_only;
 
 };
 
 class SpanMirrorIntervalEnum : public Enum
 {
     public:
-        static const Enum::Value Y_512;
-        static const Enum::Value Y_1k;
-        static const Enum::Value Y_2k;
-        static const Enum::Value Y_4k;
-        static const Enum::Value Y_8k;
-        static const Enum::Value Y_16k;
+        static const Enum::YLeaf Y_512;
+        static const Enum::YLeaf Y_1k;
+        static const Enum::YLeaf Y_2k;
+        static const Enum::YLeaf Y_4k;
+        static const Enum::YLeaf Y_8k;
+        static const Enum::YLeaf Y_16k;
 
 };
 

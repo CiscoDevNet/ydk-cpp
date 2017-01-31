@@ -26,22 +26,22 @@ NvSatellite::ReloadOpStatuses::ReloadOpStatus::~ReloadOpStatus()
 
 bool NvSatellite::ReloadOpStatuses::ReloadOpStatus::has_data() const
 {
-    for (auto const & leaf : sats_not_initiated.getValues())
+    for (auto const & leaf : sats_not_initiated.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_reload_failed.getValues())
+    for (auto const & leaf : sats_reload_failed.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_reloaded.getValues())
+    for (auto const & leaf : sats_reloaded.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_reloading.getValues())
+    for (auto const & leaf : sats_reloading.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -53,22 +53,22 @@ bool NvSatellite::ReloadOpStatuses::ReloadOpStatus::has_data() const
 
 bool NvSatellite::ReloadOpStatuses::ReloadOpStatus::has_operation() const
 {
-    for (auto const & leaf : sats_not_initiated.getValues())
+    for (auto const & leaf : sats_not_initiated.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_reload_failed.getValues())
+    for (auto const & leaf : sats_reload_failed.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_reloaded.getValues())
+    for (auto const & leaf : sats_reloaded.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_reloading.getValues())
+    for (auto const & leaf : sats_reloading.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -76,7 +76,11 @@ bool NvSatellite::ReloadOpStatuses::ReloadOpStatus::has_operation() const
     return is_set(operation)
 	|| is_set(operation_id.operation)
 	|| is_set(operation_id_xr.operation)
-	|| is_set(satellite_range.operation);
+	|| is_set(satellite_range.operation)
+	|| is_set(sats_not_initiated.operation)
+	|| is_set(sats_reload_failed.operation)
+	|| is_set(sats_reloaded.operation)
+	|| is_set(sats_reloading.operation);
 }
 
 std::string NvSatellite::ReloadOpStatuses::ReloadOpStatus::get_segment_path() const
@@ -309,77 +313,77 @@ NvSatellite::InstallStatuses::InstallStatus::~InstallStatus()
 
 bool NvSatellite::InstallStatuses::InstallStatus::has_data() const
 {
-    for (auto const & leaf : sats_activate_aborted.getValues())
+    for (auto const & leaf : sats_activate_aborted.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_activate_failed.getValues())
+    for (auto const & leaf : sats_activate_failed.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_activating.getValues())
+    for (auto const & leaf : sats_activating.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_completed.getValues())
+    for (auto const & leaf : sats_completed.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_deactivate_aborted.getValues())
+    for (auto const & leaf : sats_deactivate_aborted.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_deactivate_failed.getValues())
+    for (auto const & leaf : sats_deactivate_failed.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_deactivating.getValues())
+    for (auto const & leaf : sats_deactivating.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_no_operation.getValues())
+    for (auto const & leaf : sats_no_operation.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_not_initiated.getValues())
+    for (auto const & leaf : sats_not_initiated.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_remove_aborted.getValues())
+    for (auto const & leaf : sats_remove_aborted.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_remove_failed.getValues())
+    for (auto const & leaf : sats_remove_failed.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_removing.getValues())
+    for (auto const & leaf : sats_removing.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_transfer_aborted.getValues())
+    for (auto const & leaf : sats_transfer_aborted.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_transfer_failed.getValues())
+    for (auto const & leaf : sats_transfer_failed.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_transferring.getValues())
+    for (auto const & leaf : sats_transferring.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -391,77 +395,77 @@ bool NvSatellite::InstallStatuses::InstallStatus::has_data() const
 
 bool NvSatellite::InstallStatuses::InstallStatus::has_operation() const
 {
-    for (auto const & leaf : sats_activate_aborted.getValues())
+    for (auto const & leaf : sats_activate_aborted.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_activate_failed.getValues())
+    for (auto const & leaf : sats_activate_failed.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_activating.getValues())
+    for (auto const & leaf : sats_activating.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_completed.getValues())
+    for (auto const & leaf : sats_completed.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_deactivate_aborted.getValues())
+    for (auto const & leaf : sats_deactivate_aborted.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_deactivate_failed.getValues())
+    for (auto const & leaf : sats_deactivate_failed.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_deactivating.getValues())
+    for (auto const & leaf : sats_deactivating.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_no_operation.getValues())
+    for (auto const & leaf : sats_no_operation.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_not_initiated.getValues())
+    for (auto const & leaf : sats_not_initiated.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_remove_aborted.getValues())
+    for (auto const & leaf : sats_remove_aborted.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_remove_failed.getValues())
+    for (auto const & leaf : sats_remove_failed.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_removing.getValues())
+    for (auto const & leaf : sats_removing.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_transfer_aborted.getValues())
+    for (auto const & leaf : sats_transfer_aborted.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_transfer_failed.getValues())
+    for (auto const & leaf : sats_transfer_failed.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_transferring.getValues())
+    for (auto const & leaf : sats_transferring.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -469,7 +473,22 @@ bool NvSatellite::InstallStatuses::InstallStatus::has_operation() const
     return is_set(operation)
 	|| is_set(satellite_range.operation)
 	|| is_set(operation_id.operation)
-	|| is_set(satellite_range_xr.operation);
+	|| is_set(satellite_range_xr.operation)
+	|| is_set(sats_activate_aborted.operation)
+	|| is_set(sats_activate_failed.operation)
+	|| is_set(sats_activating.operation)
+	|| is_set(sats_completed.operation)
+	|| is_set(sats_deactivate_aborted.operation)
+	|| is_set(sats_deactivate_failed.operation)
+	|| is_set(sats_deactivating.operation)
+	|| is_set(sats_no_operation.operation)
+	|| is_set(sats_not_initiated.operation)
+	|| is_set(sats_remove_aborted.operation)
+	|| is_set(sats_remove_failed.operation)
+	|| is_set(sats_removing.operation)
+	|| is_set(sats_transfer_aborted.operation)
+	|| is_set(sats_transfer_failed.operation)
+	|| is_set(sats_transferring.operation);
 }
 
 std::string NvSatellite::InstallStatuses::InstallStatus::get_segment_path() const
@@ -777,7 +796,7 @@ EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimesta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -865,7 +884,7 @@ EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -953,7 +972,7 @@ EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncState
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1051,8 +1070,8 @@ bool NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::has_operation() c
 	|| is_set(normal_messages_received.operation)
 	|| is_set(normal_messages_sent.operation)
 	|| is_set(resync_state.operation)
-	|| (channel_state_timestamp !=  nullptr && is_set(channel_state_timestamp->operation))
-	|| (resync_state_timestamp !=  nullptr && is_set(resync_state_timestamp->operation));
+	|| (channel_state_timestamp !=  nullptr && channel_state_timestamp->has_operation())
+	|| (resync_state_timestamp !=  nullptr && resync_state_timestamp->has_operation());
 }
 
 std::string NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::get_segment_path() const
@@ -1069,7 +1088,7 @@ EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1252,7 +1271,7 @@ bool NvSatellite::SdacpRedundancies::SdacpRedundancy::has_operation() const
 	|| is_set(synchronization_state.operation)
 	|| is_set(system_mac.operation)
 	|| is_set(transport_state.operation)
-	|| (protocol_state_timestamp !=  nullptr && is_set(protocol_state_timestamp->operation));
+	|| (protocol_state_timestamp !=  nullptr && protocol_state_timestamp->has_operation());
 }
 
 std::string NvSatellite::SdacpRedundancies::SdacpRedundancy::get_segment_path() const
@@ -1563,7 +1582,7 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1678,7 +1697,7 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1809,7 +1828,7 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1954,7 +1973,7 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Appli
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2049,7 +2068,7 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2158,7 +2177,7 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2261,7 +2280,7 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::Port
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2380,7 +2399,7 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::Disc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2522,7 +2541,7 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2730,7 +2749,7 @@ bool NvSatellite::SatelliteStatuses::SatelliteStatus::has_data() const
         if(configured_link[index]->has_data())
             return true;
     }
-    for (auto const & leaf : remote_version.getValues())
+    for (auto const & leaf : remote_version.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2783,7 +2802,7 @@ bool NvSatellite::SatelliteStatuses::SatelliteStatus::has_operation() const
         if(configured_link[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : remote_version.getValues())
+    for (auto const & leaf : remote_version.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -2815,6 +2834,7 @@ bool NvSatellite::SatelliteStatuses::SatelliteStatus::has_operation() const
 	|| is_set(received_serial_number_present.operation)
 	|| is_set(recovery_delay_time_left.operation)
 	|| is_set(redundancy_iccp_group.operation)
+	|| is_set(remote_version.operation)
 	|| is_set(remote_version_present.operation)
 	|| is_set(satellite_id_xr.operation)
 	|| is_set(satellite_treating_as_active.operation)
@@ -2825,9 +2845,9 @@ bool NvSatellite::SatelliteStatuses::SatelliteStatus::has_operation() const
 	|| is_set(version_check_state.operation)
 	|| is_set(vrf_name.operation)
 	|| is_set(vrfid.operation)
-	|| (candidate_fabric_ports !=  nullptr && is_set(candidate_fabric_ports->operation))
-	|| (optical_status !=  nullptr && is_set(optical_status->operation))
-	|| (redundancy_out_of_sync_timestamp !=  nullptr && is_set(redundancy_out_of_sync_timestamp->operation));
+	|| (candidate_fabric_ports !=  nullptr && candidate_fabric_ports->has_operation())
+	|| (optical_status !=  nullptr && optical_status->has_operation())
+	|| (redundancy_out_of_sync_timestamp !=  nullptr && redundancy_out_of_sync_timestamp->has_operation());
 }
 
 std::string NvSatellite::SatelliteStatuses::SatelliteStatus::get_segment_path() const
@@ -3314,7 +3334,7 @@ EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3422,7 +3442,7 @@ EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::Fabri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3557,7 +3577,7 @@ EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::Fabri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3728,7 +3748,7 @@ EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4370,22 +4390,22 @@ NvSatellite::ReloadStatuses::ReloadStatus::~ReloadStatus()
 
 bool NvSatellite::ReloadStatuses::ReloadStatus::has_data() const
 {
-    for (auto const & leaf : sats_not_initiated.getValues())
+    for (auto const & leaf : sats_not_initiated.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_reload_failed.getValues())
+    for (auto const & leaf : sats_reload_failed.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_reloaded.getValues())
+    for (auto const & leaf : sats_reloaded.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_reloading.getValues())
+    for (auto const & leaf : sats_reloading.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4396,29 +4416,33 @@ bool NvSatellite::ReloadStatuses::ReloadStatus::has_data() const
 
 bool NvSatellite::ReloadStatuses::ReloadStatus::has_operation() const
 {
-    for (auto const & leaf : sats_not_initiated.getValues())
+    for (auto const & leaf : sats_not_initiated.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_reload_failed.getValues())
+    for (auto const & leaf : sats_reload_failed.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_reloaded.getValues())
+    for (auto const & leaf : sats_reloaded.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_reloading.getValues())
+    for (auto const & leaf : sats_reloading.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(satellite_range.operation)
-	|| is_set(satellite_range_xr.operation);
+	|| is_set(satellite_range_xr.operation)
+	|| is_set(sats_not_initiated.operation)
+	|| is_set(sats_reload_failed.operation)
+	|| is_set(sats_reloaded.operation)
+	|| is_set(sats_reloading.operation);
 }
 
 std::string NvSatellite::ReloadStatuses::ReloadStatus::get_segment_path() const
@@ -4646,77 +4670,77 @@ NvSatellite::InstallOpStatuses::InstallOpStatus::~InstallOpStatus()
 
 bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_data() const
 {
-    for (auto const & leaf : sats_activate_aborted.getValues())
+    for (auto const & leaf : sats_activate_aborted.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_activate_failed.getValues())
+    for (auto const & leaf : sats_activate_failed.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_activating.getValues())
+    for (auto const & leaf : sats_activating.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_completed.getValues())
+    for (auto const & leaf : sats_completed.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_deactivate_aborted.getValues())
+    for (auto const & leaf : sats_deactivate_aborted.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_deactivate_failed.getValues())
+    for (auto const & leaf : sats_deactivate_failed.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_deactivating.getValues())
+    for (auto const & leaf : sats_deactivating.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_no_operation.getValues())
+    for (auto const & leaf : sats_no_operation.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_not_initiated.getValues())
+    for (auto const & leaf : sats_not_initiated.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_remove_aborted.getValues())
+    for (auto const & leaf : sats_remove_aborted.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_remove_failed.getValues())
+    for (auto const & leaf : sats_remove_failed.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_removing.getValues())
+    for (auto const & leaf : sats_removing.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_transfer_aborted.getValues())
+    for (auto const & leaf : sats_transfer_aborted.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_transfer_failed.getValues())
+    for (auto const & leaf : sats_transfer_failed.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sats_transferring.getValues())
+    for (auto const & leaf : sats_transferring.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4728,77 +4752,77 @@ bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_data() const
 
 bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_operation() const
 {
-    for (auto const & leaf : sats_activate_aborted.getValues())
+    for (auto const & leaf : sats_activate_aborted.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_activate_failed.getValues())
+    for (auto const & leaf : sats_activate_failed.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_activating.getValues())
+    for (auto const & leaf : sats_activating.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_completed.getValues())
+    for (auto const & leaf : sats_completed.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_deactivate_aborted.getValues())
+    for (auto const & leaf : sats_deactivate_aborted.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_deactivate_failed.getValues())
+    for (auto const & leaf : sats_deactivate_failed.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_deactivating.getValues())
+    for (auto const & leaf : sats_deactivating.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_no_operation.getValues())
+    for (auto const & leaf : sats_no_operation.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_not_initiated.getValues())
+    for (auto const & leaf : sats_not_initiated.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_remove_aborted.getValues())
+    for (auto const & leaf : sats_remove_aborted.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_remove_failed.getValues())
+    for (auto const & leaf : sats_remove_failed.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_removing.getValues())
+    for (auto const & leaf : sats_removing.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_transfer_aborted.getValues())
+    for (auto const & leaf : sats_transfer_aborted.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_transfer_failed.getValues())
+    for (auto const & leaf : sats_transfer_failed.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sats_transferring.getValues())
+    for (auto const & leaf : sats_transferring.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -4806,7 +4830,22 @@ bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_operation() const
     return is_set(operation)
 	|| is_set(operation_id.operation)
 	|| is_set(operation_id_xr.operation)
-	|| is_set(satellite_range.operation);
+	|| is_set(satellite_range.operation)
+	|| is_set(sats_activate_aborted.operation)
+	|| is_set(sats_activate_failed.operation)
+	|| is_set(sats_activating.operation)
+	|| is_set(sats_completed.operation)
+	|| is_set(sats_deactivate_aborted.operation)
+	|| is_set(sats_deactivate_failed.operation)
+	|| is_set(sats_deactivating.operation)
+	|| is_set(sats_no_operation.operation)
+	|| is_set(sats_not_initiated.operation)
+	|| is_set(sats_remove_aborted.operation)
+	|| is_set(sats_remove_failed.operation)
+	|| is_set(sats_removing.operation)
+	|| is_set(sats_transfer_aborted.operation)
+	|| is_set(sats_transfer_failed.operation)
+	|| is_set(sats_transferring.operation);
 }
 
 std::string NvSatellite::InstallOpStatuses::InstallOpStatus::get_segment_path() const
@@ -5132,14 +5171,14 @@ bool NvSatellite::has_data() const
 bool NvSatellite::has_operation() const
 {
     return is_set(operation)
-	|| (install_op_statuses !=  nullptr && is_set(install_op_statuses->operation))
-	|| (install_progresses !=  nullptr && is_set(install_progresses->operation))
-	|| (install_statuses !=  nullptr && is_set(install_statuses->operation))
-	|| (reload_op_statuses !=  nullptr && is_set(reload_op_statuses->operation))
-	|| (reload_statuses !=  nullptr && is_set(reload_statuses->operation))
-	|| (satellite_statuses !=  nullptr && is_set(satellite_statuses->operation))
-	|| (satellite_topologies !=  nullptr && is_set(satellite_topologies->operation))
-	|| (sdacp_redundancies !=  nullptr && is_set(sdacp_redundancies->operation));
+	|| (install_op_statuses !=  nullptr && install_op_statuses->has_operation())
+	|| (install_progresses !=  nullptr && install_progresses->has_operation())
+	|| (install_statuses !=  nullptr && install_statuses->has_operation())
+	|| (reload_op_statuses !=  nullptr && reload_op_statuses->has_operation())
+	|| (reload_statuses !=  nullptr && reload_statuses->has_operation())
+	|| (satellite_statuses !=  nullptr && satellite_statuses->has_operation())
+	|| (satellite_topologies !=  nullptr && satellite_topologies->has_operation())
+	|| (sdacp_redundancies !=  nullptr && sdacp_redundancies->has_operation());
 }
 
 std::string NvSatellite::get_segment_path() const
@@ -5156,7 +5195,7 @@ EntityPath NvSatellite::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -5381,143 +5420,143 @@ std::unique_ptr<Entity> NvSatellite::clone_ptr()
     return std::make_unique<NvSatellite>();
 }
 
-const Enum::Value IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_not_created {0, "icpe-oper-sdacp-sess-state-not-created"};
-const Enum::Value IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_created {1, "icpe-oper-sdacp-sess-state-created"};
-const Enum::Value IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_authentication_not_ok {2, "icpe-oper-sdacp-sess-state-authentication-not-ok"};
-const Enum::Value IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_authentication_ok {3, "icpe-oper-sdacp-sess-state-authentication-ok"};
-const Enum::Value IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_version_not_ok {4, "icpe-oper-sdacp-sess-state-version-not-ok"};
-const Enum::Value IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_up {5, "icpe-oper-sdacp-sess-state-up"};
-const Enum::Value IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_issu {6, "icpe-oper-sdacp-sess-state-issu"};
+const Enum::YLeaf IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_not_created {0, "icpe-oper-sdacp-sess-state-not-created"};
+const Enum::YLeaf IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_created {1, "icpe-oper-sdacp-sess-state-created"};
+const Enum::YLeaf IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_authentication_not_ok {2, "icpe-oper-sdacp-sess-state-authentication-not-ok"};
+const Enum::YLeaf IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_authentication_ok {3, "icpe-oper-sdacp-sess-state-authentication-ok"};
+const Enum::YLeaf IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_version_not_ok {4, "icpe-oper-sdacp-sess-state-version-not-ok"};
+const Enum::YLeaf IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_up {5, "icpe-oper-sdacp-sess-state-up"};
+const Enum::YLeaf IcpeOperSdacpSessStateEnum::icpe_oper_sdacp_sess_state_issu {6, "icpe-oper-sdacp-sess-state-issu"};
 
-const Enum::Value IcpeGcoOperControlReasonEnum::icpe_gco_oper_control_reason_unknown_error {0, "icpe-gco-oper-control-reason-unknown-error"};
-const Enum::Value IcpeGcoOperControlReasonEnum::icpe_gco_oper_control_reason_wrong_chassis_type {1, "icpe-gco-oper-control-reason-wrong-chassis-type"};
-const Enum::Value IcpeGcoOperControlReasonEnum::icpe_gco_oper_control_reason_wrong_chassis_serial {2, "icpe-gco-oper-control-reason-wrong-chassis-serial"};
-const Enum::Value IcpeGcoOperControlReasonEnum::icpe_gco_oper_control_reason_needs_to_upgrade {3, "icpe-gco-oper-control-reason-needs-to-upgrade"};
-const Enum::Value IcpeGcoOperControlReasonEnum::icpe_gco_oper_control_reason_none {4, "icpe-gco-oper-control-reason-none"};
+const Enum::YLeaf IcpeGcoOperControlReasonEnum::icpe_gco_oper_control_reason_unknown_error {0, "icpe-gco-oper-control-reason-unknown-error"};
+const Enum::YLeaf IcpeGcoOperControlReasonEnum::icpe_gco_oper_control_reason_wrong_chassis_type {1, "icpe-gco-oper-control-reason-wrong-chassis-type"};
+const Enum::YLeaf IcpeGcoOperControlReasonEnum::icpe_gco_oper_control_reason_wrong_chassis_serial {2, "icpe-gco-oper-control-reason-wrong-chassis-serial"};
+const Enum::YLeaf IcpeGcoOperControlReasonEnum::icpe_gco_oper_control_reason_needs_to_upgrade {3, "icpe-gco-oper-control-reason-needs-to-upgrade"};
+const Enum::YLeaf IcpeGcoOperControlReasonEnum::icpe_gco_oper_control_reason_none {4, "icpe-gco-oper-control-reason-none"};
 
-const Enum::Value IcpeOpmSyncFsmStateEnum::icpe_opm_sync_fsm_state_split_brain {0, "icpe-opm-sync-fsm-state-split-brain"};
-const Enum::Value IcpeOpmSyncFsmStateEnum::icpe_opm_sync_fsm_state_waiting {1, "icpe-opm-sync-fsm-state-waiting"};
-const Enum::Value IcpeOpmSyncFsmStateEnum::icpe_opm_sync_fsm_state_whole_brain {2, "icpe-opm-sync-fsm-state-whole-brain"};
+const Enum::YLeaf IcpeOpmSyncFsmStateEnum::icpe_opm_sync_fsm_state_split_brain {0, "icpe-opm-sync-fsm-state-split-brain"};
+const Enum::YLeaf IcpeOpmSyncFsmStateEnum::icpe_opm_sync_fsm_state_waiting {1, "icpe-opm-sync-fsm-state-waiting"};
+const Enum::YLeaf IcpeOpmSyncFsmStateEnum::icpe_opm_sync_fsm_state_whole_brain {2, "icpe-opm-sync-fsm-state-whole-brain"};
 
-const Enum::Value IcpeOpmArbitrationFsmStateEnum::icpe_opm_arbitration_fsm_state_unarbitrated {0, "icpe-opm-arbitration-fsm-state-unarbitrated"};
-const Enum::Value IcpeOpmArbitrationFsmStateEnum::icpe_opm_arbitration_fsm_state_waiting {1, "icpe-opm-arbitration-fsm-state-waiting"};
-const Enum::Value IcpeOpmArbitrationFsmStateEnum::icpe_opm_arbitration_fsm_state_arbitrating {2, "icpe-opm-arbitration-fsm-state-arbitrating"};
-const Enum::Value IcpeOpmArbitrationFsmStateEnum::icpe_opm_arbitration_fsm_state_arbitrated {3, "icpe-opm-arbitration-fsm-state-arbitrated"};
+const Enum::YLeaf IcpeOpmArbitrationFsmStateEnum::icpe_opm_arbitration_fsm_state_unarbitrated {0, "icpe-opm-arbitration-fsm-state-unarbitrated"};
+const Enum::YLeaf IcpeOpmArbitrationFsmStateEnum::icpe_opm_arbitration_fsm_state_waiting {1, "icpe-opm-arbitration-fsm-state-waiting"};
+const Enum::YLeaf IcpeOpmArbitrationFsmStateEnum::icpe_opm_arbitration_fsm_state_arbitrating {2, "icpe-opm-arbitration-fsm-state-arbitrating"};
+const Enum::YLeaf IcpeOpmArbitrationFsmStateEnum::icpe_opm_arbitration_fsm_state_arbitrated {3, "icpe-opm-arbitration-fsm-state-arbitrated"};
 
-const Enum::Value IcpeOperInstallStateEnum::icpe_oper_install_state_stable {0, "icpe-oper-install-state-stable"};
-const Enum::Value IcpeOperInstallStateEnum::icpe_oper_install_state_transferring {1, "icpe-oper-install-state-transferring"};
-const Enum::Value IcpeOperInstallStateEnum::icpe_oper_install_state_transferred {2, "icpe-oper-install-state-transferred"};
-const Enum::Value IcpeOperInstallStateEnum::icpe_oper_install_state_installing {3, "icpe-oper-install-state-installing"};
-const Enum::Value IcpeOperInstallStateEnum::icpe_oper_install_state_in_progress {4, "icpe-oper-install-state-in-progress"};
+const Enum::YLeaf IcpeOperInstallStateEnum::icpe_oper_install_state_stable {0, "icpe-oper-install-state-stable"};
+const Enum::YLeaf IcpeOperInstallStateEnum::icpe_oper_install_state_transferring {1, "icpe-oper-install-state-transferring"};
+const Enum::YLeaf IcpeOperInstallStateEnum::icpe_oper_install_state_transferred {2, "icpe-oper-install-state-transferred"};
+const Enum::YLeaf IcpeOperInstallStateEnum::icpe_oper_install_state_installing {3, "icpe-oper-install-state-installing"};
+const Enum::YLeaf IcpeOperInstallStateEnum::icpe_oper_install_state_in_progress {4, "icpe-oper-install-state-in-progress"};
 
-const Enum::Value IcpeOpmTransportStateEnum::icpe_opm_transport_state_disconnected {0, "icpe-opm-transport-state-disconnected"};
-const Enum::Value IcpeOpmTransportStateEnum::icpe_opm_transport_state_iccp_unavailable {1, "icpe-opm-transport-state-iccp-unavailable"};
-const Enum::Value IcpeOpmTransportStateEnum::icpe_opm_transport_state_no_member_present {2, "icpe-opm-transport-state-no-member-present"};
-const Enum::Value IcpeOpmTransportStateEnum::icpe_opm_transport_state_member_down {3, "icpe-opm-transport-state-member-down"};
-const Enum::Value IcpeOpmTransportStateEnum::icpe_opm_transport_state_member_not_reachable {4, "icpe-opm-transport-state-member-not-reachable"};
-const Enum::Value IcpeOpmTransportStateEnum::icpe_opm_transport_state_waiting_for_app_connect {5, "icpe-opm-transport-state-waiting-for-app-connect"};
-const Enum::Value IcpeOpmTransportStateEnum::icpe_opm_transport_state_waiting_for_app_connect_response {6, "icpe-opm-transport-state-waiting-for-app-connect-response"};
-const Enum::Value IcpeOpmTransportStateEnum::icpe_opm_transport_state_connected {7, "icpe-opm-transport-state-connected"};
+const Enum::YLeaf IcpeOpmTransportStateEnum::icpe_opm_transport_state_disconnected {0, "icpe-opm-transport-state-disconnected"};
+const Enum::YLeaf IcpeOpmTransportStateEnum::icpe_opm_transport_state_iccp_unavailable {1, "icpe-opm-transport-state-iccp-unavailable"};
+const Enum::YLeaf IcpeOpmTransportStateEnum::icpe_opm_transport_state_no_member_present {2, "icpe-opm-transport-state-no-member-present"};
+const Enum::YLeaf IcpeOpmTransportStateEnum::icpe_opm_transport_state_member_down {3, "icpe-opm-transport-state-member-down"};
+const Enum::YLeaf IcpeOpmTransportStateEnum::icpe_opm_transport_state_member_not_reachable {4, "icpe-opm-transport-state-member-not-reachable"};
+const Enum::YLeaf IcpeOpmTransportStateEnum::icpe_opm_transport_state_waiting_for_app_connect {5, "icpe-opm-transport-state-waiting-for-app-connect"};
+const Enum::YLeaf IcpeOpmTransportStateEnum::icpe_opm_transport_state_waiting_for_app_connect_response {6, "icpe-opm-transport-state-waiting-for-app-connect-response"};
+const Enum::YLeaf IcpeOpmTransportStateEnum::icpe_opm_transport_state_connected {7, "icpe-opm-transport-state-connected"};
 
-const Enum::Value IcpeOperDiscdLinkStateEnum::icpe_oper_discd_link_state_stopped {0, "icpe-oper-discd-link-state-stopped"};
-const Enum::Value IcpeOperDiscdLinkStateEnum::icpe_oper_discd_link_state_probing {1, "icpe-oper-discd-link-state-probing"};
-const Enum::Value IcpeOperDiscdLinkStateEnum::icpe_oper_discd_link_state_configuring {2, "icpe-oper-discd-link-state-configuring"};
-const Enum::Value IcpeOperDiscdLinkStateEnum::icpe_oper_discd_link_state_ready {3, "icpe-oper-discd-link-state-ready"};
+const Enum::YLeaf IcpeOperDiscdLinkStateEnum::icpe_oper_discd_link_state_stopped {0, "icpe-oper-discd-link-state-stopped"};
+const Enum::YLeaf IcpeOperDiscdLinkStateEnum::icpe_oper_discd_link_state_probing {1, "icpe-oper-discd-link-state-probing"};
+const Enum::YLeaf IcpeOperDiscdLinkStateEnum::icpe_oper_discd_link_state_configuring {2, "icpe-oper-discd-link-state-configuring"};
+const Enum::YLeaf IcpeOperDiscdLinkStateEnum::icpe_oper_discd_link_state_ready {3, "icpe-oper-discd-link-state-ready"};
 
-const Enum::Value IcpeOperTopoRemoteSourceEnum::icpe_oper_topo_remote_source_unknown {0, "icpe-oper-topo-remote-source-unknown"};
-const Enum::Value IcpeOperTopoRemoteSourceEnum::icpe_oper_topo_remote_source_remote_icl_id {1, "icpe-oper-topo-remote-source-remote-icl-id"};
-const Enum::Value IcpeOperTopoRemoteSourceEnum::icpe_oper_topo_remote_source_remote_satellite_mac {2, "icpe-oper-topo-remote-source-remote-satellite-mac"};
-const Enum::Value IcpeOperTopoRemoteSourceEnum::icpe_oper_topo_remote_source_remote_host_mac {3, "icpe-oper-topo-remote-source-remote-host-mac"};
-const Enum::Value IcpeOperTopoRemoteSourceEnum::icpe_oper_topo_remote_source_direct_satellite {4, "icpe-oper-topo-remote-source-direct-satellite"};
-const Enum::Value IcpeOperTopoRemoteSourceEnum::icpe_oper_topo_remote_source_direct_host {5, "icpe-oper-topo-remote-source-direct-host"};
+const Enum::YLeaf IcpeOperTopoRemoteSourceEnum::icpe_oper_topo_remote_source_unknown {0, "icpe-oper-topo-remote-source-unknown"};
+const Enum::YLeaf IcpeOperTopoRemoteSourceEnum::icpe_oper_topo_remote_source_remote_icl_id {1, "icpe-oper-topo-remote-source-remote-icl-id"};
+const Enum::YLeaf IcpeOperTopoRemoteSourceEnum::icpe_oper_topo_remote_source_remote_satellite_mac {2, "icpe-oper-topo-remote-source-remote-satellite-mac"};
+const Enum::YLeaf IcpeOperTopoRemoteSourceEnum::icpe_oper_topo_remote_source_remote_host_mac {3, "icpe-oper-topo-remote-source-remote-host-mac"};
+const Enum::YLeaf IcpeOperTopoRemoteSourceEnum::icpe_oper_topo_remote_source_direct_satellite {4, "icpe-oper-topo-remote-source-direct-satellite"};
+const Enum::YLeaf IcpeOperTopoRemoteSourceEnum::icpe_oper_topo_remote_source_direct_host {5, "icpe-oper-topo-remote-source-direct-host"};
 
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_not_calculated {0, "icpe-oper-conflict-not-calculated"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_no_conflict {1, "icpe-oper-conflict-no-conflict"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_not_configured {2, "icpe-oper-conflict-satellite-not-configured"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_no_type {3, "icpe-oper-conflict-satellite-no-type"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_id_invalid {4, "icpe-oper-conflict-satellite-id-invalid"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_no_ipv4_addr {5, "icpe-oper-conflict-satellite-no-ipv4-addr"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_conflicting_ipv4_addr {6, "icpe-oper-conflict-satellite-conflicting-ipv4-addr"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_no_configured_links {7, "icpe-oper-conflict-no-configured-links"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_no_discovered_links {8, "icpe-oper-conflict-no-discovered-links"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_invalid_ports {9, "icpe-oper-conflict-invalid-ports"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_ports_overlap {10, "icpe-oper-conflict-ports-overlap"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_waiting_for_ipv4_addr {11, "icpe-oper-conflict-waiting-for-ipv4-addr"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_waiting_for_vrf {12, "icpe-oper-conflict-waiting-for-vrf"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_different_ipv4_addr {13, "icpe-oper-conflict-different-ipv4-addr"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_different_vrf {14, "icpe-oper-conflict-different-vrf"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_link_ipv4_overlap {15, "icpe-oper-conflict-satellite-link-ipv4-overlap"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_waiting_for_ident {16, "icpe-oper-conflict-waiting-for-ident"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_multiple_ids {17, "icpe-oper-conflict-multiple-ids"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_multiple_satellites {18, "icpe-oper-conflict-multiple-satellites"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_ident_rejected {19, "icpe-oper-conflict-ident-rejected"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_interface_down {20, "icpe-oper-conflict-interface-down"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_auto_ip_unavailable {21, "icpe-oper-conflict-auto-ip-unavailable"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_auto_ip_link_manual_ip {22, "icpe-oper-conflict-satellite-auto-ip-link-manual-ip"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_link_auto_ip_satellite_manual_ip {23, "icpe-oper-conflict-link-auto-ip-satellite-manual-ip"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_serial_num_mismatch {24, "icpe-oper-conflict-serial-num-mismatch"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_not_identified {25, "icpe-oper-conflict-satellite-not-identified"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_unsupported_type {26, "icpe-oper-conflict-satellite-unsupported-type"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_partition_unsupported {27, "icpe-oper-conflict-satellite-partition-unsupported"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_no_serial_number {28, "icpe-oper-conflict-satellite-no-serial-number"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_conflicting_serial_number {29, "icpe-oper-conflict-satellite-conflicting-serial-number"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_link_waiting_for_arp {30, "icpe-oper-conflict-satellite-link-waiting-for-arp"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_host_pe_isolated_split_brain {31, "icpe-oper-conflict-host-pe-isolated-split-brain"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_fabric_iccp_group_inconsistent {32, "icpe-oper-conflict-fabric-iccp-group-inconsistent"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_invalid_iccp_group {33, "icpe-oper-conflict-invalid-iccp-group"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_port_rejected {34, "icpe-oper-conflict-port-rejected"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_satellite_icl_not_supported {35, "icpe-oper-conflict-satellite-icl-not-supported"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_multiple_serial_number {36, "icpe-oper-conflict-multiple-serial-number"};
-const Enum::Value IcpeOperConflictEnum::icpe_oper_conflict_multiple_mac_address {37, "icpe-oper-conflict-multiple-mac-address"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_not_calculated {0, "icpe-oper-conflict-not-calculated"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_no_conflict {1, "icpe-oper-conflict-no-conflict"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_not_configured {2, "icpe-oper-conflict-satellite-not-configured"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_no_type {3, "icpe-oper-conflict-satellite-no-type"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_id_invalid {4, "icpe-oper-conflict-satellite-id-invalid"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_no_ipv4_addr {5, "icpe-oper-conflict-satellite-no-ipv4-addr"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_conflicting_ipv4_addr {6, "icpe-oper-conflict-satellite-conflicting-ipv4-addr"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_no_configured_links {7, "icpe-oper-conflict-no-configured-links"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_no_discovered_links {8, "icpe-oper-conflict-no-discovered-links"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_invalid_ports {9, "icpe-oper-conflict-invalid-ports"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_ports_overlap {10, "icpe-oper-conflict-ports-overlap"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_waiting_for_ipv4_addr {11, "icpe-oper-conflict-waiting-for-ipv4-addr"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_waiting_for_vrf {12, "icpe-oper-conflict-waiting-for-vrf"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_different_ipv4_addr {13, "icpe-oper-conflict-different-ipv4-addr"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_different_vrf {14, "icpe-oper-conflict-different-vrf"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_link_ipv4_overlap {15, "icpe-oper-conflict-satellite-link-ipv4-overlap"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_waiting_for_ident {16, "icpe-oper-conflict-waiting-for-ident"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_multiple_ids {17, "icpe-oper-conflict-multiple-ids"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_multiple_satellites {18, "icpe-oper-conflict-multiple-satellites"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_ident_rejected {19, "icpe-oper-conflict-ident-rejected"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_interface_down {20, "icpe-oper-conflict-interface-down"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_auto_ip_unavailable {21, "icpe-oper-conflict-auto-ip-unavailable"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_auto_ip_link_manual_ip {22, "icpe-oper-conflict-satellite-auto-ip-link-manual-ip"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_link_auto_ip_satellite_manual_ip {23, "icpe-oper-conflict-link-auto-ip-satellite-manual-ip"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_serial_num_mismatch {24, "icpe-oper-conflict-serial-num-mismatch"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_not_identified {25, "icpe-oper-conflict-satellite-not-identified"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_unsupported_type {26, "icpe-oper-conflict-satellite-unsupported-type"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_partition_unsupported {27, "icpe-oper-conflict-satellite-partition-unsupported"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_no_serial_number {28, "icpe-oper-conflict-satellite-no-serial-number"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_conflicting_serial_number {29, "icpe-oper-conflict-satellite-conflicting-serial-number"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_link_waiting_for_arp {30, "icpe-oper-conflict-satellite-link-waiting-for-arp"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_host_pe_isolated_split_brain {31, "icpe-oper-conflict-host-pe-isolated-split-brain"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_fabric_iccp_group_inconsistent {32, "icpe-oper-conflict-fabric-iccp-group-inconsistent"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_invalid_iccp_group {33, "icpe-oper-conflict-invalid-iccp-group"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_port_rejected {34, "icpe-oper-conflict-port-rejected"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_satellite_icl_not_supported {35, "icpe-oper-conflict-satellite-icl-not-supported"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_multiple_serial_number {36, "icpe-oper-conflict-multiple-serial-number"};
+const Enum::YLeaf IcpeOperConflictEnum::icpe_oper_conflict_multiple_mac_address {37, "icpe-oper-conflict-multiple-mac-address"};
 
-const Enum::Value IcpeOpmResyncFsmStateEnum::icpe_opm_resync_fsm_state_not_open {0, "icpe-opm-resync-fsm-state-not-open"};
-const Enum::Value IcpeOpmResyncFsmStateEnum::icpe_opm_resync_fsm_state_stable {1, "icpe-opm-resync-fsm-state-stable"};
-const Enum::Value IcpeOpmResyncFsmStateEnum::icpe_opm_resync_fsm_state_in_resync {2, "icpe-opm-resync-fsm-state-in-resync"};
-const Enum::Value IcpeOpmResyncFsmStateEnum::icpe_opm_resync_fsm_state_queued {3, "icpe-opm-resync-fsm-state-queued"};
-const Enum::Value IcpeOpmResyncFsmStateEnum::icpe_opm_resync_fsm_state_resync_req {4, "icpe-opm-resync-fsm-state-resync-req"};
+const Enum::YLeaf IcpeOpmResyncFsmStateEnum::icpe_opm_resync_fsm_state_not_open {0, "icpe-opm-resync-fsm-state-not-open"};
+const Enum::YLeaf IcpeOpmResyncFsmStateEnum::icpe_opm_resync_fsm_state_stable {1, "icpe-opm-resync-fsm-state-stable"};
+const Enum::YLeaf IcpeOpmResyncFsmStateEnum::icpe_opm_resync_fsm_state_in_resync {2, "icpe-opm-resync-fsm-state-in-resync"};
+const Enum::YLeaf IcpeOpmResyncFsmStateEnum::icpe_opm_resync_fsm_state_queued {3, "icpe-opm-resync-fsm-state-queued"};
+const Enum::YLeaf IcpeOpmResyncFsmStateEnum::icpe_opm_resync_fsm_state_resync_req {4, "icpe-opm-resync-fsm-state-resync-req"};
 
-const Enum::Value IcpeOperPortEnum::icpe_oper_port_unknown {0, "icpe-oper-port-unknown"};
-const Enum::Value IcpeOperPortEnum::icpe_oper_port_gigabit_ethernet {1, "icpe-oper-port-gigabit-ethernet"};
-const Enum::Value IcpeOperPortEnum::icpe_oper_port_ten_gig_e {2, "icpe-oper-port-ten-gig-e"};
+const Enum::YLeaf IcpeOperPortEnum::icpe_oper_port_unknown {0, "icpe-oper-port-unknown"};
+const Enum::YLeaf IcpeOperPortEnum::icpe_oper_port_gigabit_ethernet {1, "icpe-oper-port-gigabit-ethernet"};
+const Enum::YLeaf IcpeOperPortEnum::icpe_oper_port_ten_gig_e {2, "icpe-oper-port-ten-gig-e"};
 
-const Enum::Value IcpeOpmAuthFsmStateEnum::icpe_opm_auth_fsm_state_unauth {0, "icpe-opm-auth-fsm-state-unauth"};
-const Enum::Value IcpeOpmAuthFsmStateEnum::icpe_opm_auth_fsm_state_waiting {1, "icpe-opm-auth-fsm-state-waiting"};
-const Enum::Value IcpeOpmAuthFsmStateEnum::icpe_opm_auth_fsm_state_waiting_for_auth {2, "icpe-opm-auth-fsm-state-waiting-for-auth"};
-const Enum::Value IcpeOpmAuthFsmStateEnum::icpe_opm_auth_fsm_state_waiting_for_reply {3, "icpe-opm-auth-fsm-state-waiting-for-reply"};
-const Enum::Value IcpeOpmAuthFsmStateEnum::icpe_opm_auth_fsm_state_authed {4, "icpe-opm-auth-fsm-state-authed"};
+const Enum::YLeaf IcpeOpmAuthFsmStateEnum::icpe_opm_auth_fsm_state_unauth {0, "icpe-opm-auth-fsm-state-unauth"};
+const Enum::YLeaf IcpeOpmAuthFsmStateEnum::icpe_opm_auth_fsm_state_waiting {1, "icpe-opm-auth-fsm-state-waiting"};
+const Enum::YLeaf IcpeOpmAuthFsmStateEnum::icpe_opm_auth_fsm_state_waiting_for_auth {2, "icpe-opm-auth-fsm-state-waiting-for-auth"};
+const Enum::YLeaf IcpeOpmAuthFsmStateEnum::icpe_opm_auth_fsm_state_waiting_for_reply {3, "icpe-opm-auth-fsm-state-waiting-for-reply"};
+const Enum::YLeaf IcpeOpmAuthFsmStateEnum::icpe_opm_auth_fsm_state_authed {4, "icpe-opm-auth-fsm-state-authed"};
 
-const Enum::Value IcpeOpmControllerEnum::icpe_opm_controller_unknown {0, "icpe-opm-controller-unknown"};
-const Enum::Value IcpeOpmControllerEnum::icpe_opm_controller_primary {1, "icpe-opm-controller-primary"};
-const Enum::Value IcpeOpmControllerEnum::icpe_opm_controller_secondary {2, "icpe-opm-controller-secondary"};
+const Enum::YLeaf IcpeOpmControllerEnum::icpe_opm_controller_unknown {0, "icpe-opm-controller-unknown"};
+const Enum::YLeaf IcpeOpmControllerEnum::icpe_opm_controller_primary {1, "icpe-opm-controller-primary"};
+const Enum::YLeaf IcpeOpmControllerEnum::icpe_opm_controller_secondary {2, "icpe-opm-controller-secondary"};
 
-const Enum::Value IcpeOperFabricPortEnum::icpe_oper_fabric_port_unknown {0, "icpe-oper-fabric-port-unknown"};
-const Enum::Value IcpeOperFabricPortEnum::icpe_oper_fabric_port_n_v_fabric_gig_e {1, "icpe-oper-fabric-port-n-v-fabric-gig-e"};
-const Enum::Value IcpeOperFabricPortEnum::icpe_oper_fabric_port_n_v_fabric_ten_gig_e {2, "icpe-oper-fabric-port-n-v-fabric-ten-gig-e"};
-const Enum::Value IcpeOperFabricPortEnum::icpe_oper_fabric_port_n_v_fabric_hundred_gig_e {3, "icpe-oper-fabric-port-n-v-fabric-hundred-gig-e"};
+const Enum::YLeaf IcpeOperFabricPortEnum::icpe_oper_fabric_port_unknown {0, "icpe-oper-fabric-port-unknown"};
+const Enum::YLeaf IcpeOperFabricPortEnum::icpe_oper_fabric_port_n_v_fabric_gig_e {1, "icpe-oper-fabric-port-n-v-fabric-gig-e"};
+const Enum::YLeaf IcpeOperFabricPortEnum::icpe_oper_fabric_port_n_v_fabric_ten_gig_e {2, "icpe-oper-fabric-port-n-v-fabric-ten-gig-e"};
+const Enum::YLeaf IcpeOperFabricPortEnum::icpe_oper_fabric_port_n_v_fabric_hundred_gig_e {3, "icpe-oper-fabric-port-n-v-fabric-hundred-gig-e"};
 
-const Enum::Value IcpeOperVerCheckStateEnum::icpe_oper_ver_check_state_unknown {0, "icpe-oper-ver-check-state-unknown"};
-const Enum::Value IcpeOperVerCheckStateEnum::icpe_oper_ver_check_state_not_compatible {1, "icpe-oper-ver-check-state-not-compatible"};
-const Enum::Value IcpeOperVerCheckStateEnum::icpe_oper_ver_check_state_current_version {2, "icpe-oper-ver-check-state-current-version"};
-const Enum::Value IcpeOperVerCheckStateEnum::icpe_oper_ver_check_state_compatible_older {3, "icpe-oper-ver-check-state-compatible-older"};
-const Enum::Value IcpeOperVerCheckStateEnum::icpe_oper_ver_check_state_compatible_newer {4, "icpe-oper-ver-check-state-compatible-newer"};
+const Enum::YLeaf IcpeOperVerCheckStateEnum::icpe_oper_ver_check_state_unknown {0, "icpe-oper-ver-check-state-unknown"};
+const Enum::YLeaf IcpeOperVerCheckStateEnum::icpe_oper_ver_check_state_not_compatible {1, "icpe-oper-ver-check-state-not-compatible"};
+const Enum::YLeaf IcpeOperVerCheckStateEnum::icpe_oper_ver_check_state_current_version {2, "icpe-oper-ver-check-state-current-version"};
+const Enum::YLeaf IcpeOperVerCheckStateEnum::icpe_oper_ver_check_state_compatible_older {3, "icpe-oper-ver-check-state-compatible-older"};
+const Enum::YLeaf IcpeOperVerCheckStateEnum::icpe_oper_ver_check_state_compatible_newer {4, "icpe-oper-ver-check-state-compatible-newer"};
 
-const Enum::Value IcpeOpticalSyncStateEnum::icpe_optical_sync_state_unknown {0, "icpe-optical-sync-state-unknown"};
-const Enum::Value IcpeOpticalSyncStateEnum::icpe_optical_sync_state_syncing {1, "icpe-optical-sync-state-syncing"};
-const Enum::Value IcpeOpticalSyncStateEnum::icpe_optical_sync_state_synced {2, "icpe-optical-sync-state-synced"};
-const Enum::Value IcpeOpticalSyncStateEnum::icpe_optical_sync_state_not_connected {3, "icpe-optical-sync-state-not-connected"};
+const Enum::YLeaf IcpeOpticalSyncStateEnum::icpe_optical_sync_state_unknown {0, "icpe-optical-sync-state-unknown"};
+const Enum::YLeaf IcpeOpticalSyncStateEnum::icpe_optical_sync_state_syncing {1, "icpe-optical-sync-state-syncing"};
+const Enum::YLeaf IcpeOpticalSyncStateEnum::icpe_optical_sync_state_synced {2, "icpe-optical-sync-state-synced"};
+const Enum::YLeaf IcpeOpticalSyncStateEnum::icpe_optical_sync_state_not_connected {3, "icpe-optical-sync-state-not-connected"};
 
-const Enum::Value IcpeOpmChanFsmStateEnum::icpe_opm_chan_fsm_state_down {0, "icpe-opm-chan-fsm-state-down"};
-const Enum::Value IcpeOpmChanFsmStateEnum::icpe_opm_chan_fsm_state_closed {1, "icpe-opm-chan-fsm-state-closed"};
-const Enum::Value IcpeOpmChanFsmStateEnum::icpe_opm_chan_fsm_state_opening {2, "icpe-opm-chan-fsm-state-opening"};
-const Enum::Value IcpeOpmChanFsmStateEnum::icpe_opm_chan_fsm_state_opened {3, "icpe-opm-chan-fsm-state-opened"};
-const Enum::Value IcpeOpmChanFsmStateEnum::icpe_opm_chan_fsm_state_open {4, "icpe-opm-chan-fsm-state-open"};
+const Enum::YLeaf IcpeOpmChanFsmStateEnum::icpe_opm_chan_fsm_state_down {0, "icpe-opm-chan-fsm-state-down"};
+const Enum::YLeaf IcpeOpmChanFsmStateEnum::icpe_opm_chan_fsm_state_closed {1, "icpe-opm-chan-fsm-state-closed"};
+const Enum::YLeaf IcpeOpmChanFsmStateEnum::icpe_opm_chan_fsm_state_opening {2, "icpe-opm-chan-fsm-state-opening"};
+const Enum::YLeaf IcpeOpmChanFsmStateEnum::icpe_opm_chan_fsm_state_opened {3, "icpe-opm-chan-fsm-state-opened"};
+const Enum::YLeaf IcpeOpmChanFsmStateEnum::icpe_opm_chan_fsm_state_open {4, "icpe-opm-chan-fsm-state-open"};
 
-const Enum::Value IcpeOpmSessStateEnum::icpe_opm_sess_state_disconnected {0, "icpe-opm-sess-state-disconnected"};
-const Enum::Value IcpeOpmSessStateEnum::icpe_opm_sess_state_connecting {1, "icpe-opm-sess-state-connecting"};
-const Enum::Value IcpeOpmSessStateEnum::icpe_opm_sess_state_authenticating {2, "icpe-opm-sess-state-authenticating"};
-const Enum::Value IcpeOpmSessStateEnum::icpe_opm_sess_state_arbitrating {3, "icpe-opm-sess-state-arbitrating"};
-const Enum::Value IcpeOpmSessStateEnum::icpe_opm_sess_state_waiting_for_resyncs {4, "icpe-opm-sess-state-waiting-for-resyncs"};
-const Enum::Value IcpeOpmSessStateEnum::icpe_opm_sess_state_connected {5, "icpe-opm-sess-state-connected"};
+const Enum::YLeaf IcpeOpmSessStateEnum::icpe_opm_sess_state_disconnected {0, "icpe-opm-sess-state-disconnected"};
+const Enum::YLeaf IcpeOpmSessStateEnum::icpe_opm_sess_state_connecting {1, "icpe-opm-sess-state-connecting"};
+const Enum::YLeaf IcpeOpmSessStateEnum::icpe_opm_sess_state_authenticating {2, "icpe-opm-sess-state-authenticating"};
+const Enum::YLeaf IcpeOpmSessStateEnum::icpe_opm_sess_state_arbitrating {3, "icpe-opm-sess-state-arbitrating"};
+const Enum::YLeaf IcpeOpmSessStateEnum::icpe_opm_sess_state_waiting_for_resyncs {4, "icpe-opm-sess-state-waiting-for-resyncs"};
+const Enum::YLeaf IcpeOpmSessStateEnum::icpe_opm_sess_state_connected {5, "icpe-opm-sess-state-connected"};
 
 
 }

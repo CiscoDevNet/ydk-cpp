@@ -43,7 +43,7 @@ EntityPath NetFlow::FlowExporterMaps::FlowExporterMap::Udp::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -129,7 +129,7 @@ EntityPath NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Option
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -218,7 +218,7 @@ bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::has_operatio
 	|| is_set(common_template_timeout.operation)
 	|| is_set(data_template_timeout.operation)
 	|| is_set(options_template_timeout.operation)
-	|| (options !=  nullptr && is_set(options->operation));
+	|| (options !=  nullptr && options->has_operation());
 }
 
 std::string NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::get_segment_path() const
@@ -235,7 +235,7 @@ EntityPath NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -360,7 +360,7 @@ EntityPath NetFlow::FlowExporterMaps::FlowExporterMap::Versions::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -467,7 +467,7 @@ EntityPath NetFlow::FlowExporterMaps::FlowExporterMap::Destination::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -563,9 +563,9 @@ bool NetFlow::FlowExporterMaps::FlowExporterMap::has_operation() const
 	|| is_set(exporter_map_name.operation)
 	|| is_set(dscp.operation)
 	|| is_set(source_interface.operation)
-	|| (destination !=  nullptr && is_set(destination->operation))
-	|| (udp !=  nullptr && is_set(udp->operation))
-	|| (versions !=  nullptr && is_set(versions->operation));
+	|| (destination !=  nullptr && destination->has_operation())
+	|| (udp !=  nullptr && udp->has_operation())
+	|| (versions !=  nullptr && versions->has_operation());
 }
 
 std::string NetFlow::FlowExporterMaps::FlowExporterMap::get_segment_path() const
@@ -855,7 +855,7 @@ EntityPath NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -952,7 +952,7 @@ EntityPath NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1043,7 +1043,7 @@ bool NetFlow::FlowSamplerMaps::FlowSamplerMap::has_operation() const
 {
     return is_set(operation)
 	|| is_set(sampler_map_name.operation)
-	|| (sampling_modes !=  nullptr && is_set(sampling_modes->operation));
+	|| (sampling_modes !=  nullptr && sampling_modes->has_operation());
 }
 
 std::string NetFlow::FlowSamplerMaps::FlowSamplerMap::get_segment_path() const
@@ -1274,7 +1274,7 @@ EntityPath NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1359,7 +1359,7 @@ EntityPath NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1446,7 +1446,7 @@ EntityPath NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1550,7 +1550,7 @@ EntityPath NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1650,9 +1650,9 @@ bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::has_operation() const
 	|| is_set(cache_inactive_aging_timeout.operation)
 	|| is_set(cache_timeout_rate_limit.operation)
 	|| is_set(cache_update_aging_timeout.operation)
-	|| (exporters !=  nullptr && is_set(exporters->operation))
-	|| (option !=  nullptr && is_set(option->operation))
-	|| (record !=  nullptr && is_set(record->operation));
+	|| (exporters !=  nullptr && exporters->has_operation())
+	|| (option !=  nullptr && option->has_operation())
+	|| (record !=  nullptr && record->has_operation());
 }
 
 std::string NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_segment_path() const
@@ -1959,7 +1959,7 @@ EntityPath NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2044,7 +2044,7 @@ EntityPath NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2131,7 +2131,7 @@ EntityPath NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2235,7 +2235,7 @@ EntityPath NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2335,9 +2335,9 @@ bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::has_operation() co
 	|| is_set(cache_inactive_aging_timeout.operation)
 	|| is_set(cache_timeout_rate_limit.operation)
 	|| is_set(cache_update_aging_timeout.operation)
-	|| (exporters !=  nullptr && is_set(exporters->operation))
-	|| (option !=  nullptr && is_set(option->operation))
-	|| (record !=  nullptr && is_set(record->operation));
+	|| (exporters !=  nullptr && exporters->has_operation())
+	|| (option !=  nullptr && option->has_operation())
+	|| (record !=  nullptr && record->has_operation());
 }
 
 std::string NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_segment_path() const
@@ -2642,10 +2642,10 @@ bool NetFlow::has_data() const
 bool NetFlow::has_operation() const
 {
     return is_set(operation)
-	|| (flow_exporter_maps !=  nullptr && is_set(flow_exporter_maps->operation))
-	|| (flow_monitor_map_performance_table !=  nullptr && is_set(flow_monitor_map_performance_table->operation))
-	|| (flow_monitor_map_table !=  nullptr && is_set(flow_monitor_map_table->operation))
-	|| (flow_sampler_maps !=  nullptr && is_set(flow_sampler_maps->operation));
+	|| (flow_exporter_maps !=  nullptr && flow_exporter_maps->has_operation())
+	|| (flow_monitor_map_performance_table !=  nullptr && flow_monitor_map_performance_table->has_operation())
+	|| (flow_monitor_map_table !=  nullptr && flow_monitor_map_table->has_operation())
+	|| (flow_sampler_maps !=  nullptr && flow_sampler_maps->has_operation());
 }
 
 std::string NetFlow::get_segment_path() const
@@ -2662,7 +2662,7 @@ EntityPath NetFlow::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2795,10 +2795,10 @@ std::unique_ptr<Entity> NetFlow::clone_ptr()
     return std::make_unique<NetFlow>();
 }
 
-const Enum::Value NfSamplingModeEnum::random {2, "random"};
+const Enum::YLeaf NfSamplingModeEnum::random {2, "random"};
 
-const Enum::Value NfCacheAgingModeEnum::normal {0, "normal"};
-const Enum::Value NfCacheAgingModeEnum::permanent {1, "permanent"};
+const Enum::YLeaf NfCacheAgingModeEnum::normal {0, "normal"};
+const Enum::YLeaf NfCacheAgingModeEnum::permanent {1, "permanent"};
 
 
 }

@@ -26,6 +26,7 @@ class ControllerPortMode : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class OpticsName : public Entity
     {
         public:
@@ -39,8 +40,9 @@ class ControllerPortMode : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value interface_name; //type: string
 
+
+            YLeaf interface_name; //type: string
 
         class PortModeInfo : public Entity
         {
@@ -55,12 +57,13 @@ class ControllerPortMode : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value intf_name; //type: string
-                Value speed; //type: string
-                Value fec; //type: string
-                Value diff; //type: string
-                Value modulation; //type: string
 
+
+                YLeaf intf_name; //type: string
+                YLeaf speed; //type: string
+                YLeaf fec; //type: string
+                YLeaf diff; //type: string
+                YLeaf modulation; //type: string
 
 
 

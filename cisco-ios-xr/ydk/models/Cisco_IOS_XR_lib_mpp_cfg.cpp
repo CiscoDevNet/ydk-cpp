@@ -43,7 +43,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -130,7 +130,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -231,7 +231,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -318,7 +318,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -410,8 +410,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -428,7 +428,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -549,7 +549,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -636,7 +636,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -737,7 +737,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -824,7 +824,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -916,8 +916,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -934,7 +934,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1050,8 +1050,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::get_segment_path() const
@@ -1068,7 +1068,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1180,7 +1180,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::get_segment_path() const
@@ -1197,7 +1197,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1295,7 +1295,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1382,7 +1382,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1483,7 +1483,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1570,7 +1570,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1662,8 +1662,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -1680,7 +1680,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1801,7 +1801,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1888,7 +1888,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1989,7 +1989,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2076,7 +2076,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2168,8 +2168,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -2186,7 +2186,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2302,8 +2302,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::get_segment_path() const
@@ -2320,7 +2320,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2432,7 +2432,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::get_segment_path() const
@@ -2449,7 +2449,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2547,7 +2547,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2634,7 +2634,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2735,7 +2735,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2822,7 +2822,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2914,8 +2914,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -2932,7 +2932,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3053,7 +3053,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3140,7 +3140,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3241,7 +3241,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3328,7 +3328,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3420,8 +3420,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -3438,7 +3438,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3554,8 +3554,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::get_segment_path() const
@@ -3572,7 +3572,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3684,7 +3684,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::get_segment_path() const
@@ -3701,7 +3701,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3799,7 +3799,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3886,7 +3886,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3987,7 +3987,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4074,7 +4074,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4166,8 +4166,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::get_segment_path() const
@@ -4184,7 +4184,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4305,7 +4305,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4392,7 +4392,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4493,7 +4493,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4580,7 +4580,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4672,8 +4672,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::get_segment_path() const
@@ -4690,7 +4690,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4806,8 +4806,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::get_segment_path() const
@@ -4824,7 +4824,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4936,7 +4936,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::get_segment_path() const
@@ -4953,7 +4953,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5051,7 +5051,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5138,7 +5138,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5239,7 +5239,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5326,7 +5326,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5418,8 +5418,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -5436,7 +5436,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5557,7 +5557,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5644,7 +5644,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5745,7 +5745,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5832,7 +5832,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5924,8 +5924,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -5942,7 +5942,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6058,8 +6058,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::get_segment_path() const
@@ -6076,7 +6076,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6188,7 +6188,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::get_segment_path() const
@@ -6205,7 +6205,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6303,7 +6303,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6390,7 +6390,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6491,7 +6491,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6578,7 +6578,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6670,8 +6670,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -6688,7 +6688,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6809,7 +6809,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6896,7 +6896,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6997,7 +6997,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7084,7 +7084,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7176,8 +7176,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -7194,7 +7194,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7310,8 +7310,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::get_segment_path() const
@@ -7328,7 +7328,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7440,7 +7440,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::get_segment_path() const
@@ -7457,7 +7457,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7555,7 +7555,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7642,7 +7642,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7743,7 +7743,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7830,7 +7830,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7922,8 +7922,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -7940,7 +7940,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8061,7 +8061,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8148,7 +8148,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8249,7 +8249,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8336,7 +8336,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8428,8 +8428,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -8446,7 +8446,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8562,8 +8562,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::get_segment_path() const
@@ -8580,7 +8580,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8692,7 +8692,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::get_segment_path() const
@@ -8709,7 +8709,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8807,7 +8807,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8894,7 +8894,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8995,7 +8995,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9082,7 +9082,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9174,8 +9174,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::get_segment_path() const
@@ -9192,7 +9192,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9313,7 +9313,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9400,7 +9400,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9501,7 +9501,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9588,7 +9588,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9680,8 +9680,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::get_segment_path() const
@@ -9698,7 +9698,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9814,8 +9814,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::get_segment_path() const
@@ -9832,7 +9832,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9944,7 +9944,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::get_segment_path() const
@@ -9961,7 +9961,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10084,14 +10084,14 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (all_protocols !=  nullptr && is_set(all_protocols->operation))
-	|| (http_protocol !=  nullptr && is_set(http_protocol->operation))
-	|| (netconf_protocol !=  nullptr && is_set(netconf_protocol->operation))
-	|| (snmp_protocol !=  nullptr && is_set(snmp_protocol->operation))
-	|| (ssh_protocol !=  nullptr && is_set(ssh_protocol->operation))
-	|| (telnet_protocol !=  nullptr && is_set(telnet_protocol->operation))
-	|| (tftp_protocol !=  nullptr && is_set(tftp_protocol->operation))
-	|| (xr_xml !=  nullptr && is_set(xr_xml->operation));
+	|| (all_protocols !=  nullptr && all_protocols->has_operation())
+	|| (http_protocol !=  nullptr && http_protocol->has_operation())
+	|| (netconf_protocol !=  nullptr && netconf_protocol->has_operation())
+	|| (snmp_protocol !=  nullptr && snmp_protocol->has_operation())
+	|| (ssh_protocol !=  nullptr && ssh_protocol->has_operation())
+	|| (telnet_protocol !=  nullptr && telnet_protocol->has_operation())
+	|| (tftp_protocol !=  nullptr && tftp_protocol->has_operation())
+	|| (xr_xml !=  nullptr && xr_xml->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::get_segment_path() const
@@ -10847,8 +10847,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -11353,8 +11353,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -11487,8 +11487,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::get_segment_path() const
@@ -11617,7 +11617,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::get_segment_path() const
@@ -12099,8 +12099,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -12605,8 +12605,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -12739,8 +12739,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::get_segment_path() const
@@ -12869,7 +12869,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::get_segment_path() const
@@ -13351,8 +13351,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -13857,8 +13857,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -13991,8 +13991,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::get_segment_path() const
@@ -14121,7 +14121,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::get_segment_path() const
@@ -14603,8 +14603,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::get_segment_path() const
@@ -15109,8 +15109,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::get_segment_path() const
@@ -15243,8 +15243,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::get_segment_path() const
@@ -15373,7 +15373,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::get_segment_path() const
@@ -15855,8 +15855,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -16361,8 +16361,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -16495,8 +16495,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::get_segment_path() const
@@ -16625,7 +16625,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::get_segment_path() const
@@ -17107,8 +17107,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -17613,8 +17613,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -17747,8 +17747,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::get_segment_path() const
@@ -17877,7 +17877,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::get_segment_path() const
@@ -18359,8 +18359,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -18865,8 +18865,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -18999,8 +18999,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::get_segment_path() const
@@ -19129,7 +19129,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::get_segment_path() const
@@ -19611,8 +19611,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::get_segment_path() const
@@ -20117,8 +20117,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::get_segment_path() const
@@ -20251,8 +20251,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::get_segment_path() const
@@ -20381,7 +20381,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::get_segment_path() const
@@ -20517,14 +20517,14 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::has_operation() const
 {
     return is_set(operation)
-	|| (all_protocols !=  nullptr && is_set(all_protocols->operation))
-	|| (http_protocol !=  nullptr && is_set(http_protocol->operation))
-	|| (netconf_protocol !=  nullptr && is_set(netconf_protocol->operation))
-	|| (snmp_protocol !=  nullptr && is_set(snmp_protocol->operation))
-	|| (ssh_protocol !=  nullptr && is_set(ssh_protocol->operation))
-	|| (telnet_protocol !=  nullptr && is_set(telnet_protocol->operation))
-	|| (tftp_protocol !=  nullptr && is_set(tftp_protocol->operation))
-	|| (xr_xml !=  nullptr && is_set(xr_xml->operation));
+	|| (all_protocols !=  nullptr && all_protocols->has_operation())
+	|| (http_protocol !=  nullptr && http_protocol->has_operation())
+	|| (netconf_protocol !=  nullptr && netconf_protocol->has_operation())
+	|| (snmp_protocol !=  nullptr && snmp_protocol->has_operation())
+	|| (ssh_protocol !=  nullptr && ssh_protocol->has_operation())
+	|| (telnet_protocol !=  nullptr && telnet_protocol->has_operation())
+	|| (tftp_protocol !=  nullptr && tftp_protocol->has_operation())
+	|| (xr_xml !=  nullptr && xr_xml->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::get_segment_path() const
@@ -20791,8 +20791,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::has_d
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::has_operation() const
 {
     return is_set(operation)
-	|| (all_interfaces !=  nullptr && is_set(all_interfaces->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (all_interfaces !=  nullptr && all_interfaces->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::get_segment_path() const
@@ -20920,7 +20920,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::has_operation() const
 {
     return is_set(operation)
 	|| is_set(outband_vrf.operation)
-	|| (interface_selection !=  nullptr && is_set(interface_selection->operation));
+	|| (interface_selection !=  nullptr && interface_selection->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::get_segment_path() const
@@ -21040,7 +21040,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21127,7 +21127,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21228,7 +21228,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21315,7 +21315,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21407,8 +21407,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -21425,7 +21425,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21546,7 +21546,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21633,7 +21633,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21734,7 +21734,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21821,7 +21821,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21913,8 +21913,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -21931,7 +21931,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22047,8 +22047,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::get_segment_path() const
@@ -22065,7 +22065,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22177,7 +22177,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::get_segment_path() const
@@ -22194,7 +22194,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22292,7 +22292,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22379,7 +22379,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22480,7 +22480,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22567,7 +22567,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22659,8 +22659,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -22677,7 +22677,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22798,7 +22798,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22885,7 +22885,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22986,7 +22986,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23073,7 +23073,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23165,8 +23165,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -23183,7 +23183,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23299,8 +23299,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::get_segment_path() const
@@ -23317,7 +23317,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23429,7 +23429,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::get_segment_path() const
@@ -23446,7 +23446,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23544,7 +23544,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23631,7 +23631,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23732,7 +23732,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23819,7 +23819,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23911,8 +23911,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -23929,7 +23929,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24050,7 +24050,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24137,7 +24137,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24238,7 +24238,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24325,7 +24325,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24417,8 +24417,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -24435,7 +24435,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24551,8 +24551,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::get_segment_path() const
@@ -24569,7 +24569,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24681,7 +24681,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::get_segment_path() const
@@ -24698,7 +24698,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24796,7 +24796,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24883,7 +24883,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24984,7 +24984,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25071,7 +25071,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25163,8 +25163,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::get_segment_path() const
@@ -25181,7 +25181,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25302,7 +25302,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25389,7 +25389,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25490,7 +25490,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25577,7 +25577,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25669,8 +25669,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::get_segment_path() const
@@ -25687,7 +25687,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25803,8 +25803,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::get_segment_path() const
@@ -25821,7 +25821,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25933,7 +25933,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::get_segment_path() const
@@ -25950,7 +25950,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26048,7 +26048,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26135,7 +26135,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26236,7 +26236,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26323,7 +26323,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26415,8 +26415,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -26433,7 +26433,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26554,7 +26554,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26641,7 +26641,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26742,7 +26742,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26829,7 +26829,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26921,8 +26921,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -26939,7 +26939,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27055,8 +27055,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::get_segment_path() const
@@ -27073,7 +27073,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27185,7 +27185,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::get_segment_path() const
@@ -27202,7 +27202,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27300,7 +27300,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27387,7 +27387,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27488,7 +27488,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27575,7 +27575,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27667,8 +27667,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -27685,7 +27685,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27806,7 +27806,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27893,7 +27893,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27994,7 +27994,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28081,7 +28081,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28173,8 +28173,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -28191,7 +28191,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28307,8 +28307,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::get_segment_path() const
@@ -28325,7 +28325,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28437,7 +28437,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::get_segment_path() const
@@ -28454,7 +28454,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28552,7 +28552,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28639,7 +28639,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28740,7 +28740,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28827,7 +28827,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28919,8 +28919,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -28937,7 +28937,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29058,7 +29058,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29145,7 +29145,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29246,7 +29246,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29333,7 +29333,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29425,8 +29425,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -29443,7 +29443,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29559,8 +29559,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::get_segment_path() const
@@ -29577,7 +29577,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29689,7 +29689,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::get_segment_path() const
@@ -29706,7 +29706,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29804,7 +29804,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29891,7 +29891,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29992,7 +29992,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30079,7 +30079,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30171,8 +30171,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::get_segment_path() const
@@ -30189,7 +30189,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30310,7 +30310,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30397,7 +30397,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30498,7 +30498,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30585,7 +30585,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30677,8 +30677,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::get_segment_path() const
@@ -30695,7 +30695,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30811,8 +30811,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::get_segment_path() const
@@ -30829,7 +30829,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30941,7 +30941,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::get_segment_path() const
@@ -30958,7 +30958,7 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31081,14 +31081,14 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (all_protocols !=  nullptr && is_set(all_protocols->operation))
-	|| (http_protocol !=  nullptr && is_set(http_protocol->operation))
-	|| (netconf_protocol !=  nullptr && is_set(netconf_protocol->operation))
-	|| (snmp_protocol !=  nullptr && is_set(snmp_protocol->operation))
-	|| (ssh_protocol !=  nullptr && is_set(ssh_protocol->operation))
-	|| (telnet_protocol !=  nullptr && is_set(telnet_protocol->operation))
-	|| (tftp_protocol !=  nullptr && is_set(tftp_protocol->operation))
-	|| (xr_xml !=  nullptr && is_set(xr_xml->operation));
+	|| (all_protocols !=  nullptr && all_protocols->has_operation())
+	|| (http_protocol !=  nullptr && http_protocol->has_operation())
+	|| (netconf_protocol !=  nullptr && netconf_protocol->has_operation())
+	|| (snmp_protocol !=  nullptr && snmp_protocol->has_operation())
+	|| (ssh_protocol !=  nullptr && ssh_protocol->has_operation())
+	|| (telnet_protocol !=  nullptr && telnet_protocol->has_operation())
+	|| (tftp_protocol !=  nullptr && tftp_protocol->has_operation())
+	|| (xr_xml !=  nullptr && xr_xml->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::get_segment_path() const
@@ -31844,8 +31844,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -32350,8 +32350,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -32484,8 +32484,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::get_segment_path() const
@@ -32614,7 +32614,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::get_segment_path() const
@@ -33096,8 +33096,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -33602,8 +33602,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -33736,8 +33736,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::get_segment_path() const
@@ -33866,7 +33866,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::get_segment_path() const
@@ -34348,8 +34348,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -34854,8 +34854,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -34988,8 +34988,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::get_segment_path() const
@@ -35118,7 +35118,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::get_segment_path() const
@@ -35600,8 +35600,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::get_segment_path() const
@@ -36106,8 +36106,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::get_segment_path() const
@@ -36240,8 +36240,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::get_segment_path() const
@@ -36370,7 +36370,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::get_segment_path() const
@@ -36852,8 +36852,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -37358,8 +37358,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -37492,8 +37492,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::get_segment_path() const
@@ -37622,7 +37622,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::get_segment_path() const
@@ -38104,8 +38104,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -38610,8 +38610,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -38744,8 +38744,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::get_segment_path() const
@@ -38874,7 +38874,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::get_segment_path() const
@@ -39356,8 +39356,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::get_segment_path() const
@@ -39862,8 +39862,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::get_segment_path() const
@@ -39996,8 +39996,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::get_segment_path() const
@@ -40126,7 +40126,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::get_segment_path() const
@@ -40608,8 +40608,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::get_segment_path() const
@@ -41114,8 +41114,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::has_operation() const
 {
     return is_set(operation)
-	|| (peer_prefixes !=  nullptr && is_set(peer_prefixes->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::get_segment_path() const
@@ -41248,8 +41248,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 {
     return is_set(operation)
 	|| is_set(peer_all.operation)
-	|| (peer_v4 !=  nullptr && is_set(peer_v4->operation))
-	|| (peer_v6 !=  nullptr && is_set(peer_v6->operation));
+	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
+	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::get_segment_path() const
@@ -41378,7 +41378,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::has_operation() const
 {
     return is_set(operation)
-	|| (peer_class !=  nullptr && is_set(peer_class->operation));
+	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::get_segment_path() const
@@ -41514,14 +41514,14 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::has_operation() const
 {
     return is_set(operation)
-	|| (all_protocols !=  nullptr && is_set(all_protocols->operation))
-	|| (http_protocol !=  nullptr && is_set(http_protocol->operation))
-	|| (netconf_protocol !=  nullptr && is_set(netconf_protocol->operation))
-	|| (snmp_protocol !=  nullptr && is_set(snmp_protocol->operation))
-	|| (ssh_protocol !=  nullptr && is_set(ssh_protocol->operation))
-	|| (telnet_protocol !=  nullptr && is_set(telnet_protocol->operation))
-	|| (tftp_protocol !=  nullptr && is_set(tftp_protocol->operation))
-	|| (xr_xml !=  nullptr && is_set(xr_xml->operation));
+	|| (all_protocols !=  nullptr && all_protocols->has_operation())
+	|| (http_protocol !=  nullptr && http_protocol->has_operation())
+	|| (netconf_protocol !=  nullptr && netconf_protocol->has_operation())
+	|| (snmp_protocol !=  nullptr && snmp_protocol->has_operation())
+	|| (ssh_protocol !=  nullptr && ssh_protocol->has_operation())
+	|| (telnet_protocol !=  nullptr && telnet_protocol->has_operation())
+	|| (tftp_protocol !=  nullptr && tftp_protocol->has_operation())
+	|| (xr_xml !=  nullptr && xr_xml->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::get_segment_path() const
@@ -41788,8 +41788,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::has_da
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::has_operation() const
 {
     return is_set(operation)
-	|| (all_interfaces !=  nullptr && is_set(all_interfaces->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (all_interfaces !=  nullptr && all_interfaces->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::get_segment_path() const
@@ -41913,7 +41913,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::has_data() const
 bool ControlPlane::ManagementPlaneProtection::Inband::has_operation() const
 {
     return is_set(operation)
-	|| (interface_selection !=  nullptr && is_set(interface_selection->operation));
+	|| (interface_selection !=  nullptr && interface_selection->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Inband::get_segment_path() const
@@ -42019,8 +42019,8 @@ bool ControlPlane::ManagementPlaneProtection::has_data() const
 bool ControlPlane::ManagementPlaneProtection::has_operation() const
 {
     return is_set(operation)
-	|| (inband !=  nullptr && is_set(inband->operation))
-	|| (outband !=  nullptr && is_set(outband->operation));
+	|| (inband !=  nullptr && inband->has_operation())
+	|| (outband !=  nullptr && outband->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::get_segment_path() const
@@ -42144,7 +42144,7 @@ bool ControlPlane::has_data() const
 bool ControlPlane::has_operation() const
 {
     return is_set(operation)
-	|| (management_plane_protection !=  nullptr && is_set(management_plane_protection->operation));
+	|| (management_plane_protection !=  nullptr && management_plane_protection->has_operation());
 }
 
 std::string ControlPlane::get_segment_path() const
@@ -42161,7 +42161,7 @@ EntityPath ControlPlane::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

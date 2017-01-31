@@ -26,6 +26,7 @@ class Lldp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class GlobalLldp : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Lldp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LldpInfo : public Entity
         {
             public:
@@ -54,10 +56,11 @@ class Lldp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value timer; //type: uint32
-                Value hold_time; //type: uint32
-                Value re_init; //type: uint32
 
+
+                YLeaf timer; //type: uint32
+                YLeaf hold_time; //type: uint32
+                YLeaf re_init; //type: uint32
 
 
 
@@ -85,6 +88,7 @@ class Lldp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -98,8 +102,9 @@ class Lldp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Neighbors : public Entity
             {
@@ -114,6 +119,7 @@ class Lldp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Devices : public Entity
@@ -131,6 +137,7 @@ class Lldp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Device : public Entity
                     {
                         public:
@@ -144,9 +151,10 @@ class Lldp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value device_id; //type: string
-                            Value interface_name; //type: string
 
+
+                            YLeaf device_id; //type: string
+                            YLeaf interface_name; //type: string
 
                         class LldpNeighbor : public Entity
                         {
@@ -161,16 +169,17 @@ class Lldp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value receiving_interface_name; //type: string
-                                Value receiving_parent_interface_name; //type: string
-                                Value device_id; //type: string
-                                Value chassis_id; //type: string
-                                Value port_id_detail; //type: string
-                                Value header_version; //type: uint8
-                                Value hold_time; //type: uint16
-                                Value enabled_capabilities; //type: string
-                                Value platform; //type: string
 
+
+                                YLeaf receiving_interface_name; //type: string
+                                YLeaf receiving_parent_interface_name; //type: string
+                                YLeaf device_id; //type: string
+                                YLeaf chassis_id; //type: string
+                                YLeaf port_id_detail; //type: string
+                                YLeaf header_version; //type: uint8
+                                YLeaf hold_time; //type: uint16
+                                YLeaf enabled_capabilities; //type: string
+                                YLeaf platform; //type: string
 
                             class Detail : public Entity
                             {
@@ -185,17 +194,18 @@ class Lldp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value port_description; //type: string
-                                    Value system_name; //type: string
-                                    Value system_description; //type: string
-                                    Value time_remaining; //type: uint32
-                                    Value system_capabilities; //type: string
-                                    Value enabled_capabilities; //type: string
-                                    Value auto_negotiation; //type: string
-                                    Value physical_media_capabilities; //type: string
-                                    Value media_attachment_unit_type; //type: uint32
-                                    Value port_vlan_id; //type: uint32
 
+
+                                    YLeaf port_description; //type: string
+                                    YLeaf system_name; //type: string
+                                    YLeaf system_description; //type: string
+                                    YLeaf time_remaining; //type: uint32
+                                    YLeaf system_capabilities; //type: string
+                                    YLeaf enabled_capabilities; //type: string
+                                    YLeaf auto_negotiation; //type: string
+                                    YLeaf physical_media_capabilities; //type: string
+                                    YLeaf media_attachment_unit_type; //type: uint32
+                                    YLeaf port_vlan_id; //type: uint32
 
                                 class NetworkAddresses : public Entity
                                 {
@@ -212,6 +222,7 @@ class Lldp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class LldpAddrEntry : public Entity
                                     {
                                         public:
@@ -225,9 +236,10 @@ class Lldp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value ma_subtype; //type: uint8
-                                            Value if_num; //type: uint32
 
+
+                                            YLeaf ma_subtype; //type: uint8
+                                            YLeaf if_num; //type: uint32
 
                                         class Address : public Entity
                                         {
@@ -242,12 +254,12 @@ class Lldp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_type; //type: LldpL3AddrProtocolEnum
-                                                Value ipv4_address; //type: string
-                                                Value ipv6_address; //type: string
 
 
-                                                class LldpL3AddrProtocolEnum;
+                                                YLeaf address_type; //type: LldpL3AddrProtocolEnum
+                                                YLeaf ipv4_address; //type: string
+                                                YLeaf ipv6_address; //type: string
+
 
 
                                         }; // Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address
@@ -284,15 +296,16 @@ class Lldp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rem_time_mark; //type: uint32
-                                    Value rem_local_port_num; //type: uint32
-                                    Value rem_index; //type: uint32
-                                    Value chassis_id_sub_type; //type: uint8
-                                    Value chassis_id_len; //type: uint16
-                                    Value port_id_sub_type; //type: uint8
-                                    Value port_id_len; //type: uint16
-                                    Value combined_capabilities; //type: uint32
 
+
+                                    YLeaf rem_time_mark; //type: uint32
+                                    YLeaf rem_local_port_num; //type: uint32
+                                    YLeaf rem_index; //type: uint32
+                                    YLeaf chassis_id_sub_type; //type: uint8
+                                    YLeaf chassis_id_len; //type: uint16
+                                    YLeaf port_id_sub_type; //type: uint8
+                                    YLeaf port_id_len; //type: uint16
+                                    YLeaf combined_capabilities; //type: uint32
 
                                 class UnknownTlvList : public Entity
                                 {
@@ -309,6 +322,7 @@ class Lldp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class LldpUnknownTlvEntry : public Entity
                                     {
                                         public:
@@ -322,9 +336,10 @@ class Lldp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value tlv_type; //type: uint8
-                                            Value tlv_value; //type: string
 
+
+                                            YLeaf tlv_type; //type: uint8
+                                            YLeaf tlv_value; //type: string
 
 
 
@@ -352,6 +367,7 @@ class Lldp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class LldpOrgDefTlvEntry : public Entity
                                     {
                                         public:
@@ -365,11 +381,12 @@ class Lldp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value oui; //type: uint32
-                                            Value tlv_subtype; //type: uint8
-                                            Value tlv_info_indes; //type: uint32
-                                            Value tlv_value; //type: string
 
+
+                                            YLeaf oui; //type: uint32
+                                            YLeaf tlv_subtype; //type: uint8
+                                            YLeaf tlv_info_indes; //type: uint32
+                                            YLeaf tlv_value; //type: string
 
 
 
@@ -423,6 +440,7 @@ class Lldp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Detail : public Entity
                     {
                         public:
@@ -436,9 +454,10 @@ class Lldp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value device_id; //type: string
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf device_id; //type: string
 
                         class LldpNeighbor : public Entity
                         {
@@ -453,16 +472,17 @@ class Lldp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value receiving_interface_name; //type: string
-                                Value receiving_parent_interface_name; //type: string
-                                Value device_id; //type: string
-                                Value chassis_id; //type: string
-                                Value port_id_detail; //type: string
-                                Value header_version; //type: uint8
-                                Value hold_time; //type: uint16
-                                Value enabled_capabilities; //type: string
-                                Value platform; //type: string
 
+
+                                YLeaf receiving_interface_name; //type: string
+                                YLeaf receiving_parent_interface_name; //type: string
+                                YLeaf device_id; //type: string
+                                YLeaf chassis_id; //type: string
+                                YLeaf port_id_detail; //type: string
+                                YLeaf header_version; //type: uint8
+                                YLeaf hold_time; //type: uint16
+                                YLeaf enabled_capabilities; //type: string
+                                YLeaf platform; //type: string
 
                             class Detail_ : public Entity
                             {
@@ -477,17 +497,18 @@ class Lldp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value port_description; //type: string
-                                    Value system_name; //type: string
-                                    Value system_description; //type: string
-                                    Value time_remaining; //type: uint32
-                                    Value system_capabilities; //type: string
-                                    Value enabled_capabilities; //type: string
-                                    Value auto_negotiation; //type: string
-                                    Value physical_media_capabilities; //type: string
-                                    Value media_attachment_unit_type; //type: uint32
-                                    Value port_vlan_id; //type: uint32
 
+
+                                    YLeaf port_description; //type: string
+                                    YLeaf system_name; //type: string
+                                    YLeaf system_description; //type: string
+                                    YLeaf time_remaining; //type: uint32
+                                    YLeaf system_capabilities; //type: string
+                                    YLeaf enabled_capabilities; //type: string
+                                    YLeaf auto_negotiation; //type: string
+                                    YLeaf physical_media_capabilities; //type: string
+                                    YLeaf media_attachment_unit_type; //type: uint32
+                                    YLeaf port_vlan_id; //type: uint32
 
                                 class NetworkAddresses : public Entity
                                 {
@@ -504,6 +525,7 @@ class Lldp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class LldpAddrEntry : public Entity
                                     {
                                         public:
@@ -517,9 +539,10 @@ class Lldp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value ma_subtype; //type: uint8
-                                            Value if_num; //type: uint32
 
+
+                                            YLeaf ma_subtype; //type: uint8
+                                            YLeaf if_num; //type: uint32
 
                                         class Address : public Entity
                                         {
@@ -534,12 +557,12 @@ class Lldp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_type; //type: LldpL3AddrProtocolEnum
-                                                Value ipv4_address; //type: string
-                                                Value ipv6_address; //type: string
 
 
-                                                class LldpL3AddrProtocolEnum;
+                                                YLeaf address_type; //type: LldpL3AddrProtocolEnum
+                                                YLeaf ipv4_address; //type: string
+                                                YLeaf ipv6_address; //type: string
+
 
 
                                         }; // Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address
@@ -576,15 +599,16 @@ class Lldp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rem_time_mark; //type: uint32
-                                    Value rem_local_port_num; //type: uint32
-                                    Value rem_index; //type: uint32
-                                    Value chassis_id_sub_type; //type: uint8
-                                    Value chassis_id_len; //type: uint16
-                                    Value port_id_sub_type; //type: uint8
-                                    Value port_id_len; //type: uint16
-                                    Value combined_capabilities; //type: uint32
 
+
+                                    YLeaf rem_time_mark; //type: uint32
+                                    YLeaf rem_local_port_num; //type: uint32
+                                    YLeaf rem_index; //type: uint32
+                                    YLeaf chassis_id_sub_type; //type: uint8
+                                    YLeaf chassis_id_len; //type: uint16
+                                    YLeaf port_id_sub_type; //type: uint8
+                                    YLeaf port_id_len; //type: uint16
+                                    YLeaf combined_capabilities; //type: uint32
 
                                 class UnknownTlvList : public Entity
                                 {
@@ -601,6 +625,7 @@ class Lldp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class LldpUnknownTlvEntry : public Entity
                                     {
                                         public:
@@ -614,9 +639,10 @@ class Lldp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value tlv_type; //type: uint8
-                                            Value tlv_value; //type: string
 
+
+                                            YLeaf tlv_type; //type: uint8
+                                            YLeaf tlv_value; //type: string
 
 
 
@@ -644,6 +670,7 @@ class Lldp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class LldpOrgDefTlvEntry : public Entity
                                     {
                                         public:
@@ -657,11 +684,12 @@ class Lldp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value oui; //type: uint32
-                                            Value tlv_subtype; //type: uint8
-                                            Value tlv_info_indes; //type: uint32
-                                            Value tlv_value; //type: string
 
+
+                                            YLeaf oui; //type: uint32
+                                            YLeaf tlv_subtype; //type: uint8
+                                            YLeaf tlv_info_indes; //type: uint32
+                                            YLeaf tlv_value; //type: string
 
 
 
@@ -715,6 +743,7 @@ class Lldp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Summary : public Entity
                     {
                         public:
@@ -728,9 +757,10 @@ class Lldp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value device_id; //type: string
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf device_id; //type: string
 
                         class LldpNeighbor : public Entity
                         {
@@ -745,16 +775,17 @@ class Lldp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value receiving_interface_name; //type: string
-                                Value receiving_parent_interface_name; //type: string
-                                Value device_id; //type: string
-                                Value chassis_id; //type: string
-                                Value port_id_detail; //type: string
-                                Value header_version; //type: uint8
-                                Value hold_time; //type: uint16
-                                Value enabled_capabilities; //type: string
-                                Value platform; //type: string
 
+
+                                YLeaf receiving_interface_name; //type: string
+                                YLeaf receiving_parent_interface_name; //type: string
+                                YLeaf device_id; //type: string
+                                YLeaf chassis_id; //type: string
+                                YLeaf port_id_detail; //type: string
+                                YLeaf header_version; //type: uint8
+                                YLeaf hold_time; //type: uint16
+                                YLeaf enabled_capabilities; //type: string
+                                YLeaf platform; //type: string
 
                             class Detail : public Entity
                             {
@@ -769,17 +800,18 @@ class Lldp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value port_description; //type: string
-                                    Value system_name; //type: string
-                                    Value system_description; //type: string
-                                    Value time_remaining; //type: uint32
-                                    Value system_capabilities; //type: string
-                                    Value enabled_capabilities; //type: string
-                                    Value auto_negotiation; //type: string
-                                    Value physical_media_capabilities; //type: string
-                                    Value media_attachment_unit_type; //type: uint32
-                                    Value port_vlan_id; //type: uint32
 
+
+                                    YLeaf port_description; //type: string
+                                    YLeaf system_name; //type: string
+                                    YLeaf system_description; //type: string
+                                    YLeaf time_remaining; //type: uint32
+                                    YLeaf system_capabilities; //type: string
+                                    YLeaf enabled_capabilities; //type: string
+                                    YLeaf auto_negotiation; //type: string
+                                    YLeaf physical_media_capabilities; //type: string
+                                    YLeaf media_attachment_unit_type; //type: uint32
+                                    YLeaf port_vlan_id; //type: uint32
 
                                 class NetworkAddresses : public Entity
                                 {
@@ -796,6 +828,7 @@ class Lldp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class LldpAddrEntry : public Entity
                                     {
                                         public:
@@ -809,9 +842,10 @@ class Lldp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value ma_subtype; //type: uint8
-                                            Value if_num; //type: uint32
 
+
+                                            YLeaf ma_subtype; //type: uint8
+                                            YLeaf if_num; //type: uint32
 
                                         class Address : public Entity
                                         {
@@ -826,12 +860,12 @@ class Lldp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_type; //type: LldpL3AddrProtocolEnum
-                                                Value ipv4_address; //type: string
-                                                Value ipv6_address; //type: string
 
 
-                                                class LldpL3AddrProtocolEnum;
+                                                YLeaf address_type; //type: LldpL3AddrProtocolEnum
+                                                YLeaf ipv4_address; //type: string
+                                                YLeaf ipv6_address; //type: string
+
 
 
                                         }; // Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address
@@ -868,15 +902,16 @@ class Lldp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rem_time_mark; //type: uint32
-                                    Value rem_local_port_num; //type: uint32
-                                    Value rem_index; //type: uint32
-                                    Value chassis_id_sub_type; //type: uint8
-                                    Value chassis_id_len; //type: uint16
-                                    Value port_id_sub_type; //type: uint8
-                                    Value port_id_len; //type: uint16
-                                    Value combined_capabilities; //type: uint32
 
+
+                                    YLeaf rem_time_mark; //type: uint32
+                                    YLeaf rem_local_port_num; //type: uint32
+                                    YLeaf rem_index; //type: uint32
+                                    YLeaf chassis_id_sub_type; //type: uint8
+                                    YLeaf chassis_id_len; //type: uint16
+                                    YLeaf port_id_sub_type; //type: uint8
+                                    YLeaf port_id_len; //type: uint16
+                                    YLeaf combined_capabilities; //type: uint32
 
                                 class UnknownTlvList : public Entity
                                 {
@@ -893,6 +928,7 @@ class Lldp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class LldpUnknownTlvEntry : public Entity
                                     {
                                         public:
@@ -906,9 +942,10 @@ class Lldp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value tlv_type; //type: uint8
-                                            Value tlv_value; //type: string
 
+
+                                            YLeaf tlv_type; //type: uint8
+                                            YLeaf tlv_value; //type: string
 
 
 
@@ -936,6 +973,7 @@ class Lldp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class LldpOrgDefTlvEntry : public Entity
                                     {
                                         public:
@@ -949,11 +987,12 @@ class Lldp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value oui; //type: uint32
-                                            Value tlv_subtype; //type: uint8
-                                            Value tlv_info_indes; //type: uint32
-                                            Value tlv_value; //type: string
 
+
+                                            YLeaf oui; //type: uint32
+                                            YLeaf tlv_subtype; //type: uint8
+                                            YLeaf tlv_info_indes; //type: uint32
+                                            YLeaf tlv_value; //type: string
 
 
 
@@ -1015,6 +1054,7 @@ class Lldp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -1028,17 +1068,18 @@ class Lldp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value interface_name_xr; //type: string
-                        Value tx_enabled; //type: uint8
-                        Value rx_enabled; //type: uint8
-                        Value tx_state; //type: string
-                        Value rx_state; //type: string
-                        Value if_index; //type: uint32
-                        Value port_id; //type: string
-                        Value port_id_sub_type; //type: uint8
-                        Value port_description; //type: string
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf interface_name_xr; //type: string
+                        YLeaf tx_enabled; //type: uint8
+                        YLeaf rx_enabled; //type: uint8
+                        YLeaf tx_state; //type: string
+                        YLeaf rx_state; //type: string
+                        YLeaf if_index; //type: uint32
+                        YLeaf port_id; //type: string
+                        YLeaf port_id_sub_type; //type: uint8
+                        YLeaf port_description; //type: string
 
                     class LocalNetworkAddresses : public Entity
                     {
@@ -1055,6 +1096,7 @@ class Lldp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class LldpAddrEntry : public Entity
                         {
                             public:
@@ -1068,9 +1110,10 @@ class Lldp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ma_subtype; //type: uint8
-                                Value if_num; //type: uint32
 
+
+                                YLeaf ma_subtype; //type: uint8
+                                YLeaf if_num; //type: uint32
 
                             class Address : public Entity
                             {
@@ -1085,12 +1128,12 @@ class Lldp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address_type; //type: LldpL3AddrProtocolEnum
-                                    Value ipv4_address; //type: string
-                                    Value ipv6_address; //type: string
 
 
-                                    class LldpL3AddrProtocolEnum;
+                                    YLeaf address_type; //type: LldpL3AddrProtocolEnum
+                                    YLeaf ipv4_address; //type: string
+                                    YLeaf ipv6_address; //type: string
+
 
 
                             }; // Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address
@@ -1133,18 +1176,19 @@ class Lldp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value transmitted_packets; //type: uint32
-                    Value aged_out_entries; //type: uint32
-                    Value discarded_packets; //type: uint32
-                    Value bad_packets; //type: uint32
-                    Value received_packets; //type: uint32
-                    Value discarded_tl_vs; //type: uint32
-                    Value unrecognized_tl_vs; //type: uint32
-                    Value out_of_memory_errors; //type: uint32
-                    Value encapsulation_errors; //type: uint32
-                    Value queue_overflow_errors; //type: uint32
-                    Value table_overflow_errors; //type: uint32
 
+
+                    YLeaf transmitted_packets; //type: uint32
+                    YLeaf aged_out_entries; //type: uint32
+                    YLeaf discarded_packets; //type: uint32
+                    YLeaf bad_packets; //type: uint32
+                    YLeaf received_packets; //type: uint32
+                    YLeaf discarded_tl_vs; //type: uint32
+                    YLeaf unrecognized_tl_vs; //type: uint32
+                    YLeaf out_of_memory_errors; //type: uint32
+                    YLeaf encapsulation_errors; //type: uint32
+                    YLeaf queue_overflow_errors; //type: uint32
+                    YLeaf table_overflow_errors; //type: uint32
 
 
 
@@ -1175,8 +1219,8 @@ class Lldp : public Entity
 class LldpL3AddrProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 

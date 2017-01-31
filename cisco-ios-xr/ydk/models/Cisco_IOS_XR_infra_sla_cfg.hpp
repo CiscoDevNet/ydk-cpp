@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_infra_sla_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_infra_sla_cfg {
@@ -28,6 +27,7 @@ class Sla : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Protocols : public Entity
     {
         public:
@@ -41,6 +41,7 @@ class Sla : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Ethernet : public Entity
@@ -58,6 +59,7 @@ class Sla : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Profiles : public Entity
             {
                 public:
@@ -73,6 +75,7 @@ class Sla : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Profile : public Entity
                 {
                     public:
@@ -86,9 +89,10 @@ class Sla : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value profile_name; //type: string
-                        Value packet_type; //type: string
 
+
+                        YLeaf profile_name; //type: string
+                        YLeaf packet_type; //type: string
 
                     class Statistics : public Entity
                     {
@@ -105,6 +109,7 @@ class Sla : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Statistic : public Entity
                         {
                             public:
@@ -118,10 +123,11 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value statistic_name; //type: SlaStatisticTypeEnumEnum
-                                Value enable; //type: empty
-                                Value buckets_archive; //type: uint32
 
+
+                                YLeaf statistic_name; //type: SlaStatisticTypeEnumEnum
+                                YLeaf enable; //type: empty
+                                YLeaf buckets_archive; //type: uint32
 
                             class BucketsSize : public Entity
                             {
@@ -136,11 +142,11 @@ class Sla : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value buckets_size; //type: uint32
-                                    Value buckets_size_unit; //type: SlaBucketsSizeUnitsEnumEnum
 
 
-                                    class SlaBucketsSizeUnitsEnumEnum;
+                                    YLeaf buckets_size; //type: uint32
+                                    YLeaf buckets_size_unit; //type: SlaBucketsSizeUnitsEnumEnum
+
 
 
                             }; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize
@@ -159,10 +165,11 @@ class Sla : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bins_count; //type: uint32
-                                    Value bins_width; //type: uint32
-                                    Value bins_width_tenths; //type: uint32
 
+
+                                    YLeaf bins_count; //type: uint32
+                                    YLeaf bins_width; //type: uint32
+                                    YLeaf bins_width_tenths; //type: uint32
 
 
 
@@ -171,7 +178,6 @@ class Sla : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation> aggregation; // presence node
                                 std::unique_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize> buckets_size; // presence node
-                                class SlaStatisticTypeEnumEnum;
 
 
                         }; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic
@@ -196,19 +202,17 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value probe_interval; //type: uint32
-                            Value probe_interval_day; //type: SlaProbeIntervalDayEnumEnum
-                            Value probe_interval_unit; //type: SlaProbeIntervalUnitsEnumEnum
-                            Value start_time_hour; //type: uint32
-                            Value start_time_minute; //type: uint32
-                            Value start_time_second; //type: uint32
-                            Value probe_duration; //type: uint32
-                            Value probe_duration_unit; //type: SlaProbeDurationUnitsEnumEnum
 
 
-                            class SlaProbeDurationUnitsEnumEnum;
-                            class SlaProbeIntervalDayEnumEnum;
-                            class SlaProbeIntervalUnitsEnumEnum;
+                            YLeaf probe_interval; //type: uint32
+                            YLeaf probe_interval_day; //type: SlaProbeIntervalDayEnumEnum
+                            YLeaf probe_interval_unit; //type: SlaProbeIntervalUnitsEnumEnum
+                            YLeaf start_time_hour; //type: uint32
+                            YLeaf start_time_minute; //type: uint32
+                            YLeaf start_time_second; //type: uint32
+                            YLeaf probe_duration; //type: uint32
+                            YLeaf probe_duration_unit; //type: SlaProbeDurationUnitsEnumEnum
+
 
 
                     }; // Sla::Protocols::Ethernet::Profiles::Profile::Schedule
@@ -227,9 +231,10 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value priority; //type: uint32
-                            Value synthetic_loss_calculation_packets; //type: uint32
 
+
+                            YLeaf priority; //type: uint32
+                            YLeaf synthetic_loss_calculation_packets; //type: uint32
 
                         class Send : public Entity
                         {
@@ -244,17 +249,15 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value burst_interval; //type: uint32
-                                Value burst_interval_unit; //type: SlaBurstIntervalUnitsEnumEnum
-                                Value packet_interval; //type: uint32
-                                Value packet_interval_unit; //type: SlaPacketIntervalUnitsEnumEnum
-                                Value packet_count; //type: uint32
-                                Value send_type; //type: SlaSendEnum
 
 
-                                class SlaBurstIntervalUnitsEnumEnum;
-                                class SlaPacketIntervalUnitsEnumEnum;
-                                class SlaSendEnum;
+                                YLeaf burst_interval; //type: uint32
+                                YLeaf burst_interval_unit; //type: SlaBurstIntervalUnitsEnumEnum
+                                YLeaf packet_interval; //type: uint32
+                                YLeaf packet_interval_unit; //type: SlaPacketIntervalUnitsEnumEnum
+                                YLeaf packet_count; //type: uint32
+                                YLeaf send_type; //type: SlaSendEnum
+
 
 
                         }; // Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send
@@ -273,12 +276,12 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value size; //type: uint32
-                                Value padding_type; //type: SlaPaddingPatternEnum
-                                Value padding_value; //type: string
 
 
-                                class SlaPaddingPatternEnum;
+                                YLeaf size; //type: uint32
+                                YLeaf padding_type; //type: SlaPaddingPatternEnum
+                                YLeaf padding_value; //type: string
+
 
 
                         }; // Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding

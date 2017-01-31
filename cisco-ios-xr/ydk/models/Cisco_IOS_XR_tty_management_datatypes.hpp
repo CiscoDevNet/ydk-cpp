@@ -14,44 +14,44 @@ namespace Cisco_IOS_XR_tty_management_datatypes {
 class TtySessionTimeoutDirectionEnum : public Enum
 {
     public:
-        static const Enum::Value in;
-        static const Enum::Value in_out;
+        static const Enum::YLeaf in;
+        static const Enum::YLeaf in_out;
 
 };
 
 class TtyPagerEnum : public Enum
 {
     public:
-        static const Enum::Value more;
-        static const Enum::Value less;
-        static const Enum::Value none;
+        static const Enum::YLeaf more;
+        static const Enum::YLeaf less;
+        static const Enum::YLeaf none;
 
 };
 
 class TtyEscapeCharEnum : public Enum
 {
     public:
-        static const Enum::Value break_;
-        static const Enum::Value default_;
-        static const Enum::Value none;
+        static const Enum::YLeaf break_;
+        static const Enum::YLeaf default_;
+        static const Enum::YLeaf none;
 
 };
 
 class TtyTransportProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value telnet;
-        static const Enum::Value ssh;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf telnet;
+        static const Enum::YLeaf ssh;
 
 };
 
 class TtyTransportProtocolSelectEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value all;
-        static const Enum::Value some;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf all;
+        static const Enum::YLeaf some;
 
 };
 

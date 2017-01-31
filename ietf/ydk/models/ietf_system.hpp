@@ -48,10 +48,11 @@ class System : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value contact; //type: string
-        Value hostname; //type: string
-        Value location; //type: string
 
+
+        YLeaf contact; //type: string
+        YLeaf hostname; //type: string
+        YLeaf location; //type: string
 
     class Clock : public Entity
     {
@@ -66,9 +67,10 @@ class System : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value timezone_name; //type: string
-            Value timezone_utc_offset; //type: int16
 
+
+            YLeaf timezone_name; //type: string
+            YLeaf timezone_utc_offset; //type: int16
 
 
 
@@ -88,8 +90,9 @@ class System : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value enabled; //type: boolean
 
+
+            YLeaf enabled; //type: boolean
 
         class Server : public Entity
         {
@@ -104,11 +107,12 @@ class System : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value association_type; //type: AssociationTypeEnum
-                Value iburst; //type: boolean
-                Value prefer; //type: boolean
 
+
+                YLeaf name; //type: string
+                YLeaf association_type; //type: AssociationTypeEnum
+                YLeaf iburst; //type: boolean
+                YLeaf prefer; //type: boolean
 
             class Udp : public Entity
             {
@@ -123,9 +127,10 @@ class System : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value address; //type: one of union, string
-                    Value port; //type: uint16
 
+
+                    YLeaf address; //type: one of union, string
+                    YLeaf port; //type: uint16
 
 
 
@@ -158,8 +163,9 @@ class System : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            ValueList search; //type: list of  string
 
+
+            YLeafList search; //type: list of  string
 
         class Server : public Entity
         {
@@ -174,8 +180,9 @@ class System : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
 
+
+                YLeaf name; //type: string
 
             class UdpAndTcp : public Entity
             {
@@ -190,9 +197,10 @@ class System : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value address; //type: string
-                    Value port; //type: uint16
 
+
+                    YLeaf address; //type: string
+                    YLeaf port; //type: uint16
 
 
 
@@ -218,9 +226,10 @@ class System : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value timeout; //type: uint8
-                Value attempts; //type: uint8
 
+
+                YLeaf timeout; //type: uint8
+                YLeaf attempts; //type: uint8
 
 
 
@@ -249,6 +258,7 @@ class System : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Server : public Entity
         {
             public:
@@ -262,9 +272,10 @@ class System : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value authentication_type; //type: RadiusAuthenticationTypeIdentity
 
+
+                YLeaf name; //type: string
+                YLeaf authentication_type; //type: RadiusAuthenticationTypeIdentity
 
             class Udp : public Entity
             {
@@ -279,10 +290,11 @@ class System : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value address; //type: one of union, string
-                    Value authentication_port; //type: uint16
-                    Value shared_secret; //type: string
 
+
+                    YLeaf address; //type: one of union, string
+                    YLeaf authentication_port; //type: uint16
+                    YLeaf shared_secret; //type: string
 
 
 
@@ -308,9 +320,10 @@ class System : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value timeout; //type: uint8
-                Value attempts; //type: uint8
 
+
+                YLeaf timeout; //type: uint8
+                YLeaf attempts; //type: uint8
 
 
 
@@ -337,8 +350,9 @@ class System : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            ValueList user_authentication_order; //type: list of  AuthenticationMethodIdentity
 
+
+            YLeafList user_authentication_order; //type: list of  AuthenticationMethodIdentity
 
         class User : public Entity
         {
@@ -353,9 +367,10 @@ class System : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value password; //type: string
 
+
+                YLeaf name; //type: string
+                YLeaf password; //type: string
 
             class AuthorizedKey : public Entity
             {
@@ -370,10 +385,11 @@ class System : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
-                    Value algorithm; //type: string
-                    Value key_data; //type: binary
 
+
+                    YLeaf name; //type: string
+                    YLeaf algorithm; //type: string
+                    YLeaf key_data; //type: binary
 
 
 
@@ -417,6 +433,7 @@ class SystemState : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Platform : public Entity
     {
         public:
@@ -430,11 +447,12 @@ class SystemState : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value os_name; //type: string
-            Value os_release; //type: string
-            Value os_version; //type: string
-            Value machine; //type: string
 
+
+            YLeaf os_name; //type: string
+            YLeaf os_release; //type: string
+            YLeaf os_version; //type: string
+            YLeaf machine; //type: string
 
 
 
@@ -454,9 +472,10 @@ class SystemState : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value current_datetime; //type: string
-            Value boot_datetime; //type: string
 
+
+            YLeaf current_datetime; //type: string
+            YLeaf boot_datetime; //type: string
 
 
 
@@ -483,8 +502,9 @@ class SetCurrentDatetimeRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value current_datetime; //type: string
 
+
+        YLeaf current_datetime; //type: string
 
 
 
@@ -508,6 +528,7 @@ class SystemRestartRpc : public Entity
 
 
 
+
 }; // SystemRestartRpc
 
 class SystemShutdownRpc : public Entity
@@ -524,6 +545,7 @@ class SystemShutdownRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
+
 
 
 
@@ -578,9 +600,9 @@ class LocalUsersIdentity : public ietf_system::AuthenticationMethodIdentity, vir
 class System::Ntp::Server::AssociationTypeEnum : public Enum
 {
     public:
-        static const Enum::Value server;
-        static const Enum::Value peer;
-        static const Enum::Value pool;
+        static const Enum::YLeaf server;
+        static const Enum::YLeaf peer;
+        static const Enum::YLeaf pool;
 
 };
 

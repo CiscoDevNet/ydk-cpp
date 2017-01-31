@@ -52,7 +52,7 @@ EntityPath Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -157,7 +157,7 @@ EntityPath Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -270,7 +270,7 @@ EntityPath Drop::Nodes::Node::NpuNumberForDropStats::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -361,7 +361,7 @@ bool Drop::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (npu_number_for_drop_stats !=  nullptr && is_set(npu_number_for_drop_stats->operation));
+	|| (npu_number_for_drop_stats !=  nullptr && npu_number_for_drop_stats->has_operation());
 }
 
 std::string Drop::Nodes::Node::get_segment_path() const
@@ -575,7 +575,7 @@ bool Drop::has_data() const
 bool Drop::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Drop::get_segment_path() const
@@ -592,7 +592,7 @@ EntityPath Drop::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

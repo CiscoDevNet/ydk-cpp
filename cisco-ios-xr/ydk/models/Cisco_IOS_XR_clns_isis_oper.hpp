@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_clns_isis_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_clns_isis_oper {
@@ -28,6 +27,7 @@ class Isis : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Instances : public Entity
     {
         public:
@@ -43,6 +43,7 @@ class Isis : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Instance : public Entity
         {
             public:
@@ -56,8 +57,9 @@ class Isis : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value instance_name; //type: string
 
+
+                YLeaf instance_name; //type: string
 
             class Neighbors : public Entity
             {
@@ -74,6 +76,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Neighbor : public Entity
                 {
                     public:
@@ -87,21 +90,22 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value system_id; //type: string
-                        Value interface_name; //type: string
-                        Value neighbor_system_id; //type: string
-                        Value neighbor_snpa; //type: string
-                        Value local_interface; //type: string
-                        Value neighbor_state; //type: IsisAdjStateEnum
-                        Value neighbor_circuit_type; //type: IsisLevelsEnum
-                        Value neighbor_ietf_nsf_capable_flag; //type: uint32
-                        Value neighbor_media_type; //type: IsisMediaClassEnum
-                        Value neighbor_holdtime; //type: uint32
-                        Value neighbor_uptime_valid_flag; //type: boolean
-                        Value neighbor_uptime; //type: uint32
-                        Value nsr_standby; //type: boolean
-                        ValueList neighbor_active_area_address; //type: list of  string
 
+
+                        YLeaf system_id; //type: string
+                        YLeaf interface_name; //type: string
+                        YLeaf neighbor_system_id; //type: string
+                        YLeaf neighbor_snpa; //type: string
+                        YLeaf local_interface; //type: string
+                        YLeaf neighbor_state; //type: IsisAdjStateEnum
+                        YLeaf neighbor_circuit_type; //type: IsisLevelsEnum
+                        YLeaf neighbor_ietf_nsf_capable_flag; //type: uint32
+                        YLeaf neighbor_media_type; //type: IsisMediaClassEnum
+                        YLeaf neighbor_holdtime; //type: uint32
+                        YLeaf neighbor_uptime_valid_flag; //type: boolean
+                        YLeaf neighbor_uptime; //type: uint32
+                        YLeaf nsr_standby; //type: boolean
+                        YLeafList neighbor_active_area_address; //type: list of  string
 
                     class TopologiesSupported : public Entity
                     {
@@ -116,14 +120,13 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: IsisAfIdEnum
-                            Value saf_name; //type: IsisSubAfIdEnum
-                            Value vrf_name; //type: string
-                            Value topology_name; //type: string
 
 
-                            class IsisAfIdEnum;
-                            class IsisSubAfIdEnum;
+                            YLeaf af_name; //type: IsisAfIdEnum
+                            YLeaf saf_name; //type: IsisSubAfIdEnum
+                            YLeaf vrf_name; //type: string
+                            YLeaf topology_name; //type: string
+
 
 
                     }; // Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported
@@ -142,8 +145,9 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: IsisAfIdEnum
 
+
+                            YLeaf af_name; //type: IsisAfIdEnum
 
                         class Ipv4 : public Entity
                         {
@@ -158,11 +162,12 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value next_hop; //type: string
-                                ValueList interface_address; //type: list of  string
-                                ValueList underlying_interface; //type: list of  string
-                                ValueList underlying_adjacency_sid; //type: list of  uint32
 
+
+                                YLeaf next_hop; //type: string
+                                YLeafList interface_address; //type: list of  string
+                                YLeafList underlying_interface; //type: list of  string
+                                YLeafList underlying_adjacency_sid; //type: list of  uint32
 
                             class AdjacencySid : public Entity
                             {
@@ -177,8 +182,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value adjacency_sid_value; //type: uint32
 
+
+                                    YLeaf adjacency_sid_value; //type: uint32
 
                                 class AdjacencySidBackup : public Entity
                                 {
@@ -193,12 +199,13 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value backup_label_stack_size; //type: uint8
-                                        Value backup_node_address; //type: string
-                                        Value backup_nexthop; //type: string
-                                        Value backup_interface; //type: string
-                                        ValueList backup_label_stack; //type: list of  uint32
 
+
+                                        YLeaf backup_label_stack_size; //type: uint8
+                                        YLeaf backup_node_address; //type: string
+                                        YLeaf backup_nexthop; //type: string
+                                        YLeaf backup_interface; //type: string
+                                        YLeafList backup_label_stack; //type: list of  uint32
 
 
 
@@ -224,8 +231,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value adjacency_sid_value; //type: uint32
 
+
+                                    YLeaf adjacency_sid_value; //type: uint32
 
                                 class AdjacencySidBackup : public Entity
                                 {
@@ -240,12 +248,13 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value backup_label_stack_size; //type: uint8
-                                        Value backup_node_address; //type: string
-                                        Value backup_nexthop; //type: string
-                                        Value backup_interface; //type: string
-                                        ValueList backup_label_stack; //type: list of  uint32
 
+
+                                        YLeaf backup_label_stack_size; //type: uint8
+                                        YLeaf backup_node_address; //type: string
+                                        YLeaf backup_nexthop; //type: string
+                                        YLeaf backup_interface; //type: string
+                                        YLeafList backup_label_stack; //type: list of  uint32
 
 
 
@@ -278,11 +287,12 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value next_hop; //type: string
-                                ValueList interface_address; //type: list of  string
-                                ValueList underlying_interface; //type: list of  string
-                                ValueList underlying_adjacency_sid; //type: list of  uint32
 
+
+                                YLeaf next_hop; //type: string
+                                YLeafList interface_address; //type: list of  string
+                                YLeafList underlying_interface; //type: list of  string
+                                YLeafList underlying_adjacency_sid; //type: list of  uint32
 
                             class AdjacencySid : public Entity
                             {
@@ -297,8 +307,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value adjacency_sid_value; //type: uint32
 
+
+                                    YLeaf adjacency_sid_value; //type: uint32
 
                                 class AdjacencySidBackup : public Entity
                                 {
@@ -313,12 +324,13 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value backup_label_stack_size; //type: uint8
-                                        Value backup_node_address; //type: string
-                                        Value backup_nexthop; //type: string
-                                        Value backup_interface; //type: string
-                                        ValueList backup_label_stack; //type: list of  uint32
 
+
+                                        YLeaf backup_label_stack_size; //type: uint8
+                                        YLeaf backup_node_address; //type: string
+                                        YLeaf backup_nexthop; //type: string
+                                        YLeaf backup_interface; //type: string
+                                        YLeafList backup_label_stack; //type: list of  uint32
 
 
 
@@ -344,8 +356,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value adjacency_sid_value; //type: uint32
 
+
+                                    YLeaf adjacency_sid_value; //type: uint32
 
                                 class AdjacencySidBackup : public Entity
                                 {
@@ -360,12 +373,13 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value backup_label_stack_size; //type: uint8
-                                        Value backup_node_address; //type: string
-                                        Value backup_nexthop; //type: string
-                                        Value backup_interface; //type: string
-                                        ValueList backup_label_stack; //type: list of  uint32
 
+
+                                        YLeaf backup_label_stack_size; //type: uint8
+                                        YLeaf backup_node_address; //type: string
+                                        YLeaf backup_nexthop; //type: string
+                                        YLeaf backup_interface; //type: string
+                                        YLeafList backup_label_stack; //type: list of  uint32
 
 
 
@@ -387,7 +401,6 @@ class Isis : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4> ipv4;
                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6> ipv6;
-                            class IsisAfIdEnum;
 
 
                     }; // Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData
@@ -395,9 +408,6 @@ class Isis : public Entity
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData> > neighbor_per_address_family_data;
                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported> > topologies_supported;
-                        class IsisLevelsEnum;
-                        class IsisMediaClassEnum;
-                        class IsisAdjStateEnum;
 
 
                 }; // Isis::Instances::Instance::Neighbors::Neighbor
@@ -424,6 +434,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class HostName : public Entity
                 {
                     public:
@@ -437,13 +448,13 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value system_id; //type: string
-                        Value local_is_flag; //type: boolean
-                        Value host_levels; //type: IsisLevelsEnum
-                        Value host_name; //type: string
 
 
-                        class IsisLevelsEnum;
+                        YLeaf system_id; //type: string
+                        YLeaf local_is_flag; //type: boolean
+                        YLeaf host_levels; //type: IsisLevelsEnum
+                        YLeaf host_name; //type: string
+
 
 
                 }; // Isis::Instances::Instance::HostNames::HostName
@@ -470,6 +481,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Statistics : public Entity
                 {
                     public:
@@ -483,27 +495,28 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value fast_psnp_lookup_count; //type: uint32
-                        Value fast_psnp_lookup_hit_count; //type: uint32
-                        Value fast_csnp_lookup_count; //type: uint32
-                        Value fast_csnp_lookup_hit_count; //type: uint32
-                        Value fast_csnp_cache_update_count; //type: uint32
-                        Value zero_holdtime_lsp_count; //type: uint32
-                        Value invalid_checksum_lsp_count; //type: uint32
-                        Value iih_dropped_count; //type: uint32
-                        Value lsp_dropped_count; //type: uint32
-                        Value snp_dropped_count; //type: uint32
-                        Value maximum_iih_queue_length; //type: uint32
-                        Value maximum_pdu_queue_length; //type: uint32
-                        Value avg_hello_recv_rate; //type: uint32
-                        Value avg_csnp_recv_rate; //type: uint32
-                        Value avg_psnp_recv_rate; //type: uint32
-                        Value avg_lsp_recv_rate; //type: uint32
-                        Value avg_hello_send_rate; //type: uint32
-                        Value avg_csnp_send_rate; //type: uint32
-                        Value avg_psnp_send_rate; //type: uint32
-                        Value avg_lsp_send_rate; //type: uint32
 
+
+                        YLeaf fast_psnp_lookup_count; //type: uint32
+                        YLeaf fast_psnp_lookup_hit_count; //type: uint32
+                        YLeaf fast_csnp_lookup_count; //type: uint32
+                        YLeaf fast_csnp_lookup_hit_count; //type: uint32
+                        YLeaf fast_csnp_cache_update_count; //type: uint32
+                        YLeaf zero_holdtime_lsp_count; //type: uint32
+                        YLeaf invalid_checksum_lsp_count; //type: uint32
+                        YLeaf iih_dropped_count; //type: uint32
+                        YLeaf lsp_dropped_count; //type: uint32
+                        YLeaf snp_dropped_count; //type: uint32
+                        YLeaf maximum_iih_queue_length; //type: uint32
+                        YLeaf maximum_pdu_queue_length; //type: uint32
+                        YLeaf avg_hello_recv_rate; //type: uint32
+                        YLeaf avg_csnp_recv_rate; //type: uint32
+                        YLeaf avg_psnp_recv_rate; //type: uint32
+                        YLeaf avg_lsp_recv_rate; //type: uint32
+                        YLeaf avg_hello_send_rate; //type: uint32
+                        YLeaf avg_csnp_send_rate; //type: uint32
+                        YLeaf avg_psnp_send_rate; //type: uint32
+                        YLeaf avg_lsp_send_rate; //type: uint32
 
                     class AvgHelloProcessTime : public Entity
                     {
@@ -518,9 +531,10 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
-                            Value nano_seconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
+                            YLeaf nano_seconds; //type: uint32
 
 
 
@@ -540,9 +554,10 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
-                            Value nano_seconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
+                            YLeaf nano_seconds; //type: uint32
 
 
 
@@ -562,9 +577,10 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
-                            Value nano_seconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
+                            YLeaf nano_seconds; //type: uint32
 
 
 
@@ -584,9 +600,10 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
-                            Value nano_seconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
+                            YLeaf nano_seconds; //type: uint32
 
 
 
@@ -606,9 +623,10 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
-                            Value nano_seconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
+                            YLeaf nano_seconds; //type: uint32
 
 
 
@@ -628,9 +646,10 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
-                            Value nano_seconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
+                            YLeaf nano_seconds; //type: uint32
 
 
 
@@ -650,9 +669,10 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
-                            Value nano_seconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
+                            YLeaf nano_seconds; //type: uint32
 
 
 
@@ -672,9 +692,10 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
-                            Value nano_seconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
+                            YLeaf nano_seconds; //type: uint32
 
 
 
@@ -707,8 +728,9 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisLevelEnum
 
+
+                        YLeaf level; //type: IsisLevelEnum
 
                     class Statistics : public Entity
                     {
@@ -723,9 +745,10 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value system_lsp_build_count; //type: uint32
-                            Value system_lsp_refresh_count; //type: uint32
 
+
+                            YLeaf system_lsp_build_count; //type: uint32
+                            YLeaf system_lsp_refresh_count; //type: uint32
 
 
 
@@ -747,6 +770,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Id : public Entity
                         {
                             public:
@@ -760,14 +784,13 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value af_name; //type: IsisAfIdEnum
-                                Value saf_name; //type: IsisSubAfIdEnum
-                                Value vrf_name; //type: string
-                                Value topology_name; //type: string
 
 
-                                class IsisAfIdEnum;
-                                class IsisSubAfIdEnum;
+                                YLeaf af_name; //type: IsisAfIdEnum
+                                YLeaf saf_name; //type: IsisSubAfIdEnum
+                                YLeaf vrf_name; //type: string
+                                YLeaf topology_name; //type: string
+
 
 
                         }; // Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Id
@@ -786,12 +809,13 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value spf_run_count; //type: uint32
-                                Value ispf_run_count; //type: uint32
-                                Value nhc_run_count; //type: uint32
-                                Value prc_run_count; //type: uint32
-                                Value periodic_run_count; //type: uint32
 
+
+                                YLeaf spf_run_count; //type: uint32
+                                YLeaf ispf_run_count; //type: uint32
+                                YLeaf nhc_run_count; //type: uint32
+                                YLeaf prc_run_count; //type: uint32
+                                YLeaf periodic_run_count; //type: uint32
 
 
 
@@ -807,7 +831,6 @@ class Isis : public Entity
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData> > per_topology_data;
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics> statistics;
-                        class IsisLevelEnum;
 
 
                 }; // Isis::Instances::Instance::StatisticsGlobal::PerAreaData
@@ -835,6 +858,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Level : public Entity
                 {
                     public:
@@ -848,8 +872,9 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
 
+
+                        YLeaf level; //type: IsisInternalLevelEnum
 
                     class AdjacencyLog : public Entity
                     {
@@ -866,6 +891,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class LogEntry : public Entity
                         {
                             public:
@@ -879,12 +905,13 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value adj_log_neighbor_system_id; //type: string
-                                Value interface_name; //type: string
-                                Value prev_adj_state; //type: IsisAdjStateEnum
-                                Value cur_adj_state; //type: IsisAdjStateEnum
-                                Value state_reason; //type: IsisAdjStateReasonEnum
 
+
+                                YLeaf adj_log_neighbor_system_id; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf prev_adj_state; //type: IsisAdjStateEnum
+                                YLeaf cur_adj_state; //type: IsisAdjStateEnum
+                                YLeaf state_reason; //type: IsisAdjStateReasonEnum
 
                             class GenericData : public Entity
                             {
@@ -901,6 +928,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Timestamp : public Entity
                                 {
                                     public:
@@ -914,9 +942,10 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value seconds; //type: uint32
-                                        Value nano_seconds; //type: uint32
 
+
+                                        YLeaf seconds; //type: uint32
+                                        YLeaf nano_seconds; //type: uint32
 
 
 
@@ -942,8 +971,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value change; //type: IsisAdjTopoChangeEnum
 
+
+                                    YLeaf change; //type: IsisAdjTopoChangeEnum
 
                                 class Id : public Entity
                                 {
@@ -958,21 +988,19 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af_name; //type: IsisAfIdEnum
-                                        Value saf_name; //type: IsisSubAfIdEnum
-                                        Value vrf_name; //type: string
-                                        Value topology_name; //type: string
 
 
-                                        class IsisAfIdEnum;
-                                        class IsisSubAfIdEnum;
+                                        YLeaf af_name; //type: IsisAfIdEnum
+                                        YLeaf saf_name; //type: IsisSubAfIdEnum
+                                        YLeaf vrf_name; //type: string
+                                        YLeaf topology_name; //type: string
+
 
 
                                 }; // Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id> id;
-                                    class IsisAdjTopoChangeEnum;
 
 
                             }; // Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange
@@ -980,9 +1008,6 @@ class Isis : public Entity
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange> > adjacency_per_topology_change;
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData> generic_data;
-                                class IsisAdjStateEnum;
-                                class IsisAdjStateEnum;
-                                class IsisAdjStateReasonEnum;
 
 
                         }; // Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry
@@ -1009,6 +1034,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Fragment0LspStats : public Entity
                         {
                             public:
@@ -1022,6 +1048,7 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
+
 
 
                             class NodeCounters : public Entity
@@ -1039,6 +1066,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class RouteLspCount : public Entity
                                 {
                                     public:
@@ -1052,9 +1080,10 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value active_lsp_count; //type: uint32
-                                        Value purged_lsp_count; //type: uint32
 
+
+                                        YLeaf active_lsp_count; //type: uint32
+                                        YLeaf purged_lsp_count; //type: uint32
 
 
 
@@ -1074,9 +1103,10 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value active_lsp_count; //type: uint32
-                                        Value purged_lsp_count; //type: uint32
 
+
+                                        YLeaf active_lsp_count; //type: uint32
+                                        YLeaf purged_lsp_count; //type: uint32
 
 
 
@@ -1105,6 +1135,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Id : public Entity
                                 {
                                     public:
@@ -1118,14 +1149,13 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af_name; //type: IsisAfIdEnum
-                                        Value saf_name; //type: IsisSubAfIdEnum
-                                        Value vrf_name; //type: string
-                                        Value topology_name; //type: string
 
 
-                                        class IsisAfIdEnum;
-                                        class IsisSubAfIdEnum;
+                                        YLeaf af_name; //type: IsisAfIdEnum
+                                        YLeaf saf_name; //type: IsisSubAfIdEnum
+                                        YLeaf vrf_name; //type: string
+                                        YLeaf topology_name; //type: string
+
 
 
                                 }; // Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0LspStats::PerTopologyCounter::Id
@@ -1144,9 +1174,10 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value active_lsp_count; //type: uint32
-                                        Value purged_lsp_count; //type: uint32
 
+
+                                        YLeaf active_lsp_count; //type: uint32
+                                        YLeaf purged_lsp_count; //type: uint32
 
 
 
@@ -1166,9 +1197,10 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value active_lsp_count; //type: uint32
-                                        Value purged_lsp_count; //type: uint32
 
+
+                                        YLeaf active_lsp_count; //type: uint32
+                                        YLeaf purged_lsp_count; //type: uint32
 
 
 
@@ -1205,6 +1237,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class NodeCounters : public Entity
                             {
                                 public:
@@ -1220,6 +1253,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class RouteLspCount : public Entity
                                 {
                                     public:
@@ -1233,9 +1267,10 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value active_lsp_count; //type: uint32
-                                        Value purged_lsp_count; //type: uint32
 
+
+                                        YLeaf active_lsp_count; //type: uint32
+                                        YLeaf purged_lsp_count; //type: uint32
 
 
 
@@ -1255,9 +1290,10 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value active_lsp_count; //type: uint32
-                                        Value purged_lsp_count; //type: uint32
 
+
+                                        YLeaf active_lsp_count; //type: uint32
+                                        YLeaf purged_lsp_count; //type: uint32
 
 
 
@@ -1299,6 +1335,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Adjacency : public Entity
                         {
                             public:
@@ -1312,28 +1349,29 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value system_id; //type: string
-                                Value interface_name; //type: string
-                                Value adjacency_system_id; //type: string
-                                Value adjacency_snpa; //type: string
-                                Value adjacency_interface; //type: string
-                                Value adjacency_media_type; //type: IsisMediaClassEnum
-                                Value adjacency_state; //type: IsisAdjStateEnum
-                                Value adjacency_bfd_state; //type: IsisAdjBfdStateEnum
-                                Value adjacency_ipv6bfd_state; //type: IsisAdjBfdStateEnum
-                                Value adjacency_uptime_valid_flag; //type: boolean
-                                Value adjacency_uptime; //type: uint32
-                                Value adjacency_holdtime; //type: uint32
-                                Value adjacency_checkpoint_object_id; //type: uint32
-                                Value adjacency_ietf_nsf_capable_flag; //type: boolean
-                                Value adjacency_dispriority; //type: uint8
-                                Value adjacency_neighbor_priority; //type: uint8
-                                Value adjacency_local_priority; //type: uint8
-                                Value local_dis_flag; //type: boolean
-                                Value neighbor_dis_flag; //type: boolean
-                                Value nsr_standby; //type: uint8
-                                ValueList adjacency_area_address; //type: list of  string
 
+
+                                YLeaf system_id; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf adjacency_system_id; //type: string
+                                YLeaf adjacency_snpa; //type: string
+                                YLeaf adjacency_interface; //type: string
+                                YLeaf adjacency_media_type; //type: IsisMediaClassEnum
+                                YLeaf adjacency_state; //type: IsisAdjStateEnum
+                                YLeaf adjacency_bfd_state; //type: IsisAdjBfdStateEnum
+                                YLeaf adjacency_ipv6bfd_state; //type: IsisAdjBfdStateEnum
+                                YLeaf adjacency_uptime_valid_flag; //type: boolean
+                                YLeaf adjacency_uptime; //type: uint32
+                                YLeaf adjacency_holdtime; //type: uint32
+                                YLeaf adjacency_checkpoint_object_id; //type: uint32
+                                YLeaf adjacency_ietf_nsf_capable_flag; //type: boolean
+                                YLeaf adjacency_dispriority; //type: uint8
+                                YLeaf adjacency_neighbor_priority; //type: uint8
+                                YLeaf adjacency_local_priority; //type: uint8
+                                YLeaf local_dis_flag; //type: boolean
+                                YLeaf neighbor_dis_flag; //type: boolean
+                                YLeaf nsr_standby; //type: uint8
+                                YLeafList adjacency_area_address; //type: list of  string
 
                             class AdjacencyTopology : public Entity
                             {
@@ -1348,9 +1386,10 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value topology_status; //type: IsisAdjTopoStatusEnum
-                                    Value parallel_p2p_link_suppressed_flag; //type: boolean
 
+
+                                    YLeaf topology_status; //type: IsisAdjTopoStatusEnum
+                                    YLeaf parallel_p2p_link_suppressed_flag; //type: boolean
 
                                 class Id : public Entity
                                 {
@@ -1365,21 +1404,19 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af_name; //type: IsisAfIdEnum
-                                        Value saf_name; //type: IsisSubAfIdEnum
-                                        Value vrf_name; //type: string
-                                        Value topology_name; //type: string
 
 
-                                        class IsisAfIdEnum;
-                                        class IsisSubAfIdEnum;
+                                        YLeaf af_name; //type: IsisAfIdEnum
+                                        YLeaf saf_name; //type: IsisSubAfIdEnum
+                                        YLeaf vrf_name; //type: string
+                                        YLeaf topology_name; //type: string
+
 
 
                                 }; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology::Id> id;
-                                    class IsisAdjTopoStatusEnum;
 
 
                             }; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology
@@ -1398,8 +1435,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value af_name; //type: IsisAfIdEnum
 
+
+                                    YLeaf af_name; //type: IsisAfIdEnum
 
                                 class Ipv4 : public Entity
                                 {
@@ -1414,11 +1452,12 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value next_hop; //type: string
-                                        ValueList interface_address; //type: list of  string
-                                        ValueList underlying_interface; //type: list of  string
-                                        ValueList underlying_adjacency_sid; //type: list of  uint32
 
+
+                                        YLeaf next_hop; //type: string
+                                        YLeafList interface_address; //type: list of  string
+                                        YLeafList underlying_interface; //type: list of  string
+                                        YLeafList underlying_adjacency_sid; //type: list of  uint32
 
                                     class AdjacencySid : public Entity
                                     {
@@ -1433,8 +1472,9 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value adjacency_sid_value; //type: uint32
 
+
+                                            YLeaf adjacency_sid_value; //type: uint32
 
                                         class AdjacencySidBackup : public Entity
                                         {
@@ -1449,12 +1489,13 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value backup_label_stack_size; //type: uint8
-                                                Value backup_node_address; //type: string
-                                                Value backup_nexthop; //type: string
-                                                Value backup_interface; //type: string
-                                                ValueList backup_label_stack; //type: list of  uint32
 
+
+                                                YLeaf backup_label_stack_size; //type: uint8
+                                                YLeaf backup_node_address; //type: string
+                                                YLeaf backup_nexthop; //type: string
+                                                YLeaf backup_interface; //type: string
+                                                YLeafList backup_label_stack; //type: list of  uint32
 
 
 
@@ -1480,8 +1521,9 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value adjacency_sid_value; //type: uint32
 
+
+                                            YLeaf adjacency_sid_value; //type: uint32
 
                                         class AdjacencySidBackup : public Entity
                                         {
@@ -1496,12 +1538,13 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value backup_label_stack_size; //type: uint8
-                                                Value backup_node_address; //type: string
-                                                Value backup_nexthop; //type: string
-                                                Value backup_interface; //type: string
-                                                ValueList backup_label_stack; //type: list of  uint32
 
+
+                                                YLeaf backup_label_stack_size; //type: uint8
+                                                YLeaf backup_node_address; //type: string
+                                                YLeaf backup_nexthop; //type: string
+                                                YLeaf backup_interface; //type: string
+                                                YLeafList backup_label_stack; //type: list of  uint32
 
 
 
@@ -1534,11 +1577,12 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value next_hop; //type: string
-                                        ValueList interface_address; //type: list of  string
-                                        ValueList underlying_interface; //type: list of  string
-                                        ValueList underlying_adjacency_sid; //type: list of  uint32
 
+
+                                        YLeaf next_hop; //type: string
+                                        YLeafList interface_address; //type: list of  string
+                                        YLeafList underlying_interface; //type: list of  string
+                                        YLeafList underlying_adjacency_sid; //type: list of  uint32
 
                                     class AdjacencySid : public Entity
                                     {
@@ -1553,8 +1597,9 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value adjacency_sid_value; //type: uint32
 
+
+                                            YLeaf adjacency_sid_value; //type: uint32
 
                                         class AdjacencySidBackup : public Entity
                                         {
@@ -1569,12 +1614,13 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value backup_label_stack_size; //type: uint8
-                                                Value backup_node_address; //type: string
-                                                Value backup_nexthop; //type: string
-                                                Value backup_interface; //type: string
-                                                ValueList backup_label_stack; //type: list of  uint32
 
+
+                                                YLeaf backup_label_stack_size; //type: uint8
+                                                YLeaf backup_node_address; //type: string
+                                                YLeaf backup_nexthop; //type: string
+                                                YLeaf backup_interface; //type: string
+                                                YLeafList backup_label_stack; //type: list of  uint32
 
 
 
@@ -1600,8 +1646,9 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value adjacency_sid_value; //type: uint32
 
+
+                                            YLeaf adjacency_sid_value; //type: uint32
 
                                         class AdjacencySidBackup : public Entity
                                         {
@@ -1616,12 +1663,13 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value backup_label_stack_size; //type: uint8
-                                                Value backup_node_address; //type: string
-                                                Value backup_nexthop; //type: string
-                                                Value backup_interface; //type: string
-                                                ValueList backup_label_stack; //type: list of  uint32
 
+
+                                                YLeaf backup_label_stack_size; //type: uint8
+                                                YLeaf backup_node_address; //type: string
+                                                YLeaf backup_nexthop; //type: string
+                                                YLeaf backup_interface; //type: string
+                                                YLeafList backup_label_stack; //type: list of  uint32
 
 
 
@@ -1643,7 +1691,6 @@ class Isis : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv4> ipv4;
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData::Ipv6> ipv6;
-                                    class IsisAfIdEnum;
 
 
                             }; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData
@@ -1651,10 +1698,6 @@ class Isis : public Entity
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData> > adjacency_per_address_family_data;
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology> > adjacency_topology;
-                                class IsisAdjBfdStateEnum;
-                                class IsisAdjBfdStateEnum;
-                                class IsisMediaClassEnum;
-                                class IsisAdjStateEnum;
 
 
                         }; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency
@@ -1681,6 +1724,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class DetailedLsp : public Entity
                         {
                             public:
@@ -1694,9 +1738,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsp_id; //type: string
-                                Value lsp_body; //type: string
 
+
+                                YLeaf lsp_id; //type: string
+                                YLeaf lsp_body; //type: string
 
                             class LspHeaderData : public Entity
                             {
@@ -1711,21 +1756,21 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lsp_id; //type: string
-                                    Value local_lsp_flag; //type: boolean
-                                    Value lsp_active_flag; //type: boolean
-                                    Value lsp_holdtime; //type: uint16
-                                    Value lsp_sequence_number; //type: uint32
-                                    Value lsp_checksum; //type: uint16
-                                    Value lsp_parition_repair_supported_flag; //type: boolean
-                                    Value lsp_attached_flag; //type: boolean
-                                    Value lsp_overloaded_flag; //type: boolean
-                                    Value lsp_nonv1a_flag; //type: uint16
-                                    Value lsp_level; //type: IsisLevelsEnum
-                                    Value lsp_length; //type: uint16
 
 
-                                    class IsisLevelsEnum;
+                                    YLeaf lsp_id; //type: string
+                                    YLeaf local_lsp_flag; //type: boolean
+                                    YLeaf lsp_active_flag; //type: boolean
+                                    YLeaf lsp_holdtime; //type: uint16
+                                    YLeaf lsp_sequence_number; //type: uint32
+                                    YLeaf lsp_checksum; //type: uint16
+                                    YLeaf lsp_parition_repair_supported_flag; //type: boolean
+                                    YLeaf lsp_attached_flag; //type: boolean
+                                    YLeaf lsp_overloaded_flag; //type: boolean
+                                    YLeaf lsp_nonv1a_flag; //type: uint16
+                                    YLeaf lsp_level; //type: IsisLevelsEnum
+                                    YLeaf lsp_length; //type: uint16
+
 
 
                             }; // Isis::Instances::Instance::Levels::Level::DetailedLsps::DetailedLsp::LspHeaderData
@@ -1758,6 +1803,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Lsp : public Entity
                         {
                             public:
@@ -1771,9 +1817,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsp_id; //type: string
-                                Value lsp_body; //type: string
 
+
+                                YLeaf lsp_id; //type: string
+                                YLeaf lsp_body; //type: string
 
                             class LspHeaderData : public Entity
                             {
@@ -1788,21 +1835,21 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lsp_id; //type: string
-                                    Value local_lsp_flag; //type: boolean
-                                    Value lsp_active_flag; //type: boolean
-                                    Value lsp_holdtime; //type: uint16
-                                    Value lsp_sequence_number; //type: uint32
-                                    Value lsp_checksum; //type: uint16
-                                    Value lsp_parition_repair_supported_flag; //type: boolean
-                                    Value lsp_attached_flag; //type: boolean
-                                    Value lsp_overloaded_flag; //type: boolean
-                                    Value lsp_nonv1a_flag; //type: uint16
-                                    Value lsp_level; //type: IsisLevelsEnum
-                                    Value lsp_length; //type: uint16
 
 
-                                    class IsisLevelsEnum;
+                                    YLeaf lsp_id; //type: string
+                                    YLeaf local_lsp_flag; //type: boolean
+                                    YLeaf lsp_active_flag; //type: boolean
+                                    YLeaf lsp_holdtime; //type: uint16
+                                    YLeaf lsp_sequence_number; //type: uint32
+                                    YLeaf lsp_checksum; //type: uint16
+                                    YLeaf lsp_parition_repair_supported_flag; //type: boolean
+                                    YLeaf lsp_attached_flag; //type: boolean
+                                    YLeaf lsp_overloaded_flag; //type: boolean
+                                    YLeaf lsp_nonv1a_flag; //type: uint16
+                                    YLeaf lsp_level; //type: IsisLevelsEnum
+                                    YLeaf lsp_length; //type: uint16
+
 
 
                             }; // Isis::Instances::Instance::Levels::Level::Lsps::Lsp::LspHeaderData
@@ -1835,6 +1882,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class LogEntry : public Entity
                         {
                             public:
@@ -1848,12 +1896,13 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value trigger_count; //type: uint32
-                                Value delayed_trigger_count; //type: uint32
-                                Value log_interface; //type: string
-                                Value pseudo_node_number; //type: uint8
-                                ValueList trigger; //type: list of  IsisLspTriggerEnum
 
+
+                                YLeaf trigger_count; //type: uint32
+                                YLeaf delayed_trigger_count; //type: uint32
+                                YLeaf log_interface; //type: string
+                                YLeaf pseudo_node_number; //type: uint8
+                                YLeafList trigger; //type: list of  IsisLspTriggerEnum
 
                             class GenericData : public Entity
                             {
@@ -1870,6 +1919,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Timestamp : public Entity
                                 {
                                     public:
@@ -1883,9 +1933,10 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value seconds; //type: uint32
-                                        Value nano_seconds; //type: uint32
 
+
+                                        YLeaf seconds; //type: uint32
+                                        YLeaf nano_seconds; //type: uint32
 
 
 
@@ -1899,7 +1950,6 @@ class Isis : public Entity
 
 
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::LspLog::LogEntry::GenericData> generic_data;
-                                class IsisLspTriggerEnum;
 
 
                         }; // Isis::Instances::Instance::Levels::Level::LspLog::LogEntry
@@ -1926,6 +1976,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class LogEntry : public Entity
                         {
                             public:
@@ -1939,8 +1990,9 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lspdb_operation; //type: IsisLspDbOpEnum
 
+
+                                YLeaf lspdb_operation; //type: IsisLspDbOpEnum
 
                             class GenericData : public Entity
                             {
@@ -1957,6 +2009,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Timestamp : public Entity
                                 {
                                     public:
@@ -1970,9 +2023,10 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value seconds; //type: uint32
-                                        Value nano_seconds; //type: uint32
 
+
+                                        YLeaf seconds; //type: uint32
+                                        YLeaf nano_seconds; //type: uint32
 
 
 
@@ -1998,21 +2052,21 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lsp_id; //type: string
-                                    Value local_lsp_flag; //type: boolean
-                                    Value lsp_active_flag; //type: boolean
-                                    Value lsp_holdtime; //type: uint16
-                                    Value lsp_sequence_number; //type: uint32
-                                    Value lsp_checksum; //type: uint16
-                                    Value lsp_parition_repair_supported_flag; //type: boolean
-                                    Value lsp_attached_flag; //type: boolean
-                                    Value lsp_overloaded_flag; //type: boolean
-                                    Value lsp_nonv1a_flag; //type: uint16
-                                    Value lsp_level; //type: IsisLevelsEnum
-                                    Value lsp_length; //type: uint16
 
 
-                                    class IsisLevelsEnum;
+                                    YLeaf lsp_id; //type: string
+                                    YLeaf local_lsp_flag; //type: boolean
+                                    YLeaf lsp_active_flag; //type: boolean
+                                    YLeaf lsp_holdtime; //type: uint16
+                                    YLeaf lsp_sequence_number; //type: uint32
+                                    YLeaf lsp_checksum; //type: uint16
+                                    YLeaf lsp_parition_repair_supported_flag; //type: boolean
+                                    YLeaf lsp_attached_flag; //type: boolean
+                                    YLeaf lsp_overloaded_flag; //type: boolean
+                                    YLeaf lsp_nonv1a_flag; //type: uint16
+                                    YLeaf lsp_level; //type: IsisLevelsEnum
+                                    YLeaf lsp_length; //type: uint16
+
 
 
                             }; // Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::NewLspEntry
@@ -2031,21 +2085,21 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lsp_id; //type: string
-                                    Value local_lsp_flag; //type: boolean
-                                    Value lsp_active_flag; //type: boolean
-                                    Value lsp_holdtime; //type: uint16
-                                    Value lsp_sequence_number; //type: uint32
-                                    Value lsp_checksum; //type: uint16
-                                    Value lsp_parition_repair_supported_flag; //type: boolean
-                                    Value lsp_attached_flag; //type: boolean
-                                    Value lsp_overloaded_flag; //type: boolean
-                                    Value lsp_nonv1a_flag; //type: uint16
-                                    Value lsp_level; //type: IsisLevelsEnum
-                                    Value lsp_length; //type: uint16
 
 
-                                    class IsisLevelsEnum;
+                                    YLeaf lsp_id; //type: string
+                                    YLeaf local_lsp_flag; //type: boolean
+                                    YLeaf lsp_active_flag; //type: boolean
+                                    YLeaf lsp_holdtime; //type: uint16
+                                    YLeaf lsp_sequence_number; //type: uint32
+                                    YLeaf lsp_checksum; //type: uint16
+                                    YLeaf lsp_parition_repair_supported_flag; //type: boolean
+                                    YLeaf lsp_attached_flag; //type: boolean
+                                    YLeaf lsp_overloaded_flag; //type: boolean
+                                    YLeaf lsp_nonv1a_flag; //type: uint16
+                                    YLeaf lsp_level; //type: IsisLevelsEnum
+                                    YLeaf lsp_length; //type: uint16
+
 
 
                             }; // Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::OldLspEntry
@@ -2054,7 +2108,6 @@ class Isis : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::GenericData> generic_data;
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::NewLspEntry> new_lsp_entry;
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry::OldLspEntry> old_lsp_entry;
-                                class IsisLspDbOpEnum;
 
 
                         }; // Isis::Instances::Instance::Levels::Level::DatabaseLog::LogEntry
@@ -2073,7 +2126,6 @@ class Isis : public Entity
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::LspLog> lsp_log;
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::LspTableSummary> lsp_table_summary;
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Levels::Level::Lsps> lsps;
-                        class IsisInternalLevelEnum;
 
 
                 }; // Isis::Instances::Instance::Levels::Level
@@ -2100,6 +2152,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Topology : public Entity
                 {
                     public:
@@ -2113,10 +2166,11 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value af_name; //type: IsisAddressFamilyEnum
-                        Value saf_name; //type: IsisSubAddressFamilyEnum
-                        Value topology_name; //type: string
 
+
+                        YLeaf af_name; //type: IsisAddressFamilyEnum
+                        YLeaf saf_name; //type: IsisSubAddressFamilyEnum
+                        YLeaf topology_name; //type: string
 
                     class FrrSummary : public Entity
                     {
@@ -2131,6 +2185,7 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
+
 
 
                         class Level1Prefixes : public Entity
@@ -2148,6 +2203,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class AllPathsProtected : public Entity
                             {
                                 public:
@@ -2161,11 +2217,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value critical; //type: uint32
-                                    Value high; //type: uint32
-                                    Value medium; //type: uint32
-                                    Value low; //type: uint32
 
+
+                                    YLeaf critical; //type: uint32
+                                    YLeaf high; //type: uint32
+                                    YLeaf medium; //type: uint32
+                                    YLeaf low; //type: uint32
 
 
 
@@ -2185,11 +2242,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value critical; //type: uint32
-                                    Value high; //type: uint32
-                                    Value medium; //type: uint32
-                                    Value low; //type: uint32
 
+
+                                    YLeaf critical; //type: uint32
+                                    YLeaf high; //type: uint32
+                                    YLeaf medium; //type: uint32
+                                    YLeaf low; //type: uint32
 
 
 
@@ -2209,11 +2267,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value critical; //type: uint32
-                                    Value high; //type: uint32
-                                    Value medium; //type: uint32
-                                    Value low; //type: uint32
 
+
+                                    YLeaf critical; //type: uint32
+                                    YLeaf high; //type: uint32
+                                    YLeaf medium; //type: uint32
+                                    YLeaf low; //type: uint32
 
 
 
@@ -2243,6 +2302,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class AllPathsProtected : public Entity
                             {
                                 public:
@@ -2256,11 +2316,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value critical; //type: uint32
-                                    Value high; //type: uint32
-                                    Value medium; //type: uint32
-                                    Value low; //type: uint32
 
+
+                                    YLeaf critical; //type: uint32
+                                    YLeaf high; //type: uint32
+                                    YLeaf medium; //type: uint32
+                                    YLeaf low; //type: uint32
 
 
 
@@ -2280,11 +2341,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value critical; //type: uint32
-                                    Value high; //type: uint32
-                                    Value medium; //type: uint32
-                                    Value low; //type: uint32
 
+
+                                    YLeaf critical; //type: uint32
+                                    YLeaf high; //type: uint32
+                                    YLeaf medium; //type: uint32
+                                    YLeaf low; //type: uint32
 
 
 
@@ -2304,11 +2366,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value critical; //type: uint32
-                                    Value high; //type: uint32
-                                    Value medium; //type: uint32
-                                    Value low; //type: uint32
 
+
+                                    YLeaf critical; //type: uint32
+                                    YLeaf high; //type: uint32
+                                    YLeaf medium; //type: uint32
+                                    YLeaf low; //type: uint32
 
 
 
@@ -2336,11 +2399,12 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value critical; //type: uint32
-                                Value high; //type: uint32
-                                Value medium; //type: uint32
-                                Value low; //type: uint32
 
+
+                                YLeaf critical; //type: uint32
+                                YLeaf high; //type: uint32
+                                YLeaf medium; //type: uint32
+                                YLeaf low; //type: uint32
 
 
 
@@ -2370,6 +2434,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class TopologyLevel : public Entity
                         {
                             public:
@@ -2383,8 +2448,9 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value level; //type: IsisInternalLevelEnum
 
+
+                                YLeaf level; //type: IsisInternalLevelEnum
 
                             class TeAdvertisements : public Entity
                             {
@@ -2399,10 +2465,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value te_adv_data_present; //type: boolean
-                                    Value te_system_id; //type: string
-                                    Value te_local_router_id; //type: string
 
+
+                                    YLeaf te_adv_data_present; //type: boolean
+                                    YLeaf te_system_id; //type: string
+                                    YLeaf te_local_router_id; //type: string
 
                                 class Tepceadv : public Entity
                                 {
@@ -2417,14 +2484,14 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value pce_adv_data_present; //type: boolean
-                                        Value pce_flooding_scope; //type: IsisShTePceFloodingScopeEnum
-                                        Value pce_address_ipv4; //type: string
-                                        Value pce_path_scope_bits; //type: uint8
-                                        Value pce_path_scope_prefs; //type: uint16
 
 
-                                        class IsisShTePceFloodingScopeEnum;
+                                        YLeaf pce_adv_data_present; //type: boolean
+                                        YLeaf pce_flooding_scope; //type: IsisShTePceFloodingScopeEnum
+                                        YLeaf pce_address_ipv4; //type: string
+                                        YLeaf pce_path_scope_bits; //type: uint8
+                                        YLeaf pce_path_scope_prefs; //type: uint16
+
 
 
                                 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::Tepceadv
@@ -2443,21 +2510,22 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value te_neighbor_system_id; //type: string
-                                        Value link_type; //type: IsisShTeLinkEnum
-                                        Value local_ip_address; //type: string
-                                        Value te_neighbor_ip_address; //type: string
-                                        Value te_metric; //type: uint32
-                                        Value te_physical_link_bandwidth; //type: uint32
-                                        Value te_reserved_link_bandwidth; //type: uint32
-                                        Value te_subpool_reserved_link_bandwidth; //type: uint32
-                                        Value te_affinity; //type: uint32
-                                        Value te_ext_admin_num; //type: uint32
-                                        Value te_sub_tlv_data_present; //type: boolean
-                                        ValueList te_transmitted_bandwidth; //type: list of  uint32
-                                        ValueList te_subpool_transmitted_bandwidth; //type: list of  uint32
-                                        ValueList te_ext_admin_sub; //type: list of  uint32
 
+
+                                        YLeaf te_neighbor_system_id; //type: string
+                                        YLeaf link_type; //type: IsisShTeLinkEnum
+                                        YLeaf local_ip_address; //type: string
+                                        YLeaf te_neighbor_ip_address; //type: string
+                                        YLeaf te_metric; //type: uint32
+                                        YLeaf te_physical_link_bandwidth; //type: uint32
+                                        YLeaf te_reserved_link_bandwidth; //type: uint32
+                                        YLeaf te_subpool_reserved_link_bandwidth; //type: uint32
+                                        YLeaf te_affinity; //type: uint32
+                                        YLeaf te_ext_admin_num; //type: uint32
+                                        YLeaf te_sub_tlv_data_present; //type: boolean
+                                        YLeafList te_transmitted_bandwidth; //type: list of  uint32
+                                        YLeafList te_subpool_transmitted_bandwidth; //type: list of  uint32
+                                        YLeafList te_ext_admin_sub; //type: list of  uint32
 
                                     class TeSubTlv : public Entity
                                     {
@@ -2472,10 +2540,11 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value te_sub_tlv_type; //type: uint16
-                                            Value te_sub_tlv_length; //type: uint16
-                                            Value te_sub_tlv_value; //type: string
 
+
+                                            YLeaf te_sub_tlv_type; //type: uint16
+                                            YLeaf te_sub_tlv_length; //type: uint16
+                                            YLeaf te_sub_tlv_value; //type: string
 
 
 
@@ -2483,7 +2552,6 @@ class Isis : public Entity
 
 
                                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv::TeSubTlv> > te_sub_tlv;
-                                        class IsisShTeLinkEnum;
 
 
                                 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements::TeAdv
@@ -2511,6 +2579,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class LogEntry : public Entity
                                 {
                                     public:
@@ -2524,11 +2593,12 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value neighbor_ip_address; //type: string
-                                        Value status; //type: boolean
-                                        Value log_interface; //type: string
-                                        Value te_log_neighbor_system_id; //type: string
 
+
+                                        YLeaf neighbor_ip_address; //type: string
+                                        YLeaf status; //type: boolean
+                                        YLeaf log_interface; //type: string
+                                        YLeaf te_log_neighbor_system_id; //type: string
 
                                     class GenericData : public Entity
                                     {
@@ -2545,6 +2615,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Timestamp : public Entity
                                         {
                                             public:
@@ -2558,9 +2629,10 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value seconds; //type: uint32
-                                                Value nano_seconds; //type: uint32
 
+
+                                                YLeaf seconds; //type: uint32
+                                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -2600,6 +2672,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class LogEntry : public Entity
                                 {
                                     public:
@@ -2613,11 +2686,12 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value class_; //type: IsisSpfClassEnum
-                                        Value wait_enforced; //type: uint32
-                                        Value next_wait_interval; //type: uint32
-                                        Value updated_lsp_count; //type: uint32
 
+
+                                        YLeaf class_; //type: IsisSpfClassEnum
+                                        YLeaf wait_enforced; //type: uint32
+                                        YLeaf next_wait_interval; //type: uint32
+                                        YLeaf updated_lsp_count; //type: uint32
 
                                     class GenericData : public Entity
                                     {
@@ -2634,6 +2708,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Timestamp : public Entity
                                         {
                                             public:
@@ -2647,9 +2722,10 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value seconds; //type: uint32
-                                                Value nano_seconds; //type: uint32
 
+
+                                                YLeaf seconds; //type: uint32
+                                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -2675,12 +2751,13 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value unique_trigger_count; //type: uint32
-                                            Value first_trigger_lsp_id; //type: string
-                                            Value trigger_link; //type: string
-                                            Value trigger_next_hop_id; //type: string
-                                            ValueList trigger; //type: list of  IsisSpfTriggerEnum
 
+
+                                            YLeaf unique_trigger_count; //type: uint32
+                                            YLeaf first_trigger_lsp_id; //type: string
+                                            YLeaf trigger_link; //type: string
+                                            YLeaf trigger_next_hop_id; //type: string
+                                            YLeafList trigger; //type: list of  IsisSpfTriggerEnum
 
                                         class TriggerPrefix : public Entity
                                         {
@@ -2695,8 +2772,9 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: IsisAfIdEnum
 
+
+                                                YLeaf af_name; //type: IsisAfIdEnum
 
                                             class Ipv4 : public Entity
                                             {
@@ -2711,9 +2789,10 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value prefix; //type: string
-                                                    Value prefix_length; //type: uint8
 
+
+                                                    YLeaf prefix; //type: string
+                                                    YLeaf prefix_length; //type: uint8
 
 
 
@@ -2733,9 +2812,10 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value prefix; //type: string
-                                                    Value prefix_length; //type: uint8
 
+
+                                                    YLeaf prefix; //type: string
+                                                    YLeaf prefix_length; //type: uint8
 
 
 
@@ -2744,14 +2824,12 @@ class Isis : public Entity
 
                                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv4> ipv4;
                                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix::Ipv6> ipv6;
-                                                class IsisAfIdEnum;
 
 
                                         }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix
 
 
                                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers::TriggerPrefix> trigger_prefix;
-                                            class IsisSpfTriggerEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers
@@ -2772,6 +2850,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Duration : public Entity
                                         {
                                             public:
@@ -2785,9 +2864,10 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value real_duration; //type: uint32
-                                                Value cpu_duration; //type: uint32
 
+
+                                                YLeaf real_duration; //type: uint32
+                                                YLeaf cpu_duration; //type: uint32
 
 
 
@@ -2807,13 +2887,14 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value unreachable; //type: uint32
-                                                Value reachable; //type: uint32
-                                                Value added; //type: uint32
-                                                Value deleted; //type: uint32
-                                                Value modified; //type: uint32
-                                                Value touched; //type: uint32
 
+
+                                                YLeaf unreachable; //type: uint32
+                                                YLeaf reachable; //type: uint32
+                                                YLeaf added; //type: uint32
+                                                YLeaf deleted; //type: uint32
+                                                YLeaf modified; //type: uint32
+                                                YLeaf touched; //type: uint32
 
 
 
@@ -2842,6 +2923,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Duration : public Entity
                                         {
                                             public:
@@ -2855,9 +2937,10 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value real_duration; //type: uint32
-                                                Value cpu_duration; //type: uint32
 
+
+                                                YLeaf real_duration; //type: uint32
+                                                YLeaf cpu_duration; //type: uint32
 
 
 
@@ -2879,6 +2962,7 @@ class Isis : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class LocalRibUpdate : public Entity
                                             {
                                                 public:
@@ -2894,6 +2978,7 @@ class Isis : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Critical : public Entity
                                                 {
                                                     public:
@@ -2907,9 +2992,10 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value real_duration; //type: uint32
-                                                        Value cpu_duration; //type: uint32
 
+
+                                                        YLeaf real_duration; //type: uint32
+                                                        YLeaf cpu_duration; //type: uint32
 
 
 
@@ -2929,9 +3015,10 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value real_duration; //type: uint32
-                                                        Value cpu_duration; //type: uint32
 
+
+                                                        YLeaf real_duration; //type: uint32
+                                                        YLeaf cpu_duration; //type: uint32
 
 
 
@@ -2951,9 +3038,10 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value real_duration; //type: uint32
-                                                        Value cpu_duration; //type: uint32
 
+
+                                                        YLeaf real_duration; //type: uint32
+                                                        YLeaf cpu_duration; //type: uint32
 
 
 
@@ -2973,9 +3061,10 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value real_duration; //type: uint32
-                                                        Value cpu_duration; //type: uint32
 
+
+                                                        YLeaf real_duration; //type: uint32
+                                                        YLeaf cpu_duration; //type: uint32
 
 
 
@@ -3006,6 +3095,7 @@ class Isis : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Critical : public Entity
                                                 {
                                                     public:
@@ -3019,9 +3109,10 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value real_duration; //type: uint32
-                                                        Value cpu_duration; //type: uint32
 
+
+                                                        YLeaf real_duration; //type: uint32
+                                                        YLeaf cpu_duration; //type: uint32
 
 
 
@@ -3041,9 +3132,10 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value real_duration; //type: uint32
-                                                        Value cpu_duration; //type: uint32
 
+
+                                                        YLeaf real_duration; //type: uint32
+                                                        YLeaf cpu_duration; //type: uint32
 
 
 
@@ -3063,9 +3155,10 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value real_duration; //type: uint32
-                                                        Value cpu_duration; //type: uint32
 
+
+                                                        YLeaf real_duration; //type: uint32
+                                                        YLeaf cpu_duration; //type: uint32
 
 
 
@@ -3085,9 +3178,10 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value real_duration; //type: uint32
-                                                        Value cpu_duration; //type: uint32
 
+
+                                                        YLeaf real_duration; //type: uint32
+                                                        YLeaf cpu_duration; //type: uint32
 
 
 
@@ -3118,6 +3212,7 @@ class Isis : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Critical : public Entity
                                                 {
                                                     public:
@@ -3131,9 +3226,10 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value real_duration; //type: uint32
-                                                        Value cpu_duration; //type: uint32
 
+
+                                                        YLeaf real_duration; //type: uint32
+                                                        YLeaf cpu_duration; //type: uint32
 
 
 
@@ -3153,9 +3249,10 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value real_duration; //type: uint32
-                                                        Value cpu_duration; //type: uint32
 
+
+                                                        YLeaf real_duration; //type: uint32
+                                                        YLeaf cpu_duration; //type: uint32
 
 
 
@@ -3175,9 +3272,10 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value real_duration; //type: uint32
-                                                        Value cpu_duration; //type: uint32
 
+
+                                                        YLeaf real_duration; //type: uint32
+                                                        YLeaf cpu_duration; //type: uint32
 
 
 
@@ -3197,9 +3295,10 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value real_duration; //type: uint32
-                                                        Value cpu_duration; //type: uint32
 
+
+                                                        YLeaf real_duration; //type: uint32
+                                                        YLeaf cpu_duration; //type: uint32
 
 
 
@@ -3236,8 +3335,9 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value total_touched; //type: uint32
 
+
+                                                YLeaf total_touched; //type: uint32
 
                                             class PerPriorityTouched : public Entity
                                             {
@@ -3252,11 +3352,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3284,6 +3385,7 @@ class Isis : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Unreachable : public Entity
                                             {
                                                 public:
@@ -3297,11 +3399,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3321,11 +3424,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3345,11 +3449,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3369,11 +3474,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3393,11 +3499,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3417,11 +3524,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3454,6 +3562,7 @@ class Isis : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Unreachable : public Entity
                                             {
                                                 public:
@@ -3467,11 +3576,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3491,11 +3601,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3515,11 +3626,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3539,11 +3651,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3563,11 +3676,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3587,11 +3701,12 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value critical; //type: uint32
-                                                    Value high; //type: uint32
-                                                    Value medium; //type: uint32
-                                                    Value low; //type: uint32
 
+
+                                                    YLeaf critical; //type: uint32
+                                                    YLeaf high; //type: uint32
+                                                    YLeaf medium; //type: uint32
+                                                    YLeaf low; //type: uint32
 
 
 
@@ -3622,11 +3737,12 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value critical; //type: uint32
-                                                Value high; //type: uint32
-                                                Value medium; //type: uint32
-                                                Value low; //type: uint32
 
+
+                                                YLeaf critical; //type: uint32
+                                                YLeaf high; //type: uint32
+                                                YLeaf medium; //type: uint32
+                                                YLeaf low; //type: uint32
 
 
 
@@ -3648,7 +3764,6 @@ class Isis : public Entity
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics> route_update_statistics;
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::SptCalculationStatistics> spt_calculation_statistics;
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::Triggers> triggers;
-                                        class IsisSpfClassEnum;
 
 
                                 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry
@@ -3675,6 +3790,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TeTunnel : public Entity
                                 {
                                     public:
@@ -3688,23 +3804,23 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value system_id; //type: string
-                                        Value interface_name; //type: string
-                                        Value te_system_id; //type: string
-                                        Value te_interface; //type: string
-                                        Value te_bandwidth; //type: uint32
-                                        Value teigp_metric; //type: int32
-                                        Value te_next_hop_ip_address; //type: string
-                                        Value te_mode_type; //type: IsisMetricModeEnum
-                                        Value teipv4fa_enabled; //type: boolean
-                                        Value teipv6fa_enabled; //type: boolean
-                                        Value teipv4aa_enabled; //type: boolean
-                                        Value teipv6aa_enabled; //type: boolean
-                                        Value te_checkpoint_object_id; //type: uint32
-                                        Value te_segment_routing_enabled; //type: boolean
 
 
-                                        class IsisMetricModeEnum;
+                                        YLeaf system_id; //type: string
+                                        YLeaf interface_name; //type: string
+                                        YLeaf te_system_id; //type: string
+                                        YLeaf te_interface; //type: string
+                                        YLeaf te_bandwidth; //type: uint32
+                                        YLeaf teigp_metric; //type: int32
+                                        YLeaf te_next_hop_ip_address; //type: string
+                                        YLeaf te_mode_type; //type: IsisMetricModeEnum
+                                        YLeaf teipv4fa_enabled; //type: boolean
+                                        YLeaf teipv6fa_enabled; //type: boolean
+                                        YLeaf teipv4aa_enabled; //type: boolean
+                                        YLeaf teipv6aa_enabled; //type: boolean
+                                        YLeaf te_checkpoint_object_id; //type: uint32
+                                        YLeaf te_segment_routing_enabled; //type: boolean
+
 
 
                                 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels::TeTunnel
@@ -3731,6 +3847,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Ipv4LinkTopology : public Entity
                                 {
                                     public:
@@ -3744,12 +3861,13 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value system_id; //type: string
-                                        Value source_address; //type: string
-                                        Value is_participant; //type: boolean
-                                        Value is_overloaded; //type: boolean
-                                        Value is_attached; //type: boolean
 
+
+                                        YLeaf system_id; //type: string
+                                        YLeaf source_address; //type: string
+                                        YLeaf is_participant; //type: boolean
+                                        YLeaf is_overloaded; //type: boolean
+                                        YLeaf is_attached; //type: boolean
 
                                     class ReachabilityStatus : public Entity
                                     {
@@ -3764,8 +3882,9 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value reachable_status; //type: IsisReachableEnum
 
+
+                                            YLeaf reachable_status; //type: IsisReachableEnum
 
                                         class ReachableDetails : public Entity
                                         {
@@ -3780,9 +3899,10 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value root_distance; //type: uint32
-                                                Value multicast_root_distance; //type: uint32
 
+
+                                                YLeaf root_distance; //type: uint32
+                                                YLeaf multicast_root_distance; //type: uint32
 
                                             class Paths : public Entity
                                             {
@@ -3797,14 +3917,15 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value tag; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value weight; //type: uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf tag; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf weight; //type: uint32
 
                                                 class FrrBackup : public Entity
                                                 {
@@ -3819,31 +3940,32 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value neighbor_id; //type: string
-                                                        Value egress_interface; //type: string
-                                                        Value neighbor_address; //type: string
-                                                        Value tunnel_egress_interface; //type: string
-                                                        Value neighbor_snpa; //type: string
-                                                        Value remote_lfa_system_id; //type: string
-                                                        Value remote_lfa_router_id; //type: string
-                                                        Value remote_lfa_system_pid; //type: string
-                                                        Value remote_lfa_router_pid; //type: string
-                                                        Value total_backup_distance; //type: uint32
-                                                        Value segment_routing_sid_value; //type: uint32
-                                                        Value num_sid; //type: uint32
-                                                        Value backup_repair_list_size; //type: uint32
-                                                        Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                        Value is_downstream; //type: boolean
-                                                        Value is_lc_disjoint; //type: boolean
-                                                        Value is_node_protecting; //type: boolean
-                                                        Value is_primary_path; //type: boolean
-                                                        Value is_srlg_disjoint; //type: boolean
-                                                        Value is_remote_lfa; //type: boolean
-                                                        Value is_epcfrr_lfa; //type: boolean
-                                                        Value is_tunnel_requested; //type: boolean
-                                                        Value weight; //type: uint32
-                                                        ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                        YLeaf neighbor_id; //type: string
+                                                        YLeaf egress_interface; //type: string
+                                                        YLeaf neighbor_address; //type: string
+                                                        YLeaf tunnel_egress_interface; //type: string
+                                                        YLeaf neighbor_snpa; //type: string
+                                                        YLeaf remote_lfa_system_id; //type: string
+                                                        YLeaf remote_lfa_router_id; //type: string
+                                                        YLeaf remote_lfa_system_pid; //type: string
+                                                        YLeaf remote_lfa_router_pid; //type: string
+                                                        YLeaf total_backup_distance; //type: uint32
+                                                        YLeaf segment_routing_sid_value; //type: uint32
+                                                        YLeaf num_sid; //type: uint32
+                                                        YLeaf backup_repair_list_size; //type: uint32
+                                                        YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                        YLeaf is_downstream; //type: boolean
+                                                        YLeaf is_lc_disjoint; //type: boolean
+                                                        YLeaf is_node_protecting; //type: boolean
+                                                        YLeaf is_primary_path; //type: boolean
+                                                        YLeaf is_srlg_disjoint; //type: boolean
+                                                        YLeaf is_remote_lfa; //type: boolean
+                                                        YLeaf is_epcfrr_lfa; //type: boolean
+                                                        YLeaf is_tunnel_requested; //type: boolean
+                                                        YLeaf weight; //type: uint32
+                                                        YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                     class BackupRepair : public Entity
                                                     {
@@ -3858,12 +3980,13 @@ class Isis : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value repair_element_node_id; //type: string
-                                                            Value repair_ipv4_addr; //type: string
-                                                            Value repair_ipv6_addr; //type: string
-                                                            Value repair_label; //type: uint32
-                                                            Value repair_element_type; //type: uint32
 
+
+                                                            YLeaf repair_element_node_id; //type: string
+                                                            YLeaf repair_ipv4_addr; //type: string
+                                                            YLeaf repair_ipv6_addr; //type: string
+                                                            YLeaf repair_label; //type: uint32
+                                                            YLeaf repair_element_type; //type: uint32
 
 
 
@@ -3871,7 +3994,6 @@ class Isis : public Entity
 
 
                                                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair> > backup_repair;
-                                                        class IsisTilfaComputationEnum;
 
 
                                                 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup
@@ -3896,14 +4018,15 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value tag; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value weight; //type: uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf tag; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf weight; //type: uint32
 
                                                 class FrrBackup : public Entity
                                                 {
@@ -3918,31 +4041,32 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value neighbor_id; //type: string
-                                                        Value egress_interface; //type: string
-                                                        Value neighbor_address; //type: string
-                                                        Value tunnel_egress_interface; //type: string
-                                                        Value neighbor_snpa; //type: string
-                                                        Value remote_lfa_system_id; //type: string
-                                                        Value remote_lfa_router_id; //type: string
-                                                        Value remote_lfa_system_pid; //type: string
-                                                        Value remote_lfa_router_pid; //type: string
-                                                        Value total_backup_distance; //type: uint32
-                                                        Value segment_routing_sid_value; //type: uint32
-                                                        Value num_sid; //type: uint32
-                                                        Value backup_repair_list_size; //type: uint32
-                                                        Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                        Value is_downstream; //type: boolean
-                                                        Value is_lc_disjoint; //type: boolean
-                                                        Value is_node_protecting; //type: boolean
-                                                        Value is_primary_path; //type: boolean
-                                                        Value is_srlg_disjoint; //type: boolean
-                                                        Value is_remote_lfa; //type: boolean
-                                                        Value is_epcfrr_lfa; //type: boolean
-                                                        Value is_tunnel_requested; //type: boolean
-                                                        Value weight; //type: uint32
-                                                        ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                        YLeaf neighbor_id; //type: string
+                                                        YLeaf egress_interface; //type: string
+                                                        YLeaf neighbor_address; //type: string
+                                                        YLeaf tunnel_egress_interface; //type: string
+                                                        YLeaf neighbor_snpa; //type: string
+                                                        YLeaf remote_lfa_system_id; //type: string
+                                                        YLeaf remote_lfa_router_id; //type: string
+                                                        YLeaf remote_lfa_system_pid; //type: string
+                                                        YLeaf remote_lfa_router_pid; //type: string
+                                                        YLeaf total_backup_distance; //type: uint32
+                                                        YLeaf segment_routing_sid_value; //type: uint32
+                                                        YLeaf num_sid; //type: uint32
+                                                        YLeaf backup_repair_list_size; //type: uint32
+                                                        YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                        YLeaf is_downstream; //type: boolean
+                                                        YLeaf is_lc_disjoint; //type: boolean
+                                                        YLeaf is_node_protecting; //type: boolean
+                                                        YLeaf is_primary_path; //type: boolean
+                                                        YLeaf is_srlg_disjoint; //type: boolean
+                                                        YLeaf is_remote_lfa; //type: boolean
+                                                        YLeaf is_epcfrr_lfa; //type: boolean
+                                                        YLeaf is_tunnel_requested; //type: boolean
+                                                        YLeaf weight; //type: uint32
+                                                        YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                     class BackupRepair : public Entity
                                                     {
@@ -3957,12 +4081,13 @@ class Isis : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value repair_element_node_id; //type: string
-                                                            Value repair_ipv4_addr; //type: string
-                                                            Value repair_ipv6_addr; //type: string
-                                                            Value repair_label; //type: uint32
-                                                            Value repair_element_type; //type: uint32
 
+
+                                                            YLeaf repair_element_node_id; //type: string
+                                                            YLeaf repair_ipv4_addr; //type: string
+                                                            YLeaf repair_ipv6_addr; //type: string
+                                                            YLeaf repair_label; //type: uint32
+                                                            YLeaf repair_element_type; //type: uint32
 
 
 
@@ -3970,7 +4095,6 @@ class Isis : public Entity
 
 
                                                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-                                                        class IsisTilfaComputationEnum;
 
 
                                                 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup
@@ -3995,9 +4119,10 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value intermediate_pseudonode; //type: string
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf intermediate_pseudonode; //type: string
 
 
 
@@ -4017,9 +4142,10 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value intermediate_pseudonode; //type: string
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf intermediate_pseudonode; //type: string
 
 
 
@@ -4036,7 +4162,6 @@ class Isis : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails> reachable_details;
-                                            class IsisReachableEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus
@@ -4055,11 +4180,12 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value critical; //type: uint32
-                                            Value high; //type: uint32
-                                            Value medium; //type: uint32
-                                            Value low; //type: uint32
 
+
+                                            YLeaf critical; //type: uint32
+                                            YLeaf high; //type: uint32
+                                            YLeaf medium; //type: uint32
+                                            YLeaf low; //type: uint32
 
 
 
@@ -4094,6 +4220,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class RouterNodeCount : public Entity
                                 {
                                     public:
@@ -4107,10 +4234,11 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value reachable_node_count; //type: uint32
-                                        Value unreachable_node_count; //type: uint32
-                                        Value unreachable_participant_node_count; //type: uint32
 
+
+                                        YLeaf reachable_node_count; //type: uint32
+                                        YLeaf unreachable_node_count; //type: uint32
+                                        YLeaf unreachable_participant_node_count; //type: uint32
 
 
 
@@ -4130,10 +4258,11 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value reachable_node_count; //type: uint32
-                                        Value unreachable_node_count; //type: uint32
-                                        Value unreachable_participant_node_count; //type: uint32
 
+
+                                        YLeaf reachable_node_count; //type: uint32
+                                        YLeaf unreachable_node_count; //type: uint32
+                                        YLeaf unreachable_participant_node_count; //type: uint32
 
 
 
@@ -4162,6 +4291,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Ipv6LinkTopology : public Entity
                                 {
                                     public:
@@ -4175,12 +4305,13 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value system_id; //type: string
-                                        Value source_address; //type: string
-                                        Value is_participant; //type: boolean
-                                        Value is_overloaded; //type: boolean
-                                        Value is_attached; //type: boolean
 
+
+                                        YLeaf system_id; //type: string
+                                        YLeaf source_address; //type: string
+                                        YLeaf is_participant; //type: boolean
+                                        YLeaf is_overloaded; //type: boolean
+                                        YLeaf is_attached; //type: boolean
 
                                     class ReachabilityStatus : public Entity
                                     {
@@ -4195,8 +4326,9 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value reachable_status; //type: IsisReachableEnum
 
+
+                                            YLeaf reachable_status; //type: IsisReachableEnum
 
                                         class ReachableDetails : public Entity
                                         {
@@ -4211,9 +4343,10 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value root_distance; //type: uint32
-                                                Value multicast_root_distance; //type: uint32
 
+
+                                                YLeaf root_distance; //type: uint32
+                                                YLeaf multicast_root_distance; //type: uint32
 
                                             class Paths : public Entity
                                             {
@@ -4228,14 +4361,15 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value tag; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value weight; //type: uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf tag; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf weight; //type: uint32
 
                                                 class FrrBackup : public Entity
                                                 {
@@ -4250,31 +4384,32 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value neighbor_id; //type: string
-                                                        Value egress_interface; //type: string
-                                                        Value neighbor_address; //type: string
-                                                        Value tunnel_egress_interface; //type: string
-                                                        Value neighbor_snpa; //type: string
-                                                        Value remote_lfa_system_id; //type: string
-                                                        Value remote_lfa_router_id; //type: string
-                                                        Value remote_lfa_system_pid; //type: string
-                                                        Value remote_lfa_router_pid; //type: string
-                                                        Value total_backup_distance; //type: uint32
-                                                        Value segment_routing_sid_value; //type: uint32
-                                                        Value num_sid; //type: uint32
-                                                        Value backup_repair_list_size; //type: uint32
-                                                        Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                        Value is_downstream; //type: boolean
-                                                        Value is_lc_disjoint; //type: boolean
-                                                        Value is_node_protecting; //type: boolean
-                                                        Value is_primary_path; //type: boolean
-                                                        Value is_srlg_disjoint; //type: boolean
-                                                        Value is_remote_lfa; //type: boolean
-                                                        Value is_epcfrr_lfa; //type: boolean
-                                                        Value is_tunnel_requested; //type: boolean
-                                                        Value weight; //type: uint32
-                                                        ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                        YLeaf neighbor_id; //type: string
+                                                        YLeaf egress_interface; //type: string
+                                                        YLeaf neighbor_address; //type: string
+                                                        YLeaf tunnel_egress_interface; //type: string
+                                                        YLeaf neighbor_snpa; //type: string
+                                                        YLeaf remote_lfa_system_id; //type: string
+                                                        YLeaf remote_lfa_router_id; //type: string
+                                                        YLeaf remote_lfa_system_pid; //type: string
+                                                        YLeaf remote_lfa_router_pid; //type: string
+                                                        YLeaf total_backup_distance; //type: uint32
+                                                        YLeaf segment_routing_sid_value; //type: uint32
+                                                        YLeaf num_sid; //type: uint32
+                                                        YLeaf backup_repair_list_size; //type: uint32
+                                                        YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                        YLeaf is_downstream; //type: boolean
+                                                        YLeaf is_lc_disjoint; //type: boolean
+                                                        YLeaf is_node_protecting; //type: boolean
+                                                        YLeaf is_primary_path; //type: boolean
+                                                        YLeaf is_srlg_disjoint; //type: boolean
+                                                        YLeaf is_remote_lfa; //type: boolean
+                                                        YLeaf is_epcfrr_lfa; //type: boolean
+                                                        YLeaf is_tunnel_requested; //type: boolean
+                                                        YLeaf weight; //type: uint32
+                                                        YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                     class BackupRepair : public Entity
                                                     {
@@ -4289,12 +4424,13 @@ class Isis : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value repair_element_node_id; //type: string
-                                                            Value repair_ipv4_addr; //type: string
-                                                            Value repair_ipv6_addr; //type: string
-                                                            Value repair_label; //type: uint32
-                                                            Value repair_element_type; //type: uint32
 
+
+                                                            YLeaf repair_element_node_id; //type: string
+                                                            YLeaf repair_ipv4_addr; //type: string
+                                                            YLeaf repair_ipv6_addr; //type: string
+                                                            YLeaf repair_label; //type: uint32
+                                                            YLeaf repair_element_type; //type: uint32
 
 
 
@@ -4302,7 +4438,6 @@ class Isis : public Entity
 
 
                                                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair> > backup_repair;
-                                                        class IsisTilfaComputationEnum;
 
 
                                                 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup
@@ -4327,14 +4462,15 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value tag; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value weight; //type: uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf tag; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf weight; //type: uint32
 
                                                 class FrrBackup : public Entity
                                                 {
@@ -4349,31 +4485,32 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value neighbor_id; //type: string
-                                                        Value egress_interface; //type: string
-                                                        Value neighbor_address; //type: string
-                                                        Value tunnel_egress_interface; //type: string
-                                                        Value neighbor_snpa; //type: string
-                                                        Value remote_lfa_system_id; //type: string
-                                                        Value remote_lfa_router_id; //type: string
-                                                        Value remote_lfa_system_pid; //type: string
-                                                        Value remote_lfa_router_pid; //type: string
-                                                        Value total_backup_distance; //type: uint32
-                                                        Value segment_routing_sid_value; //type: uint32
-                                                        Value num_sid; //type: uint32
-                                                        Value backup_repair_list_size; //type: uint32
-                                                        Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                        Value is_downstream; //type: boolean
-                                                        Value is_lc_disjoint; //type: boolean
-                                                        Value is_node_protecting; //type: boolean
-                                                        Value is_primary_path; //type: boolean
-                                                        Value is_srlg_disjoint; //type: boolean
-                                                        Value is_remote_lfa; //type: boolean
-                                                        Value is_epcfrr_lfa; //type: boolean
-                                                        Value is_tunnel_requested; //type: boolean
-                                                        Value weight; //type: uint32
-                                                        ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                        YLeaf neighbor_id; //type: string
+                                                        YLeaf egress_interface; //type: string
+                                                        YLeaf neighbor_address; //type: string
+                                                        YLeaf tunnel_egress_interface; //type: string
+                                                        YLeaf neighbor_snpa; //type: string
+                                                        YLeaf remote_lfa_system_id; //type: string
+                                                        YLeaf remote_lfa_router_id; //type: string
+                                                        YLeaf remote_lfa_system_pid; //type: string
+                                                        YLeaf remote_lfa_router_pid; //type: string
+                                                        YLeaf total_backup_distance; //type: uint32
+                                                        YLeaf segment_routing_sid_value; //type: uint32
+                                                        YLeaf num_sid; //type: uint32
+                                                        YLeaf backup_repair_list_size; //type: uint32
+                                                        YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                        YLeaf is_downstream; //type: boolean
+                                                        YLeaf is_lc_disjoint; //type: boolean
+                                                        YLeaf is_node_protecting; //type: boolean
+                                                        YLeaf is_primary_path; //type: boolean
+                                                        YLeaf is_srlg_disjoint; //type: boolean
+                                                        YLeaf is_remote_lfa; //type: boolean
+                                                        YLeaf is_epcfrr_lfa; //type: boolean
+                                                        YLeaf is_tunnel_requested; //type: boolean
+                                                        YLeaf weight; //type: uint32
+                                                        YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                     class BackupRepair : public Entity
                                                     {
@@ -4388,12 +4525,13 @@ class Isis : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value repair_element_node_id; //type: string
-                                                            Value repair_ipv4_addr; //type: string
-                                                            Value repair_ipv6_addr; //type: string
-                                                            Value repair_label; //type: uint32
-                                                            Value repair_element_type; //type: uint32
 
+
+                                                            YLeaf repair_element_node_id; //type: string
+                                                            YLeaf repair_ipv4_addr; //type: string
+                                                            YLeaf repair_ipv6_addr; //type: string
+                                                            YLeaf repair_label; //type: uint32
+                                                            YLeaf repair_element_type; //type: uint32
 
 
 
@@ -4401,7 +4539,6 @@ class Isis : public Entity
 
 
                                                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-                                                        class IsisTilfaComputationEnum;
 
 
                                                 }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup
@@ -4426,9 +4563,10 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value intermediate_pseudonode; //type: string
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf intermediate_pseudonode; //type: string
 
 
 
@@ -4448,9 +4586,10 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value intermediate_pseudonode; //type: string
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf intermediate_pseudonode; //type: string
 
 
 
@@ -4467,7 +4606,6 @@ class Isis : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails> reachable_details;
-                                            class IsisReachableEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus
@@ -4486,11 +4624,12 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value critical; //type: uint32
-                                            Value high; //type: uint32
-                                            Value medium; //type: uint32
-                                            Value low; //type: uint32
 
+
+                                            YLeaf critical; //type: uint32
+                                            YLeaf high; //type: uint32
+                                            YLeaf medium; //type: uint32
+                                            YLeaf low; //type: uint32
 
 
 
@@ -4517,7 +4656,6 @@ class Isis : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeAdvertisements> te_advertisements;
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels> te_tunnels;
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary> topology_summary;
-                                class IsisInternalLevelEnum;
 
 
                         }; // Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel
@@ -4544,6 +4682,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Ipv6Route : public Entity
                         {
                             public:
@@ -4557,9 +4696,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint32
 
+
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint32
 
                             class ConnectedStatus : public Entity
                             {
@@ -4574,8 +4714,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_valid; //type: IsisValidEnum
 
+
+                                    YLeaf is_valid; //type: IsisValidEnum
 
                                 class ConnectedDetails : public Entity
                                 {
@@ -4590,8 +4731,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        ValueList interface; //type: list of  string
 
+
+                                        YLeafList interface; //type: list of  string
 
 
 
@@ -4599,7 +4741,6 @@ class Isis : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::ConnectedDetails> connected_details;
-                                    class IsisValidEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus
@@ -4618,8 +4759,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_valid; //type: IsisValidEnum
 
+
+                                    YLeaf is_valid; //type: IsisValidEnum
 
                                 class RedistributionDetails : public Entity
                                 {
@@ -4636,6 +4778,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class IsisShRouteRedistDetail : public Entity
                                     {
                                         public:
@@ -4649,8 +4792,9 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level; //type: IsisLevelEnum
 
+
+                                            YLeaf level; //type: IsisLevelEnum
 
                                         class Owner : public Entity
                                         {
@@ -4665,23 +4809,22 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value protocol; //type: IsisRedistProtoEnum
-                                                Value isis_instance_id; //type: string
-                                                Value ospf_process_id; //type: string
-                                                Value ospfv3_process_id; //type: string
-                                                Value bgp_as_number; //type: string
-                                                Value eigrp_as_number; //type: string
-                                                Value application_name; //type: string
 
 
-                                                class IsisRedistProtoEnum;
+                                                YLeaf protocol; //type: IsisRedistProtoEnum
+                                                YLeaf isis_instance_id; //type: string
+                                                YLeaf ospf_process_id; //type: string
+                                                YLeaf ospfv3_process_id; //type: string
+                                                YLeaf bgp_as_number; //type: string
+                                                YLeaf eigrp_as_number; //type: string
+                                                YLeaf application_name; //type: string
+
 
 
                                         }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
 
 
                                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner> owner;
-                                            class IsisLevelEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
@@ -4694,7 +4837,6 @@ class Isis : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails> redistribution_details;
-                                    class IsisValidEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus
@@ -4713,8 +4855,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_valid; //type: IsisValidEnum
 
+
+                                    YLeaf is_valid; //type: IsisValidEnum
 
                                 class NativeDetails : public Entity
                                 {
@@ -4729,8 +4872,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value priority; //type: IsisPrefixPriorityEnum
 
+
+                                        YLeaf priority; //type: IsisPrefixPriorityEnum
 
                                     class Primary : public Entity
                                     {
@@ -4745,12 +4889,13 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value origin; //type: IsisPrefixOriginEnum
-                                            Value metric; //type: uint32
-                                            Value multicast_metric; //type: uint32
-                                            Value is_external_metric; //type: boolean
-                                            Value administrative_distance; //type: uint16
 
+
+                                            YLeaf origin; //type: IsisPrefixOriginEnum
+                                            YLeaf metric; //type: uint32
+                                            YLeaf multicast_metric; //type: uint32
+                                            YLeaf is_external_metric; //type: boolean
+                                            YLeaf administrative_distance; //type: uint16
 
                                         class Paths : public Entity
                                         {
@@ -4765,14 +4910,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -4787,31 +4933,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -4826,12 +4973,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -4839,7 +4987,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
@@ -4864,15 +5011,16 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value total_ucmp_distance; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf total_ucmp_distance; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -4887,31 +5035,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -4926,12 +5075,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -4939,7 +5089,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
@@ -4964,14 +5113,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -4986,31 +5136,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -5025,12 +5176,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -5038,7 +5190,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
@@ -5063,14 +5214,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -5085,31 +5237,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -5124,12 +5277,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -5137,7 +5291,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
@@ -5162,10 +5315,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -5180,15 +5334,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -5214,10 +5369,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -5232,15 +5388,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -5259,7 +5416,6 @@ class Isis : public Entity
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source> > source;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath> > srte_path;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop> > ucmp_next_hop;
-                                            class IsisPrefixOriginEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary
@@ -5278,12 +5434,13 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value origin; //type: IsisPrefixOriginEnum
-                                            Value metric; //type: uint32
-                                            Value multicast_metric; //type: uint32
-                                            Value is_external_metric; //type: boolean
-                                            Value administrative_distance; //type: uint16
 
+
+                                            YLeaf origin; //type: IsisPrefixOriginEnum
+                                            YLeaf metric; //type: uint32
+                                            YLeaf multicast_metric; //type: uint32
+                                            YLeaf is_external_metric; //type: boolean
+                                            YLeaf administrative_distance; //type: uint16
 
                                         class Paths : public Entity
                                         {
@@ -5298,14 +5455,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -5320,31 +5478,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -5359,12 +5518,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -5372,7 +5532,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
@@ -5397,15 +5556,16 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value total_ucmp_distance; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf total_ucmp_distance; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -5420,31 +5580,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -5459,12 +5620,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -5472,7 +5634,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
@@ -5497,14 +5658,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -5519,31 +5681,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -5558,12 +5721,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -5571,7 +5735,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
@@ -5596,14 +5759,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -5618,31 +5782,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -5657,12 +5822,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -5670,7 +5836,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
@@ -5695,10 +5860,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -5713,15 +5879,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -5747,10 +5914,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -5765,15 +5933,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -5792,7 +5961,6 @@ class Isis : public Entity
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source> > source;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath> > srte_path;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop> > ucmp_next_hop;
-                                            class IsisPrefixOriginEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup
@@ -5800,14 +5968,12 @@ class Isis : public Entity
 
                                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup> > backup;
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary> primary;
-                                        class IsisPrefixPriorityEnum;
 
 
                                 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails> native_details;
-                                    class IsisValidEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus
@@ -5826,15 +5992,16 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisLevelEnum
-                                    Value advertising_origin; //type: IsisShRouteAdvOriginEnum
-                                    Value metric; //type: uint32
-                                    Value is_propagated; //type: boolean
-                                    Value is_external_metric; //type: boolean
-                                    Value is_external_reachability; //type: boolean
-                                    Value is_interarea; //type: boolean
-                                    ValueList tags; //type: list of  uint32
 
+
+                                    YLeaf level; //type: IsisLevelEnum
+                                    YLeaf advertising_origin; //type: IsisShRouteAdvOriginEnum
+                                    YLeaf metric; //type: uint32
+                                    YLeaf is_propagated; //type: boolean
+                                    YLeaf is_external_metric; //type: boolean
+                                    YLeaf is_external_reachability; //type: boolean
+                                    YLeaf is_interarea; //type: boolean
+                                    YLeafList tags; //type: list of  uint32
 
                                 class SummarizationStatus : public Entity
                                 {
@@ -5849,8 +6016,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value is_valid; //type: IsisValidEnum
 
+
+                                        YLeaf is_valid; //type: IsisValidEnum
 
                                     class SummaryPrefix : public Entity
                                     {
@@ -5865,9 +6033,10 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value prefix; //type: string
-                                            Value prefix_length; //type: uint8
 
+
+                                            YLeaf prefix; //type: string
+                                            YLeaf prefix_length; //type: uint8
 
 
 
@@ -5875,7 +6044,6 @@ class Isis : public Entity
 
 
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix> summary_prefix;
-                                        class IsisValidEnum;
 
 
                                 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus
@@ -5894,15 +6062,16 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sid_value; //type: uint32
-                                        Value rflag; //type: uint8
-                                        Value nflag; //type: uint8
-                                        Value pflag; //type: uint8
-                                        Value eflag; //type: uint8
-                                        Value vflag; //type: uint8
-                                        Value lflag; //type: uint8
-                                        Value algorithm; //type: uint8
 
+
+                                        YLeaf sid_value; //type: uint32
+                                        YLeaf rflag; //type: uint8
+                                        YLeaf nflag; //type: uint8
+                                        YLeaf pflag; //type: uint8
+                                        YLeaf eflag; //type: uint8
+                                        YLeaf vflag; //type: uint8
+                                        YLeaf lflag; //type: uint8
+                                        YLeaf algorithm; //type: uint8
 
 
 
@@ -5911,8 +6080,6 @@ class Isis : public Entity
 
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::NodalSid> > nodal_sid;
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus> summarization_status;
-                                    class IsisShRouteAdvOriginEnum;
-                                    class IsisLevelEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail
@@ -5948,6 +6115,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Ipv6FrrBackup : public Entity
                         {
                             public:
@@ -5961,9 +6129,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint32
 
+
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint32
 
                             class ConnectedStatus : public Entity
                             {
@@ -5978,8 +6147,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_valid; //type: IsisValidEnum
 
+
+                                    YLeaf is_valid; //type: IsisValidEnum
 
                                 class ConnectedDetails : public Entity
                                 {
@@ -5994,8 +6164,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        ValueList interface; //type: list of  string
 
+
+                                        YLeafList interface; //type: list of  string
 
 
 
@@ -6003,7 +6174,6 @@ class Isis : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::ConnectedDetails> connected_details;
-                                    class IsisValidEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus
@@ -6022,8 +6192,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_valid; //type: IsisValidEnum
 
+
+                                    YLeaf is_valid; //type: IsisValidEnum
 
                                 class RedistributionDetails : public Entity
                                 {
@@ -6040,6 +6211,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class IsisShRouteRedistDetail : public Entity
                                     {
                                         public:
@@ -6053,8 +6225,9 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level; //type: IsisLevelEnum
 
+
+                                            YLeaf level; //type: IsisLevelEnum
 
                                         class Owner : public Entity
                                         {
@@ -6069,23 +6242,22 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value protocol; //type: IsisRedistProtoEnum
-                                                Value isis_instance_id; //type: string
-                                                Value ospf_process_id; //type: string
-                                                Value ospfv3_process_id; //type: string
-                                                Value bgp_as_number; //type: string
-                                                Value eigrp_as_number; //type: string
-                                                Value application_name; //type: string
 
 
-                                                class IsisRedistProtoEnum;
+                                                YLeaf protocol; //type: IsisRedistProtoEnum
+                                                YLeaf isis_instance_id; //type: string
+                                                YLeaf ospf_process_id; //type: string
+                                                YLeaf ospfv3_process_id; //type: string
+                                                YLeaf bgp_as_number; //type: string
+                                                YLeaf eigrp_as_number; //type: string
+                                                YLeaf application_name; //type: string
+
 
 
                                         }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
 
 
                                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner> owner;
-                                            class IsisLevelEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
@@ -6098,7 +6270,6 @@ class Isis : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails> redistribution_details;
-                                    class IsisValidEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus
@@ -6117,8 +6288,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_valid; //type: IsisValidEnum
 
+
+                                    YLeaf is_valid; //type: IsisValidEnum
 
                                 class NativeDetails : public Entity
                                 {
@@ -6133,8 +6305,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value priority; //type: IsisPrefixPriorityEnum
 
+
+                                        YLeaf priority; //type: IsisPrefixPriorityEnum
 
                                     class Primary : public Entity
                                     {
@@ -6149,12 +6322,13 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value origin; //type: IsisPrefixOriginEnum
-                                            Value metric; //type: uint32
-                                            Value multicast_metric; //type: uint32
-                                            Value is_external_metric; //type: boolean
-                                            Value administrative_distance; //type: uint16
 
+
+                                            YLeaf origin; //type: IsisPrefixOriginEnum
+                                            YLeaf metric; //type: uint32
+                                            YLeaf multicast_metric; //type: uint32
+                                            YLeaf is_external_metric; //type: boolean
+                                            YLeaf administrative_distance; //type: uint16
 
                                         class Paths : public Entity
                                         {
@@ -6169,14 +6343,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -6191,31 +6366,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -6230,12 +6406,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -6243,7 +6420,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
@@ -6268,15 +6444,16 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value total_ucmp_distance; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf total_ucmp_distance; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -6291,31 +6468,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -6330,12 +6508,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -6343,7 +6522,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
@@ -6368,14 +6546,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -6390,31 +6569,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -6429,12 +6609,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -6442,7 +6623,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
@@ -6467,14 +6647,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -6489,31 +6670,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -6528,12 +6710,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -6541,7 +6724,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
@@ -6566,10 +6748,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -6584,15 +6767,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -6618,10 +6802,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -6636,15 +6821,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -6663,7 +6849,6 @@ class Isis : public Entity
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source> > source;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath> > srte_path;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop> > ucmp_next_hop;
-                                            class IsisPrefixOriginEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary
@@ -6682,12 +6867,13 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value origin; //type: IsisPrefixOriginEnum
-                                            Value metric; //type: uint32
-                                            Value multicast_metric; //type: uint32
-                                            Value is_external_metric; //type: boolean
-                                            Value administrative_distance; //type: uint16
 
+
+                                            YLeaf origin; //type: IsisPrefixOriginEnum
+                                            YLeaf metric; //type: uint32
+                                            YLeaf multicast_metric; //type: uint32
+                                            YLeaf is_external_metric; //type: boolean
+                                            YLeaf administrative_distance; //type: uint16
 
                                         class Paths : public Entity
                                         {
@@ -6702,14 +6888,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -6724,31 +6911,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -6763,12 +6951,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -6776,7 +6965,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
@@ -6801,15 +6989,16 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value total_ucmp_distance; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf total_ucmp_distance; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -6824,31 +7013,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -6863,12 +7053,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -6876,7 +7067,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
@@ -6901,14 +7091,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -6923,31 +7114,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -6962,12 +7154,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -6975,7 +7168,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
@@ -7000,14 +7192,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -7022,31 +7215,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -7061,12 +7255,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -7074,7 +7269,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
@@ -7099,10 +7293,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -7117,15 +7312,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -7151,10 +7347,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -7169,15 +7366,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -7196,7 +7394,6 @@ class Isis : public Entity
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Source> > source;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath> > srte_path;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop> > ucmp_next_hop;
-                                            class IsisPrefixOriginEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup
@@ -7204,14 +7401,12 @@ class Isis : public Entity
 
                                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup> > backup;
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary> primary;
-                                        class IsisPrefixPriorityEnum;
 
 
                                 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails> native_details;
-                                    class IsisValidEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus
@@ -7230,15 +7425,16 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisLevelEnum
-                                    Value advertising_origin; //type: IsisShRouteAdvOriginEnum
-                                    Value metric; //type: uint32
-                                    Value is_propagated; //type: boolean
-                                    Value is_external_metric; //type: boolean
-                                    Value is_external_reachability; //type: boolean
-                                    Value is_interarea; //type: boolean
-                                    ValueList tags; //type: list of  uint32
 
+
+                                    YLeaf level; //type: IsisLevelEnum
+                                    YLeaf advertising_origin; //type: IsisShRouteAdvOriginEnum
+                                    YLeaf metric; //type: uint32
+                                    YLeaf is_propagated; //type: boolean
+                                    YLeaf is_external_metric; //type: boolean
+                                    YLeaf is_external_reachability; //type: boolean
+                                    YLeaf is_interarea; //type: boolean
+                                    YLeafList tags; //type: list of  uint32
 
                                 class SummarizationStatus : public Entity
                                 {
@@ -7253,8 +7449,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value is_valid; //type: IsisValidEnum
 
+
+                                        YLeaf is_valid; //type: IsisValidEnum
 
                                     class SummaryPrefix : public Entity
                                     {
@@ -7269,9 +7466,10 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value prefix; //type: string
-                                            Value prefix_length; //type: uint8
 
+
+                                            YLeaf prefix; //type: string
+                                            YLeaf prefix_length; //type: uint8
 
 
 
@@ -7279,7 +7477,6 @@ class Isis : public Entity
 
 
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix> summary_prefix;
-                                        class IsisValidEnum;
 
 
                                 }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus
@@ -7298,15 +7495,16 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sid_value; //type: uint32
-                                        Value rflag; //type: uint8
-                                        Value nflag; //type: uint8
-                                        Value pflag; //type: uint8
-                                        Value eflag; //type: uint8
-                                        Value vflag; //type: uint8
-                                        Value lflag; //type: uint8
-                                        Value algorithm; //type: uint8
 
+
+                                        YLeaf sid_value; //type: uint32
+                                        YLeaf rflag; //type: uint8
+                                        YLeaf nflag; //type: uint8
+                                        YLeaf pflag; //type: uint8
+                                        YLeaf eflag; //type: uint8
+                                        YLeaf vflag; //type: uint8
+                                        YLeaf lflag; //type: uint8
+                                        YLeaf algorithm; //type: uint8
 
 
 
@@ -7315,8 +7513,6 @@ class Isis : public Entity
 
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::NodalSid> > nodal_sid;
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus> summarization_status;
-                                    class IsisShRouteAdvOriginEnum;
-                                    class IsisLevelEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail
@@ -7352,6 +7548,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Ipv4FrrBackup : public Entity
                         {
                             public:
@@ -7365,9 +7562,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint32
 
+
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint32
 
                             class ConnectedStatus : public Entity
                             {
@@ -7382,8 +7580,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_valid; //type: IsisValidEnum
 
+
+                                    YLeaf is_valid; //type: IsisValidEnum
 
                                 class ConnectedDetails : public Entity
                                 {
@@ -7398,8 +7597,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        ValueList interface; //type: list of  string
 
+
+                                        YLeafList interface; //type: list of  string
 
 
 
@@ -7407,7 +7607,6 @@ class Isis : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::ConnectedStatus::ConnectedDetails> connected_details;
-                                    class IsisValidEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::ConnectedStatus
@@ -7426,8 +7625,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_valid; //type: IsisValidEnum
 
+
+                                    YLeaf is_valid; //type: IsisValidEnum
 
                                 class RedistributionDetails : public Entity
                                 {
@@ -7444,6 +7644,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class IsisShRouteRedistDetail : public Entity
                                     {
                                         public:
@@ -7457,8 +7658,9 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level; //type: IsisLevelEnum
 
+
+                                            YLeaf level; //type: IsisLevelEnum
 
                                         class Owner : public Entity
                                         {
@@ -7473,23 +7675,22 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value protocol; //type: IsisRedistProtoEnum
-                                                Value isis_instance_id; //type: string
-                                                Value ospf_process_id; //type: string
-                                                Value ospfv3_process_id; //type: string
-                                                Value bgp_as_number; //type: string
-                                                Value eigrp_as_number; //type: string
-                                                Value application_name; //type: string
 
 
-                                                class IsisRedistProtoEnum;
+                                                YLeaf protocol; //type: IsisRedistProtoEnum
+                                                YLeaf isis_instance_id; //type: string
+                                                YLeaf ospf_process_id; //type: string
+                                                YLeaf ospfv3_process_id; //type: string
+                                                YLeaf bgp_as_number; //type: string
+                                                YLeaf eigrp_as_number; //type: string
+                                                YLeaf application_name; //type: string
+
 
 
                                         }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
 
 
                                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner> owner;
-                                            class IsisLevelEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
@@ -7502,7 +7703,6 @@ class Isis : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus::RedistributionDetails> redistribution_details;
-                                    class IsisValidEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::RedistributedStatus
@@ -7521,8 +7721,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_valid; //type: IsisValidEnum
 
+
+                                    YLeaf is_valid; //type: IsisValidEnum
 
                                 class NativeDetails : public Entity
                                 {
@@ -7537,8 +7738,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value priority; //type: IsisPrefixPriorityEnum
 
+
+                                        YLeaf priority; //type: IsisPrefixPriorityEnum
 
                                     class Primary : public Entity
                                     {
@@ -7553,12 +7755,13 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value origin; //type: IsisPrefixOriginEnum
-                                            Value metric; //type: uint32
-                                            Value multicast_metric; //type: uint32
-                                            Value is_external_metric; //type: boolean
-                                            Value administrative_distance; //type: uint16
 
+
+                                            YLeaf origin; //type: IsisPrefixOriginEnum
+                                            YLeaf metric; //type: uint32
+                                            YLeaf multicast_metric; //type: uint32
+                                            YLeaf is_external_metric; //type: boolean
+                                            YLeaf administrative_distance; //type: uint16
 
                                         class Paths : public Entity
                                         {
@@ -7573,14 +7776,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -7595,31 +7799,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -7634,12 +7839,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -7647,7 +7853,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
@@ -7672,15 +7877,16 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value total_ucmp_distance; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf total_ucmp_distance; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -7695,31 +7901,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -7734,12 +7941,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -7747,7 +7955,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
@@ -7772,14 +7979,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -7794,31 +8002,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -7833,12 +8042,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -7846,7 +8056,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
@@ -7871,14 +8080,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -7893,31 +8103,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -7932,12 +8143,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -7945,7 +8157,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
@@ -7970,10 +8181,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -7988,15 +8200,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -8022,10 +8235,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -8040,15 +8254,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -8067,7 +8282,6 @@ class Isis : public Entity
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::Source> > source;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath> > srte_path;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop> > ucmp_next_hop;
-                                            class IsisPrefixOriginEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary
@@ -8086,12 +8300,13 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value origin; //type: IsisPrefixOriginEnum
-                                            Value metric; //type: uint32
-                                            Value multicast_metric; //type: uint32
-                                            Value is_external_metric; //type: boolean
-                                            Value administrative_distance; //type: uint16
 
+
+                                            YLeaf origin; //type: IsisPrefixOriginEnum
+                                            YLeaf metric; //type: uint32
+                                            YLeaf multicast_metric; //type: uint32
+                                            YLeaf is_external_metric; //type: boolean
+                                            YLeaf administrative_distance; //type: uint16
 
                                         class Paths : public Entity
                                         {
@@ -8106,14 +8321,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -8128,31 +8344,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -8167,12 +8384,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -8180,7 +8398,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
@@ -8205,15 +8422,16 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value total_ucmp_distance; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf total_ucmp_distance; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -8228,31 +8446,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -8267,12 +8486,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -8280,7 +8500,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
@@ -8305,14 +8524,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -8327,31 +8547,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -8366,12 +8587,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -8379,7 +8601,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
@@ -8404,14 +8625,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -8426,31 +8648,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -8465,12 +8688,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -8478,7 +8702,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
@@ -8503,10 +8726,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -8521,15 +8745,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -8555,10 +8780,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -8573,15 +8799,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -8600,7 +8827,6 @@ class Isis : public Entity
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::Source> > source;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath> > srte_path;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop> > ucmp_next_hop;
-                                            class IsisPrefixOriginEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup
@@ -8608,14 +8834,12 @@ class Isis : public Entity
 
                                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Backup> > backup;
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails::Primary> primary;
-                                        class IsisPrefixPriorityEnum;
 
 
                                 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus::NativeDetails> native_details;
-                                    class IsisValidEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::NativeStatus
@@ -8634,15 +8858,16 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisLevelEnum
-                                    Value advertising_origin; //type: IsisShRouteAdvOriginEnum
-                                    Value metric; //type: uint32
-                                    Value is_propagated; //type: boolean
-                                    Value is_external_metric; //type: boolean
-                                    Value is_external_reachability; //type: boolean
-                                    Value is_interarea; //type: boolean
-                                    ValueList tags; //type: list of  uint32
 
+
+                                    YLeaf level; //type: IsisLevelEnum
+                                    YLeaf advertising_origin; //type: IsisShRouteAdvOriginEnum
+                                    YLeaf metric; //type: uint32
+                                    YLeaf is_propagated; //type: boolean
+                                    YLeaf is_external_metric; //type: boolean
+                                    YLeaf is_external_reachability; //type: boolean
+                                    YLeaf is_interarea; //type: boolean
+                                    YLeafList tags; //type: list of  uint32
 
                                 class SummarizationStatus : public Entity
                                 {
@@ -8657,8 +8882,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value is_valid; //type: IsisValidEnum
 
+
+                                        YLeaf is_valid; //type: IsisValidEnum
 
                                     class SummaryPrefix : public Entity
                                     {
@@ -8673,9 +8899,10 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value prefix; //type: string
-                                            Value prefix_length; //type: uint8
 
+
+                                            YLeaf prefix; //type: string
+                                            YLeaf prefix_length; //type: uint8
 
 
 
@@ -8683,7 +8910,6 @@ class Isis : public Entity
 
 
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix> summary_prefix;
-                                        class IsisValidEnum;
 
 
                                 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus
@@ -8702,15 +8928,16 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sid_value; //type: uint32
-                                        Value rflag; //type: uint8
-                                        Value nflag; //type: uint8
-                                        Value pflag; //type: uint8
-                                        Value eflag; //type: uint8
-                                        Value vflag; //type: uint8
-                                        Value lflag; //type: uint8
-                                        Value algorithm; //type: uint8
 
+
+                                        YLeaf sid_value; //type: uint32
+                                        YLeaf rflag; //type: uint8
+                                        YLeaf nflag; //type: uint8
+                                        YLeaf pflag; //type: uint8
+                                        YLeaf eflag; //type: uint8
+                                        YLeaf vflag; //type: uint8
+                                        YLeaf lflag; //type: uint8
+                                        YLeaf algorithm; //type: uint8
 
 
 
@@ -8719,8 +8946,6 @@ class Isis : public Entity
 
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::NodalSid> > nodal_sid;
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail::SummarizationStatus> summarization_status;
-                                    class IsisShRouteAdvOriginEnum;
-                                    class IsisLevelEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4FrrBackups::Ipv4FrrBackup::PerLevelAdvertisingDetail
@@ -8756,6 +8981,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Ipv4Route : public Entity
                         {
                             public:
@@ -8769,9 +8995,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint32
 
+
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint32
 
                             class ConnectedStatus : public Entity
                             {
@@ -8786,8 +9013,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_valid; //type: IsisValidEnum
 
+
+                                    YLeaf is_valid; //type: IsisValidEnum
 
                                 class ConnectedDetails : public Entity
                                 {
@@ -8802,8 +9030,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        ValueList interface; //type: list of  string
 
+
+                                        YLeafList interface; //type: list of  string
 
 
 
@@ -8811,7 +9040,6 @@ class Isis : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::ConnectedStatus::ConnectedDetails> connected_details;
-                                    class IsisValidEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::ConnectedStatus
@@ -8830,8 +9058,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_valid; //type: IsisValidEnum
 
+
+                                    YLeaf is_valid; //type: IsisValidEnum
 
                                 class RedistributionDetails : public Entity
                                 {
@@ -8848,6 +9077,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class IsisShRouteRedistDetail : public Entity
                                     {
                                         public:
@@ -8861,8 +9091,9 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level; //type: IsisLevelEnum
 
+
+                                            YLeaf level; //type: IsisLevelEnum
 
                                         class Owner : public Entity
                                         {
@@ -8877,23 +9108,22 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value protocol; //type: IsisRedistProtoEnum
-                                                Value isis_instance_id; //type: string
-                                                Value ospf_process_id; //type: string
-                                                Value ospfv3_process_id; //type: string
-                                                Value bgp_as_number; //type: string
-                                                Value eigrp_as_number; //type: string
-                                                Value application_name; //type: string
 
 
-                                                class IsisRedistProtoEnum;
+                                                YLeaf protocol; //type: IsisRedistProtoEnum
+                                                YLeaf isis_instance_id; //type: string
+                                                YLeaf ospf_process_id; //type: string
+                                                YLeaf ospfv3_process_id; //type: string
+                                                YLeaf bgp_as_number; //type: string
+                                                YLeaf eigrp_as_number; //type: string
+                                                YLeaf application_name; //type: string
+
 
 
                                         }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner
 
 
                                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner> owner;
-                                            class IsisLevelEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail
@@ -8906,7 +9136,6 @@ class Isis : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus::RedistributionDetails> redistribution_details;
-                                    class IsisValidEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::RedistributedStatus
@@ -8925,8 +9154,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_valid; //type: IsisValidEnum
 
+
+                                    YLeaf is_valid; //type: IsisValidEnum
 
                                 class NativeDetails : public Entity
                                 {
@@ -8941,8 +9171,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value priority; //type: IsisPrefixPriorityEnum
 
+
+                                        YLeaf priority; //type: IsisPrefixPriorityEnum
 
                                     class Primary : public Entity
                                     {
@@ -8957,12 +9188,13 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value origin; //type: IsisPrefixOriginEnum
-                                            Value metric; //type: uint32
-                                            Value multicast_metric; //type: uint32
-                                            Value is_external_metric; //type: boolean
-                                            Value administrative_distance; //type: uint16
 
+
+                                            YLeaf origin; //type: IsisPrefixOriginEnum
+                                            YLeaf metric; //type: uint32
+                                            YLeaf multicast_metric; //type: uint32
+                                            YLeaf is_external_metric; //type: boolean
+                                            YLeaf administrative_distance; //type: uint16
 
                                         class Paths : public Entity
                                         {
@@ -8977,14 +9209,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -8999,31 +9232,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -9038,12 +9272,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -9051,7 +9286,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
@@ -9076,15 +9310,16 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value total_ucmp_distance; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf total_ucmp_distance; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -9099,31 +9334,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -9138,12 +9374,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -9151,7 +9388,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
@@ -9176,14 +9412,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -9198,31 +9435,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -9237,12 +9475,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -9250,7 +9489,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
@@ -9275,14 +9513,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -9297,31 +9536,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -9336,12 +9576,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -9349,7 +9590,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
@@ -9374,10 +9614,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -9392,15 +9633,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -9426,10 +9668,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -9444,15 +9687,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -9471,7 +9715,6 @@ class Isis : public Entity
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Source> > source;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath> > srte_path;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop> > ucmp_next_hop;
-                                            class IsisPrefixOriginEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary
@@ -9490,12 +9733,13 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value origin; //type: IsisPrefixOriginEnum
-                                            Value metric; //type: uint32
-                                            Value multicast_metric; //type: uint32
-                                            Value is_external_metric; //type: boolean
-                                            Value administrative_distance; //type: uint16
 
+
+                                            YLeaf origin; //type: IsisPrefixOriginEnum
+                                            YLeaf metric; //type: uint32
+                                            YLeaf multicast_metric; //type: uint32
+                                            YLeaf is_external_metric; //type: boolean
+                                            YLeaf administrative_distance; //type: uint16
 
                                         class Paths : public Entity
                                         {
@@ -9510,14 +9754,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -9532,31 +9777,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -9571,12 +9817,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -9584,7 +9831,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
@@ -9609,15 +9855,16 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value total_ucmp_distance; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf total_ucmp_distance; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -9632,31 +9879,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -9671,12 +9919,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -9684,7 +9933,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
@@ -9709,14 +9957,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -9731,31 +9980,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -9770,12 +10020,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -9783,7 +10034,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
@@ -9808,14 +10058,15 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_id; //type: string
-                                                Value egress_interface; //type: string
-                                                Value neighbor_address; //type: string
-                                                Value neighbor_snpa; //type: string
-                                                Value tag; //type: uint32
-                                                Value segment_routing_sid_value; //type: uint32
-                                                Value weight; //type: uint32
 
+
+                                                YLeaf neighbor_id; //type: string
+                                                YLeaf egress_interface; //type: string
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf neighbor_snpa; //type: string
+                                                YLeaf tag; //type: uint32
+                                                YLeaf segment_routing_sid_value; //type: uint32
+                                                YLeaf weight; //type: uint32
 
                                             class FrrBackup : public Entity
                                             {
@@ -9830,31 +10081,32 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value neighbor_id; //type: string
-                                                    Value egress_interface; //type: string
-                                                    Value neighbor_address; //type: string
-                                                    Value tunnel_egress_interface; //type: string
-                                                    Value neighbor_snpa; //type: string
-                                                    Value remote_lfa_system_id; //type: string
-                                                    Value remote_lfa_router_id; //type: string
-                                                    Value remote_lfa_system_pid; //type: string
-                                                    Value remote_lfa_router_pid; //type: string
-                                                    Value total_backup_distance; //type: uint32
-                                                    Value segment_routing_sid_value; //type: uint32
-                                                    Value num_sid; //type: uint32
-                                                    Value backup_repair_list_size; //type: uint32
-                                                    Value tilfa_computation; //type: IsisTilfaComputationEnum
-                                                    Value is_downstream; //type: boolean
-                                                    Value is_lc_disjoint; //type: boolean
-                                                    Value is_node_protecting; //type: boolean
-                                                    Value is_primary_path; //type: boolean
-                                                    Value is_srlg_disjoint; //type: boolean
-                                                    Value is_remote_lfa; //type: boolean
-                                                    Value is_epcfrr_lfa; //type: boolean
-                                                    Value is_tunnel_requested; //type: boolean
-                                                    Value weight; //type: uint32
-                                                    ValueList segment_routing_sid_value_entry; //type: list of  uint32
 
+
+                                                    YLeaf neighbor_id; //type: string
+                                                    YLeaf egress_interface; //type: string
+                                                    YLeaf neighbor_address; //type: string
+                                                    YLeaf tunnel_egress_interface; //type: string
+                                                    YLeaf neighbor_snpa; //type: string
+                                                    YLeaf remote_lfa_system_id; //type: string
+                                                    YLeaf remote_lfa_router_id; //type: string
+                                                    YLeaf remote_lfa_system_pid; //type: string
+                                                    YLeaf remote_lfa_router_pid; //type: string
+                                                    YLeaf total_backup_distance; //type: uint32
+                                                    YLeaf segment_routing_sid_value; //type: uint32
+                                                    YLeaf num_sid; //type: uint32
+                                                    YLeaf backup_repair_list_size; //type: uint32
+                                                    YLeaf tilfa_computation; //type: IsisTilfaComputationEnum
+                                                    YLeaf is_downstream; //type: boolean
+                                                    YLeaf is_lc_disjoint; //type: boolean
+                                                    YLeaf is_node_protecting; //type: boolean
+                                                    YLeaf is_primary_path; //type: boolean
+                                                    YLeaf is_srlg_disjoint; //type: boolean
+                                                    YLeaf is_remote_lfa; //type: boolean
+                                                    YLeaf is_epcfrr_lfa; //type: boolean
+                                                    YLeaf is_tunnel_requested; //type: boolean
+                                                    YLeaf weight; //type: uint32
+                                                    YLeafList segment_routing_sid_value_entry; //type: list of  uint32
 
                                                 class BackupRepair : public Entity
                                                 {
@@ -9869,12 +10121,13 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value repair_element_node_id; //type: string
-                                                        Value repair_ipv4_addr; //type: string
-                                                        Value repair_ipv6_addr; //type: string
-                                                        Value repair_label; //type: uint32
-                                                        Value repair_element_type; //type: uint32
 
+
+                                                        YLeaf repair_element_node_id; //type: string
+                                                        YLeaf repair_ipv4_addr; //type: string
+                                                        YLeaf repair_ipv6_addr; //type: string
+                                                        YLeaf repair_label; //type: uint32
+                                                        YLeaf repair_element_type; //type: uint32
 
 
 
@@ -9882,7 +10135,6 @@ class Isis : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair> > backup_repair;
-                                                    class IsisTilfaComputationEnum;
 
 
                                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
@@ -9907,10 +10159,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -9925,15 +10178,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -9959,10 +10213,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value source_lsp_id; //type: string
-                                                Value source_address; //type: string
-                                                ValueList tags; //type: list of  uint32
 
+
+                                                YLeaf source_lsp_id; //type: string
+                                                YLeaf source_address; //type: string
+                                                YLeafList tags; //type: list of  uint32
 
                                             class NodalSid : public Entity
                                             {
@@ -9977,15 +10232,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value sid_value; //type: uint32
-                                                    Value rflag; //type: uint8
-                                                    Value nflag; //type: uint8
-                                                    Value pflag; //type: uint8
-                                                    Value eflag; //type: uint8
-                                                    Value vflag; //type: uint8
-                                                    Value lflag; //type: uint8
-                                                    Value algorithm; //type: uint8
 
+
+                                                    YLeaf sid_value; //type: uint32
+                                                    YLeaf rflag; //type: uint8
+                                                    YLeaf nflag; //type: uint8
+                                                    YLeaf pflag; //type: uint8
+                                                    YLeaf eflag; //type: uint8
+                                                    YLeaf vflag; //type: uint8
+                                                    YLeaf lflag; //type: uint8
+                                                    YLeaf algorithm; //type: uint8
 
 
 
@@ -10004,7 +10260,6 @@ class Isis : public Entity
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Source> > source;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath> > srte_path;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop> > ucmp_next_hop;
-                                            class IsisPrefixOriginEnum;
 
 
                                     }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup
@@ -10012,14 +10267,12 @@ class Isis : public Entity
 
                                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup> > backup;
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary> primary;
-                                        class IsisPrefixPriorityEnum;
 
 
                                 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails> native_details;
-                                    class IsisValidEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus
@@ -10038,15 +10291,16 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisLevelEnum
-                                    Value advertising_origin; //type: IsisShRouteAdvOriginEnum
-                                    Value metric; //type: uint32
-                                    Value is_propagated; //type: boolean
-                                    Value is_external_metric; //type: boolean
-                                    Value is_external_reachability; //type: boolean
-                                    Value is_interarea; //type: boolean
-                                    ValueList tags; //type: list of  uint32
 
+
+                                    YLeaf level; //type: IsisLevelEnum
+                                    YLeaf advertising_origin; //type: IsisShRouteAdvOriginEnum
+                                    YLeaf metric; //type: uint32
+                                    YLeaf is_propagated; //type: boolean
+                                    YLeaf is_external_metric; //type: boolean
+                                    YLeaf is_external_reachability; //type: boolean
+                                    YLeaf is_interarea; //type: boolean
+                                    YLeafList tags; //type: list of  uint32
 
                                 class SummarizationStatus : public Entity
                                 {
@@ -10061,8 +10315,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value is_valid; //type: IsisValidEnum
 
+
+                                        YLeaf is_valid; //type: IsisValidEnum
 
                                     class SummaryPrefix : public Entity
                                     {
@@ -10077,9 +10332,10 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value prefix; //type: string
-                                            Value prefix_length; //type: uint8
 
+
+                                            YLeaf prefix; //type: string
+                                            YLeaf prefix_length; //type: uint8
 
 
 
@@ -10087,7 +10343,6 @@ class Isis : public Entity
 
 
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix> summary_prefix;
-                                        class IsisValidEnum;
 
 
                                 }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::SummarizationStatus
@@ -10106,15 +10361,16 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sid_value; //type: uint32
-                                        Value rflag; //type: uint8
-                                        Value nflag; //type: uint8
-                                        Value pflag; //type: uint8
-                                        Value eflag; //type: uint8
-                                        Value vflag; //type: uint8
-                                        Value lflag; //type: uint8
-                                        Value algorithm; //type: uint8
 
+
+                                        YLeaf sid_value; //type: uint32
+                                        YLeaf rflag; //type: uint8
+                                        YLeaf nflag; //type: uint8
+                                        YLeaf pflag; //type: uint8
+                                        YLeaf eflag; //type: uint8
+                                        YLeaf vflag; //type: uint8
+                                        YLeaf lflag; //type: uint8
+                                        YLeaf algorithm; //type: uint8
 
 
 
@@ -10123,8 +10379,6 @@ class Isis : public Entity
 
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::NodalSid> > nodal_sid;
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail::SummarizationStatus> summarization_status;
-                                    class IsisShRouteAdvOriginEnum;
-                                    class IsisLevelEnum;
 
 
                             }; // Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::PerLevelAdvertisingDetail
@@ -10151,8 +10405,6 @@ class Isis : public Entity
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes> ipv6_routes;
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups> ipv6frr_backups;
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::TopologyLevels> topology_levels;
-                        class IsisAddressFamilyEnum;
-                        class IsisSubAddressFamilyEnum;
 
 
                 }; // Isis::Instances::Instance::Topologies::Topology
@@ -10177,8 +10429,9 @@ class Isis : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value isis_vm_state; //type: uint16
 
+
+                    YLeaf isis_vm_state; //type: uint16
 
                 class IsisNsrPeer : public Entity
                 {
@@ -10195,6 +10448,7 @@ class Isis : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class FullSyncAchieved : public Entity
                     {
                         public:
@@ -10208,8 +10462,9 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value entry; //type: uint32
 
+
+                            YLeaf entry; //type: uint32
 
 
 
@@ -10229,8 +10484,9 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value entry; //type: uint32
 
+
+                            YLeaf entry; //type: uint32
 
 
 
@@ -10250,8 +10506,9 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value entry; //type: uint32
 
+
+                            YLeaf entry; //type: uint32
 
 
 
@@ -10271,8 +10528,9 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value entry; //type: boolean
 
+
+                            YLeaf entry; //type: boolean
 
 
 
@@ -10292,8 +10550,9 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value entry; //type: uint32
 
+
+                            YLeaf entry; //type: uint32
 
 
 
@@ -10325,6 +10584,7 @@ class Isis : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Gen : public Entity
                     {
                         public:
@@ -10338,22 +10598,23 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value my_nodeid; //type: uint32
-                            Value my_process_id; //type: uint32
-                            Value pm_issu_role; //type: uint8
-                            Value pm_ha_role; //type: uint8
-                            Value sysmgr_ha_role; //type: uint8
-                            Value nsr_send_ready; //type: uint8
-                            Value nsr_send_unready; //type: uint8
-                            Value nsr_send_err; //type: uint32
-                            Value nsr_recv_err; //type: uint32
-                            Value retry_flag; //type: uint32
-                            Value nsr_enabled; //type: boolean
-                            Value nsr_configured; //type: boolean
-                            Value nsf_configured; //type: boolean
-                            Value failover; //type: boolean
-                            Value lanid_req_needed; //type: boolean
 
+
+                            YLeaf my_nodeid; //type: uint32
+                            YLeaf my_process_id; //type: uint32
+                            YLeaf pm_issu_role; //type: uint8
+                            YLeaf pm_ha_role; //type: uint8
+                            YLeaf sysmgr_ha_role; //type: uint8
+                            YLeaf nsr_send_ready; //type: uint8
+                            YLeaf nsr_send_unready; //type: uint8
+                            YLeaf nsr_send_err; //type: uint32
+                            YLeaf nsr_recv_err; //type: uint32
+                            YLeaf retry_flag; //type: uint32
+                            YLeaf nsr_enabled; //type: boolean
+                            YLeaf nsr_configured; //type: boolean
+                            YLeaf nsf_configured; //type: boolean
+                            YLeaf failover; //type: boolean
+                            YLeaf lanid_req_needed; //type: boolean
 
 
 
@@ -10373,11 +10634,12 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reg; //type: uint8
-                            Value conn_cb; //type: uint8
-                            Value disconn_cb; //type: uint8
-                            Value conn_status; //type: boolean
 
+
+                            YLeaf reg; //type: uint8
+                            YLeaf conn_cb; //type: uint8
+                            YLeaf disconn_cb; //type: uint8
+                            YLeaf conn_status; //type: boolean
 
 
 
@@ -10397,18 +10659,19 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value conn; //type: uint8
-                            Value conn_cb; //type: uint8
-                            Value disconn; //type: uint8
-                            Value disconn_cb; //type: uint8
-                            Value ha_opt; //type: uint8
-                            Value ha_opt_cb; //type: uint8
-                            Value wait_ready; //type: uint8
-                            Value send_ready; //type: uint8
-                            Value evt_rsp_cb; //type: uint8
-                            Value reg_rsp_cb; //type: uint8
-                            Value conn_status; //type: boolean
 
+
+                            YLeaf conn; //type: uint8
+                            YLeaf conn_cb; //type: uint8
+                            YLeaf disconn; //type: uint8
+                            YLeaf disconn_cb; //type: uint8
+                            YLeaf ha_opt; //type: uint8
+                            YLeaf ha_opt_cb; //type: uint8
+                            YLeaf wait_ready; //type: uint8
+                            YLeaf send_ready; //type: uint8
+                            YLeaf evt_rsp_cb; //type: uint8
+                            YLeaf reg_rsp_cb; //type: uint8
+                            YLeaf conn_status; //type: boolean
 
 
 
@@ -10428,21 +10691,22 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value conn; //type: uint8
-                            Value conn_cb; //type: uint8
-                            Value pub; //type: uint8
-                            Value pub_cb; //type: uint8
-                            Value reg; //type: uint8
-                            Value reg_cb; //type: uint8
-                            Value unreg; //type: uint8
-                            Value unreg_cb; //type: uint8
-                            Value disconn_cb; //type: uint8
-                            Value notify_cb; //type: uint8
-                            Value notify_peer_xr; //type: string
-                            Value del_cb; //type: uint8
-                            Value remove_srv; //type: uint8
-                            Value conn_status; //type: boolean
 
+
+                            YLeaf conn; //type: uint8
+                            YLeaf conn_cb; //type: uint8
+                            YLeaf pub; //type: uint8
+                            YLeaf pub_cb; //type: uint8
+                            YLeaf reg; //type: uint8
+                            YLeaf reg_cb; //type: uint8
+                            YLeaf unreg; //type: uint8
+                            YLeaf unreg_cb; //type: uint8
+                            YLeaf disconn_cb; //type: uint8
+                            YLeaf notify_cb; //type: uint8
+                            YLeaf notify_peer_xr; //type: string
+                            YLeaf del_cb; //type: uint8
+                            YLeaf remove_srv; //type: uint8
+                            YLeaf conn_status; //type: boolean
 
                         class ConnTs : public Entity
                         {
@@ -10457,9 +10721,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10479,9 +10744,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10501,9 +10767,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10523,9 +10790,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10545,9 +10813,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10567,9 +10836,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10589,9 +10859,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10611,9 +10882,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10633,9 +10905,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10655,9 +10928,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10677,9 +10951,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10699,9 +10974,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10721,9 +10997,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10743,9 +11020,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -10784,15 +11062,16 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enabled; //type: uint8
-                            Value conn_up; //type: uint8
-                            Value te_link_cb; //type: uint8
-                            Value te_tunnel_cb; //type: uint8
-                            Value adv_sync_data; //type: uint8
-                            Value link_purge_time_on; //type: uint8
-                            Value tunnel_purge_time_on; //type: uint8
-                            Value has_info_from_te; //type: uint8
 
+
+                            YLeaf enabled; //type: uint8
+                            YLeaf conn_up; //type: uint8
+                            YLeaf te_link_cb; //type: uint8
+                            YLeaf te_tunnel_cb; //type: uint8
+                            YLeaf adv_sync_data; //type: uint8
+                            YLeaf link_purge_time_on; //type: uint8
+                            YLeaf tunnel_purge_time_on; //type: uint8
+                            YLeaf has_info_from_te; //type: uint8
 
 
 
@@ -10812,13 +11091,14 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vm_idx; //type: uint8
-                            Value conn_up; //type: boolean
-                            Value endp_hdl; //type: uint8
-                            Value chksum; //type: uint16
-                            Value send_seqnum; //type: uint32
-                            Value recv_cnt; //type: uint32
 
+
+                            YLeaf vm_idx; //type: uint8
+                            YLeaf conn_up; //type: boolean
+                            YLeaf endp_hdl; //type: uint8
+                            YLeaf chksum; //type: uint16
+                            YLeaf send_seqnum; //type: uint32
+                            YLeaf recv_cnt; //type: uint32
 
 
 
@@ -10838,12 +11118,13 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value exist; //type: boolean
-                            Value brought_up; //type: boolean
-                            Value retry_timer; //type: boolean
-                            Value running; //type: boolean
-                            Value has_adj; //type: boolean
 
+
+                            YLeaf exist; //type: boolean
+                            YLeaf brought_up; //type: boolean
+                            YLeaf retry_timer; //type: boolean
+                            YLeaf running; //type: boolean
+                            YLeaf has_adj; //type: boolean
 
 
 
@@ -10884,6 +11165,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -10897,12 +11179,13 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value configured_circuit_type; //type: IsisLevelsEnum
-                        Value mesh_group; //type: uint32
-                        Value is_type; //type: IsisLevelsEnum
-                        Value nsr_intf; //type: boolean
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf configured_circuit_type; //type: IsisLevelsEnum
+                        YLeaf mesh_group; //type: uint32
+                        YLeaf is_type; //type: IsisLevelsEnum
+                        YLeaf nsr_intf; //type: boolean
 
                     class ConfiguredStatus : public Entity
                     {
@@ -10917,9 +11200,10 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value adjacency_form_status; //type: boolean
-                            Value adv_prefix_status; //type: boolean
 
+
+                            YLeaf adjacency_form_status; //type: boolean
+                            YLeaf adv_prefix_status; //type: boolean
 
 
 
@@ -10939,8 +11223,9 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value status; //type: IsisEnabledEnum
 
+
+                            YLeaf status; //type: IsisEnabledEnum
 
                         class Disabled : public Entity
                         {
@@ -10955,10 +11240,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value reason_code; //type: IsisIfDisabledReasonEnum
 
 
-                                class IsisIfDisabledReasonEnum;
+                                YLeaf reason_code; //type: IsisIfDisabledReasonEnum
+
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Disabled
@@ -10977,12 +11262,13 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_media_type; //type: IsisMediaClassEnum
-                                Value enabled_circuit_type; //type: IsisLevelsEnum
-                                Value local_circuit_number; //type: uint8
-                                Value rsi_srlg_registered; //type: boolean
-                                ValueList underlying_interface; //type: list of  string
 
+
+                                YLeaf interface_media_type; //type: IsisMediaClassEnum
+                                YLeaf enabled_circuit_type; //type: IsisLevelsEnum
+                                YLeaf local_circuit_number; //type: uint8
+                                YLeaf rsi_srlg_registered; //type: boolean
+                                YLeafList underlying_interface; //type: list of  string
 
                             class AdjacencyFormStatus : public Entity
                             {
@@ -10997,8 +11283,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value status; //type: IsisEnabledEnum
 
+
+                                    YLeaf status; //type: IsisEnabledEnum
 
                                 class Disabled : public Entity
                                 {
@@ -11013,17 +11300,16 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value reason_code; //type: IsisIfAdjFormDisabledReasonEnum
 
 
-                                        class IsisIfAdjFormDisabledReasonEnum;
+                                        YLeaf reason_code; //type: IsisIfAdjFormDisabledReasonEnum
+
 
 
                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::Disabled
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus::Disabled> disabled;
-                                    class IsisEnabledEnum;
 
 
                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdjacencyFormStatus
@@ -11042,8 +11328,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value status; //type: IsisEnabledEnum
 
+
+                                    YLeaf status; //type: IsisEnabledEnum
 
                                 class Disabled : public Entity
                                 {
@@ -11058,17 +11345,16 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value reason_code; //type: IsisIfAdvPrefixDisabledReasonEnum
 
 
-                                        class IsisIfAdvPrefixDisabledReasonEnum;
+                                        YLeaf reason_code; //type: IsisIfAdvPrefixDisabledReasonEnum
+
 
 
                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::Disabled
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus::Disabled> disabled;
-                                    class IsisEnabledEnum;
 
 
                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::AdvPrefixStatus
@@ -11087,11 +11373,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value time_until_next_iih; //type: uint32
-                                    Value retransmit_lsp_queue_size; //type: uint32
-                                    Value retransmit_lsp_interval; //type: uint32
-                                    Value extended_circuit_number; //type: uint32
 
+
+                                    YLeaf time_until_next_iih; //type: uint32
+                                    YLeaf retransmit_lsp_queue_size; //type: uint32
+                                    YLeaf retransmit_lsp_interval; //type: uint32
+                                    YLeaf extended_circuit_number; //type: uint32
 
 
 
@@ -11111,11 +11398,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value enabled; //type: boolean
-                                    Value ipv6_enabled; //type: boolean
-                                    Value interval; //type: uint32
-                                    Value multiplier; //type: uint32
 
+
+                                    YLeaf enabled; //type: boolean
+                                    YLeaf ipv6_enabled; //type: boolean
+                                    YLeaf interval; //type: uint32
+                                    YLeaf multiplier; //type: uint32
 
 
 
@@ -11135,14 +11423,15 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value time_until_next_lsp; //type: uint32
-                                    Value lsp_transmit_requested_flag; //type: boolean
-                                    Value lsp_transmitted_flag; //type: boolean
-                                    Value lsp_txmitd_b2b_limit; //type: uint32
-                                    Value lsp_txmt_b2b_msecs; //type: uint32
-                                    Value last_lsp_level_transmitted; //type: IsisLevelEnum
-                                    Value last_lsp_id_transmitted; //type: string
 
+
+                                    YLeaf time_until_next_lsp; //type: uint32
+                                    YLeaf lsp_transmit_requested_flag; //type: boolean
+                                    YLeaf lsp_transmitted_flag; //type: boolean
+                                    YLeaf lsp_txmitd_b2b_limit; //type: uint32
+                                    YLeaf lsp_txmt_b2b_msecs; //type: uint32
+                                    YLeaf last_lsp_level_transmitted; //type: IsisLevelEnum
+                                    YLeaf last_lsp_id_transmitted; //type: string
 
                                 class ClnsStatus : public Entity
                                 {
@@ -11157,8 +11446,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value status; //type: IsisUpEnum
 
+
+                                        YLeaf status; //type: IsisUpEnum
 
                                     class ClnsDownInfo : public Entity
                                     {
@@ -11173,17 +11463,16 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value reason_code; //type: IsisIfClnsProtoDownReasonEnum
 
 
-                                            class IsisIfClnsProtoDownReasonEnum;
+                                            YLeaf reason_code; //type: IsisIfClnsProtoDownReasonEnum
+
 
 
                                     }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::ClnsDownInfo
 
 
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus::ClnsDownInfo> clns_down_info;
-                                        class IsisUpEnum;
 
 
                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::ClnsStatus
@@ -11202,9 +11491,10 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value status; //type: IsisValidEnum
-                                        Value mtu; //type: uint32
 
+
+                                        YLeaf status; //type: IsisValidEnum
+                                        YLeaf mtu; //type: uint32
 
                                     class Invalid : public Entity
                                     {
@@ -11219,17 +11509,16 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value reason_code; //type: IsisIfClnsMtuInvalidReasonEnum
 
 
-                                            class IsisIfClnsMtuInvalidReasonEnum;
+                                            YLeaf reason_code; //type: IsisIfClnsMtuInvalidReasonEnum
+
 
 
                                     }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::Invalid
 
 
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo::Invalid> invalid;
-                                        class IsisValidEnum;
 
 
                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo
@@ -11248,8 +11537,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value status; //type: IsisKnownEnum
 
+
+                                        YLeaf status; //type: IsisKnownEnum
 
                                     class Unknown : public Entity
                                     {
@@ -11264,10 +11554,10 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value reason_code; //type: IsisIfClnsSnpaUnknownReasonEnum
 
 
-                                            class IsisIfClnsSnpaUnknownReasonEnum;
+                                            YLeaf reason_code; //type: IsisIfClnsSnpaUnknownReasonEnum
+
 
 
                                     }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Unknown
@@ -11286,8 +11576,9 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value snpa; //type: string
 
+
+                                            YLeaf snpa; //type: string
 
 
 
@@ -11296,7 +11587,6 @@ class Isis : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Known> known;
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState::Unknown> unknown;
-                                        class IsisKnownEnum;
 
 
                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState
@@ -11315,8 +11605,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value clns_media_type; //type: IsisMediaClassEnum
 
+
+                                        YLeaf clns_media_type; //type: IsisMediaClassEnum
 
                                     class ClnsLanData : public Entity
                                     {
@@ -11333,6 +11624,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PerAreaData : public Entity
                                         {
                                             public:
@@ -11346,8 +11638,9 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisLevelEnum
 
+
+                                                YLeaf level; //type: IsisLevelEnum
 
                                             class MulticastStatus : public Entity
                                             {
@@ -11362,8 +11655,9 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value status; //type: IsisValidEnum
 
+
+                                                    YLeaf status; //type: IsisValidEnum
 
                                                 class Invalid : public Entity
                                                 {
@@ -11378,24 +11672,22 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value reason_code; //type: IsisIfMcastInvalidReasonEnum
 
 
-                                                        class IsisIfMcastInvalidReasonEnum;
+                                                        YLeaf reason_code; //type: IsisIfMcastInvalidReasonEnum
+
 
 
                                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::Invalid
 
 
                                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus::Invalid> invalid;
-                                                    class IsisValidEnum;
 
 
                                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus
 
 
                                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData::MulticastStatus> multicast_status;
-                                                class IsisLevelEnum;
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData::PerAreaData
@@ -11422,6 +11714,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class P2POverLanData : public Entity
                                         {
                                             public:
@@ -11437,6 +11730,7 @@ class Isis : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class MulticastStatus : public Entity
                                             {
                                                 public:
@@ -11450,8 +11744,9 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value status; //type: IsisValidEnum
 
+
+                                                    YLeaf status; //type: IsisValidEnum
 
                                                 class Invalid : public Entity
                                                 {
@@ -11466,17 +11761,16 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value reason_code; //type: IsisIfMcastInvalidReasonEnum
 
 
-                                                        class IsisIfMcastInvalidReasonEnum;
+                                                        YLeaf reason_code; //type: IsisIfMcastInvalidReasonEnum
+
 
 
                                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::Invalid
 
 
                                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus::Invalid> invalid;
-                                                    class IsisValidEnum;
 
 
                                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData::P2POverLanData::MulticastStatus
@@ -11496,7 +11790,6 @@ class Isis : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsLanData> clns_lan_data;
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState::ClnsP2PData> clns_p2p_data;
-                                        class IsisMediaClassEnum;
 
 
                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState
@@ -11506,7 +11799,6 @@ class Isis : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MediaSpecificState> media_specific_state;
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::MtuInfo> mtu_info;
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData::SnpaState> snpa_state;
-                                    class IsisLevelEnum;
 
 
                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::ClnsData
@@ -11525,11 +11817,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisLevelEnum
-                                    Value adjacency_count; //type: uint32
-                                    Value lsp_pacing_interval; //type: uint32
-                                    Value psnp_transmit_queue_size; //type: uint32
 
+
+                                    YLeaf level; //type: IsisLevelEnum
+                                    YLeaf adjacency_count; //type: uint32
+                                    YLeaf lsp_pacing_interval; //type: uint32
+                                    YLeaf psnp_transmit_queue_size; //type: uint32
 
                                 class LanData : public Entity
                                 {
@@ -11544,12 +11837,13 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value circuit_lan_id; //type: string
-                                        Value time_until_next_iih; //type: uint32
-                                        Value interface_priority; //type: uint8
-                                        Value dispriority; //type: uint8
-                                        Value are_we_dis; //type: boolean
 
+
+                                        YLeaf circuit_lan_id; //type: string
+                                        YLeaf time_until_next_iih; //type: uint32
+                                        YLeaf interface_priority; //type: uint8
+                                        YLeaf dispriority; //type: uint8
+                                        YLeaf are_we_dis; //type: boolean
 
 
 
@@ -11557,7 +11851,6 @@ class Isis : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData::LanData> lan_data;
-                                    class IsisLevelEnum;
 
 
                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData
@@ -11578,6 +11871,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TopologyId : public Entity
                                 {
                                     public:
@@ -11591,14 +11885,13 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af_name; //type: IsisAfIdEnum
-                                        Value saf_name; //type: IsisSubAfIdEnum
-                                        Value vrf_name; //type: string
-                                        Value topology_name; //type: string
 
 
-                                        class IsisAfIdEnum;
-                                        class IsisSubAfIdEnum;
+                                        YLeaf af_name; //type: IsisAfIdEnum
+                                        YLeaf saf_name; //type: IsisSubAfIdEnum
+                                        YLeaf vrf_name; //type: string
+                                        YLeaf topology_name; //type: string
+
 
 
                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::TopologyId
@@ -11617,8 +11910,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value status; //type: IsisEnabledEnum
 
+
+                                        YLeaf status; //type: IsisEnabledEnum
 
                                     class Disabled : public Entity
                                     {
@@ -11633,10 +11927,10 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value reason_code; //type: IsisIfTopoDisabledReasonEnum
 
 
-                                            class IsisIfTopoDisabledReasonEnum;
+                                            YLeaf reason_code; //type: IsisIfTopoDisabledReasonEnum
+
 
 
                                     }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Disabled
@@ -11655,24 +11949,25 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level1_metric; //type: uint32
-                                            Value level2_metric; //type: uint32
-                                            Value level1_weight; //type: uint32
-                                            Value level2_weight; //type: uint32
-                                            Value max_label_supported; //type: uint16
-                                            Value level1ldp_sync_enabled; //type: boolean
-                                            Value level2ldp_sync_enabled; //type: boolean
-                                            Value ldp_sync_status; //type: boolean
-                                            Value ld_pv6_sync_status; //type: boolean
-                                            Value level1_offset_metric; //type: uint32
-                                            Value level2_offset_metric; //type: uint32
-                                            Value level1_lkgp_configured; //type: boolean
-                                            Value level2_lkgp_configured; //type: boolean
-                                            Value level1pp_metric; //type: uint32
-                                            Value level2pp_metric; //type: uint32
-                                            Value level1pp_configured; //type: boolean
-                                            Value level2pp_configured; //type: boolean
 
+
+                                            YLeaf level1_metric; //type: uint32
+                                            YLeaf level2_metric; //type: uint32
+                                            YLeaf level1_weight; //type: uint32
+                                            YLeaf level2_weight; //type: uint32
+                                            YLeaf max_label_supported; //type: uint16
+                                            YLeaf level1ldp_sync_enabled; //type: boolean
+                                            YLeaf level2ldp_sync_enabled; //type: boolean
+                                            YLeaf ldp_sync_status; //type: boolean
+                                            YLeaf ld_pv6_sync_status; //type: boolean
+                                            YLeaf level1_offset_metric; //type: uint32
+                                            YLeaf level2_offset_metric; //type: uint32
+                                            YLeaf level1_lkgp_configured; //type: boolean
+                                            YLeaf level2_lkgp_configured; //type: boolean
+                                            YLeaf level1pp_metric; //type: uint32
+                                            YLeaf level2pp_metric; //type: uint32
+                                            YLeaf level1pp_configured; //type: boolean
+                                            YLeaf level2pp_configured; //type: boolean
 
                                         class AdjacencyFormStatus : public Entity
                                         {
@@ -11687,8 +11982,9 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value status; //type: IsisEnabledEnum
 
+
+                                                YLeaf status; //type: IsisEnabledEnum
 
                                             class Disabled : public Entity
                                             {
@@ -11703,17 +11999,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value reason_code; //type: IsisIfTopoAdjFormDisabledReasonEnum
 
 
-                                                    class IsisIfTopoAdjFormDisabledReasonEnum;
+                                                    YLeaf reason_code; //type: IsisIfTopoAdjFormDisabledReasonEnum
+
 
 
                                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::Disabled
 
 
                                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus::Disabled> disabled;
-                                                class IsisEnabledEnum;
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdjacencyFormStatus
@@ -11732,8 +12027,9 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value status; //type: IsisEnabledEnum
 
+
+                                                YLeaf status; //type: IsisEnabledEnum
 
                                             class Disabled : public Entity
                                             {
@@ -11748,17 +12044,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value reason_code; //type: IsisIfTopoAdvPrefixDisabledReasonEnum
 
 
-                                                    class IsisIfTopoAdvPrefixDisabledReasonEnum;
+                                                    YLeaf reason_code; //type: IsisIfTopoAdvPrefixDisabledReasonEnum
+
 
 
                                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::Disabled
 
 
                                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus::Disabled> disabled;
-                                                class IsisEnabledEnum;
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_::AdvPrefixStatus
@@ -11773,7 +12068,6 @@ class Isis : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Disabled> disabled;
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status::Enabled_> enabled;
-                                        class IsisEnabledEnum;
 
 
                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData::Status
@@ -11799,8 +12093,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value af_name; //type: IsisAfIdEnum
 
+
+                                    YLeaf af_name; //type: IsisAfIdEnum
 
                                 class AfStatus : public Entity
                                 {
@@ -11815,8 +12110,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value status; //type: IsisEnabledEnum
 
+
+                                        YLeaf status; //type: IsisEnabledEnum
 
                                     class Disabled : public Entity
                                     {
@@ -11831,10 +12127,10 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value reason_code; //type: IsisIfAfDisabledReasonEnum
 
 
-                                            class IsisIfAfDisabledReasonEnum;
+                                            YLeaf reason_code; //type: IsisIfAfDisabledReasonEnum
+
 
 
                                     }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::Disabled
@@ -11855,6 +12151,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class ProtocolStatus : public Entity
                                         {
                                             public:
@@ -11868,8 +12165,9 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value status; //type: IsisUpEnum
 
+
+                                                YLeaf status; //type: IsisUpEnum
 
                                             class Disabled : public Entity
                                             {
@@ -11884,17 +12182,16 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value reason_code; //type: IsisIfAfProtoDownReasonEnum
 
 
-                                                    class IsisIfAfProtoDownReasonEnum;
+                                                    YLeaf reason_code; //type: IsisIfAfProtoDownReasonEnum
+
 
 
                                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::Disabled
 
 
                                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus::Disabled> disabled;
-                                                class IsisUpEnum;
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ProtocolStatus
@@ -11913,8 +12210,9 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value status; //type: IsisKnownEnum
 
+
+                                                YLeaf status; //type: IsisKnownEnum
 
                                             class Unknown : public Entity
                                             {
@@ -11929,10 +12227,10 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value reason_code; //type: IsisIfAfFwdAddrUnknownReasonEnum
 
 
-                                                    class IsisIfAfFwdAddrUnknownReasonEnum;
+                                                    YLeaf reason_code; //type: IsisIfAfFwdAddrUnknownReasonEnum
+
 
 
                                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::Unknown
@@ -11951,8 +12249,9 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value unnumbered_interface_name; //type: string
 
+
+                                                    YLeaf unnumbered_interface_name; //type: string
 
                                                 class ForwardingAddress : public Entity
                                                 {
@@ -11967,12 +12266,12 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value af_name; //type: IsisAfIdEnum
-                                                        Value ipv4; //type: string
-                                                        Value ipv6; //type: string
 
 
-                                                        class IsisAfIdEnum;
+                                                        YLeaf af_name; //type: IsisAfIdEnum
+                                                        YLeaf ipv4; //type: string
+                                                        YLeaf ipv6; //type: string
+
 
 
                                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData::ForwardingAddress
@@ -11986,7 +12285,6 @@ class Isis : public Entity
 
                                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::ForwardingAddressData> forwarding_address_data;
                                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus::Unknown> unknown;
-                                                class IsisKnownEnum;
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::ForwardingAddressStatus
@@ -12005,8 +12303,9 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value status; //type: IsisKnownEnum
 
+
+                                                YLeaf status; //type: IsisKnownEnum
 
                                             class Unknown : public Entity
                                             {
@@ -12021,10 +12320,10 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value reason_code; //type: IsisIfAfPrefixUnknownReasonEnum
 
 
-                                                    class IsisIfAfPrefixUnknownReasonEnum;
+                                                    YLeaf reason_code; //type: IsisIfAfPrefixUnknownReasonEnum
+
 
 
                                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::Unknown
@@ -12043,8 +12342,9 @@ class Isis : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value is_unnumbered; //type: boolean
 
+
+                                                    YLeaf is_unnumbered; //type: boolean
 
                                                 class Prefix : public Entity
                                                 {
@@ -12059,8 +12359,9 @@ class Isis : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value af_name; //type: IsisAfIdEnum
 
+
+                                                        YLeaf af_name; //type: IsisAfIdEnum
 
                                                     class Ipv4 : public Entity
                                                     {
@@ -12075,9 +12376,10 @@ class Isis : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value prefix; //type: string
-                                                            Value prefix_length; //type: uint8
 
+
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length; //type: uint8
 
 
 
@@ -12097,9 +12399,10 @@ class Isis : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value prefix; //type: string
-                                                            Value prefix_length; //type: uint8
 
+
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length; //type: uint8
 
 
 
@@ -12108,7 +12411,6 @@ class Isis : public Entity
 
                                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv4> ipv4;
                                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix::Ipv6> ipv6;
-                                                        class IsisAfIdEnum;
 
 
                                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData::Prefix
@@ -12122,7 +12424,6 @@ class Isis : public Entity
 
                                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::PrefixData> prefix_data;
                                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus::Unknown> unknown;
-                                                class IsisKnownEnum;
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData::PrefixStatus
@@ -12138,14 +12439,12 @@ class Isis : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::AfData> af_data;
                                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus::Disabled> disabled;
-                                        class IsisEnabledEnum;
 
 
                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData::AfStatus> af_status;
-                                    class IsisAfIdEnum;
 
 
                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData
@@ -12159,8 +12458,6 @@ class Isis : public Entity
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAddressFamilyData> > per_address_family_data;
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerAreaData> > per_area_data;
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled::PerTopologyData> > per_topology_data;
-                                class IsisLevelsEnum;
-                                class IsisMediaClassEnum;
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled
@@ -12168,7 +12465,6 @@ class Isis : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Disabled> disabled;
                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::Enabled> enabled;
-                            class IsisEnabledEnum;
 
 
                     }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData
@@ -12176,8 +12472,6 @@ class Isis : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::ConfiguredStatus> configured_status;
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData> interface_status_and_data;
-                        class IsisLevelsEnum;
-                        class IsisLevelsEnum;
 
 
                 }; // Isis::Instances::Instance::Interfaces::Interface
@@ -12204,6 +12498,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class CheckpointAdjacency : public Entity
                 {
                     public:
@@ -12217,18 +12512,19 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
-                        Value system_id; //type: string
-                        Value interface_name; //type: string
-                        Value checkpoint_adjacency_object_id; //type: uint32
-                        Value checkpoint_adjacency_system_id; //type: string
-                        Value checkpoint_adjacency_snpa; //type: string
-                        Value checkpoint_adjacency_interface; //type: string
-                        Value checkpoint_adjacency_level; //type: IsisLevelEnum
-                        Value checkpoint_adjacency_holdtime; //type: uint16
-                        Value checkpoint_adjacency_lan_priority; //type: uint8
-                        Value checkpoint_adjacency_circuit_number; //type: uint8
 
+
+                        YLeaf level; //type: IsisInternalLevelEnum
+                        YLeaf system_id; //type: string
+                        YLeaf interface_name; //type: string
+                        YLeaf checkpoint_adjacency_object_id; //type: uint32
+                        YLeaf checkpoint_adjacency_system_id; //type: string
+                        YLeaf checkpoint_adjacency_snpa; //type: string
+                        YLeaf checkpoint_adjacency_interface; //type: string
+                        YLeaf checkpoint_adjacency_level; //type: IsisLevelEnum
+                        YLeaf checkpoint_adjacency_holdtime; //type: uint16
+                        YLeaf checkpoint_adjacency_lan_priority; //type: uint8
+                        YLeaf checkpoint_adjacency_circuit_number; //type: uint8
 
                     class CheckpointAdjacencyPerAddressFamilyNextHop : public Entity
                     {
@@ -12243,20 +12539,18 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: IsisAfIdEnum
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class IsisAfIdEnum;
+                            YLeaf af_name; //type: IsisAfIdEnum
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::CheckpointAdjacencyPerAddressFamilyNextHop
 
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency::CheckpointAdjacencyPerAddressFamilyNextHop> > checkpoint_adjacency_per_address_family_next_hop;
-                        class IsisLevelEnum;
-                        class IsisInternalLevelEnum;
 
 
                 }; // Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacency
@@ -12283,6 +12577,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Policy : public Entity
                 {
                     public:
@@ -12296,6 +12591,7 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class PolicyIpv4 : public Entity
@@ -12313,6 +12609,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PolicyIpv4Active : public Entity
                         {
                             public:
@@ -12328,6 +12625,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PolicyMi : public Entity
                             {
                                 public:
@@ -12341,17 +12639,18 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value mi_id; //type: string
-                                    Value src; //type: SrmsMiSrcEBEnum
-                                    Value router; //type: string
-                                    Value area; //type: string
-                                    Value prefix; //type: uint8
-                                    Value sid_start; //type: uint32
-                                    Value sid_count; //type: uint32
-                                    Value last_prefix; //type: string
-                                    Value last_sid_index; //type: uint32
-                                    Value flag_attached; //type: SrmsMiFlagEBEnum
 
+
+                                    YLeaf mi_id; //type: string
+                                    YLeaf src; //type: SrmsMiSrcEBEnum
+                                    YLeaf router; //type: string
+                                    YLeaf area; //type: string
+                                    YLeaf prefix; //type: uint8
+                                    YLeaf sid_start; //type: uint32
+                                    YLeaf sid_count; //type: uint32
+                                    YLeaf last_prefix; //type: string
+                                    YLeaf last_sid_index; //type: uint32
+                                    YLeaf flag_attached; //type: SrmsMiFlagEBEnum
 
                                 class Addr : public Entity
                                 {
@@ -12366,20 +12665,18 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af; //type: SrmsMiAfEBEnum
-                                        Value ipv4; //type: string
-                                        Value ipv6; //type: string
 
 
-                                        class SrmsMiAfEBEnum;
+                                        YLeaf af; //type: SrmsMiAfEBEnum
+                                        YLeaf ipv4; //type: string
+                                        YLeaf ipv6; //type: string
+
 
 
                                 }; // Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr> addr;
-                                    class SrmsMiFlagEBEnum;
-                                    class SrmsMiSrcEBEnum;
 
 
                             }; // Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi
@@ -12406,6 +12703,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PolicyMi : public Entity
                             {
                                 public:
@@ -12419,17 +12717,18 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value mi_id; //type: string
-                                    Value src; //type: SrmsMiSrcEBEnum
-                                    Value router; //type: string
-                                    Value area; //type: string
-                                    Value prefix; //type: uint8
-                                    Value sid_start; //type: uint32
-                                    Value sid_count; //type: uint32
-                                    Value last_prefix; //type: string
-                                    Value last_sid_index; //type: uint32
-                                    Value flag_attached; //type: SrmsMiFlagEBEnum
 
+
+                                    YLeaf mi_id; //type: string
+                                    YLeaf src; //type: SrmsMiSrcEBEnum
+                                    YLeaf router; //type: string
+                                    YLeaf area; //type: string
+                                    YLeaf prefix; //type: uint8
+                                    YLeaf sid_start; //type: uint32
+                                    YLeaf sid_count; //type: uint32
+                                    YLeaf last_prefix; //type: string
+                                    YLeaf last_sid_index; //type: uint32
+                                    YLeaf flag_attached; //type: SrmsMiFlagEBEnum
 
                                 class Addr : public Entity
                                 {
@@ -12444,20 +12743,18 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af; //type: SrmsMiAfEBEnum
-                                        Value ipv4; //type: string
-                                        Value ipv6; //type: string
 
 
-                                        class SrmsMiAfEBEnum;
+                                        YLeaf af; //type: SrmsMiAfEBEnum
+                                        YLeaf ipv4; //type: string
+                                        YLeaf ipv6; //type: string
+
 
 
                                 }; // Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr> addr;
-                                    class SrmsMiFlagEBEnum;
-                                    class SrmsMiSrcEBEnum;
 
 
                             }; // Isis::Instances::Instance::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi
@@ -12491,6 +12788,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PolicyIpv6Backup : public Entity
                         {
                             public:
@@ -12506,6 +12804,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PolicyMi : public Entity
                             {
                                 public:
@@ -12519,17 +12818,18 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value mi_id; //type: string
-                                    Value src; //type: SrmsMiSrcEBEnum
-                                    Value router; //type: string
-                                    Value area; //type: string
-                                    Value prefix; //type: uint8
-                                    Value sid_start; //type: uint32
-                                    Value sid_count; //type: uint32
-                                    Value last_prefix; //type: string
-                                    Value last_sid_index; //type: uint32
-                                    Value flag_attached; //type: SrmsMiFlagEBEnum
 
+
+                                    YLeaf mi_id; //type: string
+                                    YLeaf src; //type: SrmsMiSrcEBEnum
+                                    YLeaf router; //type: string
+                                    YLeaf area; //type: string
+                                    YLeaf prefix; //type: uint8
+                                    YLeaf sid_start; //type: uint32
+                                    YLeaf sid_count; //type: uint32
+                                    YLeaf last_prefix; //type: string
+                                    YLeaf last_sid_index; //type: uint32
+                                    YLeaf flag_attached; //type: SrmsMiFlagEBEnum
 
                                 class Addr : public Entity
                                 {
@@ -12544,20 +12844,18 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af; //type: SrmsMiAfEBEnum
-                                        Value ipv4; //type: string
-                                        Value ipv6; //type: string
 
 
-                                        class SrmsMiAfEBEnum;
+                                        YLeaf af; //type: SrmsMiAfEBEnum
+                                        YLeaf ipv4; //type: string
+                                        YLeaf ipv6; //type: string
+
 
 
                                 }; // Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr> addr;
-                                    class SrmsMiFlagEBEnum;
-                                    class SrmsMiSrcEBEnum;
 
 
                             }; // Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi
@@ -12584,6 +12882,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PolicyMi : public Entity
                             {
                                 public:
@@ -12597,17 +12896,18 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value mi_id; //type: string
-                                    Value src; //type: SrmsMiSrcEBEnum
-                                    Value router; //type: string
-                                    Value area; //type: string
-                                    Value prefix; //type: uint8
-                                    Value sid_start; //type: uint32
-                                    Value sid_count; //type: uint32
-                                    Value last_prefix; //type: string
-                                    Value last_sid_index; //type: uint32
-                                    Value flag_attached; //type: SrmsMiFlagEBEnum
 
+
+                                    YLeaf mi_id; //type: string
+                                    YLeaf src; //type: SrmsMiSrcEBEnum
+                                    YLeaf router; //type: string
+                                    YLeaf area; //type: string
+                                    YLeaf prefix; //type: uint8
+                                    YLeaf sid_start; //type: uint32
+                                    YLeaf sid_count; //type: uint32
+                                    YLeaf last_prefix; //type: string
+                                    YLeaf last_sid_index; //type: uint32
+                                    YLeaf flag_attached; //type: SrmsMiFlagEBEnum
 
                                 class Addr : public Entity
                                 {
@@ -12622,20 +12922,18 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af; //type: SrmsMiAfEBEnum
-                                        Value ipv4; //type: string
-                                        Value ipv6; //type: string
 
 
-                                        class SrmsMiAfEBEnum;
+                                        YLeaf af; //type: SrmsMiAfEBEnum
+                                        YLeaf ipv4; //type: string
+                                        YLeaf ipv6; //type: string
+
 
 
                                 }; // Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr
 
 
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr> addr;
-                                    class SrmsMiFlagEBEnum;
-                                    class SrmsMiSrcEBEnum;
 
 
                             }; // Isis::Instances::Instance::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi
@@ -12682,6 +12980,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LogEntry : public Entity
                 {
                     public:
@@ -12695,10 +12994,11 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value error_log_level; //type: IsisErrLogLevelEnum
-                        Value error_code; //type: uint32
-                        Value error_reason; //type: string
 
+
+                        YLeaf error_log_level; //type: IsisErrLogLevelEnum
+                        YLeaf error_code; //type: uint32
+                        YLeaf error_reason; //type: string
 
                     class GenericData : public Entity
                     {
@@ -12715,6 +13015,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Timestamp : public Entity
                         {
                             public:
@@ -12728,9 +13029,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value seconds; //type: uint32
-                                Value nano_seconds; //type: uint32
 
+
+                                YLeaf seconds; //type: uint32
+                                YLeaf nano_seconds; //type: uint32
 
 
 
@@ -12744,7 +13046,6 @@ class Isis : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::ErrorLog::LogEntry::GenericData> generic_data;
-                        class IsisErrLogLevelEnum;
 
 
                 }; // Isis::Instances::Instance::ErrorLog::LogEntry
@@ -12771,6 +13072,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class CheckpointInterface : public Entity
                 {
                     public:
@@ -12784,20 +13086,20 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value checkpoint_object_id; //type: uint32
-                        Value interface_name_xr; //type: string
-                        Value checkpoint_interface_handle; //type: string
-                        Value local_circuit_number; //type: uint8
-                        Value dis_areas; //type: IsisLevelsEnum
-                        Value has_adjacency; //type: boolean
-                        Value local_snpa; //type: string
-                        Value has_joined_mcast_group; //type: boolean
-                        Value has_achieved_ldp_sync; //type: boolean
-                        Value has_achieved_ld_pv6_sync; //type: boolean
 
 
-                        class IsisLevelsEnum;
+                        YLeaf interface_name; //type: string
+                        YLeaf checkpoint_object_id; //type: uint32
+                        YLeaf interface_name_xr; //type: string
+                        YLeaf checkpoint_interface_handle; //type: string
+                        YLeaf local_circuit_number; //type: uint8
+                        YLeaf dis_areas; //type: IsisLevelsEnum
+                        YLeaf has_adjacency; //type: boolean
+                        YLeaf local_snpa; //type: string
+                        YLeaf has_joined_mcast_group; //type: boolean
+                        YLeaf has_achieved_ldp_sync; //type: boolean
+                        YLeaf has_achieved_ld_pv6_sync; //type: boolean
+
 
 
                 }; // Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface
@@ -12824,6 +13126,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class InterfaceStatistic : public Entity
                 {
                     public:
@@ -12837,10 +13140,11 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value traffic_interface; //type: string
-                        Value interface_media_type; //type: IsisMediaClassEnum
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf traffic_interface; //type: string
+                        YLeaf interface_media_type; //type: IsisMediaClassEnum
 
                     class P2PStatistics : public Entity
                     {
@@ -12855,9 +13159,10 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value memory_exhausted_iih_count; //type: uint32
-                            Value lsp_retransmit_count; //type: uint32
 
+
+                            YLeaf memory_exhausted_iih_count; //type: uint32
+                            YLeaf lsp_retransmit_count; //type: uint32
 
                         class IihCount : public Entity
                         {
@@ -12872,9 +13177,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value pdu_receive_count; //type: uint32
-                                Value pdu_send_count; //type: uint32
 
+
+                                YLeaf pdu_receive_count; //type: uint32
+                                YLeaf pdu_send_count; //type: uint32
 
 
 
@@ -12900,8 +13206,9 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value level; //type: IsisLevelEnum
 
+
+                            YLeaf level; //type: IsisLevelEnum
 
                         class Statistics : public Entity
                         {
@@ -12916,9 +13223,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsp_drop_count; //type: uint32
-                                Value lsp_flooding_dup_count; //type: uint32
 
+
+                                YLeaf lsp_drop_count; //type: uint32
+                                YLeaf lsp_flooding_dup_count; //type: uint32
 
                             class LspCount : public Entity
                             {
@@ -12933,9 +13241,10 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pdu_receive_count; //type: uint32
-                                    Value pdu_send_count; //type: uint32
 
+
+                                    YLeaf pdu_receive_count; //type: uint32
+                                    YLeaf pdu_send_count; //type: uint32
 
 
 
@@ -12955,9 +13264,10 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pdu_receive_count; //type: uint32
-                                    Value pdu_send_count; //type: uint32
 
+
+                                    YLeaf pdu_receive_count; //type: uint32
+                                    YLeaf pdu_send_count; //type: uint32
 
 
 
@@ -12977,9 +13287,10 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pdu_receive_count; //type: uint32
-                                    Value pdu_send_count; //type: uint32
 
+
+                                    YLeaf pdu_receive_count; //type: uint32
+                                    YLeaf pdu_send_count; //type: uint32
 
 
 
@@ -13007,9 +13318,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value memory_exhausted_iih_count; //type: uint32
-                                Value dis_election_count; //type: uint32
 
+
+                                YLeaf memory_exhausted_iih_count; //type: uint32
+                                YLeaf dis_election_count; //type: uint32
 
                             class IihCount : public Entity
                             {
@@ -13024,9 +13336,10 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pdu_receive_count; //type: uint32
-                                    Value pdu_send_count; //type: uint32
 
+
+                                    YLeaf pdu_receive_count; //type: uint32
+                                    YLeaf pdu_send_count; //type: uint32
 
 
 
@@ -13041,7 +13354,6 @@ class Isis : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::LanData> lan_data;
                             std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData::Statistics> statistics;
-                            class IsisLevelEnum;
 
 
                     }; // Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData
@@ -13049,7 +13361,6 @@ class Isis : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::P2PStatistics> p2p_statistics;
                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerAreaData> > per_area_data;
-                        class IsisMediaClassEnum;
 
 
                 }; // Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic
@@ -13074,17 +13385,18 @@ class Isis : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value nsap_system_id; //type: string
-                    Value valid_nsap_system_id; //type: boolean
-                    Value instance_id; //type: uint16
-                    Value running_levels; //type: IsisLevelsEnum
-                    Value configured_nsf_flavor; //type: IsisNsfFlavorEnum
-                    Value last_restart_nsf_flavor; //type: IsisNsfFlavorEnum
-                    Value last_restart_status; //type: IsisStartupStatusEnum
-                    Value remaining_time_for_next_nsf_restart; //type: uint32
-                    ValueList manual_area_address; //type: list of  string
-                    ValueList active_area_address; //type: list of  string
 
+
+                    YLeaf nsap_system_id; //type: string
+                    YLeaf valid_nsap_system_id; //type: boolean
+                    YLeaf instance_id; //type: uint16
+                    YLeaf running_levels; //type: IsisLevelsEnum
+                    YLeaf configured_nsf_flavor; //type: IsisNsfFlavorEnum
+                    YLeaf last_restart_nsf_flavor; //type: IsisNsfFlavorEnum
+                    YLeaf last_restart_status; //type: IsisStartupStatusEnum
+                    YLeaf remaining_time_for_next_nsf_restart; //type: uint32
+                    YLeafList manual_area_address; //type: list of  string
+                    YLeafList active_area_address; //type: list of  string
 
                 class PerTopoData : public Entity
                 {
@@ -13099,10 +13411,11 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value default_admin_distance; //type: uint32
-                        Value advertise_passive_only; //type: boolean
-                        Value wait_redist_complete; //type: boolean
 
+
+                        YLeaf default_admin_distance; //type: uint32
+                        YLeaf advertise_passive_only; //type: boolean
+                        YLeaf wait_redist_complete; //type: boolean
 
                     class Id : public Entity
                     {
@@ -13117,14 +13430,13 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: IsisAfIdEnum
-                            Value saf_name; //type: IsisSubAfIdEnum
-                            Value vrf_name; //type: string
-                            Value topology_name; //type: string
 
 
-                            class IsisAfIdEnum;
-                            class IsisSubAfIdEnum;
+                            YLeaf af_name; //type: IsisAfIdEnum
+                            YLeaf saf_name; //type: IsisSubAfIdEnum
+                            YLeaf vrf_name; //type: string
+                            YLeaf topology_name; //type: string
+
 
 
                     }; // Isis::Instances::Instance::Protocol::PerTopoData::Id
@@ -13145,6 +13457,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class IsisShRedistEntry : public Entity
                         {
                             public:
@@ -13160,6 +13473,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class ProtocolDetails : public Entity
                             {
                                 public:
@@ -13173,16 +13487,16 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value protocol; //type: IsisRedistProtoEnum
-                                    Value isis_instance_id; //type: string
-                                    Value ospf_process_id; //type: string
-                                    Value ospfv3_process_id; //type: string
-                                    Value bgp_as_number; //type: string
-                                    Value eigrp_as_number; //type: string
-                                    Value application_name; //type: string
 
 
-                                    class IsisRedistProtoEnum;
+                                    YLeaf protocol; //type: IsisRedistProtoEnum
+                                    YLeaf isis_instance_id; //type: string
+                                    YLeaf ospf_process_id; //type: string
+                                    YLeaf ospfv3_process_id; //type: string
+                                    YLeaf bgp_as_number; //type: string
+                                    YLeaf eigrp_as_number; //type: string
+                                    YLeaf application_name; //type: string
+
 
 
                             }; // Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsList::IsisShRedistEntry::ProtocolDetails
@@ -13213,19 +13527,16 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value level; //type: IsisLevelEnum
-                            Value uses_default_link_topo_flag; //type: boolean
-                            Value generated_metric_style; //type: IsisMetricStyleEnum
-                            Value accepted_metric_style; //type: IsisMetricStyleEnum
-                            Value metric; //type: uint32
-                            Value ispf_state; //type: IsisEnabledEnum
-                            Value te_enabled; //type: boolean
 
 
-                            class IsisMetricStyleEnum;
-                            class IsisMetricStyleEnum;
-                            class IsisEnabledEnum;
-                            class IsisLevelEnum;
+                            YLeaf level; //type: IsisLevelEnum
+                            YLeaf uses_default_link_topo_flag; //type: boolean
+                            YLeaf generated_metric_style; //type: IsisMetricStyleEnum
+                            YLeaf accepted_metric_style; //type: IsisMetricStyleEnum
+                            YLeaf metric; //type: uint32
+                            YLeaf ispf_state; //type: IsisEnabledEnum
+                            YLeaf te_enabled; //type: boolean
+
 
 
                     }; // Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData
@@ -13240,10 +13551,6 @@ class Isis : public Entity
 
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Protocol::PerTopoData> > per_topo_data;
-                    class IsisNsfFlavorEnum;
-                    class IsisNsfFlavorEnum;
-                    class IsisStartupStatusEnum;
-                    class IsisLevelsEnum;
 
 
             }; // Isis::Instances::Instance::Protocol
@@ -13264,6 +13571,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class NeighborSummary : public Entity
                 {
                     public:
@@ -13277,8 +13585,9 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class Level1Neighbors : public Entity
                     {
@@ -13293,10 +13602,11 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value neighbor_up_count; //type: uint32
-                            Value neighbor_init_count; //type: uint32
-                            Value neighbor_down_count; //type: uint32
 
+
+                            YLeaf neighbor_up_count; //type: uint32
+                            YLeaf neighbor_init_count; //type: uint32
+                            YLeaf neighbor_down_count; //type: uint32
 
 
 
@@ -13316,10 +13626,11 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value neighbor_up_count; //type: uint32
-                            Value neighbor_init_count; //type: uint32
-                            Value neighbor_down_count; //type: uint32
 
+
+                            YLeaf neighbor_up_count; //type: uint32
+                            YLeaf neighbor_init_count; //type: uint32
+                            YLeaf neighbor_down_count; //type: uint32
 
 
 
@@ -13339,10 +13650,11 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value neighbor_up_count; //type: uint32
-                            Value neighbor_init_count; //type: uint32
-                            Value neighbor_down_count; //type: uint32
 
+
+                            YLeaf neighbor_up_count; //type: uint32
+                            YLeaf neighbor_init_count; //type: uint32
+                            YLeaf neighbor_down_count; //type: uint32
 
 
 
@@ -13378,6 +13690,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class CheckpointLsp : public Entity
                 {
                     public:
@@ -13391,15 +13704,15 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
-                        Value lsp_id; //type: string
-                        Value checkpoint_lsp_object_id; //type: uint32
-                        Value checkpoint_lsp_level; //type: uint8
-                        Value checkpoint_lsp_local_flag; //type: boolean
-                        Value checkpoint_lsp_id; //type: string
 
 
-                        class IsisInternalLevelEnum;
+                        YLeaf level; //type: IsisInternalLevelEnum
+                        YLeaf lsp_id; //type: string
+                        YLeaf checkpoint_lsp_object_id; //type: uint32
+                        YLeaf checkpoint_lsp_level; //type: uint8
+                        YLeaf checkpoint_lsp_local_flag; //type: boolean
+                        YLeaf checkpoint_lsp_id; //type: string
+
 
 
                 }; // Isis::Instances::Instance::CheckpointLsps::CheckpointLsp
@@ -13426,6 +13739,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class MeshGroupConfiguredInterfaceList : public Entity
                 {
                     public:
@@ -13441,6 +13755,7 @@ class Isis : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class IsisShMeshEntry : public Entity
                     {
                         public:
@@ -13454,9 +13769,10 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value mesh_group_interface; //type: string
-                            Value mesh_group_number; //type: uint32
 
+
+                            YLeaf mesh_group_interface; //type: string
+                            YLeaf mesh_group_number; //type: uint32
 
 
 
@@ -13488,8 +13804,9 @@ class Isis : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value isis_vm_state; //type: uint16
 
+
+                    YLeaf isis_vm_state; //type: uint16
 
                 class IsisNsrStatsData : public Entity
                 {
@@ -13506,6 +13823,7 @@ class Isis : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Self : public Entity
                     {
                         public:
@@ -13519,20 +13837,21 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value no_of_l1_lsp; //type: uint32
-                            Value no_of_l2_lsp; //type: uint32
-                            Value no_of_l1_adj; //type: uint16
-                            Value no_of_l2_adj; //type: uint16
-                            Value no_of_live_interface; //type: uint16
-                            Value no_of_ptp_interface; //type: uint16
-                            Value no_of_lan_interface; //type: uint16
-                            Value no_of_loopback_interface; //type: uint16
-                            Value no_of_te_tunnels; //type: uint16
-                            Value no_of_te_links; //type: uint16
-                            Value no_of_ipv4_routes; //type: uint32
-                            Value no_of_ipv6_routes; //type: uint32
-                            Value seqnum; //type: uint32
 
+
+                            YLeaf no_of_l1_lsp; //type: uint32
+                            YLeaf no_of_l2_lsp; //type: uint32
+                            YLeaf no_of_l1_adj; //type: uint16
+                            YLeaf no_of_l2_adj; //type: uint16
+                            YLeaf no_of_live_interface; //type: uint16
+                            YLeaf no_of_ptp_interface; //type: uint16
+                            YLeaf no_of_lan_interface; //type: uint16
+                            YLeaf no_of_loopback_interface; //type: uint16
+                            YLeaf no_of_te_tunnels; //type: uint16
+                            YLeaf no_of_te_links; //type: uint16
+                            YLeaf no_of_ipv4_routes; //type: uint32
+                            YLeaf no_of_ipv6_routes; //type: uint32
+                            YLeaf seqnum; //type: uint32
 
 
 
@@ -13552,20 +13871,21 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value no_of_l1_lsp; //type: uint32
-                            Value no_of_l2_lsp; //type: uint32
-                            Value no_of_l1_adj; //type: uint16
-                            Value no_of_l2_adj; //type: uint16
-                            Value no_of_live_interface; //type: uint16
-                            Value no_of_ptp_interface; //type: uint16
-                            Value no_of_lan_interface; //type: uint16
-                            Value no_of_loopback_interface; //type: uint16
-                            Value no_of_te_tunnels; //type: uint16
-                            Value no_of_te_links; //type: uint16
-                            Value no_of_ipv4_routes; //type: uint32
-                            Value no_of_ipv6_routes; //type: uint32
-                            Value seqnum; //type: uint32
 
+
+                            YLeaf no_of_l1_lsp; //type: uint32
+                            YLeaf no_of_l2_lsp; //type: uint32
+                            YLeaf no_of_l1_adj; //type: uint16
+                            YLeaf no_of_l2_adj; //type: uint16
+                            YLeaf no_of_live_interface; //type: uint16
+                            YLeaf no_of_ptp_interface; //type: uint16
+                            YLeaf no_of_lan_interface; //type: uint16
+                            YLeaf no_of_loopback_interface; //type: uint16
+                            YLeaf no_of_te_tunnels; //type: uint16
+                            YLeaf no_of_te_links; //type: uint16
+                            YLeaf no_of_ipv4_routes; //type: uint32
+                            YLeaf no_of_ipv6_routes; //type: uint32
+                            YLeaf seqnum; //type: uint32
 
 
 
@@ -13600,6 +13920,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class CheckpointTeTunnel : public Entity
                 {
                     public:
@@ -13613,22 +13934,20 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
-                        Value interface_name; //type: string
-                        Value checkpoint_te_level; //type: IsisLevelEnum
-                        Value checkpoint_te_system_id; //type: string
-                        Value checkpoint_te_interface; //type: string
-                        Value checkpoint_te_flags; //type: uint32
-                        Value checkpoint_te_nexthop; //type: string
-                        Value checkpoint_te_metric; //type: int32
-                        Value checkpoint_te_metric_mode; //type: IsisMetricModeEnum
-                        Value checkpoint_te_bandwidth; //type: uint32
-                        Value checkpoint_te_object_id; //type: uint32
 
 
-                        class IsisLevelEnum;
-                        class IsisMetricModeEnum;
-                        class IsisInternalLevelEnum;
+                        YLeaf level; //type: IsisInternalLevelEnum
+                        YLeaf interface_name; //type: string
+                        YLeaf checkpoint_te_level; //type: IsisLevelEnum
+                        YLeaf checkpoint_te_system_id; //type: string
+                        YLeaf checkpoint_te_interface; //type: string
+                        YLeaf checkpoint_te_flags; //type: uint32
+                        YLeaf checkpoint_te_nexthop; //type: string
+                        YLeaf checkpoint_te_metric; //type: int32
+                        YLeaf checkpoint_te_metric_mode; //type: IsisMetricModeEnum
+                        YLeaf checkpoint_te_bandwidth; //type: uint32
+                        YLeaf checkpoint_te_object_id; //type: uint32
+
 
 
                 }; // Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel
@@ -13678,548 +13997,548 @@ class Isis : public Entity
 class IsisIfClnsMtuInvalidReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_clns_mtu_invalid_too_sm_all;
-        static const Enum::Value isis_intf_clns_mtu_invalid_internal_error;
+        static const Enum::YLeaf isis_intf_clns_mtu_invalid_too_sm_all;
+        static const Enum::YLeaf isis_intf_clns_mtu_invalid_internal_error;
 
 };
 
 class IsisIfAfFwdAddrUnknownReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_af_fwd_addr_unknown_cfg_passive;
-        static const Enum::Value isis_intf_af_fwd_addr_unknown_proto_doesnt_exist;
-        static const Enum::Value isis_intf_af_fwd_addr_unknown_next_hop_reg_error;
-        static const Enum::Value isis_intf_af_fwd_addr_unknown_no_link_local_add;
-        static const Enum::Value isis_intf_af_fwd_addr_unknown_af_not_up;
-        static const Enum::Value isis_intf_af_fwd_addr_unknown_vrf_enabled;
-        static const Enum::Value isis_intf_af_fwd_addr_unknown_internal_error;
+        static const Enum::YLeaf isis_intf_af_fwd_addr_unknown_cfg_passive;
+        static const Enum::YLeaf isis_intf_af_fwd_addr_unknown_proto_doesnt_exist;
+        static const Enum::YLeaf isis_intf_af_fwd_addr_unknown_next_hop_reg_error;
+        static const Enum::YLeaf isis_intf_af_fwd_addr_unknown_no_link_local_add;
+        static const Enum::YLeaf isis_intf_af_fwd_addr_unknown_af_not_up;
+        static const Enum::YLeaf isis_intf_af_fwd_addr_unknown_vrf_enabled;
+        static const Enum::YLeaf isis_intf_af_fwd_addr_unknown_internal_error;
 
 };
 
 class IsisSubAfIdEnum : public Enum
 {
     public:
-        static const Enum::Value unicast;
-        static const Enum::Value multicast;
+        static const Enum::YLeaf unicast;
+        static const Enum::YLeaf multicast;
 
 };
 
 class IsisNsfFlavorEnum : public Enum
 {
     public:
-        static const Enum::Value isis_nsf_flav_or_none;
-        static const Enum::Value isis_nsf_flav_or_cisco;
-        static const Enum::Value isis_nsf_flav_or_ietf;
-        static const Enum::Value isis_nsf_flav_or_nsr;
+        static const Enum::YLeaf isis_nsf_flav_or_none;
+        static const Enum::YLeaf isis_nsf_flav_or_cisco;
+        static const Enum::YLeaf isis_nsf_flav_or_ietf;
+        static const Enum::YLeaf isis_nsf_flav_or_nsr;
 
 };
 
 class SrmsMiAfEBEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 
 class IsisIfDisabledReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_disabled_no_net_cfg;
-        static const Enum::Value isis_intf_disabled_area_missing;
-        static const Enum::Value isis_intf_disabled_no_area_running;
-        static const Enum::Value isis_intf_disabled_no_topos_cfg;
-        static const Enum::Value isis_intf_disabled_no_imd_conn;
-        static const Enum::Value isis_intf_disabled_imd_reg_error;
-        static const Enum::Value isis_intf_disabled_level_mismatch;
-        static const Enum::Value isis_intf_disabled_base_caps_error;
-        static const Enum::Value isis_intf_disabled_intf_doesnt_exist;
-        static const Enum::Value isis_intf_disabled_intf_shutdown;
-        static const Enum::Value isis_intf_disabled_internal_error;
+        static const Enum::YLeaf isis_intf_disabled_no_net_cfg;
+        static const Enum::YLeaf isis_intf_disabled_area_missing;
+        static const Enum::YLeaf isis_intf_disabled_no_area_running;
+        static const Enum::YLeaf isis_intf_disabled_no_topos_cfg;
+        static const Enum::YLeaf isis_intf_disabled_no_imd_conn;
+        static const Enum::YLeaf isis_intf_disabled_imd_reg_error;
+        static const Enum::YLeaf isis_intf_disabled_level_mismatch;
+        static const Enum::YLeaf isis_intf_disabled_base_caps_error;
+        static const Enum::YLeaf isis_intf_disabled_intf_doesnt_exist;
+        static const Enum::YLeaf isis_intf_disabled_intf_shutdown;
+        static const Enum::YLeaf isis_intf_disabled_internal_error;
 
 };
 
 class IsisShTeLinkEnum : public Enum
 {
     public:
-        static const Enum::Value isis_sh_te_link_p2p;
-        static const Enum::Value isis_sh_te_link_broadcast;
+        static const Enum::YLeaf isis_sh_te_link_p2p;
+        static const Enum::YLeaf isis_sh_te_link_broadcast;
 
 };
 
 class SrmsMiSrcEBEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value local;
-        static const Enum::Value remote;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf local;
+        static const Enum::YLeaf remote;
 
 };
 
 class IsisLspDbOpEnum : public Enum
 {
     public:
-        static const Enum::Value isis_lsp_db_clear;
-        static const Enum::Value isis_lsp_db_insert_new_lsp;
-        static const Enum::Value isis_lsp_db_replace_lsp_with_lsp;
-        static const Enum::Value isis_lsp_db_purge_lsp;
-        static const Enum::Value isis_lsp_db_delete_lsp;
+        static const Enum::YLeaf isis_lsp_db_clear;
+        static const Enum::YLeaf isis_lsp_db_insert_new_lsp;
+        static const Enum::YLeaf isis_lsp_db_replace_lsp_with_lsp;
+        static const Enum::YLeaf isis_lsp_db_purge_lsp;
+        static const Enum::YLeaf isis_lsp_db_delete_lsp;
 
 };
 
 class IsisIfAfPrefixUnknownReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_af_prefix_unknown_adv_suppressed;
-        static const Enum::Value isis_intf_af_prefix_unknown_global_addr_reg_error;
-        static const Enum::Value isis_intf_af_prefix_unknown_internal_error;
+        static const Enum::YLeaf isis_intf_af_prefix_unknown_adv_suppressed;
+        static const Enum::YLeaf isis_intf_af_prefix_unknown_global_addr_reg_error;
+        static const Enum::YLeaf isis_intf_af_prefix_unknown_internal_error;
 
 };
 
 class IsisMetricStyleEnum : public Enum
 {
     public:
-        static const Enum::Value isis_metric_style_narrow;
-        static const Enum::Value isis_metric_style_wide;
-        static const Enum::Value isis_metric_style_transition;
+        static const Enum::YLeaf isis_metric_style_narrow;
+        static const Enum::YLeaf isis_metric_style_wide;
+        static const Enum::YLeaf isis_metric_style_transition;
 
 };
 
 class IsisIfAfProtoDownReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_af_proto_down_imd_conn_fail;
-        static const Enum::Value isis_intf_af_proto_down_imd_node_doesnt_exist;
-        static const Enum::Value isis_intf_af_proto_down_imd_exist_reg_error;
-        static const Enum::Value isis_intf_af_proto_down_imd_state_reg_error;
-        static const Enum::Value isis_intf_af_proto_down_af_not_up;
-        static const Enum::Value isis_intf_af_proto_down_internal_error;
+        static const Enum::YLeaf isis_intf_af_proto_down_imd_conn_fail;
+        static const Enum::YLeaf isis_intf_af_proto_down_imd_node_doesnt_exist;
+        static const Enum::YLeaf isis_intf_af_proto_down_imd_exist_reg_error;
+        static const Enum::YLeaf isis_intf_af_proto_down_imd_state_reg_error;
+        static const Enum::YLeaf isis_intf_af_proto_down_af_not_up;
+        static const Enum::YLeaf isis_intf_af_proto_down_internal_error;
 
 };
 
 class IsisStartupStatusEnum : public Enum
 {
     public:
-        static const Enum::Value isis_startup_ssm_active;
-        static const Enum::Value isis_startup_ssm_complete;
-        static const Enum::Value isis_startup_ssm_aborted;
-        static const Enum::Value isis_startup_ssm_not_run;
+        static const Enum::YLeaf isis_startup_ssm_active;
+        static const Enum::YLeaf isis_startup_ssm_complete;
+        static const Enum::YLeaf isis_startup_ssm_aborted;
+        static const Enum::YLeaf isis_startup_ssm_not_run;
 
 };
 
 class IsisUpEnum : public Enum
 {
     public:
-        static const Enum::Value isis_down;
-        static const Enum::Value isis_up;
+        static const Enum::YLeaf isis_down;
+        static const Enum::YLeaf isis_up;
 
 };
 
 class IsisMetricModeEnum : public Enum
 {
     public:
-        static const Enum::Value isis_metric_mode_fixed;
-        static const Enum::Value isis_metric_mode_relative;
-        static const Enum::Value isis_metric_mode_absolute;
+        static const Enum::YLeaf isis_metric_mode_fixed;
+        static const Enum::YLeaf isis_metric_mode_relative;
+        static const Enum::YLeaf isis_metric_mode_absolute;
 
 };
 
 class IsisMediaClassEnum : public Enum
 {
     public:
-        static const Enum::Value isis_media_class_lan;
-        static const Enum::Value isis_media_class_p2p;
-        static const Enum::Value isis_media_class_loop_back;
+        static const Enum::YLeaf isis_media_class_lan;
+        static const Enum::YLeaf isis_media_class_p2p;
+        static const Enum::YLeaf isis_media_class_loop_back;
 
 };
 
 class IsisIfAfDisabledReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_af_disabled_no_topo_enabled;
-        static const Enum::Value isis_intf_af_disabled_internal_error;
+        static const Enum::YLeaf isis_intf_af_disabled_no_topo_enabled;
+        static const Enum::YLeaf isis_intf_af_disabled_internal_error;
 
 };
 
 class IsisAdjTopoChangeEnum : public Enum
 {
     public:
-        static const Enum::Value isis_adj_topo_up_change;
-        static const Enum::Value isis_adj_topo_next_hop_change;
-        static const Enum::Value isis_adj_topo_down_change;
+        static const Enum::YLeaf isis_adj_topo_up_change;
+        static const Enum::YLeaf isis_adj_topo_next_hop_change;
+        static const Enum::YLeaf isis_adj_topo_down_change;
 
 };
 
 class IsisIfMcastInvalidReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_mcast_invalid_join_error;
-        static const Enum::Value isis_intf_mcast_invalid_internal_error;
-        static const Enum::Value isis_intf_mcast_invalid_not_yet_needed;
+        static const Enum::YLeaf isis_intf_mcast_invalid_join_error;
+        static const Enum::YLeaf isis_intf_mcast_invalid_internal_error;
+        static const Enum::YLeaf isis_intf_mcast_invalid_not_yet_needed;
 
 };
 
 class IsisIfTopoAdvPrefixDisabledReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_topo_adv_prefix_disabled_intf_suppressed;
-        static const Enum::Value isis_intf_topo_adv_prefix_disabled_af_not_up;
-        static const Enum::Value isis_intf_topo_adv_prefix_disabled_af_prefixes_unknown;
-        static const Enum::Value isis_intf_topo_adv_prefix_disabled_internal_error;
+        static const Enum::YLeaf isis_intf_topo_adv_prefix_disabled_intf_suppressed;
+        static const Enum::YLeaf isis_intf_topo_adv_prefix_disabled_af_not_up;
+        static const Enum::YLeaf isis_intf_topo_adv_prefix_disabled_af_prefixes_unknown;
+        static const Enum::YLeaf isis_intf_topo_adv_prefix_disabled_internal_error;
 
 };
 
 class IsisShTePceFloodingScopeEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value area;
-        static const Enum::Value domain;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf area;
+        static const Enum::YLeaf domain;
 
 };
 
 class IsisLspTriggerEnum : public Enum
 {
     public:
-        static const Enum::Value isis_lsp_trig_config;
-        static const Enum::Value isis_lsp_trig_newadj;
-        static const Enum::Value isis_lsp_trig_deladj;
-        static const Enum::Value isis_lsp_trig_dr_change;
-        static const Enum::Value isis_lsp_trig_area_set;
-        static const Enum::Value isis_lsp_trig_attach;
-        static const Enum::Value isis_lsp_trig_hippity;
-        static const Enum::Value isis_lsp_trig_regen;
-        static const Enum::Value isis_lsp_trig_ip_if_up;
-        static const Enum::Value isis_lsp_trig_ip_if_down;
-        static const Enum::Value isis_lsp_trig_ip_inter_area;
-        static const Enum::Value isis_lsp_trig_ip_external;
-        static const Enum::Value isis_lsp_trig_ip_external_full;
-        static const Enum::Value isis_lsp_trig_ip_def_orig;
-        static const Enum::Value isis_lsp_trig_ip_addr_chg;
-        static const Enum::Value isis_lsp_trig_te_info;
-        static const Enum::Value isis_lsp_trig_te_pce_info;
-        static const Enum::Value isis_lsp_trig_te_fa_info;
-        static const Enum::Value isis_lsp_trig_nsr_fo;
-        static const Enum::Value isis_lsp_trig_pn_cancel;
-        static const Enum::Value isis_lsp_trig_lkgp;
-        static const Enum::Value isis_lsp_trig_pp;
+        static const Enum::YLeaf isis_lsp_trig_config;
+        static const Enum::YLeaf isis_lsp_trig_newadj;
+        static const Enum::YLeaf isis_lsp_trig_deladj;
+        static const Enum::YLeaf isis_lsp_trig_dr_change;
+        static const Enum::YLeaf isis_lsp_trig_area_set;
+        static const Enum::YLeaf isis_lsp_trig_attach;
+        static const Enum::YLeaf isis_lsp_trig_hippity;
+        static const Enum::YLeaf isis_lsp_trig_regen;
+        static const Enum::YLeaf isis_lsp_trig_ip_if_up;
+        static const Enum::YLeaf isis_lsp_trig_ip_if_down;
+        static const Enum::YLeaf isis_lsp_trig_ip_inter_area;
+        static const Enum::YLeaf isis_lsp_trig_ip_external;
+        static const Enum::YLeaf isis_lsp_trig_ip_external_full;
+        static const Enum::YLeaf isis_lsp_trig_ip_def_orig;
+        static const Enum::YLeaf isis_lsp_trig_ip_addr_chg;
+        static const Enum::YLeaf isis_lsp_trig_te_info;
+        static const Enum::YLeaf isis_lsp_trig_te_pce_info;
+        static const Enum::YLeaf isis_lsp_trig_te_fa_info;
+        static const Enum::YLeaf isis_lsp_trig_nsr_fo;
+        static const Enum::YLeaf isis_lsp_trig_pn_cancel;
+        static const Enum::YLeaf isis_lsp_trig_lkgp;
+        static const Enum::YLeaf isis_lsp_trig_pp;
 
 };
 
 class IsisEnabledEnum : public Enum
 {
     public:
-        static const Enum::Value isis_disabled;
-        static const Enum::Value isis_enabled;
+        static const Enum::YLeaf isis_disabled;
+        static const Enum::YLeaf isis_enabled;
 
 };
 
 class IsisIfAdvPrefixDisabledReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_adv_prefix_disabled_if_cfg_suppressed;
-        static const Enum::Value isis_intf_adv_prefix_disabled_no_topo_participate;
-        static const Enum::Value isis_intf_adv_prefix_disabled_internal_error;
+        static const Enum::YLeaf isis_intf_adv_prefix_disabled_if_cfg_suppressed;
+        static const Enum::YLeaf isis_intf_adv_prefix_disabled_no_topo_participate;
+        static const Enum::YLeaf isis_intf_adv_prefix_disabled_internal_error;
 
 };
 
 class IsisAdjStateEnum : public Enum
 {
     public:
-        static const Enum::Value isis_adj_up_state;
-        static const Enum::Value isis_adj_init_state;
-        static const Enum::Value isis_adj_failed_state;
+        static const Enum::YLeaf isis_adj_up_state;
+        static const Enum::YLeaf isis_adj_init_state;
+        static const Enum::YLeaf isis_adj_failed_state;
 
 };
 
 class IsisErrLogLevelEnum : public Enum
 {
     public:
-        static const Enum::Value isis_err_log_level_info;
-        static const Enum::Value isis_err_log_level_warn;
-        static const Enum::Value isis_err_log_level_critical;
+        static const Enum::YLeaf isis_err_log_level_info;
+        static const Enum::YLeaf isis_err_log_level_warn;
+        static const Enum::YLeaf isis_err_log_level_critical;
 
 };
 
 class IsisIfClnsProtoDownReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_clns_proto_down_add_to_intf_stack_fail;
-        static const Enum::Value isis_intf_clns_proto_down_no_imd_conn;
-        static const Enum::Value isis_intf_clns_proto_down_imd_node_doesnt_exist;
-        static const Enum::Value isis_intf_clns_proto_down_imd_exist_reg_error;
-        static const Enum::Value isis_intf_clns_proto_down_imd_state_reg_error;
-        static const Enum::Value isis_intf_clns_proto_down_clns_not_up;
+        static const Enum::YLeaf isis_intf_clns_proto_down_add_to_intf_stack_fail;
+        static const Enum::YLeaf isis_intf_clns_proto_down_no_imd_conn;
+        static const Enum::YLeaf isis_intf_clns_proto_down_imd_node_doesnt_exist;
+        static const Enum::YLeaf isis_intf_clns_proto_down_imd_exist_reg_error;
+        static const Enum::YLeaf isis_intf_clns_proto_down_imd_state_reg_error;
+        static const Enum::YLeaf isis_intf_clns_proto_down_clns_not_up;
 
 };
 
 class IsisSpfTriggerEnum : public Enum
 {
     public:
-        static const Enum::Value isis_spf_trig_config;
-        static const Enum::Value isis_spf_trig_nsr_fo;
-        static const Enum::Value isis_spf_trig_periodic;
-        static const Enum::Value isis_spf_trig_clear;
-        static const Enum::Value isis_spf_trig_newadj;
-        static const Enum::Value isis_spf_trig_deladj;
-        static const Enum::Value isis_spf_trig_next_hop;
-        static const Enum::Value isis_spf_trig_metric;
-        static const Enum::Value isis_spf_trig_dis;
-        static const Enum::Value isis_spf_trig_frr_per_link;
-        static const Enum::Value isis_spf_trig_frr_per_prefix;
-        static const Enum::Value isis_spf_trig_ucmp;
-        static const Enum::Value isis_spf_trig_new_tunnel;
-        static const Enum::Value isis_spf_trig_del_tunnel;
-        static const Enum::Value isis_spf_trig_chg_tunnel;
-        static const Enum::Value isis_spf_trig_new_node;
-        static const Enum::Value isis_spf_trig_del_node;
-        static const Enum::Value isis_spf_trig_newlsp;
-        static const Enum::Value isis_spf_trig_lsp_expiry;
-        static const Enum::Value isis_spf_trig_attach_set;
-        static const Enum::Value isis_spf_trig_attach_clr;
-        static const Enum::Value isis_spf_trig_overload_set;
-        static const Enum::Value isis_spf_trig_overload_clr;
-        static const Enum::Value isis_spf_trig_link_good;
-        static const Enum::Value isis_spf_trig_link_bad;
-        static const Enum::Value isis_spf_trig_prefix_good;
-        static const Enum::Value isis_spf_trig_prefix_bad;
-        static const Enum::Value isis_spf_trig_prefix;
-        static const Enum::Value isis_spf_trig_area_addr;
-        static const Enum::Value isis_spf_trig_ip_addr;
-        static const Enum::Value isis_spf_trig_rtrid;
-        static const Enum::Value isis_spf_trig_prefix_policy;
+        static const Enum::YLeaf isis_spf_trig_config;
+        static const Enum::YLeaf isis_spf_trig_nsr_fo;
+        static const Enum::YLeaf isis_spf_trig_periodic;
+        static const Enum::YLeaf isis_spf_trig_clear;
+        static const Enum::YLeaf isis_spf_trig_newadj;
+        static const Enum::YLeaf isis_spf_trig_deladj;
+        static const Enum::YLeaf isis_spf_trig_next_hop;
+        static const Enum::YLeaf isis_spf_trig_metric;
+        static const Enum::YLeaf isis_spf_trig_dis;
+        static const Enum::YLeaf isis_spf_trig_frr_per_link;
+        static const Enum::YLeaf isis_spf_trig_frr_per_prefix;
+        static const Enum::YLeaf isis_spf_trig_ucmp;
+        static const Enum::YLeaf isis_spf_trig_new_tunnel;
+        static const Enum::YLeaf isis_spf_trig_del_tunnel;
+        static const Enum::YLeaf isis_spf_trig_chg_tunnel;
+        static const Enum::YLeaf isis_spf_trig_new_node;
+        static const Enum::YLeaf isis_spf_trig_del_node;
+        static const Enum::YLeaf isis_spf_trig_newlsp;
+        static const Enum::YLeaf isis_spf_trig_lsp_expiry;
+        static const Enum::YLeaf isis_spf_trig_attach_set;
+        static const Enum::YLeaf isis_spf_trig_attach_clr;
+        static const Enum::YLeaf isis_spf_trig_overload_set;
+        static const Enum::YLeaf isis_spf_trig_overload_clr;
+        static const Enum::YLeaf isis_spf_trig_link_good;
+        static const Enum::YLeaf isis_spf_trig_link_bad;
+        static const Enum::YLeaf isis_spf_trig_prefix_good;
+        static const Enum::YLeaf isis_spf_trig_prefix_bad;
+        static const Enum::YLeaf isis_spf_trig_prefix;
+        static const Enum::YLeaf isis_spf_trig_area_addr;
+        static const Enum::YLeaf isis_spf_trig_ip_addr;
+        static const Enum::YLeaf isis_spf_trig_rtrid;
+        static const Enum::YLeaf isis_spf_trig_prefix_policy;
 
 };
 
 class SrmsMiFlagEBEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisReachableEnum : public Enum
 {
     public:
-        static const Enum::Value isis_unreachable;
-        static const Enum::Value isis_reachable;
+        static const Enum::YLeaf isis_unreachable;
+        static const Enum::YLeaf isis_reachable;
 
 };
 
 class IsisPrefixPriorityEnum : public Enum
 {
     public:
-        static const Enum::Value isis_prefix_priority_critical;
-        static const Enum::Value isis_prefix_priority_high;
-        static const Enum::Value isis_prefix_priority_med;
-        static const Enum::Value isis_prefix_priority_low;
+        static const Enum::YLeaf isis_prefix_priority_critical;
+        static const Enum::YLeaf isis_prefix_priority_high;
+        static const Enum::YLeaf isis_prefix_priority_med;
+        static const Enum::YLeaf isis_prefix_priority_low;
 
 };
 
 class IsisAdjStateReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_adj_up_nsf_restart;
-        static const Enum::Value isis_adj_up_new_adj;
-        static const Enum::Value isis_adj_up_restarted;
-        static const Enum::Value isis_adj_up_nsf_restored;
-        static const Enum::Value isis_adj_up_chkpt_restored;
-        static const Enum::Value isis_adj_init_reason;
-        static const Enum::Value isis_adj_init_neighbor_forgot;
-        static const Enum::Value isis_adj_down_hold_time;
-        static const Enum::Value isis_adj_down_if_down;
-        static const Enum::Value isis_adj_down_cfg_mismatch;
-        static const Enum::Value isis_adj_down_circ_id;
-        static const Enum::Value isis_adj_down_nsf_ack_fail;
-        static const Enum::Value isis_adj_down_db_clear;
-        static const Enum::Value isis_adj_down_no_common_topology;
-        static const Enum::Value isis_adj_down_restart_tlv_missing;
-        static const Enum::Value isis_adj_down_bfd_down;
-        static const Enum::Value isis_adj_down_3way_down;
+        static const Enum::YLeaf isis_adj_up_nsf_restart;
+        static const Enum::YLeaf isis_adj_up_new_adj;
+        static const Enum::YLeaf isis_adj_up_restarted;
+        static const Enum::YLeaf isis_adj_up_nsf_restored;
+        static const Enum::YLeaf isis_adj_up_chkpt_restored;
+        static const Enum::YLeaf isis_adj_init_reason;
+        static const Enum::YLeaf isis_adj_init_neighbor_forgot;
+        static const Enum::YLeaf isis_adj_down_hold_time;
+        static const Enum::YLeaf isis_adj_down_if_down;
+        static const Enum::YLeaf isis_adj_down_cfg_mismatch;
+        static const Enum::YLeaf isis_adj_down_circ_id;
+        static const Enum::YLeaf isis_adj_down_nsf_ack_fail;
+        static const Enum::YLeaf isis_adj_down_db_clear;
+        static const Enum::YLeaf isis_adj_down_no_common_topology;
+        static const Enum::YLeaf isis_adj_down_restart_tlv_missing;
+        static const Enum::YLeaf isis_adj_down_bfd_down;
+        static const Enum::YLeaf isis_adj_down_3way_down;
 
 };
 
 class IsisIfClnsSnpaUnknownReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_clns_snpa_unknown_access_error;
-        static const Enum::Value isis_intf_clns_snpa_unknown_not_lan;
-        static const Enum::Value isis_intf_clns_snpa_unknown_internal_error;
+        static const Enum::YLeaf isis_intf_clns_snpa_unknown_access_error;
+        static const Enum::YLeaf isis_intf_clns_snpa_unknown_not_lan;
+        static const Enum::YLeaf isis_intf_clns_snpa_unknown_internal_error;
 
 };
 
 class IsisAdjTopoStatusEnum : public Enum
 {
     public:
-        static const Enum::Value isis_adj_topo_status_ok;
-        static const Enum::Value isis_adj_topo_status_intf_not_configured;
-        static const Enum::Value isis_adj_topo_status_intf_not_running;
-        static const Enum::Value isis_adj_topo_status_init_state;
-        static const Enum::Value isis_adj_topo_status_neighbor_doesnt_participate;
-        static const Enum::Value isis_adj_topo_status_ipv4_address_tlv_missing;
-        static const Enum::Value isis_adj_topo_status_ipv4_address_tlv_empty;
-        static const Enum::Value isis_adj_topo_status_ipv6_address_tlv_missing;
-        static const Enum::Value isis_adj_topo_status_ipv6_address_tlv_empty;
-        static const Enum::Value isis_adj_topo_status_ipv4_address_matches_ours;
-        static const Enum::Value isis_adj_topo_status_ipv6_address_matches_ours;
-        static const Enum::Value isis_adj_topo_status_ipv4_address_subnet_mismatch;
-        static const Enum::Value isis_adj_topo_status_ipv6_address_not_link_local;
+        static const Enum::YLeaf isis_adj_topo_status_ok;
+        static const Enum::YLeaf isis_adj_topo_status_intf_not_configured;
+        static const Enum::YLeaf isis_adj_topo_status_intf_not_running;
+        static const Enum::YLeaf isis_adj_topo_status_init_state;
+        static const Enum::YLeaf isis_adj_topo_status_neighbor_doesnt_participate;
+        static const Enum::YLeaf isis_adj_topo_status_ipv4_address_tlv_missing;
+        static const Enum::YLeaf isis_adj_topo_status_ipv4_address_tlv_empty;
+        static const Enum::YLeaf isis_adj_topo_status_ipv6_address_tlv_missing;
+        static const Enum::YLeaf isis_adj_topo_status_ipv6_address_tlv_empty;
+        static const Enum::YLeaf isis_adj_topo_status_ipv4_address_matches_ours;
+        static const Enum::YLeaf isis_adj_topo_status_ipv6_address_matches_ours;
+        static const Enum::YLeaf isis_adj_topo_status_ipv4_address_subnet_mismatch;
+        static const Enum::YLeaf isis_adj_topo_status_ipv6_address_not_link_local;
 
 };
 
 class IsisIfTopoAdjFormDisabledReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_topo_adj_form_disabled_intf_passive;
-        static const Enum::Value isis_intf_topo_adj_form_disabled_af_not_up;
-        static const Enum::Value isis_intf_topo_adj_form_disabled_af_fwd_addr_unknown;
-        static const Enum::Value isis_intf_topo_adj_form_disabled_topo_not_cfg;
-        static const Enum::Value isis_intf_topo_adj_form_disabled_topo_can_not_participate;
-        static const Enum::Value isis_intf_topo_adj_form_disabled_idle;
-        static const Enum::Value isis_intf_topo_adj_form_disabled_internal_error;
-        static const Enum::Value isis_intf_topo_adj_form_disabled_mtu;
-        static const Enum::Value isis_intf_topo_adj_form_disabled_snpa;
-        static const Enum::Value isis_intf_topo_adj_form_disabled_mcast;
+        static const Enum::YLeaf isis_intf_topo_adj_form_disabled_intf_passive;
+        static const Enum::YLeaf isis_intf_topo_adj_form_disabled_af_not_up;
+        static const Enum::YLeaf isis_intf_topo_adj_form_disabled_af_fwd_addr_unknown;
+        static const Enum::YLeaf isis_intf_topo_adj_form_disabled_topo_not_cfg;
+        static const Enum::YLeaf isis_intf_topo_adj_form_disabled_topo_can_not_participate;
+        static const Enum::YLeaf isis_intf_topo_adj_form_disabled_idle;
+        static const Enum::YLeaf isis_intf_topo_adj_form_disabled_internal_error;
+        static const Enum::YLeaf isis_intf_topo_adj_form_disabled_mtu;
+        static const Enum::YLeaf isis_intf_topo_adj_form_disabled_snpa;
+        static const Enum::YLeaf isis_intf_topo_adj_form_disabled_mcast;
 
 };
 
 class IsisAdjBfdStateEnum : public Enum
 {
     public:
-        static const Enum::Value isis_adj_bfd_no_state;
-        static const Enum::Value isis_adj_bfd_down_state;
-        static const Enum::Value isis_adj_bfd_init_state;
-        static const Enum::Value isis_adj_bfd_up_state;
+        static const Enum::YLeaf isis_adj_bfd_no_state;
+        static const Enum::YLeaf isis_adj_bfd_down_state;
+        static const Enum::YLeaf isis_adj_bfd_init_state;
+        static const Enum::YLeaf isis_adj_bfd_up_state;
 
 };
 
 class IsisAfIdEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 
 class IsisRedistProtoEnum : public Enum
 {
     public:
-        static const Enum::Value isis_redist_connected;
-        static const Enum::Value isis_redist_static;
-        static const Enum::Value isis_redist_ospf;
-        static const Enum::Value isis_redist_bgp;
-        static const Enum::Value isis_redist_isis;
-        static const Enum::Value isis_redist_ospfv3;
-        static const Enum::Value isis_redist_rip;
-        static const Enum::Value isis_redist_eigrp;
-        static const Enum::Value isis_redist_subscriber;
-        static const Enum::Value isis_redist_application;
-        static const Enum::Value isis_redist_mobile;
+        static const Enum::YLeaf isis_redist_connected;
+        static const Enum::YLeaf isis_redist_static;
+        static const Enum::YLeaf isis_redist_ospf;
+        static const Enum::YLeaf isis_redist_bgp;
+        static const Enum::YLeaf isis_redist_isis;
+        static const Enum::YLeaf isis_redist_ospfv3;
+        static const Enum::YLeaf isis_redist_rip;
+        static const Enum::YLeaf isis_redist_eigrp;
+        static const Enum::YLeaf isis_redist_subscriber;
+        static const Enum::YLeaf isis_redist_application;
+        static const Enum::YLeaf isis_redist_mobile;
 
 };
 
 class IsisIfTopoDisabledReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_topo_disabled_not_cfg;
-        static const Enum::Value isis_intf_topo_disabled_internal_error;
+        static const Enum::YLeaf isis_intf_topo_disabled_not_cfg;
+        static const Enum::YLeaf isis_intf_topo_disabled_internal_error;
 
 };
 
 class IsisShRouteAdvOriginEnum : public Enum
 {
     public:
-        static const Enum::Value isis_sh_route_adv_origin_interface;
-        static const Enum::Value isis_sh_route_adv_origin_redistributed;
-        static const Enum::Value isis_sh_route_adv_origin_native;
-        static const Enum::Value isis_sh_route_adv_origin_summary;
-        static const Enum::Value isis_sh_route_adv_origin_default;
+        static const Enum::YLeaf isis_sh_route_adv_origin_interface;
+        static const Enum::YLeaf isis_sh_route_adv_origin_redistributed;
+        static const Enum::YLeaf isis_sh_route_adv_origin_native;
+        static const Enum::YLeaf isis_sh_route_adv_origin_summary;
+        static const Enum::YLeaf isis_sh_route_adv_origin_default;
 
 };
 
 class IsisKnownEnum : public Enum
 {
     public:
-        static const Enum::Value isis_unknown;
-        static const Enum::Value isis_known;
+        static const Enum::YLeaf isis_unknown;
+        static const Enum::YLeaf isis_known;
 
 };
 
 class IsisLevelEnum : public Enum
 {
     public:
-        static const Enum::Value isis_level0;
-        static const Enum::Value isis_level1;
-        static const Enum::Value isis_level2;
+        static const Enum::YLeaf isis_level0;
+        static const Enum::YLeaf isis_level1;
+        static const Enum::YLeaf isis_level2;
 
 };
 
 class IsisIfAdjFormDisabledReasonEnum : public Enum
 {
     public:
-        static const Enum::Value isis_intf_adj_form_disabled_cfg_passive;
-        static const Enum::Value isis_intf_adj_form_disabled_no_topo_participate;
-        static const Enum::Value isis_intf_adj_form_disabled_add_to_intf_stack_fail;
-        static const Enum::Value isis_intf_adj_form_disabled_clns_io;
-        static const Enum::Value isis_intf_adj_form_disabled_internal_error;
+        static const Enum::YLeaf isis_intf_adj_form_disabled_cfg_passive;
+        static const Enum::YLeaf isis_intf_adj_form_disabled_no_topo_participate;
+        static const Enum::YLeaf isis_intf_adj_form_disabled_add_to_intf_stack_fail;
+        static const Enum::YLeaf isis_intf_adj_form_disabled_clns_io;
+        static const Enum::YLeaf isis_intf_adj_form_disabled_internal_error;
 
 };
 
 class IsisPrefixOriginEnum : public Enum
 {
     public:
-        static const Enum::Value isis_prefix_origin_l1_summary_null;
-        static const Enum::Value isis_prefix_origin_l1;
-        static const Enum::Value isis_prefix_origin_l2_summary_null;
-        static const Enum::Value isis_prefix_origin_l2;
-        static const Enum::Value isis_prefix_origin_inter_area_summary_null;
-        static const Enum::Value isis_prefix_origin_inter_area;
-        static const Enum::Value isis_prefix_origin_default_nearest_attached;
+        static const Enum::YLeaf isis_prefix_origin_l1_summary_null;
+        static const Enum::YLeaf isis_prefix_origin_l1;
+        static const Enum::YLeaf isis_prefix_origin_l2_summary_null;
+        static const Enum::YLeaf isis_prefix_origin_l2;
+        static const Enum::YLeaf isis_prefix_origin_inter_area_summary_null;
+        static const Enum::YLeaf isis_prefix_origin_inter_area;
+        static const Enum::YLeaf isis_prefix_origin_default_nearest_attached;
 
 };
 
 class IsisTilfaComputationEnum : public Enum
 {
     public:
-        static const Enum::Value isis_tilfa_comp_none;
-        static const Enum::Value isis_tilfa_comp_link;
-        static const Enum::Value isis_tilfa_comp_node;
-        static const Enum::Value isis_tilfa_comp_srlg;
-        static const Enum::Value isis_tilfa_comp_node_srlg;
+        static const Enum::YLeaf isis_tilfa_comp_none;
+        static const Enum::YLeaf isis_tilfa_comp_link;
+        static const Enum::YLeaf isis_tilfa_comp_node;
+        static const Enum::YLeaf isis_tilfa_comp_srlg;
+        static const Enum::YLeaf isis_tilfa_comp_node_srlg;
 
 };
 
 class IsisSpfClassEnum : public Enum
 {
     public:
-        static const Enum::Value isis_spf_frr_per_link;
-        static const Enum::Value isis_spf_partial;
-        static const Enum::Value isis_spf_frr_per_prefix;
-        static const Enum::Value isis_spf_ucmp_calc;
-        static const Enum::Value isis_spf_next_hop;
-        static const Enum::Value isis_spf_incremental;
-        static const Enum::Value isis_spf_full;
+        static const Enum::YLeaf isis_spf_frr_per_link;
+        static const Enum::YLeaf isis_spf_partial;
+        static const Enum::YLeaf isis_spf_frr_per_prefix;
+        static const Enum::YLeaf isis_spf_ucmp_calc;
+        static const Enum::YLeaf isis_spf_next_hop;
+        static const Enum::YLeaf isis_spf_incremental;
+        static const Enum::YLeaf isis_spf_full;
 
 };
 
 class IsisValidEnum : public Enum
 {
     public:
-        static const Enum::Value isis_invalid;
-        static const Enum::Value isis_valid;
+        static const Enum::YLeaf isis_invalid;
+        static const Enum::YLeaf isis_valid;
 
 };
 
 class IsisLevelsEnum : public Enum
 {
     public:
-        static const Enum::Value isis_levels_none;
-        static const Enum::Value isis_levels_1;
-        static const Enum::Value isis_levels_2;
-        static const Enum::Value isis_levels_12;
-        static const Enum::Value isis_levels_total;
+        static const Enum::YLeaf isis_levels_none;
+        static const Enum::YLeaf isis_levels_1;
+        static const Enum::YLeaf isis_levels_2;
+        static const Enum::YLeaf isis_levels_12;
+        static const Enum::YLeaf isis_levels_total;
 
 };
 

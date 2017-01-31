@@ -14,20 +14,20 @@ namespace Cisco_IOS_XR_infra_ltrace_cfg {
 class InfraLtraceScaleEnum : public Enum
 {
     public:
-        static const Enum::Value Y_0;
-        static const Enum::Value Y_1;
-        static const Enum::Value Y_2;
-        static const Enum::Value Y_4;
-        static const Enum::Value Y_8;
-        static const Enum::Value Y_16;
+        static const Enum::YLeaf Y_0;
+        static const Enum::YLeaf Y_1;
+        static const Enum::YLeaf Y_2;
+        static const Enum::YLeaf Y_4;
+        static const Enum::YLeaf Y_8;
+        static const Enum::YLeaf Y_16;
 
 };
 
 class InfraLtraceModeEnum : public Enum
 {
     public:
-        static const Enum::Value static_;
-        static const Enum::Value dynamic;
+        static const Enum::YLeaf static_;
+        static const Enum::YLeaf dynamic;
 
 };
 

@@ -26,6 +26,7 @@ class Vservice : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class ServiceFunctionLocator : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Vservice : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Names : public Entity
@@ -56,6 +58,7 @@ class Vservice : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Name : public Entity
             {
                 public:
@@ -69,9 +72,10 @@ class Vservice : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value function_name; //type: string
-                    Value locator_id; //type: uint32
 
+
+                    YLeaf function_name; //type: string
+                    YLeaf locator_id; //type: uint32
 
                 class Node : public Entity
                 {
@@ -86,13 +90,13 @@ class Vservice : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value transport; //type: SfcSfTransportEnum
-                        Value ipv4_source_address; //type: string
-                        Value ipv4_destination_address; //type: string
-                        Value vni; //type: int32
 
 
-                        class SfcSfTransportEnum;
+                        YLeaf transport; //type: SfcSfTransportEnum
+                        YLeaf ipv4_source_address; //type: string
+                        YLeaf ipv4_destination_address; //type: string
+                        YLeaf vni; //type: int32
+
 
 
                 }; // Vservice::ServiceFunctionLocator::Names::Name::Node
@@ -131,6 +135,7 @@ class Vservice : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class MetadataDisposition : public Entity
         {
             public:
@@ -144,9 +149,10 @@ class Vservice : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value disposition_name; //type: string
-                Value format; //type: SfcMetadataType1AllocFormatEnum
 
+
+                YLeaf disposition_name; //type: string
+                YLeaf format; //type: SfcMetadataType1AllocFormatEnum
 
             class MatchEntry : public Entity
             {
@@ -161,8 +167,9 @@ class Vservice : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value match_entry_name; //type: string
 
+
+                    YLeaf match_entry_name; //type: string
 
                 class Node : public Entity
                 {
@@ -177,15 +184,14 @@ class Vservice : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value match_type; //type: SfcMetadataDispositionMatchEnum
-                        Value action_type; //type: SfcMetadataDispositionActionEnum
-                        Value vrf; //type: string
-                        Value nexthop_ipv4_address; //type: string
-                        ValueList tenant_id; //type: list of  int32
 
 
-                        class SfcMetadataDispositionActionEnum;
-                        class SfcMetadataDispositionMatchEnum;
+                        YLeaf match_type; //type: SfcMetadataDispositionMatchEnum
+                        YLeaf action_type; //type: SfcMetadataDispositionActionEnum
+                        YLeaf vrf; //type: string
+                        YLeaf nexthop_ipv4_address; //type: string
+                        YLeafList tenant_id; //type: list of  int32
+
 
 
                 }; // Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node
@@ -198,7 +204,6 @@ class Vservice : public Entity
 
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_vservice_cfg::Vservice::MetadataDispositions::MetadataDisposition::MatchEntry> > match_entry;
-                class SfcMetadataType1AllocFormatEnum;
 
 
         }; // Vservice::MetadataDispositions::MetadataDisposition
@@ -225,6 +230,7 @@ class Vservice : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Names : public Entity
         {
             public:
@@ -240,6 +246,7 @@ class Vservice : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Name : public Entity
             {
                 public:
@@ -253,9 +260,10 @@ class Vservice : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value function_name; //type: string
-                    Value locator_id; //type: uint32
 
+
+                    YLeaf function_name; //type: string
+                    YLeaf locator_id; //type: uint32
 
                 class Node : public Entity
                 {
@@ -270,13 +278,13 @@ class Vservice : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value transport; //type: SfcSfTransportEnum
-                        Value ipv4_source_address; //type: string
-                        Value ipv4_destination_address; //type: string
-                        Value vni; //type: int32
 
 
-                        class SfcSfTransportEnum;
+                        YLeaf transport; //type: SfcSfTransportEnum
+                        YLeaf ipv4_source_address; //type: string
+                        YLeaf ipv4_destination_address; //type: string
+                        YLeaf vni; //type: int32
+
 
 
                 }; // Vservice::ServiceFunctionForwardLocator::Names::Name::Node
@@ -315,6 +323,7 @@ class Vservice : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class MetadataTemplate : public Entity
         {
             public:
@@ -328,14 +337,13 @@ class Vservice : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value metadata_name; //type: string
-                Value type; //type: SfcMetadataAllocEnum
-                Value format; //type: SfcMetadataType1AllocFormatEnum
-                Value tenant_id; //type: uint32
 
 
-                class SfcMetadataType1AllocFormatEnum;
-                class SfcMetadataAllocEnum;
+                YLeaf metadata_name; //type: string
+                YLeaf type; //type: SfcMetadataAllocEnum
+                YLeaf format; //type: SfcMetadataType1AllocFormatEnum
+                YLeaf tenant_id; //type: uint32
+
 
 
         }; // Vservice::MetadataTemplates::MetadataTemplate
@@ -362,6 +370,7 @@ class Vservice : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Paths : public Entity
         {
             public:
@@ -377,6 +386,7 @@ class Vservice : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Path : public Entity
             {
                 public:
@@ -390,8 +400,9 @@ class Vservice : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value path_id; //type: uint32
 
+
+                    YLeaf path_id; //type: uint32
 
                 class ServiceIndex : public Entity
                 {
@@ -406,8 +417,9 @@ class Vservice : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value index_; //type: uint32
 
+
+                        YLeaf index_; //type: uint32
 
                     class Terminate : public Entity
                     {
@@ -424,6 +436,7 @@ class Vservice : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Node : public Entity
                         {
                             public:
@@ -437,13 +450,13 @@ class Vservice : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value action; //type: SfcMetadataDispositionActionEnum
-                                Value vrf; //type: string
-                                Value nexthop_ipv4_address; //type: string
-                                Value metatdata_disposition; //type: string
 
 
-                                class SfcMetadataDispositionActionEnum;
+                                YLeaf action; //type: SfcMetadataDispositionActionEnum
+                                YLeaf vrf; //type: string
+                                YLeaf nexthop_ipv4_address; //type: string
+                                YLeaf metatdata_disposition; //type: string
+
 
 
                         }; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node
@@ -470,6 +483,7 @@ class Vservice : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class SffName : public Entity
                         {
                             public:
@@ -483,8 +497,9 @@ class Vservice : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value name; //type: string
 
+
+                                YLeaf name; //type: string
 
                             class Node : public Entity
                             {
@@ -499,9 +514,10 @@ class Vservice : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value enable; //type: empty
-                                    Value reserved; //type: empty
 
+
+                                    YLeaf enable; //type: empty
+                                    YLeaf reserved; //type: empty
 
 
 
@@ -535,6 +551,7 @@ class Vservice : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class SfName : public Entity
                         {
                             public:
@@ -548,8 +565,9 @@ class Vservice : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value name; //type: string
 
+
+                                YLeaf name; //type: string
 
                             class Node : public Entity
                             {
@@ -564,9 +582,10 @@ class Vservice : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value enable; //type: empty
-                                    Value reserved; //type: empty
 
+
+                                    YLeaf enable; //type: empty
+                                    YLeaf reserved; //type: empty
 
 
 
@@ -624,35 +643,35 @@ class Vservice : public Entity
 class SfcSfTransportEnum : public Enum
 {
     public:
-        static const Enum::Value vxlan_gpe;
+        static const Enum::YLeaf vxlan_gpe;
 
 };
 
 class SfcMetadataDispositionMatchEnum : public Enum
 {
     public:
-        static const Enum::Value type1_dcalloc_tenant_id;
+        static const Enum::YLeaf type1_dcalloc_tenant_id;
 
 };
 
 class SfcMetadataAllocEnum : public Enum
 {
     public:
-        static const Enum::Value type1;
+        static const Enum::YLeaf type1;
 
 };
 
 class SfcMetadataType1AllocFormatEnum : public Enum
 {
     public:
-        static const Enum::Value dc_allocation;
+        static const Enum::YLeaf dc_allocation;
 
 };
 
 class SfcMetadataDispositionActionEnum : public Enum
 {
     public:
-        static const Enum::Value redirect_nexthop;
+        static const Enum::YLeaf redirect_nexthop;
 
 };
 

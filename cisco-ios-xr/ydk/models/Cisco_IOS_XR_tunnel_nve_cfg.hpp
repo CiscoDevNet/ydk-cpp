@@ -14,23 +14,23 @@ namespace Cisco_IOS_XR_tunnel_nve_cfg {
 class VxlanUdpPortEnumEnum : public Enum
 {
     public:
-        static const Enum::Value ietf_udp_port;
-        static const Enum::Value ivx_lan_udp_port;
+        static const Enum::YLeaf ietf_udp_port;
+        static const Enum::YLeaf ivx_lan_udp_port;
 
 };
 
 class HostReachProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value bgp;
+        static const Enum::YLeaf bgp;
 
 };
 
 class OverlayEncapEnumEnum : public Enum
 {
     public:
-        static const Enum::Value vx_lan_encapsulation;
-        static const Enum::Value soft_gre_encapsulation;
+        static const Enum::YLeaf vx_lan_encapsulation;
+        static const Enum::YLeaf soft_gre_encapsulation;
 
 };
 

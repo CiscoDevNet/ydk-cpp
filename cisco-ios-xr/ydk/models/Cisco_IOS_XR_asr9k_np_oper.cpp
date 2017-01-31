@@ -58,7 +58,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -170,7 +170,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -277,7 +277,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -373,7 +373,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -469,7 +469,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -565,7 +565,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -661,7 +661,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -757,7 +757,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -853,7 +853,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -966,13 +966,13 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
     return is_set(operation)
 	|| is_set(free_entries.operation)
 	|| is_set(max_entries.operation)
-	|| (app_id_acl !=  nullptr && is_set(app_id_acl->operation))
-	|| (app_id_afmon !=  nullptr && is_set(app_id_afmon->operation))
-	|| (app_id_ifib !=  nullptr && is_set(app_id_ifib->operation))
-	|| (app_id_li !=  nullptr && is_set(app_id_li->operation))
-	|| (app_id_pbr !=  nullptr && is_set(app_id_pbr->operation))
-	|| (app_id_qos !=  nullptr && is_set(app_id_qos->operation))
-	|| (application_edpl_entry !=  nullptr && is_set(application_edpl_entry->operation));
+	|| (app_id_acl !=  nullptr && app_id_acl->has_operation())
+	|| (app_id_afmon !=  nullptr && app_id_afmon->has_operation())
+	|| (app_id_ifib !=  nullptr && app_id_ifib->has_operation())
+	|| (app_id_li !=  nullptr && app_id_li->has_operation())
+	|| (app_id_pbr !=  nullptr && app_id_pbr->has_operation())
+	|| (app_id_qos !=  nullptr && app_id_qos->has_operation())
+	|| (application_edpl_entry !=  nullptr && application_edpl_entry->has_operation());
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::get_segment_path() const
@@ -989,7 +989,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1241,7 +1241,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1337,7 +1337,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1433,7 +1433,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1529,7 +1529,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1625,7 +1625,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1721,7 +1721,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1817,7 +1817,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1930,13 +1930,13 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
     return is_set(operation)
 	|| is_set(free_entries.operation)
 	|| is_set(max_entries.operation)
-	|| (app_id_acl !=  nullptr && is_set(app_id_acl->operation))
-	|| (app_id_afmon !=  nullptr && is_set(app_id_afmon->operation))
-	|| (app_id_ifib !=  nullptr && is_set(app_id_ifib->operation))
-	|| (app_id_li !=  nullptr && is_set(app_id_li->operation))
-	|| (app_id_pbr !=  nullptr && is_set(app_id_pbr->operation))
-	|| (app_id_qos !=  nullptr && is_set(app_id_qos->operation))
-	|| (application_edpl_entry !=  nullptr && is_set(application_edpl_entry->operation));
+	|| (app_id_acl !=  nullptr && app_id_acl->has_operation())
+	|| (app_id_afmon !=  nullptr && app_id_afmon->has_operation())
+	|| (app_id_ifib !=  nullptr && app_id_ifib->has_operation())
+	|| (app_id_li !=  nullptr && app_id_li->has_operation())
+	|| (app_id_pbr !=  nullptr && app_id_pbr->has_operation())
+	|| (app_id_qos !=  nullptr && app_id_qos->has_operation())
+	|| (application_edpl_entry !=  nullptr && application_edpl_entry->has_operation());
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::get_segment_path() const
@@ -1953,7 +1953,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2205,7 +2205,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2296,8 +2296,8 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::has_
             return true;
     }
     return is_set(operation)
-	|| (tcam_lt_ods2 !=  nullptr && is_set(tcam_lt_ods2->operation))
-	|| (tcam_lt_ods8 !=  nullptr && is_set(tcam_lt_ods8->operation));
+	|| (tcam_lt_ods2 !=  nullptr && tcam_lt_ods2->has_operation())
+	|| (tcam_lt_ods8 !=  nullptr && tcam_lt_ods8->has_operation());
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::get_segment_path() const
@@ -2314,7 +2314,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2464,7 +2464,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2555,7 +2555,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2651,7 +2651,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2747,7 +2747,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2843,7 +2843,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2939,7 +2939,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3035,7 +3035,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3131,7 +3131,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3249,14 +3249,14 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
     return is_set(operation)
 	|| is_set(free_entries.operation)
 	|| is_set(reserved_entries.operation)
-	|| (acl_common !=  nullptr && is_set(acl_common->operation))
-	|| (app_id_acl !=  nullptr && is_set(app_id_acl->operation))
-	|| (app_id_afmon !=  nullptr && is_set(app_id_afmon->operation))
-	|| (app_id_edpl !=  nullptr && is_set(app_id_edpl->operation))
-	|| (app_id_ifib !=  nullptr && is_set(app_id_ifib->operation))
-	|| (app_id_li !=  nullptr && is_set(app_id_li->operation))
-	|| (app_id_pbr !=  nullptr && is_set(app_id_pbr->operation))
-	|| (app_id_qos !=  nullptr && is_set(app_id_qos->operation));
+	|| (acl_common !=  nullptr && acl_common->has_operation())
+	|| (app_id_acl !=  nullptr && app_id_acl->has_operation())
+	|| (app_id_afmon !=  nullptr && app_id_afmon->has_operation())
+	|| (app_id_edpl !=  nullptr && app_id_edpl->has_operation())
+	|| (app_id_ifib !=  nullptr && app_id_ifib->has_operation())
+	|| (app_id_li !=  nullptr && app_id_li->has_operation())
+	|| (app_id_pbr !=  nullptr && app_id_pbr->has_operation())
+	|| (app_id_qos !=  nullptr && app_id_qos->has_operation());
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::get_segment_path() const
@@ -3273,7 +3273,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3545,7 +3545,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3636,7 +3636,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3732,7 +3732,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3828,7 +3828,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3924,7 +3924,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4020,7 +4020,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4116,7 +4116,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4212,7 +4212,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4330,14 +4330,14 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
     return is_set(operation)
 	|| is_set(free_entries.operation)
 	|| is_set(reserved_entries.operation)
-	|| (acl_common !=  nullptr && is_set(acl_common->operation))
-	|| (app_id_acl !=  nullptr && is_set(app_id_acl->operation))
-	|| (app_id_afmon !=  nullptr && is_set(app_id_afmon->operation))
-	|| (app_id_edpl !=  nullptr && is_set(app_id_edpl->operation))
-	|| (app_id_ifib !=  nullptr && is_set(app_id_ifib->operation))
-	|| (app_id_li !=  nullptr && is_set(app_id_li->operation))
-	|| (app_id_pbr !=  nullptr && is_set(app_id_pbr->operation))
-	|| (app_id_qos !=  nullptr && is_set(app_id_qos->operation));
+	|| (acl_common !=  nullptr && acl_common->has_operation())
+	|| (app_id_acl !=  nullptr && app_id_acl->has_operation())
+	|| (app_id_afmon !=  nullptr && app_id_afmon->has_operation())
+	|| (app_id_edpl !=  nullptr && app_id_edpl->has_operation())
+	|| (app_id_ifib !=  nullptr && app_id_ifib->has_operation())
+	|| (app_id_li !=  nullptr && app_id_li->has_operation())
+	|| (app_id_pbr !=  nullptr && app_id_pbr->has_operation())
+	|| (app_id_qos !=  nullptr && app_id_qos->has_operation());
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::get_segment_path() const
@@ -4354,7 +4354,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4632,7 +4632,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4728,8 +4728,8 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::has_operatio
             return true;
     }
     return is_set(operation)
-	|| (tcam_lt_ods2 !=  nullptr && is_set(tcam_lt_ods2->operation))
-	|| (tcam_lt_ods8 !=  nullptr && is_set(tcam_lt_ods8->operation));
+	|| (tcam_lt_ods2 !=  nullptr && tcam_lt_ods2->has_operation())
+	|| (tcam_lt_ods8 !=  nullptr && tcam_lt_ods8->has_operation());
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::get_segment_path() const
@@ -4746,7 +4746,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4884,8 +4884,8 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::has_data() const
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::has_operation() const
 {
     return is_set(operation)
-	|| (internal_tcam_info !=  nullptr && is_set(internal_tcam_info->operation))
-	|| (tcam_info !=  nullptr && is_set(tcam_info->operation));
+	|| (internal_tcam_info !=  nullptr && internal_tcam_info->has_operation())
+	|| (tcam_info !=  nullptr && tcam_info->has_operation());
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::get_segment_path() const
@@ -4902,7 +4902,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5035,7 +5035,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5142,7 +5142,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5246,7 +5246,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5338,7 +5338,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5444,10 +5444,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::has_operation() const
 {
     return is_set(operation)
 	|| is_set(np_name.operation)
-	|| (chn_load !=  nullptr && is_set(chn_load->operation))
-	|| (counters !=  nullptr && is_set(counters->operation))
-	|| (fast_drop !=  nullptr && is_set(fast_drop->operation))
-	|| (tcam_summary !=  nullptr && is_set(tcam_summary->operation));
+	|| (chn_load !=  nullptr && chn_load->has_operation())
+	|| (counters !=  nullptr && counters->has_operation())
+	|| (fast_drop !=  nullptr && fast_drop->has_operation())
+	|| (tcam_summary !=  nullptr && tcam_summary->has_operation());
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::get_segment_path() const
@@ -5464,7 +5464,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5643,7 +5643,7 @@ EntityPath HardwareModuleNp::Nodes::Node::Nps::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5734,7 +5734,7 @@ bool HardwareModuleNp::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (nps !=  nullptr && is_set(nps->operation));
+	|| (nps !=  nullptr && nps->has_operation());
 }
 
 std::string HardwareModuleNp::Nodes::Node::get_segment_path() const
@@ -5948,7 +5948,7 @@ bool HardwareModuleNp::has_data() const
 bool HardwareModuleNp::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string HardwareModuleNp::get_segment_path() const
@@ -5965,7 +5965,7 @@ EntityPath HardwareModuleNp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

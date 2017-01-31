@@ -26,6 +26,7 @@ class TrafficCollector : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class ExternalInterfaces : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class TrafficCollector : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ExternalInterface : public Entity
         {
             public:
@@ -54,12 +56,13 @@ class TrafficCollector : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value interface_name_xr; //type: string
-                Value interface_handle; //type: uint32
-                Value vrfid; //type: uint32
-                Value is_interface_enabled; //type: boolean
 
+
+                YLeaf interface_name; //type: string
+                YLeaf interface_name_xr; //type: string
+                YLeaf interface_handle; //type: uint32
+                YLeaf vrfid; //type: uint32
+                YLeaf is_interface_enabled; //type: boolean
 
 
 
@@ -85,12 +88,13 @@ class TrafficCollector : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value collection_interval; //type: uint8
-            Value collection_timer_is_running; //type: boolean
-            Value timeout_interval; //type: uint16
-            Value timeout_timer_is_running; //type: boolean
-            Value history_size; //type: uint8
 
+
+            YLeaf collection_interval; //type: uint8
+            YLeaf collection_timer_is_running; //type: boolean
+            YLeaf timeout_interval; //type: uint16
+            YLeaf timeout_timer_is_running; //type: boolean
+            YLeaf history_size; //type: uint8
 
         class DatabaseStatisticsExternalInterface : public Entity
         {
@@ -105,11 +109,12 @@ class TrafficCollector : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value number_of_entries; //type: uint32
-                Value number_of_stale_entries; //type: uint32
-                Value number_of_add_o_perations; //type: uint64
-                Value number_of_delete_o_perations; //type: uint64
 
+
+                YLeaf number_of_entries; //type: uint32
+                YLeaf number_of_stale_entries; //type: uint32
+                YLeaf number_of_add_o_perations; //type: uint64
+                YLeaf number_of_delete_o_perations; //type: uint64
 
 
 
@@ -129,8 +134,9 @@ class TrafficCollector : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
             class DatabaseStatisticsIpv4 : public Entity
             {
@@ -145,11 +151,12 @@ class TrafficCollector : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value number_of_entries; //type: uint32
-                    Value number_of_stale_entries; //type: uint32
-                    Value number_of_add_o_perations; //type: uint64
-                    Value number_of_delete_o_perations; //type: uint64
 
+
+                    YLeaf number_of_entries; //type: uint32
+                    YLeaf number_of_stale_entries; //type: uint32
+                    YLeaf number_of_add_o_perations; //type: uint64
+                    YLeaf number_of_delete_o_perations; //type: uint64
 
 
 
@@ -169,11 +176,12 @@ class TrafficCollector : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value number_of_entries; //type: uint32
-                    Value number_of_stale_entries; //type: uint32
-                    Value number_of_add_o_perations; //type: uint64
-                    Value number_of_delete_o_perations; //type: uint64
 
+
+                    YLeaf number_of_entries; //type: uint32
+                    YLeaf number_of_stale_entries; //type: uint32
+                    YLeaf number_of_add_o_perations; //type: uint64
+                    YLeaf number_of_delete_o_perations; //type: uint64
 
 
 
@@ -200,13 +208,14 @@ class TrafficCollector : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value packet_sent; //type: uint64
-                Value byte_sent; //type: uint64
-                Value packet_received; //type: uint64
-                Value byte_received; //type: uint64
-                Value maximum_roundtrip_latency; //type: uint32
-                Value maimum_latency_timestamp; //type: uint64
 
+
+                YLeaf packet_sent; //type: uint64
+                YLeaf byte_sent; //type: uint64
+                YLeaf packet_received; //type: uint64
+                YLeaf byte_received; //type: uint64
+                YLeaf maximum_roundtrip_latency; //type: uint32
+                YLeaf maimum_latency_timestamp; //type: uint64
 
 
 
@@ -226,13 +235,14 @@ class TrafficCollector : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value packet_sent; //type: uint64
-                Value byte_sent; //type: uint64
-                Value packet_received; //type: uint64
-                Value byte_received; //type: uint64
-                Value maximum_roundtrip_latency; //type: uint32
-                Value maimum_latency_timestamp; //type: uint64
 
+
+                YLeaf packet_sent; //type: uint64
+                YLeaf byte_sent; //type: uint64
+                YLeaf packet_received; //type: uint64
+                YLeaf byte_received; //type: uint64
+                YLeaf maximum_roundtrip_latency; //type: uint32
+                YLeaf maimum_latency_timestamp; //type: uint64
 
 
 
@@ -263,6 +273,7 @@ class TrafficCollector : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class DefaultVrf : public Entity
         {
             public:
@@ -276,6 +287,7 @@ class TrafficCollector : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class Afs : public Entity
@@ -293,6 +305,7 @@ class TrafficCollector : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Af : public Entity
                 {
                     public:
@@ -306,8 +319,9 @@ class TrafficCollector : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value af_name; //type: TcOperAfNameEnum
 
+
+                        YLeaf af_name; //type: TcOperAfNameEnum
 
                     class Counters : public Entity
                     {
@@ -322,6 +336,7 @@ class TrafficCollector : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
+
 
 
                         class Prefixes : public Entity
@@ -339,6 +354,7 @@ class TrafficCollector : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Prefix : public Entity
                             {
                                 public:
@@ -352,13 +368,14 @@ class TrafficCollector : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value ipaddr; //type: string
-                                    Value mask; //type: string
-                                    Value label; //type: uint32
-                                    Value prefix; //type: string
-                                    Value label_xr; //type: uint32
-                                    Value is_active; //type: boolean
 
+
+                                    YLeaf ipaddr; //type: string
+                                    YLeaf mask; //type: string
+                                    YLeaf label; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf label_xr; //type: uint32
+                                    YLeaf is_active; //type: boolean
 
                                 class BaseCounterStatistics : public Entity
                                 {
@@ -373,9 +390,10 @@ class TrafficCollector : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value transmit_packets_per_second_switched; //type: uint64
-                                        Value transmit_bytes_per_second_switched; //type: uint64
 
+
+                                        YLeaf transmit_packets_per_second_switched; //type: uint64
+                                        YLeaf transmit_bytes_per_second_switched; //type: uint64
 
                                     class CountHistory : public Entity
                                     {
@@ -390,12 +408,13 @@ class TrafficCollector : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value event_start_timestamp; //type: uint64
-                                            Value event_end_timestamp; //type: uint64
-                                            Value transmit_number_of_packets_switched; //type: uint64
-                                            Value transmit_number_of_bytes_switched; //type: uint64
-                                            Value is_valid; //type: boolean
 
+
+                                            YLeaf event_start_timestamp; //type: uint64
+                                            YLeaf event_end_timestamp; //type: uint64
+                                            YLeaf transmit_number_of_packets_switched; //type: uint64
+                                            YLeaf transmit_number_of_bytes_switched; //type: uint64
+                                            YLeaf is_valid; //type: boolean
 
 
 
@@ -421,9 +440,10 @@ class TrafficCollector : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value transmit_packets_per_second_switched; //type: uint64
-                                        Value transmit_bytes_per_second_switched; //type: uint64
 
+
+                                        YLeaf transmit_packets_per_second_switched; //type: uint64
+                                        YLeaf transmit_bytes_per_second_switched; //type: uint64
 
                                     class CountHistory : public Entity
                                     {
@@ -438,12 +458,13 @@ class TrafficCollector : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value event_start_timestamp; //type: uint64
-                                            Value event_end_timestamp; //type: uint64
-                                            Value transmit_number_of_packets_switched; //type: uint64
-                                            Value transmit_number_of_bytes_switched; //type: uint64
-                                            Value is_valid; //type: boolean
 
+
+                                            YLeaf event_start_timestamp; //type: uint64
+                                            YLeaf event_end_timestamp; //type: uint64
+                                            YLeaf transmit_number_of_packets_switched; //type: uint64
+                                            YLeaf transmit_number_of_bytes_switched; //type: uint64
+                                            YLeaf is_valid; //type: boolean
 
 
 
@@ -484,6 +505,7 @@ class TrafficCollector : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Tunnel : public Entity
                             {
                                 public:
@@ -497,12 +519,13 @@ class TrafficCollector : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
-                                    Value interface_name_xr; //type: string
-                                    Value interface_handle; //type: uint32
-                                    Value vrfid; //type: uint32
-                                    Value is_active; //type: boolean
 
+
+                                    YLeaf interface_name; //type: string
+                                    YLeaf interface_name_xr; //type: string
+                                    YLeaf interface_handle; //type: uint32
+                                    YLeaf vrfid; //type: uint32
+                                    YLeaf is_active; //type: boolean
 
                                 class BaseCounterStatistics : public Entity
                                 {
@@ -517,9 +540,10 @@ class TrafficCollector : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value transmit_packets_per_second_switched; //type: uint64
-                                        Value transmit_bytes_per_second_switched; //type: uint64
 
+
+                                        YLeaf transmit_packets_per_second_switched; //type: uint64
+                                        YLeaf transmit_bytes_per_second_switched; //type: uint64
 
                                     class CountHistory : public Entity
                                     {
@@ -534,12 +558,13 @@ class TrafficCollector : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value event_start_timestamp; //type: uint64
-                                            Value event_end_timestamp; //type: uint64
-                                            Value transmit_number_of_packets_switched; //type: uint64
-                                            Value transmit_number_of_bytes_switched; //type: uint64
-                                            Value is_valid; //type: boolean
 
+
+                                            YLeaf event_start_timestamp; //type: uint64
+                                            YLeaf event_end_timestamp; //type: uint64
+                                            YLeaf transmit_number_of_packets_switched; //type: uint64
+                                            YLeaf transmit_number_of_bytes_switched; //type: uint64
+                                            YLeaf is_valid; //type: boolean
 
 
 
@@ -572,7 +597,6 @@ class TrafficCollector : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters> counters;
-                        class TcOperAfNameEnum;
 
 
                 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af
@@ -611,6 +635,7 @@ class TrafficCollector : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Af : public Entity
         {
             public:
@@ -624,8 +649,9 @@ class TrafficCollector : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value af_name; //type: TcOperAfNameEnum
 
+
+                YLeaf af_name; //type: TcOperAfNameEnum
 
             class Counters : public Entity
             {
@@ -640,6 +666,7 @@ class TrafficCollector : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Prefixes : public Entity
@@ -657,6 +684,7 @@ class TrafficCollector : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Prefix : public Entity
                     {
                         public:
@@ -670,13 +698,14 @@ class TrafficCollector : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipaddr; //type: string
-                            Value mask; //type: string
-                            Value label; //type: uint32
-                            Value prefix; //type: string
-                            Value label_xr; //type: uint32
-                            Value is_active; //type: boolean
 
+
+                            YLeaf ipaddr; //type: string
+                            YLeaf mask; //type: string
+                            YLeaf label; //type: uint32
+                            YLeaf prefix; //type: string
+                            YLeaf label_xr; //type: uint32
+                            YLeaf is_active; //type: boolean
 
                         class BaseCounterStatistics : public Entity
                         {
@@ -691,9 +720,10 @@ class TrafficCollector : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value transmit_packets_per_second_switched; //type: uint64
-                                Value transmit_bytes_per_second_switched; //type: uint64
 
+
+                                YLeaf transmit_packets_per_second_switched; //type: uint64
+                                YLeaf transmit_bytes_per_second_switched; //type: uint64
 
                             class CountHistory : public Entity
                             {
@@ -708,12 +738,13 @@ class TrafficCollector : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value event_start_timestamp; //type: uint64
-                                    Value event_end_timestamp; //type: uint64
-                                    Value transmit_number_of_packets_switched; //type: uint64
-                                    Value transmit_number_of_bytes_switched; //type: uint64
-                                    Value is_valid; //type: boolean
 
+
+                                    YLeaf event_start_timestamp; //type: uint64
+                                    YLeaf event_end_timestamp; //type: uint64
+                                    YLeaf transmit_number_of_packets_switched; //type: uint64
+                                    YLeaf transmit_number_of_bytes_switched; //type: uint64
+                                    YLeaf is_valid; //type: boolean
 
 
 
@@ -739,9 +770,10 @@ class TrafficCollector : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value transmit_packets_per_second_switched; //type: uint64
-                                Value transmit_bytes_per_second_switched; //type: uint64
 
+
+                                YLeaf transmit_packets_per_second_switched; //type: uint64
+                                YLeaf transmit_bytes_per_second_switched; //type: uint64
 
                             class CountHistory : public Entity
                             {
@@ -756,12 +788,13 @@ class TrafficCollector : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value event_start_timestamp; //type: uint64
-                                    Value event_end_timestamp; //type: uint64
-                                    Value transmit_number_of_packets_switched; //type: uint64
-                                    Value transmit_number_of_bytes_switched; //type: uint64
-                                    Value is_valid; //type: boolean
 
+
+                                    YLeaf event_start_timestamp; //type: uint64
+                                    YLeaf event_end_timestamp; //type: uint64
+                                    YLeaf transmit_number_of_packets_switched; //type: uint64
+                                    YLeaf transmit_number_of_bytes_switched; //type: uint64
+                                    YLeaf is_valid; //type: boolean
 
 
 
@@ -802,6 +835,7 @@ class TrafficCollector : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Tunnel : public Entity
                     {
                         public:
@@ -815,12 +849,13 @@ class TrafficCollector : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value interface_name_xr; //type: string
-                            Value interface_handle; //type: uint32
-                            Value vrfid; //type: uint32
-                            Value is_active; //type: boolean
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf interface_name_xr; //type: string
+                            YLeaf interface_handle; //type: uint32
+                            YLeaf vrfid; //type: uint32
+                            YLeaf is_active; //type: boolean
 
                         class BaseCounterStatistics : public Entity
                         {
@@ -835,9 +870,10 @@ class TrafficCollector : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value transmit_packets_per_second_switched; //type: uint64
-                                Value transmit_bytes_per_second_switched; //type: uint64
 
+
+                                YLeaf transmit_packets_per_second_switched; //type: uint64
+                                YLeaf transmit_bytes_per_second_switched; //type: uint64
 
                             class CountHistory : public Entity
                             {
@@ -852,12 +888,13 @@ class TrafficCollector : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value event_start_timestamp; //type: uint64
-                                    Value event_end_timestamp; //type: uint64
-                                    Value transmit_number_of_packets_switched; //type: uint64
-                                    Value transmit_number_of_bytes_switched; //type: uint64
-                                    Value is_valid; //type: boolean
 
+
+                                    YLeaf event_start_timestamp; //type: uint64
+                                    YLeaf event_end_timestamp; //type: uint64
+                                    YLeaf transmit_number_of_packets_switched; //type: uint64
+                                    YLeaf transmit_number_of_bytes_switched; //type: uint64
+                                    YLeaf is_valid; //type: boolean
 
 
 
@@ -890,7 +927,6 @@ class TrafficCollector : public Entity
 
 
                 std::unique_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters> counters;
-                class TcOperAfNameEnum;
 
 
         }; // TrafficCollector::Afs::Af
@@ -914,8 +950,8 @@ class TrafficCollector : public Entity
 class TcOperAfNameEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 

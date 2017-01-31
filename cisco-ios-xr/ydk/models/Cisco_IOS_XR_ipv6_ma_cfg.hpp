@@ -14,34 +14,34 @@ namespace Cisco_IOS_XR_ipv6_ma_cfg {
 class Ipv6SelfPingEnum : public Enum
 {
     public:
-        static const Enum::Value disabled;
-        static const Enum::Value enabled;
+        static const Enum::YLeaf disabled;
+        static const Enum::YLeaf enabled;
 
 };
 
 class Ipv6QppbEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value ip_precedence;
-        static const Enum::Value qos_group;
-        static const Enum::Value both;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf ip_precedence;
+        static const Enum::YLeaf qos_group;
+        static const Enum::YLeaf both;
 
 };
 
 class Ipv6DefaultPingEnum : public Enum
 {
     public:
-        static const Enum::Value disabled;
-        static const Enum::Value enabled;
+        static const Enum::YLeaf disabled;
+        static const Enum::YLeaf enabled;
 
 };
 
 class Ipv6ReachableEnum : public Enum
 {
     public:
-        static const Enum::Value any;
-        static const Enum::Value received;
+        static const Enum::YLeaf any;
+        static const Enum::YLeaf received;
 
 };
 

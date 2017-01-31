@@ -26,6 +26,7 @@ class HardwareModuleNp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class HardwareModuleNp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class HardwareModuleNp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Nps : public Entity
             {
@@ -72,6 +75,7 @@ class HardwareModuleNp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Np : public Entity
                 {
                     public:
@@ -85,8 +89,9 @@ class HardwareModuleNp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value np_name; //type: string
 
+
+                        YLeaf np_name; //type: string
 
                     class ChnLoad : public Entity
                     {
@@ -103,6 +108,7 @@ class HardwareModuleNp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NpChnLoad : public Entity
                         {
                             public:
@@ -116,13 +122,14 @@ class HardwareModuleNp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value flow_ctr_counter; //type: uint32
-                                Value avg_rfd_usage; //type: uint32
-                                Value peak_rfd_usage; //type: uint32
-                                Value avg_guar_rfd_usage; //type: uint32
-                                Value peak_guar_rfd_usage; //type: uint32
-                                Value interface_name; //type: string
 
+
+                                YLeaf flow_ctr_counter; //type: uint32
+                                YLeaf avg_rfd_usage; //type: uint32
+                                YLeaf peak_rfd_usage; //type: uint32
+                                YLeaf avg_guar_rfd_usage; //type: uint32
+                                YLeaf peak_guar_rfd_usage; //type: uint32
+                                YLeaf interface_name; //type: string
 
 
 
@@ -150,6 +157,7 @@ class HardwareModuleNp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class InternalTcamInfo : public Entity
                         {
                             public:
@@ -165,6 +173,7 @@ class HardwareModuleNp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class TcamLtOds2 : public Entity
                             {
                                 public:
@@ -178,9 +187,10 @@ class HardwareModuleNp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_entries; //type: uint32
-                                    Value free_entries; //type: uint32
 
+
+                                    YLeaf max_entries; //type: uint32
+                                    YLeaf free_entries; //type: uint32
 
                                 class AppIdIfib : public Entity
                                 {
@@ -195,10 +205,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -218,10 +229,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -241,10 +253,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -264,10 +277,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -287,10 +301,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -310,10 +325,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -333,10 +349,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -368,9 +385,10 @@ class HardwareModuleNp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_entries; //type: uint32
-                                    Value free_entries; //type: uint32
 
+
+                                    YLeaf max_entries; //type: uint32
+                                    YLeaf free_entries; //type: uint32
 
                                 class AppIdIfib : public Entity
                                 {
@@ -385,10 +403,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -408,10 +427,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -431,10 +451,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -454,10 +475,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -477,10 +499,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -500,10 +523,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -523,10 +547,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value total_used_entries; //type: uint32
-                                        Value total_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf total_used_entries; //type: uint32
+                                        YLeaf total_allocated_entries; //type: uint32
 
 
 
@@ -558,10 +583,11 @@ class HardwareModuleNp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value partition_id; //type: uint32
-                                    Value valid_entries; //type: uint32
-                                    Value free_entries; //type: uint32
 
+
+                                    YLeaf partition_id; //type: uint32
+                                    YLeaf valid_entries; //type: uint32
+                                    YLeaf free_entries; //type: uint32
 
 
 
@@ -591,6 +617,7 @@ class HardwareModuleNp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class TcamLtOds2 : public Entity
                             {
                                 public:
@@ -604,9 +631,10 @@ class HardwareModuleNp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value free_entries; //type: uint32
-                                    Value reserved_entries; //type: uint32
 
+
+                                    YLeaf free_entries; //type: uint32
+                                    YLeaf reserved_entries; //type: uint32
 
                                 class AclCommon : public Entity
                                 {
@@ -621,9 +649,10 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value free_entries; //type: uint32
-                                        Value allocated_entries; //type: uint32
 
+
+                                        YLeaf free_entries; //type: uint32
+                                        YLeaf allocated_entries; //type: uint32
 
 
 
@@ -643,10 +672,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -666,10 +696,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -689,10 +720,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -712,10 +744,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -735,10 +768,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -758,10 +792,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -781,10 +816,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -817,9 +853,10 @@ class HardwareModuleNp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value free_entries; //type: uint32
-                                    Value reserved_entries; //type: uint32
 
+
+                                    YLeaf free_entries; //type: uint32
+                                    YLeaf reserved_entries; //type: uint32
 
                                 class AclCommon : public Entity
                                 {
@@ -834,9 +871,10 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value free_entries; //type: uint32
-                                        Value allocated_entries; //type: uint32
 
+
+                                        YLeaf free_entries; //type: uint32
+                                        YLeaf allocated_entries; //type: uint32
 
 
 
@@ -856,10 +894,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -879,10 +918,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -902,10 +942,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -925,10 +966,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -948,10 +990,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -971,10 +1014,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -994,10 +1038,11 @@ class HardwareModuleNp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_vmr_ids; //type: uint32
-                                        Value num_active_entries; //type: uint32
-                                        Value num_allocated_entries; //type: uint32
 
+
+                                        YLeaf num_vmr_ids; //type: uint32
+                                        YLeaf num_active_entries; //type: uint32
+                                        YLeaf num_allocated_entries; //type: uint32
 
 
 
@@ -1030,11 +1075,12 @@ class HardwareModuleNp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value partition_id; //type: uint32
-                                    Value priority; //type: uint32
-                                    Value valid_entries; //type: uint32
-                                    Value free_entries; //type: uint32
 
+
+                                    YLeaf partition_id; //type: uint32
+                                    YLeaf priority; //type: uint32
+                                    YLeaf valid_entries; //type: uint32
+                                    YLeaf free_entries; //type: uint32
 
 
 
@@ -1071,6 +1117,7 @@ class HardwareModuleNp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NpCounter : public Entity
                         {
                             public:
@@ -1084,12 +1131,13 @@ class HardwareModuleNp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value counter_index; //type: uint32
-                                Value counter_value; //type: uint64
-                                Value rate; //type: uint32
-                                Value counter_type; //type: string
-                                Value counter_name; //type: string
 
+
+                                YLeaf counter_index; //type: uint32
+                                YLeaf counter_value; //type: uint64
+                                YLeaf rate; //type: uint32
+                                YLeaf counter_type; //type: string
+                                YLeaf counter_name; //type: string
 
 
 
@@ -1117,6 +1165,7 @@ class HardwareModuleNp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NpFastDrop : public Entity
                         {
                             public:
@@ -1130,9 +1179,10 @@ class HardwareModuleNp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value counter_value; //type: uint64
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf counter_value; //type: uint64
 
 
 

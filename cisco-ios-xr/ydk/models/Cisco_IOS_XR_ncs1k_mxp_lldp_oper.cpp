@@ -261,7 +261,7 @@ bool LldpSnoopData::LldpNeighborBrief::has_operation() const
 {
     return is_set(operation)
 	|| is_set(number_of_entries.operation)
-	|| (neighbours !=  nullptr && is_set(neighbours->operation));
+	|| (neighbours !=  nullptr && neighbours->has_operation());
 }
 
 std::string LldpSnoopData::LldpNeighborBrief::get_segment_path() const
@@ -387,7 +387,7 @@ EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::Netwo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -470,7 +470,7 @@ bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddr
     return is_set(operation)
 	|| is_set(if_num.operation)
 	|| is_set(ma_subtype.operation)
-	|| (address !=  nullptr && is_set(address->operation));
+	|| (address !=  nullptr && address->has_operation());
 }
 
 std::string LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddress::get_segment_path() const
@@ -487,7 +487,7 @@ EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName::Netwo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -624,7 +624,7 @@ bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::has_operati
 	|| is_set(system_capabilities.operation)
 	|| is_set(system_description.operation)
 	|| is_set(system_name.operation)
-	|| (network_address !=  nullptr && is_set(network_address->operation));
+	|| (network_address !=  nullptr && network_address->has_operation());
 }
 
 std::string LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_segment_path() const
@@ -908,8 +908,8 @@ bool LldpSnoopData::has_data() const
 bool LldpSnoopData::has_operation() const
 {
     return is_set(operation)
-	|| (ethernet_controller_names !=  nullptr && is_set(ethernet_controller_names->operation))
-	|| (lldp_neighbor_brief !=  nullptr && is_set(lldp_neighbor_brief->operation));
+	|| (ethernet_controller_names !=  nullptr && ethernet_controller_names->has_operation())
+	|| (lldp_neighbor_brief !=  nullptr && lldp_neighbor_brief->has_operation());
 }
 
 std::string LldpSnoopData::get_segment_path() const
@@ -926,7 +926,7 @@ EntityPath LldpSnoopData::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1013,8 +1013,8 @@ std::unique_ptr<Entity> LldpSnoopData::clone_ptr()
     return std::make_unique<LldpSnoopData>();
 }
 
-const Enum::Value LldpL3AddrProtocolEnum::ipv4 {0, "ipv4"};
-const Enum::Value LldpL3AddrProtocolEnum::ipv6 {1, "ipv6"};
+const Enum::YLeaf LldpL3AddrProtocolEnum::ipv4 {0, "ipv4"};
+const Enum::YLeaf LldpL3AddrProtocolEnum::ipv6 {1, "ipv6"};
 
 
 }

@@ -46,7 +46,7 @@ EntityPath Icmp::IpProtocol::RateLimit::Unreachable::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -117,7 +117,7 @@ bool Icmp::IpProtocol::RateLimit::has_data() const
 bool Icmp::IpProtocol::RateLimit::has_operation() const
 {
     return is_set(operation)
-	|| (unreachable !=  nullptr && is_set(unreachable->operation));
+	|| (unreachable !=  nullptr && unreachable->has_operation());
 }
 
 std::string Icmp::IpProtocol::RateLimit::get_segment_path() const
@@ -134,7 +134,7 @@ EntityPath Icmp::IpProtocol::RateLimit::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -232,7 +232,7 @@ EntityPath Icmp::IpProtocol::Source::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -307,8 +307,8 @@ bool Icmp::IpProtocol::has_operation() const
 {
     return is_set(operation)
 	|| is_set(protocol_type.operation)
-	|| (rate_limit !=  nullptr && is_set(rate_limit->operation))
-	|| (source !=  nullptr && is_set(source->operation));
+	|| (rate_limit !=  nullptr && rate_limit->has_operation())
+	|| (source !=  nullptr && source->has_operation());
 }
 
 std::string Icmp::IpProtocol::get_segment_path() const
@@ -458,7 +458,7 @@ EntityPath Icmp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -525,8 +525,8 @@ std::unique_ptr<Entity> Icmp::clone_ptr()
     return std::make_unique<Icmp>();
 }
 
-const Enum::Value SourcePolicyEnum::vrf {1, "vrf"};
-const Enum::Value SourcePolicyEnum::rfc {2, "rfc"};
+const Enum::YLeaf SourcePolicyEnum::vrf {1, "vrf"};
+const Enum::YLeaf SourcePolicyEnum::rfc {2, "rfc"};
 
 
 }

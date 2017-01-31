@@ -1,4 +1,8 @@
-/// YANG Development Kit
+//
+// @file leaf_data.hpp
+// @brief The main ydk public header.
+//
+// YANG Development Kit
 // Copyright 2016 Cisco Systems. All rights reserved
 //
 ////////////////////////////////////////////////////////////////
@@ -21,21 +25,30 @@
 //
 //////////////////////////////////////////////////////////////////
 
-#define BOOST_TEST_MODULE CoreTest
-#include <boost/test/unit_test.hpp>
-#include <iostream>
-#include "../../src/path_api.hpp"
-#include "../../src/path/path_private.hpp"
-#include "../config.hpp"
+#include "types.hpp"
 
-BOOST_AUTO_TEST_CASE( test_segmentalize  )
+using namespace std;
+
+namespace ydk
 {
-	std::string test_string = "Cisco-IOS-XR-clns-isis-cfg:isis/instances/instance/interfaces[interface-name='GigabitEthernet0/0/0/0']";
-	std::vector<std::string> segments = ydk::path::segmentalize(test_string);
-	std::vector<std::string> expected {"Cisco-IOS-XR-clns-isis-cfg:isis", "instances", "instance", "interfaces[interface-name='GigabitEthernet0/0/0/0']"};
+LeafData::LeafData(std::string value, EditOperation operation, bool is_set)
+	: value(value), operation(operation), is_set(is_set)
+{
 
-	for (size_t index = 0;index<segments.size();index++)
-	{
-		BOOST_REQUIRE(segments[index] == expected[index]);
-	}
+}
+
+LeafData::~LeafData()
+{
+}
+
+bool LeafData::operator == (LeafData & other) const
+{
+    return value == other.value && operation == other.operation && is_set == other.is_set;
+}
+
+bool LeafData::operator == (const LeafData & other) const
+{
+    return value == other.value && operation == other.operation && is_set == other.is_set;
+}
+
 }

@@ -169,7 +169,7 @@ EntityPath Sam::LogContents::LogContent::Logs::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -548,7 +548,7 @@ EntityPath Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -636,7 +636,7 @@ bool Sam::Devices::Device::Certificate::Brief::has_operation() const
     return is_set(operation)
 	|| is_set(certificate_index.operation)
 	|| is_set(location.operation)
-	|| (certificate_flags !=  nullptr && is_set(certificate_flags->operation));
+	|| (certificate_flags !=  nullptr && certificate_flags->has_operation());
 }
 
 std::string Sam::Devices::Device::Certificate::Brief::get_segment_path() const
@@ -653,7 +653,7 @@ EntityPath Sam::Devices::Device::Certificate::Brief::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -770,7 +770,7 @@ EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateInd
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -858,7 +858,7 @@ bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::De
     return is_set(operation)
 	|| is_set(certificate_index.operation)
 	|| is_set(location.operation)
-	|| (certificate_flags !=  nullptr && is_set(certificate_flags->operation));
+	|| (certificate_flags !=  nullptr && certificate_flags->has_operation());
 }
 
 std::string Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_segment_path() const
@@ -875,7 +875,7 @@ EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateInd
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -973,7 +973,7 @@ bool Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::ha
 {
     return is_set(operation)
 	|| is_set(index_.operation)
-	|| (detail !=  nullptr && is_set(detail->operation));
+	|| (detail !=  nullptr && detail->has_operation());
 }
 
 std::string Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_segment_path() const
@@ -990,7 +990,7 @@ EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::CertificateInd
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1100,7 +1100,7 @@ EntityPath Sam::Devices::Device::Certificate::CertificateIndexes::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1192,8 +1192,8 @@ bool Sam::Devices::Device::Certificate::has_data() const
 bool Sam::Devices::Device::Certificate::has_operation() const
 {
     return is_set(operation)
-	|| (brief !=  nullptr && is_set(brief->operation))
-	|| (certificate_indexes !=  nullptr && is_set(certificate_indexes->operation));
+	|| (brief !=  nullptr && brief->has_operation())
+	|| (certificate_indexes !=  nullptr && certificate_indexes->has_operation());
 }
 
 std::string Sam::Devices::Device::Certificate::get_segment_path() const
@@ -1210,7 +1210,7 @@ EntityPath Sam::Devices::Device::Certificate::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1321,7 +1321,7 @@ bool Sam::Devices::Device::has_operation() const
 {
     return is_set(operation)
 	|| is_set(device_name.operation)
-	|| (certificate !=  nullptr && is_set(certificate->operation));
+	|| (certificate !=  nullptr && certificate->has_operation());
 }
 
 std::string Sam::Devices::Device::get_segment_path() const
@@ -1558,7 +1558,7 @@ EntityPath Sam::Packages::Package::CertificateFlags::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1649,7 +1649,7 @@ bool Sam::Packages::Package::has_operation() const
 	|| is_set(package_name.operation)
 	|| is_set(certificate_index.operation)
 	|| is_set(location.operation)
-	|| (certificate_flags !=  nullptr && is_set(certificate_flags->operation));
+	|| (certificate_flags !=  nullptr && certificate_flags->has_operation());
 }
 
 std::string Sam::Packages::Package::get_segment_path() const
@@ -1893,7 +1893,7 @@ EntityPath Sam::CertificateRevocations::CertificateRevocation::CertificateRevoca
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1976,7 +1976,7 @@ bool Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationLi
     return is_set(operation)
 	|| is_set(crl_index.operation)
 	|| is_set(updates.operation)
-	|| (issuer !=  nullptr && is_set(issuer->operation));
+	|| (issuer !=  nullptr && issuer->has_operation());
 }
 
 std::string Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_segment_path() const
@@ -1993,7 +1993,7 @@ EntityPath Sam::CertificateRevocations::CertificateRevocation::CertificateRevoca
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2091,7 +2091,7 @@ bool Sam::CertificateRevocations::CertificateRevocation::has_operation() const
 {
     return is_set(operation)
 	|| is_set(crl_index.operation)
-	|| (certificate_revocation_list_detail !=  nullptr && is_set(certificate_revocation_list_detail->operation));
+	|| (certificate_revocation_list_detail !=  nullptr && certificate_revocation_list_detail->has_operation());
 }
 
 std::string Sam::CertificateRevocations::CertificateRevocation::get_segment_path() const
@@ -2408,7 +2408,7 @@ bool Sam::CertificateRevocationListSummary::has_operation() const
     return is_set(operation)
 	|| is_set(crl_index.operation)
 	|| is_set(updates.operation)
-	|| (issuer !=  nullptr && is_set(issuer->operation));
+	|| (issuer !=  nullptr && issuer->has_operation());
 }
 
 std::string Sam::CertificateRevocationListSummary::get_segment_path() const
@@ -2544,12 +2544,12 @@ bool Sam::has_data() const
 bool Sam::has_operation() const
 {
     return is_set(operation)
-	|| (certificate_revocation_list_summary !=  nullptr && is_set(certificate_revocation_list_summary->operation))
-	|| (certificate_revocations !=  nullptr && is_set(certificate_revocations->operation))
-	|| (devices !=  nullptr && is_set(devices->operation))
-	|| (log_contents !=  nullptr && is_set(log_contents->operation))
-	|| (packages !=  nullptr && is_set(packages->operation))
-	|| (system_information !=  nullptr && is_set(system_information->operation));
+	|| (certificate_revocation_list_summary !=  nullptr && certificate_revocation_list_summary->has_operation())
+	|| (certificate_revocations !=  nullptr && certificate_revocations->has_operation())
+	|| (devices !=  nullptr && devices->has_operation())
+	|| (log_contents !=  nullptr && log_contents->has_operation())
+	|| (packages !=  nullptr && packages->has_operation())
+	|| (system_information !=  nullptr && system_information->has_operation());
 }
 
 std::string Sam::get_segment_path() const
@@ -2566,7 +2566,7 @@ EntityPath Sam::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2745,39 +2745,39 @@ std::unique_ptr<Entity> Sam::clone_ptr()
     return std::make_unique<Sam>();
 }
 
-const Enum::Value LogErrorEnum::unknown {0, "unknown"};
-const Enum::Value LogErrorEnum::log_message_error {1, "log-message-error"};
-const Enum::Value LogErrorEnum::get_issuer_name_failed {2, "get-issuer-name-failed"};
+const Enum::YLeaf LogErrorEnum::unknown {0, "unknown"};
+const Enum::YLeaf LogErrorEnum::log_message_error {1, "log-message-error"};
+const Enum::YLeaf LogErrorEnum::get_issuer_name_failed {2, "get-issuer-name-failed"};
 
-const Enum::Value LogCodeEnum::unknown {0, "unknown"};
-const Enum::Value LogCodeEnum::sam_server_restared_router_reboot {1, "sam-server-restared-router-reboot"};
-const Enum::Value LogCodeEnum::sam_server_restared {2, "sam-server-restared"};
-const Enum::Value LogCodeEnum::added_certificate_in_table {3, "added-certificate-in-table"};
-const Enum::Value LogCodeEnum::copied_certificate_in_table {4, "copied-certificate-in-table"};
-const Enum::Value LogCodeEnum::certificate_flag_changed {5, "certificate-flag-changed"};
-const Enum::Value LogCodeEnum::validated_certificate {6, "validated-certificate"};
-const Enum::Value LogCodeEnum::certificate_expired_detected {7, "certificate-expired-detected"};
-const Enum::Value LogCodeEnum::certificate_revoked_detected {8, "certificate-revoked-detected"};
-const Enum::Value LogCodeEnum::ca_certificate_expired_detected {9, "ca-certificate-expired-detected"};
-const Enum::Value LogCodeEnum::ca_certificate_revoked_detected {10, "ca-certificate-revoked-detected"};
-const Enum::Value LogCodeEnum::deleted_certificate_from_table {11, "deleted-certificate-from-table"};
-const Enum::Value LogCodeEnum::crl_added_updated_in_table {12, "crl-added-updated-in-table"};
-const Enum::Value LogCodeEnum::checked_memory_digest {13, "checked-memory-digest"};
-const Enum::Value LogCodeEnum::nvram_digest_mismatch_detected {14, "nvram-digest-mismatch-detected"};
-const Enum::Value LogCodeEnum::insecure_backup_file_detected {15, "insecure-backup-file-detected"};
-const Enum::Value LogCodeEnum::error_restore_operation {16, "error-restore-operation"};
-const Enum::Value LogCodeEnum::backup_file_on_nvram_deleted {17, "backup-file-on-nvram-deleted"};
-const Enum::Value LogCodeEnum::sam_log_file_recovered_from_system_database {18, "sam-log-file-recovered-from-system-database"};
-const Enum::Value LogCodeEnum::validated_elf {19, "validated-elf"};
-const Enum::Value LogCodeEnum::namespace_deleted_recovered_by_sam {20, "namespace-deleted-recovered-by-sam"};
+const Enum::YLeaf LogCodeEnum::unknown {0, "unknown"};
+const Enum::YLeaf LogCodeEnum::sam_server_restared_router_reboot {1, "sam-server-restared-router-reboot"};
+const Enum::YLeaf LogCodeEnum::sam_server_restared {2, "sam-server-restared"};
+const Enum::YLeaf LogCodeEnum::added_certificate_in_table {3, "added-certificate-in-table"};
+const Enum::YLeaf LogCodeEnum::copied_certificate_in_table {4, "copied-certificate-in-table"};
+const Enum::YLeaf LogCodeEnum::certificate_flag_changed {5, "certificate-flag-changed"};
+const Enum::YLeaf LogCodeEnum::validated_certificate {6, "validated-certificate"};
+const Enum::YLeaf LogCodeEnum::certificate_expired_detected {7, "certificate-expired-detected"};
+const Enum::YLeaf LogCodeEnum::certificate_revoked_detected {8, "certificate-revoked-detected"};
+const Enum::YLeaf LogCodeEnum::ca_certificate_expired_detected {9, "ca-certificate-expired-detected"};
+const Enum::YLeaf LogCodeEnum::ca_certificate_revoked_detected {10, "ca-certificate-revoked-detected"};
+const Enum::YLeaf LogCodeEnum::deleted_certificate_from_table {11, "deleted-certificate-from-table"};
+const Enum::YLeaf LogCodeEnum::crl_added_updated_in_table {12, "crl-added-updated-in-table"};
+const Enum::YLeaf LogCodeEnum::checked_memory_digest {13, "checked-memory-digest"};
+const Enum::YLeaf LogCodeEnum::nvram_digest_mismatch_detected {14, "nvram-digest-mismatch-detected"};
+const Enum::YLeaf LogCodeEnum::insecure_backup_file_detected {15, "insecure-backup-file-detected"};
+const Enum::YLeaf LogCodeEnum::error_restore_operation {16, "error-restore-operation"};
+const Enum::YLeaf LogCodeEnum::backup_file_on_nvram_deleted {17, "backup-file-on-nvram-deleted"};
+const Enum::YLeaf LogCodeEnum::sam_log_file_recovered_from_system_database {18, "sam-log-file-recovered-from-system-database"};
+const Enum::YLeaf LogCodeEnum::validated_elf {19, "validated-elf"};
+const Enum::YLeaf LogCodeEnum::namespace_deleted_recovered_by_sam {20, "namespace-deleted-recovered-by-sam"};
 
-const Enum::Value CertificateIssuerEnum::unknown {0, "unknown"};
-const Enum::Value CertificateIssuerEnum::code_signing_server_certificate_authority {1, "code-signing-server-certificate-authority"};
+const Enum::YLeaf CertificateIssuerEnum::unknown {0, "unknown"};
+const Enum::YLeaf CertificateIssuerEnum::code_signing_server_certificate_authority {1, "code-signing-server-certificate-authority"};
 
-const Enum::Value LogTablesEnum::unkown {0, "unkown"};
-const Enum::Value LogTablesEnum::memory_digest_table {1, "memory-digest-table"};
-const Enum::Value LogTablesEnum::system_database_digest {2, "system-database-digest"};
-const Enum::Value LogTablesEnum::sam_tables {3, "sam-tables"};
+const Enum::YLeaf LogTablesEnum::unkown {0, "unkown"};
+const Enum::YLeaf LogTablesEnum::memory_digest_table {1, "memory-digest-table"};
+const Enum::YLeaf LogTablesEnum::system_database_digest {2, "system-database-digest"};
+const Enum::YLeaf LogTablesEnum::sam_tables {3, "sam-tables"};
 
 
 }

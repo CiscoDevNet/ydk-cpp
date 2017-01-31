@@ -79,7 +79,7 @@ EntityPath PlatformLptspIfib::Nodes::Node::Police::PoliceInfo::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -226,7 +226,7 @@ EntityPath PlatformLptspIfib::Nodes::Node::Police::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -336,7 +336,7 @@ EntityPath PlatformLptspIfib::Nodes::Node::Stats::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -426,8 +426,8 @@ bool PlatformLptspIfib::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (police !=  nullptr && is_set(police->operation))
-	|| (stats !=  nullptr && is_set(stats->operation));
+	|| (police !=  nullptr && police->has_operation())
+	|| (stats !=  nullptr && stats->has_operation());
 }
 
 std::string PlatformLptspIfib::Nodes::Node::get_segment_path() const
@@ -664,7 +664,7 @@ bool PlatformLptspIfib::has_data() const
 bool PlatformLptspIfib::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string PlatformLptspIfib::get_segment_path() const
@@ -681,7 +681,7 @@ EntityPath PlatformLptspIfib::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

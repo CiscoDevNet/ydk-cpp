@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_ipv4_autorp_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_ipv4_autorp_oper {
@@ -28,6 +27,7 @@ class AutoRp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Standby : public Entity
     {
         public:
@@ -41,6 +41,7 @@ class AutoRp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class CandidateRps : public Entity
@@ -58,6 +59,7 @@ class AutoRp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class CandidateRp : public Entity
             {
                 public:
@@ -71,17 +73,16 @@ class AutoRp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value protocol_mode; //type: AutoRpProtocolModeEnum
-                    Value access_list_name; //type: string
-                    Value candidate_rp_address; //type: string
-                    Value ttl; //type: int32
-                    Value announce_period; //type: int32
-                    Value protocol_mode_xr; //type: AutorpProtocolModeEnum
 
 
-                    class AutoRpProtocolModeEnum;
-                    class AutorpProtocolModeEnum;
+                    YLeaf interface_name; //type: string
+                    YLeaf protocol_mode; //type: AutoRpProtocolModeEnum
+                    YLeaf access_list_name; //type: string
+                    YLeaf candidate_rp_address; //type: string
+                    YLeaf ttl; //type: int32
+                    YLeaf announce_period; //type: int32
+                    YLeaf protocol_mode_xr; //type: AutorpProtocolModeEnum
+
 
 
             }; // AutoRp::Standby::CandidateRps::CandidateRp
@@ -108,6 +109,7 @@ class AutoRp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RpAddresses : public Entity
             {
                 public:
@@ -123,6 +125,7 @@ class AutoRp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class RpAddress : public Entity
                 {
                     public:
@@ -136,11 +139,12 @@ class AutoRp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rp_address; //type: string
-                        Value rp_address_xr; //type: string
-                        Value expiry_time; //type: uint64
-                        Value pim_version; //type: uint8
 
+
+                        YLeaf rp_address; //type: string
+                        YLeaf rp_address_xr; //type: string
+                        YLeaf expiry_time; //type: uint64
+                        YLeaf pim_version; //type: uint8
 
                     class Range : public Entity
                     {
@@ -155,16 +159,16 @@ class AutoRp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix; //type: string
-                            Value prefix_length; //type: uint8
-                            Value protocol_mode; //type: AutorpProtocolModeEnum
-                            Value is_advertised; //type: boolean
-                            Value create_type; //type: uint8
-                            Value check_point_object_id; //type: uint32
-                            Value uptime; //type: uint64
 
 
-                            class AutorpProtocolModeEnum;
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_length; //type: uint8
+                            YLeaf protocol_mode; //type: AutorpProtocolModeEnum
+                            YLeaf is_advertised; //type: boolean
+                            YLeaf create_type; //type: uint8
+                            YLeaf check_point_object_id; //type: uint32
+                            YLeaf uptime; //type: uint64
+
 
 
                     }; // AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range
@@ -195,10 +199,11 @@ class AutoRp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value is_maximum_disabled; //type: boolean
-                    Value cache_limit; //type: uint32
-                    Value cache_count; //type: uint32
 
+
+                    YLeaf is_maximum_disabled; //type: boolean
+                    YLeaf cache_limit; //type: uint32
+                    YLeaf cache_count; //type: uint32
 
 
 
@@ -234,6 +239,7 @@ class AutoRp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class CandidateRps : public Entity
         {
             public:
@@ -249,6 +255,7 @@ class AutoRp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class CandidateRp : public Entity
             {
                 public:
@@ -262,17 +269,16 @@ class AutoRp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value protocol_mode; //type: AutoRpProtocolModeEnum
-                    Value access_list_name; //type: string
-                    Value candidate_rp_address; //type: string
-                    Value ttl; //type: int32
-                    Value announce_period; //type: int32
-                    Value protocol_mode_xr; //type: AutorpProtocolModeEnum
 
 
-                    class AutoRpProtocolModeEnum;
-                    class AutorpProtocolModeEnum;
+                    YLeaf interface_name; //type: string
+                    YLeaf protocol_mode; //type: AutoRpProtocolModeEnum
+                    YLeaf access_list_name; //type: string
+                    YLeaf candidate_rp_address; //type: string
+                    YLeaf ttl; //type: int32
+                    YLeaf announce_period; //type: int32
+                    YLeaf protocol_mode_xr; //type: AutorpProtocolModeEnum
+
 
 
             }; // AutoRp::Active::CandidateRps::CandidateRp
@@ -299,6 +305,7 @@ class AutoRp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RpAddresses : public Entity
             {
                 public:
@@ -314,6 +321,7 @@ class AutoRp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class RpAddress : public Entity
                 {
                     public:
@@ -327,11 +335,12 @@ class AutoRp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rp_address; //type: string
-                        Value rp_address_xr; //type: string
-                        Value expiry_time; //type: uint64
-                        Value pim_version; //type: uint8
 
+
+                        YLeaf rp_address; //type: string
+                        YLeaf rp_address_xr; //type: string
+                        YLeaf expiry_time; //type: uint64
+                        YLeaf pim_version; //type: uint8
 
                     class Range : public Entity
                     {
@@ -346,16 +355,16 @@ class AutoRp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix; //type: string
-                            Value prefix_length; //type: uint8
-                            Value protocol_mode; //type: AutorpProtocolModeEnum
-                            Value is_advertised; //type: boolean
-                            Value create_type; //type: uint8
-                            Value check_point_object_id; //type: uint32
-                            Value uptime; //type: uint64
 
 
-                            class AutorpProtocolModeEnum;
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_length; //type: uint8
+                            YLeaf protocol_mode; //type: AutorpProtocolModeEnum
+                            YLeaf is_advertised; //type: boolean
+                            YLeaf create_type; //type: uint8
+                            YLeaf check_point_object_id; //type: uint32
+                            YLeaf uptime; //type: uint64
+
 
 
                     }; // AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range
@@ -386,10 +395,11 @@ class AutoRp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value is_maximum_disabled; //type: boolean
-                    Value cache_limit; //type: uint32
-                    Value cache_count; //type: uint32
 
+
+                    YLeaf is_maximum_disabled; //type: boolean
+                    YLeaf cache_limit; //type: uint32
+                    YLeaf cache_count; //type: uint32
 
 
 
@@ -420,8 +430,8 @@ class AutoRp : public Entity
 class AutorpProtocolModeEnum : public Enum
 {
     public:
-        static const Enum::Value sparse;
-        static const Enum::Value bidirectional;
+        static const Enum::YLeaf sparse;
+        static const Enum::YLeaf bidirectional;
 
 };
 

@@ -26,6 +26,7 @@ class OpticsOper : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class OpticsPorts : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class OpticsOper : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class OpticsPort : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class OpticsOper : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
 
+
+                YLeaf name; //type: string
 
             class OpticsDwdmCarrrierChannelMap : public Entity
             {
@@ -70,10 +73,11 @@ class OpticsOper : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value dwdm_carrier_band; //type: OpticsWaveBandEnum
-                    Value dwdm_carrier_min; //type: uint32
-                    Value dwdm_carrier_max; //type: uint32
 
+
+                    YLeaf dwdm_carrier_band; //type: OpticsWaveBandEnum
+                    YLeaf dwdm_carrier_min; //type: uint32
+                    YLeaf dwdm_carrier_max; //type: uint32
 
                 class DwdmCarrierMapInfo : public Entity
                 {
@@ -88,11 +92,12 @@ class OpticsOper : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value itu_chan_num; //type: uint32
-                        Value g694_chan_num; //type: int32
-                        Value frequency; //type: string
-                        Value wavelength; //type: string
 
+
+                        YLeaf itu_chan_num; //type: uint32
+                        YLeaf g694_chan_num; //type: int32
+                        YLeaf frequency; //type: string
+                        YLeaf wavelength; //type: string
 
 
 
@@ -100,7 +105,6 @@ class OpticsOper : public Entity
 
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo> > dwdm_carrier_map_info;
-                    class OpticsWaveBandEnum;
 
 
             }; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap
@@ -119,75 +123,76 @@ class OpticsOper : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value transport_admin_state; //type: OpticsTasEnum
-                    Value optics_present; //type: boolean
-                    Value optics_type; //type: OpticsEnum
-                    Value optics_module; //type: string
-                    Value dwdm_carrier_band; //type: OpticsWaveBandEnum
-                    Value dwdm_carrier_channel; //type: string
-                    Value dwdm_carrier_frequency; //type: string
-                    Value dwdm_carrier_wavelength; //type: string
-                    Value grey_wavelength; //type: uint32
-                    Value rx_low_threshold; //type: int32
-                    Value rx_high_threshold; //type: int32
-                    Value lbc_high_threshold; //type: int32
-                    Value tx_low_threshold; //type: int32
-                    Value tx_high_threshold; //type: int32
-                    Value lbc_th_high_default; //type: int32
-                    Value lbc_th_low_default; //type: int32
-                    Value temp_low_threshold; //type: int32
-                    Value temp_high_threshold; //type: int32
-                    Value volt_low_threshold; //type: int32
-                    Value volt_high_threshold; //type: int32
-                    Value cd; //type: int32
-                    Value cd_min; //type: int32
-                    Value cd_max; //type: int32
-                    Value cd_low_threshold; //type: int32
-                    Value cd_high_threshold; //type: int32
-                    Value osnr_low_threshold; //type: string
-                    Value dgd_high_threshold; //type: string
-                    Value polarization_mode_dispersion; //type: string
-                    Value second_order_polarization_mode_dispersion; //type: string
-                    Value optical_signal_to_noise_ratio; //type: string
-                    Value polarization_dependent_loss; //type: string
-                    Value polarization_change_rate; //type: string
-                    Value differential_group_delay; //type: string
-                    Value phase_noise; //type: string
-                    Value pm_enable; //type: uint32
-                    Value laser_state; //type: OpticsLaserStateEnum
-                    Value led_state; //type: OpticsLedStateEnum
-                    Value controller_state; //type: OpticsControllerStateEnum
-                    Value form_factor; //type: OpticsFormFactorEnum
-                    Value phy_type; //type: OpticsPhyEnum
-                    Value rx_power; //type: int32
-                    Value tx_power; //type: int32
-                    Value cfg_tx_power; //type: int32
-                    Value cfg_tx_power_configurable; //type: boolean
-                    Value display_volt_temp; //type: boolean
-                    Value cd_configurable; //type: boolean
-                    Value optics_fec; //type: OpticsFecEnum
-                    Value port_type; //type: OpticsPortEnum
-                    Value rx_voa_attenuation; //type: int32
-                    Value tx_voa_attenuation; //type: int32
-                    Value ampli_gain; //type: int32
-                    Value ampli_tilt; //type: int32
-                    Value rx_voa_attenuation_config_val; //type: int32
-                    Value tx_voa_attenuation_config_val; //type: int32
-                    Value ampli_control_mode_config_val; //type: OpticsAmplifierControlModeEnum
-                    Value ampli_gain_range_config_val; //type: OpticsAmplifierGainRangeEnum
-                    Value ampli_gain_config_val; //type: int32
-                    Value ampli_tilt_config_val; //type: int32
-                    Value ampli_channel_power_config_val; //type: int32
-                    Value ampli_gain_thr_deg_low_config_val; //type: int32
-                    Value ampli_gain_thr_deg_high_config_val; //type: int32
-                    Value osri_config_val; //type: boolean
-                    Value safety_control_mode_config_val; //type: OpticsAmplifierSafetyControlModeEnum
-                    Value total_rx_power; //type: int32
-                    Value total_tx_power; //type: int32
-                    Value is_bo_configured; //type: boolean
-                    Value is_ext_param_valid; //type: boolean
-                    Value alarm_detected; //type: boolean
 
+
+                    YLeaf transport_admin_state; //type: OpticsTasEnum
+                    YLeaf optics_present; //type: boolean
+                    YLeaf optics_type; //type: OpticsEnum
+                    YLeaf optics_module; //type: string
+                    YLeaf dwdm_carrier_band; //type: OpticsWaveBandEnum
+                    YLeaf dwdm_carrier_channel; //type: string
+                    YLeaf dwdm_carrier_frequency; //type: string
+                    YLeaf dwdm_carrier_wavelength; //type: string
+                    YLeaf grey_wavelength; //type: uint32
+                    YLeaf rx_low_threshold; //type: int32
+                    YLeaf rx_high_threshold; //type: int32
+                    YLeaf lbc_high_threshold; //type: int32
+                    YLeaf tx_low_threshold; //type: int32
+                    YLeaf tx_high_threshold; //type: int32
+                    YLeaf lbc_th_high_default; //type: int32
+                    YLeaf lbc_th_low_default; //type: int32
+                    YLeaf temp_low_threshold; //type: int32
+                    YLeaf temp_high_threshold; //type: int32
+                    YLeaf volt_low_threshold; //type: int32
+                    YLeaf volt_high_threshold; //type: int32
+                    YLeaf cd; //type: int32
+                    YLeaf cd_min; //type: int32
+                    YLeaf cd_max; //type: int32
+                    YLeaf cd_low_threshold; //type: int32
+                    YLeaf cd_high_threshold; //type: int32
+                    YLeaf osnr_low_threshold; //type: string
+                    YLeaf dgd_high_threshold; //type: string
+                    YLeaf polarization_mode_dispersion; //type: string
+                    YLeaf second_order_polarization_mode_dispersion; //type: string
+                    YLeaf optical_signal_to_noise_ratio; //type: string
+                    YLeaf polarization_dependent_loss; //type: string
+                    YLeaf polarization_change_rate; //type: string
+                    YLeaf differential_group_delay; //type: string
+                    YLeaf phase_noise; //type: string
+                    YLeaf pm_enable; //type: uint32
+                    YLeaf laser_state; //type: OpticsLaserStateEnum
+                    YLeaf led_state; //type: OpticsLedStateEnum
+                    YLeaf controller_state; //type: OpticsControllerStateEnum
+                    YLeaf form_factor; //type: OpticsFormFactorEnum
+                    YLeaf phy_type; //type: OpticsPhyEnum
+                    YLeaf rx_power; //type: int32
+                    YLeaf tx_power; //type: int32
+                    YLeaf cfg_tx_power; //type: int32
+                    YLeaf cfg_tx_power_configurable; //type: boolean
+                    YLeaf display_volt_temp; //type: boolean
+                    YLeaf cd_configurable; //type: boolean
+                    YLeaf optics_fec; //type: OpticsFecEnum
+                    YLeaf port_type; //type: OpticsPortEnum
+                    YLeaf rx_voa_attenuation; //type: int32
+                    YLeaf tx_voa_attenuation; //type: int32
+                    YLeaf ampli_gain; //type: int32
+                    YLeaf ampli_tilt; //type: int32
+                    YLeaf rx_voa_attenuation_config_val; //type: int32
+                    YLeaf tx_voa_attenuation_config_val; //type: int32
+                    YLeaf ampli_control_mode_config_val; //type: OpticsAmplifierControlModeEnum
+                    YLeaf ampli_gain_range_config_val; //type: OpticsAmplifierGainRangeEnum
+                    YLeaf ampli_gain_config_val; //type: int32
+                    YLeaf ampli_tilt_config_val; //type: int32
+                    YLeaf ampli_channel_power_config_val; //type: int32
+                    YLeaf ampli_gain_thr_deg_low_config_val; //type: int32
+                    YLeaf ampli_gain_thr_deg_high_config_val; //type: int32
+                    YLeaf osri_config_val; //type: boolean
+                    YLeaf safety_control_mode_config_val; //type: OpticsAmplifierSafetyControlModeEnum
+                    YLeaf total_rx_power; //type: int32
+                    YLeaf total_tx_power; //type: int32
+                    YLeaf is_bo_configured; //type: boolean
+                    YLeaf is_ext_param_valid; //type: boolean
+                    YLeaf alarm_detected; //type: boolean
 
                 class NetworkSrlgInfo : public Entity
                 {
@@ -204,6 +209,7 @@ class OpticsOper : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class NetworkSrlgArray : public Entity
                     {
                         public:
@@ -217,9 +223,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value set_number; //type: uint32
-                            ValueList network_srlg; //type: list of  uint32
 
+
+                            YLeaf set_number; //type: uint32
+                            YLeafList network_srlg; //type: list of  uint32
 
 
 
@@ -247,6 +254,7 @@ class OpticsOper : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class HighRxPower : public Entity
                     {
                         public:
@@ -260,9 +268,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -282,9 +291,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -304,9 +314,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -326,9 +337,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -348,9 +360,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -370,9 +383,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -392,9 +406,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -414,9 +429,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -436,9 +452,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -458,9 +475,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -480,9 +498,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -502,9 +521,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -524,9 +544,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -546,9 +567,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -568,9 +590,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -590,9 +613,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -612,9 +636,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -634,9 +659,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -656,9 +682,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -678,9 +705,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -700,9 +728,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -722,9 +751,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -744,9 +774,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -766,9 +797,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -788,9 +820,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -810,9 +843,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -832,9 +866,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -854,9 +889,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -876,9 +912,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -898,9 +935,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -920,9 +958,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -942,9 +981,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -964,9 +1004,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -986,9 +1027,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -1008,9 +1050,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -1030,9 +1073,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -1052,9 +1096,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -1074,9 +1119,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -1096,9 +1142,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -1118,9 +1165,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -1140,9 +1188,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -1162,9 +1211,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -1184,9 +1234,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_detected; //type: boolean
-                            Value counter; //type: uint32
 
+
+                            YLeaf is_detected; //type: boolean
+                            YLeaf counter; //type: uint32
 
 
 
@@ -1254,22 +1305,19 @@ class OpticsOper : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value vendor_info; //type: string
-                        Value date; //type: string
-                        Value optics_vendor_rev; //type: string
-                        Value optics_serial_no; //type: string
-                        Value optics_vendor_part; //type: string
-                        Value connector_type; //type: FiberConnectorEnum
-                        Value otn_application_code; //type: OtnApplicationCodeEnum
-                        Value sonet_application_code; //type: SonetApplicationCodeEnum
-                        Value ethernet_compliance_code; //type: EthernetPmdEnum
-                        Value internal_temperature; //type: int32
 
 
-                        class FiberConnectorEnum;
-                        class EthernetPmdEnum;
-                        class OtnApplicationCodeEnum;
-                        class SonetApplicationCodeEnum;
+                        YLeaf vendor_info; //type: string
+                        YLeaf date; //type: string
+                        YLeaf optics_vendor_rev; //type: string
+                        YLeaf optics_serial_no; //type: string
+                        YLeaf optics_vendor_part; //type: string
+                        YLeaf connector_type; //type: FiberConnectorEnum
+                        YLeaf otn_application_code; //type: OtnApplicationCodeEnum
+                        YLeaf sonet_application_code; //type: SonetApplicationCodeEnum
+                        YLeaf ethernet_compliance_code; //type: EthernetPmdEnum
+                        YLeaf internal_temperature; //type: int32
+
 
 
                 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo
@@ -1288,29 +1336,30 @@ class OpticsOper : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value snr_lane1; //type: int32
-                        Value snr_lane2; //type: int32
-                        Value isi_correction_lane1; //type: int32
-                        Value isi_correction_lane2; //type: int32
-                        Value pam_rate_lane1; //type: int32
-                        Value pam_rate_lane2; //type: int32
-                        Value pre_fec_ber; //type: int32
-                        Value uncorrected_ber; //type: int32
-                        Value tec_current_lane1; //type: int32
-                        Value tec_current_lane2; //type: int32
-                        Value laser_diff_frequency_lane1; //type: int32
-                        Value laser_diff_frequency_lane2; //type: int32
-                        Value laser_diff_temperature_lane1; //type: int32
-                        Value laser_diff_temperature_lane2; //type: int32
-                        Value pre_fec_ber_latched_min; //type: int32
-                        Value pre_fec_ber_latched_max; //type: int32
-                        Value pre_fec_ber_accumulated; //type: int32
-                        Value pre_fec_ber_instantaneous; //type: int32
-                        Value uncorrected_ber_latched_min; //type: int32
-                        Value uncorrected_ber_latched_max; //type: int32
-                        Value uncorrected_ber_accumulated; //type: int32
-                        Value uncorrected_ber_instantaneous; //type: int32
 
+
+                        YLeaf snr_lane1; //type: int32
+                        YLeaf snr_lane2; //type: int32
+                        YLeaf isi_correction_lane1; //type: int32
+                        YLeaf isi_correction_lane2; //type: int32
+                        YLeaf pam_rate_lane1; //type: int32
+                        YLeaf pam_rate_lane2; //type: int32
+                        YLeaf pre_fec_ber; //type: int32
+                        YLeaf uncorrected_ber; //type: int32
+                        YLeaf tec_current_lane1; //type: int32
+                        YLeaf tec_current_lane2; //type: int32
+                        YLeaf laser_diff_frequency_lane1; //type: int32
+                        YLeaf laser_diff_frequency_lane2; //type: int32
+                        YLeaf laser_diff_temperature_lane1; //type: int32
+                        YLeaf laser_diff_temperature_lane2; //type: int32
+                        YLeaf pre_fec_ber_latched_min; //type: int32
+                        YLeaf pre_fec_ber_latched_max; //type: int32
+                        YLeaf pre_fec_ber_accumulated; //type: int32
+                        YLeaf pre_fec_ber_instantaneous; //type: int32
+                        YLeaf uncorrected_ber_latched_min; //type: int32
+                        YLeaf uncorrected_ber_latched_max; //type: int32
+                        YLeaf uncorrected_ber_accumulated; //type: int32
+                        YLeaf uncorrected_ber_instantaneous; //type: int32
 
 
 
@@ -1330,71 +1379,72 @@ class OpticsOper : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value snr_alarm_high_threshold; //type: int32
-                        Value snr_alarm_low_threshold; //type: int32
-                        Value snr_warn_high_threshold; //type: int32
-                        Value snr_warn_low_threshold; //type: int32
-                        Value isi_correction_alarm_high_threshold; //type: int32
-                        Value isi_correction_alarm_low_threshold; //type: int32
-                        Value isi_correction_warn_high_threshold; //type: int32
-                        Value isi_correction_warn_low_threshold; //type: int32
-                        Value pam_rate_alarm_high_threshold; //type: int32
-                        Value pam_rate_alarm_low_threshold; //type: int32
-                        Value pam_rate_warn_high_threshold; //type: int32
-                        Value pam_rate_warn_low_threshold; //type: int32
-                        Value pre_fec_ber_alarm_high_threshold; //type: int32
-                        Value pre_fec_ber_alarm_low_threshold; //type: int32
-                        Value pre_fec_ber_warn_high_threshold; //type: int32
-                        Value pre_fec_ber_warn_low_threshold; //type: int32
-                        Value uncorrected_ber_alarm_high_threshold; //type: int32
-                        Value uncorrected_ber_alarm_low_threshold; //type: int32
-                        Value uncorrected_ber_warn_high_threshold; //type: int32
-                        Value uncorrected_ber_warn_low_threshold; //type: int32
-                        Value tec_current_alarm_high_threshold; //type: int32
-                        Value tec_current_alarm_low_threshold; //type: int32
-                        Value tec_current_warn_high_threshold; //type: int32
-                        Value tec_current_warn_low_threshold; //type: int32
-                        Value laser_diff_frequency_alarm_high_threshold; //type: int32
-                        Value laser_diff_frequency_alarm_low_threshold; //type: int32
-                        Value laser_diff_frequency_warn_high_threshold; //type: int32
-                        Value laser_diff_frequency_warn_low_threshold; //type: int32
-                        Value laser_diff_temperature_alarm_high_threshold; //type: int32
-                        Value laser_diff_temperature_alarm_low_threshold; //type: int32
-                        Value laser_diff_temperature_warn_high_threshold; //type: int32
-                        Value laser_diff_temperature_warn_low_threshold; //type: int32
-                        Value pre_fec_ber_latched_min_alarm_high_threshold; //type: int32
-                        Value pre_fec_ber_latched_min_alarm_low_threshold; //type: int32
-                        Value pre_fec_ber_latched_min_warn_high_threshold; //type: int32
-                        Value pre_fec_ber_latched_min_warn_low_threshold; //type: int32
-                        Value pre_fec_ber_latched_max_alarm_high_threshold; //type: int32
-                        Value pre_fec_ber_latched_max_alarm_low_threshold; //type: int32
-                        Value pre_fec_ber_latched_max_warn_high_threshold; //type: int32
-                        Value pre_fec_ber_latched_max_warn_low_threshold; //type: int32
-                        Value pre_fec_ber_accumulated_alarm_high_threshold; //type: int32
-                        Value pre_fec_ber_accumulated_alarm_low_threshold; //type: int32
-                        Value pre_fec_ber_accumulated_warn_high_threshold; //type: int32
-                        Value pre_fec_ber_accumulated_warn_low_threshold; //type: int32
-                        Value pre_fec_ber_instantaneous_alarm_high_threshold; //type: int32
-                        Value pre_fec_ber_instantaneous_alarm_low_threshold; //type: int32
-                        Value pre_fec_ber_instantaneous_warn_high_threshold; //type: int32
-                        Value pre_fec_ber_instantaneous_warn_low_threshold; //type: int32
-                        Value uncorrected_ber_latched_min_alarm_high_threshold; //type: int32
-                        Value uncorrected_ber_latched_min_alarm_low_threshold; //type: int32
-                        Value uncorrected_ber_latched_min_warn_high_threshold; //type: int32
-                        Value uncorrected_ber_latched_min_warn_low_threshold; //type: int32
-                        Value uncorrected_ber_latched_max_alarm_high_threshold; //type: int32
-                        Value uncorrected_ber_latched_max_alarm_low_threshold; //type: int32
-                        Value uncorrected_ber_latched_max_warn_high_threshold; //type: int32
-                        Value uncorrected_ber_latched_max_warn_low_threshold; //type: int32
-                        Value uncorrected_ber_accumulated_alarm_high_threshold; //type: int32
-                        Value uncorrected_ber_accumulated_alarm_low_threshold; //type: int32
-                        Value uncorrected_ber_accumulated_warn_high_threshold; //type: int32
-                        Value uncorrected_ber_accumulated_warn_low_threshold; //type: int32
-                        Value uncorrected_ber_instantaneous_alarm_high_threshold; //type: int32
-                        Value uncorrected_ber_instantaneous_alarm_low_threshold; //type: int32
-                        Value uncorrected_ber_instantaneous_warn_high_threshold; //type: int32
-                        Value uncorrected_ber_instantaneous_warn_low_threshold; //type: int32
 
+
+                        YLeaf snr_alarm_high_threshold; //type: int32
+                        YLeaf snr_alarm_low_threshold; //type: int32
+                        YLeaf snr_warn_high_threshold; //type: int32
+                        YLeaf snr_warn_low_threshold; //type: int32
+                        YLeaf isi_correction_alarm_high_threshold; //type: int32
+                        YLeaf isi_correction_alarm_low_threshold; //type: int32
+                        YLeaf isi_correction_warn_high_threshold; //type: int32
+                        YLeaf isi_correction_warn_low_threshold; //type: int32
+                        YLeaf pam_rate_alarm_high_threshold; //type: int32
+                        YLeaf pam_rate_alarm_low_threshold; //type: int32
+                        YLeaf pam_rate_warn_high_threshold; //type: int32
+                        YLeaf pam_rate_warn_low_threshold; //type: int32
+                        YLeaf pre_fec_ber_alarm_high_threshold; //type: int32
+                        YLeaf pre_fec_ber_alarm_low_threshold; //type: int32
+                        YLeaf pre_fec_ber_warn_high_threshold; //type: int32
+                        YLeaf pre_fec_ber_warn_low_threshold; //type: int32
+                        YLeaf uncorrected_ber_alarm_high_threshold; //type: int32
+                        YLeaf uncorrected_ber_alarm_low_threshold; //type: int32
+                        YLeaf uncorrected_ber_warn_high_threshold; //type: int32
+                        YLeaf uncorrected_ber_warn_low_threshold; //type: int32
+                        YLeaf tec_current_alarm_high_threshold; //type: int32
+                        YLeaf tec_current_alarm_low_threshold; //type: int32
+                        YLeaf tec_current_warn_high_threshold; //type: int32
+                        YLeaf tec_current_warn_low_threshold; //type: int32
+                        YLeaf laser_diff_frequency_alarm_high_threshold; //type: int32
+                        YLeaf laser_diff_frequency_alarm_low_threshold; //type: int32
+                        YLeaf laser_diff_frequency_warn_high_threshold; //type: int32
+                        YLeaf laser_diff_frequency_warn_low_threshold; //type: int32
+                        YLeaf laser_diff_temperature_alarm_high_threshold; //type: int32
+                        YLeaf laser_diff_temperature_alarm_low_threshold; //type: int32
+                        YLeaf laser_diff_temperature_warn_high_threshold; //type: int32
+                        YLeaf laser_diff_temperature_warn_low_threshold; //type: int32
+                        YLeaf pre_fec_ber_latched_min_alarm_high_threshold; //type: int32
+                        YLeaf pre_fec_ber_latched_min_alarm_low_threshold; //type: int32
+                        YLeaf pre_fec_ber_latched_min_warn_high_threshold; //type: int32
+                        YLeaf pre_fec_ber_latched_min_warn_low_threshold; //type: int32
+                        YLeaf pre_fec_ber_latched_max_alarm_high_threshold; //type: int32
+                        YLeaf pre_fec_ber_latched_max_alarm_low_threshold; //type: int32
+                        YLeaf pre_fec_ber_latched_max_warn_high_threshold; //type: int32
+                        YLeaf pre_fec_ber_latched_max_warn_low_threshold; //type: int32
+                        YLeaf pre_fec_ber_accumulated_alarm_high_threshold; //type: int32
+                        YLeaf pre_fec_ber_accumulated_alarm_low_threshold; //type: int32
+                        YLeaf pre_fec_ber_accumulated_warn_high_threshold; //type: int32
+                        YLeaf pre_fec_ber_accumulated_warn_low_threshold; //type: int32
+                        YLeaf pre_fec_ber_instantaneous_alarm_high_threshold; //type: int32
+                        YLeaf pre_fec_ber_instantaneous_alarm_low_threshold; //type: int32
+                        YLeaf pre_fec_ber_instantaneous_warn_high_threshold; //type: int32
+                        YLeaf pre_fec_ber_instantaneous_warn_low_threshold; //type: int32
+                        YLeaf uncorrected_ber_latched_min_alarm_high_threshold; //type: int32
+                        YLeaf uncorrected_ber_latched_min_alarm_low_threshold; //type: int32
+                        YLeaf uncorrected_ber_latched_min_warn_high_threshold; //type: int32
+                        YLeaf uncorrected_ber_latched_min_warn_low_threshold; //type: int32
+                        YLeaf uncorrected_ber_latched_max_alarm_high_threshold; //type: int32
+                        YLeaf uncorrected_ber_latched_max_alarm_low_threshold; //type: int32
+                        YLeaf uncorrected_ber_latched_max_warn_high_threshold; //type: int32
+                        YLeaf uncorrected_ber_latched_max_warn_low_threshold; //type: int32
+                        YLeaf uncorrected_ber_accumulated_alarm_high_threshold; //type: int32
+                        YLeaf uncorrected_ber_accumulated_alarm_low_threshold; //type: int32
+                        YLeaf uncorrected_ber_accumulated_warn_high_threshold; //type: int32
+                        YLeaf uncorrected_ber_accumulated_warn_low_threshold; //type: int32
+                        YLeaf uncorrected_ber_instantaneous_alarm_high_threshold; //type: int32
+                        YLeaf uncorrected_ber_instantaneous_alarm_low_threshold; //type: int32
+                        YLeaf uncorrected_ber_instantaneous_warn_high_threshold; //type: int32
+                        YLeaf uncorrected_ber_instantaneous_warn_low_threshold; //type: int32
 
 
 
@@ -1414,15 +1464,16 @@ class OpticsOper : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lane_index; //type: uint32
-                        Value laser_bias_current_percent; //type: uint32
-                        Value laser_bias_current_milli_amps; //type: uint32
-                        Value transmit_power; //type: int32
-                        Value receive_power; //type: int32
-                        Value receive_signal_power; //type: int32
-                        Value transmit_signal_power; //type: int32
-                        Value output_frequency; //type: int32
 
+
+                        YLeaf lane_index; //type: uint32
+                        YLeaf laser_bias_current_percent; //type: uint32
+                        YLeaf laser_bias_current_milli_amps; //type: uint32
+                        YLeaf transmit_power; //type: int32
+                        YLeaf receive_power; //type: int32
+                        YLeaf receive_signal_power; //type: int32
+                        YLeaf transmit_signal_power; //type: int32
+                        YLeaf output_frequency; //type: int32
 
                     class LaneAlarmInfo : public Entity
                     {
@@ -1439,6 +1490,7 @@ class OpticsOper : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class HighRxPower : public Entity
                         {
                             public:
@@ -1452,9 +1504,10 @@ class OpticsOper : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value is_detected; //type: boolean
-                                Value counter; //type: uint32
 
+
+                                YLeaf is_detected; //type: boolean
+                                YLeaf counter; //type: uint32
 
 
 
@@ -1474,9 +1527,10 @@ class OpticsOper : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value is_detected; //type: boolean
-                                Value counter; //type: uint32
 
+
+                                YLeaf is_detected; //type: boolean
+                                YLeaf counter; //type: uint32
 
 
 
@@ -1496,9 +1550,10 @@ class OpticsOper : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value is_detected; //type: boolean
-                                Value counter; //type: uint32
 
+
+                                YLeaf is_detected; //type: boolean
+                                YLeaf counter; //type: uint32
 
 
 
@@ -1518,9 +1573,10 @@ class OpticsOper : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value is_detected; //type: boolean
-                                Value counter; //type: uint32
 
+
+                                YLeaf is_detected; //type: boolean
+                                YLeaf counter; //type: uint32
 
 
 
@@ -1540,9 +1596,10 @@ class OpticsOper : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value is_detected; //type: boolean
-                                Value counter; //type: uint32
 
+
+                                YLeaf is_detected; //type: boolean
+                                YLeaf counter; //type: uint32
 
 
 
@@ -1571,19 +1628,6 @@ class OpticsOper : public Entity
                     std::unique_ptr<Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo> network_srlg_info;
                     std::unique_ptr<Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo> optics_alarm_info;
                     std::unique_ptr<Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo> transceiver_info;
-                    class OpticsAmplifierControlModeEnum;
-                    class OpticsAmplifierGainRangeEnum;
-                    class OpticsControllerStateEnum;
-                    class OpticsWaveBandEnum;
-                    class OpticsFormFactorEnum;
-                    class OpticsLaserStateEnum;
-                    class OpticsLedStateEnum;
-                    class OpticsFecEnum;
-                    class OpticsEnum;
-                    class OpticsPhyEnum;
-                    class OpticsPortEnum;
-                    class OpticsAmplifierSafetyControlModeEnum;
-                    class OpticsTasEnum;
 
 
             }; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo
@@ -1604,6 +1648,7 @@ class OpticsOper : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class OpticsLane : public Entity
                 {
                     public:
@@ -1619,6 +1664,7 @@ class OpticsOper : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class LaneData : public Entity
                     {
                         public:
@@ -1632,15 +1678,16 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value lane_index; //type: uint32
-                            Value laser_bias_current_percent; //type: uint32
-                            Value laser_bias_current_milli_amps; //type: uint32
-                            Value transmit_power; //type: int32
-                            Value receive_power; //type: int32
-                            Value receive_signal_power; //type: int32
-                            Value transmit_signal_power; //type: int32
-                            Value output_frequency; //type: int32
 
+
+                            YLeaf lane_index; //type: uint32
+                            YLeaf laser_bias_current_percent; //type: uint32
+                            YLeaf laser_bias_current_milli_amps; //type: uint32
+                            YLeaf transmit_power; //type: int32
+                            YLeaf receive_power; //type: int32
+                            YLeaf receive_signal_power; //type: int32
+                            YLeaf transmit_signal_power; //type: int32
+                            YLeaf output_frequency; //type: int32
 
                         class LaneAlarmInfo : public Entity
                         {
@@ -1657,6 +1704,7 @@ class OpticsOper : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class HighRxPower : public Entity
                             {
                                 public:
@@ -1670,9 +1718,10 @@ class OpticsOper : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_detected; //type: boolean
-                                    Value counter; //type: uint32
 
+
+                                    YLeaf is_detected; //type: boolean
+                                    YLeaf counter; //type: uint32
 
 
 
@@ -1692,9 +1741,10 @@ class OpticsOper : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_detected; //type: boolean
-                                    Value counter; //type: uint32
 
+
+                                    YLeaf is_detected; //type: boolean
+                                    YLeaf counter; //type: uint32
 
 
 
@@ -1714,9 +1764,10 @@ class OpticsOper : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_detected; //type: boolean
-                                    Value counter; //type: uint32
 
+
+                                    YLeaf is_detected; //type: boolean
+                                    YLeaf counter; //type: uint32
 
 
 
@@ -1736,9 +1787,10 @@ class OpticsOper : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_detected; //type: boolean
-                                    Value counter; //type: uint32
 
+
+                                    YLeaf is_detected; //type: boolean
+                                    YLeaf counter; //type: uint32
 
 
 
@@ -1758,9 +1810,10 @@ class OpticsOper : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_detected; //type: boolean
-                                    Value counter; //type: uint32
 
+
+                                    YLeaf is_detected; //type: boolean
+                                    YLeaf counter; //type: uint32
 
 
 
@@ -1808,9 +1861,10 @@ class OpticsOper : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value transport_admin_state; //type: OpticsTasEnum
-                    Value controller_state; //type: OpticsControllerStateEnum
 
+
+                    YLeaf transport_admin_state; //type: OpticsTasEnum
+                    YLeaf controller_state; //type: OpticsControllerStateEnum
 
                 class NetworkSrlgInfo : public Entity
                 {
@@ -1827,6 +1881,7 @@ class OpticsOper : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class NetworkSrlgArray : public Entity
                     {
                         public:
@@ -1840,9 +1895,10 @@ class OpticsOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value set_number; //type: uint32
-                            ValueList network_srlg; //type: list of  uint32
 
+
+                            YLeaf set_number; //type: uint32
+                            YLeafList network_srlg; //type: list of  uint32
 
 
 
@@ -1856,8 +1912,6 @@ class OpticsOper : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo> network_srlg_info;
-                    class OpticsControllerStateEnum;
-                    class OpticsTasEnum;
 
 
             }; // OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo
@@ -1887,247 +1941,247 @@ class OpticsOper : public Entity
 class OpticsAmplifierGainRangeEnum : public Enum
 {
     public:
-        static const Enum::Value optics_amplifier_gain_range_normal;
-        static const Enum::Value optics_amplifier_gain_range_ext_end_ed;
+        static const Enum::YLeaf optics_amplifier_gain_range_normal;
+        static const Enum::YLeaf optics_amplifier_gain_range_ext_end_ed;
 
 };
 
 class OpticsAmplifierControlModeEnum : public Enum
 {
     public:
-        static const Enum::Value automatic;
-        static const Enum::Value manual;
+        static const Enum::YLeaf automatic;
+        static const Enum::YLeaf manual;
 
 };
 
 class EthernetPmdEnum : public Enum
 {
     public:
-        static const Enum::Value optics_eth_not_set;
-        static const Enum::Value optics_eth_10gbase_lrm;
-        static const Enum::Value optics_eth_10gbase_lr;
-        static const Enum::Value optics_eth_10gbase_zr;
-        static const Enum::Value optics_eth_10gbase_er;
-        static const Enum::Value optics_eth_10gbase_sr;
-        static const Enum::Value optics_eth_10gbase;
-        static const Enum::Value optics_eth_40gbase_cr4;
-        static const Enum::Value optics_eth_40gbase_sr4;
-        static const Enum::Value optics_eth_40gbase_lr4;
-        static const Enum::Value optics_eth_40gbase_er4;
-        static const Enum::Value optics_eth_40gbase_psm4;
-        static const Enum::Value optics_eth_40gbase_csr4;
-        static const Enum::Value optics_eth_40gbase_sr_bd;
-        static const Enum::Value optics_eth_40g_aoc;
-        static const Enum::Value optics_eth_4x10gbase_lr;
-        static const Enum::Value optics_eth_4x10gbase_sr;
-        static const Enum::Value optics_eth_100g_aoc;
-        static const Enum::Value optics_eth_100g_acc;
-        static const Enum::Value optics_eth_100gbase_sr10;
-        static const Enum::Value optics_eth_100gbase_sr4;
-        static const Enum::Value optics_eth_100gbase_lr4;
-        static const Enum::Value optics_eth_100gbase_er4;
-        static const Enum::Value optics_eth_100gbase_cwdm4;
-        static const Enum::Value optics_eth_100gbase_clr4;
-        static const Enum::Value optics_eth_100gbase_psm4;
-        static const Enum::Value optics_eth_100gbase_cr4;
-        static const Enum::Value optics_eth_100gbase_al;
-        static const Enum::Value optics_eth_100gbase_pl;
-        static const Enum::Value optics_eth_undefined;
+        static const Enum::YLeaf optics_eth_not_set;
+        static const Enum::YLeaf optics_eth_10gbase_lrm;
+        static const Enum::YLeaf optics_eth_10gbase_lr;
+        static const Enum::YLeaf optics_eth_10gbase_zr;
+        static const Enum::YLeaf optics_eth_10gbase_er;
+        static const Enum::YLeaf optics_eth_10gbase_sr;
+        static const Enum::YLeaf optics_eth_10gbase;
+        static const Enum::YLeaf optics_eth_40gbase_cr4;
+        static const Enum::YLeaf optics_eth_40gbase_sr4;
+        static const Enum::YLeaf optics_eth_40gbase_lr4;
+        static const Enum::YLeaf optics_eth_40gbase_er4;
+        static const Enum::YLeaf optics_eth_40gbase_psm4;
+        static const Enum::YLeaf optics_eth_40gbase_csr4;
+        static const Enum::YLeaf optics_eth_40gbase_sr_bd;
+        static const Enum::YLeaf optics_eth_40g_aoc;
+        static const Enum::YLeaf optics_eth_4x10gbase_lr;
+        static const Enum::YLeaf optics_eth_4x10gbase_sr;
+        static const Enum::YLeaf optics_eth_100g_aoc;
+        static const Enum::YLeaf optics_eth_100g_acc;
+        static const Enum::YLeaf optics_eth_100gbase_sr10;
+        static const Enum::YLeaf optics_eth_100gbase_sr4;
+        static const Enum::YLeaf optics_eth_100gbase_lr4;
+        static const Enum::YLeaf optics_eth_100gbase_er4;
+        static const Enum::YLeaf optics_eth_100gbase_cwdm4;
+        static const Enum::YLeaf optics_eth_100gbase_clr4;
+        static const Enum::YLeaf optics_eth_100gbase_psm4;
+        static const Enum::YLeaf optics_eth_100gbase_cr4;
+        static const Enum::YLeaf optics_eth_100gbase_al;
+        static const Enum::YLeaf optics_eth_100gbase_pl;
+        static const Enum::YLeaf optics_eth_undefined;
 
 };
 
 class OpticsWaveBandEnum : public Enum
 {
     public:
-        static const Enum::Value c_band;
-        static const Enum::Value l_band;
-        static const Enum::Value c_band_odd;
-        static const Enum::Value c_band_even;
-        static const Enum::Value invalid_band;
+        static const Enum::YLeaf c_band;
+        static const Enum::YLeaf l_band;
+        static const Enum::YLeaf c_band_odd;
+        static const Enum::YLeaf c_band_even;
+        static const Enum::YLeaf invalid_band;
 
 };
 
 class OpticsFormFactorEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value invalid;
-        static const Enum::Value cpak;
-        static const Enum::Value cxp;
-        static const Enum::Value sfp_plus;
-        static const Enum::Value qsfp;
-        static const Enum::Value qsfp_plus;
-        static const Enum::Value qsfp28;
-        static const Enum::Value sfp;
-        static const Enum::Value cfp;
-        static const Enum::Value cfp2;
-        static const Enum::Value cfp4;
-        static const Enum::Value xfp;
-        static const Enum::Value x2;
-        static const Enum::Value non_pluggable;
-        static const Enum::Value other;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf invalid;
+        static const Enum::YLeaf cpak;
+        static const Enum::YLeaf cxp;
+        static const Enum::YLeaf sfp_plus;
+        static const Enum::YLeaf qsfp;
+        static const Enum::YLeaf qsfp_plus;
+        static const Enum::YLeaf qsfp28;
+        static const Enum::YLeaf sfp;
+        static const Enum::YLeaf cfp;
+        static const Enum::YLeaf cfp2;
+        static const Enum::YLeaf cfp4;
+        static const Enum::YLeaf xfp;
+        static const Enum::YLeaf x2;
+        static const Enum::YLeaf non_pluggable;
+        static const Enum::YLeaf other;
 
 };
 
 class SonetApplicationCodeEnum : public Enum
 {
     public:
-        static const Enum::Value optics_sonet_not_set;
-        static const Enum::Value optics_vsr2000_3r2;
-        static const Enum::Value optics_vsr2000_3r3;
-        static const Enum::Value optics_vsr2000_3r5;
-        static const Enum::Value optics_sonet_undefined;
+        static const Enum::YLeaf optics_sonet_not_set;
+        static const Enum::YLeaf optics_vsr2000_3r2;
+        static const Enum::YLeaf optics_vsr2000_3r3;
+        static const Enum::YLeaf optics_vsr2000_3r5;
+        static const Enum::YLeaf optics_sonet_undefined;
 
 };
 
 class OpticsControllerStateEnum : public Enum
 {
     public:
-        static const Enum::Value optics_state_up;
-        static const Enum::Value optics_state_down;
-        static const Enum::Value optics_state_admin_down;
+        static const Enum::YLeaf optics_state_up;
+        static const Enum::YLeaf optics_state_down;
+        static const Enum::YLeaf optics_state_admin_down;
 
 };
 
 class OpticsAmplifierSafetyControlModeEnum : public Enum
 {
     public:
-        static const Enum::Value optics_amplifier_safety_mode_auto;
-        static const Enum::Value optics_amplifier_safety_mode_manual;
-        static const Enum::Value optics_amplifier_safety_mode_disabled;
+        static const Enum::YLeaf optics_amplifier_safety_mode_auto;
+        static const Enum::YLeaf optics_amplifier_safety_mode_manual;
+        static const Enum::YLeaf optics_amplifier_safety_mode_disabled;
 
 };
 
 class OpticsLaserStateEnum : public Enum
 {
     public:
-        static const Enum::Value on;
-        static const Enum::Value off;
-        static const Enum::Value unknown;
+        static const Enum::YLeaf on;
+        static const Enum::YLeaf off;
+        static const Enum::YLeaf unknown;
 
 };
 
 class OpticsFecEnum : public Enum
 {
     public:
-        static const Enum::Value fec_none;
-        static const Enum::Value fec_hg15;
-        static const Enum::Value fec_hg25;
-        static const Enum::Value fec_hg15_de;
-        static const Enum::Value fec_hg25_de;
-        static const Enum::Value fec_enabled;
+        static const Enum::YLeaf fec_none;
+        static const Enum::YLeaf fec_hg15;
+        static const Enum::YLeaf fec_hg25;
+        static const Enum::YLeaf fec_hg15_de;
+        static const Enum::YLeaf fec_hg25_de;
+        static const Enum::YLeaf fec_enabled;
 
 };
 
 class FiberConnectorEnum : public Enum
 {
     public:
-        static const Enum::Value optics_connect_or_not_set;
-        static const Enum::Value optics_sc_connect_or;
-        static const Enum::Value optics_lc_connect_or;
-        static const Enum::Value optics_mpo_connect_or;
-        static const Enum::Value optics_undefined_connect_or;
+        static const Enum::YLeaf optics_connect_or_not_set;
+        static const Enum::YLeaf optics_sc_connect_or;
+        static const Enum::YLeaf optics_lc_connect_or;
+        static const Enum::YLeaf optics_mpo_connect_or;
+        static const Enum::YLeaf optics_undefined_connect_or;
 
 };
 
 class OpticsPhyEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value invalid;
-        static const Enum::Value long_reach_four_lanes;
-        static const Enum::Value short_reach_ten_lanes;
-        static const Enum::Value short_reach_one_lane;
-        static const Enum::Value long_reach_one_lane;
-        static const Enum::Value short_reach_four_lanes;
-        static const Enum::Value copper_four_lanes;
-        static const Enum::Value active_optical_cable;
-        static const Enum::Value fourty_gig_e_long_reach_four_lanes;
-        static const Enum::Value fourty_gig_e_short_reach_four_lanes;
-        static const Enum::Value cwdm_four_lanes;
-        static const Enum::Value extended_reach_four_lanes;
-        static const Enum::Value psm_four_lanes;
-        static const Enum::Value active_copper_cable;
-        static const Enum::Value fourty_gig_e_extended_reach_four_lanes;
-        static const Enum::Value four_x_ten_gig_e_short_reach_one_lane;
-        static const Enum::Value fourty_gig_epsm_four_lanes;
-        static const Enum::Value fourty_gig_e_copper_four_lanes;
-        static const Enum::Value long_reach_mm_one_lane;
-        static const Enum::Value copper_short_reach;
-        static const Enum::Value short_reach_srbd;
-        static const Enum::Value copper_one_lane;
-        static const Enum::Value four_x_ten_gig_e_long_reach_one_lane;
-        static const Enum::Value fourty_gig_eaoc_four_lanes;
-        static const Enum::Value extended_one_lane;
-        static const Enum::Value zr_one_lane;
-        static const Enum::Value dwdm_one_lane;
-        static const Enum::Value sx_one_lane;
-        static const Enum::Value lx_one_lane;
-        static const Enum::Value ex_one_lane;
-        static const Enum::Value zx_one_lane;
-        static const Enum::Value ba_set_one_lane;
-        static const Enum::Value aoc_one_lane;
-        static const Enum::Value active_copper_one_lane;
-        static const Enum::Value fourty_gig_eacu_four_lanes;
-        static const Enum::Value four_x_ten_gig_eacu_one_lanes;
-        static const Enum::Value four_x_ten_gig_ecu_one_lanes;
-        static const Enum::Value four_x_ten_gig_eaoc_one_lanes;
-        static const Enum::Value hundred_gig_edwdm_two;
-        static const Enum::Value fourty_gig_plr4_four_lanes;
-        static const Enum::Value fourty_gig_esr4_four_lanes;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf invalid;
+        static const Enum::YLeaf long_reach_four_lanes;
+        static const Enum::YLeaf short_reach_ten_lanes;
+        static const Enum::YLeaf short_reach_one_lane;
+        static const Enum::YLeaf long_reach_one_lane;
+        static const Enum::YLeaf short_reach_four_lanes;
+        static const Enum::YLeaf copper_four_lanes;
+        static const Enum::YLeaf active_optical_cable;
+        static const Enum::YLeaf fourty_gig_e_long_reach_four_lanes;
+        static const Enum::YLeaf fourty_gig_e_short_reach_four_lanes;
+        static const Enum::YLeaf cwdm_four_lanes;
+        static const Enum::YLeaf extended_reach_four_lanes;
+        static const Enum::YLeaf psm_four_lanes;
+        static const Enum::YLeaf active_copper_cable;
+        static const Enum::YLeaf fourty_gig_e_extended_reach_four_lanes;
+        static const Enum::YLeaf four_x_ten_gig_e_short_reach_one_lane;
+        static const Enum::YLeaf fourty_gig_epsm_four_lanes;
+        static const Enum::YLeaf fourty_gig_e_copper_four_lanes;
+        static const Enum::YLeaf long_reach_mm_one_lane;
+        static const Enum::YLeaf copper_short_reach;
+        static const Enum::YLeaf short_reach_srbd;
+        static const Enum::YLeaf copper_one_lane;
+        static const Enum::YLeaf four_x_ten_gig_e_long_reach_one_lane;
+        static const Enum::YLeaf fourty_gig_eaoc_four_lanes;
+        static const Enum::YLeaf extended_one_lane;
+        static const Enum::YLeaf zr_one_lane;
+        static const Enum::YLeaf dwdm_one_lane;
+        static const Enum::YLeaf sx_one_lane;
+        static const Enum::YLeaf lx_one_lane;
+        static const Enum::YLeaf ex_one_lane;
+        static const Enum::YLeaf zx_one_lane;
+        static const Enum::YLeaf ba_set_one_lane;
+        static const Enum::YLeaf aoc_one_lane;
+        static const Enum::YLeaf active_copper_one_lane;
+        static const Enum::YLeaf fourty_gig_eacu_four_lanes;
+        static const Enum::YLeaf four_x_ten_gig_eacu_one_lanes;
+        static const Enum::YLeaf four_x_ten_gig_ecu_one_lanes;
+        static const Enum::YLeaf four_x_ten_gig_eaoc_one_lanes;
+        static const Enum::YLeaf hundred_gig_edwdm_two;
+        static const Enum::YLeaf fourty_gig_plr4_four_lanes;
+        static const Enum::YLeaf fourty_gig_esr4_four_lanes;
 
 };
 
 class OpticsTasEnum : public Enum
 {
     public:
-        static const Enum::Value tas_ui_oos;
-        static const Enum::Value tas_ui_main;
-        static const Enum::Value tas_ui_is;
-        static const Enum::Value tas_ui_ains;
+        static const Enum::YLeaf tas_ui_oos;
+        static const Enum::YLeaf tas_ui_main;
+        static const Enum::YLeaf tas_ui_is;
+        static const Enum::YLeaf tas_ui_ains;
 
 };
 
 class OpticsEnum : public Enum
 {
     public:
-        static const Enum::Value optics_unknown;
-        static const Enum::Value optics_grey;
-        static const Enum::Value optics_dwdm;
-        static const Enum::Value optics_cwdm;
+        static const Enum::YLeaf optics_unknown;
+        static const Enum::YLeaf optics_grey;
+        static const Enum::YLeaf optics_dwdm;
+        static const Enum::YLeaf optics_cwdm;
 
 };
 
 class OtnApplicationCodeEnum : public Enum
 {
     public:
-        static const Enum::Value optics_not_set;
-        static const Enum::Value optics_p1l1_2d1;
-        static const Enum::Value optics_p1s1_2d2;
-        static const Enum::Value optics_p1l1_2d2;
-        static const Enum::Value optics_undefined;
+        static const Enum::YLeaf optics_not_set;
+        static const Enum::YLeaf optics_p1l1_2d1;
+        static const Enum::YLeaf optics_p1s1_2d2;
+        static const Enum::YLeaf optics_p1l1_2d2;
+        static const Enum::YLeaf optics_undefined;
 
 };
 
 class OpticsLedStateEnum : public Enum
 {
     public:
-        static const Enum::Value off;
-        static const Enum::Value green_on;
-        static const Enum::Value green_flashing;
-        static const Enum::Value yellow_on;
-        static const Enum::Value yellow_flashing;
-        static const Enum::Value red_on;
-        static const Enum::Value red_flashing;
+        static const Enum::YLeaf off;
+        static const Enum::YLeaf green_on;
+        static const Enum::YLeaf green_flashing;
+        static const Enum::YLeaf yellow_on;
+        static const Enum::YLeaf yellow_flashing;
+        static const Enum::YLeaf red_on;
+        static const Enum::YLeaf red_flashing;
 
 };
 
 class OpticsPortEnum : public Enum
 {
     public:
-        static const Enum::Value com;
-        static const Enum::Value line;
-        static const Enum::Value osc;
+        static const Enum::YLeaf com;
+        static const Enum::YLeaf line;
+        static const Enum::YLeaf osc;
 
 };
 

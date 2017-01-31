@@ -259,43 +259,43 @@ class NopeerIdentity : public openconfig_bgp_types::BgpWellKnownStdCommunityIden
 class RemovePrivateAsOptionEnum : public Enum
 {
     public:
-        static const Enum::Value ALL;
-        static const Enum::Value REPLACE;
+        static const Enum::YLeaf ALL;
+        static const Enum::YLeaf REPLACE;
 
 };
 
 class CommunityTypeEnum : public Enum
 {
     public:
-        static const Enum::Value STANDARD;
-        static const Enum::Value EXTENDED;
-        static const Enum::Value BOTH;
-        static const Enum::Value NONE;
+        static const Enum::YLeaf STANDARD;
+        static const Enum::YLeaf EXTENDED;
+        static const Enum::YLeaf BOTH;
+        static const Enum::YLeaf NONE;
 
 };
 
 class PeerTypeEnum : public Enum
 {
     public:
-        static const Enum::Value INTERNAL;
-        static const Enum::Value EXTERNAL;
+        static const Enum::YLeaf INTERNAL;
+        static const Enum::YLeaf EXTERNAL;
 
 };
 
 class BgpSessionDirectionEnum : public Enum
 {
     public:
-        static const Enum::Value INBOUND;
-        static const Enum::Value OUTBOUND;
+        static const Enum::YLeaf INBOUND;
+        static const Enum::YLeaf OUTBOUND;
 
 };
 
 class BgpOriginAttrTypeEnum : public Enum
 {
     public:
-        static const Enum::Value IGP;
-        static const Enum::Value EGP;
-        static const Enum::Value INCOMPLETE;
+        static const Enum::YLeaf IGP;
+        static const Enum::YLeaf EGP;
+        static const Enum::YLeaf INCOMPLETE;
 
 };
 

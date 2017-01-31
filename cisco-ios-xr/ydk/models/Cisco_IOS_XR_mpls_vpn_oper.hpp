@@ -26,6 +26,7 @@ class L3Vpn : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class InvalidVrfs : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class L3Vpn : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class InvalidVrf : public Entity
         {
             public:
@@ -54,12 +56,13 @@ class L3Vpn : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value vrf_name_xr; //type: string
-                Value vrf_description; //type: string
-                Value route_distinguisher; //type: string
-                Value is_big_vrf; //type: boolean
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf vrf_name_xr; //type: string
+                YLeaf vrf_description; //type: string
+                YLeaf route_distinguisher; //type: string
+                YLeaf is_big_vrf; //type: boolean
 
             class Interface : public Entity
             {
@@ -74,8 +77,9 @@ class L3Vpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
 
+
+                    YLeaf interface_name; //type: string
 
 
 
@@ -95,11 +99,12 @@ class L3Vpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value af_name; //type: MplsVpnAfiEnum
-                    Value saf_name; //type: MplsVpnSafiEnum
-                    Value import_route_policy; //type: string
-                    Value export_route_policy; //type: string
 
+
+                    YLeaf af_name; //type: MplsVpnAfiEnum
+                    YLeaf saf_name; //type: MplsVpnSafiEnum
+                    YLeaf import_route_policy; //type: string
+                    YLeaf export_route_policy; //type: string
 
                 class RouteTarget : public Entity
                 {
@@ -114,23 +119,19 @@ class L3Vpn : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value route_target_type; //type: MplsVpnRtEnum
-                        Value route_target_value; //type: string
-                        Value af_name; //type: MplsVpnAfiEnum
-                        Value saf_name; //type: MplsVpnSafiEnum
 
 
-                        class MplsVpnAfiEnum;
-                        class MplsVpnRtEnum;
-                        class MplsVpnSafiEnum;
+                        YLeaf route_target_type; //type: MplsVpnRtEnum
+                        YLeaf route_target_value; //type: string
+                        YLeaf af_name; //type: MplsVpnAfiEnum
+                        YLeaf saf_name; //type: MplsVpnSafiEnum
+
 
 
                 }; // L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget
 
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget> > route_target;
-                    class MplsVpnAfiEnum;
-                    class MplsVpnSafiEnum;
 
 
             }; // L3Vpn::InvalidVrfs::InvalidVrf::Af
@@ -164,6 +165,7 @@ class L3Vpn : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -177,12 +179,13 @@ class L3Vpn : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value vrf_name_xr; //type: string
-                Value vrf_description; //type: string
-                Value route_distinguisher; //type: string
-                Value is_big_vrf; //type: boolean
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf vrf_name_xr; //type: string
+                YLeaf vrf_description; //type: string
+                YLeaf route_distinguisher; //type: string
+                YLeaf is_big_vrf; //type: boolean
 
             class Interface : public Entity
             {
@@ -197,8 +200,9 @@ class L3Vpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
 
+
+                    YLeaf interface_name; //type: string
 
 
 
@@ -218,11 +222,12 @@ class L3Vpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value af_name; //type: MplsVpnAfiEnum
-                    Value saf_name; //type: MplsVpnSafiEnum
-                    Value import_route_policy; //type: string
-                    Value export_route_policy; //type: string
 
+
+                    YLeaf af_name; //type: MplsVpnAfiEnum
+                    YLeaf saf_name; //type: MplsVpnSafiEnum
+                    YLeaf import_route_policy; //type: string
+                    YLeaf export_route_policy; //type: string
 
                 class RouteTarget : public Entity
                 {
@@ -237,23 +242,19 @@ class L3Vpn : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value route_target_type; //type: MplsVpnRtEnum
-                        Value route_target_value; //type: string
-                        Value af_name; //type: MplsVpnAfiEnum
-                        Value saf_name; //type: MplsVpnSafiEnum
 
 
-                        class MplsVpnAfiEnum;
-                        class MplsVpnRtEnum;
-                        class MplsVpnSafiEnum;
+                        YLeaf route_target_type; //type: MplsVpnRtEnum
+                        YLeaf route_target_value; //type: string
+                        YLeaf af_name; //type: MplsVpnAfiEnum
+                        YLeaf saf_name; //type: MplsVpnSafiEnum
+
 
 
                 }; // L3Vpn::Vrfs::Vrf::Af::RouteTarget
 
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::Vrfs::Vrf::Af::RouteTarget> > route_target;
-                    class MplsVpnAfiEnum;
-                    class MplsVpnSafiEnum;
 
 
             }; // L3Vpn::Vrfs::Vrf::Af
@@ -282,26 +283,26 @@ class L3Vpn : public Entity
 class MplsVpnRtEnum : public Enum
 {
     public:
-        static const Enum::Value import;
-        static const Enum::Value export_;
-        static const Enum::Value both;
+        static const Enum::YLeaf import;
+        static const Enum::YLeaf export_;
+        static const Enum::YLeaf both;
 
 };
 
 class MplsVpnAfiEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 
 class MplsVpnSafiEnum : public Enum
 {
     public:
-        static const Enum::Value unicast;
-        static const Enum::Value multicast;
-        static const Enum::Value flowspec;
+        static const Enum::YLeaf unicast;
+        static const Enum::YLeaf multicast;
+        static const Enum::YLeaf flowspec;
 
 };
 

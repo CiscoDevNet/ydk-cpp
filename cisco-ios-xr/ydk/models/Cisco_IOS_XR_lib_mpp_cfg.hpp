@@ -26,6 +26,7 @@ class ControlPlane : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class ManagementPlaneProtection : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class ControlPlane : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Outband : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class ControlPlane : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value outband_vrf; //type: string
 
+
+                YLeaf outband_vrf; //type: string
 
             class InterfaceSelection : public Entity
             {
@@ -70,6 +73,7 @@ class ControlPlane : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Interfaces : public Entity
@@ -87,6 +91,7 @@ class ControlPlane : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Interface : public Entity
                     {
                         public:
@@ -100,8 +105,9 @@ class ControlPlane : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
 
                         class HttpProtocol : public Entity
                         {
@@ -118,6 +124,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -131,8 +138,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -147,6 +155,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -164,6 +173,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -177,8 +187,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -206,6 +217,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -219,8 +231,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -255,6 +268,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -270,6 +284,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -283,8 +298,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -312,6 +328,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -325,8 +342,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -374,6 +392,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -387,8 +406,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -403,6 +423,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -420,6 +441,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -433,8 +455,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -462,6 +485,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -475,8 +499,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -511,6 +536,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -526,6 +552,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -539,8 +566,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -568,6 +596,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -581,8 +610,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -630,6 +660,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -643,8 +674,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -659,6 +691,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -676,6 +709,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -689,8 +723,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -718,6 +753,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -731,8 +767,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -767,6 +804,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -782,6 +820,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -795,8 +834,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -824,6 +864,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -837,8 +878,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -886,6 +928,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -899,8 +942,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -915,6 +959,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -932,6 +977,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -945,8 +991,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -974,6 +1021,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -987,8 +1035,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -1023,6 +1072,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -1038,6 +1088,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -1051,8 +1102,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -1080,6 +1132,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -1093,8 +1146,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -1142,6 +1196,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -1155,8 +1210,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -1171,6 +1227,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -1188,6 +1245,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -1201,8 +1259,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -1230,6 +1289,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -1243,8 +1303,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -1279,6 +1340,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -1294,6 +1356,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -1307,8 +1370,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -1336,6 +1400,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -1349,8 +1414,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -1398,6 +1464,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -1411,8 +1478,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -1427,6 +1495,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -1444,6 +1513,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -1457,8 +1527,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -1486,6 +1557,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -1499,8 +1571,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -1535,6 +1608,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -1550,6 +1624,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -1563,8 +1638,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -1592,6 +1668,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -1605,8 +1682,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -1654,6 +1732,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -1667,8 +1746,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -1683,6 +1763,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -1700,6 +1781,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -1713,8 +1795,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -1742,6 +1825,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -1755,8 +1839,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -1791,6 +1876,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -1806,6 +1892,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -1819,8 +1906,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -1848,6 +1936,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -1861,8 +1950,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -1910,6 +2000,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -1923,8 +2014,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -1939,6 +2031,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -1956,6 +2049,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -1969,8 +2063,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -1998,6 +2093,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -2011,8 +2107,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -2047,6 +2144,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -2062,6 +2160,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -2075,8 +2174,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -2104,6 +2204,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -2117,8 +2218,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -2185,6 +2287,7 @@ class ControlPlane : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class HttpProtocol : public Entity
                     {
                         public:
@@ -2200,6 +2303,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -2213,8 +2317,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -2229,6 +2334,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -2246,6 +2352,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -2259,8 +2366,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -2288,6 +2396,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -2301,8 +2410,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -2337,6 +2447,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -2352,6 +2463,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -2365,8 +2477,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -2394,6 +2507,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -2407,8 +2521,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -2456,6 +2571,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -2469,8 +2585,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -2485,6 +2602,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -2502,6 +2620,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -2515,8 +2634,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -2544,6 +2664,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -2557,8 +2678,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -2593,6 +2715,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -2608,6 +2731,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -2621,8 +2745,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -2650,6 +2775,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -2663,8 +2789,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -2712,6 +2839,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -2725,8 +2853,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -2741,6 +2870,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -2758,6 +2888,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -2771,8 +2902,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -2800,6 +2932,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -2813,8 +2946,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -2849,6 +2983,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -2864,6 +2999,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -2877,8 +3013,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -2906,6 +3043,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -2919,8 +3057,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -2968,6 +3107,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -2981,8 +3121,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -2997,6 +3138,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -3014,6 +3156,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -3027,8 +3170,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -3056,6 +3200,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -3069,8 +3214,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -3105,6 +3251,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -3120,6 +3267,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -3133,8 +3281,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -3162,6 +3311,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -3175,8 +3325,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -3224,6 +3375,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -3237,8 +3389,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -3253,6 +3406,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -3270,6 +3424,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -3283,8 +3438,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -3312,6 +3468,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -3325,8 +3482,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -3361,6 +3519,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -3376,6 +3535,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -3389,8 +3549,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -3418,6 +3579,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -3431,8 +3593,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -3480,6 +3643,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -3493,8 +3657,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -3509,6 +3674,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -3526,6 +3692,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -3539,8 +3706,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -3568,6 +3736,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -3581,8 +3750,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -3617,6 +3787,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -3632,6 +3803,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -3645,8 +3817,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -3674,6 +3847,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -3687,8 +3861,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -3736,6 +3911,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -3749,8 +3925,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -3765,6 +3942,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -3782,6 +3960,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -3795,8 +3974,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -3824,6 +4004,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -3837,8 +4018,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -3873,6 +4055,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -3888,6 +4071,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -3901,8 +4085,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -3930,6 +4115,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -3943,8 +4129,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -3992,6 +4179,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -4005,8 +4193,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -4021,6 +4210,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -4038,6 +4228,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -4051,8 +4242,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -4080,6 +4272,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -4093,8 +4286,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -4129,6 +4323,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -4144,6 +4339,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -4157,8 +4353,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -4186,6 +4383,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -4199,8 +4397,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -4274,6 +4473,7 @@ class ControlPlane : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class InterfaceSelection : public Entity
             {
                 public:
@@ -4287,6 +4487,7 @@ class ControlPlane : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Interfaces : public Entity
@@ -4304,6 +4505,7 @@ class ControlPlane : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Interface : public Entity
                     {
                         public:
@@ -4317,8 +4519,9 @@ class ControlPlane : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
 
                         class HttpProtocol : public Entity
                         {
@@ -4335,6 +4538,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -4348,8 +4552,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -4364,6 +4569,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -4381,6 +4587,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -4394,8 +4601,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -4423,6 +4631,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -4436,8 +4645,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -4472,6 +4682,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -4487,6 +4698,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -4500,8 +4712,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -4529,6 +4742,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -4542,8 +4756,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -4591,6 +4806,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -4604,8 +4820,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -4620,6 +4837,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -4637,6 +4855,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -4650,8 +4869,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -4679,6 +4899,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -4692,8 +4913,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -4728,6 +4950,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -4743,6 +4966,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -4756,8 +4980,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -4785,6 +5010,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -4798,8 +5024,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -4847,6 +5074,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -4860,8 +5088,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -4876,6 +5105,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -4893,6 +5123,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -4906,8 +5137,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -4935,6 +5167,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -4948,8 +5181,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -4984,6 +5218,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -4999,6 +5234,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -5012,8 +5248,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -5041,6 +5278,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -5054,8 +5292,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -5103,6 +5342,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -5116,8 +5356,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -5132,6 +5373,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -5149,6 +5391,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -5162,8 +5405,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -5191,6 +5435,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -5204,8 +5449,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -5240,6 +5486,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -5255,6 +5502,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -5268,8 +5516,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -5297,6 +5546,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -5310,8 +5560,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -5359,6 +5610,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -5372,8 +5624,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -5388,6 +5641,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -5405,6 +5659,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -5418,8 +5673,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -5447,6 +5703,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -5460,8 +5717,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -5496,6 +5754,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -5511,6 +5770,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -5524,8 +5784,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -5553,6 +5814,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -5566,8 +5828,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -5615,6 +5878,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -5628,8 +5892,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -5644,6 +5909,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -5661,6 +5927,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -5674,8 +5941,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -5703,6 +5971,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -5716,8 +5985,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -5752,6 +6022,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -5767,6 +6038,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -5780,8 +6052,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -5809,6 +6082,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -5822,8 +6096,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -5871,6 +6146,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -5884,8 +6160,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -5900,6 +6177,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -5917,6 +6195,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -5930,8 +6209,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -5959,6 +6239,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -5972,8 +6253,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -6008,6 +6290,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -6023,6 +6306,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -6036,8 +6320,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -6065,6 +6350,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -6078,8 +6364,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -6127,6 +6414,7 @@ class ControlPlane : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PeerClass : public Entity
                             {
                                 public:
@@ -6140,8 +6428,9 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_all; //type: empty
 
+
+                                    YLeaf peer_all; //type: empty
 
                                 class PeerV4 : public Entity
                                 {
@@ -6156,6 +6445,7 @@ class ControlPlane : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class Peers : public Entity
@@ -6173,6 +6463,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -6186,8 +6477,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -6215,6 +6507,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -6228,8 +6521,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -6264,6 +6558,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peers : public Entity
                                     {
                                         public:
@@ -6279,6 +6574,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Peer : public Entity
                                         {
                                             public:
@@ -6292,8 +6588,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
 
+
+                                                YLeaf address; //type: string
 
 
 
@@ -6321,6 +6618,7 @@ class ControlPlane : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PeerPrefix : public Entity
                                         {
                                             public:
@@ -6334,8 +6632,9 @@ class ControlPlane : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_prefix; //type: string
 
+
+                                                YLeaf address_prefix; //type: string
 
 
 
@@ -6402,6 +6701,7 @@ class ControlPlane : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class HttpProtocol : public Entity
                     {
                         public:
@@ -6417,6 +6717,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -6430,8 +6731,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -6446,6 +6748,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -6463,6 +6766,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -6476,8 +6780,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -6505,6 +6810,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -6518,8 +6824,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -6554,6 +6861,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -6569,6 +6877,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -6582,8 +6891,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -6611,6 +6921,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -6624,8 +6935,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -6673,6 +6985,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -6686,8 +6999,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -6702,6 +7016,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -6719,6 +7034,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -6732,8 +7048,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -6761,6 +7078,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -6774,8 +7092,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -6810,6 +7129,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -6825,6 +7145,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -6838,8 +7159,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -6867,6 +7189,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -6880,8 +7203,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -6929,6 +7253,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -6942,8 +7267,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -6958,6 +7284,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -6975,6 +7302,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -6988,8 +7316,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -7017,6 +7346,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -7030,8 +7360,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -7066,6 +7397,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -7081,6 +7413,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -7094,8 +7427,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -7123,6 +7457,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -7136,8 +7471,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -7185,6 +7521,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -7198,8 +7535,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -7214,6 +7552,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -7231,6 +7570,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -7244,8 +7584,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -7273,6 +7614,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -7286,8 +7628,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -7322,6 +7665,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -7337,6 +7681,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -7350,8 +7695,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -7379,6 +7725,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -7392,8 +7739,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -7441,6 +7789,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -7454,8 +7803,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -7470,6 +7820,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -7487,6 +7838,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -7500,8 +7852,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -7529,6 +7882,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -7542,8 +7896,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -7578,6 +7933,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -7593,6 +7949,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -7606,8 +7963,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -7635,6 +7993,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -7648,8 +8007,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -7697,6 +8057,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -7710,8 +8071,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -7726,6 +8088,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -7743,6 +8106,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -7756,8 +8120,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -7785,6 +8150,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -7798,8 +8164,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -7834,6 +8201,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -7849,6 +8217,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -7862,8 +8231,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -7891,6 +8261,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -7904,8 +8275,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -7953,6 +8325,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -7966,8 +8339,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -7982,6 +8356,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -7999,6 +8374,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -8012,8 +8388,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -8041,6 +8418,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -8054,8 +8432,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -8090,6 +8469,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -8105,6 +8485,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -8118,8 +8499,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -8147,6 +8529,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -8160,8 +8543,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -8209,6 +8593,7 @@ class ControlPlane : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PeerClass : public Entity
                         {
                             public:
@@ -8222,8 +8607,9 @@ class ControlPlane : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_all; //type: empty
 
+
+                                YLeaf peer_all; //type: empty
 
                             class PeerV4 : public Entity
                             {
@@ -8238,6 +8624,7 @@ class ControlPlane : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Peers : public Entity
@@ -8255,6 +8642,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -8268,8 +8656,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -8297,6 +8686,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -8310,8 +8700,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 
@@ -8346,6 +8737,7 @@ class ControlPlane : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peers : public Entity
                                 {
                                     public:
@@ -8361,6 +8753,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Peer : public Entity
                                     {
                                         public:
@@ -8374,8 +8767,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -8403,6 +8797,7 @@ class ControlPlane : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerPrefix : public Entity
                                     {
                                         public:
@@ -8416,8 +8811,9 @@ class ControlPlane : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address_prefix; //type: string
 
+
+                                            YLeaf address_prefix; //type: string
 
 
 

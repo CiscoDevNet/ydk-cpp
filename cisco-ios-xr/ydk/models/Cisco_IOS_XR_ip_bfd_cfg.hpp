@@ -24,13 +24,14 @@ class Bfd : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value global_echo_usage; //type: empty
-        Value ipv6_checksum_disable; //type: empty
-        Value global_echo_min_interval; //type: uint32
-        Value ttl_drop_threshold; //type: uint32
-        Value single_hop_trap; //type: empty
-        Value global_ipv4_echo_source; //type: string
 
+
+        YLeaf global_echo_usage; //type: empty
+        YLeaf ipv6_checksum_disable; //type: empty
+        YLeaf global_echo_min_interval; //type: uint32
+        YLeaf ttl_drop_threshold; //type: uint32
+        YLeaf single_hop_trap; //type: empty
+        YLeaf global_ipv4_echo_source; //type: string
 
     class FlapDamp : public Entity
     {
@@ -45,12 +46,13 @@ class Bfd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value threshold; //type: uint32
-            Value initial_delay; //type: uint32
-            Value maximum_delay; //type: uint32
-            Value dampen_disable; //type: empty
-            Value secondary_delay; //type: uint32
 
+
+            YLeaf threshold; //type: uint32
+            YLeaf initial_delay; //type: uint32
+            YLeaf maximum_delay; //type: uint32
+            YLeaf dampen_disable; //type: empty
+            YLeaf secondary_delay; //type: uint32
 
         class BundleMember : public Entity
         {
@@ -65,11 +67,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value initial_delay; //type: uint32
-                Value maximum_delay; //type: uint32
-                Value secondary_delay; //type: uint32
-                Value l3_only_mode; //type: empty
 
+
+                YLeaf initial_delay; //type: uint32
+                YLeaf maximum_delay; //type: uint32
+                YLeaf secondary_delay; //type: uint32
+                YLeaf l3_only_mode; //type: empty
 
 
 
@@ -89,8 +92,9 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value down_monitor; //type: empty
 
+
+                YLeaf down_monitor; //type: empty
 
 
 
@@ -119,6 +123,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Detect : public Entity
         {
             public:
@@ -132,10 +137,11 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value latency_detect_enabled; //type: boolean
-                Value latency_detect_percentage; //type: uint32
-                Value latency_detect_count; //type: uint32
 
+
+                YLeaf latency_detect_enabled; //type: boolean
+                YLeaf latency_detect_percentage; //type: uint32
+                YLeaf latency_detect_count; //type: uint32
 
 
 
@@ -161,10 +167,10 @@ class Bfd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value validate; //type: BfdEchoStartupValidateEnum
 
 
-            class BfdEchoStartupValidateEnum;
+            YLeaf validate; //type: BfdEchoStartupValidateEnum
+
 
 
     }; // Bfd::EchoStartup
@@ -185,6 +191,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -198,14 +205,13 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value interface_echo_usage; //type: BfdIfEchoUsageEnum
-                Value ipv6_checksum; //type: BfdIfIpv6ChecksumUsageEnum
-                Value interface_ipv4_echo_source; //type: string
 
 
-                class BfdIfEchoUsageEnum;
-                class BfdIfIpv6ChecksumUsageEnum;
+                YLeaf interface_name; //type: string
+                YLeaf interface_echo_usage; //type: BfdIfEchoUsageEnum
+                YLeaf ipv6_checksum; //type: BfdIfIpv6ChecksumUsageEnum
+                YLeaf interface_ipv4_echo_source; //type: string
+
 
 
         }; // Bfd::Interfaces::Interface
@@ -232,6 +238,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class MultiPathInclude : public Entity
         {
             public:
@@ -245,8 +252,9 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location; //type: string
 
+
+                YLeaf location; //type: string
 
 
 
@@ -274,6 +282,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Coexistence : public Entity
         {
             public:
@@ -287,10 +296,10 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value bob_blb; //type: BfdBundleCoexistenceBobBlbEnum
 
 
-                class BfdBundleCoexistenceBobBlbEnum;
+                YLeaf bob_blb; //type: BfdBundleCoexistenceBobBlbEnum
+
 
 
         }; // Bfd::Bundle::Coexistence
@@ -316,33 +325,33 @@ class Bfd : public Entity
 class BfdEchoStartupValidateEnum : public Enum
 {
     public:
-        static const Enum::Value off;
-        static const Enum::Value on;
-        static const Enum::Value force;
+        static const Enum::YLeaf off;
+        static const Enum::YLeaf on;
+        static const Enum::YLeaf force;
 
 };
 
 class BfdIfIpv6ChecksumUsageEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value enable;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf enable;
 
 };
 
 class BfdIfEchoUsageEnum : public Enum
 {
     public:
-        static const Enum::Value enable;
-        static const Enum::Value disable;
+        static const Enum::YLeaf enable;
+        static const Enum::YLeaf disable;
 
 };
 
 class BfdBundleCoexistenceBobBlbEnum : public Enum
 {
     public:
-        static const Enum::Value inherited;
-        static const Enum::Value logical;
+        static const Enum::YLeaf inherited;
+        static const Enum::YLeaf logical;
 
 };
 

@@ -49,7 +49,7 @@ EntityPath MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -129,7 +129,7 @@ bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::has_operation() const
 {
     return is_set(operation)
 	|| is_set(prefix_length.operation)
-	|| (prefix !=  nullptr && is_set(prefix->operation));
+	|| (prefix !=  nullptr && prefix->has_operation());
 }
 
 std::string MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::get_segment_path() const
@@ -146,7 +146,7 @@ EntityPath MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -267,7 +267,7 @@ EntityPath MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -386,7 +386,7 @@ bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::has_operation() const
 	|| is_set(label_mode.operation)
 	|| is_set(label_status.operation)
 	|| is_set(vrf_name.operation)
-	|| (prefix !=  nullptr && is_set(prefix->operation));
+	|| (prefix !=  nullptr && prefix->has_operation());
 }
 
 std::string MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_segment_path() const
@@ -403,7 +403,7 @@ EntityPath MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -540,7 +540,7 @@ bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::has_operation() const
     return is_set(operation)
 	|| is_set(lsp_name.operation)
 	|| is_set(lsp_name_xr.operation)
-	|| (label !=  nullptr && is_set(label->operation));
+	|| (label !=  nullptr && label->has_operation());
 }
 
 std::string MplsStatic::Vrfs::Vrf::Lsps::Lsp::get_segment_path() const
@@ -557,7 +557,7 @@ EntityPath MplsStatic::Vrfs::Vrf::Lsps::Lsp::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -672,7 +672,7 @@ EntityPath MplsStatic::Vrfs::Vrf::Lsps::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -779,7 +779,7 @@ EntityPath MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -859,7 +859,7 @@ bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::has_operation() con
 {
     return is_set(operation)
 	|| is_set(prefix_length.operation)
-	|| (prefix !=  nullptr && is_set(prefix->operation));
+	|| (prefix !=  nullptr && prefix->has_operation());
 }
 
 std::string MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::get_segment_path() const
@@ -876,7 +876,7 @@ EntityPath MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -997,7 +997,7 @@ EntityPath MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1119,7 +1119,7 @@ bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::has_operation() const
 	|| is_set(label_mode.operation)
 	|| is_set(label_status.operation)
 	|| is_set(vrf_name.operation)
-	|| (prefix !=  nullptr && is_set(prefix->operation));
+	|| (prefix !=  nullptr && prefix->has_operation());
 }
 
 std::string MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_segment_path() const
@@ -1136,7 +1136,7 @@ EntityPath MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1292,7 +1292,7 @@ EntityPath MplsStatic::Vrfs::Vrf::LocalLabels::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1388,8 +1388,8 @@ bool MplsStatic::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (local_labels !=  nullptr && is_set(local_labels->operation))
-	|| (lsps !=  nullptr && is_set(lsps->operation));
+	|| (local_labels !=  nullptr && local_labels->has_operation())
+	|| (lsps !=  nullptr && lsps->has_operation());
 }
 
 std::string MplsStatic::Vrfs::Vrf::get_segment_path() const
@@ -1806,7 +1806,7 @@ EntityPath MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1886,7 +1886,7 @@ bool MplsStatic::LocalLabels::LocalLabel::Prefix::has_operation() const
 {
     return is_set(operation)
 	|| is_set(prefix_length.operation)
-	|| (prefix !=  nullptr && is_set(prefix->operation));
+	|| (prefix !=  nullptr && prefix->has_operation());
 }
 
 std::string MplsStatic::LocalLabels::LocalLabel::Prefix::get_segment_path() const
@@ -1903,7 +1903,7 @@ EntityPath MplsStatic::LocalLabels::LocalLabel::Prefix::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2024,7 +2024,7 @@ EntityPath MplsStatic::LocalLabels::LocalLabel::PathInfo::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2146,7 +2146,7 @@ bool MplsStatic::LocalLabels::LocalLabel::has_operation() const
 	|| is_set(label_mode.operation)
 	|| is_set(label_status.operation)
 	|| is_set(vrf_name.operation)
-	|| (prefix !=  nullptr && is_set(prefix->operation));
+	|| (prefix !=  nullptr && prefix->has_operation());
 }
 
 std::string MplsStatic::LocalLabels::LocalLabel::get_segment_path() const
@@ -2416,9 +2416,9 @@ bool MplsStatic::has_data() const
 bool MplsStatic::has_operation() const
 {
     return is_set(operation)
-	|| (local_labels !=  nullptr && is_set(local_labels->operation))
-	|| (summary !=  nullptr && is_set(summary->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (local_labels !=  nullptr && local_labels->has_operation())
+	|| (summary !=  nullptr && summary->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string MplsStatic::get_segment_path() const
@@ -2435,7 +2435,7 @@ EntityPath MplsStatic::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2545,34 +2545,34 @@ std::unique_ptr<Entity> MplsStatic::clone_ptr()
     return std::make_unique<MplsStatic>();
 }
 
-const Enum::Value MgmtMplsStaticLabelStatusEnum::not_created {0, "not-created"};
-const Enum::Value MgmtMplsStaticLabelStatusEnum::vrf_down {1, "vrf-down"};
-const Enum::Value MgmtMplsStaticLabelStatusEnum::rewrite_vrf_down {2, "rewrite-vrf-down"};
-const Enum::Value MgmtMplsStaticLabelStatusEnum::lsd_disconnected {3, "lsd-disconnected"};
-const Enum::Value MgmtMplsStaticLabelStatusEnum::lsd_failed {4, "lsd-failed"};
-const Enum::Value MgmtMplsStaticLabelStatusEnum::wait_for_lsd_reply {5, "wait-for-lsd-reply"};
-const Enum::Value MgmtMplsStaticLabelStatusEnum::label_created {6, "label-created"};
-const Enum::Value MgmtMplsStaticLabelStatusEnum::label_create_failed {7, "label-create-failed"};
-const Enum::Value MgmtMplsStaticLabelStatusEnum::label_rewrite_failed {8, "label-rewrite-failed"};
-const Enum::Value MgmtMplsStaticLabelStatusEnum::rewrite_next_hop_interface_missing {9, "rewrite-next-hop-interface-missing"};
-const Enum::Value MgmtMplsStaticLabelStatusEnum::label_discrepancy {10, "label-discrepancy"};
-const Enum::Value MgmtMplsStaticLabelStatusEnum::rewrite_discrepancy {11, "rewrite-discrepancy"};
-const Enum::Value MgmtMplsStaticLabelStatusEnum::label_status_unknown {12, "label-status-unknown"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::not_created {0, "not-created"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::vrf_down {1, "vrf-down"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::rewrite_vrf_down {2, "rewrite-vrf-down"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::lsd_disconnected {3, "lsd-disconnected"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::lsd_failed {4, "lsd-failed"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::wait_for_lsd_reply {5, "wait-for-lsd-reply"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::label_created {6, "label-created"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::label_create_failed {7, "label-create-failed"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::label_rewrite_failed {8, "label-rewrite-failed"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::rewrite_next_hop_interface_missing {9, "rewrite-next-hop-interface-missing"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::label_discrepancy {10, "label-discrepancy"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::rewrite_discrepancy {11, "rewrite-discrepancy"};
+const Enum::YLeaf MgmtMplsStaticLabelStatusEnum::label_status_unknown {12, "label-status-unknown"};
 
-const Enum::Value MgmtStaticPathEnum::cross_connect_path {0, "cross-connect-path"};
-const Enum::Value MgmtStaticPathEnum::pop_lookup_path {1, "pop-lookup-path"};
+const Enum::YLeaf MgmtStaticPathEnum::cross_connect_path {0, "cross-connect-path"};
+const Enum::YLeaf MgmtStaticPathEnum::pop_lookup_path {1, "pop-lookup-path"};
 
-const Enum::Value MgmtStaticNhLblEnum::out_label {0, "out-label"};
-const Enum::Value MgmtStaticNhLblEnum::out_pop {1, "out-pop"};
-const Enum::Value MgmtStaticNhLblEnum::out_explicit_null {2, "out-explicit-null"};
+const Enum::YLeaf MgmtStaticNhLblEnum::out_label {0, "out-label"};
+const Enum::YLeaf MgmtStaticNhLblEnum::out_pop {1, "out-pop"};
+const Enum::YLeaf MgmtStaticNhLblEnum::out_explicit_null {2, "out-explicit-null"};
 
-const Enum::Value MgmtStaticAddrEnum::ipv4 {0, "ipv4"};
-const Enum::Value MgmtStaticAddrEnum::ipv6 {1, "ipv6"};
+const Enum::YLeaf MgmtStaticAddrEnum::ipv4 {0, "ipv4"};
+const Enum::YLeaf MgmtStaticAddrEnum::ipv6 {1, "ipv6"};
 
-const Enum::Value MgmtMplsStaticLabelModeEnum::none {0, "none"};
-const Enum::Value MgmtMplsStaticLabelModeEnum::per_prefix {1, "per-prefix"};
-const Enum::Value MgmtMplsStaticLabelModeEnum::per_vrf {2, "per-vrf"};
-const Enum::Value MgmtMplsStaticLabelModeEnum::cross_connect {3, "cross-connect"};
+const Enum::YLeaf MgmtMplsStaticLabelModeEnum::none {0, "none"};
+const Enum::YLeaf MgmtMplsStaticLabelModeEnum::per_prefix {1, "per-prefix"};
+const Enum::YLeaf MgmtMplsStaticLabelModeEnum::per_vrf {2, "per-vrf"};
+const Enum::YLeaf MgmtMplsStaticLabelModeEnum::cross_connect {3, "cross-connect"};
 
 
 }

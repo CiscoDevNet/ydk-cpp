@@ -24,15 +24,16 @@ class Nacm : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable_nacm; //type: boolean
-        Value read_default; //type: ActionTypeEnum
-        Value write_default; //type: ActionTypeEnum
-        Value exec_default; //type: ActionTypeEnum
-        Value enable_external_groups; //type: boolean
-        Value denied_operations; //type: uint32
-        Value denied_data_writes; //type: uint32
-        Value denied_notifications; //type: uint32
 
+
+        YLeaf enable_nacm; //type: boolean
+        YLeaf read_default; //type: ActionTypeEnum
+        YLeaf write_default; //type: ActionTypeEnum
+        YLeaf exec_default; //type: ActionTypeEnum
+        YLeaf enable_external_groups; //type: boolean
+        YLeaf denied_operations; //type: uint32
+        YLeaf denied_data_writes; //type: uint32
+        YLeaf denied_notifications; //type: uint32
 
     class Groups : public Entity
     {
@@ -49,6 +50,7 @@ class Nacm : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Group : public Entity
         {
             public:
@@ -62,9 +64,10 @@ class Nacm : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                ValueList user_name; //type: list of  string
 
+
+                YLeaf name; //type: string
+                YLeafList user_name; //type: list of  string
 
 
 
@@ -90,9 +93,10 @@ class Nacm : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value name; //type: string
-            ValueList group; //type: list of  string
 
+
+            YLeaf name; //type: string
+            YLeafList group; //type: list of  string
 
         class Rule : public Entity
         {
@@ -107,17 +111,17 @@ class Nacm : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value module_name; //type: string
-                Value rpc_name; //type: string
-                Value notification_name; //type: string
-                Value path; //type: string
-                Value access_operations; //type: one of bits, string
-                Value action; //type: ActionTypeEnum
-                Value comment; //type: string
 
 
-                class ActionTypeEnum;
+                YLeaf name; //type: string
+                YLeaf module_name; //type: string
+                YLeaf rpc_name; //type: string
+                YLeaf notification_name; //type: string
+                YLeaf path; //type: string
+                YLeaf access_operations; //type: one of bits, string
+                YLeaf action; //type: ActionTypeEnum
+                YLeaf comment; //type: string
+
 
 
         }; // Nacm::RuleList::Rule
@@ -131,9 +135,6 @@ class Nacm : public Entity
 
         std::unique_ptr<ietf_netconf_acm::Nacm::Groups> groups;
         std::vector<std::unique_ptr<ietf_netconf_acm::Nacm::RuleList> > rule_list;
-        class ActionTypeEnum;
-        class ActionTypeEnum;
-        class ActionTypeEnum;
 
 
 }; // Nacm
@@ -142,8 +143,8 @@ class Nacm : public Entity
 class ActionTypeEnum : public Enum
 {
     public:
-        static const Enum::Value permit;
-        static const Enum::Value deny;
+        static const Enum::YLeaf permit;
+        static const Enum::YLeaf deny;
 
 };
 

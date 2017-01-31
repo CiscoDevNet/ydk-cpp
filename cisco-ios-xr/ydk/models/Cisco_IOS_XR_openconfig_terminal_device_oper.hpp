@@ -26,6 +26,7 @@ class OpticalInterface : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class OpticalClientInterfaces : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class OpticalInterface : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class OpticalClientInterface : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class OpticalInterface : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
 
+
+                YLeaf name; //type: string
 
             class OpticalClientLogicalChannelAssignments : public Entity
             {
@@ -72,6 +75,7 @@ class OpticalInterface : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class OpticalClientLogicalChannelAssignment : public Entity
                 {
                     public:
@@ -85,12 +89,13 @@ class OpticalInterface : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value index_; //type: int32
-                        Value is_logical_link; //type: boolean
-                        Value logical_channel; //type: uint32
-                        Value optical_channel; //type: string
-                        Value allocation; //type: uint32
 
+
+                        YLeaf index_; //type: int32
+                        YLeaf is_logical_link; //type: boolean
+                        YLeaf logical_channel; //type: uint32
+                        YLeaf optical_channel; //type: string
+                        YLeaf allocation; //type: uint32
 
 
 
@@ -130,6 +135,7 @@ class OpticalInterface : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class OperationalMode : public Entity
         {
             public:
@@ -143,8 +149,9 @@ class OpticalInterface : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value mode_id; //type: int32
 
+
+                YLeaf mode_id; //type: int32
 
             class OperationalModeAttributes : public Entity
             {
@@ -159,9 +166,10 @@ class OpticalInterface : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value description; //type: string
-                    Value vendor_id; //type: string
 
+
+                    YLeaf description; //type: string
+                    YLeaf vendor_id; //type: string
 
 
 
@@ -195,6 +203,7 @@ class OpticalInterface : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class OpticalLogicalInterface : public Entity
         {
             public:
@@ -208,8 +217,9 @@ class OpticalInterface : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value index_; //type: int32
 
+
+                YLeaf index_; //type: int32
 
             class OpticalLogicalInterfaceAttr : public Entity
             {
@@ -224,14 +234,12 @@ class OpticalInterface : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value trib_rate_class; //type: TribRateClassEnum
-                    Value trib_protocol; //type: TribProtocolEnum
-                    Value protocol_type; //type: LogicalProtocolEnum
 
 
-                    class LogicalProtocolEnum;
-                    class TribProtocolEnum;
-                    class TribRateClassEnum;
+                    YLeaf trib_rate_class; //type: TribRateClassEnum
+                    YLeaf trib_protocol; //type: TribProtocolEnum
+                    YLeaf protocol_type; //type: LogicalProtocolEnum
+
 
 
             }; // OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr
@@ -252,6 +260,7 @@ class OpticalInterface : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class OpticalLogicalInterfaceLogicalChannelAssignment : public Entity
                 {
                     public:
@@ -265,12 +274,13 @@ class OpticalInterface : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value index_; //type: int32
-                        Value is_logical_link; //type: boolean
-                        Value logical_channel; //type: uint32
-                        Value optical_channel; //type: string
-                        Value allocation; //type: uint32
 
+
+                        YLeaf index_; //type: int32
+                        YLeaf is_logical_link; //type: boolean
+                        YLeaf logical_channel; //type: uint32
+                        YLeaf optical_channel; //type: string
+                        YLeaf allocation; //type: uint32
 
 
 
@@ -307,50 +317,50 @@ class OpticalInterface : public Entity
 class LogicalProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value proto_type_unknown;
-        static const Enum::Value proto_type_ethernet;
-        static const Enum::Value proto_type_otn;
+        static const Enum::YLeaf proto_type_unknown;
+        static const Enum::YLeaf proto_type_ethernet;
+        static const Enum::YLeaf proto_type_otn;
 
 };
 
 class TribProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value trib_proto_type_unknown;
-        static const Enum::Value trib_proto_type1ge;
-        static const Enum::Value trib_proto_type_oc48;
-        static const Enum::Value trib_proto_type_stm16;
-        static const Enum::Value trib_proto_type10gelan;
-        static const Enum::Value trib_proto_type10gewan;
-        static const Enum::Value trib_proto_type_oc192;
-        static const Enum::Value trib_proto_type_stm64;
-        static const Enum::Value trib_proto_type_otu2;
-        static const Enum::Value trib_proto_type_otu2e;
-        static const Enum::Value trib_proto_type_otu1e;
-        static const Enum::Value trib_proto_type_odu2;
-        static const Enum::Value trib_proto_type_odu2e;
-        static const Enum::Value trib_proto_type40ge;
-        static const Enum::Value trib_proto_type_oc768;
-        static const Enum::Value trib_proto_type_stm256;
-        static const Enum::Value trib_proto_type_otu3;
-        static const Enum::Value trib_proto_type_odu3;
-        static const Enum::Value trib_proto_type100ge;
-        static const Enum::Value trib_proto_type100g_mlg;
-        static const Enum::Value trib_proto_type_otu4;
-        static const Enum::Value trib_proto_type_otu_cn;
-        static const Enum::Value trib_proto_type_odu4;
+        static const Enum::YLeaf trib_proto_type_unknown;
+        static const Enum::YLeaf trib_proto_type1ge;
+        static const Enum::YLeaf trib_proto_type_oc48;
+        static const Enum::YLeaf trib_proto_type_stm16;
+        static const Enum::YLeaf trib_proto_type10gelan;
+        static const Enum::YLeaf trib_proto_type10gewan;
+        static const Enum::YLeaf trib_proto_type_oc192;
+        static const Enum::YLeaf trib_proto_type_stm64;
+        static const Enum::YLeaf trib_proto_type_otu2;
+        static const Enum::YLeaf trib_proto_type_otu2e;
+        static const Enum::YLeaf trib_proto_type_otu1e;
+        static const Enum::YLeaf trib_proto_type_odu2;
+        static const Enum::YLeaf trib_proto_type_odu2e;
+        static const Enum::YLeaf trib_proto_type40ge;
+        static const Enum::YLeaf trib_proto_type_oc768;
+        static const Enum::YLeaf trib_proto_type_stm256;
+        static const Enum::YLeaf trib_proto_type_otu3;
+        static const Enum::YLeaf trib_proto_type_odu3;
+        static const Enum::YLeaf trib_proto_type100ge;
+        static const Enum::YLeaf trib_proto_type100g_mlg;
+        static const Enum::YLeaf trib_proto_type_otu4;
+        static const Enum::YLeaf trib_proto_type_otu_cn;
+        static const Enum::YLeaf trib_proto_type_odu4;
 
 };
 
 class TribRateClassEnum : public Enum
 {
     public:
-        static const Enum::Value trib_rate1g;
-        static const Enum::Value trib_rate25g;
-        static const Enum::Value trib_rate10g;
-        static const Enum::Value trib_rate40g;
-        static const Enum::Value trib_rate100g;
-        static const Enum::Value trib_rate_unknown;
+        static const Enum::YLeaf trib_rate1g;
+        static const Enum::YLeaf trib_rate25g;
+        static const Enum::YLeaf trib_rate10g;
+        static const Enum::YLeaf trib_rate40g;
+        static const Enum::YLeaf trib_rate100g;
+        static const Enum::YLeaf trib_rate_unknown;
 
 };
 

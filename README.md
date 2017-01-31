@@ -177,7 +177,7 @@ YDK uses the `boost::log` logging library. The logging verbosity can be set usin
 
 Release Notes
 ===============
-The current YDK release version is 0.5.2 (alpha). YDK-Cpp is licensed under the Apache 2.0 License.
+The current YDK release version is 0.5.3 (alpha). YDK-Cpp is licensed under the Apache 2.0 License.
 
 Documentation and Support
 ===============

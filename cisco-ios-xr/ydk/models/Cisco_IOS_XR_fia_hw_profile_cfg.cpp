@@ -229,7 +229,7 @@ bool HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unica
 {
     return is_set(operation)
 	|| is_set(ipv4_unicast_percent.operation)
-	|| (ipv4_unicast_prefix_lengths !=  nullptr && is_set(ipv4_unicast_prefix_lengths->operation));
+	|| (ipv4_unicast_prefix_lengths !=  nullptr && ipv4_unicast_prefix_lengths->has_operation());
 }
 
 std::string HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::get_segment_path() const
@@ -335,7 +335,7 @@ bool HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::has_data(
 bool HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4_unicast !=  nullptr && is_set(ipv4_unicast->operation));
+	|| (ipv4_unicast !=  nullptr && ipv4_unicast->has_operation());
 }
 
 std::string HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::get_segment_path() const
@@ -636,7 +636,7 @@ bool HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unica
 {
     return is_set(operation)
 	|| is_set(ipv6_unicast_percent.operation)
-	|| (ipv6_unicast_prefix_lengths !=  nullptr && is_set(ipv6_unicast_prefix_lengths->operation));
+	|| (ipv6_unicast_prefix_lengths !=  nullptr && ipv6_unicast_prefix_lengths->has_operation());
 }
 
 std::string HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::get_segment_path() const
@@ -742,7 +742,7 @@ bool HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::has_data(
 bool HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::has_operation() const
 {
     return is_set(operation)
-	|| (ipv6_unicast !=  nullptr && is_set(ipv6_unicast->operation));
+	|| (ipv6_unicast !=  nullptr && ipv6_unicast->has_operation());
 }
 
 std::string HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::get_segment_path() const
@@ -848,8 +848,8 @@ bool HwModuleProfileConfig::Profile::TcamTable::FibTable::has_data() const
 bool HwModuleProfileConfig::Profile::TcamTable::FibTable::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4_address !=  nullptr && is_set(ipv4_address->operation))
-	|| (ipv6_address !=  nullptr && is_set(ipv6_address->operation));
+	|| (ipv4_address !=  nullptr && ipv4_address->has_operation())
+	|| (ipv6_address !=  nullptr && ipv6_address->has_operation());
 }
 
 std::string HwModuleProfileConfig::Profile::TcamTable::FibTable::get_segment_path() const
@@ -973,7 +973,7 @@ bool HwModuleProfileConfig::Profile::TcamTable::has_data() const
 bool HwModuleProfileConfig::Profile::TcamTable::has_operation() const
 {
     return is_set(operation)
-	|| (fib_table !=  nullptr && is_set(fib_table->operation));
+	|| (fib_table !=  nullptr && fib_table->has_operation());
 }
 
 std::string HwModuleProfileConfig::Profile::TcamTable::get_segment_path() const
@@ -1074,7 +1074,7 @@ bool HwModuleProfileConfig::Profile::has_data() const
 bool HwModuleProfileConfig::Profile::has_operation() const
 {
     return is_set(operation)
-	|| (tcam_table !=  nullptr && is_set(tcam_table->operation));
+	|| (tcam_table !=  nullptr && tcam_table->has_operation());
 }
 
 std::string HwModuleProfileConfig::Profile::get_segment_path() const
@@ -1175,7 +1175,7 @@ bool HwModuleProfileConfig::has_data() const
 bool HwModuleProfileConfig::has_operation() const
 {
     return is_set(operation)
-	|| (profile !=  nullptr && is_set(profile->operation));
+	|| (profile !=  nullptr && profile->has_operation());
 }
 
 std::string HwModuleProfileConfig::get_segment_path() const
@@ -1192,7 +1192,7 @@ EntityPath HwModuleProfileConfig::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

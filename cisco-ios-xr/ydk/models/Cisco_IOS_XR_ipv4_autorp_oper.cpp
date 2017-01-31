@@ -297,7 +297,7 @@ EntityPath AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -742,8 +742,8 @@ bool AutoRp::Standby::MappingAgent::has_data() const
 bool AutoRp::Standby::MappingAgent::has_operation() const
 {
     return is_set(operation)
-	|| (rp_addresses !=  nullptr && is_set(rp_addresses->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (rp_addresses !=  nullptr && rp_addresses->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string AutoRp::Standby::MappingAgent::get_segment_path() const
@@ -872,8 +872,8 @@ bool AutoRp::Standby::has_data() const
 bool AutoRp::Standby::has_operation() const
 {
     return is_set(operation)
-	|| (candidate_rps !=  nullptr && is_set(candidate_rps->operation))
-	|| (mapping_agent !=  nullptr && is_set(mapping_agent->operation));
+	|| (candidate_rps !=  nullptr && candidate_rps->has_operation())
+	|| (mapping_agent !=  nullptr && mapping_agent->has_operation());
 }
 
 std::string AutoRp::Standby::get_segment_path() const
@@ -1265,7 +1265,7 @@ EntityPath AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1710,8 +1710,8 @@ bool AutoRp::Active::MappingAgent::has_data() const
 bool AutoRp::Active::MappingAgent::has_operation() const
 {
     return is_set(operation)
-	|| (rp_addresses !=  nullptr && is_set(rp_addresses->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (rp_addresses !=  nullptr && rp_addresses->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string AutoRp::Active::MappingAgent::get_segment_path() const
@@ -1840,8 +1840,8 @@ bool AutoRp::Active::has_data() const
 bool AutoRp::Active::has_operation() const
 {
     return is_set(operation)
-	|| (candidate_rps !=  nullptr && is_set(candidate_rps->operation))
-	|| (mapping_agent !=  nullptr && is_set(mapping_agent->operation));
+	|| (candidate_rps !=  nullptr && candidate_rps->has_operation())
+	|| (mapping_agent !=  nullptr && mapping_agent->has_operation());
 }
 
 std::string AutoRp::Active::get_segment_path() const
@@ -1970,8 +1970,8 @@ bool AutoRp::has_data() const
 bool AutoRp::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (standby !=  nullptr && is_set(standby->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (standby !=  nullptr && standby->has_operation());
 }
 
 std::string AutoRp::get_segment_path() const
@@ -1988,7 +1988,7 @@ EntityPath AutoRp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2075,8 +2075,8 @@ std::unique_ptr<Entity> AutoRp::clone_ptr()
     return std::make_unique<AutoRp>();
 }
 
-const Enum::Value AutorpProtocolModeEnum::sparse {0, "sparse"};
-const Enum::Value AutorpProtocolModeEnum::bidirectional {1, "bidirectional"};
+const Enum::YLeaf AutorpProtocolModeEnum::sparse {0, "sparse"};
+const Enum::YLeaf AutorpProtocolModeEnum::bidirectional {1, "bidirectional"};
 
 
 }

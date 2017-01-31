@@ -14,8 +14,8 @@ namespace Cisco_IOS_XR_manageability_object_tracking_datatypes {
 class ObjectTrackingBooleanSignEnum : public Enum
 {
     public:
-        static const Enum::Value without_not;
-        static const Enum::Value with_not;
+        static const Enum::YLeaf without_not;
+        static const Enum::YLeaf with_not;
 
 };
 

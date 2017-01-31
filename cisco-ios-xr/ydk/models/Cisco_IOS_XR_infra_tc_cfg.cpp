@@ -338,8 +338,8 @@ bool TrafficCollector::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable_traffic_collector.operation)
-	|| (external_interfaces !=  nullptr && is_set(external_interfaces->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (external_interfaces !=  nullptr && external_interfaces->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string TrafficCollector::get_segment_path() const
@@ -356,7 +356,7 @@ EntityPath TrafficCollector::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -448,22 +448,22 @@ std::unique_ptr<Entity> TrafficCollector::clone_ptr()
     return std::make_unique<TrafficCollector>();
 }
 
-const Enum::Value HistoryTimeoutEnum::max {720, "max"};
+const Enum::YLeaf HistoryTimeoutEnum::max {720, "max"};
 
-const Enum::Value HistorySizeEnum::max {10, "max"};
+const Enum::YLeaf HistorySizeEnum::max {10, "max"};
 
-const Enum::Value CollectIonIntervalEnum::Y_1_minute {1, "1-minute"};
-const Enum::Value CollectIonIntervalEnum::Y_2_minutes {2, "2-minutes"};
-const Enum::Value CollectIonIntervalEnum::Y_3_minutes {3, "3-minutes"};
-const Enum::Value CollectIonIntervalEnum::Y_4_minutes {4, "4-minutes"};
-const Enum::Value CollectIonIntervalEnum::Y_5_minutes {5, "5-minutes"};
-const Enum::Value CollectIonIntervalEnum::Y_6_minutes {6, "6-minutes"};
-const Enum::Value CollectIonIntervalEnum::Y_10_minutes {10, "10-minutes"};
-const Enum::Value CollectIonIntervalEnum::Y_12_minutes {12, "12-minutes"};
-const Enum::Value CollectIonIntervalEnum::Y_15_minutes {15, "15-minutes"};
-const Enum::Value CollectIonIntervalEnum::Y_20_minutes {20, "20-minutes"};
-const Enum::Value CollectIonIntervalEnum::Y_30_minutes {30, "30-minutes"};
-const Enum::Value CollectIonIntervalEnum::Y_60_minutes {60, "60-minutes"};
+const Enum::YLeaf CollectIonIntervalEnum::Y_1_minute {1, "1-minute"};
+const Enum::YLeaf CollectIonIntervalEnum::Y_2_minutes {2, "2-minutes"};
+const Enum::YLeaf CollectIonIntervalEnum::Y_3_minutes {3, "3-minutes"};
+const Enum::YLeaf CollectIonIntervalEnum::Y_4_minutes {4, "4-minutes"};
+const Enum::YLeaf CollectIonIntervalEnum::Y_5_minutes {5, "5-minutes"};
+const Enum::YLeaf CollectIonIntervalEnum::Y_6_minutes {6, "6-minutes"};
+const Enum::YLeaf CollectIonIntervalEnum::Y_10_minutes {10, "10-minutes"};
+const Enum::YLeaf CollectIonIntervalEnum::Y_12_minutes {12, "12-minutes"};
+const Enum::YLeaf CollectIonIntervalEnum::Y_15_minutes {15, "15-minutes"};
+const Enum::YLeaf CollectIonIntervalEnum::Y_20_minutes {20, "20-minutes"};
+const Enum::YLeaf CollectIonIntervalEnum::Y_30_minutes {30, "30-minutes"};
+const Enum::YLeaf CollectIonIntervalEnum::Y_60_minutes {60, "60-minutes"};
 
 
 }

@@ -20,7 +20,7 @@ Aaa::AllTasks::~AllTasks()
 
 bool Aaa::AllTasks::has_data() const
 {
-    for (auto const & leaf : task_id.getValues())
+    for (auto const & leaf : task_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -30,12 +30,13 @@ bool Aaa::AllTasks::has_data() const
 
 bool Aaa::AllTasks::has_operation() const
 {
-    for (auto const & leaf : task_id.getValues())
+    for (auto const & leaf : task_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(task_id.operation);
 }
 
 std::string Aaa::AllTasks::get_segment_path() const
@@ -113,12 +114,12 @@ Aaa::CurrentuserDetail::~CurrentuserDetail()
 
 bool Aaa::CurrentuserDetail::has_data() const
 {
-    for (auto const & leaf : taskmap.getValues())
+    for (auto const & leaf : taskmap.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : usergroup.getValues())
+    for (auto const & leaf : usergroup.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -129,19 +130,21 @@ bool Aaa::CurrentuserDetail::has_data() const
 
 bool Aaa::CurrentuserDetail::has_operation() const
 {
-    for (auto const & leaf : taskmap.getValues())
+    for (auto const & leaf : taskmap.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : usergroup.getValues())
+    for (auto const & leaf : usergroup.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(authenmethod.operation)
-	|| is_set(name.operation);
+	|| is_set(name.operation)
+	|| is_set(taskmap.operation)
+	|| is_set(usergroup.operation);
 }
 
 std::string Aaa::CurrentuserDetail::get_segment_path() const
@@ -235,12 +238,12 @@ Aaa::TaskMap::~TaskMap()
 
 bool Aaa::TaskMap::has_data() const
 {
-    for (auto const & leaf : taskmap.getValues())
+    for (auto const & leaf : taskmap.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : usergroup.getValues())
+    for (auto const & leaf : usergroup.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -251,19 +254,21 @@ bool Aaa::TaskMap::has_data() const
 
 bool Aaa::TaskMap::has_operation() const
 {
-    for (auto const & leaf : taskmap.getValues())
+    for (auto const & leaf : taskmap.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : usergroup.getValues())
+    for (auto const & leaf : usergroup.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(authenmethod.operation)
-	|| is_set(name.operation);
+	|| is_set(name.operation)
+	|| is_set(taskmap.operation)
+	|| is_set(usergroup.operation);
 }
 
 std::string Aaa::TaskMap::get_segment_path() const
@@ -389,7 +394,7 @@ EntityPath Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -496,7 +501,7 @@ EntityPath Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -609,7 +614,7 @@ EntityPath Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -716,7 +721,7 @@ EntityPath Aaa::Taskgroups::Taskgroup::TaskMap::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -815,8 +820,8 @@ bool Aaa::Taskgroups::Taskgroup::has_operation() const
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(name_xr.operation)
-	|| (included_task_ids !=  nullptr && is_set(included_task_ids->operation))
-	|| (task_map !=  nullptr && is_set(task_map->operation));
+	|| (included_task_ids !=  nullptr && included_task_ids->has_operation())
+	|| (task_map !=  nullptr && task_map->has_operation());
 }
 
 std::string Aaa::Taskgroups::Taskgroup::get_segment_path() const
@@ -1084,7 +1089,7 @@ EntityPath Aaa::Users::User::TaskMap::Tasks::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1191,7 +1196,7 @@ EntityPath Aaa::Users::User::TaskMap::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1278,7 +1283,7 @@ Aaa::Users::User::~User()
 
 bool Aaa::Users::User::has_data() const
 {
-    for (auto const & leaf : usergroup.getValues())
+    for (auto const & leaf : usergroup.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1292,7 +1297,7 @@ bool Aaa::Users::User::has_data() const
 
 bool Aaa::Users::User::has_operation() const
 {
-    for (auto const & leaf : usergroup.getValues())
+    for (auto const & leaf : usergroup.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -1302,7 +1307,8 @@ bool Aaa::Users::User::has_operation() const
 	|| is_set(admin_user.operation)
 	|| is_set(first_user.operation)
 	|| is_set(name_xr.operation)
-	|| (task_map !=  nullptr && is_set(task_map->operation));
+	|| is_set(usergroup.operation)
+	|| (task_map !=  nullptr && task_map->has_operation());
 }
 
 std::string Aaa::Users::User::get_segment_path() const
@@ -1563,7 +1569,7 @@ EntityPath Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1670,7 +1676,7 @@ EntityPath Aaa::Usergroups::Usergroup::TaskMap::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1783,7 +1789,7 @@ EntityPath Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1890,7 +1896,7 @@ EntityPath Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2003,7 +2009,7 @@ EntityPath Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2110,7 +2116,7 @@ EntityPath Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2206,8 +2212,8 @@ bool Aaa::Usergroups::Usergroup::Taskgroup::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name_xr.operation)
-	|| (included_task_ids !=  nullptr && is_set(included_task_ids->operation))
-	|| (task_map !=  nullptr && is_set(task_map->operation));
+	|| (included_task_ids !=  nullptr && included_task_ids->has_operation())
+	|| (task_map !=  nullptr && task_map->has_operation());
 }
 
 std::string Aaa::Usergroups::Usergroup::Taskgroup::get_segment_path() const
@@ -2224,7 +2230,7 @@ EntityPath Aaa::Usergroups::Usergroup::Taskgroup::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2353,7 +2359,7 @@ bool Aaa::Usergroups::Usergroup::has_operation() const
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(name_xr.operation)
-	|| (task_map !=  nullptr && is_set(task_map->operation));
+	|| (task_map !=  nullptr && task_map->has_operation());
 }
 
 std::string Aaa::Usergroups::Usergroup::get_segment_path() const
@@ -2592,12 +2598,12 @@ Aaa::AuthenMethod::~AuthenMethod()
 
 bool Aaa::AuthenMethod::has_data() const
 {
-    for (auto const & leaf : taskmap.getValues())
+    for (auto const & leaf : taskmap.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : usergroup.getValues())
+    for (auto const & leaf : usergroup.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2608,19 +2614,21 @@ bool Aaa::AuthenMethod::has_data() const
 
 bool Aaa::AuthenMethod::has_operation() const
 {
-    for (auto const & leaf : taskmap.getValues())
+    for (auto const & leaf : taskmap.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : usergroup.getValues())
+    for (auto const & leaf : usergroup.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(authenmethod.operation)
-	|| is_set(name.operation);
+	|| is_set(name.operation)
+	|| is_set(taskmap.operation)
+	|| is_set(usergroup.operation);
 }
 
 std::string Aaa::AuthenMethod::get_segment_path() const
@@ -2714,12 +2722,12 @@ Aaa::CurrentUsergroup::~CurrentUsergroup()
 
 bool Aaa::CurrentUsergroup::has_data() const
 {
-    for (auto const & leaf : taskmap.getValues())
+    for (auto const & leaf : taskmap.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : usergroup.getValues())
+    for (auto const & leaf : usergroup.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2730,19 +2738,21 @@ bool Aaa::CurrentUsergroup::has_data() const
 
 bool Aaa::CurrentUsergroup::has_operation() const
 {
-    for (auto const & leaf : taskmap.getValues())
+    for (auto const & leaf : taskmap.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : usergroup.getValues())
+    for (auto const & leaf : usergroup.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(authenmethod.operation)
-	|| is_set(name.operation);
+	|| is_set(name.operation)
+	|| is_set(taskmap.operation)
+	|| is_set(usergroup.operation);
 }
 
 std::string Aaa::CurrentUsergroup::get_segment_path() const
@@ -3835,8 +3845,8 @@ bool Aaa::Radius::has_data() const
 bool Aaa::Radius::has_operation() const
 {
     return is_set(operation)
-	|| (global !=  nullptr && is_set(global->operation))
-	|| (servers !=  nullptr && is_set(servers->operation));
+	|| (global !=  nullptr && global->has_operation())
+	|| (servers !=  nullptr && servers->has_operation());
 }
 
 std::string Aaa::Radius::get_segment_path() const
@@ -5118,9 +5128,9 @@ bool Aaa::Tacacs::has_data() const
 bool Aaa::Tacacs::has_operation() const
 {
     return is_set(operation)
-	|| (requests !=  nullptr && is_set(requests->operation))
-	|| (server_groups !=  nullptr && is_set(server_groups->operation))
-	|| (servers !=  nullptr && is_set(servers->operation));
+	|| (requests !=  nullptr && requests->has_operation())
+	|| (server_groups !=  nullptr && server_groups->has_operation())
+	|| (servers !=  nullptr && servers->has_operation());
 }
 
 std::string Aaa::Tacacs::get_segment_path() const
@@ -5312,16 +5322,16 @@ bool Aaa::has_data() const
 bool Aaa::has_operation() const
 {
     return is_set(operation)
-	|| (all_tasks !=  nullptr && is_set(all_tasks->operation))
-	|| (authen_method !=  nullptr && is_set(authen_method->operation))
-	|| (current_usergroup !=  nullptr && is_set(current_usergroup->operation))
-	|| (currentuser_detail !=  nullptr && is_set(currentuser_detail->operation))
-	|| (radius !=  nullptr && is_set(radius->operation))
-	|| (tacacs !=  nullptr && is_set(tacacs->operation))
-	|| (task_map !=  nullptr && is_set(task_map->operation))
-	|| (taskgroups !=  nullptr && is_set(taskgroups->operation))
-	|| (usergroups !=  nullptr && is_set(usergroups->operation))
-	|| (users !=  nullptr && is_set(users->operation));
+	|| (all_tasks !=  nullptr && all_tasks->has_operation())
+	|| (authen_method !=  nullptr && authen_method->has_operation())
+	|| (current_usergroup !=  nullptr && current_usergroup->has_operation())
+	|| (currentuser_detail !=  nullptr && currentuser_detail->has_operation())
+	|| (radius !=  nullptr && radius->has_operation())
+	|| (tacacs !=  nullptr && tacacs->has_operation())
+	|| (task_map !=  nullptr && task_map->has_operation())
+	|| (taskgroups !=  nullptr && taskgroups->has_operation())
+	|| (usergroups !=  nullptr && usergroups->has_operation())
+	|| (users !=  nullptr && users->has_operation());
 }
 
 std::string Aaa::get_segment_path() const
@@ -5338,7 +5348,7 @@ EntityPath Aaa::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

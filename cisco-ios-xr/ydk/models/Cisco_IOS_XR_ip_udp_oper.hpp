@@ -26,6 +26,7 @@ class Udp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Udp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Udp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Statistics : public Entity
             {
@@ -72,6 +75,7 @@ class Udp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ipv4Traffic : public Entity
                 {
                     public:
@@ -85,13 +89,14 @@ class Udp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value udp_input_packets; //type: uint32
-                        Value udp_checksum_error_packets; //type: uint32
-                        Value udp_no_port_packets; //type: uint32
-                        Value udp_bad_length_packets; //type: uint32
-                        Value udp_output_packets; //type: uint32
-                        Value udp_dropped_packets; //type: uint32
 
+
+                        YLeaf udp_input_packets; //type: uint32
+                        YLeaf udp_checksum_error_packets; //type: uint32
+                        YLeaf udp_no_port_packets; //type: uint32
+                        YLeaf udp_bad_length_packets; //type: uint32
+                        YLeaf udp_output_packets; //type: uint32
+                        YLeaf udp_dropped_packets; //type: uint32
 
 
 
@@ -111,13 +116,14 @@ class Udp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value udp_input_packets; //type: uint32
-                        Value udp_checksum_error_packets; //type: uint32
-                        Value udp_no_port_packets; //type: uint32
-                        Value udp_bad_length_packets; //type: uint32
-                        Value udp_output_packets; //type: uint32
-                        Value udp_dropped_packets; //type: uint32
 
+
+                        YLeaf udp_input_packets; //type: uint32
+                        YLeaf udp_checksum_error_packets; //type: uint32
+                        YLeaf udp_no_port_packets; //type: uint32
+                        YLeaf udp_bad_length_packets; //type: uint32
+                        YLeaf udp_output_packets; //type: uint32
+                        YLeaf udp_dropped_packets; //type: uint32
 
 
 
@@ -164,6 +170,7 @@ class UdpConnection : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -179,6 +186,7 @@ class UdpConnection : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -192,8 +200,9 @@ class UdpConnection : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Statistics : public Entity
             {
@@ -208,6 +217,7 @@ class UdpConnection : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Clients : public Entity
@@ -225,6 +235,7 @@ class UdpConnection : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Client : public Entity
                     {
                         public:
@@ -238,14 +249,15 @@ class UdpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value client_id; //type: uint32
-                            Value client_jid; //type: int32
-                            Value client_name; //type: string
-                            Value ipv4_received_packets; //type: uint32
-                            Value ipv4_sent_packets; //type: uint32
-                            Value ipv6_received_packets; //type: uint32
-                            Value ipv6_sent_packets; //type: uint32
 
+
+                            YLeaf client_id; //type: uint32
+                            YLeaf client_jid; //type: int32
+                            YLeaf client_name; //type: string
+                            YLeaf ipv4_received_packets; //type: uint32
+                            YLeaf ipv4_sent_packets; //type: uint32
+                            YLeaf ipv6_received_packets; //type: uint32
+                            YLeaf ipv6_sent_packets; //type: uint32
 
 
 
@@ -271,17 +283,18 @@ class UdpConnection : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value received_total_packets; //type: uint32
-                        Value received_no_port_packets; //type: uint32
-                        Value received_bad_checksum_packets; //type: uint32
-                        Value received_too_short_packets; //type: uint32
-                        Value received_drop_packets; //type: uint32
-                        Value sent_total_packets; //type: uint32
-                        Value sent_error_packets; //type: uint32
-                        Value forward_broadcast_packets; //type: uint32
-                        Value cloned_packets; //type: uint32
-                        Value failed_clone_packets; //type: uint32
 
+
+                        YLeaf received_total_packets; //type: uint32
+                        YLeaf received_no_port_packets; //type: uint32
+                        YLeaf received_bad_checksum_packets; //type: uint32
+                        YLeaf received_too_short_packets; //type: uint32
+                        YLeaf received_drop_packets; //type: uint32
+                        YLeaf sent_total_packets; //type: uint32
+                        YLeaf sent_error_packets; //type: uint32
+                        YLeaf forward_broadcast_packets; //type: uint32
+                        YLeaf cloned_packets; //type: uint32
+                        YLeaf failed_clone_packets; //type: uint32
 
 
 
@@ -303,6 +316,7 @@ class UdpConnection : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PcbStatistic : public Entity
                     {
                         public:
@@ -316,10 +330,11 @@ class UdpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value pcb_address; //type: int32
-                            Value vrf_id; //type: uint32
-                            Value is_paw_socket; //type: boolean
 
+
+                            YLeaf pcb_address; //type: int32
+                            YLeaf vrf_id; //type: uint32
+                            YLeaf is_paw_socket; //type: boolean
 
                         class Send : public Entity
                         {
@@ -334,13 +349,14 @@ class UdpConnection : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value received_application_bytes; //type: uint64
-                                Value received_xipc_pulses; //type: uint64
-                                Value sent_network_packets; //type: uint64
-                                Value sent_net_io_packets; //type: uint64
-                                Value failed_queued_network_packets; //type: uint32
-                                Value failed_queued_net_io_packets; //type: uint32
 
+
+                                YLeaf received_application_bytes; //type: uint64
+                                YLeaf received_xipc_pulses; //type: uint64
+                                YLeaf sent_network_packets; //type: uint64
+                                YLeaf sent_net_io_packets; //type: uint64
+                                YLeaf failed_queued_network_packets; //type: uint32
+                                YLeaf failed_queued_net_io_packets; //type: uint32
 
 
 
@@ -360,12 +376,13 @@ class UdpConnection : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value received_network_packets; //type: uint64
-                                Value failed_queued_application_packets; //type: uint32
-                                Value queued_application_packets; //type: uint64
-                                Value failed_queued_application_socket_packets; //type: uint32
-                                Value queued_application_socket_packets; //type: uint64
 
+
+                                YLeaf received_network_packets; //type: uint64
+                                YLeaf failed_queued_application_packets; //type: uint32
+                                YLeaf queued_application_packets; //type: uint64
+                                YLeaf failed_queued_application_socket_packets; //type: uint32
+                                YLeaf queued_application_socket_packets; //type: uint64
 
 
 
@@ -408,6 +425,7 @@ class UdpConnection : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Queries : public Entity
                 {
                     public:
@@ -423,6 +441,7 @@ class UdpConnection : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Query : public Entity
                     {
                         public:
@@ -436,8 +455,9 @@ class UdpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value query_name; //type: LptsPcbQueryEnum
 
+
+                            YLeaf query_name; //type: LptsPcbQueryEnum
 
                         class Pcbs : public Entity
                         {
@@ -454,6 +474,7 @@ class UdpConnection : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pcb : public Entity
                             {
                                 public:
@@ -467,11 +488,12 @@ class UdpConnection : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pcb_address; //type: int32
-                                    Value l4_protocol; //type: uint32
-                                    Value local_port; //type: uint16
-                                    Value foreign_port; //type: uint16
 
+
+                                    YLeaf pcb_address; //type: int32
+                                    YLeaf l4_protocol; //type: uint32
+                                    YLeaf local_port; //type: uint16
+                                    YLeaf foreign_port; //type: uint16
 
                                 class LocalAddress : public Entity
                                 {
@@ -486,12 +508,12 @@ class UdpConnection : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af_name; //type: AddrFamilyEnum
-                                        Value ipv4_address; //type: string
-                                        Value ipv6_address; //type: string
 
 
-                                        class AddrFamilyEnum;
+                                        YLeaf af_name; //type: AddrFamilyEnum
+                                        YLeaf ipv4_address; //type: string
+                                        YLeaf ipv6_address; //type: string
+
 
 
                                 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress
@@ -510,12 +532,12 @@ class UdpConnection : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af_name; //type: AddrFamilyEnum
-                                        Value ipv4_address; //type: string
-                                        Value ipv6_address; //type: string
 
 
-                                        class AddrFamilyEnum;
+                                        YLeaf af_name; //type: AddrFamilyEnum
+                                        YLeaf ipv4_address; //type: string
+                                        YLeaf ipv6_address; //type: string
+
 
 
                                 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress
@@ -534,8 +556,9 @@ class UdpConnection : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af_name; //type: AddrFamilyEnum
 
+
+                                        YLeaf af_name; //type: AddrFamilyEnum
 
                                     class LptsPcb : public Entity
                                     {
@@ -550,9 +573,10 @@ class UdpConnection : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value ttl; //type: uint8
-                                            Value flow_types_info; //type: uint32
 
+
+                                            YLeaf ttl; //type: uint8
+                                            YLeaf flow_types_info; //type: uint32
 
                                         class Options : public Entity
                                         {
@@ -567,9 +591,10 @@ class UdpConnection : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value is_receive_filter; //type: boolean
-                                                Value is_ip_sla; //type: boolean
 
+
+                                                YLeaf is_receive_filter; //type: boolean
+                                                YLeaf is_ip_sla; //type: boolean
 
 
 
@@ -589,10 +614,11 @@ class UdpConnection : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value is_pcb_bound; //type: boolean
-                                                Value is_local_address_ignore; //type: boolean
-                                                Value is_ignore_vrf_filter; //type: boolean
 
+
+                                                YLeaf is_pcb_bound; //type: boolean
+                                                YLeaf is_local_address_ignore; //type: boolean
+                                                YLeaf is_ignore_vrf_filter; //type: boolean
 
 
 
@@ -612,13 +638,14 @@ class UdpConnection : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value is_interface; //type: boolean
-                                                Value is_packet_type; //type: boolean
-                                                Value is_remote_address; //type: boolean
-                                                Value is_remote_port; //type: boolean
-                                                Value is_local_address; //type: boolean
-                                                Value is_local_port; //type: boolean
 
+
+                                                YLeaf is_interface; //type: boolean
+                                                YLeaf is_packet_type; //type: boolean
+                                                YLeaf is_remote_address; //type: boolean
+                                                YLeaf is_remote_port; //type: boolean
+                                                YLeaf is_local_address; //type: boolean
+                                                YLeaf is_local_port; //type: boolean
 
 
 
@@ -638,15 +665,16 @@ class UdpConnection : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
-                                                Value remote_length; //type: uint16
-                                                Value local_length; //type: uint16
-                                                Value receive_remote_port; //type: uint16
-                                                Value receive_local_port; //type: uint16
-                                                Value priority; //type: uint8
-                                                Value ttl; //type: uint8
-                                                Value flow_types_info; //type: uint32
 
+
+                                                YLeaf interface_name; //type: string
+                                                YLeaf remote_length; //type: uint16
+                                                YLeaf local_length; //type: uint16
+                                                YLeaf receive_remote_port; //type: uint16
+                                                YLeaf receive_local_port; //type: uint16
+                                                YLeaf priority; //type: uint8
+                                                YLeaf ttl; //type: uint8
+                                                YLeaf flow_types_info; //type: uint32
 
                                             class PacketType : public Entity
                                             {
@@ -661,17 +689,14 @@ class UdpConnection : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value type; //type: PacketEnum
-                                                    Value icmp_message_type; //type: MessageTypeIcmpEnum
-                                                    Value icm_pv6_message_type; //type: MessageTypeIcmpv6Enum
-                                                    Value igmp_message_type; //type: MessageTypeIgmpEnum
-                                                    Value message_id; //type: uint32
 
 
-                                                    class MessageTypeIcmpv6Enum;
-                                                    class MessageTypeIcmpEnum;
-                                                    class MessageTypeIgmpEnum;
-                                                    class PacketEnum;
+                                                    YLeaf type; //type: PacketEnum
+                                                    YLeaf icmp_message_type; //type: MessageTypeIcmpEnum
+                                                    YLeaf icm_pv6_message_type; //type: MessageTypeIcmpv6Enum
+                                                    YLeaf igmp_message_type; //type: MessageTypeIgmpEnum
+                                                    YLeaf message_id; //type: uint32
+
 
 
                                             }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType
@@ -690,12 +715,12 @@ class UdpConnection : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value af_name; //type: AddrFamilyEnum
-                                                    Value ipv4_address; //type: string
-                                                    Value ipv6_address; //type: string
 
 
-                                                    class AddrFamilyEnum;
+                                                    YLeaf af_name; //type: AddrFamilyEnum
+                                                    YLeaf ipv4_address; //type: string
+                                                    YLeaf ipv6_address; //type: string
+
 
 
                                             }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress
@@ -714,12 +739,12 @@ class UdpConnection : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value af_name; //type: AddrFamilyEnum
-                                                    Value ipv4_address; //type: string
-                                                    Value ipv6_address; //type: string
 
 
-                                                    class AddrFamilyEnum;
+                                                    YLeaf af_name; //type: AddrFamilyEnum
+                                                    YLeaf ipv4_address; //type: string
+                                                    YLeaf ipv6_address; //type: string
+
 
 
                                             }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress
@@ -743,7 +768,6 @@ class UdpConnection : public Entity
 
 
                                         std::unique_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb> lpts_pcb;
-                                        class AddrFamilyEnum;
 
 
                                 }; // UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common
@@ -764,7 +788,6 @@ class UdpConnection : public Entity
 
 
                             std::unique_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs> pcbs;
-                            class LptsPcbQueryEnum;
 
 
                     }; // UdpConnection::Nodes::Node::Lpts::Queries::Query
@@ -797,6 +820,7 @@ class UdpConnection : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PcbDetail : public Entity
                 {
                     public:
@@ -810,15 +834,16 @@ class UdpConnection : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value pcb_address; //type: int32
-                        Value af_name; //type: UdpAddressFamilyEnum
-                        Value local_process_id; //type: uint32
-                        Value local_port; //type: uint16
-                        Value foreign_port; //type: uint16
-                        Value receive_queue; //type: uint32
-                        Value send_queue; //type: uint32
-                        Value vrf_id; //type: uint32
 
+
+                        YLeaf pcb_address; //type: int32
+                        YLeaf af_name; //type: UdpAddressFamilyEnum
+                        YLeaf local_process_id; //type: uint32
+                        YLeaf local_port; //type: uint16
+                        YLeaf foreign_port; //type: uint16
+                        YLeaf receive_queue; //type: uint32
+                        YLeaf send_queue; //type: uint32
+                        YLeaf vrf_id; //type: uint32
 
                     class LocalAddress : public Entity
                     {
@@ -833,12 +858,12 @@ class UdpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: UdpAddressFamilyEnum
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
 
-                            class UdpAddressFamilyEnum;
+                            YLeaf af_name; //type: UdpAddressFamilyEnum
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
+
 
 
                     }; // UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress
@@ -857,12 +882,12 @@ class UdpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: UdpAddressFamilyEnum
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
 
-                            class UdpAddressFamilyEnum;
+                            YLeaf af_name; //type: UdpAddressFamilyEnum
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
+
 
 
                     }; // UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress
@@ -870,7 +895,6 @@ class UdpConnection : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress> foreign_address;
                         std::unique_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress> local_address;
-                        class UdpAddressFamilyEnum;
 
 
                 }; // UdpConnection::Nodes::Node::PcbDetails::PcbDetail
@@ -897,6 +921,7 @@ class UdpConnection : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PcbBrief : public Entity
                 {
                     public:
@@ -910,14 +935,15 @@ class UdpConnection : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value pcb_address; //type: int32
-                        Value af_name; //type: UdpAddressFamilyEnum
-                        Value local_port; //type: uint16
-                        Value foreign_port; //type: uint16
-                        Value receive_queue; //type: uint32
-                        Value send_queue; //type: uint32
-                        Value vrf_id; //type: uint32
 
+
+                        YLeaf pcb_address; //type: int32
+                        YLeaf af_name; //type: UdpAddressFamilyEnum
+                        YLeaf local_port; //type: uint16
+                        YLeaf foreign_port; //type: uint16
+                        YLeaf receive_queue; //type: uint32
+                        YLeaf send_queue; //type: uint32
+                        YLeaf vrf_id; //type: uint32
 
                     class LocalAddress : public Entity
                     {
@@ -932,12 +958,12 @@ class UdpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: UdpAddressFamilyEnum
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
 
-                            class UdpAddressFamilyEnum;
+                            YLeaf af_name; //type: UdpAddressFamilyEnum
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
+
 
 
                     }; // UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress
@@ -956,12 +982,12 @@ class UdpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: UdpAddressFamilyEnum
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
 
-                            class UdpAddressFamilyEnum;
+                            YLeaf af_name; //type: UdpAddressFamilyEnum
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
+
 
 
                     }; // UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress
@@ -969,7 +995,6 @@ class UdpConnection : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress> foreign_address;
                         std::unique_ptr<Cisco_IOS_XR_ip_udp_oper::UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress> local_address;
-                        class UdpAddressFamilyEnum;
 
 
                 }; // UdpConnection::Nodes::Node::PcbBriefs::PcbBrief
@@ -1005,162 +1030,162 @@ class UdpConnection : public Entity
 class LptsPcbQueryEnum : public Enum
 {
     public:
-        static const Enum::Value all;
-        static const Enum::Value static_policy;
-        static const Enum::Value interface;
-        static const Enum::Value packet;
+        static const Enum::YLeaf all;
+        static const Enum::YLeaf static_policy;
+        static const Enum::YLeaf interface;
+        static const Enum::YLeaf packet;
 
 };
 
 class MessageTypeIcmpv6Enum : public Enum
 {
     public:
-        static const Enum::Value destination_unreachable;
-        static const Enum::Value packet_too_big;
-        static const Enum::Value time_exceeded;
-        static const Enum::Value parameter_problem;
-        static const Enum::Value echo_request;
-        static const Enum::Value echo_reply;
-        static const Enum::Value multicast_listener_query;
-        static const Enum::Value multicast_listener_report;
-        static const Enum::Value multicast_listener_done;
-        static const Enum::Value router_solicitation;
-        static const Enum::Value router_advertisement;
-        static const Enum::Value neighbor_solicitation;
-        static const Enum::Value neighbor_advertisement;
-        static const Enum::Value redirect_message;
-        static const Enum::Value router_renumbering;
-        static const Enum::Value node_information_query;
-        static const Enum::Value node_information_reply;
-        static const Enum::Value inverse_neighbor_discovery_solicitaion;
-        static const Enum::Value inverse_neighbor_discover_advertisement;
-        static const Enum::Value v2_multicast_listener_report;
-        static const Enum::Value home_agent_address_discovery_request;
-        static const Enum::Value home_agent_address_discovery_reply;
-        static const Enum::Value mobile_prefix_solicitation;
-        static const Enum::Value mobile_prefix_advertisement;
-        static const Enum::Value certification_path_solicitation_message;
-        static const Enum::Value certification_path_advertisement_message;
-        static const Enum::Value experimental_mobility_protocols;
-        static const Enum::Value multicast_router_advertisement;
-        static const Enum::Value multicast_router_solicitation;
-        static const Enum::Value multicast_router_termination;
-        static const Enum::Value fmipv6_messages;
+        static const Enum::YLeaf destination_unreachable;
+        static const Enum::YLeaf packet_too_big;
+        static const Enum::YLeaf time_exceeded;
+        static const Enum::YLeaf parameter_problem;
+        static const Enum::YLeaf echo_request;
+        static const Enum::YLeaf echo_reply;
+        static const Enum::YLeaf multicast_listener_query;
+        static const Enum::YLeaf multicast_listener_report;
+        static const Enum::YLeaf multicast_listener_done;
+        static const Enum::YLeaf router_solicitation;
+        static const Enum::YLeaf router_advertisement;
+        static const Enum::YLeaf neighbor_solicitation;
+        static const Enum::YLeaf neighbor_advertisement;
+        static const Enum::YLeaf redirect_message;
+        static const Enum::YLeaf router_renumbering;
+        static const Enum::YLeaf node_information_query;
+        static const Enum::YLeaf node_information_reply;
+        static const Enum::YLeaf inverse_neighbor_discovery_solicitaion;
+        static const Enum::YLeaf inverse_neighbor_discover_advertisement;
+        static const Enum::YLeaf v2_multicast_listener_report;
+        static const Enum::YLeaf home_agent_address_discovery_request;
+        static const Enum::YLeaf home_agent_address_discovery_reply;
+        static const Enum::YLeaf mobile_prefix_solicitation;
+        static const Enum::YLeaf mobile_prefix_advertisement;
+        static const Enum::YLeaf certification_path_solicitation_message;
+        static const Enum::YLeaf certification_path_advertisement_message;
+        static const Enum::YLeaf experimental_mobility_protocols;
+        static const Enum::YLeaf multicast_router_advertisement;
+        static const Enum::YLeaf multicast_router_solicitation;
+        static const Enum::YLeaf multicast_router_termination;
+        static const Enum::YLeaf fmipv6_messages;
 
 };
 
 class MessageTypeIcmpEnum : public Enum
 {
     public:
-        static const Enum::Value echo_reply;
-        static const Enum::Value destination_unreachable;
-        static const Enum::Value source_quench;
-        static const Enum::Value redirect;
-        static const Enum::Value alternate_host_address;
-        static const Enum::Value echo;
-        static const Enum::Value router_advertisement;
-        static const Enum::Value router_selection;
-        static const Enum::Value time_exceeded;
-        static const Enum::Value parameter_problem;
-        static const Enum::Value time_stamp;
-        static const Enum::Value time_stamp_reply;
-        static const Enum::Value information_request;
-        static const Enum::Value information_reply;
-        static const Enum::Value address_mask_request;
-        static const Enum::Value address_mask_reply;
-        static const Enum::Value trace_route;
-        static const Enum::Value datagram_conversion_error;
-        static const Enum::Value mobile_host_redirect;
-        static const Enum::Value where_are_you;
-        static const Enum::Value iam_here;
-        static const Enum::Value mobile_registration_request;
-        static const Enum::Value mobile_registration_reply;
-        static const Enum::Value domain_name_request;
+        static const Enum::YLeaf echo_reply;
+        static const Enum::YLeaf destination_unreachable;
+        static const Enum::YLeaf source_quench;
+        static const Enum::YLeaf redirect;
+        static const Enum::YLeaf alternate_host_address;
+        static const Enum::YLeaf echo;
+        static const Enum::YLeaf router_advertisement;
+        static const Enum::YLeaf router_selection;
+        static const Enum::YLeaf time_exceeded;
+        static const Enum::YLeaf parameter_problem;
+        static const Enum::YLeaf time_stamp;
+        static const Enum::YLeaf time_stamp_reply;
+        static const Enum::YLeaf information_request;
+        static const Enum::YLeaf information_reply;
+        static const Enum::YLeaf address_mask_request;
+        static const Enum::YLeaf address_mask_reply;
+        static const Enum::YLeaf trace_route;
+        static const Enum::YLeaf datagram_conversion_error;
+        static const Enum::YLeaf mobile_host_redirect;
+        static const Enum::YLeaf where_are_you;
+        static const Enum::YLeaf iam_here;
+        static const Enum::YLeaf mobile_registration_request;
+        static const Enum::YLeaf mobile_registration_reply;
+        static const Enum::YLeaf domain_name_request;
 
 };
 
 class MessageTypeIgmpEnum : public Enum
 {
     public:
-        static const Enum::Value membership_query;
-        static const Enum::Value v1_membership_report;
-        static const Enum::Value dvmrp;
-        static const Enum::Value pi_mv1;
-        static const Enum::Value cisco_trace_messages;
-        static const Enum::Value v2_membership_report;
-        static const Enum::Value v2_leave_group;
-        static const Enum::Value multicast_traceroute_response;
-        static const Enum::Value multicast_traceroute;
-        static const Enum::Value v3_membership_report;
-        static const Enum::Value multicast_router_advertisement;
-        static const Enum::Value multicast_router_solicitation;
-        static const Enum::Value multicast_router_termination;
+        static const Enum::YLeaf membership_query;
+        static const Enum::YLeaf v1_membership_report;
+        static const Enum::YLeaf dvmrp;
+        static const Enum::YLeaf pi_mv1;
+        static const Enum::YLeaf cisco_trace_messages;
+        static const Enum::YLeaf v2_membership_report;
+        static const Enum::YLeaf v2_leave_group;
+        static const Enum::YLeaf multicast_traceroute_response;
+        static const Enum::YLeaf multicast_traceroute;
+        static const Enum::YLeaf v3_membership_report;
+        static const Enum::YLeaf multicast_router_advertisement;
+        static const Enum::YLeaf multicast_router_solicitation;
+        static const Enum::YLeaf multicast_router_termination;
 
 };
 
 class PacketEnum : public Enum
 {
     public:
-        static const Enum::Value icmp;
-        static const Enum::Value icm_pv6;
-        static const Enum::Value igmp;
-        static const Enum::Value unknown;
+        static const Enum::YLeaf icmp;
+        static const Enum::YLeaf icm_pv6;
+        static const Enum::YLeaf igmp;
+        static const Enum::YLeaf unknown;
 
 };
 
 class AddrFamilyEnum : public Enum
 {
     public:
-        static const Enum::Value unspecified;
-        static const Enum::Value local;
-        static const Enum::Value inet;
-        static const Enum::Value implink;
-        static const Enum::Value pup;
-        static const Enum::Value chaos;
-        static const Enum::Value ns;
-        static const Enum::Value iso;
-        static const Enum::Value ecma;
-        static const Enum::Value data_kit;
-        static const Enum::Value ccitt;
-        static const Enum::Value sna;
-        static const Enum::Value de_cnet;
-        static const Enum::Value dli;
-        static const Enum::Value lat;
-        static const Enum::Value hylink;
-        static const Enum::Value appletalk;
-        static const Enum::Value route;
-        static const Enum::Value link;
-        static const Enum::Value pseudo_xtp;
-        static const Enum::Value coip;
-        static const Enum::Value cnt;
-        static const Enum::Value pseudo_rtip;
-        static const Enum::Value ipx;
-        static const Enum::Value sip;
-        static const Enum::Value pseudo_pip;
-        static const Enum::Value inet6;
-        static const Enum::Value snap;
-        static const Enum::Value clnl;
-        static const Enum::Value chdlc;
-        static const Enum::Value ppp;
-        static const Enum::Value host_cas;
-        static const Enum::Value dsp;
-        static const Enum::Value sap;
-        static const Enum::Value atm;
-        static const Enum::Value fr;
-        static const Enum::Value mso;
-        static const Enum::Value dchan;
-        static const Enum::Value cas;
-        static const Enum::Value nat;
-        static const Enum::Value ether;
-        static const Enum::Value srp;
+        static const Enum::YLeaf unspecified;
+        static const Enum::YLeaf local;
+        static const Enum::YLeaf inet;
+        static const Enum::YLeaf implink;
+        static const Enum::YLeaf pup;
+        static const Enum::YLeaf chaos;
+        static const Enum::YLeaf ns;
+        static const Enum::YLeaf iso;
+        static const Enum::YLeaf ecma;
+        static const Enum::YLeaf data_kit;
+        static const Enum::YLeaf ccitt;
+        static const Enum::YLeaf sna;
+        static const Enum::YLeaf de_cnet;
+        static const Enum::YLeaf dli;
+        static const Enum::YLeaf lat;
+        static const Enum::YLeaf hylink;
+        static const Enum::YLeaf appletalk;
+        static const Enum::YLeaf route;
+        static const Enum::YLeaf link;
+        static const Enum::YLeaf pseudo_xtp;
+        static const Enum::YLeaf coip;
+        static const Enum::YLeaf cnt;
+        static const Enum::YLeaf pseudo_rtip;
+        static const Enum::YLeaf ipx;
+        static const Enum::YLeaf sip;
+        static const Enum::YLeaf pseudo_pip;
+        static const Enum::YLeaf inet6;
+        static const Enum::YLeaf snap;
+        static const Enum::YLeaf clnl;
+        static const Enum::YLeaf chdlc;
+        static const Enum::YLeaf ppp;
+        static const Enum::YLeaf host_cas;
+        static const Enum::YLeaf dsp;
+        static const Enum::YLeaf sap;
+        static const Enum::YLeaf atm;
+        static const Enum::YLeaf fr;
+        static const Enum::YLeaf mso;
+        static const Enum::YLeaf dchan;
+        static const Enum::YLeaf cas;
+        static const Enum::YLeaf nat;
+        static const Enum::YLeaf ether;
+        static const Enum::YLeaf srp;
 
 };
 
 class UdpAddressFamilyEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 

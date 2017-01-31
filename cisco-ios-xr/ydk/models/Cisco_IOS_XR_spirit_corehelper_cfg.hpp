@@ -26,6 +26,7 @@ class Exception : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class File : public Entity
     {
         public:
@@ -39,10 +40,11 @@ class Exception : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value choice2; //type: string
-            Value choice1; //type: string
-            Value choice3; //type: string
 
+
+            YLeaf choice2; //type: string
+            YLeaf choice1; //type: string
+            YLeaf choice3; //type: string
 
 
 

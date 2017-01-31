@@ -26,6 +26,7 @@ class Sbfd : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class TargetIdentifier : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Sbfd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class RemoteVrfs : public Entity
@@ -56,6 +58,7 @@ class Sbfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RemoteVrf : public Entity
             {
                 public:
@@ -69,8 +72,9 @@ class Sbfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value vrf_name; //type: string
 
+
+                    YLeaf vrf_name; //type: string
 
                 class RemoteDiscriminator : public Entity
                 {
@@ -85,15 +89,16 @@ class Sbfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value vrf_name; //type: string
-                        Value remote_discriminator; //type: int32
-                        Value address; //type: string
-                        Value tid_type; //type: SbfdAddressFamilyEnum
-                        Value discr; //type: uint32
-                        Value vrf_name_xr; //type: string
-                        Value status; //type: string
-                        Value discr_src; //type: string
 
+
+                        YLeaf vrf_name; //type: string
+                        YLeaf remote_discriminator; //type: int32
+                        YLeaf address; //type: string
+                        YLeaf tid_type; //type: SbfdAddressFamilyEnum
+                        YLeaf discr; //type: uint32
+                        YLeaf vrf_name_xr; //type: string
+                        YLeaf status; //type: string
+                        YLeaf discr_src; //type: string
 
                     class IpAddress : public Entity
                     {
@@ -108,20 +113,19 @@ class Sbfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress
 
 
                         std::unique_ptr<Cisco_IOS_XR_ip_sbfd_oper::Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress> ip_address;
-                        class SbfdAddressFamilyEnum;
 
 
                 }; // Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator
@@ -154,6 +158,7 @@ class Sbfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class LocalVrf : public Entity
             {
                 public:
@@ -167,8 +172,9 @@ class Sbfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value vrf_name; //type: string
 
+
+                    YLeaf vrf_name; //type: string
 
                 class LocalDiscriminator : public Entity
                 {
@@ -183,14 +189,15 @@ class Sbfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value local_discriminator; //type: int32
-                        Value vrf_name; //type: string
-                        Value discr; //type: uint32
-                        Value vrf_name_xr; //type: string
-                        Value flags; //type: string
-                        Value status; //type: string
-                        Value discr_src; //type: string
 
+
+                        YLeaf local_discriminator; //type: int32
+                        YLeaf vrf_name; //type: string
+                        YLeaf discr; //type: uint32
+                        YLeaf vrf_name_xr; //type: string
+                        YLeaf flags; //type: string
+                        YLeaf status; //type: string
+                        YLeaf discr_src; //type: string
 
 
 
@@ -225,17 +232,17 @@ class Sbfd : public Entity
 class SbfdAddressFamilyEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 
 class BfdAfIdEnum : public Enum
 {
     public:
-        static const Enum::Value bfd_af_id_none;
-        static const Enum::Value bfd_af_id_ipv4;
-        static const Enum::Value bfd_af_id_ipv6;
+        static const Enum::YLeaf bfd_af_id_none;
+        static const Enum::YLeaf bfd_af_id_ipv4;
+        static const Enum::YLeaf bfd_af_id_ipv6;
 
 };
 

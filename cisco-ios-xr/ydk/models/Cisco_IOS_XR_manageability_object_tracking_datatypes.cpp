@@ -8,8 +8,8 @@ namespace ydk {
 namespace Cisco_IOS_XR_manageability_object_tracking_datatypes {
 
 
-const Enum::Value ObjectTrackingBooleanSignEnum::without_not {0, "without-not"};
-const Enum::Value ObjectTrackingBooleanSignEnum::with_not {1, "with-not"};
+const Enum::YLeaf ObjectTrackingBooleanSignEnum::without_not {0, "without-not"};
+const Enum::YLeaf ObjectTrackingBooleanSignEnum::with_not {1, "with-not"};
 
 
 }

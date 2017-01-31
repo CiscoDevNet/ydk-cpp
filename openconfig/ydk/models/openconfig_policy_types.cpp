@@ -116,12 +116,12 @@ Ospf3Identity::~Ospf3Identity()
 }
 
 
-const Enum::Value MatchSetOptionsRestrictedTypeEnum::ANY {0, "ANY"};
-const Enum::Value MatchSetOptionsRestrictedTypeEnum::INVERT {1, "INVERT"};
+const Enum::YLeaf MatchSetOptionsRestrictedTypeEnum::ANY {0, "ANY"};
+const Enum::YLeaf MatchSetOptionsRestrictedTypeEnum::INVERT {1, "INVERT"};
 
-const Enum::Value MatchSetOptionsTypeEnum::ANY {0, "ANY"};
-const Enum::Value MatchSetOptionsTypeEnum::ALL {1, "ALL"};
-const Enum::Value MatchSetOptionsTypeEnum::INVERT {2, "INVERT"};
+const Enum::YLeaf MatchSetOptionsTypeEnum::ANY {0, "ANY"};
+const Enum::YLeaf MatchSetOptionsTypeEnum::ALL {1, "ALL"};
+const Enum::YLeaf MatchSetOptionsTypeEnum::INVERT {2, "INVERT"};
 
 
 }

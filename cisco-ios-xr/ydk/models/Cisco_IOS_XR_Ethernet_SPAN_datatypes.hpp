@@ -14,16 +14,16 @@ namespace Cisco_IOS_XR_Ethernet_SPAN_datatypes {
 class SpanSessionClassOldEnum : public Enum
 {
     public:
-        static const Enum::Value true_;
+        static const Enum::YLeaf true_;
 
 };
 
 class SpanSessionClassEnum : public Enum
 {
     public:
-        static const Enum::Value ethernet;
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ethernet;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 

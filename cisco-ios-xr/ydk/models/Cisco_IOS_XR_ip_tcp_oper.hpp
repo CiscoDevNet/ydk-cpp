@@ -26,6 +26,7 @@ class TcpConnection : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class TcpConnection : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class TcpConnection : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value id; //type: string
 
+
+                YLeaf id; //type: string
 
             class Statistics : public Entity
             {
@@ -70,6 +73,7 @@ class TcpConnection : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Clients : public Entity
@@ -87,6 +91,7 @@ class TcpConnection : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Client : public Entity
                     {
                         public:
@@ -100,14 +105,15 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value client_id; //type: uint32
-                            Value client_jid; //type: int32
-                            Value client_name; //type: string
-                            Value ipv4_received_packets; //type: uint32
-                            Value ipv4_sent_packets; //type: uint32
-                            Value ipv6_received_packets; //type: uint32
-                            Value ipv6_sent_packets; //type: uint32
 
+
+                            YLeaf client_id; //type: uint32
+                            YLeaf client_jid; //type: int32
+                            YLeaf client_name; //type: string
+                            YLeaf ipv4_received_packets; //type: uint32
+                            YLeaf ipv4_sent_packets; //type: uint32
+                            YLeaf ipv6_received_packets; //type: uint32
+                            YLeaf ipv6_sent_packets; //type: uint32
 
 
 
@@ -135,6 +141,7 @@ class TcpConnection : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Pcb : public Entity
                     {
                         public:
@@ -148,24 +155,25 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value id; //type: uint32
-                            Value pcb; //type: uint64
-                            Value vrf_id; //type: uint32
-                            Value packets_sent; //type: uint64
-                            Value xipc_pulse_received; //type: uint64
-                            Value segment_instruction_received; //type: uint32
-                            Value send_packets_queued; //type: uint64
-                            Value send_packets_queued_net_io; //type: uint64
-                            Value send_queue_failed; //type: uint32
-                            Value send_queue_net_io_failed; //type: uint32
-                            Value packets_received; //type: uint64
-                            Value receive_queue_failed; //type: uint32
-                            Value received_packets_queued; //type: uint64
-                            Value send_window_shrink_ignored; //type: uint32
-                            Value is_paw_socket; //type: boolean
-                            Value read_io_time; //type: uint32
-                            Value write_io_time; //type: uint32
 
+
+                            YLeaf id; //type: uint32
+                            YLeaf pcb; //type: uint64
+                            YLeaf vrf_id; //type: uint32
+                            YLeaf packets_sent; //type: uint64
+                            YLeaf xipc_pulse_received; //type: uint64
+                            YLeaf segment_instruction_received; //type: uint32
+                            YLeaf send_packets_queued; //type: uint64
+                            YLeaf send_packets_queued_net_io; //type: uint64
+                            YLeaf send_queue_failed; //type: uint32
+                            YLeaf send_queue_net_io_failed; //type: uint32
+                            YLeaf packets_received; //type: uint64
+                            YLeaf receive_queue_failed; //type: uint32
+                            YLeaf received_packets_queued; //type: uint64
+                            YLeaf send_window_shrink_ignored; //type: uint32
+                            YLeaf is_paw_socket; //type: boolean
+                            YLeaf read_io_time; //type: uint32
+                            YLeaf write_io_time; //type: uint32
 
                         class ReadIoCounts : public Entity
                         {
@@ -180,11 +188,12 @@ class TcpConnection : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value io_count; //type: uint32
-                                Value arm_count; //type: uint32
-                                Value unarm_count; //type: uint32
-                                Value autoarm_count; //type: uint32
 
+
+                                YLeaf io_count; //type: uint32
+                                YLeaf arm_count; //type: uint32
+                                YLeaf unarm_count; //type: uint32
+                                YLeaf autoarm_count; //type: uint32
 
 
 
@@ -204,11 +213,12 @@ class TcpConnection : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value io_count; //type: uint32
-                                Value arm_count; //type: uint32
-                                Value unarm_count; //type: uint32
-                                Value autoarm_count; //type: uint32
 
+
+                                YLeaf io_count; //type: uint32
+                                YLeaf arm_count; //type: uint32
+                                YLeaf unarm_count; //type: uint32
+                                YLeaf autoarm_count; //type: uint32
 
 
 
@@ -228,18 +238,19 @@ class TcpConnection : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value async_session; //type: boolean
-                                ValueList data_write_success_num; //type: list of  uint32
-                                ValueList data_read_success_num; //type: list of  uint32
-                                ValueList data_write_error_num; //type: list of  uint32
-                                ValueList data_read_error_num; //type: list of  uint32
-                                ValueList control_write_success_num; //type: list of  uint32
-                                ValueList control_read_success_num; //type: list of  uint32
-                                ValueList control_write_error_num; //type: list of  uint32
-                                ValueList control_read_error_num; //type: list of  uint32
-                                ValueList data_write_byte; //type: list of  uint64
-                                ValueList data_read_byte; //type: list of  uint64
 
+
+                                YLeaf async_session; //type: boolean
+                                YLeafList data_write_success_num; //type: list of  uint32
+                                YLeafList data_read_success_num; //type: list of  uint32
+                                YLeafList data_write_error_num; //type: list of  uint32
+                                YLeafList data_read_error_num; //type: list of  uint32
+                                YLeafList control_write_success_num; //type: list of  uint32
+                                YLeafList control_read_success_num; //type: list of  uint32
+                                YLeafList control_write_error_num; //type: list of  uint32
+                                YLeafList control_read_error_num; //type: list of  uint32
+                                YLeafList data_write_byte; //type: list of  uint64
+                                YLeafList data_read_byte; //type: list of  uint64
 
 
 
@@ -273,93 +284,94 @@ class TcpConnection : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value syn_cache_count; //type: uint32
-                        Value num_open_sockets; //type: uint32
-                        Value total_pakets_sent; //type: uint32
-                        Value send_packets_dropped; //type: uint32
-                        Value send_auth_packets_dropped; //type: uint32
-                        Value data_pakets_sent; //type: uint32
-                        Value data_bytes_sent; //type: uint32
-                        Value packets_retransmitted; //type: uint32
-                        Value bytes_retransmitted; //type: uint32
-                        Value ack_only_packets_sent; //type: uint32
-                        Value delay_ack_packets_sent; //type: uint32
-                        Value urgent_only_packets_sent; //type: uint32
-                        Value window_probe_packets_sent; //type: uint32
-                        Value window_update_packets_sent; //type: uint32
-                        Value control_packets_sent; //type: uint32
-                        Value rst_packets_sent; //type: uint32
-                        Value total_packets_received; //type: uint32
-                        Value received_packets_dropped; //type: uint32
-                        Value synacl_match_pkts_dropped; //type: uint32
-                        Value received_packets_dropped_stale_c_hdr; //type: uint32
-                        Value received_auth_packets_dropped; //type: uint32
-                        Value ack_packets_received; //type: uint32
-                        Value ackbytes_received; //type: uint32
-                        Value duplicated_ack_packets_received; //type: uint32
-                        Value ack_packets_for_unsent_received; //type: uint32
-                        Value data_packets_received_in_sequence; //type: uint32
-                        Value data_bytes_received_in_sequence; //type: uint32
-                        Value duplicate_packets_received; //type: uint32
-                        Value duplicate_bytes_received; //type: uint32
-                        Value partial_duplicate_ack_received; //type: uint32
-                        Value partial_duplicate_bytes_received; //type: uint32
-                        Value out_of_order_packets_received; //type: uint32
-                        Value out_of_order_bytes_received; //type: uint32
-                        Value after_window_packets_received; //type: uint32
-                        Value after_window_bytes_received; //type: uint32
-                        Value window_probe_packets_received; //type: uint32
-                        Value window_update_packets_received; //type: uint32
-                        Value packets_received_after_close_packet; //type: uint32
-                        Value bad_checksum_packets_received; //type: uint32
-                        Value too_short_packets_received; //type: uint32
-                        Value malformed_packets_received; //type: uint32
-                        Value no_port_packets_received; //type: uint32
-                        Value connections_requested; //type: uint32
-                        Value connections_accepted; //type: uint32
-                        Value connections_established; //type: uint32
-                        Value connections_forcibly_closed; //type: uint32
-                        Value connections_closed; //type: uint32
-                        Value connections_dropped; //type: uint32
-                        Value embryonic_connection_dropped; //type: uint32
-                        Value connections_failed; //type: uint32
-                        Value established_connections_reset; //type: uint32
-                        Value retransmit_timeouts; //type: uint32
-                        Value retransmit_dropped; //type: uint32
-                        Value keep_alive_timeouts; //type: uint32
-                        Value keep_alive_dropped; //type: uint32
-                        Value keep_alive_probes; //type: uint32
-                        Value paws_dropped; //type: uint32
-                        Value persist_dropped; //type: uint32
-                        Value try_lock_dropped; //type: uint32
-                        Value connection_rate_limited; //type: uint32
-                        Value syn_cache_added; //type: uint32
-                        Value syn_cache_completed; //type: uint32
-                        Value syn_cache_timed_out; //type: uint32
-                        Value syn_cache_overflow; //type: uint32
-                        Value syn_cache_reset; //type: uint32
-                        Value syn_cache_unreach; //type: uint32
-                        Value syn_cache_bucket_oflow; //type: uint32
-                        Value syn_cache_aborted; //type: uint32
-                        Value syn_cache_duplicate_sy_ns; //type: uint32
-                        Value syn_cache_dropped; //type: uint32
-                        Value pulse_errors; //type: uint32
-                        Value socket_layer_packets; //type: uint32
-                        Value reassembly_packets; //type: uint32
-                        Value recovered_packets; //type: uint32
-                        Value packet_failures; //type: uint32
-                        Value mss_up; //type: uint32
-                        Value mss_down; //type: uint32
-                        Value truncated_write_iov; //type: uint32
-                        Value no_throttle; //type: uint32
-                        Value low_water_mark_throttle; //type: uint32
-                        Value high_water_mark_throttle; //type: uint32
-                        Value stalled_timer_tickle_count; //type: uint32
-                        Value stalled_timer_tickle_time; //type: uint32
-                        Value iq_sock_writes; //type: uint32
-                        Value iq_sock_retries; //type: uint32
-                        Value iq_sock_aborts; //type: uint32
 
+
+                        YLeaf syn_cache_count; //type: uint32
+                        YLeaf num_open_sockets; //type: uint32
+                        YLeaf total_pakets_sent; //type: uint32
+                        YLeaf send_packets_dropped; //type: uint32
+                        YLeaf send_auth_packets_dropped; //type: uint32
+                        YLeaf data_pakets_sent; //type: uint32
+                        YLeaf data_bytes_sent; //type: uint32
+                        YLeaf packets_retransmitted; //type: uint32
+                        YLeaf bytes_retransmitted; //type: uint32
+                        YLeaf ack_only_packets_sent; //type: uint32
+                        YLeaf delay_ack_packets_sent; //type: uint32
+                        YLeaf urgent_only_packets_sent; //type: uint32
+                        YLeaf window_probe_packets_sent; //type: uint32
+                        YLeaf window_update_packets_sent; //type: uint32
+                        YLeaf control_packets_sent; //type: uint32
+                        YLeaf rst_packets_sent; //type: uint32
+                        YLeaf total_packets_received; //type: uint32
+                        YLeaf received_packets_dropped; //type: uint32
+                        YLeaf synacl_match_pkts_dropped; //type: uint32
+                        YLeaf received_packets_dropped_stale_c_hdr; //type: uint32
+                        YLeaf received_auth_packets_dropped; //type: uint32
+                        YLeaf ack_packets_received; //type: uint32
+                        YLeaf ackbytes_received; //type: uint32
+                        YLeaf duplicated_ack_packets_received; //type: uint32
+                        YLeaf ack_packets_for_unsent_received; //type: uint32
+                        YLeaf data_packets_received_in_sequence; //type: uint32
+                        YLeaf data_bytes_received_in_sequence; //type: uint32
+                        YLeaf duplicate_packets_received; //type: uint32
+                        YLeaf duplicate_bytes_received; //type: uint32
+                        YLeaf partial_duplicate_ack_received; //type: uint32
+                        YLeaf partial_duplicate_bytes_received; //type: uint32
+                        YLeaf out_of_order_packets_received; //type: uint32
+                        YLeaf out_of_order_bytes_received; //type: uint32
+                        YLeaf after_window_packets_received; //type: uint32
+                        YLeaf after_window_bytes_received; //type: uint32
+                        YLeaf window_probe_packets_received; //type: uint32
+                        YLeaf window_update_packets_received; //type: uint32
+                        YLeaf packets_received_after_close_packet; //type: uint32
+                        YLeaf bad_checksum_packets_received; //type: uint32
+                        YLeaf too_short_packets_received; //type: uint32
+                        YLeaf malformed_packets_received; //type: uint32
+                        YLeaf no_port_packets_received; //type: uint32
+                        YLeaf connections_requested; //type: uint32
+                        YLeaf connections_accepted; //type: uint32
+                        YLeaf connections_established; //type: uint32
+                        YLeaf connections_forcibly_closed; //type: uint32
+                        YLeaf connections_closed; //type: uint32
+                        YLeaf connections_dropped; //type: uint32
+                        YLeaf embryonic_connection_dropped; //type: uint32
+                        YLeaf connections_failed; //type: uint32
+                        YLeaf established_connections_reset; //type: uint32
+                        YLeaf retransmit_timeouts; //type: uint32
+                        YLeaf retransmit_dropped; //type: uint32
+                        YLeaf keep_alive_timeouts; //type: uint32
+                        YLeaf keep_alive_dropped; //type: uint32
+                        YLeaf keep_alive_probes; //type: uint32
+                        YLeaf paws_dropped; //type: uint32
+                        YLeaf persist_dropped; //type: uint32
+                        YLeaf try_lock_dropped; //type: uint32
+                        YLeaf connection_rate_limited; //type: uint32
+                        YLeaf syn_cache_added; //type: uint32
+                        YLeaf syn_cache_completed; //type: uint32
+                        YLeaf syn_cache_timed_out; //type: uint32
+                        YLeaf syn_cache_overflow; //type: uint32
+                        YLeaf syn_cache_reset; //type: uint32
+                        YLeaf syn_cache_unreach; //type: uint32
+                        YLeaf syn_cache_bucket_oflow; //type: uint32
+                        YLeaf syn_cache_aborted; //type: uint32
+                        YLeaf syn_cache_duplicate_sy_ns; //type: uint32
+                        YLeaf syn_cache_dropped; //type: uint32
+                        YLeaf pulse_errors; //type: uint32
+                        YLeaf socket_layer_packets; //type: uint32
+                        YLeaf reassembly_packets; //type: uint32
+                        YLeaf recovered_packets; //type: uint32
+                        YLeaf packet_failures; //type: uint32
+                        YLeaf mss_up; //type: uint32
+                        YLeaf mss_down; //type: uint32
+                        YLeaf truncated_write_iov; //type: uint32
+                        YLeaf no_throttle; //type: uint32
+                        YLeaf low_water_mark_throttle; //type: uint32
+                        YLeaf high_water_mark_throttle; //type: uint32
+                        YLeaf stalled_timer_tickle_count; //type: uint32
+                        YLeaf stalled_timer_tickle_time; //type: uint32
+                        YLeaf iq_sock_writes; //type: uint32
+                        YLeaf iq_sock_retries; //type: uint32
+                        YLeaf iq_sock_aborts; //type: uint32
 
 
 
@@ -389,6 +401,7 @@ class TcpConnection : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DisplayTypes : public Entity
                 {
                     public:
@@ -404,6 +417,7 @@ class TcpConnection : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class DisplayType : public Entity
                     {
                         public:
@@ -417,8 +431,9 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value disp_type; //type: ShowEnum
 
+
+                            YLeaf disp_type; //type: ShowEnum
 
                         class ConnectionId : public Entity
                         {
@@ -433,11 +448,12 @@ class TcpConnection : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value pcb_id; //type: uint32
-                                Value l4_protocol; //type: uint32
-                                Value local_port; //type: uint16
-                                Value foreign_port; //type: uint16
 
+
+                                YLeaf pcb_id; //type: uint32
+                                YLeaf l4_protocol; //type: uint32
+                                YLeaf local_port; //type: uint16
+                                YLeaf foreign_port; //type: uint16
 
                             class LocalAddress : public Entity
                             {
@@ -452,12 +468,12 @@ class TcpConnection : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value af_name; //type: AddrFamilyEnum
-                                    Value ipv4_address; //type: string
-                                    Value ipv6_address; //type: string
 
 
-                                    class AddrFamilyEnum;
+                                    YLeaf af_name; //type: AddrFamilyEnum
+                                    YLeaf ipv4_address; //type: string
+                                    YLeaf ipv6_address; //type: string
+
 
 
                             }; // TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress
@@ -476,12 +492,12 @@ class TcpConnection : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value af_name; //type: AddrFamilyEnum
-                                    Value ipv4_address; //type: string
-                                    Value ipv6_address; //type: string
 
 
-                                    class AddrFamilyEnum;
+                                    YLeaf af_name; //type: AddrFamilyEnum
+                                    YLeaf ipv4_address; //type: string
+                                    YLeaf ipv6_address; //type: string
+
 
 
                             }; // TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress
@@ -500,8 +516,9 @@ class TcpConnection : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value af_name; //type: AddrFamilyEnum
 
+
+                                    YLeaf af_name; //type: AddrFamilyEnum
 
                                 class LptsPcb : public Entity
                                 {
@@ -516,9 +533,10 @@ class TcpConnection : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value ttl; //type: uint8
-                                        Value flow_types_info; //type: uint32
 
+
+                                        YLeaf ttl; //type: uint8
+                                        YLeaf flow_types_info; //type: uint32
 
                                     class Options : public Entity
                                     {
@@ -533,9 +551,10 @@ class TcpConnection : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value is_receive_filter; //type: boolean
-                                            Value is_ip_sla; //type: boolean
 
+
+                                            YLeaf is_receive_filter; //type: boolean
+                                            YLeaf is_ip_sla; //type: boolean
 
 
 
@@ -555,10 +574,11 @@ class TcpConnection : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value is_pcb_bound; //type: boolean
-                                            Value is_local_address_ignore; //type: boolean
-                                            Value is_ignore_vrf_filter; //type: boolean
 
+
+                                            YLeaf is_pcb_bound; //type: boolean
+                                            YLeaf is_local_address_ignore; //type: boolean
+                                            YLeaf is_ignore_vrf_filter; //type: boolean
 
 
 
@@ -578,13 +598,14 @@ class TcpConnection : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value is_interface; //type: boolean
-                                            Value is_packet_type; //type: boolean
-                                            Value is_remote_address; //type: boolean
-                                            Value is_remote_port; //type: boolean
-                                            Value is_local_address; //type: boolean
-                                            Value is_local_port; //type: boolean
 
+
+                                            YLeaf is_interface; //type: boolean
+                                            YLeaf is_packet_type; //type: boolean
+                                            YLeaf is_remote_address; //type: boolean
+                                            YLeaf is_remote_port; //type: boolean
+                                            YLeaf is_local_address; //type: boolean
+                                            YLeaf is_local_port; //type: boolean
 
 
 
@@ -604,15 +625,16 @@ class TcpConnection : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interface_name; //type: string
-                                            Value remote_length; //type: uint16
-                                            Value local_length; //type: uint16
-                                            Value receive_remote_port; //type: uint16
-                                            Value receive_local_port; //type: uint16
-                                            Value priority; //type: uint8
-                                            Value ttl; //type: uint8
-                                            Value flow_types_info; //type: uint32
 
+
+                                            YLeaf interface_name; //type: string
+                                            YLeaf remote_length; //type: uint16
+                                            YLeaf local_length; //type: uint16
+                                            YLeaf receive_remote_port; //type: uint16
+                                            YLeaf receive_local_port; //type: uint16
+                                            YLeaf priority; //type: uint8
+                                            YLeaf ttl; //type: uint8
+                                            YLeaf flow_types_info; //type: uint32
 
                                         class PacketType : public Entity
                                         {
@@ -627,17 +649,14 @@ class TcpConnection : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value type; //type: PacketEnum
-                                                Value icmp_message_type; //type: MessageTypeIcmpEnum
-                                                Value icm_pv6_message_type; //type: MessageTypeIcmpv6Enum
-                                                Value igmp_message_type; //type: MessageTypeIgmpEnum
-                                                Value message_id; //type: uint32
 
 
-                                                class MessageTypeIcmpv6Enum;
-                                                class MessageTypeIcmpEnum;
-                                                class MessageTypeIgmpEnum;
-                                                class PacketEnum;
+                                                YLeaf type; //type: PacketEnum
+                                                YLeaf icmp_message_type; //type: MessageTypeIcmpEnum
+                                                YLeaf icm_pv6_message_type; //type: MessageTypeIcmpv6Enum
+                                                YLeaf igmp_message_type; //type: MessageTypeIgmpEnum
+                                                YLeaf message_id; //type: uint32
+
 
 
                                         }; // TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType
@@ -656,12 +675,12 @@ class TcpConnection : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: AddrFamilyEnum
-                                                Value ipv4_address; //type: string
-                                                Value ipv6_address; //type: string
 
 
-                                                class AddrFamilyEnum;
+                                                YLeaf af_name; //type: AddrFamilyEnum
+                                                YLeaf ipv4_address; //type: string
+                                                YLeaf ipv6_address; //type: string
+
 
 
                                         }; // TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress
@@ -680,12 +699,12 @@ class TcpConnection : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: AddrFamilyEnum
-                                                Value ipv4_address; //type: string
-                                                Value ipv6_address; //type: string
 
 
-                                                class AddrFamilyEnum;
+                                                YLeaf af_name; //type: AddrFamilyEnum
+                                                YLeaf ipv4_address; //type: string
+                                                YLeaf ipv6_address; //type: string
+
 
 
                                         }; // TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress
@@ -709,7 +728,6 @@ class TcpConnection : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb> lpts_pcb;
-                                    class AddrFamilyEnum;
 
 
                             }; // TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common
@@ -724,7 +742,6 @@ class TcpConnection : public Entity
 
 
                             std::vector<std::unique_ptr<Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId> > connection_id;
-                            class ShowEnum;
 
 
                     }; // TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType
@@ -757,6 +774,7 @@ class TcpConnection : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DetailInformation : public Entity
                 {
                     public:
@@ -770,78 +788,79 @@ class TcpConnection : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value pcb_id; //type: uint32
-                        Value address_family; //type: TcpAddressFamilyEnum
-                        Value pcb; //type: uint64
-                        Value so; //type: uint64
-                        Value tcpcb; //type: uint64
-                        Value vrf_id; //type: uint32
-                        Value connection_state; //type: TcpConnStateEnum
-                        Value established_time; //type: uint32
-                        Value local_pid; //type: uint32
-                        Value local_port; //type: uint16
-                        Value foreign_port; //type: uint16
-                        Value packet_priority; //type: PakPrioEnum
-                        Value packet_tos; //type: uint16
-                        Value packet_ttl; //type: uint16
-                        Value hash_index; //type: uint32
-                        Value current_receive_queue_size; //type: uint32
-                        Value max_receive_queue_size; //type: uint32
-                        Value current_send_queue_size; //type: uint32
-                        Value max_send_queue_size; //type: uint32
-                        Value current_receive_queue_packet_size; //type: uint32
-                        Value max_receive_queue_packet_size; //type: uint32
-                        Value save_queue_size; //type: uint32
-                        Value send_initial_sequence_num; //type: uint32
-                        Value send_unack_sequence_num; //type: uint32
-                        Value send_next_sequence_num; //type: uint32
-                        Value send_max_sequence_num; //type: uint32
-                        Value send_window_size; //type: uint32
-                        Value send_congestion_window_size; //type: uint32
-                        Value receive_initial_sequence_num; //type: uint32
-                        Value receive_next_sequence_num; //type: uint32
-                        Value receive_adv_window_size; //type: uint32
-                        Value receive_window_size; //type: uint32
-                        Value mss; //type: uint32
-                        Value peer_mss; //type: uint32
-                        Value srtt; //type: uint32
-                        Value rtto; //type: uint32
-                        Value krtt; //type: uint32
-                        Value srtv; //type: uint32
-                        Value min_rtt; //type: uint32
-                        Value max_rtt; //type: uint32
-                        Value retries; //type: uint32
-                        Value ack_hold_time; //type: uint32
-                        Value giveup_time; //type: uint32
-                        Value keep_alive_time; //type: uint32
-                        Value syn_wait_time; //type: uint32
-                        Value rxsy_naclname; //type: string
-                        Value soft_error; //type: int32
-                        Value sock_error; //type: int32
-                        Value is_retrans_forever; //type: boolean
-                        Value min_mss; //type: uint32
-                        Value max_mss; //type: uint32
-                        Value connect_retries; //type: uint16
-                        Value connect_retry_interval; //type: uint16
-                        Value receive_window_scale; //type: uint32
-                        Value send_window_scale; //type: uint32
-                        Value request_receive_window_scale; //type: uint32
-                        Value rqst_send_wnd_scale; //type: uint32
-                        Value time_stamp_recent; //type: uint32
-                        Value time_stamp_recent_age; //type: uint32
-                        Value last_ack_sent; //type: uint32
-                        Value sendbuf_lowwat; //type: uint32
-                        Value recvbuf_lowwat; //type: uint32
-                        Value sendbuf_hiwat; //type: uint32
-                        Value recvbuf_hiwat; //type: uint32
-                        Value sendbuf_notify_thresh; //type: uint32
-                        Value send_pdu_count; //type: uint32
-                        Value output_ifhandle; //type: uint32
-                        Value fib_pd_ctx_size; //type: uint32
-                        Value num_labels; //type: uint32
-                        ValueList fib_pd_ctx; //type: list of  uint32
-                        ValueList fib_label_output; //type: list of  uint32
 
+
+                        YLeaf pcb_id; //type: uint32
+                        YLeaf address_family; //type: TcpAddressFamilyEnum
+                        YLeaf pcb; //type: uint64
+                        YLeaf so; //type: uint64
+                        YLeaf tcpcb; //type: uint64
+                        YLeaf vrf_id; //type: uint32
+                        YLeaf connection_state; //type: TcpConnStateEnum
+                        YLeaf established_time; //type: uint32
+                        YLeaf local_pid; //type: uint32
+                        YLeaf local_port; //type: uint16
+                        YLeaf foreign_port; //type: uint16
+                        YLeaf packet_priority; //type: PakPrioEnum
+                        YLeaf packet_tos; //type: uint16
+                        YLeaf packet_ttl; //type: uint16
+                        YLeaf hash_index; //type: uint32
+                        YLeaf current_receive_queue_size; //type: uint32
+                        YLeaf max_receive_queue_size; //type: uint32
+                        YLeaf current_send_queue_size; //type: uint32
+                        YLeaf max_send_queue_size; //type: uint32
+                        YLeaf current_receive_queue_packet_size; //type: uint32
+                        YLeaf max_receive_queue_packet_size; //type: uint32
+                        YLeaf save_queue_size; //type: uint32
+                        YLeaf send_initial_sequence_num; //type: uint32
+                        YLeaf send_unack_sequence_num; //type: uint32
+                        YLeaf send_next_sequence_num; //type: uint32
+                        YLeaf send_max_sequence_num; //type: uint32
+                        YLeaf send_window_size; //type: uint32
+                        YLeaf send_congestion_window_size; //type: uint32
+                        YLeaf receive_initial_sequence_num; //type: uint32
+                        YLeaf receive_next_sequence_num; //type: uint32
+                        YLeaf receive_adv_window_size; //type: uint32
+                        YLeaf receive_window_size; //type: uint32
+                        YLeaf mss; //type: uint32
+                        YLeaf peer_mss; //type: uint32
+                        YLeaf srtt; //type: uint32
+                        YLeaf rtto; //type: uint32
+                        YLeaf krtt; //type: uint32
+                        YLeaf srtv; //type: uint32
+                        YLeaf min_rtt; //type: uint32
+                        YLeaf max_rtt; //type: uint32
+                        YLeaf retries; //type: uint32
+                        YLeaf ack_hold_time; //type: uint32
+                        YLeaf giveup_time; //type: uint32
+                        YLeaf keep_alive_time; //type: uint32
+                        YLeaf syn_wait_time; //type: uint32
+                        YLeaf rxsy_naclname; //type: string
+                        YLeaf soft_error; //type: int32
+                        YLeaf sock_error; //type: int32
+                        YLeaf is_retrans_forever; //type: boolean
+                        YLeaf min_mss; //type: uint32
+                        YLeaf max_mss; //type: uint32
+                        YLeaf connect_retries; //type: uint16
+                        YLeaf connect_retry_interval; //type: uint16
+                        YLeaf receive_window_scale; //type: uint32
+                        YLeaf send_window_scale; //type: uint32
+                        YLeaf request_receive_window_scale; //type: uint32
+                        YLeaf rqst_send_wnd_scale; //type: uint32
+                        YLeaf time_stamp_recent; //type: uint32
+                        YLeaf time_stamp_recent_age; //type: uint32
+                        YLeaf last_ack_sent; //type: uint32
+                        YLeaf sendbuf_lowwat; //type: uint32
+                        YLeaf recvbuf_lowwat; //type: uint32
+                        YLeaf sendbuf_hiwat; //type: uint32
+                        YLeaf recvbuf_hiwat; //type: uint32
+                        YLeaf sendbuf_notify_thresh; //type: uint32
+                        YLeaf send_pdu_count; //type: uint32
+                        YLeaf output_ifhandle; //type: uint32
+                        YLeaf fib_pd_ctx_size; //type: uint32
+                        YLeaf num_labels; //type: uint32
+                        YLeafList fib_pd_ctx; //type: list of  uint32
+                        YLeafList fib_label_output; //type: list of  uint32
 
                     class LocalAddress : public Entity
                     {
@@ -856,12 +875,12 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: TcpAddressFamilyEnum
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
 
-                            class TcpAddressFamilyEnum;
+                            YLeaf af_name; //type: TcpAddressFamilyEnum
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
+
 
 
                     }; // TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress
@@ -880,12 +899,12 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: TcpAddressFamilyEnum
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
 
-                            class TcpAddressFamilyEnum;
+                            YLeaf af_name; //type: TcpAddressFamilyEnum
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
+
 
 
                     }; // TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress
@@ -904,18 +923,19 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value debug; //type: boolean
-                            Value accept_connection; //type: boolean
-                            Value reuse_address; //type: boolean
-                            Value keep_alive; //type: boolean
-                            Value dont_route; //type: boolean
-                            Value broadcast; //type: boolean
-                            Value use_loopback; //type: boolean
-                            Value linger; //type: boolean
-                            Value out_of_band_inline; //type: boolean
-                            Value reuse_port; //type: boolean
-                            Value nonblocking_io; //type: boolean
 
+
+                            YLeaf debug; //type: boolean
+                            YLeaf accept_connection; //type: boolean
+                            YLeaf reuse_address; //type: boolean
+                            YLeaf keep_alive; //type: boolean
+                            YLeaf dont_route; //type: boolean
+                            YLeaf broadcast; //type: boolean
+                            YLeaf use_loopback; //type: boolean
+                            YLeaf linger; //type: boolean
+                            YLeaf out_of_band_inline; //type: boolean
+                            YLeaf reuse_port; //type: boolean
+                            YLeaf nonblocking_io; //type: boolean
 
 
 
@@ -935,22 +955,23 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value no_file_descriptor_reference; //type: boolean
-                            Value is_connected; //type: boolean
-                            Value is_connecting; //type: boolean
-                            Value is_disconnecting; //type: boolean
-                            Value cant_send_more; //type: boolean
-                            Value cant_receive_more; //type: boolean
-                            Value received_at_mark; //type: boolean
-                            Value privileged; //type: boolean
-                            Value block_close; //type: boolean
-                            Value async_io_notify; //type: boolean
-                            Value is_confirming; //type: boolean
-                            Value is_solock; //type: boolean
-                            Value is_detached; //type: boolean
-                            Value block_receive; //type: boolean
-                            Value block_send; //type: boolean
 
+
+                            YLeaf no_file_descriptor_reference; //type: boolean
+                            YLeaf is_connected; //type: boolean
+                            YLeaf is_connecting; //type: boolean
+                            YLeaf is_disconnecting; //type: boolean
+                            YLeaf cant_send_more; //type: boolean
+                            YLeaf cant_receive_more; //type: boolean
+                            YLeaf received_at_mark; //type: boolean
+                            YLeaf privileged; //type: boolean
+                            YLeaf block_close; //type: boolean
+                            YLeaf async_io_notify; //type: boolean
+                            YLeaf is_confirming; //type: boolean
+                            YLeaf is_solock; //type: boolean
+                            YLeaf is_detached; //type: boolean
+                            YLeaf block_receive; //type: boolean
+                            YLeaf block_send; //type: boolean
 
 
 
@@ -970,16 +991,17 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value selective_ack; //type: boolean
-                            Value md5; //type: boolean
-                            Value timestamps; //type: boolean
-                            Value window_scaling; //type: boolean
-                            Value nagle; //type: boolean
-                            Value giveup_timer; //type: boolean
-                            Value connection_keep_alive_timer; //type: boolean
-                            Value path_mtu_discovery; //type: boolean
-                            Value mss_cisco; //type: boolean
 
+
+                            YLeaf selective_ack; //type: boolean
+                            YLeaf md5; //type: boolean
+                            YLeaf timestamps; //type: boolean
+                            YLeaf window_scaling; //type: boolean
+                            YLeaf nagle; //type: boolean
+                            YLeaf giveup_timer; //type: boolean
+                            YLeaf connection_keep_alive_timer; //type: boolean
+                            YLeaf path_mtu_discovery; //type: boolean
+                            YLeaf mss_cisco; //type: boolean
 
 
 
@@ -999,15 +1021,16 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value nagle_wait; //type: boolean
-                            Value ack_needed; //type: boolean
-                            Value fin_sent; //type: boolean
-                            Value probing; //type: boolean
-                            Value need_push; //type: boolean
-                            Value pushed; //type: boolean
-                            Value in_syn_cache; //type: boolean
-                            Value path_mtu_ager; //type: boolean
 
+
+                            YLeaf nagle_wait; //type: boolean
+                            YLeaf ack_needed; //type: boolean
+                            YLeaf fin_sent; //type: boolean
+                            YLeaf probing; //type: boolean
+                            YLeaf need_push; //type: boolean
+                            YLeaf pushed; //type: boolean
+                            YLeaf in_syn_cache; //type: boolean
+                            YLeaf path_mtu_ager; //type: boolean
 
 
 
@@ -1027,16 +1050,17 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value selective_ack; //type: boolean
-                            Value md5; //type: boolean
-                            Value timestamps; //type: boolean
-                            Value window_scaling; //type: boolean
-                            Value nagle; //type: boolean
-                            Value giveup_timer; //type: boolean
-                            Value connection_keep_alive_timer; //type: boolean
-                            Value path_mtu_discovery; //type: boolean
-                            Value mss_cisco; //type: boolean
 
+
+                            YLeaf selective_ack; //type: boolean
+                            YLeaf md5; //type: boolean
+                            YLeaf timestamps; //type: boolean
+                            YLeaf window_scaling; //type: boolean
+                            YLeaf nagle; //type: boolean
+                            YLeaf giveup_timer; //type: boolean
+                            YLeaf connection_keep_alive_timer; //type: boolean
+                            YLeaf path_mtu_discovery; //type: boolean
+                            YLeaf mss_cisco; //type: boolean
 
 
 
@@ -1056,19 +1080,20 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value locked; //type: boolean
-                            Value waiting_for_lock; //type: boolean
-                            Value waiting_for_data; //type: boolean
-                            Value input_select; //type: boolean
-                            Value async_io; //type: boolean
-                            Value not_interruptible; //type: boolean
-                            Value io_timer_set; //type: boolean
-                            Value delayed_wakeup; //type: boolean
-                            Value wakeup; //type: boolean
-                            Value connect_wakeup; //type: boolean
-                            Value output_select; //type: boolean
-                            Value out_of_band_select; //type: boolean
 
+
+                            YLeaf locked; //type: boolean
+                            YLeaf waiting_for_lock; //type: boolean
+                            YLeaf waiting_for_data; //type: boolean
+                            YLeaf input_select; //type: boolean
+                            YLeaf async_io; //type: boolean
+                            YLeaf not_interruptible; //type: boolean
+                            YLeaf io_timer_set; //type: boolean
+                            YLeaf delayed_wakeup; //type: boolean
+                            YLeaf wakeup; //type: boolean
+                            YLeaf connect_wakeup; //type: boolean
+                            YLeaf output_select; //type: boolean
+                            YLeaf out_of_band_select; //type: boolean
 
 
 
@@ -1088,19 +1113,20 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value locked; //type: boolean
-                            Value waiting_for_lock; //type: boolean
-                            Value waiting_for_data; //type: boolean
-                            Value input_select; //type: boolean
-                            Value async_io; //type: boolean
-                            Value not_interruptible; //type: boolean
-                            Value io_timer_set; //type: boolean
-                            Value delayed_wakeup; //type: boolean
-                            Value wakeup; //type: boolean
-                            Value connect_wakeup; //type: boolean
-                            Value output_select; //type: boolean
-                            Value out_of_band_select; //type: boolean
 
+
+                            YLeaf locked; //type: boolean
+                            YLeaf waiting_for_lock; //type: boolean
+                            YLeaf waiting_for_data; //type: boolean
+                            YLeaf input_select; //type: boolean
+                            YLeaf async_io; //type: boolean
+                            YLeaf not_interruptible; //type: boolean
+                            YLeaf io_timer_set; //type: boolean
+                            YLeaf delayed_wakeup; //type: boolean
+                            YLeaf wakeup; //type: boolean
+                            YLeaf connect_wakeup; //type: boolean
+                            YLeaf output_select; //type: boolean
+                            YLeaf out_of_band_select; //type: boolean
 
 
 
@@ -1120,13 +1146,13 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value timer_type; //type: TcpTimerEnum
-                            Value timer_activations; //type: uint32
-                            Value timer_expirations; //type: uint32
-                            Value timer_next_activation; //type: uint32
 
 
-                            class TcpTimerEnum;
+                            YLeaf timer_type; //type: TcpTimerEnum
+                            YLeaf timer_activations; //type: uint32
+                            YLeaf timer_expirations; //type: uint32
+                            YLeaf timer_next_activation; //type: uint32
+
 
 
                     }; // TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer
@@ -1145,9 +1171,10 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start; //type: uint32
-                            Value end; //type: uint32
 
+
+                            YLeaf start; //type: uint32
+                            YLeaf end; //type: uint32
 
 
 
@@ -1167,11 +1194,12 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start; //type: uint32
-                            Value end; //type: uint32
-                            Value duplicated_ack; //type: uint32
-                            Value retransmitted; //type: uint32
 
+
+                            YLeaf start; //type: uint32
+                            YLeaf end; //type: uint32
+                            YLeaf duplicated_ack; //type: uint32
+                            YLeaf retransmitted; //type: uint32
 
 
 
@@ -1190,9 +1218,6 @@ class TcpConnection : public Entity
                         std::unique_ptr<Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags> socket_state_flags;
                         std::unique_ptr<Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags> state_flags;
                         std::vector<std::unique_ptr<Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer> > timer;
-                        class TcpAddressFamilyEnum;
-                        class TcpConnStateEnum;
-                        class PakPrioEnum;
 
 
                 }; // TcpConnection::Nodes::Node::DetailInformations::DetailInformation
@@ -1219,6 +1244,7 @@ class TcpConnection : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BriefInformation : public Entity
                 {
                     public:
@@ -1232,17 +1258,18 @@ class TcpConnection : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value pcb_id; //type: uint32
-                        Value af_name; //type: TcpAddressFamilyEnum
-                        Value pcb; //type: uint64
-                        Value connection_state; //type: TcpConnStateEnum
-                        Value local_pid; //type: uint32
-                        Value local_port; //type: uint16
-                        Value foreign_port; //type: uint16
-                        Value current_receive_queue_size; //type: uint32
-                        Value current_send_queue_size; //type: uint32
-                        Value vrf_id; //type: uint32
 
+
+                        YLeaf pcb_id; //type: uint32
+                        YLeaf af_name; //type: TcpAddressFamilyEnum
+                        YLeaf pcb; //type: uint64
+                        YLeaf connection_state; //type: TcpConnStateEnum
+                        YLeaf local_pid; //type: uint32
+                        YLeaf local_port; //type: uint16
+                        YLeaf foreign_port; //type: uint16
+                        YLeaf current_receive_queue_size; //type: uint32
+                        YLeaf current_send_queue_size; //type: uint32
+                        YLeaf vrf_id; //type: uint32
 
                     class LocalAddress : public Entity
                     {
@@ -1257,12 +1284,12 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: TcpAddressFamilyEnum
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
 
-                            class TcpAddressFamilyEnum;
+                            YLeaf af_name; //type: TcpAddressFamilyEnum
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
+
 
 
                     }; // TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress
@@ -1281,12 +1308,12 @@ class TcpConnection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: TcpAddressFamilyEnum
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
 
-                            class TcpAddressFamilyEnum;
+                            YLeaf af_name; //type: TcpAddressFamilyEnum
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
+
 
 
                     }; // TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress
@@ -1294,8 +1321,6 @@ class TcpConnection : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress> foreign_address;
                         std::unique_ptr<Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress> local_address;
-                        class TcpAddressFamilyEnum;
-                        class TcpConnStateEnum;
 
 
                 }; // TcpConnection::Nodes::Node::BriefInformations::BriefInformation
@@ -1343,6 +1368,7 @@ class Tcp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -1358,6 +1384,7 @@ class Tcp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -1371,8 +1398,9 @@ class Tcp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Statistics : public Entity
             {
@@ -1389,6 +1417,7 @@ class Tcp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ipv4Traffic : public Entity
                 {
                     public:
@@ -1402,12 +1431,13 @@ class Tcp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value tcp_input_packets; //type: uint32
-                        Value tcp_checksum_error_packets; //type: uint32
-                        Value tcp_dropped_packets; //type: uint32
-                        Value tcp_output_packets; //type: uint32
-                        Value tcp_retransmitted_packets; //type: uint32
 
+
+                        YLeaf tcp_input_packets; //type: uint32
+                        YLeaf tcp_checksum_error_packets; //type: uint32
+                        YLeaf tcp_dropped_packets; //type: uint32
+                        YLeaf tcp_output_packets; //type: uint32
+                        YLeaf tcp_retransmitted_packets; //type: uint32
 
 
 
@@ -1427,12 +1457,13 @@ class Tcp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value tcp_input_packets; //type: uint32
-                        Value tcp_checksum_error_packets; //type: uint32
-                        Value tcp_dropped_packets; //type: uint32
-                        Value tcp_output_packets; //type: uint32
-                        Value tcp_retransmitted_packets; //type: uint32
 
+
+                        YLeaf tcp_input_packets; //type: uint32
+                        YLeaf tcp_checksum_error_packets; //type: uint32
+                        YLeaf tcp_dropped_packets; //type: uint32
+                        YLeaf tcp_output_packets; //type: uint32
+                        YLeaf tcp_retransmitted_packets; //type: uint32
 
 
 
@@ -1479,6 +1510,7 @@ class TcpNsr : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -1494,6 +1526,7 @@ class TcpNsr : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -1507,8 +1540,9 @@ class TcpNsr : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value id; //type: string
 
+
+                YLeaf id; //type: string
 
             class Session : public Entity
             {
@@ -1523,6 +1557,7 @@ class TcpNsr : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class BriefSessions : public Entity
@@ -1540,6 +1575,7 @@ class TcpNsr : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BriefSession : public Entity
                     {
                         public:
@@ -1553,24 +1589,22 @@ class TcpNsr : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value id; //type: string
-                            Value address_family; //type: AddrFamilyEnum
-                            Value pcb; //type: uint64
-                            Value sscb; //type: uint64
-                            Value local_port; //type: uint16
-                            Value foreign_port; //type: uint16
-                            Value vrf_id; //type: uint32
-                            Value is_admin_configured_up; //type: boolean
-                            Value is_us_operational_up; //type: NsrStatusEnum
-                            Value is_ds_operational_up; //type: NsrStatusEnum
-                            Value is_only_receive_path_replication; //type: boolean
-                            ValueList local_address; //type: list of  string
-                            ValueList foreign_address; //type: list of  string
 
 
-                            class AddrFamilyEnum;
-                            class NsrStatusEnum;
-                            class NsrStatusEnum;
+                            YLeaf id; //type: string
+                            YLeaf address_family; //type: AddrFamilyEnum
+                            YLeaf pcb; //type: uint64
+                            YLeaf sscb; //type: uint64
+                            YLeaf local_port; //type: uint16
+                            YLeaf foreign_port; //type: uint16
+                            YLeaf vrf_id; //type: uint32
+                            YLeaf is_admin_configured_up; //type: boolean
+                            YLeaf is_us_operational_up; //type: NsrStatusEnum
+                            YLeaf is_ds_operational_up; //type: NsrStatusEnum
+                            YLeaf is_only_receive_path_replication; //type: boolean
+                            YLeafList local_address; //type: list of  string
+                            YLeafList foreign_address; //type: list of  string
+
 
 
                     }; // TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession
@@ -1597,6 +1631,7 @@ class TcpNsr : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class DetailSession : public Entity
                     {
                         public:
@@ -1610,53 +1645,54 @@ class TcpNsr : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value id; //type: string
-                            Value address_family; //type: AddrFamilyEnum
-                            Value pcb; //type: uint64
-                            Value sscb; //type: uint64
-                            Value local_port; //type: uint16
-                            Value foreign_port; //type: uint16
-                            Value vrf_id; //type: uint32
-                            Value is_admin_configured_up; //type: boolean
-                            Value is_us_operational_up; //type: NsrStatusEnum
-                            Value is_ds_operational_up; //type: NsrStatusEnum
-                            Value is_only_receive_path_replication; //type: boolean
-                            Value cookie; //type: uint64
-                            Value is_session_replicated; //type: boolean
-                            Value is_session_synced; //type: boolean
-                            Value fist_standby_sequence_number; //type: uint32
-                            Value fssn_offset; //type: uint32
-                            Value nsr_down_reason; //type: NsrDownReasonEnum
-                            Value nsr_down_time; //type: uint32
-                            Value sequence_number_of_init_sync; //type: uint32
-                            Value is_init_sync_in_progress; //type: boolean
-                            Value is_init_sync_second_phase; //type: boolean
-                            Value init_sync_error; //type: string
-                            Value is_init_sync_error_local; //type: boolean
-                            Value init_sync_start_time; //type: uint32
-                            Value init_sync_end_time; //type: uint32
-                            Value init_sync_flags; //type: uint32
-                            Value sequence_number_of_init_sync_up_stream; //type: uint32
-                            Value peer_endp_hdl_up_stream; //type: uint64
-                            Value init_sync_start_time_up_stream; //type: uint32
-                            Value init_sync_end_time_up_stream; //type: uint32
-                            Value fist_standby_sequence_number_up_stream; //type: uint32
-                            Value nsr_down_reason_up_stream; //type: NsrDownReasonEnum
-                            Value nsr_down_time_up_stream; //type: uint32
-                            Value sequence_number_of_init_sync_down_stream; //type: uint32
-                            Value peer_endp_hdl_down_stream; //type: uint64
-                            Value init_sync_start_time_down_stream; //type: uint32
-                            Value init_sync_end_time_down_stream; //type: uint32
-                            Value fist_standby_sequence_number_down_stream; //type: uint32
-                            Value nsr_down_reason_down_stream; //type: NsrDownReasonEnum
-                            Value nsr_down_time_down_stream; //type: uint32
-                            Value max_number_of_held_packet; //type: int32
-                            Value max_number_of_held_packet_reach_time; //type: uint32
-                            Value max_number_of_held_internal_ack; //type: int32
-                            Value max_number_of_held_internal_ack_reach_time; //type: uint32
-                            ValueList local_address; //type: list of  string
-                            ValueList foreign_address; //type: list of  string
 
+
+                            YLeaf id; //type: string
+                            YLeaf address_family; //type: AddrFamilyEnum
+                            YLeaf pcb; //type: uint64
+                            YLeaf sscb; //type: uint64
+                            YLeaf local_port; //type: uint16
+                            YLeaf foreign_port; //type: uint16
+                            YLeaf vrf_id; //type: uint32
+                            YLeaf is_admin_configured_up; //type: boolean
+                            YLeaf is_us_operational_up; //type: NsrStatusEnum
+                            YLeaf is_ds_operational_up; //type: NsrStatusEnum
+                            YLeaf is_only_receive_path_replication; //type: boolean
+                            YLeaf cookie; //type: uint64
+                            YLeaf is_session_replicated; //type: boolean
+                            YLeaf is_session_synced; //type: boolean
+                            YLeaf fist_standby_sequence_number; //type: uint32
+                            YLeaf fssn_offset; //type: uint32
+                            YLeaf nsr_down_reason; //type: NsrDownReasonEnum
+                            YLeaf nsr_down_time; //type: uint32
+                            YLeaf sequence_number_of_init_sync; //type: uint32
+                            YLeaf is_init_sync_in_progress; //type: boolean
+                            YLeaf is_init_sync_second_phase; //type: boolean
+                            YLeaf init_sync_error; //type: string
+                            YLeaf is_init_sync_error_local; //type: boolean
+                            YLeaf init_sync_start_time; //type: uint32
+                            YLeaf init_sync_end_time; //type: uint32
+                            YLeaf init_sync_flags; //type: uint32
+                            YLeaf sequence_number_of_init_sync_up_stream; //type: uint32
+                            YLeaf peer_endp_hdl_up_stream; //type: uint64
+                            YLeaf init_sync_start_time_up_stream; //type: uint32
+                            YLeaf init_sync_end_time_up_stream; //type: uint32
+                            YLeaf fist_standby_sequence_number_up_stream; //type: uint32
+                            YLeaf nsr_down_reason_up_stream; //type: NsrDownReasonEnum
+                            YLeaf nsr_down_time_up_stream; //type: uint32
+                            YLeaf sequence_number_of_init_sync_down_stream; //type: uint32
+                            YLeaf peer_endp_hdl_down_stream; //type: uint64
+                            YLeaf init_sync_start_time_down_stream; //type: uint32
+                            YLeaf init_sync_end_time_down_stream; //type: uint32
+                            YLeaf fist_standby_sequence_number_down_stream; //type: uint32
+                            YLeaf nsr_down_reason_down_stream; //type: NsrDownReasonEnum
+                            YLeaf nsr_down_time_down_stream; //type: uint32
+                            YLeaf max_number_of_held_packet; //type: int32
+                            YLeaf max_number_of_held_packet_reach_time; //type: uint32
+                            YLeaf max_number_of_held_internal_ack; //type: int32
+                            YLeaf max_number_of_held_internal_ack_reach_time; //type: uint32
+                            YLeafList local_address; //type: list of  string
+                            YLeafList foreign_address; //type: list of  string
 
                         class SetInformation : public Entity
                         {
@@ -1671,27 +1707,27 @@ class TcpNsr : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sscb; //type: uint64
-                                Value pid; //type: uint32
-                                Value client_name; //type: string
-                                Value client_instance; //type: uint32
-                                Value set_id; //type: uint32
-                                Value sso_role; //type: uint32
-                                Value mode; //type: uint32
-                                Value address_family; //type: AddrFamilyEnum
-                                Value well_known_port; //type: uint16
-                                Value local_node; //type: string
-                                Value local_instance; //type: uint32
-                                Value protect_node; //type: string
-                                Value protect_instance; //type: uint32
-                                Value number_of_sessions; //type: uint32
-                                Value number_of_synced_sessions_up_stream; //type: uint32
-                                Value number_of_synced_sessions_down_stream; //type: uint32
-                                Value is_init_sync_in_progress; //type: boolean
-                                Value is_sscb_init_sync_ready; //type: boolean
 
 
-                                class AddrFamilyEnum;
+                                YLeaf sscb; //type: uint64
+                                YLeaf pid; //type: uint32
+                                YLeaf client_name; //type: string
+                                YLeaf client_instance; //type: uint32
+                                YLeaf set_id; //type: uint32
+                                YLeaf sso_role; //type: uint32
+                                YLeaf mode; //type: uint32
+                                YLeaf address_family; //type: AddrFamilyEnum
+                                YLeaf well_known_port; //type: uint16
+                                YLeaf local_node; //type: string
+                                YLeaf local_instance; //type: uint32
+                                YLeaf protect_node; //type: string
+                                YLeaf protect_instance; //type: uint32
+                                YLeaf number_of_sessions; //type: uint32
+                                YLeaf number_of_synced_sessions_up_stream; //type: uint32
+                                YLeaf number_of_synced_sessions_down_stream; //type: uint32
+                                YLeaf is_init_sync_in_progress; //type: boolean
+                                YLeaf is_sscb_init_sync_ready; //type: boolean
+
 
 
                         }; // TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation
@@ -1710,10 +1746,11 @@ class TcpNsr : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sequence_number; //type: uint32
-                                Value data_length; //type: uint32
-                                Value acknoledgement_number; //type: uint32
 
+
+                                YLeaf sequence_number; //type: uint32
+                                YLeaf data_length; //type: uint32
+                                YLeaf acknoledgement_number; //type: uint32
 
 
 
@@ -1733,10 +1770,11 @@ class TcpNsr : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sequence_number; //type: uint32
-                                Value data_length; //type: uint32
-                                Value acknoledgement_number; //type: uint32
 
+
+                                YLeaf sequence_number; //type: uint32
+                                YLeaf data_length; //type: uint32
+                                YLeaf acknoledgement_number; //type: uint32
 
 
 
@@ -1746,12 +1784,6 @@ class TcpNsr : public Entity
                             std::vector<std::unique_ptr<Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue> > internal_ack_hold_queue;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue> > packet_hold_queue;
                             std::unique_ptr<Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation> set_information;
-                            class AddrFamilyEnum;
-                            class NsrStatusEnum;
-                            class NsrStatusEnum;
-                            class NsrDownReasonEnum;
-                            class NsrDownReasonEnum;
-                            class NsrDownReasonEnum;
 
 
                     }; // TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession
@@ -1785,6 +1817,7 @@ class TcpNsr : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DetailClients : public Entity
                 {
                     public:
@@ -1800,6 +1833,7 @@ class TcpNsr : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class DetailClient : public Entity
                     {
                         public:
@@ -1813,18 +1847,19 @@ class TcpNsr : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value id; //type: string
-                            Value ccb; //type: uint64
-                            Value pid; //type: uint32
-                            Value process_name; //type: string
-                            Value job_id; //type: int32
-                            Value instance; //type: uint32
-                            Value numberof_sets; //type: uint32
-                            Value number_of_sessions; //type: uint32
-                            Value number_of_up_sessions; //type: uint32
-                            Value connected_at; //type: uint32
-                            Value is_notification_registered; //type: boolean
 
+
+                            YLeaf id; //type: string
+                            YLeaf ccb; //type: uint64
+                            YLeaf pid; //type: uint32
+                            YLeaf process_name; //type: string
+                            YLeaf job_id; //type: int32
+                            YLeaf instance; //type: uint32
+                            YLeaf numberof_sets; //type: uint32
+                            YLeaf number_of_sessions; //type: uint32
+                            YLeaf number_of_up_sessions; //type: uint32
+                            YLeaf connected_at; //type: uint32
+                            YLeaf is_notification_registered; //type: boolean
 
 
 
@@ -1852,6 +1887,7 @@ class TcpNsr : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BriefClient : public Entity
                     {
                         public:
@@ -1865,16 +1901,17 @@ class TcpNsr : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value id; //type: string
-                            Value ccb; //type: uint64
-                            Value pid; //type: uint32
-                            Value process_name; //type: string
-                            Value job_id; //type: int32
-                            Value instance; //type: uint32
-                            Value numberof_sets; //type: uint32
-                            Value number_of_sessions; //type: uint32
-                            Value number_of_up_sessions; //type: uint32
 
+
+                            YLeaf id; //type: string
+                            YLeaf ccb; //type: uint64
+                            YLeaf pid; //type: uint32
+                            YLeaf process_name; //type: string
+                            YLeaf job_id; //type: int32
+                            YLeaf instance; //type: uint32
+                            YLeaf numberof_sets; //type: uint32
+                            YLeaf number_of_sessions; //type: uint32
+                            YLeaf number_of_up_sessions; //type: uint32
 
 
 
@@ -1909,6 +1946,7 @@ class TcpNsr : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DetailSets : public Entity
                 {
                     public:
@@ -1924,6 +1962,7 @@ class TcpNsr : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class DetailSet : public Entity
                     {
                         public:
@@ -1937,43 +1976,43 @@ class TcpNsr : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value id; //type: string
-                            Value sscb; //type: uint64
-                            Value pid; //type: uint32
-                            Value set_id; //type: uint32
-                            Value sso_role; //type: uint32
-                            Value mode; //type: uint32
-                            Value address_family; //type: AddrFamilyEnum
-                            Value well_known_port; //type: uint16
-                            Value local_node; //type: string
-                            Value local_instance; //type: uint32
-                            Value protect_node; //type: string
-                            Value protect_instance; //type: uint32
-                            Value number_of_sessions; //type: uint32
-                            Value number_of_synced_sessions_up_stream; //type: uint32
-                            Value number_of_synced_sessions_down_stream; //type: uint32
-                            Value is_init_sync_in_progress; //type: boolean
-                            Value is_init_sync_second_phase; //type: boolean
-                            Value sequence_number_of_init_sync; //type: uint32
-                            Value init_sync_timer; //type: uint32
-                            Value total_number_of_init_sync_sessions; //type: uint32
-                            Value number_of_init_synced_sessions; //type: uint32
-                            Value number_of_sessions_init_sync_failed; //type: uint32
-                            Value init_sync_error; //type: string
-                            Value is_init_sync_error_local; //type: boolean
-                            Value init_sync_start_time; //type: uint32
-                            Value init_sync_end_time; //type: uint32
-                            Value is_sscb_init_sync_ready; //type: boolean
-                            Value init_sync_ready_start_time; //type: uint32
-                            Value init_sync_ready_end_time; //type: uint32
-                            Value nsr_reset_time; //type: uint32
-                            Value is_audit_in_progress; //type: boolean
-                            Value audit_seq_number; //type: uint32
-                            Value audit_start_time; //type: uint32
-                            Value audit_end_time; //type: uint32
 
 
-                            class AddrFamilyEnum;
+                            YLeaf id; //type: string
+                            YLeaf sscb; //type: uint64
+                            YLeaf pid; //type: uint32
+                            YLeaf set_id; //type: uint32
+                            YLeaf sso_role; //type: uint32
+                            YLeaf mode; //type: uint32
+                            YLeaf address_family; //type: AddrFamilyEnum
+                            YLeaf well_known_port; //type: uint16
+                            YLeaf local_node; //type: string
+                            YLeaf local_instance; //type: uint32
+                            YLeaf protect_node; //type: string
+                            YLeaf protect_instance; //type: uint32
+                            YLeaf number_of_sessions; //type: uint32
+                            YLeaf number_of_synced_sessions_up_stream; //type: uint32
+                            YLeaf number_of_synced_sessions_down_stream; //type: uint32
+                            YLeaf is_init_sync_in_progress; //type: boolean
+                            YLeaf is_init_sync_second_phase; //type: boolean
+                            YLeaf sequence_number_of_init_sync; //type: uint32
+                            YLeaf init_sync_timer; //type: uint32
+                            YLeaf total_number_of_init_sync_sessions; //type: uint32
+                            YLeaf number_of_init_synced_sessions; //type: uint32
+                            YLeaf number_of_sessions_init_sync_failed; //type: uint32
+                            YLeaf init_sync_error; //type: string
+                            YLeaf is_init_sync_error_local; //type: boolean
+                            YLeaf init_sync_start_time; //type: uint32
+                            YLeaf init_sync_end_time; //type: uint32
+                            YLeaf is_sscb_init_sync_ready; //type: boolean
+                            YLeaf init_sync_ready_start_time; //type: uint32
+                            YLeaf init_sync_ready_end_time; //type: uint32
+                            YLeaf nsr_reset_time; //type: uint32
+                            YLeaf is_audit_in_progress; //type: boolean
+                            YLeaf audit_seq_number; //type: uint32
+                            YLeaf audit_start_time; //type: uint32
+                            YLeaf audit_end_time; //type: uint32
+
 
 
                     }; // TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet
@@ -2000,6 +2039,7 @@ class TcpNsr : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BriefSet : public Entity
                     {
                         public:
@@ -2013,28 +2053,28 @@ class TcpNsr : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value id; //type: string
-                            Value sscb; //type: uint64
-                            Value pid; //type: uint32
-                            Value client_name; //type: string
-                            Value client_instance; //type: uint32
-                            Value set_id; //type: uint32
-                            Value sso_role; //type: uint32
-                            Value mode; //type: uint32
-                            Value address_family; //type: AddrFamilyEnum
-                            Value well_known_port; //type: uint16
-                            Value local_node; //type: string
-                            Value local_instance; //type: uint32
-                            Value protect_node; //type: string
-                            Value protect_instance; //type: uint32
-                            Value number_of_sessions; //type: uint32
-                            Value number_of_synced_sessions_up_stream; //type: uint32
-                            Value number_of_synced_sessions_down_stream; //type: uint32
-                            Value is_init_sync_in_progress; //type: boolean
-                            Value is_sscb_init_sync_ready; //type: boolean
 
 
-                            class AddrFamilyEnum;
+                            YLeaf id; //type: string
+                            YLeaf sscb; //type: uint64
+                            YLeaf pid; //type: uint32
+                            YLeaf client_name; //type: string
+                            YLeaf client_instance; //type: uint32
+                            YLeaf set_id; //type: uint32
+                            YLeaf sso_role; //type: uint32
+                            YLeaf mode; //type: uint32
+                            YLeaf address_family; //type: AddrFamilyEnum
+                            YLeaf well_known_port; //type: uint16
+                            YLeaf local_node; //type: string
+                            YLeaf local_instance; //type: uint32
+                            YLeaf protect_node; //type: string
+                            YLeaf protect_instance; //type: uint32
+                            YLeaf number_of_sessions; //type: uint32
+                            YLeaf number_of_synced_sessions_up_stream; //type: uint32
+                            YLeaf number_of_synced_sessions_down_stream; //type: uint32
+                            YLeaf is_init_sync_in_progress; //type: boolean
+                            YLeaf is_sscb_init_sync_ready; //type: boolean
+
 
 
                     }; // TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet
@@ -2068,6 +2108,7 @@ class TcpNsr : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Summary : public Entity
                 {
                     public:
@@ -2081,40 +2122,41 @@ class TcpNsr : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value last_cleared_time; //type: uint32
-                        Value number_of_connected_clients; //type: uint32
-                        Value number_of_disconnected_clients; //type: uint32
-                        Value number_of_current_clients; //type: uint32
-                        Value number_of_created_session_sets; //type: uint32
-                        Value number_of_destroyed_session_sets; //type: uint32
-                        Value number_of_current_session_sets; //type: uint32
-                        Value number_of_added_sessions; //type: uint32
-                        Value number_of_deleted_sessions; //type: uint32
-                        Value number_of_current_sessions; //type: uint32
-                        Value number_of_partner_node; //type: uint32
-                        Value number_of_attempted_init_sync; //type: uint32
-                        Value number_of_succeeded_init_sync; //type: uint32
-                        Value number_of_failed_init_sync; //type: uint32
-                        Value number_of_held_packets; //type: uint32
-                        Value number_of_held_but_dropped_packets; //type: uint32
-                        Value number_of_held_internal_acks; //type: uint32
-                        Value number_of_held_but_dropped_internal_acks; //type: uint32
-                        Value number_of_sent_internal_acks; //type: uint32
-                        Value number_of_received_internal_acks; //type: uint32
-                        Value number_of_qad_receive_messages_drops; //type: uint32
-                        Value number_of_qad_receive_messages_unknowns; //type: uint32
-                        Value number_of_qad_receive_messages_accepts; //type: uint32
-                        Value number_of_qad_stale_receive_messages_drops; //type: uint32
-                        Value number_of_qad_transfer_message_sent; //type: uint32
-                        Value number_of_qad_transfer_message_drops; //type: uint32
-                        Value number_of_internal_ack_drops_no_pcb; //type: uint32
-                        Value number_of_internal_ack_drops_no_scbdp; //type: uint32
-                        Value internal_ack_drops_not_replicated; //type: uint32
-                        Value internal_ack_drops_initsync_first_phase; //type: uint32
-                        Value internal_ack_drops_stale; //type: uint32
-                        Value internal_ack_drops_immediate_match; //type: uint32
-                        Value held_packet_drops; //type: uint32
 
+
+                        YLeaf last_cleared_time; //type: uint32
+                        YLeaf number_of_connected_clients; //type: uint32
+                        YLeaf number_of_disconnected_clients; //type: uint32
+                        YLeaf number_of_current_clients; //type: uint32
+                        YLeaf number_of_created_session_sets; //type: uint32
+                        YLeaf number_of_destroyed_session_sets; //type: uint32
+                        YLeaf number_of_current_session_sets; //type: uint32
+                        YLeaf number_of_added_sessions; //type: uint32
+                        YLeaf number_of_deleted_sessions; //type: uint32
+                        YLeaf number_of_current_sessions; //type: uint32
+                        YLeaf number_of_partner_node; //type: uint32
+                        YLeaf number_of_attempted_init_sync; //type: uint32
+                        YLeaf number_of_succeeded_init_sync; //type: uint32
+                        YLeaf number_of_failed_init_sync; //type: uint32
+                        YLeaf number_of_held_packets; //type: uint32
+                        YLeaf number_of_held_but_dropped_packets; //type: uint32
+                        YLeaf number_of_held_internal_acks; //type: uint32
+                        YLeaf number_of_held_but_dropped_internal_acks; //type: uint32
+                        YLeaf number_of_sent_internal_acks; //type: uint32
+                        YLeaf number_of_received_internal_acks; //type: uint32
+                        YLeaf number_of_qad_receive_messages_drops; //type: uint32
+                        YLeaf number_of_qad_receive_messages_unknowns; //type: uint32
+                        YLeaf number_of_qad_receive_messages_accepts; //type: uint32
+                        YLeaf number_of_qad_stale_receive_messages_drops; //type: uint32
+                        YLeaf number_of_qad_transfer_message_sent; //type: uint32
+                        YLeaf number_of_qad_transfer_message_drops; //type: uint32
+                        YLeaf number_of_internal_ack_drops_no_pcb; //type: uint32
+                        YLeaf number_of_internal_ack_drops_no_scbdp; //type: uint32
+                        YLeaf internal_ack_drops_not_replicated; //type: uint32
+                        YLeaf internal_ack_drops_initsync_first_phase; //type: uint32
+                        YLeaf internal_ack_drops_stale; //type: uint32
+                        YLeaf internal_ack_drops_immediate_match; //type: uint32
+                        YLeaf held_packet_drops; //type: uint32
 
                     class SndCounters : public Entity
                     {
@@ -2131,6 +2173,7 @@ class TcpNsr : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Common : public Entity
                         {
                             public:
@@ -2144,32 +2187,33 @@ class TcpNsr : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value data_xfer_send; //type: uint32
-                                Value data_xfer_send_total; //type: uint64
-                                Value data_xfer_send_drop; //type: uint32
-                                Value data_xfer_send_iov_alloc; //type: uint32
-                                Value data_xfer_rcv; //type: uint32
-                                Value data_xfer_rcv_success; //type: uint32
-                                Value data_xfer_rcv_fail_buffer_trim; //type: uint32
-                                Value data_xfer_rcv_fail_snd_una_out_of_sync; //type: uint32
-                                Value seg_instr_send; //type: uint32
-                                Value seg_instr_send_units; //type: uint32
-                                Value seg_instr_send_drop; //type: uint32
-                                Value seg_instr_rcv; //type: uint32
-                                Value seg_instr_rcv_success; //type: uint32
-                                Value seg_instr_rcv_fail_buffer_trim; //type: uint32
-                                Value seg_instr_rcv_fail_tcp_process; //type: uint32
-                                Value nack_send; //type: uint32
-                                Value nack_send_drop; //type: uint32
-                                Value nack_rcv; //type: uint32
-                                Value nack_rcv_success; //type: uint32
-                                Value nack_rcv_fail_data_send; //type: uint32
-                                Value cleanup_send; //type: uint32
-                                Value cleanup_send_drop; //type: uint32
-                                Value cleanup_rcv; //type: uint32
-                                Value cleanup_rcv_success; //type: uint32
-                                Value cleanup_rcv_fail_buffer_trim; //type: uint32
 
+
+                                YLeaf data_xfer_send; //type: uint32
+                                YLeaf data_xfer_send_total; //type: uint64
+                                YLeaf data_xfer_send_drop; //type: uint32
+                                YLeaf data_xfer_send_iov_alloc; //type: uint32
+                                YLeaf data_xfer_rcv; //type: uint32
+                                YLeaf data_xfer_rcv_success; //type: uint32
+                                YLeaf data_xfer_rcv_fail_buffer_trim; //type: uint32
+                                YLeaf data_xfer_rcv_fail_snd_una_out_of_sync; //type: uint32
+                                YLeaf seg_instr_send; //type: uint32
+                                YLeaf seg_instr_send_units; //type: uint32
+                                YLeaf seg_instr_send_drop; //type: uint32
+                                YLeaf seg_instr_rcv; //type: uint32
+                                YLeaf seg_instr_rcv_success; //type: uint32
+                                YLeaf seg_instr_rcv_fail_buffer_trim; //type: uint32
+                                YLeaf seg_instr_rcv_fail_tcp_process; //type: uint32
+                                YLeaf nack_send; //type: uint32
+                                YLeaf nack_send_drop; //type: uint32
+                                YLeaf nack_rcv; //type: uint32
+                                YLeaf nack_rcv_success; //type: uint32
+                                YLeaf nack_rcv_fail_data_send; //type: uint32
+                                YLeaf cleanup_send; //type: uint32
+                                YLeaf cleanup_send_drop; //type: uint32
+                                YLeaf cleanup_rcv; //type: uint32
+                                YLeaf cleanup_rcv_success; //type: uint32
+                                YLeaf cleanup_rcv_fail_buffer_trim; //type: uint32
 
 
 
@@ -2189,15 +2233,16 @@ class TcpNsr : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value data_xfer_rcv_drop_no_pcb; //type: uint32
-                                Value data_xfer_rcv_drop_no_scb_dp; //type: uint32
-                                Value seg_instr_rcv_drop_no_pcb; //type: uint32
-                                Value seg_instr_rcv_drop_no_scb_dp; //type: uint32
-                                Value nack_rcv_drop_no_pcb; //type: uint32
-                                Value nack_rcv_drop_no_scb_dp; //type: uint32
-                                Value cleanup_rcv_drop_no_pcb; //type: uint32
-                                Value cleanup_rcv_drop_no_scb_dp; //type: uint32
 
+
+                                YLeaf data_xfer_rcv_drop_no_pcb; //type: uint32
+                                YLeaf data_xfer_rcv_drop_no_scb_dp; //type: uint32
+                                YLeaf seg_instr_rcv_drop_no_pcb; //type: uint32
+                                YLeaf seg_instr_rcv_drop_no_scb_dp; //type: uint32
+                                YLeaf nack_rcv_drop_no_pcb; //type: uint32
+                                YLeaf nack_rcv_drop_no_scb_dp; //type: uint32
+                                YLeaf cleanup_rcv_drop_no_pcb; //type: uint32
+                                YLeaf cleanup_rcv_drop_no_scb_dp; //type: uint32
 
 
 
@@ -2226,6 +2271,7 @@ class TcpNsr : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Common : public Entity
                         {
                             public:
@@ -2239,32 +2285,33 @@ class TcpNsr : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mark_session_set_send; //type: uint32
-                                Value mark_session_set_send_drop; //type: uint32
-                                Value mark_session_set_rcv; //type: uint32
-                                Value mark_session_set_rcv_drop; //type: uint32
-                                Value session_send; //type: uint32
-                                Value session_send_drop; //type: uint32
-                                Value session_rcv; //type: uint32
-                                Value session_rcv_drop; //type: uint32
-                                Value sweep_session_set_send; //type: uint32
-                                Value sweep_session_set_send_drop; //type: uint32
-                                Value sweep_session_set_rcv; //type: uint32
-                                Value sweep_session_set_rcv_drop; //type: uint32
-                                Value session_set_response_send; //type: uint32
-                                Value session_set_response_send_drop; //type: uint32
-                                Value session_set_response_rcv; //type: uint32
-                                Value session_set_response_rcv_drop; //type: uint32
-                                Value mark_session_set_ack_send; //type: uint32
-                                Value mark_session_set_ack_send_drop; //type: uint32
-                                Value mark_session_set_ack_rcv; //type: uint32
-                                Value mark_session_set_ack_rcv_drop; //type: uint32
-                                Value mark_session_set_nack_send; //type: uint32
-                                Value mark_session_set_nack_send_drop; //type: uint32
-                                Value mark_session_set_nack_rcv; //type: uint32
-                                Value mark_session_set_nack_rcv_drop; //type: uint32
-                                Value abort; //type: uint32
 
+
+                                YLeaf mark_session_set_send; //type: uint32
+                                YLeaf mark_session_set_send_drop; //type: uint32
+                                YLeaf mark_session_set_rcv; //type: uint32
+                                YLeaf mark_session_set_rcv_drop; //type: uint32
+                                YLeaf session_send; //type: uint32
+                                YLeaf session_send_drop; //type: uint32
+                                YLeaf session_rcv; //type: uint32
+                                YLeaf session_rcv_drop; //type: uint32
+                                YLeaf sweep_session_set_send; //type: uint32
+                                YLeaf sweep_session_set_send_drop; //type: uint32
+                                YLeaf sweep_session_set_rcv; //type: uint32
+                                YLeaf sweep_session_set_rcv_drop; //type: uint32
+                                YLeaf session_set_response_send; //type: uint32
+                                YLeaf session_set_response_send_drop; //type: uint32
+                                YLeaf session_set_response_rcv; //type: uint32
+                                YLeaf session_set_response_rcv_drop; //type: uint32
+                                YLeaf mark_session_set_ack_send; //type: uint32
+                                YLeaf mark_session_set_ack_send_drop; //type: uint32
+                                YLeaf mark_session_set_ack_rcv; //type: uint32
+                                YLeaf mark_session_set_ack_rcv_drop; //type: uint32
+                                YLeaf mark_session_set_nack_send; //type: uint32
+                                YLeaf mark_session_set_nack_send_drop; //type: uint32
+                                YLeaf mark_session_set_nack_rcv; //type: uint32
+                                YLeaf mark_session_set_nack_rcv_drop; //type: uint32
+                                YLeaf abort; //type: uint32
 
 
 
@@ -2284,13 +2331,14 @@ class TcpNsr : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mark_session_set_rcv_drop_aggr; //type: uint32
-                                Value session_rcv_drop_aggr; //type: uint32
-                                Value sweep_session_set_rcv_drop_aggr; //type: uint32
-                                Value session_set_response_rcv_drop_aggr; //type: uint32
-                                Value mark_session_set_ack_rcv_drop_aggr; //type: uint32
-                                Value mark_session_set_nack_rcv_drop_aggr; //type: uint32
 
+
+                                YLeaf mark_session_set_rcv_drop_aggr; //type: uint32
+                                YLeaf session_rcv_drop_aggr; //type: uint32
+                                YLeaf sweep_session_set_rcv_drop_aggr; //type: uint32
+                                YLeaf session_set_response_rcv_drop_aggr; //type: uint32
+                                YLeaf mark_session_set_ack_rcv_drop_aggr; //type: uint32
+                                YLeaf mark_session_set_nack_rcv_drop_aggr; //type: uint32
 
 
 
@@ -2317,11 +2365,12 @@ class TcpNsr : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value queued_count; //type: uint32
-                            Value failed_count; //type: uint32
-                            Value delivered_count; //type: uint32
-                            Value dropped_count; //type: uint32
 
+
+                            YLeaf queued_count; //type: uint32
+                            YLeaf failed_count; //type: uint32
+                            YLeaf delivered_count; //type: uint32
+                            YLeaf dropped_count; //type: uint32
 
 
 
@@ -2351,6 +2400,7 @@ class TcpNsr : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class StatisticClient : public Entity
                     {
                         public:
@@ -2364,17 +2414,18 @@ class TcpNsr : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value id; //type: string
-                            Value ccb; //type: uint64
-                            Value pid; //type: uint32
-                            Value process_name; //type: string
-                            Value job_id; //type: int32
-                            Value instance; //type: uint32
-                            Value connected_at; //type: uint32
-                            Value number_of_created_sscb; //type: uint32
-                            Value number_of_deleted_sscb; //type: uint32
-                            Value last_cleared_time; //type: uint32
 
+
+                            YLeaf id; //type: string
+                            YLeaf ccb; //type: uint64
+                            YLeaf pid; //type: uint32
+                            YLeaf process_name; //type: string
+                            YLeaf job_id; //type: int32
+                            YLeaf instance; //type: uint32
+                            YLeaf connected_at; //type: uint32
+                            YLeaf number_of_created_sscb; //type: uint32
+                            YLeaf number_of_deleted_sscb; //type: uint32
+                            YLeaf last_cleared_time; //type: uint32
 
                         class NotificationStatistic : public Entity
                         {
@@ -2389,11 +2440,12 @@ class TcpNsr : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value queued_count; //type: uint32
-                                Value failed_count; //type: uint32
-                                Value delivered_count; //type: uint32
-                                Value dropped_count; //type: uint32
 
+
+                                YLeaf queued_count; //type: uint32
+                                YLeaf failed_count; //type: uint32
+                                YLeaf delivered_count; //type: uint32
+                                YLeaf dropped_count; //type: uint32
 
 
 
@@ -2427,6 +2479,7 @@ class TcpNsr : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class StatisticSet : public Entity
                     {
                         public:
@@ -2440,16 +2493,17 @@ class TcpNsr : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value id; //type: string
-                            Value sscb; //type: uint64
-                            Value set_id; //type: uint32
-                            Value number_of_attempted_init_sync; //type: uint32
-                            Value number_of_succeeded_init_sync; //type: uint32
-                            Value number_of_failed_init_sync; //type: uint32
-                            Value number_of_failover; //type: uint32
-                            Value number_of_nsr_resets; //type: uint32
-                            Value last_cleared_time; //type: uint32
 
+
+                            YLeaf id; //type: string
+                            YLeaf sscb; //type: uint64
+                            YLeaf set_id; //type: uint32
+                            YLeaf number_of_attempted_init_sync; //type: uint32
+                            YLeaf number_of_succeeded_init_sync; //type: uint32
+                            YLeaf number_of_failed_init_sync; //type: uint32
+                            YLeaf number_of_failover; //type: uint32
+                            YLeaf number_of_nsr_resets; //type: uint32
+                            YLeaf last_cleared_time; //type: uint32
 
 
 
@@ -2477,6 +2531,7 @@ class TcpNsr : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class StatisticSession : public Entity
                     {
                         public:
@@ -2490,18 +2545,19 @@ class TcpNsr : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value id; //type: string
-                            Value pcb; //type: uint64
-                            Value number_of_times_nsr_up; //type: uint32
-                            Value number_of_timers_nsr_down; //type: uint32
-                            Value number_of_times_nsr_disabled; //type: uint32
-                            Value number_of_times_nsr_fail_over; //type: uint32
-                            Value internal_ack_drops_not_replicated; //type: uint64
-                            Value internal_ack_drops_initsync_first_phase; //type: uint64
-                            Value internal_ack_drops_stale; //type: uint64
-                            Value internal_ack_drops_immediate_match; //type: uint64
-                            Value last_cleared_time; //type: uint32
 
+
+                            YLeaf id; //type: string
+                            YLeaf pcb; //type: uint64
+                            YLeaf number_of_times_nsr_up; //type: uint32
+                            YLeaf number_of_timers_nsr_down; //type: uint32
+                            YLeaf number_of_times_nsr_disabled; //type: uint32
+                            YLeaf number_of_times_nsr_fail_over; //type: uint32
+                            YLeaf internal_ack_drops_not_replicated; //type: uint64
+                            YLeaf internal_ack_drops_initsync_first_phase; //type: uint64
+                            YLeaf internal_ack_drops_stale; //type: uint64
+                            YLeaf internal_ack_drops_immediate_match; //type: uint64
+                            YLeaf last_cleared_time; //type: uint32
 
                         class SndCounters : public Entity
                         {
@@ -2516,32 +2572,33 @@ class TcpNsr : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value data_xfer_send; //type: uint32
-                                Value data_xfer_send_total; //type: uint64
-                                Value data_xfer_send_drop; //type: uint32
-                                Value data_xfer_send_iov_alloc; //type: uint32
-                                Value data_xfer_rcv; //type: uint32
-                                Value data_xfer_rcv_success; //type: uint32
-                                Value data_xfer_rcv_fail_buffer_trim; //type: uint32
-                                Value data_xfer_rcv_fail_snd_una_out_of_sync; //type: uint32
-                                Value seg_instr_send; //type: uint32
-                                Value seg_instr_send_units; //type: uint32
-                                Value seg_instr_send_drop; //type: uint32
-                                Value seg_instr_rcv; //type: uint32
-                                Value seg_instr_rcv_success; //type: uint32
-                                Value seg_instr_rcv_fail_buffer_trim; //type: uint32
-                                Value seg_instr_rcv_fail_tcp_process; //type: uint32
-                                Value nack_send; //type: uint32
-                                Value nack_send_drop; //type: uint32
-                                Value nack_rcv; //type: uint32
-                                Value nack_rcv_success; //type: uint32
-                                Value nack_rcv_fail_data_send; //type: uint32
-                                Value cleanup_send; //type: uint32
-                                Value cleanup_send_drop; //type: uint32
-                                Value cleanup_rcv; //type: uint32
-                                Value cleanup_rcv_success; //type: uint32
-                                Value cleanup_rcv_fail_buffer_trim; //type: uint32
 
+
+                                YLeaf data_xfer_send; //type: uint32
+                                YLeaf data_xfer_send_total; //type: uint64
+                                YLeaf data_xfer_send_drop; //type: uint32
+                                YLeaf data_xfer_send_iov_alloc; //type: uint32
+                                YLeaf data_xfer_rcv; //type: uint32
+                                YLeaf data_xfer_rcv_success; //type: uint32
+                                YLeaf data_xfer_rcv_fail_buffer_trim; //type: uint32
+                                YLeaf data_xfer_rcv_fail_snd_una_out_of_sync; //type: uint32
+                                YLeaf seg_instr_send; //type: uint32
+                                YLeaf seg_instr_send_units; //type: uint32
+                                YLeaf seg_instr_send_drop; //type: uint32
+                                YLeaf seg_instr_rcv; //type: uint32
+                                YLeaf seg_instr_rcv_success; //type: uint32
+                                YLeaf seg_instr_rcv_fail_buffer_trim; //type: uint32
+                                YLeaf seg_instr_rcv_fail_tcp_process; //type: uint32
+                                YLeaf nack_send; //type: uint32
+                                YLeaf nack_send_drop; //type: uint32
+                                YLeaf nack_rcv; //type: uint32
+                                YLeaf nack_rcv_success; //type: uint32
+                                YLeaf nack_rcv_fail_data_send; //type: uint32
+                                YLeaf cleanup_send; //type: uint32
+                                YLeaf cleanup_send_drop; //type: uint32
+                                YLeaf cleanup_rcv; //type: uint32
+                                YLeaf cleanup_rcv_success; //type: uint32
+                                YLeaf cleanup_rcv_fail_buffer_trim; //type: uint32
 
 
 
@@ -2593,195 +2650,195 @@ class TcpNsr : public Entity
 class MessageTypeIcmpv6Enum : public Enum
 {
     public:
-        static const Enum::Value destination_unreachable;
-        static const Enum::Value packet_too_big;
-        static const Enum::Value time_exceeded;
-        static const Enum::Value parameter_problem;
-        static const Enum::Value echo_request;
-        static const Enum::Value echo_reply;
-        static const Enum::Value multicast_listener_query;
-        static const Enum::Value multicast_listener_report;
-        static const Enum::Value multicast_listener_done;
-        static const Enum::Value router_solicitation;
-        static const Enum::Value router_advertisement;
-        static const Enum::Value neighbor_solicitation;
-        static const Enum::Value neighbor_advertisement;
-        static const Enum::Value redirect_message;
-        static const Enum::Value router_renumbering;
-        static const Enum::Value node_information_query;
-        static const Enum::Value node_information_reply;
-        static const Enum::Value inverse_neighbor_discovery_solicitaion;
-        static const Enum::Value inverse_neighbor_discover_advertisement;
-        static const Enum::Value v2_multicast_listener_report;
-        static const Enum::Value home_agent_address_discovery_request;
-        static const Enum::Value home_agent_address_discovery_reply;
-        static const Enum::Value mobile_prefix_solicitation;
-        static const Enum::Value mobile_prefix_advertisement;
-        static const Enum::Value certification_path_solicitation_message;
-        static const Enum::Value certification_path_advertisement_message;
-        static const Enum::Value experimental_mobility_protocols;
-        static const Enum::Value multicast_router_advertisement;
-        static const Enum::Value multicast_router_solicitation;
-        static const Enum::Value multicast_router_termination;
-        static const Enum::Value fmipv6_messages;
+        static const Enum::YLeaf destination_unreachable;
+        static const Enum::YLeaf packet_too_big;
+        static const Enum::YLeaf time_exceeded;
+        static const Enum::YLeaf parameter_problem;
+        static const Enum::YLeaf echo_request;
+        static const Enum::YLeaf echo_reply;
+        static const Enum::YLeaf multicast_listener_query;
+        static const Enum::YLeaf multicast_listener_report;
+        static const Enum::YLeaf multicast_listener_done;
+        static const Enum::YLeaf router_solicitation;
+        static const Enum::YLeaf router_advertisement;
+        static const Enum::YLeaf neighbor_solicitation;
+        static const Enum::YLeaf neighbor_advertisement;
+        static const Enum::YLeaf redirect_message;
+        static const Enum::YLeaf router_renumbering;
+        static const Enum::YLeaf node_information_query;
+        static const Enum::YLeaf node_information_reply;
+        static const Enum::YLeaf inverse_neighbor_discovery_solicitaion;
+        static const Enum::YLeaf inverse_neighbor_discover_advertisement;
+        static const Enum::YLeaf v2_multicast_listener_report;
+        static const Enum::YLeaf home_agent_address_discovery_request;
+        static const Enum::YLeaf home_agent_address_discovery_reply;
+        static const Enum::YLeaf mobile_prefix_solicitation;
+        static const Enum::YLeaf mobile_prefix_advertisement;
+        static const Enum::YLeaf certification_path_solicitation_message;
+        static const Enum::YLeaf certification_path_advertisement_message;
+        static const Enum::YLeaf experimental_mobility_protocols;
+        static const Enum::YLeaf multicast_router_advertisement;
+        static const Enum::YLeaf multicast_router_solicitation;
+        static const Enum::YLeaf multicast_router_termination;
+        static const Enum::YLeaf fmipv6_messages;
 
 };
 
 class ShowEnum : public Enum
 {
     public:
-        static const Enum::Value all;
-        static const Enum::Value static_policy;
-        static const Enum::Value interface_filter;
-        static const Enum::Value packet_filter;
+        static const Enum::YLeaf all;
+        static const Enum::YLeaf static_policy;
+        static const Enum::YLeaf interface_filter;
+        static const Enum::YLeaf packet_filter;
 
 };
 
 class MessageTypeIgmpEnum : public Enum
 {
     public:
-        static const Enum::Value membership_query;
-        static const Enum::Value v1_membership_report;
-        static const Enum::Value dvmrp;
-        static const Enum::Value pi_mv1;
-        static const Enum::Value cisco_trace_messages;
-        static const Enum::Value v2_membership_report;
-        static const Enum::Value v2_leave_group;
-        static const Enum::Value multicast_traceroute_response;
-        static const Enum::Value multicast_traceroute;
-        static const Enum::Value v3_membership_report;
-        static const Enum::Value multicast_router_advertisement;
-        static const Enum::Value multicast_router_solicitation;
-        static const Enum::Value multicast_router_termination;
+        static const Enum::YLeaf membership_query;
+        static const Enum::YLeaf v1_membership_report;
+        static const Enum::YLeaf dvmrp;
+        static const Enum::YLeaf pi_mv1;
+        static const Enum::YLeaf cisco_trace_messages;
+        static const Enum::YLeaf v2_membership_report;
+        static const Enum::YLeaf v2_leave_group;
+        static const Enum::YLeaf multicast_traceroute_response;
+        static const Enum::YLeaf multicast_traceroute;
+        static const Enum::YLeaf v3_membership_report;
+        static const Enum::YLeaf multicast_router_advertisement;
+        static const Enum::YLeaf multicast_router_solicitation;
+        static const Enum::YLeaf multicast_router_termination;
 
 };
 
 class TcpConnStateEnum : public Enum
 {
     public:
-        static const Enum::Value closed;
-        static const Enum::Value listen;
-        static const Enum::Value syn_sent;
-        static const Enum::Value syn_received;
-        static const Enum::Value established;
-        static const Enum::Value close_wait;
-        static const Enum::Value fin_wait1;
-        static const Enum::Value closing;
-        static const Enum::Value last_ack;
-        static const Enum::Value fin_wait2;
-        static const Enum::Value time_wait;
+        static const Enum::YLeaf closed;
+        static const Enum::YLeaf listen;
+        static const Enum::YLeaf syn_sent;
+        static const Enum::YLeaf syn_received;
+        static const Enum::YLeaf established;
+        static const Enum::YLeaf close_wait;
+        static const Enum::YLeaf fin_wait1;
+        static const Enum::YLeaf closing;
+        static const Enum::YLeaf last_ack;
+        static const Enum::YLeaf fin_wait2;
+        static const Enum::YLeaf time_wait;
 
 };
 
 class PakPrioEnum : public Enum
 {
     public:
-        static const Enum::Value unspecified_packet;
-        static const Enum::Value normal_packet;
-        static const Enum::Value medium_packet;
-        static const Enum::Value high_packet;
-        static const Enum::Value crucial_packet;
+        static const Enum::YLeaf unspecified_packet;
+        static const Enum::YLeaf normal_packet;
+        static const Enum::YLeaf medium_packet;
+        static const Enum::YLeaf high_packet;
+        static const Enum::YLeaf crucial_packet;
 
 };
 
 class MessageTypeIcmpEnum : public Enum
 {
     public:
-        static const Enum::Value echo_reply;
-        static const Enum::Value destination_unreachable;
-        static const Enum::Value source_quench;
-        static const Enum::Value redirect;
-        static const Enum::Value alternate_host_address;
-        static const Enum::Value echo;
-        static const Enum::Value router_advertisement;
-        static const Enum::Value router_selection;
-        static const Enum::Value time_exceeded;
-        static const Enum::Value parameter_problem;
-        static const Enum::Value time_stamp;
-        static const Enum::Value time_stamp_reply;
-        static const Enum::Value information_request;
-        static const Enum::Value information_reply;
-        static const Enum::Value address_mask_request;
-        static const Enum::Value address_mask_reply;
-        static const Enum::Value trace_route;
-        static const Enum::Value datagram_conversion_error;
-        static const Enum::Value mobile_host_redirect;
-        static const Enum::Value where_are_you;
-        static const Enum::Value iam_here;
-        static const Enum::Value mobile_registration_request;
-        static const Enum::Value mobile_registration_reply;
-        static const Enum::Value domain_name_request;
+        static const Enum::YLeaf echo_reply;
+        static const Enum::YLeaf destination_unreachable;
+        static const Enum::YLeaf source_quench;
+        static const Enum::YLeaf redirect;
+        static const Enum::YLeaf alternate_host_address;
+        static const Enum::YLeaf echo;
+        static const Enum::YLeaf router_advertisement;
+        static const Enum::YLeaf router_selection;
+        static const Enum::YLeaf time_exceeded;
+        static const Enum::YLeaf parameter_problem;
+        static const Enum::YLeaf time_stamp;
+        static const Enum::YLeaf time_stamp_reply;
+        static const Enum::YLeaf information_request;
+        static const Enum::YLeaf information_reply;
+        static const Enum::YLeaf address_mask_request;
+        static const Enum::YLeaf address_mask_reply;
+        static const Enum::YLeaf trace_route;
+        static const Enum::YLeaf datagram_conversion_error;
+        static const Enum::YLeaf mobile_host_redirect;
+        static const Enum::YLeaf where_are_you;
+        static const Enum::YLeaf iam_here;
+        static const Enum::YLeaf mobile_registration_request;
+        static const Enum::YLeaf mobile_registration_reply;
+        static const Enum::YLeaf domain_name_request;
 
 };
 
 class PacketEnum : public Enum
 {
     public:
-        static const Enum::Value icmp;
-        static const Enum::Value icm_pv6;
-        static const Enum::Value igmp;
-        static const Enum::Value unknown;
+        static const Enum::YLeaf icmp;
+        static const Enum::YLeaf icm_pv6;
+        static const Enum::YLeaf igmp;
+        static const Enum::YLeaf unknown;
 
 };
 
 class AddrFamilyEnum : public Enum
 {
     public:
-        static const Enum::Value internetwork;
-        static const Enum::Value ip_version6;
+        static const Enum::YLeaf internetwork;
+        static const Enum::YLeaf ip_version6;
 
 };
 
 class NsrStatusEnum : public Enum
 {
     public:
-        static const Enum::Value down;
-        static const Enum::Value up;
-        static const Enum::Value na;
+        static const Enum::YLeaf down;
+        static const Enum::YLeaf up;
+        static const Enum::YLeaf na;
 
 };
 
 class TcpAddressFamilyEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 
 class NsrDownReasonEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value init_sync_aborted;
-        static const Enum::Value client_disabled;
-        static const Enum::Value client_disconnect;
-        static const Enum::Value tcp_disconnect;
-        static const Enum::Value failover;
-        static const Enum::Value nsr_clear;
-        static const Enum::Value internal_error;
-        static const Enum::Value retransmit_threshold_exceed;
-        static const Enum::Value init_sync_failure_thresh_exceeded;
-        static const Enum::Value audit_timeout;
-        static const Enum::Value audit_failed;
-        static const Enum::Value standby_sscb_deleted;
-        static const Enum::Value standby_session_close;
-        static const Enum::Value standby_rxpath_frozen;
-        static const Enum::Value partner_deleted;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf init_sync_aborted;
+        static const Enum::YLeaf client_disabled;
+        static const Enum::YLeaf client_disconnect;
+        static const Enum::YLeaf tcp_disconnect;
+        static const Enum::YLeaf failover;
+        static const Enum::YLeaf nsr_clear;
+        static const Enum::YLeaf internal_error;
+        static const Enum::YLeaf retransmit_threshold_exceed;
+        static const Enum::YLeaf init_sync_failure_thresh_exceeded;
+        static const Enum::YLeaf audit_timeout;
+        static const Enum::YLeaf audit_failed;
+        static const Enum::YLeaf standby_sscb_deleted;
+        static const Enum::YLeaf standby_session_close;
+        static const Enum::YLeaf standby_rxpath_frozen;
+        static const Enum::YLeaf partner_deleted;
 
 };
 
 class TcpTimerEnum : public Enum
 {
     public:
-        static const Enum::Value retransmission_timer;
-        static const Enum::Value window_probe_timer;
-        static const Enum::Value timewait_state_timer;
-        static const Enum::Value ack_hold_timer;
-        static const Enum::Value keep_alive_timer;
-        static const Enum::Value pmtu_ager_timer;
-        static const Enum::Value retransmission_giveup_timer;
-        static const Enum::Value throttle_timer;
+        static const Enum::YLeaf retransmission_timer;
+        static const Enum::YLeaf window_probe_timer;
+        static const Enum::YLeaf timewait_state_timer;
+        static const Enum::YLeaf ack_hold_timer;
+        static const Enum::YLeaf keep_alive_timer;
+        static const Enum::YLeaf pmtu_ager_timer;
+        static const Enum::YLeaf retransmission_giveup_timer;
+        static const Enum::YLeaf throttle_timer;
 
 };
 

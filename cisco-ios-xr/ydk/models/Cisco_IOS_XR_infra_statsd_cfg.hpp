@@ -26,6 +26,7 @@ class Statistics : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Period : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Statistics : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ServiceAccounting : public Entity
         {
             public:
@@ -54,9 +56,10 @@ class Statistics : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value polling_period; //type: uint32
-                Value polling_disable; //type: empty
 
+
+                YLeaf polling_period; //type: uint32
+                YLeaf polling_disable; //type: empty
 
 
 

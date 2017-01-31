@@ -24,11 +24,12 @@ class Exception : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value sparse; //type: boolean
-        Value kernel_debugger; //type: empty
-        Value packet_memory; //type: boolean
-        Value sparse_size; //type: uint32
 
+
+        YLeaf sparse; //type: boolean
+        YLeaf kernel_debugger; //type: empty
+        YLeaf packet_memory; //type: boolean
+        YLeaf sparse_size; //type: uint32
 
     class Choice1 : public Entity
     {
@@ -43,12 +44,13 @@ class Exception : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value compress; //type: boolean
-            Value lower_limit; //type: uint32
-            Value higher_limit; //type: uint32
-            Value file_path; //type: string
-            Value filename; //type: string
 
+
+            YLeaf compress; //type: boolean
+            YLeaf lower_limit; //type: uint32
+            YLeaf higher_limit; //type: uint32
+            YLeaf file_path; //type: string
+            YLeaf filename; //type: string
 
 
 
@@ -68,12 +70,13 @@ class Exception : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value compress; //type: boolean
-            Value lower_limit; //type: uint32
-            Value higher_limit; //type: uint32
-            Value file_path; //type: string
-            Value filename; //type: string
 
+
+            YLeaf compress; //type: boolean
+            YLeaf lower_limit; //type: uint32
+            YLeaf higher_limit; //type: uint32
+            YLeaf file_path; //type: string
+            YLeaf filename; //type: string
 
 
 
@@ -93,12 +96,13 @@ class Exception : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value compress; //type: boolean
-            Value lower_limit; //type: uint32
-            Value higher_limit; //type: uint32
-            Value file_path; //type: string
-            Value filename; //type: string
 
+
+            YLeaf compress; //type: boolean
+            YLeaf lower_limit; //type: uint32
+            YLeaf higher_limit; //type: uint32
+            YLeaf file_path; //type: string
+            YLeaf filename; //type: string
 
 
 

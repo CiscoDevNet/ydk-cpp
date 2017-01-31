@@ -14,42 +14,42 @@ namespace Cisco_IOS_XR_mpls_ldp_cfg_datatypes {
 class MplsLdpNbrPasswordEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value specified;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf specified;
 
 };
 
 class MplsLdpDownstreamOnDemandEnum : public Enum
 {
     public:
-        static const Enum::Value peer_acl;
+        static const Enum::YLeaf peer_acl;
 
 };
 
 class MplsLdpRouterIdEnum : public Enum
 {
     public:
-        static const Enum::Value address;
+        static const Enum::YLeaf address;
 
 };
 
 class MplsLdpafNameEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 
 class MplsLdpSessionProtectionEnum : public Enum
 {
     public:
-        static const Enum::Value all;
-        static const Enum::Value for_;
-        static const Enum::Value all_with_duration;
-        static const Enum::Value for_with_duration;
-        static const Enum::Value all_with_forever;
-        static const Enum::Value for_with_forever;
+        static const Enum::YLeaf all;
+        static const Enum::YLeaf for_;
+        static const Enum::YLeaf all_with_duration;
+        static const Enum::YLeaf for_with_duration;
+        static const Enum::YLeaf all_with_forever;
+        static const Enum::YLeaf for_with_forever;
 
 };
 

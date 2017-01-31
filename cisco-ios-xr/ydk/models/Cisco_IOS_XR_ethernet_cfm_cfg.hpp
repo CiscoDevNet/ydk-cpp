@@ -14,48 +14,48 @@ namespace Cisco_IOS_XR_ethernet_cfm_cfg {
 class CfmLmCountersCfgEnum : public Enum
 {
     public:
-        static const Enum::Value aggregate;
-        static const Enum::Value list;
-        static const Enum::Value range;
+        static const Enum::YLeaf aggregate;
+        static const Enum::YLeaf list;
+        static const Enum::YLeaf range;
 
 };
 
 class CfmMdidFormatEnum : public Enum
 {
     public:
-        static const Enum::Value null;
-        static const Enum::Value dns_like;
-        static const Enum::Value mac_address;
-        static const Enum::Value string;
+        static const Enum::YLeaf null;
+        static const Enum::YLeaf dns_like;
+        static const Enum::YLeaf mac_address;
+        static const Enum::YLeaf string;
 
 };
 
 class CfmShortMaNameFormatEnum : public Enum
 {
     public:
-        static const Enum::Value vlan_id;
-        static const Enum::Value string;
-        static const Enum::Value number;
-        static const Enum::Value vpn_id;
-        static const Enum::Value icc_based;
+        static const Enum::YLeaf vlan_id;
+        static const Enum::YLeaf string;
+        static const Enum::YLeaf number;
+        static const Enum::YLeaf vpn_id;
+        static const Enum::YLeaf icc_based;
 
 };
 
 class CfmServiceEnum : public Enum
 {
     public:
-        static const Enum::Value bridge_domain;
-        static const Enum::Value p2p_cross_connect;
-        static const Enum::Value mp2mp_cross_connect;
-        static const Enum::Value down_meps;
+        static const Enum::YLeaf bridge_domain;
+        static const Enum::YLeaf p2p_cross_connect;
+        static const Enum::YLeaf mp2mp_cross_connect;
+        static const Enum::YLeaf down_meps;
 
 };
 
 class CfmMipPolicyEnum : public Enum
 {
     public:
-        static const Enum::Value all;
-        static const Enum::Value lower_mep_only;
+        static const Enum::YLeaf all;
+        static const Enum::YLeaf lower_mep_only;
 
 };
 

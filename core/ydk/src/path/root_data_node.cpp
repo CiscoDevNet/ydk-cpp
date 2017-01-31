@@ -54,7 +54,8 @@ ydk::path::RootDataImpl::path() const
 ydk::path::DataNode*
 ydk::path::RootDataImpl::create_filter(const std::string& path, const std::string& value)
 {
-	//TODO
+	BOOST_LOG_TRIVIAL(error) << "Cannot create filters for RootDataNode. You may need to call RootDataNode::create() for path: " << path ;
+	BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Cannot create filters for RootDataNode. You may need to call RootDataNode::create()"});
     return nullptr;
 }
 
@@ -64,20 +65,20 @@ ydk::path::RootDataImpl::create(const std::string& path, const std::string& valu
     if(path.empty())
     {
         BOOST_LOG_TRIVIAL(error) << "Path is empty";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"Path is empty"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Path is empty"});
     }
 
     //path should not start with /
     if(path.at(0) == '/')
     {
         BOOST_LOG_TRIVIAL(error) << "Path " << path << " starts with /";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"Path starts with /"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Path starts with /"});
     }
     std::vector<std::string> segments = segmentalize(path);
     if(segments.size()<=0)
     {
 		BOOST_LOG_TRIVIAL(error) << "Could not segmentalize";
-		BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"Could not segmentalize"});
+		BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Could not segmentalize"});
     }
 
     std::string start_seg = m_path + segments[0];
@@ -88,7 +89,7 @@ ydk::path::RootDataImpl::create(const std::string& path, const std::string& valu
     if( dnode == nullptr)
     {
         BOOST_LOG_TRIVIAL(error) << "Path " << path << " is invalid";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"Path is invalid."});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Path is invalid."});
     }
 
     DataNodeImpl* dn = nullptr;
@@ -148,7 +149,7 @@ ydk::path::RootDataImpl::set(const std::string& value)
 {
     if(!value.empty()) {
         BOOST_LOG_TRIVIAL(error) << "Invalid value being assigned to root";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"Invalid value being assigned to root."});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Invalid value being assigned to root."});
     }
 }
 

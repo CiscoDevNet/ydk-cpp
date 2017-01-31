@@ -210,8 +210,8 @@ bool Eem::DirUser::has_data() const
 bool Eem::DirUser::has_operation() const
 {
     return is_set(operation)
-	|| (library !=  nullptr && is_set(library->operation))
-	|| (policy !=  nullptr && is_set(policy->operation));
+	|| (library !=  nullptr && library->has_operation())
+	|| (policy !=  nullptr && policy->has_operation());
 }
 
 std::string Eem::DirUser::get_segment_path() const
@@ -1111,11 +1111,11 @@ bool Eem::has_data() const
 bool Eem::has_operation() const
 {
     return is_set(operation)
-	|| (avl_policies !=  nullptr && is_set(avl_policies->operation))
-	|| (dir_user !=  nullptr && is_set(dir_user->operation))
-	|| (env_variables !=  nullptr && is_set(env_variables->operation))
-	|| (refresh_time !=  nullptr && is_set(refresh_time->operation))
-	|| (reg_policies !=  nullptr && is_set(reg_policies->operation));
+	|| (avl_policies !=  nullptr && avl_policies->has_operation())
+	|| (dir_user !=  nullptr && dir_user->has_operation())
+	|| (env_variables !=  nullptr && env_variables->has_operation())
+	|| (refresh_time !=  nullptr && refresh_time->has_operation())
+	|| (reg_policies !=  nullptr && reg_policies->has_operation());
 }
 
 std::string Eem::get_segment_path() const
@@ -1132,7 +1132,7 @@ EntityPath Eem::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

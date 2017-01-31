@@ -6,7 +6,7 @@ YDK bundle is a package of python API's that are modeled in YANG.
 
 # Installation
 
-Create a build directory to build the library and install it (this will take up to an hour):
+Create a build directory to build the library and install it (this may take up to an hour):
 ```
     $ mkdir build && cd build
     $ cmake .. && sudo make install

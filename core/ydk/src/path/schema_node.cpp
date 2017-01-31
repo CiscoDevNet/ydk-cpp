@@ -38,7 +38,7 @@ ydk::path::SchemaNode::~SchemaNode()
 /////////////////////////////////////////////////////////////////////
 // ydk::SchemaNodeImpl
 ////////////////////////////////////////////////////////////////////
-ydk::path::SchemaNodeImpl::SchemaNodeImpl(const SchemaNode* parent, struct lys_node* node):m_parent{parent}, m_node{node}, m_children{}, m_type{nullptr}
+ydk::path::SchemaNodeImpl::SchemaNodeImpl(const SchemaNode* parent, struct lys_node* node):m_parent{parent}, m_node{node}, m_children{}
 {
     node->priv = this;
     if(node->nodetype != LYS_LEAF && node->nodetype != LYS_LEAFLIST) {
@@ -49,10 +49,6 @@ ydk::path::SchemaNodeImpl::SchemaNodeImpl(const SchemaNode* parent, struct lys_n
             m_children.emplace_back(std::make_unique<SchemaNodeImpl>(this,const_cast<struct lys_node*>(q)));
             last = q;
         }
-    } else {
-        struct lys_node_leaf* node_leaf = reinterpret_cast<struct lys_node_leaf*>(m_node);
-        m_type = ydk::path::create_schema_value_type(node_leaf);
-
     }
 
 }
@@ -102,14 +98,14 @@ ydk::path::SchemaNodeImpl::find(const std::string& path) const
     if(path.empty())
     {
         BOOST_LOG_TRIVIAL(error) << "Path is empty";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"path is empty"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"path is empty"});
     }
 
     //has to be a relative path
     if(path.at(0) == '/')
     {
         BOOST_LOG_TRIVIAL(error) << "path must be a relative path";
-	BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"path must be a relative path"});
+	BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"path must be a relative path"});
     }
 
     std::vector<SchemaNode*> ret;
@@ -230,7 +226,7 @@ ydk::path::SchemaNodeImpl::keys() const
         //sanity check
         if(m_node->nodetype != LYS_LIST) {
             BOOST_LOG_TRIVIAL(error) << "Mismatch in schema";
-            BOOST_THROW_EXCEPTION(YDKIllegalStateException{"Mismatch in schema"});
+            BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"Mismatch in schema"});
         }
         struct lys_node_list *slist = (struct lys_node_list *)m_node;
         for(uint8_t i=0; i < slist->keys_size; ++i) {
@@ -242,15 +238,6 @@ ydk::path::SchemaNodeImpl::keys() const
     }
 
     return stmts;
-}
-
-
-
-ydk::path::SchemaValueType &
-ydk::path::SchemaNodeImpl::type() const
-{
-
-    return *m_type;
 }
 
 

@@ -24,8 +24,9 @@ class Rib : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value max_recursion_depth; //type: uint32
 
+
+        YLeaf max_recursion_depth; //type: uint32
 
     class Af : public Entity
     {
@@ -42,6 +43,7 @@ class Rib : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4 : public Entity
         {
             public:
@@ -55,8 +57,9 @@ class Rib : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value next_hop_dampening_disable; //type: empty
 
+
+                YLeaf next_hop_dampening_disable; //type: empty
 
             class RedistributionHistory : public Entity
             {
@@ -71,9 +74,10 @@ class Rib : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bcdl_client; //type: uint32
-                    Value protocol_client; //type: uint32
 
+
+                    YLeaf bcdl_client; //type: uint32
+                    YLeaf protocol_client; //type: uint32
 
                 class Keep : public Entity
                 {
@@ -88,8 +92,9 @@ class Rib : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bcdl; //type: empty
 
+
+                        YLeaf bcdl; //type: empty
 
 
 
@@ -121,8 +126,9 @@ class Rib : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value next_hop_dampening_disable; //type: empty
 
+
+                YLeaf next_hop_dampening_disable; //type: empty
 
             class RedistributionHistory : public Entity
             {
@@ -137,9 +143,10 @@ class Rib : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bcdl_client; //type: uint32
-                    Value protocol_client; //type: uint32
 
+
+                    YLeaf bcdl_client; //type: uint32
+                    YLeaf protocol_client; //type: uint32
 
                 class Keep : public Entity
                 {
@@ -154,8 +161,9 @@ class Rib : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bcdl; //type: empty
 
+
+                        YLeaf bcdl; //type: empty
 
 
 

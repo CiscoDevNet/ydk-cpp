@@ -109,7 +109,7 @@ bool Rcp::has_data() const
 bool Rcp::has_operation() const
 {
     return is_set(operation)
-	|| (rcp_client !=  nullptr && is_set(rcp_client->operation));
+	|| (rcp_client !=  nullptr && rcp_client->has_operation());
 }
 
 std::string Rcp::get_segment_path() const
@@ -126,7 +126,7 @@ EntityPath Rcp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -315,7 +315,7 @@ bool Ftp::has_data() const
 bool Ftp::has_operation() const
 {
     return is_set(operation)
-	|| (ftp_client !=  nullptr && is_set(ftp_client->operation));
+	|| (ftp_client !=  nullptr && ftp_client->has_operation());
 }
 
 std::string Ftp::get_segment_path() const
@@ -332,7 +332,7 @@ EntityPath Ftp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -497,7 +497,7 @@ bool Tftp::has_data() const
 bool Tftp::has_operation() const
 {
     return is_set(operation)
-	|| (tftp_client !=  nullptr && is_set(tftp_client->operation));
+	|| (tftp_client !=  nullptr && tftp_client->has_operation());
 }
 
 std::string Tftp::get_segment_path() const
@@ -514,7 +514,7 @@ EntityPath Tftp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

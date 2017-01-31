@@ -26,6 +26,7 @@ class Clock : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class SummerTime : public Entity
     {
         public:
@@ -39,24 +40,22 @@ class Clock : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value time_zone_name; //type: string
-            Value mode; //type: ClockSummerTimeModeEnum
-            Value start_week_number_or_start_date; //type: uint32
-            Value start_weekday_or_start_year; //type: uint32
-            Value start_month; //type: ClockMonthEnum
-            Value start_hour; //type: uint32
-            Value start_minute; //type: uint32
-            Value end_week_number_or_end_date; //type: uint32
-            Value end_weekday_or_end_year; //type: uint32
-            Value end_month; //type: ClockMonthEnum
-            Value end_hour; //type: uint32
-            Value end_minute; //type: uint32
-            Value offset; //type: uint32
 
 
-            class ClockMonthEnum;
-            class ClockSummerTimeModeEnum;
-            class ClockMonthEnum;
+            YLeaf time_zone_name; //type: string
+            YLeaf mode; //type: ClockSummerTimeModeEnum
+            YLeaf start_week_number_or_start_date; //type: uint32
+            YLeaf start_weekday_or_start_year; //type: uint32
+            YLeaf start_month; //type: ClockMonthEnum
+            YLeaf start_hour; //type: uint32
+            YLeaf start_minute; //type: uint32
+            YLeaf end_week_number_or_end_date; //type: uint32
+            YLeaf end_weekday_or_end_year; //type: uint32
+            YLeaf end_month; //type: ClockMonthEnum
+            YLeaf end_hour; //type: uint32
+            YLeaf end_minute; //type: uint32
+            YLeaf offset; //type: uint32
+
 
 
     }; // Clock::SummerTime
@@ -75,10 +74,11 @@ class Clock : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value time_zone_name; //type: string
-            Value hour_offset; //type: int32
-            Value minute_offset; //type: uint32
 
+
+            YLeaf time_zone_name; //type: string
+            YLeaf hour_offset; //type: int32
+            YLeaf minute_offset; //type: uint32
 
 
 
@@ -95,26 +95,26 @@ class Clock : public Entity
 class ClockMonthEnum : public Enum
 {
     public:
-        static const Enum::Value january;
-        static const Enum::Value february;
-        static const Enum::Value march;
-        static const Enum::Value april;
-        static const Enum::Value may;
-        static const Enum::Value june;
-        static const Enum::Value july;
-        static const Enum::Value august;
-        static const Enum::Value september;
-        static const Enum::Value october;
-        static const Enum::Value november;
-        static const Enum::Value december;
+        static const Enum::YLeaf january;
+        static const Enum::YLeaf february;
+        static const Enum::YLeaf march;
+        static const Enum::YLeaf april;
+        static const Enum::YLeaf may;
+        static const Enum::YLeaf june;
+        static const Enum::YLeaf july;
+        static const Enum::YLeaf august;
+        static const Enum::YLeaf september;
+        static const Enum::YLeaf october;
+        static const Enum::YLeaf november;
+        static const Enum::YLeaf december;
 
 };
 
 class ClockSummerTimeModeEnum : public Enum
 {
     public:
-        static const Enum::Value recurring;
-        static const Enum::Value date;
+        static const Enum::YLeaf recurring;
+        static const Enum::YLeaf date;
 
 };
 

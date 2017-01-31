@@ -25,62 +25,62 @@
 #include "path/path_private.hpp"
 
 /////////////////////////////////////////////////////////////////////////
-/// YDKException
+/// YCPPError
 /////////////////////////////////////////////////////////////////////////
-ydk::YDKException::YDKException(const std::string& msg) : err_msg{msg}
+ydk::YCPPError::YCPPError(const std::string& msg) : err_msg{msg}
 {
 	what();
 }
 
-const char* ydk::YDKException::what() const noexcept
+const char* ydk::YCPPError::what() const noexcept
 {
 	return err_msg.c_str();
 }
 
 /////////////////////////////////////////////////////////////////////////
-/// YDKCoreException
+/// YCPPCoreError
 /////////////////////////////////////////////////////////////////////////
-ydk::path::YDKCoreException::YDKCoreException(const std::string& msg) : ydk::YDKException{msg}
+ydk::path::YCPPCoreError::YCPPCoreError(const std::string& msg) : ydk::YCPPError{msg}
 {
 
 }
 
 //////////////////////////////////////////////////////////////////////////
-/// YDKIllegalStateException
+/// YCPPIllegalStateError
 //////////////////////////////////////////////////////////////////////////
-ydk::YDKIllegalStateException::YDKIllegalStateException(const std::string& msg) : ydk::YDKException{msg}
+ydk::YCPPIllegalStateError::YCPPIllegalStateError(const std::string& msg) : ydk::YCPPError{msg}
 {
 
 }
 
 //////////////////////////////////////////////////////////////////////////
-/// YDKInvalidArgumentException
+/// YCPPInvalidArgumentError
 //////////////////////////////////////////////////////////////////////////
-ydk::YDKInvalidArgumentException::YDKInvalidArgumentException(const std::string& msg) : ydk::YDKException{msg}
+ydk::YCPPInvalidArgumentError::YCPPInvalidArgumentError(const std::string& msg) : ydk::YCPPError{msg}
 {
 
 }
 
 //////////////////////////////////////////////////////////////////////////
-/// YDKOperationNotSupportedException
+/// YCPPOperationNotSupportedError
 //////////////////////////////////////////////////////////////////////////
-ydk::YDKOperationNotSupportedException::YDKOperationNotSupportedException(const std::string& msg) : ydk::YDKException{msg}
+ydk::YCPPOperationNotSupportedError::YCPPOperationNotSupportedError(const std::string& msg) : ydk::YCPPError{msg}
 {
 
 }
 
 //////////////////////////////////////////////////////////////////////////
-/// YDKDataValidationException
+/// YCPPDataValidationError
 //////////////////////////////////////////////////////////////////////////
-ydk::path::YDKDataValidationException::YDKDataValidationException() : ydk::path::YDKCoreException{"Data Validation Exception"}
+ydk::path::YCPPDataValidationError::YCPPDataValidationError() : ydk::path::YCPPCoreError{ly_errmsg()}
 {
 
 }
 
 //////////////////////////////////////////////////////////////////////////
-/// YDKPathException
+/// YCPPPathError
 //////////////////////////////////////////////////////////////////////////
-ydk::path::YDKPathException::YDKPathException(ydk::path::YDKPathException::Error error_code) : ydk::path::YDKCoreException{"Data Validation Exception"}, err{error_code}
+ydk::path::YCPPPathError::YCPPPathError(ydk::path::YCPPPathError::Error error_code) : ydk::path::YCPPCoreError{"Data Validation Error"}, err{error_code}
 {
 
 }
@@ -88,9 +88,18 @@ ydk::path::YDKPathException::YDKPathException(ydk::path::YDKPathException::Error
 
 
 /////////////////////////////////////////////////////////////////////////
-/// YDKCodecException
+/// YCPPCodecError
 /////////////////////////////////////////////////////////////////////////
-ydk::path::YDKCodecException::YDKCodecException(YDKCodecException::Error ec) : YDKCoreException(ly_errmsg()), err{ec}
+ydk::path::YCPPCodecError::YCPPCodecError(YCPPCodecError::Error ec) : YCPPCoreError(ly_errmsg()), err{ec}
+{
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////
+/// YCPPModelError
+/////////////////////////////////////////////////////////////////////////
+ydk::YCPPModelError::YCPPModelError(const std::string& msg) : ydk::YCPPError{msg}
 {
 
 }

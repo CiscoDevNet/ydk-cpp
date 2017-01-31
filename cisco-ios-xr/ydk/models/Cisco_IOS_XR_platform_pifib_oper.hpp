@@ -14,8 +14,8 @@ namespace Cisco_IOS_XR_platform_pifib_oper {
 class UsageAddressFamilyEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 

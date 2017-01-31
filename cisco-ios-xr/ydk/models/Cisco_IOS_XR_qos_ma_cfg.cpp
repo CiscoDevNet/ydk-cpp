@@ -43,7 +43,7 @@ EntityPath Qos::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -89,9 +89,9 @@ std::unique_ptr<Entity> Qos::clone_ptr()
     return std::make_unique<Qos>();
 }
 
-const Enum::Value QosFieldNotSupportedEnum::not_supported {0, "not-supported"};
+const Enum::YLeaf QosFieldNotSupportedEnum::not_supported {0, "not-supported"};
 
-const Enum::Value QosPolicyAccountEnum::user_defined {4, "user-defined"};
+const Enum::YLeaf QosPolicyAccountEnum::user_defined {4, "user-defined"};
 
 
 }

@@ -14,8 +14,8 @@ namespace Cisco_IOS_XR_snmp_ifmib_oper {
 class LinkUpDownStatusEnum : public Enum
 {
     public:
-        static const Enum::Value enabled;
-        static const Enum::Value disabled;
+        static const Enum::YLeaf enabled;
+        static const Enum::YLeaf disabled;
 
 };
 

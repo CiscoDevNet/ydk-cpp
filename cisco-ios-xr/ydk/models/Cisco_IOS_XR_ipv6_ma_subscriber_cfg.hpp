@@ -14,7 +14,7 @@ namespace Cisco_IOS_XR_ipv6_ma_subscriber_cfg {
 class Ipv6ReachableViaEnum : public Enum
 {
     public:
-        static const Enum::Value received;
+        static const Enum::YLeaf received;
 
 };
 

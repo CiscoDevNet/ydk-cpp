@@ -26,6 +26,7 @@ class SubscriberManager : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Accounting : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class SubscriberManager : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SendStop : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class SubscriberManager : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value setup_failure; //type: string
 
+
+                YLeaf setup_failure; //type: string
 
 
 
@@ -89,6 +92,7 @@ class IedgeLicenseManager : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Node : public Entity
     {
         public:
@@ -102,10 +106,11 @@ class IedgeLicenseManager : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value node_name; //type: string
-            Value session_limit; //type: int32
-            Value session_threshold; //type: int32
 
+
+            YLeaf node_name; //type: string
+            YLeaf session_limit; //type: int32
+            YLeaf session_threshold; //type: int32
 
 
 

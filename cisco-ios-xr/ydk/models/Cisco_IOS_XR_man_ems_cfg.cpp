@@ -133,7 +133,7 @@ bool Grpc::has_operation() const
 	|| is_set(max_request_per_user.operation)
 	|| is_set(max_request_total.operation)
 	|| is_set(port.operation)
-	|| (tls !=  nullptr && is_set(tls->operation));
+	|| (tls !=  nullptr && tls->has_operation());
 }
 
 std::string Grpc::get_segment_path() const
@@ -150,7 +150,7 @@ EntityPath Grpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

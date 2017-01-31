@@ -24,12 +24,13 @@ class RollBackConfigurationLastRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value count; //type: int32
-        Value force; //type: boolean
-        Value best_effort; //type: boolean
-        Value label; //type: string
-        Value comment; //type: string
 
+
+        YLeaf count; //type: int32
+        YLeaf force; //type: boolean
+        YLeaf best_effort; //type: boolean
+        YLeaf label; //type: string
+        YLeaf comment; //type: string
 
 
 
@@ -49,12 +50,13 @@ class RollBackConfigurationToRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value commit_id; //type: string
-        Value force; //type: boolean
-        Value best_effort; //type: boolean
-        Value label; //type: string
-        Value comment; //type: string
 
+
+        YLeaf commit_id; //type: string
+        YLeaf force; //type: boolean
+        YLeaf best_effort; //type: boolean
+        YLeaf label; //type: string
+        YLeaf comment; //type: string
 
 
 
@@ -74,12 +76,13 @@ class RollBackConfigurationToExcludeRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value commit_id; //type: string
-        Value force; //type: boolean
-        Value best_effort; //type: boolean
-        Value label; //type: string
-        Value comment; //type: string
 
+
+        YLeaf commit_id; //type: string
+        YLeaf force; //type: boolean
+        YLeaf best_effort; //type: boolean
+        YLeaf label; //type: string
+        YLeaf comment; //type: string
 
 
 
@@ -99,12 +102,13 @@ class RollBackConfigurationRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value commit_id; //type: string
-        Value force; //type: boolean
-        Value best_effort; //type: boolean
-        Value label; //type: string
-        Value comment; //type: string
 
+
+        YLeaf commit_id; //type: string
+        YLeaf force; //type: boolean
+        YLeaf best_effort; //type: boolean
+        YLeaf label; //type: string
+        YLeaf comment; //type: string
 
 
 

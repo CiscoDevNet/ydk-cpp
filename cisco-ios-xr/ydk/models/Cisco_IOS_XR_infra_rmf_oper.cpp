@@ -52,7 +52,7 @@ EntityPath Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -166,7 +166,7 @@ EntityPath Redundancy::Nodes::Node::Redundancy_::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -289,7 +289,7 @@ bool Redundancy::Nodes::Node::has_operation() const
 	|| is_set(err_log.operation)
 	|| is_set(log.operation)
 	|| is_set(standby_reboot_reason.operation)
-	|| (redundancy !=  nullptr && is_set(redundancy->operation));
+	|| (redundancy !=  nullptr && redundancy->has_operation());
 }
 
 std::string Redundancy::Nodes::Node::get_segment_path() const
@@ -888,8 +888,8 @@ bool Redundancy::has_data() const
 bool Redundancy::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (nodes !=  nullptr && nodes->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Redundancy::get_segment_path() const
@@ -906,7 +906,7 @@ EntityPath Redundancy::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

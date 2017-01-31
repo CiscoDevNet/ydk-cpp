@@ -26,6 +26,7 @@ class Parser : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Indentation : public Entity
     {
         public:
@@ -39,8 +40,9 @@ class Parser : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value indentation_disable; //type: boolean
 
+
+            YLeaf indentation_disable; //type: boolean
 
 
 
@@ -62,6 +64,7 @@ class Parser : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Execs : public Entity
         {
             public:
@@ -77,6 +80,7 @@ class Parser : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Exec : public Entity
             {
                 public:
@@ -90,9 +94,10 @@ class Parser : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value identifier; //type: string
-                    Value identifier_xr; //type: string
 
+
+                    YLeaf identifier; //type: string
+                    YLeaf identifier_xr; //type: string
 
 
 
@@ -120,6 +125,7 @@ class Parser : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Configuration : public Entity
             {
                 public:
@@ -133,9 +139,10 @@ class Parser : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value identifier; //type: string
-                    Value identifier_xr; //type: string
 
+
+                    YLeaf identifier; //type: string
+                    YLeaf identifier_xr; //type: string
 
 
 
@@ -163,6 +170,7 @@ class Parser : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class All : public Entity
             {
                 public:
@@ -176,9 +184,10 @@ class Parser : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value identifier; //type: string
-                    Value identifier_xr; //type: string
 
+
+                    YLeaf identifier; //type: string
+                    YLeaf identifier_xr; //type: string
 
 
 
@@ -212,8 +221,9 @@ class Parser : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value size; //type: uint32
 
+
+            YLeaf size; //type: uint32
 
 
 
@@ -233,8 +243,9 @@ class Parser : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value slot_order; //type: boolean
 
+
+            YLeaf slot_order; //type: boolean
 
 
 
@@ -254,8 +265,9 @@ class Parser : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value bit_count; //type: boolean
 
+
+            YLeaf bit_count; //type: boolean
 
 
 
@@ -277,6 +289,7 @@ class Parser : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Disable : public Entity
         {
             public:
@@ -290,8 +303,9 @@ class Parser : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value usergroup; //type: string
 
+
+                YLeaf usergroup; //type: string
 
 
 
@@ -317,8 +331,9 @@ class Parser : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value enable; //type: boolean
 
+
+            YLeaf enable; //type: boolean
 
 
 

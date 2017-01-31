@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_clns_isis_cfg.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_snmp_agent_cfg {
@@ -26,18 +25,19 @@ class Snmp : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value inform_retries; //type: uint32
-        Value trap_port; //type: uint32
-        Value oid_poll_stats; //type: empty
-        Value trap_source; //type: string
-        Value vrf_authentication_trap_disable; //type: empty
-        Value inform_timeout; //type: uint32
-        Value trap_source_ipv6; //type: string
-        Value packet_size; //type: uint32
-        Value throttle_time; //type: uint32
-        Value trap_source_ipv4; //type: string
-        Value inform_pending; //type: uint32
 
+
+        YLeaf inform_retries; //type: uint32
+        YLeaf trap_port; //type: uint32
+        YLeaf oid_poll_stats; //type: empty
+        YLeaf trap_source; //type: string
+        YLeaf vrf_authentication_trap_disable; //type: empty
+        YLeaf inform_timeout; //type: uint32
+        YLeaf trap_source_ipv6; //type: string
+        YLeaf packet_size; //type: uint32
+        YLeaf throttle_time; //type: uint32
+        YLeaf trap_source_ipv4; //type: string
+        YLeaf inform_pending; //type: uint32
 
     class EncryptedCommunityMaps : public Entity
     {
@@ -54,6 +54,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class EncryptedCommunityMap : public Entity
         {
             public:
@@ -67,11 +68,12 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value community_name; //type: string
-                Value context; //type: string
-                Value security; //type: string
-                Value target_list; //type: string
 
+
+                YLeaf community_name; //type: string
+                YLeaf context; //type: string
+                YLeaf security; //type: string
+                YLeaf target_list; //type: string
 
 
 
@@ -99,6 +101,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class View : public Entity
         {
             public:
@@ -112,12 +115,12 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value view_name; //type: string
-                Value family; //type: string
-                Value view_inclusion; //type: SnmpMibViewInclusionEnum
 
 
-                class SnmpMibViewInclusionEnum;
+                YLeaf view_name; //type: string
+                YLeaf family; //type: string
+                YLeaf view_inclusion; //type: SnmpMibViewInclusionEnum
+
 
 
         }; // Snmp::Views::View
@@ -144,6 +147,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Threshold : public Entity
         {
             public:
@@ -157,9 +161,10 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value oid_processing; //type: uint32
-                Value pdu_processing; //type: uint32
 
+
+                YLeaf oid_processing; //type: uint32
+                YLeaf pdu_processing; //type: uint32
 
 
 
@@ -187,6 +192,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class DefaultCommunities : public Entity
         {
             public:
@@ -202,6 +208,7 @@ class Snmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class DefaultCommunity : public Entity
             {
                 public:
@@ -215,20 +222,17 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value community_name; //type: string
-                    Value priviledge; //type: SnmpAccessLevelEnum
-                    Value view_name; //type: string
-                    Value v4acl_type; //type: SnmpaclEnum
-                    Value v4_access_list; //type: string
-                    Value v6acl_type; //type: SnmpaclEnum
-                    Value v6_access_list; //type: string
-                    Value owner; //type: SnmpOwnerAccessEnum
 
 
-                    class SnmpOwnerAccessEnum;
-                    class SnmpAccessLevelEnum;
-                    class SnmpaclEnum;
-                    class SnmpaclEnum;
+                    YLeaf community_name; //type: string
+                    YLeaf priviledge; //type: SnmpAccessLevelEnum
+                    YLeaf view_name; //type: string
+                    YLeaf v4acl_type; //type: SnmpaclEnum
+                    YLeaf v4_access_list; //type: string
+                    YLeaf v6acl_type; //type: SnmpaclEnum
+                    YLeaf v6_access_list; //type: string
+                    YLeaf owner; //type: SnmpOwnerAccessEnum
+
 
 
             }; // Snmp::Administration::DefaultCommunities::DefaultCommunity
@@ -255,6 +259,7 @@ class Snmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EncryptedCommunity : public Entity
             {
                 public:
@@ -268,20 +273,17 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value community_name; //type: string
-                    Value priviledge; //type: SnmpAccessLevelEnum
-                    Value view_name; //type: string
-                    Value v4acl_type; //type: SnmpaclEnum
-                    Value v4_access_list; //type: string
-                    Value v6acl_type; //type: SnmpaclEnum
-                    Value v6_access_list; //type: string
-                    Value owner; //type: SnmpOwnerAccessEnum
 
 
-                    class SnmpOwnerAccessEnum;
-                    class SnmpAccessLevelEnum;
-                    class SnmpaclEnum;
-                    class SnmpaclEnum;
+                    YLeaf community_name; //type: string
+                    YLeaf priviledge; //type: SnmpAccessLevelEnum
+                    YLeaf view_name; //type: string
+                    YLeaf v4acl_type; //type: SnmpaclEnum
+                    YLeaf v4_access_list; //type: string
+                    YLeaf v6acl_type; //type: SnmpaclEnum
+                    YLeaf v6_access_list; //type: string
+                    YLeaf owner; //type: SnmpOwnerAccessEnum
+
 
 
             }; // Snmp::Administration::EncryptedCommunities::EncryptedCommunity
@@ -315,6 +317,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class EngineId : public Entity
         {
             public:
@@ -328,8 +331,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value local; //type: string
 
+
+                YLeaf local; //type: string
 
             class Remotes : public Entity
             {
@@ -346,6 +350,7 @@ class Snmp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Remote : public Entity
                 {
                     public:
@@ -359,10 +364,11 @@ class Snmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value remote_address; //type: string
-                        Value remote_engine_id; //type: string
-                        Value port; //type: uint16
 
+
+                        YLeaf remote_address; //type: string
+                        YLeaf remote_engine_id; //type: string
+                        YLeaf port; //type: uint16
 
 
 
@@ -400,10 +406,11 @@ class Snmp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value timeout; //type: uint32
-            Value throttle_time; //type: uint32
-            Value queue_length; //type: uint32
 
+
+            YLeaf timeout; //type: uint32
+            YLeaf throttle_time; //type: uint32
+            YLeaf queue_length; //type: uint32
 
 
 
@@ -425,6 +432,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Tos : public Entity
         {
             public:
@@ -438,14 +446,12 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: SnmpTosEnum
-                Value precedence; //type: one of uint32, enumeration
-                Value dscp; //type: one of uint32, enumeration
 
 
-                class SnmpDscpValueEnum;
-                class SnmpPrecedenceValue1Enum;
-                class SnmpTosEnum;
+                YLeaf type; //type: SnmpTosEnum
+                YLeaf precedence; //type: one of uint32, enumeration
+                YLeaf dscp; //type: one of uint32, enumeration
+
 
 
         }; // Snmp::Ipv6::Tos
@@ -472,6 +478,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Tos : public Entity
         {
             public:
@@ -485,14 +492,12 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: SnmpTosEnum
-                Value precedence; //type: one of uint32, enumeration
-                Value dscp; //type: one of uint32, enumeration
 
 
-                class SnmpDscpValueEnum;
-                class SnmpPrecedenceValue1Enum;
-                class SnmpTosEnum;
+                YLeaf type; //type: SnmpTosEnum
+                YLeaf precedence; //type: one of uint32, enumeration
+                YLeaf dscp; //type: one of uint32, enumeration
+
 
 
         }; // Snmp::Ipv4::Tos
@@ -517,10 +522,11 @@ class Snmp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value chassis_id; //type: string
-            Value location; //type: string
-            Value contact; //type: string
 
+
+            YLeaf chassis_id; //type: string
+            YLeaf location; //type: string
+            YLeaf contact; //type: string
 
 
 
@@ -542,6 +548,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Targets : public Entity
         {
             public:
@@ -557,6 +564,7 @@ class Snmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Target_ : public Entity
             {
                 public:
@@ -570,8 +578,9 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value target_list_name; //type: string
 
+
+                    YLeaf target_list_name; //type: string
 
                 class VrfNames : public Entity
                 {
@@ -588,6 +597,7 @@ class Snmp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class VrfName : public Entity
                     {
                         public:
@@ -601,8 +611,9 @@ class Snmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value name; //type: string
 
+
+                            YLeaf name; //type: string
 
 
 
@@ -630,6 +641,7 @@ class Snmp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class TargetAddress : public Entity
                     {
                         public:
@@ -643,8 +655,9 @@ class Snmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ip_address; //type: string
 
+
+                            YLeaf ip_address; //type: string
 
 
 
@@ -691,6 +704,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Snmp_ : public Entity
         {
             public:
@@ -704,13 +718,14 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value authentication; //type: empty
-                Value cold_start; //type: empty
-                Value warm_start; //type: empty
-                Value enable; //type: empty
-                Value link_down; //type: empty
-                Value link_up; //type: empty
 
+
+                YLeaf authentication; //type: empty
+                YLeaf cold_start; //type: empty
+                YLeaf warm_start; //type: empty
+                YLeaf enable; //type: empty
+                YLeaf link_down; //type: empty
+                YLeaf link_up; //type: empty
 
 
 
@@ -730,11 +745,12 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value full_clear; //type: empty
-                Value status; //type: empty
-                Value enable; //type: empty
-                Value full_raise; //type: empty
 
+
+                YLeaf full_clear; //type: empty
+                YLeaf status; //type: empty
+                YLeaf enable; //type: empty
+                YLeaf full_raise; //type: empty
 
 
 
@@ -754,11 +770,12 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value cisco; //type: empty
-                Value enable; //type: empty
-                Value vc_down; //type: empty
-                Value vc_up; //type: empty
 
+
+                YLeaf cisco; //type: empty
+                YLeaf enable; //type: empty
+                YLeaf vc_down; //type: empty
+                YLeaf vc_up; //type: empty
 
 
 
@@ -778,46 +795,28 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value database_overflow; //type: IsisMibDatabaseOverFlowBooleanEnum
-                Value manual_address_drops; //type: IsisMibManualAddressDropsBooleanEnum
-                Value corrupted_lsp_detected; //type: IsisMibCorruptedLspDetectedBooleanEnum
-                Value attempt_to_exceed_max_sequence; //type: IsisMibAttemptToExceedMaxSequenceBooleanEnum
-                Value id_length_mismatch; //type: IsisMibIdLengthMismatchBooleanEnum
-                Value max_area_address_mismatch; //type: IsisMibMaxAreaAddressMismatchBooleanEnum
-                Value own_lsp_purge; //type: IsisMibOwnLspPurgeBooleanEnum
-                Value sequence_number_skip; //type: IsisMibSequenceNumberSkipBooleanEnum
-                Value authentication_type_failure; //type: IsisMibAuthenticationTypeFailureBooleanEnum
-                Value authentication_failure; //type: IsisMibAuthenticationFailureBooleanEnum
-                Value version_skew; //type: IsisMibVersionSkewBooleanEnum
-                Value area_mismatch; //type: IsisMibAreaMismatchBooleanEnum
-                Value rejected_adjacency; //type: IsisMibRejectedAdjacencyBooleanEnum
-                Value lsp_too_large_to_propagate; //type: IsisMibLspTooLargeToPropagateBooleanEnum
-                Value originated_lsp_buffer_size_mismatch; //type: IsisMibOriginatedLspBufferSizeMismatchBooleanEnum
-                Value protocols_supported_mismatch; //type: IsisMibProtocolsSupportedMismatchBooleanEnum
-                Value adjacency_change; //type: IsisMibAdjacencyChangeBooleanEnum
-                Value lsp_error_detected; //type: IsisMibLspErrorDetectedBooleanEnum
-                Value all; //type: IsisMibAllBooleanEnum
 
 
-                class IsisMibAdjacencyChangeBooleanEnum;
-                class IsisMibAllBooleanEnum;
-                class IsisMibAreaMismatchBooleanEnum;
-                class IsisMibAttemptToExceedMaxSequenceBooleanEnum;
-                class IsisMibAuthenticationFailureBooleanEnum;
-                class IsisMibAuthenticationTypeFailureBooleanEnum;
-                class IsisMibCorruptedLspDetectedBooleanEnum;
-                class IsisMibDatabaseOverFlowBooleanEnum;
-                class IsisMibIdLengthMismatchBooleanEnum;
-                class IsisMibLspErrorDetectedBooleanEnum;
-                class IsisMibLspTooLargeToPropagateBooleanEnum;
-                class IsisMibManualAddressDropsBooleanEnum;
-                class IsisMibMaxAreaAddressMismatchBooleanEnum;
-                class IsisMibOriginatedLspBufferSizeMismatchBooleanEnum;
-                class IsisMibOwnLspPurgeBooleanEnum;
-                class IsisMibProtocolsSupportedMismatchBooleanEnum;
-                class IsisMibRejectedAdjacencyBooleanEnum;
-                class IsisMibSequenceNumberSkipBooleanEnum;
-                class IsisMibVersionSkewBooleanEnum;
+                YLeaf database_overflow; //type: IsisMibDatabaseOverFlowBooleanEnum
+                YLeaf manual_address_drops; //type: IsisMibManualAddressDropsBooleanEnum
+                YLeaf corrupted_lsp_detected; //type: IsisMibCorruptedLspDetectedBooleanEnum
+                YLeaf attempt_to_exceed_max_sequence; //type: IsisMibAttemptToExceedMaxSequenceBooleanEnum
+                YLeaf id_length_mismatch; //type: IsisMibIdLengthMismatchBooleanEnum
+                YLeaf max_area_address_mismatch; //type: IsisMibMaxAreaAddressMismatchBooleanEnum
+                YLeaf own_lsp_purge; //type: IsisMibOwnLspPurgeBooleanEnum
+                YLeaf sequence_number_skip; //type: IsisMibSequenceNumberSkipBooleanEnum
+                YLeaf authentication_type_failure; //type: IsisMibAuthenticationTypeFailureBooleanEnum
+                YLeaf authentication_failure; //type: IsisMibAuthenticationFailureBooleanEnum
+                YLeaf version_skew; //type: IsisMibVersionSkewBooleanEnum
+                YLeaf area_mismatch; //type: IsisMibAreaMismatchBooleanEnum
+                YLeaf rejected_adjacency; //type: IsisMibRejectedAdjacencyBooleanEnum
+                YLeaf lsp_too_large_to_propagate; //type: IsisMibLspTooLargeToPropagateBooleanEnum
+                YLeaf originated_lsp_buffer_size_mismatch; //type: IsisMibOriginatedLspBufferSizeMismatchBooleanEnum
+                YLeaf protocols_supported_mismatch; //type: IsisMibProtocolsSupportedMismatchBooleanEnum
+                YLeaf adjacency_change; //type: IsisMibAdjacencyChangeBooleanEnum
+                YLeaf lsp_error_detected; //type: IsisMibLspErrorDetectedBooleanEnum
+                YLeaf all; //type: IsisMibAllBooleanEnum
+
 
 
         }; // Snmp::Notification::Isis
@@ -836,8 +835,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -857,8 +857,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -878,8 +879,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -899,9 +901,10 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value insertion; //type: empty
-                Value removal; //type: empty
 
+
+                YLeaf insertion; //type: empty
+                YLeaf removal; //type: empty
 
 
 
@@ -921,10 +924,11 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value switchover; //type: empty
-                Value enable; //type: empty
-                Value status; //type: empty
 
+
+                YLeaf switchover; //type: empty
+                YLeaf enable; //type: empty
+                YLeaf status; //type: empty
 
 
 
@@ -944,8 +948,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value completion; //type: empty
 
+
+                YLeaf completion; //type: empty
 
 
 
@@ -965,8 +970,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value role_change; //type: empty
 
+
+                YLeaf role_change; //type: empty
 
 
 
@@ -986,8 +992,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -1007,8 +1014,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -1028,8 +1036,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -1049,10 +1058,11 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value lost_flow; //type: empty
-                Value new_flow; //type: empty
-                Value enable; //type: empty
 
+
+                YLeaf lost_flow; //type: empty
+                YLeaf new_flow; //type: empty
+                YLeaf enable; //type: empty
 
 
 
@@ -1074,6 +1084,7 @@ class Snmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Bgp4Mib : public Entity
             {
                 public:
@@ -1087,9 +1098,10 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enable; //type: empty
-                    Value up_down; //type: empty
 
+
+                    YLeaf enable; //type: empty
+                    YLeaf up_down; //type: empty
 
 
 
@@ -1109,9 +1121,10 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enable; //type: empty
-                    Value up_down; //type: empty
 
+
+                    YLeaf enable; //type: empty
+                    YLeaf up_down; //type: empty
 
 
 
@@ -1138,8 +1151,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -1161,6 +1175,7 @@ class Snmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Lsa : public Entity
             {
                 public:
@@ -1174,9 +1189,10 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value max_age_lsa; //type: empty
-                    Value originate_lsa; //type: empty
 
+
+                    YLeaf max_age_lsa; //type: empty
+                    YLeaf originate_lsa; //type: empty
 
 
 
@@ -1196,11 +1212,12 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface; //type: empty
-                    Value virtual_interface; //type: empty
-                    Value virtual_neighbor; //type: empty
-                    Value neighbor; //type: empty
 
+
+                    YLeaf interface; //type: empty
+                    YLeaf virtual_interface; //type: empty
+                    YLeaf virtual_neighbor; //type: empty
+                    YLeaf neighbor; //type: empty
 
 
 
@@ -1220,9 +1237,10 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value virtual_packet; //type: empty
-                    Value packet; //type: empty
 
+
+                    YLeaf virtual_packet; //type: empty
+                    YLeaf packet; //type: empty
 
 
 
@@ -1242,13 +1260,14 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value config_error; //type: empty
-                    Value authentication_failure; //type: empty
-                    Value virtual_config_error; //type: empty
-                    Value virtual_authentication_failure; //type: empty
-                    Value bad_packet; //type: empty
-                    Value virtual_bad_packet; //type: empty
 
+
+                    YLeaf config_error; //type: empty
+                    YLeaf authentication_failure; //type: empty
+                    YLeaf virtual_config_error; //type: empty
+                    YLeaf virtual_authentication_failure; //type: empty
+                    YLeaf bad_packet; //type: empty
+                    YLeaf virtual_bad_packet; //type: empty
 
 
 
@@ -1277,8 +1296,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -1300,6 +1320,7 @@ class Snmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Error : public Entity
             {
                 public:
@@ -1313,11 +1334,12 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value config_error; //type: empty
-                    Value bad_packet; //type: empty
-                    Value virtual_bad_packet; //type: empty
-                    Value virtual_config_error; //type: empty
 
+
+                    YLeaf config_error; //type: empty
+                    YLeaf bad_packet; //type: empty
+                    YLeaf virtual_bad_packet; //type: empty
+                    YLeaf virtual_config_error; //type: empty
 
 
 
@@ -1337,15 +1359,16 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value restart_virtual_helper; //type: empty
-                    Value nssa_translator; //type: empty
-                    Value interface; //type: empty
-                    Value restart; //type: empty
-                    Value neighbor; //type: empty
-                    Value virtual_interface; //type: empty
-                    Value restart_helper; //type: empty
-                    Value virtual_neighbor; //type: empty
 
+
+                    YLeaf restart_virtual_helper; //type: empty
+                    YLeaf nssa_translator; //type: empty
+                    YLeaf interface; //type: empty
+                    YLeaf restart; //type: empty
+                    YLeaf neighbor; //type: empty
+                    YLeaf virtual_interface; //type: empty
+                    YLeaf restart_helper; //type: empty
+                    YLeaf virtual_neighbor; //type: empty
 
 
 
@@ -1372,10 +1395,11 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value session_up; //type: empty
-                Value init_session_threshold_exceeded; //type: empty
-                Value session_down; //type: empty
 
+
+                YLeaf session_up; //type: empty
+                YLeaf init_session_threshold_exceeded; //type: empty
+                YLeaf session_down; //type: empty
 
 
 
@@ -1395,9 +1419,10 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value up; //type: empty
-                Value down; //type: empty
 
+
+                YLeaf up; //type: empty
+                YLeaf down; //type: empty
 
 
 
@@ -1417,12 +1442,13 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value cisco; //type: empty
-                Value up; //type: empty
-                Value reoptimize; //type: empty
-                Value reroute; //type: empty
-                Value down; //type: empty
 
+
+                YLeaf cisco; //type: empty
+                YLeaf up; //type: empty
+                YLeaf reoptimize; //type: empty
+                YLeaf reroute; //type: empty
+                YLeaf down; //type: empty
 
             class CiscoExtension : public Entity
             {
@@ -1437,12 +1463,13 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value preempt; //type: empty
-                    Value insufficient_bandwidth; //type: empty
-                    Value re_route_pending_clear; //type: empty
-                    Value bringup_fail; //type: empty
-                    Value re_route_pending; //type: empty
 
+
+                    YLeaf preempt; //type: empty
+                    YLeaf insufficient_bandwidth; //type: empty
+                    YLeaf re_route_pending_clear; //type: empty
+                    YLeaf bringup_fail; //type: empty
+                    YLeaf re_route_pending; //type: empty
 
 
 
@@ -1468,10 +1495,11 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value unprotected; //type: empty
-                Value enable; //type: empty
-                Value protected_; //type: empty
 
+
+                YLeaf unprotected; //type: empty
+                YLeaf enable; //type: empty
+                YLeaf protected_; //type: empty
 
 
 
@@ -1491,8 +1519,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -1512,8 +1541,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -1533,8 +1563,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -1554,9 +1585,10 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value switchover; //type: empty
-                Value oper_status; //type: empty
 
+
+                YLeaf switchover; //type: empty
+                YLeaf oper_status; //type: empty
 
 
 
@@ -1576,8 +1608,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -1597,8 +1630,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -1618,8 +1652,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -1675,8 +1710,9 @@ class Snmp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value buffer_size; //type: uint32
 
+
+            YLeaf buffer_size; //type: uint32
 
         class Rules : public Entity
         {
@@ -1693,6 +1729,7 @@ class Snmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Rule : public Entity
             {
                 public:
@@ -1706,8 +1743,9 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
 
+
+                    YLeaf name; //type: string
 
                 class NonStateful : public Entity
                 {
@@ -1722,8 +1760,9 @@ class Snmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value timeout; //type: uint32
 
+
+                        YLeaf timeout; //type: uint32
 
                     class RootCauses : public Entity
                     {
@@ -1740,6 +1779,7 @@ class Snmp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class RootCause : public Entity
                         {
                             public:
@@ -1753,9 +1793,10 @@ class Snmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value oid; //type: string
-                                Value created; //type: empty
 
+
+                                YLeaf oid; //type: string
+                                YLeaf created; //type: empty
 
                             class VarBinds : public Entity
                             {
@@ -1772,6 +1813,7 @@ class Snmp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class VarBind : public Entity
                                 {
                                     public:
@@ -1785,8 +1827,9 @@ class Snmp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value oid; //type: string
 
+
+                                        YLeaf oid; //type: string
 
                                     class Match : public Entity
                                     {
@@ -1801,9 +1844,10 @@ class Snmp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: string
-                                            Value index_; //type: string
 
+
+                                            YLeaf value_; //type: string
+                                            YLeaf index_; //type: string
 
 
 
@@ -1849,6 +1893,7 @@ class Snmp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NonRootCause : public Entity
                         {
                             public:
@@ -1862,9 +1907,10 @@ class Snmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value oid; //type: string
-                                Value created; //type: empty
 
+
+                                YLeaf oid; //type: string
+                                YLeaf created; //type: empty
 
                             class VarBinds : public Entity
                             {
@@ -1881,6 +1927,7 @@ class Snmp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class VarBind : public Entity
                                 {
                                     public:
@@ -1894,8 +1941,9 @@ class Snmp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value oid; //type: string
 
+
+                                        YLeaf oid; //type: string
 
                                     class Match : public Entity
                                     {
@@ -1910,9 +1958,10 @@ class Snmp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: string
-                                            Value index_; //type: string
 
+
+                                            YLeaf value_; //type: string
+                                            YLeaf index_; //type: string
 
 
 
@@ -1963,8 +2012,9 @@ class Snmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value all; //type: empty
 
+
+                        YLeaf all; //type: empty
 
                     class Hosts : public Entity
                     {
@@ -1981,6 +2031,7 @@ class Snmp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Host : public Entity
                         {
                             public:
@@ -1994,9 +2045,10 @@ class Snmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip_address; //type: string
-                                Value port; //type: uint16
 
+
+                                YLeaf ip_address; //type: string
+                                YLeaf port; //type: uint16
 
 
 
@@ -2043,6 +2095,7 @@ class Snmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RuleSet : public Entity
             {
                 public:
@@ -2056,8 +2109,9 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
 
+
+                    YLeaf name; //type: string
 
                 class Rulenames : public Entity
                 {
@@ -2074,6 +2128,7 @@ class Snmp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Rulename : public Entity
                     {
                         public:
@@ -2087,8 +2142,9 @@ class Snmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rulename; //type: string
 
+
+                            YLeaf rulename; //type: string
 
 
 
@@ -2114,8 +2170,9 @@ class Snmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value all; //type: empty
 
+
+                        YLeaf all; //type: empty
 
                     class Hosts : public Entity
                     {
@@ -2132,6 +2189,7 @@ class Snmp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Host : public Entity
                         {
                             public:
@@ -2145,9 +2203,10 @@ class Snmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip_address; //type: string
-                                Value port; //type: uint16
 
+
+                                YLeaf ip_address; //type: string
+                                YLeaf port; //type: uint16
 
 
 
@@ -2199,8 +2258,9 @@ class Snmp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value memory; //type: uint32
 
+
+            YLeaf memory; //type: uint32
 
         class Schemas : public Entity
         {
@@ -2217,6 +2277,7 @@ class Snmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Schema : public Entity
             {
                 public:
@@ -2230,11 +2291,12 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value schema_name; //type: string
-                    Value type; //type: empty
-                    Value schema_object_list; //type: string
-                    Value poll_interval; //type: uint32
 
+
+                    YLeaf schema_name; //type: string
+                    YLeaf type; //type: empty
+                    YLeaf schema_object_list; //type: string
+                    YLeaf poll_interval; //type: uint32
 
                 class Instance : public Entity
                 {
@@ -2249,15 +2311,15 @@ class Snmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value type; //type: SnmpBulkstatSchemaEnum
-                        Value instance; //type: string
-                        Value start; //type: string
-                        Value end; //type: string
-                        Value max; //type: int32
-                        Value sub_interface; //type: boolean
 
 
-                        class SnmpBulkstatSchemaEnum;
+                        YLeaf type; //type: SnmpBulkstatSchemaEnum
+                        YLeaf instance; //type: string
+                        YLeaf start; //type: string
+                        YLeaf end; //type: string
+                        YLeaf max; //type: int32
+                        YLeaf sub_interface; //type: boolean
+
 
 
                 }; // Snmp::BulkStats::Schemas::Schema::Instance
@@ -2290,6 +2352,7 @@ class Snmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Object : public Entity
             {
                 public:
@@ -2303,9 +2366,10 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value object_list_name; //type: string
-                    Value type; //type: empty
 
+
+                    YLeaf object_list_name; //type: string
+                    YLeaf type; //type: empty
 
                 class Objects_ : public Entity
                 {
@@ -2322,6 +2386,7 @@ class Snmp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Object_ : public Entity
                     {
                         public:
@@ -2335,8 +2400,9 @@ class Snmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value oid; //type: string
 
+
+                            YLeaf oid; //type: string
 
 
 
@@ -2376,6 +2442,7 @@ class Snmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Transfer : public Entity
             {
                 public:
@@ -2389,17 +2456,18 @@ class Snmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value transfer_name; //type: string
-                    Value secondary; //type: string
-                    Value type; //type: empty
-                    Value buffer_size; //type: uint32
-                    Value retain; //type: uint32
-                    Value format; //type: SnmpBulkstatFileFormatEnum
-                    Value retry; //type: uint32
-                    Value enable; //type: empty
-                    Value primary; //type: string
-                    Value interval; //type: int32
 
+
+                    YLeaf transfer_name; //type: string
+                    YLeaf secondary; //type: string
+                    YLeaf type; //type: empty
+                    YLeaf buffer_size; //type: uint32
+                    YLeaf retain; //type: uint32
+                    YLeaf format; //type: SnmpBulkstatFileFormatEnum
+                    YLeaf retry; //type: uint32
+                    YLeaf enable; //type: empty
+                    YLeaf primary; //type: string
+                    YLeaf interval; //type: int32
 
                 class TransferSchemas : public Entity
                 {
@@ -2416,6 +2484,7 @@ class Snmp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class TransferSchema : public Entity
                     {
                         public:
@@ -2429,8 +2498,9 @@ class Snmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value schema_name; //type: string
 
+
+                            YLeaf schema_name; //type: string
 
 
 
@@ -2444,7 +2514,6 @@ class Snmp : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_snmp_agent_cfg::Snmp::BulkStats::Transfers::Transfer::TransferSchemas> transfer_schemas;
-                    class SnmpBulkstatFileFormatEnum;
 
 
             }; // Snmp::BulkStats::Transfers::Transfer
@@ -2479,6 +2548,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class DefaultCommunityMap : public Entity
         {
             public:
@@ -2492,11 +2562,12 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value community_name; //type: string
-                Value context; //type: string
-                Value security; //type: string
-                Value target_list; //type: string
 
+
+                YLeaf community_name; //type: string
+                YLeaf context; //type: string
+                YLeaf security; //type: string
+                YLeaf target_list; //type: string
 
 
 
@@ -2522,9 +2593,10 @@ class Snmp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value drop_time; //type: uint32
-            Value throttle_rate; //type: uint32
 
+
+            YLeaf drop_time; //type: uint32
+            YLeaf throttle_rate; //type: uint32
 
 
 
@@ -2544,11 +2616,12 @@ class Snmp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value duplicates; //type: uint32
-            Value in_qdrop; //type: uint32
-            Value subagent; //type: uint32
-            Value pdu_stats; //type: uint32
 
+
+            YLeaf duplicates; //type: uint32
+            YLeaf in_qdrop; //type: uint32
+            YLeaf subagent; //type: uint32
+            YLeaf pdu_stats; //type: uint32
 
 
 
@@ -2570,6 +2643,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class User : public Entity
         {
             public:
@@ -2583,30 +2657,25 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value user_name; //type: string
-                Value group_name; //type: string
-                Value version; //type: UserSnmpVersionEnum
-                Value authentication_password_configured; //type: empty
-                Value algorithm; //type: SnmpHashAlgorithmEnum
-                Value authentication_password; //type: string
-                Value privacy_password_configured; //type: empty
-                Value priv_algorithm; //type: SnmpPrivAlgorithmEnum
-                Value privacy_password; //type: string
-                Value v4acl_type; //type: SnmpaclEnum
-                Value v4_access_list; //type: string
-                Value v6acl_type; //type: SnmpaclEnum
-                Value v6_access_list; //type: string
-                Value owner; //type: SnmpOwnerAccessEnum
-                Value remote_address; //type: string
-                Value port; //type: uint16
 
 
-                class SnmpHashAlgorithmEnum;
-                class SnmpOwnerAccessEnum;
-                class SnmpPrivAlgorithmEnum;
-                class SnmpaclEnum;
-                class SnmpaclEnum;
-                class UserSnmpVersionEnum;
+                YLeaf user_name; //type: string
+                YLeaf group_name; //type: string
+                YLeaf version; //type: UserSnmpVersionEnum
+                YLeaf authentication_password_configured; //type: empty
+                YLeaf algorithm; //type: SnmpHashAlgorithmEnum
+                YLeaf authentication_password; //type: string
+                YLeaf privacy_password_configured; //type: empty
+                YLeaf priv_algorithm; //type: SnmpPrivAlgorithmEnum
+                YLeaf privacy_password; //type: string
+                YLeaf v4acl_type; //type: SnmpaclEnum
+                YLeaf v4_access_list; //type: string
+                YLeaf v6acl_type; //type: SnmpaclEnum
+                YLeaf v6_access_list; //type: string
+                YLeaf owner; //type: SnmpOwnerAccessEnum
+                YLeaf remote_address; //type: string
+                YLeaf port; //type: uint16
+
 
 
         }; // Snmp::Users::User
@@ -2633,6 +2702,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -2646,8 +2716,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
 
+
+                YLeaf name; //type: string
 
             class TrapHosts : public Entity
             {
@@ -2664,6 +2735,7 @@ class Snmp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TrapHost : public Entity
                 {
                     public:
@@ -2677,8 +2749,9 @@ class Snmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ip_address; //type: string
 
+
+                        YLeaf ip_address; //type: string
 
                     class EncryptedUserCommunities : public Entity
                     {
@@ -2695,6 +2768,7 @@ class Snmp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class EncryptedUserCommunity : public Entity
                         {
                             public:
@@ -2708,16 +2782,16 @@ class Snmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value community_name; //type: string
-                                Value port; //type: uint16
-                                Value version; //type: string
-                                Value security_level; //type: SnmpSecurityModelEnum
-                                Value basic_trap_types; //type: int32
-                                Value advanced_trap_types1; //type: int32
-                                Value advanced_trap_types2; //type: int32
 
 
-                                class SnmpSecurityModelEnum;
+                                YLeaf community_name; //type: string
+                                YLeaf port; //type: uint16
+                                YLeaf version; //type: string
+                                YLeaf security_level; //type: SnmpSecurityModelEnum
+                                YLeaf basic_trap_types; //type: int32
+                                YLeaf advanced_trap_types1; //type: int32
+                                YLeaf advanced_trap_types2; //type: int32
+
 
 
                         }; // Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity
@@ -2744,6 +2818,7 @@ class Snmp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class InformUserCommunities : public Entity
                         {
                             public:
@@ -2759,6 +2834,7 @@ class Snmp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class InformUserCommunity : public Entity
                             {
                                 public:
@@ -2772,16 +2848,16 @@ class Snmp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value community_name; //type: string
-                                    Value port; //type: uint16
-                                    Value version; //type: string
-                                    Value security_level; //type: SnmpSecurityModelEnum
-                                    Value basic_trap_types; //type: int32
-                                    Value advanced_trap_types1; //type: int32
-                                    Value advanced_trap_types2; //type: int32
 
 
-                                    class SnmpSecurityModelEnum;
+                                    YLeaf community_name; //type: string
+                                    YLeaf port; //type: uint16
+                                    YLeaf version; //type: string
+                                    YLeaf security_level; //type: SnmpSecurityModelEnum
+                                    YLeaf basic_trap_types; //type: int32
+                                    YLeaf advanced_trap_types1; //type: int32
+                                    YLeaf advanced_trap_types2; //type: int32
+
 
 
                             }; // Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity
@@ -2808,6 +2884,7 @@ class Snmp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class InformEncryptedUserCommunity : public Entity
                             {
                                 public:
@@ -2821,16 +2898,16 @@ class Snmp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value community_name; //type: string
-                                    Value port; //type: uint16
-                                    Value version; //type: string
-                                    Value security_level; //type: SnmpSecurityModelEnum
-                                    Value basic_trap_types; //type: int32
-                                    Value advanced_trap_types1; //type: int32
-                                    Value advanced_trap_types2; //type: int32
 
 
-                                    class SnmpSecurityModelEnum;
+                                    YLeaf community_name; //type: string
+                                    YLeaf port; //type: uint16
+                                    YLeaf version; //type: string
+                                    YLeaf security_level; //type: SnmpSecurityModelEnum
+                                    YLeaf basic_trap_types; //type: int32
+                                    YLeaf advanced_trap_types1; //type: int32
+                                    YLeaf advanced_trap_types2; //type: int32
+
 
 
                             }; // Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity
@@ -2864,6 +2941,7 @@ class Snmp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class DefaultUserCommunity : public Entity
                         {
                             public:
@@ -2877,16 +2955,16 @@ class Snmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value community_name; //type: string
-                                Value port; //type: uint16
-                                Value version; //type: string
-                                Value security_level; //type: SnmpSecurityModelEnum
-                                Value basic_trap_types; //type: int32
-                                Value advanced_trap_types1; //type: int32
-                                Value advanced_trap_types2; //type: int32
 
 
-                                class SnmpSecurityModelEnum;
+                                YLeaf community_name; //type: string
+                                YLeaf port; //type: uint16
+                                YLeaf version; //type: string
+                                YLeaf security_level; //type: SnmpSecurityModelEnum
+                                YLeaf basic_trap_types; //type: int32
+                                YLeaf advanced_trap_types1; //type: int32
+                                YLeaf advanced_trap_types2; //type: int32
+
 
 
                         }; // Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity
@@ -2927,6 +3005,7 @@ class Snmp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Context : public Entity
                 {
                     public:
@@ -2940,8 +3019,9 @@ class Snmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value context_name; //type: string
 
+
+                        YLeaf context_name; //type: string
 
 
 
@@ -2969,6 +3049,7 @@ class Snmp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ContextMapping : public Entity
                 {
                     public:
@@ -2982,14 +3063,14 @@ class Snmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value context_mapping_name; //type: string
-                        Value context; //type: SnmpContextEnum
-                        Value instance_name; //type: string
-                        Value vrf_name; //type: string
-                        Value topology_name; //type: string
 
 
-                        class SnmpContextEnum;
+                        YLeaf context_mapping_name; //type: string
+                        YLeaf context; //type: SnmpContextEnum
+                        YLeaf instance_name; //type: string
+                        YLeaf vrf_name; //type: string
+                        YLeaf topology_name; //type: string
+
 
 
                 }; // Snmp::Vrfs::Vrf::ContextMappings::ContextMapping
@@ -3030,6 +3111,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Group : public Entity
         {
             public:
@@ -3043,23 +3125,20 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value snmp_version; //type: GroupSnmpVersionEnum
-                Value security_model; //type: SnmpSecurityModelEnum
-                Value notify_view; //type: string
-                Value read_view; //type: string
-                Value write_view; //type: string
-                Value v4acl_type; //type: SnmpaclEnum
-                Value v4_access_list; //type: string
-                Value v6acl_type; //type: SnmpaclEnum
-                Value v6_access_list; //type: string
-                Value context_name; //type: string
 
 
-                class SnmpSecurityModelEnum;
-                class GroupSnmpVersionEnum;
-                class SnmpaclEnum;
-                class SnmpaclEnum;
+                YLeaf name; //type: string
+                YLeaf snmp_version; //type: GroupSnmpVersionEnum
+                YLeaf security_model; //type: SnmpSecurityModelEnum
+                YLeaf notify_view; //type: string
+                YLeaf read_view; //type: string
+                YLeaf write_view; //type: string
+                YLeaf v4acl_type; //type: SnmpaclEnum
+                YLeaf v4_access_list; //type: string
+                YLeaf v6acl_type; //type: SnmpaclEnum
+                YLeaf v6_access_list; //type: string
+                YLeaf context_name; //type: string
+
 
 
         }; // Snmp::Groups::Group
@@ -3086,6 +3165,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TrapHost : public Entity
         {
             public:
@@ -3099,8 +3179,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value ip_address; //type: string
 
+
+                YLeaf ip_address; //type: string
 
             class EncryptedUserCommunities : public Entity
             {
@@ -3117,6 +3198,7 @@ class Snmp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class EncryptedUserCommunity : public Entity
                 {
                     public:
@@ -3130,16 +3212,16 @@ class Snmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value community_name; //type: string
-                        Value port; //type: uint16
-                        Value version; //type: string
-                        Value security_level; //type: SnmpSecurityModelEnum
-                        Value basic_trap_types; //type: int32
-                        Value advanced_trap_types1; //type: int32
-                        Value advanced_trap_types2; //type: int32
 
 
-                        class SnmpSecurityModelEnum;
+                        YLeaf community_name; //type: string
+                        YLeaf port; //type: uint16
+                        YLeaf version; //type: string
+                        YLeaf security_level; //type: SnmpSecurityModelEnum
+                        YLeaf basic_trap_types; //type: int32
+                        YLeaf advanced_trap_types1; //type: int32
+                        YLeaf advanced_trap_types2; //type: int32
+
 
 
                 }; // Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCommunity
@@ -3166,6 +3248,7 @@ class Snmp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class InformUserCommunities : public Entity
                 {
                     public:
@@ -3181,6 +3264,7 @@ class Snmp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class InformUserCommunity : public Entity
                     {
                         public:
@@ -3194,16 +3278,16 @@ class Snmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value community_name; //type: string
-                            Value port; //type: uint16
-                            Value version; //type: string
-                            Value security_level; //type: SnmpSecurityModelEnum
-                            Value basic_trap_types; //type: int32
-                            Value advanced_trap_types1; //type: int32
-                            Value advanced_trap_types2; //type: int32
 
 
-                            class SnmpSecurityModelEnum;
+                            YLeaf community_name; //type: string
+                            YLeaf port; //type: uint16
+                            YLeaf version; //type: string
+                            YLeaf security_level; //type: SnmpSecurityModelEnum
+                            YLeaf basic_trap_types; //type: int32
+                            YLeaf advanced_trap_types1; //type: int32
+                            YLeaf advanced_trap_types2; //type: int32
+
 
 
                     }; // Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity
@@ -3230,6 +3314,7 @@ class Snmp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class InformEncryptedUserCommunity : public Entity
                     {
                         public:
@@ -3243,16 +3328,16 @@ class Snmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value community_name; //type: string
-                            Value port; //type: uint16
-                            Value version; //type: string
-                            Value security_level; //type: SnmpSecurityModelEnum
-                            Value basic_trap_types; //type: int32
-                            Value advanced_trap_types1; //type: int32
-                            Value advanced_trap_types2; //type: int32
 
 
-                            class SnmpSecurityModelEnum;
+                            YLeaf community_name; //type: string
+                            YLeaf port; //type: uint16
+                            YLeaf version; //type: string
+                            YLeaf security_level; //type: SnmpSecurityModelEnum
+                            YLeaf basic_trap_types; //type: int32
+                            YLeaf advanced_trap_types1; //type: int32
+                            YLeaf advanced_trap_types2; //type: int32
+
 
 
                     }; // Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity
@@ -3286,6 +3371,7 @@ class Snmp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DefaultUserCommunity : public Entity
                 {
                     public:
@@ -3299,16 +3385,16 @@ class Snmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value community_name; //type: string
-                        Value port; //type: uint16
-                        Value version; //type: string
-                        Value security_level; //type: SnmpSecurityModelEnum
-                        Value basic_trap_types; //type: int32
-                        Value advanced_trap_types1; //type: int32
-                        Value advanced_trap_types2; //type: int32
 
 
-                        class SnmpSecurityModelEnum;
+                        YLeaf community_name; //type: string
+                        YLeaf port; //type: uint16
+                        YLeaf version; //type: string
+                        YLeaf security_level; //type: SnmpSecurityModelEnum
+                        YLeaf basic_trap_types; //type: int32
+                        YLeaf advanced_trap_types1; //type: int32
+                        YLeaf advanced_trap_types2; //type: int32
+
 
 
                 }; // Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity
@@ -3349,6 +3435,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Context : public Entity
         {
             public:
@@ -3362,8 +3449,9 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value context_name; //type: string
 
+
+                YLeaf context_name; //type: string
 
 
 
@@ -3391,6 +3479,7 @@ class Snmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ContextMapping : public Entity
         {
             public:
@@ -3404,14 +3493,14 @@ class Snmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value context_mapping_name; //type: string
-                Value context; //type: SnmpContextEnum
-                Value instance_name; //type: string
-                Value vrf_name; //type: string
-                Value topology_name; //type: string
 
 
-                class SnmpContextEnum;
+                YLeaf context_mapping_name; //type: string
+                YLeaf context; //type: SnmpContextEnum
+                YLeaf instance_name; //type: string
+                YLeaf vrf_name; //type: string
+                YLeaf topology_name; //type: string
+
 
 
         }; // Snmp::ContextMappings::ContextMapping
@@ -3463,8 +3552,9 @@ class Mib : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value sensor_mib_cache; //type: empty
 
+
+        YLeaf sensor_mib_cache; //type: empty
 
     class MplsTeMib : public Entity
     {
@@ -3479,9 +3569,10 @@ class Mib : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value cache_garbage_collect_timer; //type: uint32
-            Value cache_timer; //type: uint32
 
+
+            YLeaf cache_garbage_collect_timer; //type: uint32
+            YLeaf cache_timer; //type: uint32
 
 
 
@@ -3501,8 +3592,9 @@ class Mib : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value cache_timer; //type: uint32
 
+
+            YLeaf cache_timer; //type: uint32
 
 
 
@@ -3522,8 +3614,9 @@ class Mib : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value cache_timer; //type: uint32
 
+
+            YLeaf cache_timer; //type: uint32
 
 
 
@@ -3543,8 +3636,9 @@ class Mib : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value cache_timer; //type: uint32
 
+
+            YLeaf cache_timer; //type: uint32
 
 
 
@@ -3564,8 +3658,9 @@ class Mib : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value cache_timer; //type: uint32
 
+
+            YLeaf cache_timer; //type: uint32
 
 
 
@@ -3585,9 +3680,10 @@ class Mib : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value member_interface_stats; //type: empty
-            Value persist; //type: empty
 
+
+            YLeaf member_interface_stats; //type: empty
+            YLeaf persist; //type: empty
 
         class Cache : public Entity
         {
@@ -3602,10 +3698,11 @@ class Mib : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
-                Value refresh_time; //type: uint32
-                Value service_policy_count; //type: uint32
 
+
+                YLeaf enable; //type: empty
+                YLeaf refresh_time; //type: uint32
+                YLeaf service_policy_count; //type: uint32
 
 
 
@@ -3631,8 +3728,9 @@ class Mib : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value entity_index_persistence; //type: empty
 
+
+            YLeaf entity_index_persistence; //type: empty
 
 
 
@@ -3652,12 +3750,13 @@ class Mib : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value internal_cache; //type: uint32
-            Value interface_alias_long; //type: empty
-            Value ip_subscriber; //type: empty
-            Value interface_index_persistence; //type: empty
-            Value statistics_cache; //type: empty
 
+
+            YLeaf internal_cache; //type: uint32
+            YLeaf interface_alias_long; //type: empty
+            YLeaf ip_subscriber; //type: empty
+            YLeaf interface_index_persistence; //type: empty
+            YLeaf statistics_cache; //type: empty
 
         class Interfaces : public Entity
         {
@@ -3674,6 +3773,7 @@ class Mib : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -3687,10 +3787,11 @@ class Mib : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value link_up_down; //type: boolean
-                    Value index_persistence; //type: boolean
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf link_up_down; //type: boolean
+                    YLeaf index_persistence; //type: boolean
 
 
 
@@ -3716,8 +3817,9 @@ class Mib : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value link_ietf; //type: empty
 
+
+                YLeaf link_ietf; //type: empty
 
 
 
@@ -3739,6 +3841,7 @@ class Mib : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Subset : public Entity
             {
                 public:
@@ -3752,8 +3855,9 @@ class Mib : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value subset_id; //type: uint32
 
+
+                    YLeaf subset_id; //type: uint32
 
                 class LinkUpDown : public Entity
                 {
@@ -3768,9 +3872,10 @@ class Mib : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enable; //type: boolean
-                        Value regular_expression; //type: string
 
+
+                        YLeaf enable; //type: boolean
+                        YLeaf regular_expression; //type: string
 
 
 
@@ -3813,160 +3918,160 @@ class Mib : public Entity
 class SnmpHashAlgorithmEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value md5;
-        static const Enum::Value sha;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf md5;
+        static const Enum::YLeaf sha;
 
 };
 
 class SnmpAccessLevelEnum : public Enum
 {
     public:
-        static const Enum::Value read_only;
-        static const Enum::Value read_write;
+        static const Enum::YLeaf read_only;
+        static const Enum::YLeaf read_write;
 
 };
 
 class SnmpBulkstatSchemaEnum : public Enum
 {
     public:
-        static const Enum::Value exact_interface;
-        static const Enum::Value exact_oid;
-        static const Enum::Value wild_interface;
-        static const Enum::Value wild_oid;
-        static const Enum::Value range_oid;
-        static const Enum::Value repeat_oid;
+        static const Enum::YLeaf exact_interface;
+        static const Enum::YLeaf exact_oid;
+        static const Enum::YLeaf wild_interface;
+        static const Enum::YLeaf wild_oid;
+        static const Enum::YLeaf range_oid;
+        static const Enum::YLeaf repeat_oid;
 
 };
 
 class GroupSnmpVersionEnum : public Enum
 {
     public:
-        static const Enum::Value v1;
-        static const Enum::Value v2c;
-        static const Enum::Value v3;
+        static const Enum::YLeaf v1;
+        static const Enum::YLeaf v2c;
+        static const Enum::YLeaf v3;
 
 };
 
 class SnmpOwnerAccessEnum : public Enum
 {
     public:
-        static const Enum::Value sdr_owner;
-        static const Enum::Value system_owner;
+        static const Enum::YLeaf sdr_owner;
+        static const Enum::YLeaf system_owner;
 
 };
 
 class SnmpBulkstatFileFormatEnum : public Enum
 {
     public:
-        static const Enum::Value schema_ascii;
-        static const Enum::Value bulk_ascii;
-        static const Enum::Value bulk_binary;
+        static const Enum::YLeaf schema_ascii;
+        static const Enum::YLeaf bulk_ascii;
+        static const Enum::YLeaf bulk_binary;
 
 };
 
 class SnmpSecurityModelEnum : public Enum
 {
     public:
-        static const Enum::Value no_authentication;
-        static const Enum::Value authentication;
-        static const Enum::Value privacy;
+        static const Enum::YLeaf no_authentication;
+        static const Enum::YLeaf authentication;
+        static const Enum::YLeaf privacy;
 
 };
 
 class SnmpTosEnum : public Enum
 {
     public:
-        static const Enum::Value precedence;
-        static const Enum::Value dscp;
+        static const Enum::YLeaf precedence;
+        static const Enum::YLeaf dscp;
 
 };
 
 class SnmpaclEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 
 class SnmpDscpValueEnum : public Enum
 {
     public:
-        static const Enum::Value default_;
-        static const Enum::Value af11;
-        static const Enum::Value af12;
-        static const Enum::Value af13;
-        static const Enum::Value af21;
-        static const Enum::Value af22;
-        static const Enum::Value af23;
-        static const Enum::Value af31;
-        static const Enum::Value af32;
-        static const Enum::Value af33;
-        static const Enum::Value af41;
-        static const Enum::Value af42;
-        static const Enum::Value af43;
-        static const Enum::Value ef;
-        static const Enum::Value cs1;
-        static const Enum::Value cs2;
-        static const Enum::Value cs3;
-        static const Enum::Value cs4;
-        static const Enum::Value cs5;
-        static const Enum::Value cs6;
-        static const Enum::Value cs7;
+        static const Enum::YLeaf default_;
+        static const Enum::YLeaf af11;
+        static const Enum::YLeaf af12;
+        static const Enum::YLeaf af13;
+        static const Enum::YLeaf af21;
+        static const Enum::YLeaf af22;
+        static const Enum::YLeaf af23;
+        static const Enum::YLeaf af31;
+        static const Enum::YLeaf af32;
+        static const Enum::YLeaf af33;
+        static const Enum::YLeaf af41;
+        static const Enum::YLeaf af42;
+        static const Enum::YLeaf af43;
+        static const Enum::YLeaf ef;
+        static const Enum::YLeaf cs1;
+        static const Enum::YLeaf cs2;
+        static const Enum::YLeaf cs3;
+        static const Enum::YLeaf cs4;
+        static const Enum::YLeaf cs5;
+        static const Enum::YLeaf cs6;
+        static const Enum::YLeaf cs7;
 
 };
 
 class UserSnmpVersionEnum : public Enum
 {
     public:
-        static const Enum::Value v1;
-        static const Enum::Value v2c;
-        static const Enum::Value v3;
+        static const Enum::YLeaf v1;
+        static const Enum::YLeaf v2c;
+        static const Enum::YLeaf v3;
 
 };
 
 class SnmpPrecedenceValue1Enum : public Enum
 {
     public:
-        static const Enum::Value routine;
-        static const Enum::Value priority;
-        static const Enum::Value immediate;
-        static const Enum::Value flash;
-        static const Enum::Value flash_override;
-        static const Enum::Value critical;
-        static const Enum::Value internet;
-        static const Enum::Value network;
+        static const Enum::YLeaf routine;
+        static const Enum::YLeaf priority;
+        static const Enum::YLeaf immediate;
+        static const Enum::YLeaf flash;
+        static const Enum::YLeaf flash_override;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf internet;
+        static const Enum::YLeaf network;
 
 };
 
 class SnmpPrivAlgorithmEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value des;
-        static const Enum::Value Y_3des;
-        static const Enum::Value aes128;
-        static const Enum::Value aes192;
-        static const Enum::Value aes256;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf des;
+        static const Enum::YLeaf Y_3des;
+        static const Enum::YLeaf aes128;
+        static const Enum::YLeaf aes192;
+        static const Enum::YLeaf aes256;
 
 };
 
 class SnmpMibViewInclusionEnum : public Enum
 {
     public:
-        static const Enum::Value included;
-        static const Enum::Value excluded;
+        static const Enum::YLeaf included;
+        static const Enum::YLeaf excluded;
 
 };
 
 class SnmpContextEnum : public Enum
 {
     public:
-        static const Enum::Value vrf;
-        static const Enum::Value bridge;
-        static const Enum::Value ospf;
-        static const Enum::Value ospfv3;
+        static const Enum::YLeaf vrf;
+        static const Enum::YLeaf bridge;
+        static const Enum::YLeaf ospf;
+        static const Enum::YLeaf ospfv3;
 
 };
 

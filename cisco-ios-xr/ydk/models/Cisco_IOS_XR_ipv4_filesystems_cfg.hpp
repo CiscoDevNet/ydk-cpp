@@ -26,6 +26,7 @@ class Rcp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class RcpClient : public Entity
     {
         public:
@@ -39,8 +40,9 @@ class Rcp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value source_interface; //type: string
 
+
+            YLeaf source_interface; //type: string
 
 
 
@@ -68,6 +70,7 @@ class Ftp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class FtpClient : public Entity
     {
         public:
@@ -81,11 +84,12 @@ class Ftp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value passive; //type: empty
-            Value password; //type: string
-            Value anonymous_password; //type: string
-            Value source_interface; //type: string
 
+
+            YLeaf passive; //type: empty
+            YLeaf password; //type: string
+            YLeaf anonymous_password; //type: string
+            YLeaf source_interface; //type: string
 
 
 
@@ -113,6 +117,7 @@ class Tftp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class TftpClient : public Entity
     {
         public:
@@ -126,8 +131,9 @@ class Tftp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value source_interface; //type: string
 
+
+            YLeaf source_interface; //type: string
 
 
 

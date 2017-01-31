@@ -26,6 +26,7 @@ class MacsecCtrlrOper : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class MacsecCtrlrPorts : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class MacsecCtrlrOper : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class MacsecCtrlrPort : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class MacsecCtrlrOper : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
 
+
+                YLeaf name; //type: string
 
             class MacsecCtrlrInfo : public Entity
             {
@@ -70,10 +73,11 @@ class MacsecCtrlrOper : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value state; //type: MacsecCtrlrStateEnum
-                    Value replay_window_size; //type: uint32
-                    Value must_secure; //type: boolean
 
+
+                    YLeaf state; //type: MacsecCtrlrStateEnum
+                    YLeaf replay_window_size; //type: uint32
+                    YLeaf must_secure; //type: boolean
 
                 class EncryptScStatus : public Entity
                 {
@@ -88,13 +92,14 @@ class MacsecCtrlrOper : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value protection_enabled; //type: boolean
-                        Value secure_channel_id; //type: string
-                        Value confidentiality_offset; //type: uint32
-                        Value cipher_suite; //type: MacsecCtrlrCiphersuitEnum
-                        Value max_packet_number; //type: uint64
-                        Value recent_packet_number; //type: uint64
 
+
+                        YLeaf protection_enabled; //type: boolean
+                        YLeaf secure_channel_id; //type: string
+                        YLeaf confidentiality_offset; //type: uint32
+                        YLeaf cipher_suite; //type: MacsecCtrlrCiphersuitEnum
+                        YLeaf max_packet_number; //type: uint64
+                        YLeaf recent_packet_number; //type: uint64
 
                     class ActiveAssociation : public Entity
                     {
@@ -109,9 +114,10 @@ class MacsecCtrlrOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value association_number; //type: uint8
-                            Value short_secure_channel_id; //type: uint32
 
+
+                            YLeaf association_number; //type: uint8
+                            YLeaf short_secure_channel_id; //type: uint32
 
 
 
@@ -119,7 +125,6 @@ class MacsecCtrlrOper : public Entity
 
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_macsec_ctrlr_oper::MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation> > active_association;
-                        class MacsecCtrlrCiphersuitEnum;
 
 
                 }; // MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus
@@ -138,13 +143,14 @@ class MacsecCtrlrOper : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value protection_enabled; //type: boolean
-                        Value secure_channel_id; //type: string
-                        Value confidentiality_offset; //type: uint32
-                        Value cipher_suite; //type: MacsecCtrlrCiphersuitEnum
-                        Value max_packet_number; //type: uint64
-                        Value recent_packet_number; //type: uint64
 
+
+                        YLeaf protection_enabled; //type: boolean
+                        YLeaf secure_channel_id; //type: string
+                        YLeaf confidentiality_offset; //type: uint32
+                        YLeaf cipher_suite; //type: MacsecCtrlrCiphersuitEnum
+                        YLeaf max_packet_number; //type: uint64
+                        YLeaf recent_packet_number; //type: uint64
 
                     class ActiveAssociation : public Entity
                     {
@@ -159,9 +165,10 @@ class MacsecCtrlrOper : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value association_number; //type: uint8
-                            Value short_secure_channel_id; //type: uint32
 
+
+                            YLeaf association_number; //type: uint8
+                            YLeaf short_secure_channel_id; //type: uint32
 
 
 
@@ -169,7 +176,6 @@ class MacsecCtrlrOper : public Entity
 
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_macsec_ctrlr_oper::MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::ActiveAssociation> > active_association;
-                        class MacsecCtrlrCiphersuitEnum;
 
 
                 }; // MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus
@@ -177,7 +183,6 @@ class MacsecCtrlrOper : public Entity
 
                     std::unique_ptr<Cisco_IOS_XR_macsec_ctrlr_oper::MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus> decrypt_sc_status;
                     std::unique_ptr<Cisco_IOS_XR_macsec_ctrlr_oper::MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus> encrypt_sc_status;
-                    class MacsecCtrlrStateEnum;
 
 
             }; // MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo
@@ -204,18 +209,18 @@ class MacsecCtrlrOper : public Entity
 class MacsecCtrlrCiphersuitEnum : public Enum
 {
     public:
-        static const Enum::Value gcm_aes_256;
-        static const Enum::Value gcm_aes_128;
-        static const Enum::Value gcm_aes_xpn_256;
+        static const Enum::YLeaf gcm_aes_256;
+        static const Enum::YLeaf gcm_aes_128;
+        static const Enum::YLeaf gcm_aes_xpn_256;
 
 };
 
 class MacsecCtrlrStateEnum : public Enum
 {
     public:
-        static const Enum::Value macsec_ctrlr_state_up;
-        static const Enum::Value macsec_ctrlr_state_down;
-        static const Enum::Value macsec_ctrlr_state_admin_down;
+        static const Enum::YLeaf macsec_ctrlr_state_up;
+        static const Enum::YLeaf macsec_ctrlr_state_down;
+        static const Enum::YLeaf macsec_ctrlr_state_admin_down;
 
 };
 

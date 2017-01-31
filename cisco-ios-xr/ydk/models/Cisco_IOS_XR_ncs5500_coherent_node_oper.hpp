@@ -26,6 +26,7 @@ class Coherent : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Coherent : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Coherent : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class CoherentTimeStats : public Entity
             {
@@ -70,13 +73,14 @@ class Coherent : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value driver_init; //type: string
-                    Value driver_operational; //type: string
-                    Value device_created; //type: string
-                    Value optics_controllers_created; //type: string
-                    Value dsp_controllers_created; //type: string
-                    Value eth_intf_created; //type: string
 
+
+                    YLeaf driver_init; //type: string
+                    YLeaf driver_operational; //type: string
+                    YLeaf device_created; //type: string
+                    YLeaf optics_controllers_created; //type: string
+                    YLeaf dsp_controllers_created; //type: string
+                    YLeaf eth_intf_created; //type: string
 
                 class OptsEaBulkCreate : public Entity
                 {
@@ -91,11 +95,12 @@ class Coherent : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value start; //type: string
-                        Value end; //type: string
-                        Value time_taken; //type: string
-                        Value worst_time; //type: string
 
+
+                        YLeaf start; //type: string
+                        YLeaf end; //type: string
+                        YLeaf time_taken; //type: string
+                        YLeaf worst_time; //type: string
 
 
 
@@ -115,11 +120,12 @@ class Coherent : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value start; //type: string
-                        Value end; //type: string
-                        Value time_taken; //type: string
-                        Value worst_time; //type: string
 
+
+                        YLeaf start; //type: string
+                        YLeaf end; //type: string
+                        YLeaf time_taken; //type: string
+                        YLeaf worst_time; //type: string
 
 
 
@@ -139,11 +145,12 @@ class Coherent : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value start; //type: string
-                        Value end; //type: string
-                        Value time_taken; //type: string
-                        Value worst_time; //type: string
 
+
+                        YLeaf start; //type: string
+                        YLeaf end; //type: string
+                        YLeaf time_taken; //type: string
+                        YLeaf worst_time; //type: string
 
 
 
@@ -163,11 +170,12 @@ class Coherent : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value start; //type: string
-                        Value end; //type: string
-                        Value time_taken; //type: string
-                        Value worst_time; //type: string
 
+
+                        YLeaf start; //type: string
+                        YLeaf end; //type: string
+                        YLeaf time_taken; //type: string
+                        YLeaf worst_time; //type: string
 
 
 
@@ -187,13 +195,14 @@ class Coherent : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value laser_state; //type: boolean
-                        Value wavelength; //type: uint32
-                        Value tx_power; //type: uint32
-                        Value cd_min; //type: uint32
-                        Value cd_max; //type: uint32
-                        Value traffic_type; //type: uint32
 
+
+                        YLeaf laser_state; //type: boolean
+                        YLeaf wavelength; //type: uint32
+                        YLeaf tx_power; //type: uint32
+                        YLeaf cd_min; //type: uint32
+                        YLeaf cd_max; //type: uint32
+                        YLeaf traffic_type; //type: uint32
 
                     class LaserOnStats : public Entity
                     {
@@ -208,11 +217,12 @@ class Coherent : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start; //type: string
-                            Value end; //type: string
-                            Value time_taken; //type: string
-                            Value worst_time; //type: string
 
+
+                            YLeaf start; //type: string
+                            YLeaf end; //type: string
+                            YLeaf time_taken; //type: string
+                            YLeaf worst_time; //type: string
 
 
 
@@ -232,11 +242,12 @@ class Coherent : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start; //type: string
-                            Value end; //type: string
-                            Value time_taken; //type: string
-                            Value worst_time; //type: string
 
+
+                            YLeaf start; //type: string
+                            YLeaf end; //type: string
+                            YLeaf time_taken; //type: string
+                            YLeaf worst_time; //type: string
 
 
 
@@ -256,11 +267,12 @@ class Coherent : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start; //type: string
-                            Value end; //type: string
-                            Value time_taken; //type: string
-                            Value worst_time; //type: string
 
+
+                            YLeaf start; //type: string
+                            YLeaf end; //type: string
+                            YLeaf time_taken; //type: string
+                            YLeaf worst_time; //type: string
 
 
 
@@ -280,11 +292,12 @@ class Coherent : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start; //type: string
-                            Value end; //type: string
-                            Value time_taken; //type: string
-                            Value worst_time; //type: string
 
+
+                            YLeaf start; //type: string
+                            YLeaf end; //type: string
+                            YLeaf time_taken; //type: string
+                            YLeaf worst_time; //type: string
 
 
 
@@ -304,11 +317,12 @@ class Coherent : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start; //type: string
-                            Value end; //type: string
-                            Value time_taken; //type: string
-                            Value worst_time; //type: string
 
+
+                            YLeaf start; //type: string
+                            YLeaf end; //type: string
+                            YLeaf time_taken; //type: string
+                            YLeaf worst_time; //type: string
 
 
 
@@ -328,11 +342,12 @@ class Coherent : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start; //type: string
-                            Value end; //type: string
-                            Value time_taken; //type: string
-                            Value worst_time; //type: string
 
+
+                            YLeaf start; //type: string
+                            YLeaf end; //type: string
+                            YLeaf time_taken; //type: string
+                            YLeaf worst_time; //type: string
 
 
 
@@ -352,11 +367,12 @@ class Coherent : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start; //type: string
-                            Value end; //type: string
-                            Value time_taken; //type: string
-                            Value worst_time; //type: string
 
+
+                            YLeaf start; //type: string
+                            YLeaf end; //type: string
+                            YLeaf time_taken; //type: string
+                            YLeaf worst_time; //type: string
 
 
 
@@ -398,8 +414,9 @@ class Coherent : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value num_entries; //type: uint32
 
+
+                    YLeaf num_entries; //type: uint32
 
                 class DevMap : public Entity
                 {
@@ -414,10 +431,11 @@ class Coherent : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value device_address; //type: uint32
-                        Value ifhandle; //type: uint32
-                        Value intf_name; //type: string
 
+
+                        YLeaf device_address; //type: uint32
+                        YLeaf ifhandle; //type: uint32
+                        YLeaf intf_name; //type: string
 
 
 
@@ -443,24 +461,25 @@ class Coherent : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value im_state; //type: boolean
-                    Value aipc_srvr_state; //type: boolean
-                    Value sysdb_state; //type: boolean
-                    Value pm_state; //type: boolean
-                    Value optics_ea_conn; //type: boolean
-                    Value dsp_ea_conn; //type: boolean
-                    Value vether_state; //type: boolean
-                    Value morgoth_alive; //type: boolean
-                    Value prov_infra_state; //type: boolean
-                    Value sdk_fpga_compatible; //type: boolean
-                    Value sdk_version; //type: string
-                    Value morgoth_running_version; //type: string
-                    Value morgoth_downloaded_version; //type: string
-                    Value morgoth_golden_version; //type: string
-                    Value denali_version; //type: string
-                    Value board_type; //type: string
-                    Value jlink_op; //type: string
 
+
+                    YLeaf im_state; //type: boolean
+                    YLeaf aipc_srvr_state; //type: boolean
+                    YLeaf sysdb_state; //type: boolean
+                    YLeaf pm_state; //type: boolean
+                    YLeaf optics_ea_conn; //type: boolean
+                    YLeaf dsp_ea_conn; //type: boolean
+                    YLeaf vether_state; //type: boolean
+                    YLeaf morgoth_alive; //type: boolean
+                    YLeaf prov_infra_state; //type: boolean
+                    YLeaf sdk_fpga_compatible; //type: boolean
+                    YLeaf sdk_version; //type: string
+                    YLeaf morgoth_running_version; //type: string
+                    YLeaf morgoth_downloaded_version; //type: string
+                    YLeaf morgoth_golden_version; //type: string
+                    YLeaf denali_version; //type: string
+                    YLeaf board_type; //type: string
+                    YLeaf jlink_op; //type: string
 
                 class PortData : public Entity
                 {
@@ -475,19 +494,20 @@ class Coherent : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value optics_ctrl_created; //type: boolean
-                        Value dsp_ctrl_created; //type: boolean
-                        Value has_pluggable; //type: boolean
-                        Value optics_admin_up; //type: boolean
-                        Value dsp_admin_up; //type: boolean
-                        Value laser_state; //type: boolean
-                        Value fp_port_idx; //type: uint32
-                        Value wavelength; //type: uint32
-                        Value traffic_type; //type: uint32
-                        Value laser_op_rc; //type: int32
-                        Value wlen_op_rc; //type: int32
-                        Value traffic_op_rc; //type: int32
 
+
+                        YLeaf optics_ctrl_created; //type: boolean
+                        YLeaf dsp_ctrl_created; //type: boolean
+                        YLeaf has_pluggable; //type: boolean
+                        YLeaf optics_admin_up; //type: boolean
+                        YLeaf dsp_admin_up; //type: boolean
+                        YLeaf laser_state; //type: boolean
+                        YLeaf fp_port_idx; //type: uint32
+                        YLeaf wavelength; //type: uint32
+                        YLeaf traffic_type; //type: uint32
+                        YLeaf laser_op_rc; //type: int32
+                        YLeaf wlen_op_rc; //type: int32
+                        YLeaf traffic_op_rc; //type: int32
 
                     class CtpInfo : public Entity
                     {
@@ -502,20 +522,21 @@ class Coherent : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value deviation; //type: string
-                            Value part_number; //type: string
-                            Value serial_number; //type: string
-                            Value date_code_number; //type: string
-                            Value clei_code_number; //type: string
-                            Value module_hardware_version_number; //type: uint16
-                            Value module_firmware_running_version_number; //type: uint16
-                            Value module_firmware_committed_version_number; //type: uint16
-                            Value vendorname; //type: string
-                            Value description; //type: string
-                            Value pid; //type: string
-                            Value vid; //type: string
-                            Value ctp_type; //type: uint32
 
+
+                            YLeaf deviation; //type: string
+                            YLeaf part_number; //type: string
+                            YLeaf serial_number; //type: string
+                            YLeaf date_code_number; //type: string
+                            YLeaf clei_code_number; //type: string
+                            YLeaf module_hardware_version_number; //type: uint16
+                            YLeaf module_firmware_running_version_number; //type: uint16
+                            YLeaf module_firmware_committed_version_number; //type: uint16
+                            YLeaf vendorname; //type: string
+                            YLeaf description; //type: string
+                            YLeaf pid; //type: string
+                            YLeaf vid; //type: string
+                            YLeaf ctp_type; //type: uint32
 
 
 
@@ -535,8 +556,9 @@ class Coherent : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value intf_count; //type: int32
 
+
+                            YLeaf intf_count; //type: int32
 
                         class EthData : public Entity
                         {
@@ -551,10 +573,11 @@ class Coherent : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ifname; //type: string
-                                Value intf_handle; //type: uint32
-                                Value admin_state; //type: boolean
 
+
+                                YLeaf ifname; //type: string
+                                YLeaf intf_handle; //type: uint32
+                                YLeaf admin_state; //type: boolean
 
 
 
@@ -593,8 +616,9 @@ class Coherent : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value num_entries; //type: uint32
 
+
+                    YLeaf num_entries; //type: uint32
 
                 class PortmodeEntry : public Entity
                 {
@@ -609,12 +633,13 @@ class Coherent : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value intf_name; //type: string
-                        Value speed; //type: string
-                        Value fec; //type: string
-                        Value diff; //type: string
-                        Value modulation; //type: string
 
+
+                        YLeaf intf_name; //type: string
+                        YLeaf speed; //type: string
+                        YLeaf fec; //type: string
+                        YLeaf diff; //type: string
+                        YLeaf modulation; //type: string
 
 
 

@@ -55,7 +55,7 @@ EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Memb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -171,7 +171,7 @@ EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -294,7 +294,7 @@ EntityPath Oor::Nodes::Node::BundleInterfaceDetails::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -410,7 +410,7 @@ EntityPath Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -522,7 +522,7 @@ EntityPath Oor::Nodes::Node::InterfaceDetails::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -632,7 +632,7 @@ EntityPath Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -734,7 +734,7 @@ EntityPath Oor::Nodes::Node::InterfaceSummaryDatas::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -841,7 +841,7 @@ EntityPath Oor::Nodes::Node::OorSummary::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -936,10 +936,10 @@ bool Oor::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (bundle_interface_details !=  nullptr && is_set(bundle_interface_details->operation))
-	|| (interface_details !=  nullptr && is_set(interface_details->operation))
-	|| (interface_summary_datas !=  nullptr && is_set(interface_summary_datas->operation))
-	|| (oor_summary !=  nullptr && is_set(oor_summary->operation));
+	|| (bundle_interface_details !=  nullptr && bundle_interface_details->has_operation())
+	|| (interface_details !=  nullptr && interface_details->has_operation())
+	|| (interface_summary_datas !=  nullptr && interface_summary_datas->has_operation())
+	|| (oor_summary !=  nullptr && oor_summary->has_operation());
 }
 
 std::string Oor::Nodes::Node::get_segment_path() const
@@ -1222,7 +1222,7 @@ bool Oor::has_data() const
 bool Oor::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Oor::get_segment_path() const
@@ -1239,7 +1239,7 @@ EntityPath Oor::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_Ethernet_SPAN_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_Ethernet_SPAN_cfg {
@@ -28,6 +27,7 @@ class SpanMonitorSession : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Sessions : public Entity
     {
         public:
@@ -43,6 +43,7 @@ class SpanMonitorSession : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Session : public Entity
         {
             public:
@@ -56,9 +57,10 @@ class SpanMonitorSession : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value session; //type: string
-                Value class_; //type: SpanSessionClassEnum
 
+
+                YLeaf session; //type: string
+                YLeaf class_; //type: SpanSessionClassEnum
 
             class Destination : public Entity
             {
@@ -73,20 +75,19 @@ class SpanMonitorSession : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value destination_type; //type: SpanDestinationEnum
-                    Value destination_interface_name; //type: string
-                    Value destination_ipv4_address; //type: string
-                    Value destination_ipv6_address; //type: string
 
 
-                    class SpanDestinationEnum;
+                    YLeaf destination_type; //type: SpanDestinationEnum
+                    YLeaf destination_interface_name; //type: string
+                    YLeaf destination_ipv4_address; //type: string
+                    YLeaf destination_ipv6_address; //type: string
+
 
 
             }; // SpanMonitorSession::Sessions::Session::Destination
 
 
                 std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_cfg::SpanMonitorSession::Sessions::Session::Destination> destination;
-                class SpanSessionClassEnum;
 
 
         }; // SpanMonitorSession::Sessions::Session
@@ -107,30 +108,30 @@ class SpanMonitorSession : public Entity
 class SpanTrafficDirectionEnum : public Enum
 {
     public:
-        static const Enum::Value rx_only;
-        static const Enum::Value tx_only;
+        static const Enum::YLeaf rx_only;
+        static const Enum::YLeaf tx_only;
 
 };
 
 class SpanMirrorIntervalEnum : public Enum
 {
     public:
-        static const Enum::Value Y_512;
-        static const Enum::Value Y_1k;
-        static const Enum::Value Y_2k;
-        static const Enum::Value Y_4k;
-        static const Enum::Value Y_8k;
-        static const Enum::Value Y_16k;
+        static const Enum::YLeaf Y_512;
+        static const Enum::YLeaf Y_1k;
+        static const Enum::YLeaf Y_2k;
+        static const Enum::YLeaf Y_4k;
+        static const Enum::YLeaf Y_8k;
+        static const Enum::YLeaf Y_16k;
 
 };
 
 class SpanDestinationEnum : public Enum
 {
     public:
-        static const Enum::Value interface;
-        static const Enum::Value pseudowire;
-        static const Enum::Value ipv4_address;
-        static const Enum::Value ipv6_address;
+        static const Enum::YLeaf interface;
+        static const Enum::YLeaf pseudowire;
+        static const Enum::YLeaf ipv4_address;
+        static const Enum::YLeaf ipv6_address;
 
 };
 

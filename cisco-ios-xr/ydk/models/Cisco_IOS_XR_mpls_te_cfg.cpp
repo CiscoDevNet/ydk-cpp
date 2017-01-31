@@ -248,7 +248,7 @@ bool MplsTe::DiffServTrafficEngineering::has_operation() const
     return is_set(operation)
 	|| is_set(bandwidth_constraint_model.operation)
 	|| is_set(mode_ietf.operation)
-	|| (classes !=  nullptr && is_set(classes->operation));
+	|| (classes !=  nullptr && classes->has_operation());
 }
 
 std::string MplsTe::DiffServTrafficEngineering::get_segment_path() const
@@ -379,7 +379,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -462,7 +462,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSe
 	|| is_set(path_setup_name.operation)
 	|| is_set(enable.operation)
 	|| is_set(preference.operation)
-	|| (path_computation !=  nullptr && is_set(path_computation->operation));
+	|| (path_computation !=  nullptr && path_computation->has_operation());
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::get_segment_path() const
@@ -479,7 +479,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -599,7 +599,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -703,7 +703,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -781,7 +781,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelectio
 	|| is_set(path_selection_cost_limit.operation)
 	|| is_set(path_selection_hop_limit.operation)
 	|| is_set(tiebreaker.operation)
-	|| (invalidation !=  nullptr && is_set(invalidation->operation));
+	|| (invalidation !=  nullptr && invalidation->has_operation());
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::get_segment_path() const
@@ -798,7 +798,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -917,7 +917,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1013,7 +1013,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1106,7 +1106,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1194,7 +1194,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1284,10 +1284,10 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::has
 	|| is_set(enabled.operation)
 	|| is_set(overflow_enable.operation)
 	|| is_set(underflow_enable.operation)
-	|| (adjustment_threshold !=  nullptr && is_set(adjustment_threshold->operation))
-	|| (bandwidth_limits !=  nullptr && is_set(bandwidth_limits->operation))
-	|| (overflow !=  nullptr && is_set(overflow->operation))
-	|| (underflow !=  nullptr && is_set(underflow->operation));
+	|| (adjustment_threshold !=  nullptr && adjustment_threshold->has_operation())
+	|| (bandwidth_limits !=  nullptr && bandwidth_limits->has_operation())
+	|| (overflow !=  nullptr && overflow->has_operation())
+	|| (underflow !=  nullptr && underflow->has_operation());
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::get_segment_path() const
@@ -1304,7 +1304,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1499,7 +1499,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1614,7 +1614,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1750,7 +1750,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1849,7 +1849,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::M
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1953,7 +1953,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::A
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2041,7 +2041,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Autorou
     return is_set(operation)
 	|| is_set(enable.operation)
 	|| is_set(include_ipv6.operation)
-	|| (metric !=  nullptr && is_set(metric->operation));
+	|| (metric !=  nullptr && metric->has_operation());
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::get_segment_path() const
@@ -2058,7 +2058,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::A
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2166,7 +2166,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2253,7 +2253,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2354,9 +2354,9 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::has_ope
 {
     return is_set(operation)
 	|| is_set(destination.operation)
-	|| (autoroute_announce !=  nullptr && is_set(autoroute_announce->operation))
-	|| (destination_xr !=  nullptr && is_set(destination_xr->operation))
-	|| (metric !=  nullptr && is_set(metric->operation));
+	|| (autoroute_announce !=  nullptr && autoroute_announce->has_operation())
+	|| (destination_xr !=  nullptr && destination_xr->has_operation())
+	|| (metric !=  nullptr && metric->has_operation());
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::get_segment_path() const
@@ -2373,7 +2373,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2522,7 +2522,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2605,7 +2605,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2696,7 +2696,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2795,7 +2795,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2902,7 +2902,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3017,7 +3017,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3140,7 +3140,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3271,7 +3271,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3410,7 +3410,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3557,7 +3557,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3712,7 +3712,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3949,7 +3949,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4313,7 +4313,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4437,15 +4437,15 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::has_operation() co
 	|| is_set(record_route.operation)
 	|| is_set(shutdown.operation)
 	|| is_set(soft_preemption.operation)
-	|| (auto_bandwidth !=  nullptr && is_set(auto_bandwidth->operation))
-	|| (autoroute !=  nullptr && is_set(autoroute->operation))
-	|| (bandwidth !=  nullptr && is_set(bandwidth->operation))
-	|| (fast_reroute !=  nullptr && is_set(fast_reroute->operation))
-	|| (logging !=  nullptr && is_set(logging->operation))
-	|| (new_style_affinity_affinity_types !=  nullptr && is_set(new_style_affinity_affinity_types->operation))
-	|| (path_setups !=  nullptr && is_set(path_setups->operation))
-	|| (priority !=  nullptr && is_set(priority->operation))
-	|| (tunnel_path_selection !=  nullptr && is_set(tunnel_path_selection->operation));
+	|| (auto_bandwidth !=  nullptr && auto_bandwidth->has_operation())
+	|| (autoroute !=  nullptr && autoroute->has_operation())
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (fast_reroute !=  nullptr && fast_reroute->has_operation())
+	|| (logging !=  nullptr && logging->has_operation())
+	|| (new_style_affinity_affinity_types !=  nullptr && new_style_affinity_affinity_types->has_operation())
+	|| (path_setups !=  nullptr && path_setups->has_operation())
+	|| (priority !=  nullptr && priority->has_operation())
+	|| (tunnel_path_selection !=  nullptr && tunnel_path_selection->has_operation());
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::get_segment_path() const
@@ -4462,7 +4462,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4782,7 +4782,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4865,8 +4865,8 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::has_operation() const
 	|| is_set(tunnel_name.operation)
 	|| is_set(tunnel_type.operation)
 	|| is_set(enable.operation)
-	|| (tunnel_attributes !=  nullptr && is_set(tunnel_attributes->operation))
-	|| (tunnel_id !=  nullptr && is_set(tunnel_id->operation));
+	|| (tunnel_attributes !=  nullptr && tunnel_attributes->has_operation())
+	|| (tunnel_id !=  nullptr && tunnel_id->has_operation());
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::get_segment_path() const
@@ -5117,7 +5117,7 @@ bool MplsTe::NamedTunnels::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (tunnels !=  nullptr && is_set(tunnels->operation));
+	|| (tunnels !=  nullptr && tunnels->has_operation());
 }
 
 std::string MplsTe::NamedTunnels::get_segment_path() const
@@ -5311,7 +5311,7 @@ bool MplsTe::GmplsUni::Timers::PathOptionTimers::has_data() const
 bool MplsTe::GmplsUni::Timers::PathOptionTimers::has_operation() const
 {
     return is_set(operation)
-	|| (holddown !=  nullptr && is_set(holddown->operation));
+	|| (holddown !=  nullptr && holddown->has_operation());
 }
 
 std::string MplsTe::GmplsUni::Timers::PathOptionTimers::get_segment_path() const
@@ -5412,7 +5412,7 @@ bool MplsTe::GmplsUni::Timers::has_data() const
 bool MplsTe::GmplsUni::Timers::has_operation() const
 {
     return is_set(operation)
-	|| (path_option_timers !=  nullptr && is_set(path_option_timers->operation));
+	|| (path_option_timers !=  nullptr && path_option_timers->has_operation());
 }
 
 std::string MplsTe::GmplsUni::Timers::get_segment_path() const
@@ -5527,7 +5527,7 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::Announce::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5607,7 +5607,7 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::ControllerLogging::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5714,7 +5714,7 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5846,7 +5846,7 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5947,7 +5947,7 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Record
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6027,7 +6027,7 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Loggin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6110,7 +6110,7 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Priori
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6209,10 +6209,10 @@ bool MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::has_operatio
 	|| is_set(record_route.operation)
 	|| is_set(signalled_name.operation)
 	|| is_set(tunnel_id.operation)
-	|| (logging !=  nullptr && is_set(logging->operation))
-	|| (path_options !=  nullptr && is_set(path_options->operation))
-	|| (priority !=  nullptr && is_set(priority->operation))
-	|| (recording !=  nullptr && is_set(recording->operation));
+	|| (logging !=  nullptr && logging->has_operation())
+	|| (path_options !=  nullptr && path_options->has_operation())
+	|| (priority !=  nullptr && priority->has_operation())
+	|| (recording !=  nullptr && recording->has_operation());
 }
 
 std::string MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::get_segment_path() const
@@ -6229,7 +6229,7 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6424,9 +6424,9 @@ bool MplsTe::GmplsUni::Controllers::Controller::has_operation() const
     return is_set(operation)
 	|| is_set(controller_name.operation)
 	|| is_set(enable.operation)
-	|| (announce !=  nullptr && is_set(announce->operation))
-	|| (controller_logging !=  nullptr && is_set(controller_logging->operation))
-	|| (gmpls_unitunnel_head !=  nullptr && is_set(gmpls_unitunnel_head->operation));
+	|| (announce !=  nullptr && announce->has_operation())
+	|| (controller_logging !=  nullptr && controller_logging->has_operation())
+	|| (gmpls_unitunnel_head !=  nullptr && gmpls_unitunnel_head->has_operation());
 }
 
 std::string MplsTe::GmplsUni::Controllers::Controller::get_segment_path() const
@@ -6696,8 +6696,8 @@ bool MplsTe::GmplsUni::has_data() const
 bool MplsTe::GmplsUni::has_operation() const
 {
     return is_set(operation)
-	|| (controllers !=  nullptr && is_set(controllers->operation))
-	|| (timers !=  nullptr && is_set(timers->operation));
+	|| (controllers !=  nullptr && controllers->has_operation())
+	|| (timers !=  nullptr && timers->has_operation());
 }
 
 std::string MplsTe::GmplsUni::get_segment_path() const
@@ -6909,7 +6909,7 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Pcc::has_data() const
 bool MplsTe::GlobalAttributes::AutoTunnel::Pcc::has_operation() const
 {
     return is_set(operation)
-	|| (tunnel_range !=  nullptr && is_set(tunnel_range->operation));
+	|| (tunnel_range !=  nullptr && tunnel_range->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AutoTunnel::Pcc::get_segment_path() const
@@ -7098,7 +7098,7 @@ bool MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::has_data() const
 bool MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::has_operation() const
 {
     return is_set(operation)
-	|| (tunnel_range !=  nullptr && is_set(tunnel_range->operation));
+	|| (tunnel_range !=  nullptr && tunnel_range->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_segment_path() const
@@ -7279,7 +7279,7 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::has_data() const
 bool MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::has_operation() const
 {
     return is_set(operation)
-	|| (removal !=  nullptr && is_set(removal->operation));
+	|| (removal !=  nullptr && removal->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::get_segment_path() const
@@ -7477,8 +7477,8 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Backup::has_operation() const
 {
     return is_set(operation)
 	|| is_set(affinity_ignore.operation)
-	|| (timers !=  nullptr && is_set(timers->operation))
-	|| (tunnel_range !=  nullptr && is_set(tunnel_range->operation));
+	|| (timers !=  nullptr && timers->has_operation())
+	|| (tunnel_range !=  nullptr && tunnel_range->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AutoTunnel::Backup::get_segment_path() const
@@ -7915,7 +7915,7 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::has_data() const
 bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::has_operation() const
 {
     return is_set(operation)
-	|| (removal !=  nullptr && is_set(removal->operation));
+	|| (removal !=  nullptr && removal->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::get_segment_path() const
@@ -8114,9 +8114,9 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::has_data() const
 bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::has_operation() const
 {
     return is_set(operation)
-	|| (mesh_groups !=  nullptr && is_set(mesh_groups->operation))
-	|| (timers !=  nullptr && is_set(timers->operation))
-	|| (tunnel_range !=  nullptr && is_set(tunnel_range->operation));
+	|| (mesh_groups !=  nullptr && mesh_groups->has_operation())
+	|| (timers !=  nullptr && timers->has_operation())
+	|| (tunnel_range !=  nullptr && tunnel_range->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AutoTunnel::Mesh::get_segment_path() const
@@ -8351,7 +8351,7 @@ bool MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::has_data() const
 bool MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::has_operation() const
 {
     return is_set(operation)
-	|| (tunnel_range !=  nullptr && is_set(tunnel_range->operation));
+	|| (tunnel_range !=  nullptr && tunnel_range->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_segment_path() const
@@ -8472,11 +8472,11 @@ bool MplsTe::GlobalAttributes::AutoTunnel::has_data() const
 bool MplsTe::GlobalAttributes::AutoTunnel::has_operation() const
 {
     return is_set(operation)
-	|| (backup !=  nullptr && is_set(backup->operation))
-	|| (mesh !=  nullptr && is_set(mesh->operation))
-	|| (p2mp_auto_tunnel !=  nullptr && is_set(p2mp_auto_tunnel->operation))
-	|| (p2p_auto_tunnel !=  nullptr && is_set(p2p_auto_tunnel->operation))
-	|| (pcc !=  nullptr && is_set(pcc->operation));
+	|| (backup !=  nullptr && backup->has_operation())
+	|| (mesh !=  nullptr && mesh->has_operation())
+	|| (p2mp_auto_tunnel !=  nullptr && p2mp_auto_tunnel->has_operation())
+	|| (p2p_auto_tunnel !=  nullptr && p2p_auto_tunnel->has_operation())
+	|| (pcc !=  nullptr && pcc->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AutoTunnel::get_segment_path() const
@@ -9023,9 +9023,9 @@ bool MplsTe::GlobalAttributes::HardwareOutOfResource::has_data() const
 bool MplsTe::GlobalAttributes::HardwareOutOfResource::has_operation() const
 {
     return is_set(operation)
-	|| (oor_green_state !=  nullptr && is_set(oor_green_state->operation))
-	|| (oor_red_state !=  nullptr && is_set(oor_red_state->operation))
-	|| (oor_yellow_state !=  nullptr && is_set(oor_yellow_state->operation));
+	|| (oor_green_state !=  nullptr && oor_green_state->has_operation())
+	|| (oor_red_state !=  nullptr && oor_red_state->has_operation())
+	|| (oor_yellow_state !=  nullptr && oor_yellow_state->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::HardwareOutOfResource::get_segment_path() const
@@ -9377,7 +9377,7 @@ EntityPath MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::Stati
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9469,7 +9469,7 @@ EntityPath MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9563,7 +9563,7 @@ bool MplsTe::GlobalAttributes::Srlg::Names::Name::has_operation() const
     return is_set(operation)
 	|| is_set(srlg_name.operation)
 	|| is_set(admin_weight.operation)
-	|| (static_srlg_members !=  nullptr && is_set(static_srlg_members->operation));
+	|| (static_srlg_members !=  nullptr && static_srlg_members->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::Srlg::Names::Name::get_segment_path() const
@@ -9799,7 +9799,7 @@ EntityPath MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::Ipv4
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9891,7 +9891,7 @@ EntityPath MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9985,7 +9985,7 @@ bool MplsTe::GlobalAttributes::Srlg::Values::Value_::has_operation() const
     return is_set(operation)
 	|| is_set(srlg_number.operation)
 	|| is_set(admin_weight.operation)
-	|| (ipv4_address_maps !=  nullptr && is_set(ipv4_address_maps->operation));
+	|| (ipv4_address_maps !=  nullptr && ipv4_address_maps->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::Srlg::Values::Value_::get_segment_path() const
@@ -10216,8 +10216,8 @@ bool MplsTe::GlobalAttributes::Srlg::has_operation() const
     return is_set(operation)
 	|| is_set(default_admin_weight.operation)
 	|| is_set(enable.operation)
-	|| (names !=  nullptr && is_set(names->operation))
-	|| (values !=  nullptr && is_set(values->operation));
+	|| (names !=  nullptr && names->has_operation())
+	|| (values !=  nullptr && values->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::Srlg::get_segment_path() const
@@ -10644,7 +10644,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10732,7 +10732,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10810,7 +10810,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 	|| is_set(enable.operation)
 	|| is_set(path_selection_cost_limit.operation)
 	|| is_set(path_selection_exclude_list.operation)
-	|| (invalidation !=  nullptr && is_set(invalidation->operation));
+	|| (invalidation !=  nullptr && invalidation->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::get_segment_path() const
@@ -10827,7 +10827,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10943,7 +10943,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11034,7 +11034,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11113,8 +11113,8 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (bidirectional !=  nullptr && is_set(bidirectional->operation))
-	|| (disjoint_path !=  nullptr && is_set(disjoint_path->operation));
+	|| (bidirectional !=  nullptr && bidirectional->has_operation())
+	|| (disjoint_path !=  nullptr && disjoint_path->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::get_segment_path() const
@@ -11131,7 +11131,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11260,7 +11260,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11351,7 +11351,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11441,7 +11441,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11524,7 +11524,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11615,7 +11615,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11714,7 +11714,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11821,7 +11821,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11936,7 +11936,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12059,7 +12059,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12190,7 +12190,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12329,7 +12329,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12476,7 +12476,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12631,7 +12631,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12868,7 +12868,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13238,12 +13238,12 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     return is_set(operation)
 	|| is_set(attribute_set_name.operation)
 	|| is_set(enable.operation)
-	|| (affinity_mask !=  nullptr && is_set(affinity_mask->operation))
-	|| (att_path_option_path_selection !=  nullptr && is_set(att_path_option_path_selection->operation))
-	|| (bandwidth !=  nullptr && is_set(bandwidth->operation))
-	|| (bfd_reverse_path !=  nullptr && is_set(bfd_reverse_path->operation))
-	|| (new_style_affinity_affinity_types !=  nullptr && is_set(new_style_affinity_affinity_types->operation))
-	|| (pce !=  nullptr && is_set(pce->operation));
+	|| (affinity_mask !=  nullptr && affinity_mask->has_operation())
+	|| (att_path_option_path_selection !=  nullptr && att_path_option_path_selection->has_operation())
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (bfd_reverse_path !=  nullptr && bfd_reverse_path->has_operation())
+	|| (new_style_affinity_affinity_types !=  nullptr && new_style_affinity_affinity_types->has_operation())
+	|| (pce !=  nullptr && pce->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::get_segment_path() const
@@ -13594,7 +13594,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13682,7 +13682,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13773,7 +13773,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13863,7 +13863,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13943,7 +13943,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14026,7 +14026,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14117,7 +14117,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14216,7 +14216,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14323,7 +14323,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14438,7 +14438,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14561,7 +14561,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14692,7 +14692,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14831,7 +14831,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14978,7 +14978,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15133,7 +15133,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15370,7 +15370,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15734,7 +15734,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15843,7 +15843,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15980,13 +15980,13 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| is_set(enable.operation)
 	|| is_set(interface_bandwidth.operation)
 	|| is_set(record_route.operation)
-	|| (affinity_mask !=  nullptr && is_set(affinity_mask->operation))
-	|| (bandwidth !=  nullptr && is_set(bandwidth->operation))
-	|| (fast_reroute !=  nullptr && is_set(fast_reroute->operation))
-	|| (logging !=  nullptr && is_set(logging->operation))
-	|| (new_style_affinity_affinity_types !=  nullptr && is_set(new_style_affinity_affinity_types->operation))
-	|| (path_selection !=  nullptr && is_set(path_selection->operation))
-	|| (priority !=  nullptr && is_set(priority->operation));
+	|| (affinity_mask !=  nullptr && affinity_mask->has_operation())
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (fast_reroute !=  nullptr && fast_reroute->has_operation())
+	|| (logging !=  nullptr && logging->has_operation())
+	|| (new_style_affinity_affinity_types !=  nullptr && new_style_affinity_affinity_types->has_operation())
+	|| (path_selection !=  nullptr && path_selection->has_operation())
+	|| (priority !=  nullptr && priority->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::get_segment_path() const
@@ -16373,7 +16373,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16470,7 +16470,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16561,7 +16561,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (indexes !=  nullptr && is_set(indexes->operation));
+	|| (indexes !=  nullptr && indexes->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::get_segment_path() const
@@ -16578,7 +16578,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16684,7 +16684,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16770,8 +16770,8 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
 	|| is_set(enable.operation)
 	|| is_set(path_selection_metric.operation)
 	|| is_set(path_selection_segment_routing_adjacency_protection.operation)
-	|| (invalidation !=  nullptr && is_set(invalidation->operation))
-	|| (segment_routing_prepend !=  nullptr && is_set(segment_routing_prepend->operation));
+	|| (invalidation !=  nullptr && invalidation->has_operation())
+	|| (segment_routing_prepend !=  nullptr && segment_routing_prepend->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::get_segment_path() const
@@ -16788,7 +16788,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16927,7 +16927,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17018,7 +17018,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17097,8 +17097,8 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pc
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (bidirectional !=  nullptr && is_set(bidirectional->operation))
-	|| (disjoint_path !=  nullptr && is_set(disjoint_path->operation));
+	|| (bidirectional !=  nullptr && bidirectional->has_operation())
+	|| (disjoint_path !=  nullptr && disjoint_path->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::get_segment_path() const
@@ -17115,7 +17115,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17244,7 +17244,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17359,7 +17359,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17489,7 +17489,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17572,7 +17572,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17663,7 +17663,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17762,7 +17762,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17869,7 +17869,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17984,7 +17984,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18107,7 +18107,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18238,7 +18238,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18377,7 +18377,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18524,7 +18524,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18679,7 +18679,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18916,7 +18916,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19287,11 +19287,11 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::ha
     return is_set(operation)
 	|| is_set(attribute_set_name.operation)
 	|| is_set(enable.operation)
-	|| (affinity_mask !=  nullptr && is_set(affinity_mask->operation))
-	|| (logging !=  nullptr && is_set(logging->operation))
-	|| (new_style_affinity_affinity_types !=  nullptr && is_set(new_style_affinity_affinity_types->operation))
-	|| (path_selection !=  nullptr && is_set(path_selection->operation))
-	|| (pce !=  nullptr && is_set(pce->operation));
+	|| (affinity_mask !=  nullptr && affinity_mask->has_operation())
+	|| (logging !=  nullptr && logging->has_operation())
+	|| (new_style_affinity_affinity_types !=  nullptr && new_style_affinity_affinity_types->has_operation())
+	|| (path_selection !=  nullptr && path_selection->has_operation())
+	|| (pce !=  nullptr && pce->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::get_segment_path() const
@@ -19625,7 +19625,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19729,7 +19729,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19827,7 +19827,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19915,7 +19915,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20000,7 +20000,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20057,7 +20057,7 @@ MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::PolicyClasses::has_data() const
 {
-    for (auto const & leaf : policy_class.getValues())
+    for (auto const & leaf : policy_class.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -20067,12 +20067,13 @@ bool MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAtt
 
 bool MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::PolicyClasses::has_operation() const
 {
-    for (auto const & leaf : policy_class.getValues())
+    for (auto const & leaf : policy_class.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(policy_class.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::PolicyClasses::get_segment_path() const
@@ -20089,7 +20090,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20170,7 +20171,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20253,7 +20254,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20344,7 +20345,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20443,7 +20444,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20550,7 +20551,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20665,7 +20666,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20788,7 +20789,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20919,7 +20920,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21058,7 +21059,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21205,7 +21206,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21360,7 +21361,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21597,7 +21598,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21978,13 +21979,13 @@ bool MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAtt
 	|| is_set(attribute_set_name.operation)
 	|| is_set(enable.operation)
 	|| is_set(record_route.operation)
-	|| (affinity_mask !=  nullptr && is_set(affinity_mask->operation))
-	|| (auto_backup_logging !=  nullptr && is_set(auto_backup_logging->operation))
-	|| (new_style_affinity_affinity_types !=  nullptr && is_set(new_style_affinity_affinity_types->operation))
-	|| (path_selection !=  nullptr && is_set(path_selection->operation))
-	|| (policy_classes !=  nullptr && is_set(policy_classes->operation))
-	|| (priority !=  nullptr && is_set(priority->operation))
-	|| (signalled_name !=  nullptr && is_set(signalled_name->operation));
+	|| (affinity_mask !=  nullptr && affinity_mask->has_operation())
+	|| (auto_backup_logging !=  nullptr && auto_backup_logging->has_operation())
+	|| (new_style_affinity_affinity_types !=  nullptr && new_style_affinity_affinity_types->has_operation())
+	|| (path_selection !=  nullptr && path_selection->has_operation())
+	|| (policy_classes !=  nullptr && policy_classes->has_operation())
+	|| (priority !=  nullptr && priority->has_operation())
+	|| (signalled_name !=  nullptr && signalled_name->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::get_segment_path() const
@@ -22363,7 +22364,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22460,7 +22461,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22558,8 +22559,8 @@ bool MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::Re
 	|| is_set(revert_schedule_frequency.operation)
 	|| is_set(revert_schedule_max_tries.operation)
 	|| is_set(sch_name_enable.operation)
-	|| (schedule_date !=  nullptr && is_set(schedule_date->operation))
-	|| (schedule_duration !=  nullptr && is_set(schedule_duration->operation));
+	|| (schedule_date !=  nullptr && schedule_date->has_operation())
+	|| (schedule_duration !=  nullptr && schedule_duration->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::RevertScheduleNames::RevertScheduleName::get_segment_path() const
@@ -22576,7 +22577,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22724,7 +22725,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22828,7 +22829,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22916,7 +22917,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23001,7 +23002,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23098,10 +23099,10 @@ bool MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::ha
 	|| is_set(aps_protection_type.operation)
 	|| is_set(aps_restoration_style.operation)
 	|| is_set(enable.operation)
-	|| (path_selection !=  nullptr && is_set(path_selection->operation))
-	|| (revert_schedule_names !=  nullptr && is_set(revert_schedule_names->operation))
-	|| (sub_network_connection_mode !=  nullptr && is_set(sub_network_connection_mode->operation))
-	|| (timers !=  nullptr && is_set(timers->operation));
+	|| (path_selection !=  nullptr && path_selection->has_operation())
+	|| (revert_schedule_names !=  nullptr && revert_schedule_names->has_operation())
+	|| (sub_network_connection_mode !=  nullptr && sub_network_connection_mode->has_operation())
+	|| (timers !=  nullptr && timers->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::get_segment_path() const
@@ -23436,7 +23437,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23549,7 +23550,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23637,7 +23638,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23728,7 +23729,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23818,7 +23819,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23875,7 +23876,7 @@ MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::P
 
 bool MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::PolicyClasses::has_data() const
 {
-    for (auto const & leaf : policy_class.getValues())
+    for (auto const & leaf : policy_class.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -23885,12 +23886,13 @@ bool MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribu
 
 bool MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::PolicyClasses::has_operation() const
 {
-    for (auto const & leaf : policy_class.getValues())
+    for (auto const & leaf : policy_class.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(policy_class.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::PolicyClasses::get_segment_path() const
@@ -23907,7 +23909,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23988,7 +23990,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24071,7 +24073,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24162,7 +24164,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24261,7 +24263,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24368,7 +24370,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24483,7 +24485,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24606,7 +24608,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24737,7 +24739,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24876,7 +24878,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25023,7 +25025,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25178,7 +25180,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25415,7 +25417,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25779,7 +25781,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25901,14 +25903,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribu
 	|| is_set(load_share.operation)
 	|| is_set(record_route.operation)
 	|| is_set(soft_preemption.operation)
-	|| (affinity_mask !=  nullptr && is_set(affinity_mask->operation))
-	|| (auto_mesh_logging !=  nullptr && is_set(auto_mesh_logging->operation))
-	|| (bandwidth !=  nullptr && is_set(bandwidth->operation))
-	|| (fast_reroute !=  nullptr && is_set(fast_reroute->operation))
-	|| (new_style_affinity_affinity_types !=  nullptr && is_set(new_style_affinity_affinity_types->operation))
-	|| (path_selection !=  nullptr && is_set(path_selection->operation))
-	|| (policy_classes !=  nullptr && is_set(policy_classes->operation))
-	|| (priority !=  nullptr && is_set(priority->operation));
+	|| (affinity_mask !=  nullptr && affinity_mask->has_operation())
+	|| (auto_mesh_logging !=  nullptr && auto_mesh_logging->has_operation())
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (fast_reroute !=  nullptr && fast_reroute->has_operation())
+	|| (new_style_affinity_affinity_types !=  nullptr && new_style_affinity_affinity_types->has_operation())
+	|| (path_selection !=  nullptr && path_selection->has_operation())
+	|| (policy_classes !=  nullptr && policy_classes->has_operation())
+	|| (priority !=  nullptr && priority->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::get_segment_path() const
@@ -26340,7 +26342,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26432,7 +26434,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26548,7 +26550,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26660,7 +26662,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26747,7 +26749,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDi
 bool MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity::Lsp::has_operation() const
 {
     return is_set(operation)
-	|| (fecs !=  nullptr && is_set(fecs->operation));
+	|| (fecs !=  nullptr && fecs->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity::Lsp::get_segment_path() const
@@ -26764,7 +26766,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26853,8 +26855,8 @@ bool MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDi
 bool MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity::has_operation() const
 {
     return is_set(operation)
-	|| (lsp !=  nullptr && is_set(lsp->operation))
-	|| (srlgs !=  nullptr && is_set(srlgs->operation));
+	|| (lsp !=  nullptr && lsp->has_operation())
+	|| (srlgs !=  nullptr && srlgs->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity::get_segment_path() const
@@ -26871,7 +26873,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26992,7 +26994,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27070,8 +27072,8 @@ bool MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::has_op
     return is_set(operation)
 	|| is_set(attribute_set_name.operation)
 	|| is_set(enable.operation)
-	|| (path_diversity !=  nullptr && is_set(path_diversity->operation))
-	|| (path_selection !=  nullptr && is_set(path_selection->operation));
+	|| (path_diversity !=  nullptr && path_diversity->has_operation())
+	|| (path_selection !=  nullptr && path_selection->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::get_segment_path() const
@@ -27343,13 +27345,13 @@ bool MplsTe::GlobalAttributes::AttributeSet::has_data() const
 bool MplsTe::GlobalAttributes::AttributeSet::has_operation() const
 {
     return is_set(operation)
-	|| (auto_backup_attributes !=  nullptr && is_set(auto_backup_attributes->operation))
-	|| (auto_mesh_attributes !=  nullptr && is_set(auto_mesh_attributes->operation))
-	|| (otn_pp_attributes !=  nullptr && is_set(otn_pp_attributes->operation))
-	|| (p2mpte_attributes !=  nullptr && is_set(p2mpte_attributes->operation))
-	|| (p2p_te_attributes !=  nullptr && is_set(p2p_te_attributes->operation))
-	|| (path_option_attributes !=  nullptr && is_set(path_option_attributes->operation))
-	|| (xro_attributes !=  nullptr && is_set(xro_attributes->operation));
+	|| (auto_backup_attributes !=  nullptr && auto_backup_attributes->has_operation())
+	|| (auto_mesh_attributes !=  nullptr && auto_mesh_attributes->has_operation())
+	|| (otn_pp_attributes !=  nullptr && otn_pp_attributes->has_operation())
+	|| (p2mpte_attributes !=  nullptr && p2mpte_attributes->has_operation())
+	|| (p2p_te_attributes !=  nullptr && p2p_te_attributes->has_operation())
+	|| (path_option_attributes !=  nullptr && path_option_attributes->has_operation())
+	|| (xro_attributes !=  nullptr && xro_attributes->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::get_segment_path() const
@@ -27769,8 +27771,8 @@ bool MplsTe::GlobalAttributes::BfdOverLsp::has_data() const
 bool MplsTe::GlobalAttributes::BfdOverLsp::has_operation() const
 {
     return is_set(operation)
-	|| (head !=  nullptr && is_set(head->operation))
-	|| (tail !=  nullptr && is_set(tail->operation));
+	|| (head !=  nullptr && head->has_operation())
+	|| (tail !=  nullptr && tail->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::BfdOverLsp::get_segment_path() const
@@ -28001,7 +28003,7 @@ bool MplsTe::GlobalAttributes::PceAttributes::PceStateful::has_operation() const
 	|| is_set(fast_repair.operation)
 	|| is_set(instantiation.operation)
 	|| is_set(report.operation)
-	|| (stateful_timers !=  nullptr && is_set(stateful_timers->operation));
+	|| (stateful_timers !=  nullptr && stateful_timers->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::PceAttributes::PceStateful::get_segment_path() const
@@ -28504,7 +28506,7 @@ bool MplsTe::GlobalAttributes::PceAttributes::Logging::has_data() const
 bool MplsTe::GlobalAttributes::PceAttributes::Logging::has_operation() const
 {
     return is_set(operation)
-	|| (events !=  nullptr && is_set(events->operation));
+	|| (events !=  nullptr && events->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::PceAttributes::Logging::get_segment_path() const
@@ -28657,10 +28659,10 @@ bool MplsTe::GlobalAttributes::PceAttributes::has_operation() const
 	|| is_set(request_timeout.operation)
 	|| is_set(segment_routing.operation)
 	|| is_set(speaker_entity_id.operation)
-	|| (logging !=  nullptr && is_set(logging->operation))
-	|| (pce_stateful !=  nullptr && is_set(pce_stateful->operation))
-	|| (peers !=  nullptr && is_set(peers->operation))
-	|| (timer !=  nullptr && is_set(timer->operation));
+	|| (logging !=  nullptr && logging->has_operation())
+	|| (pce_stateful !=  nullptr && pce_stateful->has_operation())
+	|| (peers !=  nullptr && peers->has_operation())
+	|| (timer !=  nullptr && timer->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::PceAttributes::get_segment_path() const
@@ -29074,7 +29076,7 @@ bool MplsTe::GlobalAttributes::FastReroute::has_data() const
 bool MplsTe::GlobalAttributes::FastReroute::has_operation() const
 {
     return is_set(operation)
-	|| (timers !=  nullptr && is_set(timers->operation));
+	|| (timers !=  nullptr && timers->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::FastReroute::get_segment_path() const
@@ -29787,10 +29789,10 @@ bool MplsTe::GlobalAttributes::PathSelection::has_operation() const
 	|| is_set(loose_domain_match.operation)
 	|| is_set(metric.operation)
 	|| is_set(tiebreaker.operation)
-	|| (ignore_overload_role !=  nullptr && is_set(ignore_overload_role->operation))
-	|| (invalidation !=  nullptr && is_set(invalidation->operation))
-	|| (loose_affinities !=  nullptr && is_set(loose_affinities->operation))
-	|| (loose_metrics !=  nullptr && is_set(loose_metrics->operation));
+	|| (ignore_overload_role !=  nullptr && ignore_overload_role->has_operation())
+	|| (invalidation !=  nullptr && invalidation->has_operation())
+	|| (loose_affinities !=  nullptr && loose_affinities->has_operation())
+	|| (loose_metrics !=  nullptr && loose_metrics->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::PathSelection::get_segment_path() const
@@ -30323,19 +30325,19 @@ bool MplsTe::GlobalAttributes::has_operation() const
 	|| is_set(reoptimize_link_up.operation)
 	|| is_set(reoptimize_load_balancing.operation)
 	|| is_set(reoptimize_timer_frequency.operation)
-	|| (affinity_mappings !=  nullptr && is_set(affinity_mappings->operation))
-	|| (attribute_set !=  nullptr && is_set(attribute_set->operation))
-	|| (auto_tunnel !=  nullptr && is_set(auto_tunnel->operation))
-	|| (bfd_over_lsp !=  nullptr && is_set(bfd_over_lsp->operation))
-	|| (fast_reroute !=  nullptr && is_set(fast_reroute->operation))
-	|| (hardware_out_of_resource !=  nullptr && is_set(hardware_out_of_resource->operation))
-	|| (mib !=  nullptr && is_set(mib->operation))
-	|| (path_selection !=  nullptr && is_set(path_selection->operation))
-	|| (pce_attributes !=  nullptr && is_set(pce_attributes->operation))
-	|| (queues !=  nullptr && is_set(queues->operation))
-	|| (secondary_router_ids !=  nullptr && is_set(secondary_router_ids->operation))
-	|| (soft_preemption !=  nullptr && is_set(soft_preemption->operation))
-	|| (srlg !=  nullptr && is_set(srlg->operation));
+	|| (affinity_mappings !=  nullptr && affinity_mappings->has_operation())
+	|| (attribute_set !=  nullptr && attribute_set->has_operation())
+	|| (auto_tunnel !=  nullptr && auto_tunnel->has_operation())
+	|| (bfd_over_lsp !=  nullptr && bfd_over_lsp->has_operation())
+	|| (fast_reroute !=  nullptr && fast_reroute->has_operation())
+	|| (hardware_out_of_resource !=  nullptr && hardware_out_of_resource->has_operation())
+	|| (mib !=  nullptr && mib->has_operation())
+	|| (path_selection !=  nullptr && path_selection->has_operation())
+	|| (pce_attributes !=  nullptr && pce_attributes->has_operation())
+	|| (queues !=  nullptr && queues->has_operation())
+	|| (secondary_router_ids !=  nullptr && secondary_router_ids->has_operation())
+	|| (soft_preemption !=  nullptr && soft_preemption->has_operation())
+	|| (srlg !=  nullptr && srlg->has_operation());
 }
 
 std::string MplsTe::GlobalAttributes::get_segment_path() const
@@ -31011,8 +31013,8 @@ bool MplsTe::TransportProfile::Fault::ProtectionTrigger::has_operation() const
 {
     return is_set(operation)
 	|| is_set(ais.operation)
-	|| (ldi !=  nullptr && is_set(ldi->operation))
-	|| (lkr !=  nullptr && is_set(lkr->operation));
+	|| (ldi !=  nullptr && ldi->has_operation())
+	|| (lkr !=  nullptr && lkr->has_operation());
 }
 
 std::string MplsTe::TransportProfile::Fault::ProtectionTrigger::get_segment_path() const
@@ -31148,7 +31150,7 @@ bool MplsTe::TransportProfile::Fault::has_operation() const
     return is_set(operation)
 	|| is_set(refresh_interval.operation)
 	|| is_set(wait_to_restore_interval.operation)
-	|| (protection_trigger !=  nullptr && is_set(protection_trigger->operation));
+	|| (protection_trigger !=  nullptr && protection_trigger->has_operation());
 }
 
 std::string MplsTe::TransportProfile::Fault::get_segment_path() const
@@ -31346,7 +31348,7 @@ bool MplsTe::TransportProfile::Alarm::has_operation() const
     return is_set(operation)
 	|| is_set(enable_alarm.operation)
 	|| is_set(soak_time.operation)
-	|| (suppress_event !=  nullptr && is_set(suppress_event->operation));
+	|| (suppress_event !=  nullptr && suppress_event->has_operation());
 }
 
 std::string MplsTe::TransportProfile::Alarm::get_segment_path() const
@@ -31645,8 +31647,8 @@ bool MplsTe::TransportProfile::Bfd::has_operation() const
     return is_set(operation)
 	|| is_set(detection_multiplier.operation)
 	|| is_set(detection_multiplier_standby.operation)
-	|| (min_interval !=  nullptr && is_set(min_interval->operation))
-	|| (min_interval_standby !=  nullptr && is_set(min_interval_standby->operation));
+	|| (min_interval !=  nullptr && min_interval->has_operation())
+	|| (min_interval_standby !=  nullptr && min_interval_standby->has_operation());
 }
 
 std::string MplsTe::TransportProfile::Bfd::get_segment_path() const
@@ -31800,7 +31802,7 @@ EntityPath MplsTe::TransportProfile::Midpoints::Midpoint::Source::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31896,7 +31898,7 @@ EntityPath MplsTe::TransportProfile::Midpoints::Midpoint::Destination::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31992,7 +31994,7 @@ EntityPath MplsTe::TransportProfile::Midpoints::Midpoint::ForwardLsp::ForwardIoM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32069,7 +32071,7 @@ bool MplsTe::TransportProfile::Midpoints::Midpoint::ForwardLsp::has_operation() 
 {
     return is_set(operation)
 	|| is_set(forward_bandwidth.operation)
-	|| (forward_io_map !=  nullptr && is_set(forward_io_map->operation));
+	|| (forward_io_map !=  nullptr && forward_io_map->has_operation());
 }
 
 std::string MplsTe::TransportProfile::Midpoints::Midpoint::ForwardLsp::get_segment_path() const
@@ -32086,7 +32088,7 @@ EntityPath MplsTe::TransportProfile::Midpoints::Midpoint::ForwardLsp::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32195,7 +32197,7 @@ EntityPath MplsTe::TransportProfile::Midpoints::Midpoint::ReverseLsp::ReverseIoM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32272,7 +32274,7 @@ bool MplsTe::TransportProfile::Midpoints::Midpoint::ReverseLsp::has_operation() 
 {
     return is_set(operation)
 	|| is_set(reverse_bandwidth.operation)
-	|| (reverse_io_map !=  nullptr && is_set(reverse_io_map->operation));
+	|| (reverse_io_map !=  nullptr && reverse_io_map->has_operation());
 }
 
 std::string MplsTe::TransportProfile::Midpoints::Midpoint::ReverseLsp::get_segment_path() const
@@ -32289,7 +32291,7 @@ EntityPath MplsTe::TransportProfile::Midpoints::Midpoint::ReverseLsp::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32400,10 +32402,10 @@ bool MplsTe::TransportProfile::Midpoints::Midpoint::has_operation() const
 	|| is_set(lsp_id.operation)
 	|| is_set(lsp_protect.operation)
 	|| is_set(tunnel_name.operation)
-	|| (destination !=  nullptr && is_set(destination->operation))
-	|| (forward_lsp !=  nullptr && is_set(forward_lsp->operation))
-	|| (reverse_lsp !=  nullptr && is_set(reverse_lsp->operation))
-	|| (source !=  nullptr && is_set(source->operation));
+	|| (destination !=  nullptr && destination->has_operation())
+	|| (forward_lsp !=  nullptr && forward_lsp->has_operation())
+	|| (reverse_lsp !=  nullptr && reverse_lsp->has_operation())
+	|| (source !=  nullptr && source->has_operation());
 }
 
 std::string MplsTe::TransportProfile::Midpoints::Midpoint::get_segment_path() const
@@ -32723,10 +32725,10 @@ bool MplsTe::TransportProfile::has_operation() const
     return is_set(operation)
 	|| is_set(global_id.operation)
 	|| is_set(node_id.operation)
-	|| (alarm !=  nullptr && is_set(alarm->operation))
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (fault !=  nullptr && is_set(fault->operation))
-	|| (midpoints !=  nullptr && is_set(midpoints->operation));
+	|| (alarm !=  nullptr && alarm->has_operation())
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (fault !=  nullptr && fault->has_operation())
+	|| (midpoints !=  nullptr && midpoints->has_operation());
 }
 
 std::string MplsTe::TransportProfile::get_segment_path() const
@@ -32926,7 +32928,7 @@ EntityPath MplsTe::Interfaces::Interface::TransportProfileLink::Links::Link::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33023,7 +33025,7 @@ EntityPath MplsTe::Interfaces::Interface::TransportProfileLink::Links::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33110,7 +33112,7 @@ bool MplsTe::Interfaces::Interface::TransportProfileLink::has_data() const
 bool MplsTe::Interfaces::Interface::TransportProfileLink::has_operation() const
 {
     return is_set(operation)
-	|| (links !=  nullptr && is_set(links->operation));
+	|| (links !=  nullptr && links->has_operation());
 }
 
 std::string MplsTe::Interfaces::Interface::TransportProfileLink::get_segment_path() const
@@ -33127,7 +33129,7 @@ EntityPath MplsTe::Interfaces::Interface::TransportProfileLink::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33231,7 +33233,7 @@ EntityPath MplsTe::Interfaces::Interface::Lcac::Switchings::Switching::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33328,7 +33330,7 @@ EntityPath MplsTe::Interfaces::Interface::Lcac::Switchings::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33435,7 +33437,7 @@ EntityPath MplsTe::Interfaces::Interface::Lcac::FloodArea::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33502,7 +33504,7 @@ MplsTe::Interfaces::Interface::Lcac::AttributeNameXr::~AttributeNameXr()
 
 bool MplsTe::Interfaces::Interface::Lcac::AttributeNameXr::has_data() const
 {
-    for (auto const & leaf : attribute_name.getValues())
+    for (auto const & leaf : attribute_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -33512,12 +33514,13 @@ bool MplsTe::Interfaces::Interface::Lcac::AttributeNameXr::has_data() const
 
 bool MplsTe::Interfaces::Interface::Lcac::AttributeNameXr::has_operation() const
 {
-    for (auto const & leaf : attribute_name.getValues())
+    for (auto const & leaf : attribute_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(attribute_name.operation);
 }
 
 std::string MplsTe::Interfaces::Interface::Lcac::AttributeNameXr::get_segment_path() const
@@ -33534,7 +33537,7 @@ EntityPath MplsTe::Interfaces::Interface::Lcac::AttributeNameXr::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33593,7 +33596,7 @@ MplsTe::Interfaces::Interface::Lcac::AttributeNames::AttributeName::~AttributeNa
 
 bool MplsTe::Interfaces::Interface::Lcac::AttributeNames::AttributeName::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -33603,13 +33606,14 @@ bool MplsTe::Interfaces::Interface::Lcac::AttributeNames::AttributeName::has_dat
 
 bool MplsTe::Interfaces::Interface::Lcac::AttributeNames::AttributeName::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| is_set(affinity_index.operation);
+	|| is_set(affinity_index.operation)
+	|| is_set(value_.operation);
 }
 
 std::string MplsTe::Interfaces::Interface::Lcac::AttributeNames::AttributeName::get_segment_path() const
@@ -33626,7 +33630,7 @@ EntityPath MplsTe::Interfaces::Interface::Lcac::AttributeNames::AttributeName::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33719,7 +33723,7 @@ EntityPath MplsTe::Interfaces::Interface::Lcac::AttributeNames::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33820,7 +33824,7 @@ EntityPath MplsTe::Interfaces::Interface::Lcac::Srlgs::Srlg::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33907,7 +33911,7 @@ EntityPath MplsTe::Interfaces::Interface::Lcac::Srlgs::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33985,7 +33989,7 @@ MplsTe::Interfaces::Interface::Lcac::UpThresholds::~UpThresholds()
 
 bool MplsTe::Interfaces::Interface::Lcac::UpThresholds::has_data() const
 {
-    for (auto const & leaf : up_threshold.getValues())
+    for (auto const & leaf : up_threshold.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -33995,12 +33999,13 @@ bool MplsTe::Interfaces::Interface::Lcac::UpThresholds::has_data() const
 
 bool MplsTe::Interfaces::Interface::Lcac::UpThresholds::has_operation() const
 {
-    for (auto const & leaf : up_threshold.getValues())
+    for (auto const & leaf : up_threshold.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(up_threshold.operation);
 }
 
 std::string MplsTe::Interfaces::Interface::Lcac::UpThresholds::get_segment_path() const
@@ -34017,7 +34022,7 @@ EntityPath MplsTe::Interfaces::Interface::Lcac::UpThresholds::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34075,7 +34080,7 @@ MplsTe::Interfaces::Interface::Lcac::DownThresholds::~DownThresholds()
 
 bool MplsTe::Interfaces::Interface::Lcac::DownThresholds::has_data() const
 {
-    for (auto const & leaf : down_threshold.getValues())
+    for (auto const & leaf : down_threshold.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -34085,12 +34090,13 @@ bool MplsTe::Interfaces::Interface::Lcac::DownThresholds::has_data() const
 
 bool MplsTe::Interfaces::Interface::Lcac::DownThresholds::has_operation() const
 {
-    for (auto const & leaf : down_threshold.getValues())
+    for (auto const & leaf : down_threshold.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(down_threshold.operation);
 }
 
 std::string MplsTe::Interfaces::Interface::Lcac::DownThresholds::get_segment_path() const
@@ -34107,7 +34113,7 @@ EntityPath MplsTe::Interfaces::Interface::Lcac::DownThresholds::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34220,13 +34226,13 @@ bool MplsTe::Interfaces::Interface::Lcac::has_operation() const
 	|| is_set(bfd.operation)
 	|| is_set(enable.operation)
 	|| is_set(fault_oam_lockout.operation)
-	|| (attribute_name_xr !=  nullptr && is_set(attribute_name_xr->operation))
-	|| (attribute_names !=  nullptr && is_set(attribute_names->operation))
-	|| (down_thresholds !=  nullptr && is_set(down_thresholds->operation))
-	|| (flood_area !=  nullptr && is_set(flood_area->operation))
-	|| (srlgs !=  nullptr && is_set(srlgs->operation))
-	|| (switchings !=  nullptr && is_set(switchings->operation))
-	|| (up_thresholds !=  nullptr && is_set(up_thresholds->operation));
+	|| (attribute_name_xr !=  nullptr && attribute_name_xr->has_operation())
+	|| (attribute_names !=  nullptr && attribute_names->has_operation())
+	|| (down_thresholds !=  nullptr && down_thresholds->has_operation())
+	|| (flood_area !=  nullptr && flood_area->has_operation())
+	|| (srlgs !=  nullptr && srlgs->has_operation())
+	|| (switchings !=  nullptr && switchings->has_operation())
+	|| (up_thresholds !=  nullptr && up_thresholds->has_operation());
 }
 
 std::string MplsTe::Interfaces::Interface::Lcac::get_segment_path() const
@@ -34243,7 +34249,7 @@ EntityPath MplsTe::Interfaces::Interface::Lcac::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34504,7 +34510,7 @@ EntityPath MplsTe::Interfaces::Interface::GlobalAttributes::BackupTunnels::Backu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34591,7 +34597,7 @@ EntityPath MplsTe::Interfaces::Interface::GlobalAttributes::BackupTunnels::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34692,7 +34698,7 @@ EntityPath MplsTe::Interfaces::Interface::GlobalAttributes::AutoTunnel::Backup::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34768,7 +34774,7 @@ bool MplsTe::Interfaces::Interface::GlobalAttributes::AutoTunnel::Backup::has_op
 	|| is_set(attribute_set.operation)
 	|| is_set(enable.operation)
 	|| is_set(next_hop_only.operation)
-	|| (exclude !=  nullptr && is_set(exclude->operation));
+	|| (exclude !=  nullptr && exclude->has_operation());
 }
 
 std::string MplsTe::Interfaces::Interface::GlobalAttributes::AutoTunnel::Backup::get_segment_path() const
@@ -34785,7 +34791,7 @@ EntityPath MplsTe::Interfaces::Interface::GlobalAttributes::AutoTunnel::Backup::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34884,7 +34890,7 @@ bool MplsTe::Interfaces::Interface::GlobalAttributes::AutoTunnel::has_data() con
 bool MplsTe::Interfaces::Interface::GlobalAttributes::AutoTunnel::has_operation() const
 {
     return is_set(operation)
-	|| (backup !=  nullptr && is_set(backup->operation));
+	|| (backup !=  nullptr && backup->has_operation());
 }
 
 std::string MplsTe::Interfaces::Interface::GlobalAttributes::AutoTunnel::get_segment_path() const
@@ -34901,7 +34907,7 @@ EntityPath MplsTe::Interfaces::Interface::GlobalAttributes::AutoTunnel::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34999,7 +35005,7 @@ EntityPath MplsTe::Interfaces::Interface::GlobalAttributes::BackupPaths::BackupP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35086,7 +35092,7 @@ EntityPath MplsTe::Interfaces::Interface::GlobalAttributes::BackupPaths::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35183,9 +35189,9 @@ bool MplsTe::Interfaces::Interface::GlobalAttributes::has_data() const
 bool MplsTe::Interfaces::Interface::GlobalAttributes::has_operation() const
 {
     return is_set(operation)
-	|| (auto_tunnel !=  nullptr && is_set(auto_tunnel->operation))
-	|| (backup_paths !=  nullptr && is_set(backup_paths->operation))
-	|| (backup_tunnels !=  nullptr && is_set(backup_tunnels->operation));
+	|| (auto_tunnel !=  nullptr && auto_tunnel->has_operation())
+	|| (backup_paths !=  nullptr && backup_paths->has_operation())
+	|| (backup_tunnels !=  nullptr && backup_tunnels->has_operation());
 }
 
 std::string MplsTe::Interfaces::Interface::GlobalAttributes::get_segment_path() const
@@ -35202,7 +35208,7 @@ EntityPath MplsTe::Interfaces::Interface::GlobalAttributes::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35346,9 +35352,9 @@ bool MplsTe::Interfaces::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (global_attributes !=  nullptr && is_set(global_attributes->operation))
-	|| (lcac !=  nullptr && is_set(lcac->operation))
-	|| (transport_profile_link !=  nullptr && is_set(transport_profile_link->operation));
+	|| (global_attributes !=  nullptr && global_attributes->has_operation())
+	|| (lcac !=  nullptr && lcac->has_operation())
+	|| (transport_profile_link !=  nullptr && transport_profile_link->has_operation());
 }
 
 std::string MplsTe::Interfaces::Interface::get_segment_path() const
@@ -35625,7 +35631,7 @@ EntityPath MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Contr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35709,7 +35715,7 @@ bool MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers
 	|| is_set(admin_weight.operation)
 	|| is_set(delay.operation)
 	|| is_set(enable.operation)
-	|| (tti_mode !=  nullptr && is_set(tti_mode->operation));
+	|| (tti_mode !=  nullptr && tti_mode->has_operation());
 }
 
 std::string MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers::Controller::get_segment_path() const
@@ -35726,7 +35732,7 @@ EntityPath MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Contr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35851,7 +35857,7 @@ EntityPath MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Contr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35942,7 +35948,7 @@ bool MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::has_operati
 {
     return is_set(operation)
 	|| is_set(igp_area.operation)
-	|| (controllers !=  nullptr && is_set(controllers->operation));
+	|| (controllers !=  nullptr && controllers->has_operation());
 }
 
 std::string MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::get_segment_path() const
@@ -35959,7 +35965,7 @@ EntityPath MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36065,7 +36071,7 @@ EntityPath MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36149,7 +36155,7 @@ bool MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controll
 	|| is_set(admin_weight.operation)
 	|| is_set(delay.operation)
 	|| is_set(enable.operation)
-	|| (tti_mode !=  nullptr && is_set(tti_mode->operation));
+	|| (tti_mode !=  nullptr && tti_mode->has_operation());
 }
 
 std::string MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers::Controller::get_segment_path() const
@@ -36166,7 +36172,7 @@ EntityPath MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36291,7 +36297,7 @@ EntityPath MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36382,7 +36388,7 @@ bool MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::has_oper
 {
     return is_set(operation)
 	|| is_set(address.operation)
-	|| (controllers !=  nullptr && is_set(controllers->operation));
+	|| (controllers !=  nullptr && controllers->has_operation());
 }
 
 std::string MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::get_segment_path() const
@@ -36399,7 +36405,7 @@ EntityPath MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36784,7 +36790,7 @@ EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36874,7 +36880,7 @@ EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36972,7 +36978,7 @@ EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37106,7 +37112,7 @@ EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37233,7 +37239,7 @@ EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37337,7 +37343,7 @@ EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37465,11 +37471,11 @@ bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::has_operation() const
 	|| is_set(shutdown.operation)
 	|| is_set(signalled_name.operation)
 	|| is_set(standby_lsp_shutdown.operation)
-	|| (logging !=  nullptr && is_set(logging->operation))
-	|| (path_options !=  nullptr && is_set(path_options->operation))
-	|| (protection_switching !=  nullptr && is_set(protection_switching->operation))
-	|| (signalled_bandwidth !=  nullptr && is_set(signalled_bandwidth->operation))
-	|| (static_uni !=  nullptr && is_set(static_uni->operation));
+	|| (logging !=  nullptr && logging->has_operation())
+	|| (path_options !=  nullptr && path_options->has_operation())
+	|| (protection_switching !=  nullptr && protection_switching->has_operation())
+	|| (signalled_bandwidth !=  nullptr && signalled_bandwidth->has_operation())
+	|| (static_uni !=  nullptr && static_uni->has_operation());
 }
 
 std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::get_segment_path() const
@@ -37842,8 +37848,8 @@ bool MplsTe::GmplsNni::has_operation() const
     return is_set(operation)
 	|| is_set(enable_gmpls_nni.operation)
 	|| is_set(path_selection_metric.operation)
-	|| (topology_instances !=  nullptr && is_set(topology_instances->operation))
-	|| (tunnel_heads !=  nullptr && is_set(tunnel_heads->operation));
+	|| (topology_instances !=  nullptr && topology_instances->has_operation())
+	|| (tunnel_heads !=  nullptr && tunnel_heads->has_operation());
 }
 
 std::string MplsTe::GmplsNni::get_segment_path() const
@@ -38168,8 +38174,8 @@ bool MplsTe::Lcac::has_operation() const
 	|| is_set(bandwidth_hold_timer.operation)
 	|| is_set(delay_preempt_bundle_capacity_timer.operation)
 	|| is_set(periodic_flooding_timer.operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (flooding_threshold !=  nullptr && is_set(flooding_threshold->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (flooding_threshold !=  nullptr && flooding_threshold->has_operation());
 }
 
 std::string MplsTe::Lcac::get_segment_path() const
@@ -38347,14 +38353,14 @@ bool MplsTe::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable_traffic_engineering.operation)
-	|| (diff_serv_traffic_engineering !=  nullptr && is_set(diff_serv_traffic_engineering->operation))
-	|| (global_attributes !=  nullptr && is_set(global_attributes->operation))
-	|| (gmpls_nni !=  nullptr && is_set(gmpls_nni->operation))
-	|| (gmpls_uni !=  nullptr && is_set(gmpls_uni->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (lcac !=  nullptr && is_set(lcac->operation))
-	|| (named_tunnels !=  nullptr && is_set(named_tunnels->operation))
-	|| (transport_profile !=  nullptr && is_set(transport_profile->operation));
+	|| (diff_serv_traffic_engineering !=  nullptr && diff_serv_traffic_engineering->has_operation())
+	|| (global_attributes !=  nullptr && global_attributes->has_operation())
+	|| (gmpls_nni !=  nullptr && gmpls_nni->has_operation())
+	|| (gmpls_uni !=  nullptr && gmpls_uni->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (lcac !=  nullptr && lcac->has_operation())
+	|| (named_tunnels !=  nullptr && named_tunnels->has_operation())
+	|| (transport_profile !=  nullptr && transport_profile->has_operation());
 }
 
 std::string MplsTe::get_segment_path() const
@@ -38371,7 +38377,7 @@ EntityPath MplsTe::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -38601,193 +38607,193 @@ std::unique_ptr<Entity> MplsTe::clone_ptr()
     return std::make_unique<MplsTe>();
 }
 
-const Enum::Value MplsTeBackupBandwidthClassEnum::class0 {0, "class0"};
-const Enum::Value MplsTeBackupBandwidthClassEnum::class1 {1, "class1"};
-const Enum::Value MplsTeBackupBandwidthClassEnum::any_class {9, "any-class"};
+const Enum::YLeaf MplsTeBackupBandwidthClassEnum::class0 {0, "class0"};
+const Enum::YLeaf MplsTeBackupBandwidthClassEnum::class1 {1, "class1"};
+const Enum::YLeaf MplsTeBackupBandwidthClassEnum::any_class {9, "any-class"};
 
-const Enum::Value SrPrependEnum::none_type {0, "none-type"};
-const Enum::Value SrPrependEnum::next_label {1, "next-label"};
-const Enum::Value SrPrependEnum::bgp_n_hop {2, "bgp-n-hop"};
+const Enum::YLeaf SrPrependEnum::none_type {0, "none-type"};
+const Enum::YLeaf SrPrependEnum::next_label {1, "next-label"};
+const Enum::YLeaf SrPrependEnum::bgp_n_hop {2, "bgp-n-hop"};
 
-const Enum::Value MplsTePathComputationMethodEnum::not_set {0, "not-set"};
-const Enum::Value MplsTePathComputationMethodEnum::dynamic {1, "dynamic"};
-const Enum::Value MplsTePathComputationMethodEnum::pce {2, "pce"};
-const Enum::Value MplsTePathComputationMethodEnum::explicit_ {3, "explicit"};
+const Enum::YLeaf MplsTePathComputationMethodEnum::not_set {0, "not-set"};
+const Enum::YLeaf MplsTePathComputationMethodEnum::dynamic {1, "dynamic"};
+const Enum::YLeaf MplsTePathComputationMethodEnum::pce {2, "pce"};
+const Enum::YLeaf MplsTePathComputationMethodEnum::explicit_ {3, "explicit"};
 
-const Enum::Value MplsTeSwitchingCapEnum::psc1 {1, "psc1"};
-const Enum::Value MplsTeSwitchingCapEnum::lsc {150, "lsc"};
-const Enum::Value MplsTeSwitchingCapEnum::fsc {200, "fsc"};
+const Enum::YLeaf MplsTeSwitchingCapEnum::psc1 {1, "psc1"};
+const Enum::YLeaf MplsTeSwitchingCapEnum::lsc {150, "lsc"};
+const Enum::YLeaf MplsTeSwitchingCapEnum::fsc {200, "fsc"};
 
-const Enum::Value MplsTeBfdSessionDownActionEnum::re_setup {1, "re-setup"};
+const Enum::YLeaf MplsTeBfdSessionDownActionEnum::re_setup {1, "re-setup"};
 
-const Enum::Value RoutePriorityRoleEnum::route_priority_role_head_back_up {0, "route-priority-role-head-back-up"};
-const Enum::Value RoutePriorityRoleEnum::route_priority_role_head_primary {1, "route-priority-role-head-primary"};
-const Enum::Value RoutePriorityRoleEnum::route_priority_role_middle {2, "route-priority-role-middle"};
+const Enum::YLeaf RoutePriorityRoleEnum::route_priority_role_head_back_up {0, "route-priority-role-head-back-up"};
+const Enum::YLeaf RoutePriorityRoleEnum::route_priority_role_head_primary {1, "route-priority-role-head-primary"};
+const Enum::YLeaf RoutePriorityRoleEnum::route_priority_role_middle {2, "route-priority-role-middle"};
 
-const Enum::Value MplsTebfdSessionEnum::regular_bfd {1, "regular-bfd"};
-const Enum::Value MplsTebfdSessionEnum::sbfd {2, "sbfd"};
-const Enum::Value MplsTebfdSessionEnum::redundant_sbfd {3, "redundant-sbfd"};
+const Enum::YLeaf MplsTebfdSessionEnum::regular_bfd {1, "regular-bfd"};
+const Enum::YLeaf MplsTebfdSessionEnum::sbfd {2, "sbfd"};
+const Enum::YLeaf MplsTebfdSessionEnum::redundant_sbfd {3, "redundant-sbfd"};
 
-const Enum::Value MplsTeLogFrrProtectionEnum::frr_active_primary {1, "frr-active-primary"};
-const Enum::Value MplsTeLogFrrProtectionEnum::backup {256, "backup"};
-const Enum::Value MplsTeLogFrrProtectionEnum::frr_ready_primary {512, "frr-ready-primary"};
-const Enum::Value MplsTeLogFrrProtectionEnum::primary {513, "primary"};
-const Enum::Value MplsTeLogFrrProtectionEnum::all {769, "all"};
+const Enum::YLeaf MplsTeLogFrrProtectionEnum::frr_active_primary {1, "frr-active-primary"};
+const Enum::YLeaf MplsTeLogFrrProtectionEnum::backup {256, "backup"};
+const Enum::YLeaf MplsTeLogFrrProtectionEnum::frr_ready_primary {512, "frr-ready-primary"};
+const Enum::YLeaf MplsTeLogFrrProtectionEnum::primary {513, "primary"};
+const Enum::YLeaf MplsTeLogFrrProtectionEnum::all {769, "all"};
 
-const Enum::Value MplsTeTunnelAffinityEnum::include {1, "include"};
-const Enum::Value MplsTeTunnelAffinityEnum::include_strict {2, "include-strict"};
-const Enum::Value MplsTeTunnelAffinityEnum::exclude {3, "exclude"};
-const Enum::Value MplsTeTunnelAffinityEnum::exclude_all {4, "exclude-all"};
-const Enum::Value MplsTeTunnelAffinityEnum::ignore {5, "ignore"};
+const Enum::YLeaf MplsTeTunnelAffinityEnum::include {1, "include"};
+const Enum::YLeaf MplsTeTunnelAffinityEnum::include_strict {2, "include-strict"};
+const Enum::YLeaf MplsTeTunnelAffinityEnum::exclude {3, "exclude"};
+const Enum::YLeaf MplsTeTunnelAffinityEnum::exclude_all {4, "exclude-all"};
+const Enum::YLeaf MplsTeTunnelAffinityEnum::ignore {5, "ignore"};
 
-const Enum::Value IetfModeEnum::standard {3, "standard"};
+const Enum::YLeaf IetfModeEnum::standard {3, "standard"};
 
-const Enum::Value MplsTePathOptionPropertyEnum::none {0, "none"};
-const Enum::Value MplsTePathOptionPropertyEnum::lockdown {1, "lockdown"};
-const Enum::Value MplsTePathOptionPropertyEnum::verbatim {4, "verbatim"};
-const Enum::Value MplsTePathOptionPropertyEnum::pce {8, "pce"};
-const Enum::Value MplsTePathOptionPropertyEnum::segment_routing {16, "segment-routing"};
+const Enum::YLeaf MplsTePathOptionPropertyEnum::none {0, "none"};
+const Enum::YLeaf MplsTePathOptionPropertyEnum::lockdown {1, "lockdown"};
+const Enum::YLeaf MplsTePathOptionPropertyEnum::verbatim {4, "verbatim"};
+const Enum::YLeaf MplsTePathOptionPropertyEnum::pce {8, "pce"};
+const Enum::YLeaf MplsTePathOptionPropertyEnum::segment_routing {16, "segment-routing"};
 
-const Enum::Value GmplsttiModeEnum::sm {1, "sm"};
-const Enum::Value GmplsttiModeEnum::pm {2, "pm"};
-const Enum::Value GmplsttiModeEnum::tcm {3, "tcm"};
+const Enum::YLeaf GmplsttiModeEnum::sm {1, "sm"};
+const Enum::YLeaf GmplsttiModeEnum::pm {2, "pm"};
+const Enum::YLeaf GmplsttiModeEnum::tcm {3, "tcm"};
 
-const Enum::Value MplsTePathSelectionInvalidationTimerExpireEnum::tunnel_action_tear {1, "tunnel-action-tear"};
-const Enum::Value MplsTePathSelectionInvalidationTimerExpireEnum::tunnel_action_drop {2, "tunnel-action-drop"};
+const Enum::YLeaf MplsTePathSelectionInvalidationTimerExpireEnum::tunnel_action_tear {1, "tunnel-action-tear"};
+const Enum::YLeaf MplsTePathSelectionInvalidationTimerExpireEnum::tunnel_action_drop {2, "tunnel-action-drop"};
 
-const Enum::Value MplsTeOtnApsProtectionEnum::Y_1plus1_unidir_no_aps {4, "1plus1-unidir-no-aps"};
-const Enum::Value MplsTeOtnApsProtectionEnum::Y_1plus1_unidir_aps {8, "1plus1-unidir-aps"};
-const Enum::Value MplsTeOtnApsProtectionEnum::Y_1plus1_bdir_aps {16, "1plus1-bdir-aps"};
+const Enum::YLeaf MplsTeOtnApsProtectionEnum::Y_1plus1_unidir_no_aps {4, "1plus1-unidir-no-aps"};
+const Enum::YLeaf MplsTeOtnApsProtectionEnum::Y_1plus1_unidir_aps {8, "1plus1-unidir-aps"};
+const Enum::YLeaf MplsTeOtnApsProtectionEnum::Y_1plus1_bdir_aps {16, "1plus1-bdir-aps"};
 
-const Enum::Value MplsTeSwitchingEncodingEnum::packet {1, "packet"};
-const Enum::Value MplsTeSwitchingEncodingEnum::ethernet {2, "ethernet"};
-const Enum::Value MplsTeSwitchingEncodingEnum::sondet_sdh {5, "sondet-sdh"};
+const Enum::YLeaf MplsTeSwitchingEncodingEnum::packet {1, "packet"};
+const Enum::YLeaf MplsTeSwitchingEncodingEnum::ethernet {2, "ethernet"};
+const Enum::YLeaf MplsTeSwitchingEncodingEnum::sondet_sdh {5, "sondet-sdh"};
 
-const Enum::Value MplsTeSigNameOptionEnum::none {0, "none"};
-const Enum::Value MplsTeSigNameOptionEnum::address {1, "address"};
-const Enum::Value MplsTeSigNameOptionEnum::name {2, "name"};
+const Enum::YLeaf MplsTeSigNameOptionEnum::none {0, "none"};
+const Enum::YLeaf MplsTeSigNameOptionEnum::address {1, "address"};
+const Enum::YLeaf MplsTeSigNameOptionEnum::name {2, "name"};
 
-const Enum::Value OtnProtectionSwitchLockoutEnum::none {0, "none"};
-const Enum::Value OtnProtectionSwitchLockoutEnum::working {1, "working"};
+const Enum::YLeaf OtnProtectionSwitchLockoutEnum::none {0, "none"};
+const Enum::YLeaf OtnProtectionSwitchLockoutEnum::working {1, "working"};
 
-const Enum::Value MplsTeTunnelIdEnum::auto_ {0, "auto"};
-const Enum::Value MplsTeTunnelIdEnum::explicit_ {1, "explicit"};
+const Enum::YLeaf MplsTeTunnelIdEnum::auto_ {0, "auto"};
+const Enum::YLeaf MplsTeTunnelIdEnum::explicit_ {1, "explicit"};
 
-const Enum::Value MplsTeAffinityValueEnum::hex_value {1, "hex-value"};
-const Enum::Value MplsTeAffinityValueEnum::bit_position {2, "bit-position"};
+const Enum::YLeaf MplsTeAffinityValueEnum::hex_value {1, "hex-value"};
+const Enum::YLeaf MplsTeAffinityValueEnum::bit_position {2, "bit-position"};
 
-const Enum::Value MplsTeOtnSncModeEnum::snc_n {1, "snc-n"};
-const Enum::Value MplsTeOtnSncModeEnum::snc_i {2, "snc-i"};
-const Enum::Value MplsTeOtnSncModeEnum::snc_s {3, "snc-s"};
+const Enum::YLeaf MplsTeOtnSncModeEnum::snc_n {1, "snc-n"};
+const Enum::YLeaf MplsTeOtnSncModeEnum::snc_i {2, "snc-i"};
+const Enum::YLeaf MplsTeOtnSncModeEnum::snc_s {3, "snc-s"};
 
-const Enum::Value OtnPayloadEnum::unknown {0, "unknown"};
-const Enum::Value OtnPayloadEnum::bmp {50, "bmp"};
-const Enum::Value OtnPayloadEnum::gfp_f {54, "gfp-f"};
-const Enum::Value OtnPayloadEnum::gmp {55, "gmp"};
-const Enum::Value OtnPayloadEnum::gfp_f_ext {70, "gfp-f-ext"};
+const Enum::YLeaf OtnPayloadEnum::unknown {0, "unknown"};
+const Enum::YLeaf OtnPayloadEnum::bmp {50, "bmp"};
+const Enum::YLeaf OtnPayloadEnum::gfp_f {54, "gfp-f"};
+const Enum::YLeaf OtnPayloadEnum::gmp {55, "gmp"};
+const Enum::YLeaf OtnPayloadEnum::gfp_f_ext {70, "gfp-f-ext"};
 
-const Enum::Value OspfAreaModeEnum::ospf_int {0, "ospf-int"};
-const Enum::Value OspfAreaModeEnum::ospfip_addr {1, "ospfip-addr"};
+const Enum::YLeaf OspfAreaModeEnum::ospf_int {0, "ospf-int"};
+const Enum::YLeaf OspfAreaModeEnum::ospfip_addr {1, "ospfip-addr"};
 
-const Enum::Value MplsTeIgpProtocolEnum::none {0, "none"};
-const Enum::Value MplsTeIgpProtocolEnum::isis {1, "isis"};
-const Enum::Value MplsTeIgpProtocolEnum::ospf {2, "ospf"};
+const Enum::YLeaf MplsTeIgpProtocolEnum::none {0, "none"};
+const Enum::YLeaf MplsTeIgpProtocolEnum::isis {1, "isis"};
+const Enum::YLeaf MplsTeIgpProtocolEnum::ospf {2, "ospf"};
 
-const Enum::Value MplsTePathSelectionTiebreakerEnum::min_fill {1, "min-fill"};
-const Enum::Value MplsTePathSelectionTiebreakerEnum::max_fill {2, "max-fill"};
-const Enum::Value MplsTePathSelectionTiebreakerEnum::random {3, "random"};
+const Enum::YLeaf MplsTePathSelectionTiebreakerEnum::min_fill {1, "min-fill"};
+const Enum::YLeaf MplsTePathSelectionTiebreakerEnum::max_fill {2, "max-fill"};
+const Enum::YLeaf MplsTePathSelectionTiebreakerEnum::random {3, "random"};
 
-const Enum::Value MplsTePathOptionEnum::not_set {0, "not-set"};
-const Enum::Value MplsTePathOptionEnum::dynamic {1, "dynamic"};
-const Enum::Value MplsTePathOptionEnum::explicit_name {3, "explicit-name"};
-const Enum::Value MplsTePathOptionEnum::explicit_number {4, "explicit-number"};
-const Enum::Value MplsTePathOptionEnum::no_ero {5, "no-ero"};
-const Enum::Value MplsTePathOptionEnum::sr {6, "sr"};
+const Enum::YLeaf MplsTePathOptionEnum::not_set {0, "not-set"};
+const Enum::YLeaf MplsTePathOptionEnum::dynamic {1, "dynamic"};
+const Enum::YLeaf MplsTePathOptionEnum::explicit_name {3, "explicit-name"};
+const Enum::YLeaf MplsTePathOptionEnum::explicit_number {4, "explicit-number"};
+const Enum::YLeaf MplsTePathOptionEnum::no_ero {5, "no-ero"};
+const Enum::YLeaf MplsTePathOptionEnum::sr {6, "sr"};
 
-const Enum::Value PathInvalidationActionEnum::tear {1, "tear"};
-const Enum::Value PathInvalidationActionEnum::drop {2, "drop"};
+const Enum::YLeaf PathInvalidationActionEnum::tear {1, "tear"};
+const Enum::YLeaf PathInvalidationActionEnum::drop {2, "drop"};
 
-const Enum::Value OtnSignaledBandwidthEnum::odu1 {1, "odu1"};
-const Enum::Value OtnSignaledBandwidthEnum::odu2 {2, "odu2"};
-const Enum::Value OtnSignaledBandwidthEnum::odu3 {3, "odu3"};
-const Enum::Value OtnSignaledBandwidthEnum::odu4 {4, "odu4"};
-const Enum::Value OtnSignaledBandwidthEnum::odu0 {10, "odu0"};
-const Enum::Value OtnSignaledBandwidthEnum::odu2e {11, "odu2e"};
-const Enum::Value OtnSignaledBandwidthEnum::od_uflex_cbr {20, "od-uflex-cbr"};
-const Enum::Value OtnSignaledBandwidthEnum::od_uflex_gfp_resize {21, "od-uflex-gfp-resize"};
-const Enum::Value OtnSignaledBandwidthEnum::od_uflex_gfp_not_resize {22, "od-uflex-gfp-not-resize"};
-const Enum::Value OtnSignaledBandwidthEnum::odu1e {23, "odu1e"};
-const Enum::Value OtnSignaledBandwidthEnum::odu1f {24, "odu1f"};
-const Enum::Value OtnSignaledBandwidthEnum::odu2f {25, "odu2f"};
-const Enum::Value OtnSignaledBandwidthEnum::odu3e1 {26, "odu3e1"};
-const Enum::Value OtnSignaledBandwidthEnum::odu3e2 {27, "odu3e2"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::odu1 {1, "odu1"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::odu2 {2, "odu2"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::odu3 {3, "odu3"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::odu4 {4, "odu4"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::odu0 {10, "odu0"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::odu2e {11, "odu2e"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::od_uflex_cbr {20, "od-uflex-cbr"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::od_uflex_gfp_resize {21, "od-uflex-gfp-resize"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::od_uflex_gfp_not_resize {22, "od-uflex-gfp-not-resize"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::odu1e {23, "odu1e"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::odu1f {24, "odu1f"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::odu2f {25, "odu2f"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::odu3e1 {26, "odu3e1"};
+const Enum::YLeaf OtnSignaledBandwidthEnum::odu3e2 {27, "odu3e2"};
 
-const Enum::Value MplsTeAutorouteMetricEnum::relative {1, "relative"};
-const Enum::Value MplsTeAutorouteMetricEnum::absolute {2, "absolute"};
-const Enum::Value MplsTeAutorouteMetricEnum::constant {3, "constant"};
+const Enum::YLeaf MplsTeAutorouteMetricEnum::relative {1, "relative"};
+const Enum::YLeaf MplsTeAutorouteMetricEnum::absolute {2, "absolute"};
+const Enum::YLeaf MplsTeAutorouteMetricEnum::constant {3, "constant"};
 
-const Enum::Value BindingSegmentIdEnum::any_label {1, "any-label"};
-const Enum::Value BindingSegmentIdEnum::specified_label {2, "specified-label"};
+const Enum::YLeaf BindingSegmentIdEnum::any_label {1, "any-label"};
+const Enum::YLeaf BindingSegmentIdEnum::specified_label {2, "specified-label"};
 
-const Enum::Value MplsTesrlgExcludeEnum::mandatory {1, "mandatory"};
-const Enum::Value MplsTesrlgExcludeEnum::preferred {2, "preferred"};
-const Enum::Value MplsTesrlgExcludeEnum::weighted {3, "weighted"};
+const Enum::YLeaf MplsTesrlgExcludeEnum::mandatory {1, "mandatory"};
+const Enum::YLeaf MplsTesrlgExcludeEnum::preferred {2, "preferred"};
+const Enum::YLeaf MplsTesrlgExcludeEnum::weighted {3, "weighted"};
 
-const Enum::Value MplsTeSignaledLabelEnum::not_set {0, "not-set"};
-const Enum::Value MplsTeSignaledLabelEnum::dwdm {1, "dwdm"};
+const Enum::YLeaf MplsTeSignaledLabelEnum::not_set {0, "not-set"};
+const Enum::YLeaf MplsTeSignaledLabelEnum::dwdm {1, "dwdm"};
 
-const Enum::Value BandwidthConstraintEnum::bandwidth_constraint_maximum_allocation_model {1, "bandwidth-constraint-maximum-allocation-model"};
+const Enum::YLeaf BandwidthConstraintEnum::bandwidth_constraint_maximum_allocation_model {1, "bandwidth-constraint-maximum-allocation-model"};
 
-const Enum::Value MplsTeSwitchingEncodeEnum::none {0, "none"};
-const Enum::Value MplsTeSwitchingEncodeEnum::packet {1, "packet"};
-const Enum::Value MplsTeSwitchingEncodeEnum::ethernet {2, "ethernet"};
-const Enum::Value MplsTeSwitchingEncodeEnum::sondet_sdh {5, "sondet-sdh"};
+const Enum::YLeaf MplsTeSwitchingEncodeEnum::none {0, "none"};
+const Enum::YLeaf MplsTeSwitchingEncodeEnum::packet {1, "packet"};
+const Enum::YLeaf MplsTeSwitchingEncodeEnum::ethernet {2, "ethernet"};
+const Enum::YLeaf MplsTeSwitchingEncodeEnum::sondet_sdh {5, "sondet-sdh"};
 
-const Enum::Value MplsTePathSelectionMetricEnum::igp {1, "igp"};
-const Enum::Value MplsTePathSelectionMetricEnum::te {2, "te"};
-const Enum::Value MplsTePathSelectionMetricEnum::delay {4, "delay"};
+const Enum::YLeaf MplsTePathSelectionMetricEnum::igp {1, "igp"};
+const Enum::YLeaf MplsTePathSelectionMetricEnum::te {2, "te"};
+const Enum::YLeaf MplsTePathSelectionMetricEnum::delay {4, "delay"};
 
-const Enum::Value MplsTePathOptionProtectionEnum::active {0, "active"};
-const Enum::Value MplsTePathOptionProtectionEnum::protecting {1, "protecting"};
+const Enum::YLeaf MplsTePathOptionProtectionEnum::active {0, "active"};
+const Enum::YLeaf MplsTePathOptionProtectionEnum::protecting {1, "protecting"};
 
-const Enum::Value OtnSignaledBandwidthFlexFramingEnum::cbr {20, "cbr"};
-const Enum::Value OtnSignaledBandwidthFlexFramingEnum::framed_gfp_fixed {21, "framed-gfp-fixed"};
-const Enum::Value OtnSignaledBandwidthFlexFramingEnum::framed_gfp_resize {22, "framed-gfp-resize"};
+const Enum::YLeaf OtnSignaledBandwidthFlexFramingEnum::cbr {20, "cbr"};
+const Enum::YLeaf OtnSignaledBandwidthFlexFramingEnum::framed_gfp_fixed {21, "framed-gfp-fixed"};
+const Enum::YLeaf OtnSignaledBandwidthFlexFramingEnum::framed_gfp_resize {22, "framed-gfp-resize"};
 
-const Enum::Value MplsTeBandwidthLimitEnum::unlimited {64, "unlimited"};
-const Enum::Value MplsTeBandwidthLimitEnum::limited {128, "limited"};
+const Enum::YLeaf MplsTeBandwidthLimitEnum::unlimited {64, "unlimited"};
+const Enum::YLeaf MplsTeBandwidthLimitEnum::limited {128, "limited"};
 
-const Enum::Value MplsTePathSelectionSegmentRoutingAdjacencyProtectionEnum::not_set {0, "not-set"};
-const Enum::Value MplsTePathSelectionSegmentRoutingAdjacencyProtectionEnum::adj_unprotected {1, "adj-unprotected"};
-const Enum::Value MplsTePathSelectionSegmentRoutingAdjacencyProtectionEnum::adj_protected {2, "adj-protected"};
+const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtectionEnum::not_set {0, "not-set"};
+const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtectionEnum::adj_unprotected {1, "adj-unprotected"};
+const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtectionEnum::adj_protected {2, "adj-protected"};
 
-const Enum::Value LinkNextHopEnum::none {1, "none"};
-const Enum::Value LinkNextHopEnum::ipv4_address {2, "ipv4-address"};
+const Enum::YLeaf LinkNextHopEnum::none {1, "none"};
+const Enum::YLeaf LinkNextHopEnum::ipv4_address {2, "ipv4-address"};
 
-const Enum::Value MplsLcacFloodingIgpEnum::ospf {0, "ospf"};
+const Enum::YLeaf MplsLcacFloodingIgpEnum::ospf {0, "ospf"};
 
-const Enum::Value BfdReversePathEnum::bfd_reverse_path_binding_label {1, "bfd-reverse-path-binding-label"};
+const Enum::YLeaf BfdReversePathEnum::bfd_reverse_path_binding_label {1, "bfd-reverse-path-binding-label"};
 
-const Enum::Value MplsTeOtnApsRestorationStyleEnum::keep_failed_lsp {1, "keep-failed-lsp"};
-const Enum::Value MplsTeOtnApsRestorationStyleEnum::delete_failed_lsp {2, "delete-failed-lsp"};
+const Enum::YLeaf MplsTeOtnApsRestorationStyleEnum::keep_failed_lsp {1, "keep-failed-lsp"};
+const Enum::YLeaf MplsTeOtnApsRestorationStyleEnum::delete_failed_lsp {2, "delete-failed-lsp"};
 
-const Enum::Value MplsTeBandwidthDsteEnum::standard_dste {0, "standard-dste"};
-const Enum::Value MplsTeBandwidthDsteEnum::pre_standard_dste {1, "pre-standard-dste"};
+const Enum::YLeaf MplsTeBandwidthDsteEnum::standard_dste {0, "standard-dste"};
+const Enum::YLeaf MplsTeBandwidthDsteEnum::pre_standard_dste {1, "pre-standard-dste"};
 
-const Enum::Value MplsTePathDiversityConformanceEnum::strict {0, "strict"};
-const Enum::Value MplsTePathDiversityConformanceEnum::best_effort {1, "best-effort"};
+const Enum::YLeaf MplsTePathDiversityConformanceEnum::strict {0, "strict"};
+const Enum::YLeaf MplsTePathDiversityConformanceEnum::best_effort {1, "best-effort"};
 
-const Enum::Value MplsTeBackupBandwidthPoolEnum::any_pool {1, "any-pool"};
-const Enum::Value MplsTeBackupBandwidthPoolEnum::global_pool {2, "global-pool"};
-const Enum::Value MplsTeBackupBandwidthPoolEnum::sub_pool {4, "sub-pool"};
+const Enum::YLeaf MplsTeBackupBandwidthPoolEnum::any_pool {1, "any-pool"};
+const Enum::YLeaf MplsTeBackupBandwidthPoolEnum::global_pool {2, "global-pool"};
+const Enum::YLeaf MplsTeBackupBandwidthPoolEnum::sub_pool {4, "sub-pool"};
 
-const Enum::Value MplsTeOtnApsProtectionModeEnum::revertive {1, "revertive"};
-const Enum::Value MplsTeOtnApsProtectionModeEnum::non_revertive {2, "non-revertive"};
+const Enum::YLeaf MplsTeOtnApsProtectionModeEnum::revertive {1, "revertive"};
+const Enum::YLeaf MplsTeOtnApsProtectionModeEnum::non_revertive {2, "non-revertive"};
 
-const Enum::Value MplsTeSwitchingIndexEnum::link {255, "link"};
+const Enum::YLeaf MplsTeSwitchingIndexEnum::link {255, "link"};
 
-const Enum::Value MplsTeConfigTunnelEnum::p2p {0, "p2p"};
-const Enum::Value MplsTeConfigTunnelEnum::p2mp {1, "p2mp"};
+const Enum::YLeaf MplsTeConfigTunnelEnum::p2p {0, "p2p"};
+const Enum::YLeaf MplsTeConfigTunnelEnum::p2mp {1, "p2mp"};
 
 
 }

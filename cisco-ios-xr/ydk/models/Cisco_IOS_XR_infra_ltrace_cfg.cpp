@@ -8,15 +8,15 @@ namespace ydk {
 namespace Cisco_IOS_XR_infra_ltrace_cfg {
 
 
-const Enum::Value InfraLtraceScaleEnum::Y_0 {0, "0"};
-const Enum::Value InfraLtraceScaleEnum::Y_1 {1, "1"};
-const Enum::Value InfraLtraceScaleEnum::Y_2 {2, "2"};
-const Enum::Value InfraLtraceScaleEnum::Y_4 {4, "4"};
-const Enum::Value InfraLtraceScaleEnum::Y_8 {8, "8"};
-const Enum::Value InfraLtraceScaleEnum::Y_16 {16, "16"};
+const Enum::YLeaf InfraLtraceScaleEnum::Y_0 {0, "0"};
+const Enum::YLeaf InfraLtraceScaleEnum::Y_1 {1, "1"};
+const Enum::YLeaf InfraLtraceScaleEnum::Y_2 {2, "2"};
+const Enum::YLeaf InfraLtraceScaleEnum::Y_4 {4, "4"};
+const Enum::YLeaf InfraLtraceScaleEnum::Y_8 {8, "8"};
+const Enum::YLeaf InfraLtraceScaleEnum::Y_16 {16, "16"};
 
-const Enum::Value InfraLtraceModeEnum::static_ {1, "static"};
-const Enum::Value InfraLtraceModeEnum::dynamic {2, "dynamic"};
+const Enum::YLeaf InfraLtraceModeEnum::static_ {1, "static"};
+const Enum::YLeaf InfraLtraceModeEnum::dynamic {2, "dynamic"};
 
 
 }

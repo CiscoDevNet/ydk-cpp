@@ -49,7 +49,7 @@ EntityPath AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -201,7 +201,7 @@ bool AtmVcm::Nodes::Node::Vcs::Vc::has_operation() const
 	|| is_set(vci_xr.operation)
 	|| is_set(vpi.operation)
 	|| is_set(vpi_xr.operation)
-	|| (cell_packing_data !=  nullptr && is_set(cell_packing_data->operation));
+	|| (cell_packing_data !=  nullptr && cell_packing_data->has_operation());
 }
 
 std::string AtmVcm::Nodes::Node::Vcs::Vc::get_segment_path() const
@@ -218,7 +218,7 @@ EntityPath AtmVcm::Nodes::Node::Vcs::Vc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -448,7 +448,7 @@ EntityPath AtmVcm::Nodes::Node::Vcs::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -555,7 +555,7 @@ EntityPath AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -656,7 +656,7 @@ bool AtmVcm::Nodes::Node::CellPacks::CellPack::has_operation() const
 	|| is_set(sub_interface_name.operation)
 	|| is_set(vci.operation)
 	|| is_set(vpi.operation)
-	|| (cell_packing !=  nullptr && is_set(cell_packing->operation));
+	|| (cell_packing !=  nullptr && cell_packing->has_operation());
 }
 
 std::string AtmVcm::Nodes::Node::CellPacks::CellPack::get_segment_path() const
@@ -673,7 +673,7 @@ EntityPath AtmVcm::Nodes::Node::CellPacks::CellPack::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -818,7 +818,7 @@ EntityPath AtmVcm::Nodes::Node::CellPacks::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -925,7 +925,7 @@ EntityPath AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1074,7 +1074,7 @@ bool AtmVcm::Nodes::Node::Pvps::Pvp::has_operation() const
 	|| is_set(vci_xr.operation)
 	|| is_set(vpi.operation)
 	|| is_set(vpi_xr.operation)
-	|| (cell_packing_data !=  nullptr && is_set(cell_packing_data->operation));
+	|| (cell_packing_data !=  nullptr && cell_packing_data->has_operation());
 }
 
 std::string AtmVcm::Nodes::Node::Pvps::Pvp::get_segment_path() const
@@ -1091,7 +1091,7 @@ EntityPath AtmVcm::Nodes::Node::Pvps::Pvp::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1316,7 +1316,7 @@ EntityPath AtmVcm::Nodes::Node::Pvps::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1420,7 +1420,7 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1517,7 +1517,7 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShapi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1620,7 +1620,7 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncap
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1717,7 +1717,7 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1826,7 +1826,7 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1927,7 +1927,7 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2023,11 +2023,11 @@ bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::has_data() const
 bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::has_operation() const
 {
     return is_set(operation)
-	|| (ais_rdi !=  nullptr && is_set(ais_rdi->operation))
-	|| (class_link_encapsulation !=  nullptr && is_set(class_link_encapsulation->operation))
-	|| (class_link_shaping !=  nullptr && is_set(class_link_shaping->operation))
-	|| (oam_pvc !=  nullptr && is_set(oam_pvc->operation))
-	|| (oam_retry !=  nullptr && is_set(oam_retry->operation));
+	|| (ais_rdi !=  nullptr && ais_rdi->has_operation())
+	|| (class_link_encapsulation !=  nullptr && class_link_encapsulation->has_operation())
+	|| (class_link_shaping !=  nullptr && class_link_shaping->has_operation())
+	|| (oam_pvc !=  nullptr && oam_pvc->has_operation())
+	|| (oam_retry !=  nullptr && oam_retry->has_operation());
 }
 
 std::string AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::get_segment_path() const
@@ -2044,7 +2044,7 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2235,8 +2235,8 @@ bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::has_operation() const
 	|| is_set(vpi.operation)
 	|| is_set(sub_interface_name.operation)
 	|| is_set(vci.operation)
-	|| (oam_config !=  nullptr && is_set(oam_config->operation))
-	|| (vc_class_not_supported !=  nullptr && is_set(vc_class_not_supported->operation));
+	|| (oam_config !=  nullptr && oam_config->has_operation())
+	|| (vc_class_not_supported !=  nullptr && vc_class_not_supported->has_operation());
 }
 
 std::string AtmVcm::Nodes::Node::ClassLinks::ClassLink::get_segment_path() const
@@ -2253,7 +2253,7 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::ClassLink::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2396,7 +2396,7 @@ EntityPath AtmVcm::Nodes::Node::ClassLinks::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2503,7 +2503,7 @@ EntityPath AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2631,7 +2631,7 @@ bool AtmVcm::Nodes::Node::Interfaces::Interface::has_operation() const
 	|| is_set(pvc_failures.operation)
 	|| is_set(pvc_failures_trap_enable.operation)
 	|| is_set(pvc_notification_interval.operation)
-	|| (cell_packing_data !=  nullptr && is_set(cell_packing_data->operation));
+	|| (cell_packing_data !=  nullptr && cell_packing_data->has_operation());
 }
 
 std::string AtmVcm::Nodes::Node::Interfaces::Interface::get_segment_path() const
@@ -2648,7 +2648,7 @@ EntityPath AtmVcm::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2838,7 +2838,7 @@ EntityPath AtmVcm::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2981,7 +2981,7 @@ EntityPath AtmVcm::Nodes::Node::VpTunnels::VpTunnel::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3138,7 +3138,7 @@ EntityPath AtmVcm::Nodes::Node::VpTunnels::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3254,12 +3254,12 @@ bool AtmVcm::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (cell_packs !=  nullptr && is_set(cell_packs->operation))
-	|| (class_links !=  nullptr && is_set(class_links->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (pvps !=  nullptr && is_set(pvps->operation))
-	|| (vcs !=  nullptr && is_set(vcs->operation))
-	|| (vp_tunnels !=  nullptr && is_set(vp_tunnels->operation));
+	|| (cell_packs !=  nullptr && cell_packs->has_operation())
+	|| (class_links !=  nullptr && class_links->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (pvps !=  nullptr && pvps->has_operation())
+	|| (vcs !=  nullptr && vcs->has_operation())
+	|| (vp_tunnels !=  nullptr && vp_tunnels->has_operation());
 }
 
 std::string AtmVcm::Nodes::Node::get_segment_path() const
@@ -3588,7 +3588,7 @@ bool AtmVcm::has_data() const
 bool AtmVcm::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string AtmVcm::get_segment_path() const
@@ -3605,7 +3605,7 @@ EntityPath AtmVcm::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3669,87 +3669,87 @@ std::unique_ptr<Entity> AtmVcm::clone_ptr()
     return std::make_unique<AtmVcm>();
 }
 
-const Enum::Value VcEnum::layer3_vc {0, "layer3-vc"};
-const Enum::Value VcEnum::layer2_vc {1, "layer2-vc"};
-const Enum::Value VcEnum::layer2_vp {2, "layer2-vp"};
-const Enum::Value VcEnum::vc_type_unknown {3, "vc-type-unknown"};
+const Enum::YLeaf VcEnum::layer3_vc {0, "layer3-vc"};
+const Enum::YLeaf VcEnum::layer2_vc {1, "layer2-vc"};
+const Enum::YLeaf VcEnum::layer2_vp {2, "layer2-vp"};
+const Enum::YLeaf VcEnum::vc_type_unknown {3, "vc-type-unknown"};
 
-const Enum::Value VcEncapEnum::ilmi {1, "ilmi"};
-const Enum::Value VcEncapEnum::qsaal {2, "qsaal"};
-const Enum::Value VcEncapEnum::snap {3, "snap"};
-const Enum::Value VcEncapEnum::mux {4, "mux"};
-const Enum::Value VcEncapEnum::nlpid {5, "nlpid"};
-const Enum::Value VcEncapEnum::f4oam {6, "f4oam"};
-const Enum::Value VcEncapEnum::aal0 {7, "aal0"};
-const Enum::Value VcEncapEnum::aal5 {8, "aal5"};
-const Enum::Value VcEncapEnum::encap_unknown {9, "encap-unknown"};
+const Enum::YLeaf VcEncapEnum::ilmi {1, "ilmi"};
+const Enum::YLeaf VcEncapEnum::qsaal {2, "qsaal"};
+const Enum::YLeaf VcEncapEnum::snap {3, "snap"};
+const Enum::YLeaf VcEncapEnum::mux {4, "mux"};
+const Enum::YLeaf VcEncapEnum::nlpid {5, "nlpid"};
+const Enum::YLeaf VcEncapEnum::f4oam {6, "f4oam"};
+const Enum::YLeaf VcEncapEnum::aal0 {7, "aal0"};
+const Enum::YLeaf VcEncapEnum::aal5 {8, "aal5"};
+const Enum::YLeaf VcEncapEnum::encap_unknown {9, "encap-unknown"};
 
-const Enum::Value VcManageLevelEnum::manage {1, "manage"};
-const Enum::Value VcManageLevelEnum::not_managed {2, "not-managed"};
+const Enum::YLeaf VcManageLevelEnum::manage {1, "manage"};
+const Enum::YLeaf VcManageLevelEnum::not_managed {2, "not-managed"};
 
-const Enum::Value VcTestModeEnum::test_mode_none {1, "test-mode-none"};
-const Enum::Value VcTestModeEnum::loop {2, "loop"};
-const Enum::Value VcTestModeEnum::reserved {3, "reserved"};
+const Enum::YLeaf VcTestModeEnum::test_mode_none {1, "test-mode-none"};
+const Enum::YLeaf VcTestModeEnum::loop {2, "loop"};
+const Enum::YLeaf VcTestModeEnum::reserved {3, "reserved"};
 
-const Enum::Value VpTrafShapingEnum::vp_cbr {1, "vp-cbr"};
-const Enum::Value VpTrafShapingEnum::vp_vbr_nrt {2, "vp-vbr-nrt"};
-const Enum::Value VpTrafShapingEnum::vp_vbr_rt {3, "vp-vbr-rt"};
-const Enum::Value VpTrafShapingEnum::vp_abr {4, "vp-abr"};
-const Enum::Value VpTrafShapingEnum::vp_ubr_plus {5, "vp-ubr-plus"};
-const Enum::Value VpTrafShapingEnum::vp_ubr {6, "vp-ubr"};
-const Enum::Value VpTrafShapingEnum::vp_traf_shaping_unknown {7, "vp-traf-shaping-unknown"};
+const Enum::YLeaf VpTrafShapingEnum::vp_cbr {1, "vp-cbr"};
+const Enum::YLeaf VpTrafShapingEnum::vp_vbr_nrt {2, "vp-vbr-nrt"};
+const Enum::YLeaf VpTrafShapingEnum::vp_vbr_rt {3, "vp-vbr-rt"};
+const Enum::YLeaf VpTrafShapingEnum::vp_abr {4, "vp-abr"};
+const Enum::YLeaf VpTrafShapingEnum::vp_ubr_plus {5, "vp-ubr-plus"};
+const Enum::YLeaf VpTrafShapingEnum::vp_ubr {6, "vp-ubr"};
+const Enum::YLeaf VpTrafShapingEnum::vp_traf_shaping_unknown {7, "vp-traf-shaping-unknown"};
 
-const Enum::Value VcStateEnum::initialized {0, "initialized"};
-const Enum::Value VcStateEnum::modifying {1, "modifying"};
-const Enum::Value VcStateEnum::modified {2, "modified"};
-const Enum::Value VcStateEnum::activating {3, "activating"};
-const Enum::Value VcStateEnum::activated {4, "activated"};
-const Enum::Value VcStateEnum::not_verified {5, "not-verified"};
-const Enum::Value VcStateEnum::ready {6, "ready"};
-const Enum::Value VcStateEnum::deactivating {7, "deactivating"};
-const Enum::Value VcStateEnum::inactive {8, "inactive"};
-const Enum::Value VcStateEnum::deleting {9, "deleting"};
-const Enum::Value VcStateEnum::deleted {10, "deleted"};
-const Enum::Value VcStateEnum::state_unknown {11, "state-unknown"};
+const Enum::YLeaf VcStateEnum::initialized {0, "initialized"};
+const Enum::YLeaf VcStateEnum::modifying {1, "modifying"};
+const Enum::YLeaf VcStateEnum::modified {2, "modified"};
+const Enum::YLeaf VcStateEnum::activating {3, "activating"};
+const Enum::YLeaf VcStateEnum::activated {4, "activated"};
+const Enum::YLeaf VcStateEnum::not_verified {5, "not-verified"};
+const Enum::YLeaf VcStateEnum::ready {6, "ready"};
+const Enum::YLeaf VcStateEnum::deactivating {7, "deactivating"};
+const Enum::YLeaf VcStateEnum::inactive {8, "inactive"};
+const Enum::YLeaf VcStateEnum::deleting {9, "deleting"};
+const Enum::YLeaf VcStateEnum::deleted {10, "deleted"};
+const Enum::YLeaf VcStateEnum::state_unknown {11, "state-unknown"};
 
-const Enum::Value ClassLinkOamInheritLevelEnum::vc_configured_onvc {0, "vc-configured-onvc"};
-const Enum::Value ClassLinkOamInheritLevelEnum::vc_class_onvc {1, "vc-class-onvc"};
-const Enum::Value ClassLinkOamInheritLevelEnum::vc_class_on_sub_interface {2, "vc-class-on-sub-interface"};
-const Enum::Value ClassLinkOamInheritLevelEnum::vc_class_on_main_interface {3, "vc-class-on-main-interface"};
-const Enum::Value ClassLinkOamInheritLevelEnum::vc_global_default {4, "vc-global-default"};
-const Enum::Value ClassLinkOamInheritLevelEnum::vc_inherit_level_unknown {5, "vc-inherit-level-unknown"};
+const Enum::YLeaf ClassLinkOamInheritLevelEnum::vc_configured_onvc {0, "vc-configured-onvc"};
+const Enum::YLeaf ClassLinkOamInheritLevelEnum::vc_class_onvc {1, "vc-class-onvc"};
+const Enum::YLeaf ClassLinkOamInheritLevelEnum::vc_class_on_sub_interface {2, "vc-class-on-sub-interface"};
+const Enum::YLeaf ClassLinkOamInheritLevelEnum::vc_class_on_main_interface {3, "vc-class-on-main-interface"};
+const Enum::YLeaf ClassLinkOamInheritLevelEnum::vc_global_default {4, "vc-global-default"};
+const Enum::YLeaf ClassLinkOamInheritLevelEnum::vc_inherit_level_unknown {5, "vc-inherit-level-unknown"};
 
-const Enum::Value VpStateEnum::vp_initialized {0, "vp-initialized"};
-const Enum::Value VpStateEnum::vp_modifying {1, "vp-modifying"};
-const Enum::Value VpStateEnum::vp_ready {2, "vp-ready"};
-const Enum::Value VpStateEnum::vp_mgd_down {3, "vp-mgd-down"};
-const Enum::Value VpStateEnum::vp_deleting {4, "vp-deleting"};
-const Enum::Value VpStateEnum::vp_deleted {5, "vp-deleted"};
-const Enum::Value VpStateEnum::vp_state_unknown {6, "vp-state-unknown"};
+const Enum::YLeaf VpStateEnum::vp_initialized {0, "vp-initialized"};
+const Enum::YLeaf VpStateEnum::vp_modifying {1, "vp-modifying"};
+const Enum::YLeaf VpStateEnum::vp_ready {2, "vp-ready"};
+const Enum::YLeaf VpStateEnum::vp_mgd_down {3, "vp-mgd-down"};
+const Enum::YLeaf VpStateEnum::vp_deleting {4, "vp-deleting"};
+const Enum::YLeaf VpStateEnum::vp_deleted {5, "vp-deleted"};
+const Enum::YLeaf VpStateEnum::vp_state_unknown {6, "vp-state-unknown"};
 
-const Enum::Value VcTrafShapingEnum::cbr {1, "cbr"};
-const Enum::Value VcTrafShapingEnum::vbr_nrt {2, "vbr-nrt"};
-const Enum::Value VcTrafShapingEnum::vbr_rt {3, "vbr-rt"};
-const Enum::Value VcTrafShapingEnum::abr {4, "abr"};
-const Enum::Value VcTrafShapingEnum::ubr_plus {5, "ubr-plus"};
-const Enum::Value VcTrafShapingEnum::ubr {6, "ubr"};
-const Enum::Value VcTrafShapingEnum::traf_shaping_unknown {7, "traf-shaping-unknown"};
+const Enum::YLeaf VcTrafShapingEnum::cbr {1, "cbr"};
+const Enum::YLeaf VcTrafShapingEnum::vbr_nrt {2, "vbr-nrt"};
+const Enum::YLeaf VcTrafShapingEnum::vbr_rt {3, "vbr-rt"};
+const Enum::YLeaf VcTrafShapingEnum::abr {4, "abr"};
+const Enum::YLeaf VcTrafShapingEnum::ubr_plus {5, "ubr-plus"};
+const Enum::YLeaf VcTrafShapingEnum::ubr {6, "ubr"};
+const Enum::YLeaf VcTrafShapingEnum::traf_shaping_unknown {7, "traf-shaping-unknown"};
 
-const Enum::Value VcCellPackingModeEnum::vp {1, "vp"};
-const Enum::Value VcCellPackingModeEnum::vc {2, "vc"};
-const Enum::Value VcCellPackingModeEnum::port_mode {3, "port-mode"};
+const Enum::YLeaf VcCellPackingModeEnum::vp {1, "vp"};
+const Enum::YLeaf VcCellPackingModeEnum::vc {2, "vc"};
+const Enum::YLeaf VcCellPackingModeEnum::port_mode {3, "port-mode"};
 
-const Enum::Value VcmPortEnum::port_type_layer_2 {0, "port-type-layer-2"};
-const Enum::Value VcmPortEnum::port_type_layer_3 {1, "port-type-layer-3"};
-const Enum::Value VcmPortEnum::port_type_unknown {3, "port-type-unknown"};
+const Enum::YLeaf VcmPortEnum::port_type_layer_2 {0, "port-type-layer-2"};
+const Enum::YLeaf VcmPortEnum::port_type_layer_3 {1, "port-type-layer-3"};
+const Enum::YLeaf VcmPortEnum::port_type_unknown {3, "port-type-unknown"};
 
-const Enum::Value VcInheritLevelEnum::directly_configured_onvc {0, "directly-configured-onvc"};
-const Enum::Value VcInheritLevelEnum::vc_class_configured_onvc {1, "vc-class-configured-onvc"};
-const Enum::Value VcInheritLevelEnum::vc_class_configured_on_sub_interface {2, "vc-class-configured-on-sub-interface"};
-const Enum::Value VcInheritLevelEnum::vc_class_configured_on_main_interface {3, "vc-class-configured-on-main-interface"};
-const Enum::Value VcInheritLevelEnum::global_default {4, "global-default"};
-const Enum::Value VcInheritLevelEnum::unknown {5, "unknown"};
-const Enum::Value VcInheritLevelEnum::not_supported {6, "not-supported"};
+const Enum::YLeaf VcInheritLevelEnum::directly_configured_onvc {0, "directly-configured-onvc"};
+const Enum::YLeaf VcInheritLevelEnum::vc_class_configured_onvc {1, "vc-class-configured-onvc"};
+const Enum::YLeaf VcInheritLevelEnum::vc_class_configured_on_sub_interface {2, "vc-class-configured-on-sub-interface"};
+const Enum::YLeaf VcInheritLevelEnum::vc_class_configured_on_main_interface {3, "vc-class-configured-on-main-interface"};
+const Enum::YLeaf VcInheritLevelEnum::global_default {4, "global-default"};
+const Enum::YLeaf VcInheritLevelEnum::unknown {5, "unknown"};
+const Enum::YLeaf VcInheritLevelEnum::not_supported {6, "not-supported"};
 
 
 }

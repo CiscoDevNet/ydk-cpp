@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_ipv4_bgp_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_ipv4_bgp_cfg {
@@ -28,6 +27,7 @@ class Bgp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Instance : public Entity
     {
         public:
@@ -41,8 +41,9 @@ class Bgp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value instance_name; //type: string
 
+
+            YLeaf instance_name; //type: string
 
         class InstanceAs : public Entity
         {
@@ -57,8 +58,9 @@ class Bgp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value as; //type: uint32
 
+
+                YLeaf as; //type: uint32
 
             class FourByteAs : public Entity
             {
@@ -73,9 +75,10 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value as; //type: uint32
-                    Value bgp_running; //type: empty
 
+
+                    YLeaf as; //type: uint32
+                    YLeaf bgp_running; //type: empty
 
                 class Vrfs : public Entity
                 {
@@ -92,6 +95,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Vrf : public Entity
                     {
                         public:
@@ -105,8 +109,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vrf_name; //type: string
 
+
+                            YLeaf vrf_name; //type: string
 
                         class VrfGlobal : public Entity
                         {
@@ -121,27 +126,28 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value exists; //type: empty
-                                Value router_id; //type: string
-                                Value disable_enforce_first_as; //type: empty
-                                Value best_path_cost_community; //type: empty
-                                Value best_path_aigp_ignore; //type: empty
-                                Value best_path_as_path_length; //type: empty
-                                Value igp_redist_internal; //type: empty
-                                Value multi_path_as_path_ignore_onwards; //type: empty
-                                Value disable_fast_external_fallover; //type: empty
-                                Value default_metric; //type: uint32
-                                Value default_info_originate; //type: empty
-                                Value best_path_confederation_paths; //type: empty
-                                Value best_path_as_multipath_relax; //type: empty
-                                Value disable_auto_soft_reset; //type: empty
-                                Value disable_msg_log; //type: empty
-                                Value disable_neighbor_logging; //type: empty
-                                Value best_path_med_always; //type: empty
-                                Value best_path_router_id; //type: empty
-                                Value best_path_med_missing; //type: empty
-                                Value local_preference; //type: uint32
 
+
+                                YLeaf exists; //type: empty
+                                YLeaf router_id; //type: string
+                                YLeaf disable_enforce_first_as; //type: empty
+                                YLeaf best_path_cost_community; //type: empty
+                                YLeaf best_path_aigp_ignore; //type: empty
+                                YLeaf best_path_as_path_length; //type: empty
+                                YLeaf igp_redist_internal; //type: empty
+                                YLeaf multi_path_as_path_ignore_onwards; //type: empty
+                                YLeaf disable_fast_external_fallover; //type: empty
+                                YLeaf default_metric; //type: uint32
+                                YLeaf default_info_originate; //type: empty
+                                YLeaf best_path_confederation_paths; //type: empty
+                                YLeaf best_path_as_multipath_relax; //type: empty
+                                YLeaf disable_auto_soft_reset; //type: empty
+                                YLeaf disable_msg_log; //type: empty
+                                YLeaf disable_neighbor_logging; //type: empty
+                                YLeaf best_path_med_always; //type: empty
+                                YLeaf best_path_router_id; //type: empty
+                                YLeaf best_path_med_missing; //type: empty
+                                YLeaf local_preference; //type: uint32
 
                             class RouteDistinguisher : public Entity
                             {
@@ -156,15 +162,15 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value type; //type: BgpRouteDistinguisherEnum
-                                    Value as_xx; //type: uint32
-                                    Value as; //type: uint32
-                                    Value as_index; //type: uint32
-                                    Value address; //type: string
-                                    Value address_index; //type: uint32
 
 
-                                    class BgpRouteDistinguisherEnum;
+                                    YLeaf type; //type: BgpRouteDistinguisherEnum
+                                    YLeaf as_xx; //type: uint32
+                                    YLeaf as; //type: uint32
+                                    YLeaf as_index; //type: uint32
+                                    YLeaf address; //type: string
+                                    YLeaf address_index; //type: uint32
+
 
 
                             }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::RouteDistinguisher
@@ -183,9 +189,10 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label_allocation_mode; //type: string
-                                    Value route_policy_name; //type: string
 
+
+                                    YLeaf label_allocation_mode; //type: string
+                                    YLeaf route_policy_name; //type: string
 
 
 
@@ -207,6 +214,7 @@ class Bgp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class VrfGlobalAf : public Entity
                                 {
                                     public:
@@ -220,21 +228,22 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af_name; //type: BgpAddressFamilyEnum
-                                        Value rt_download; //type: empty
-                                        Value allow_vpn_default_originate; //type: boolean
-                                        Value dynamic_med_interval; //type: uint32
-                                        Value enable; //type: empty
-                                        Value table_policy; //type: string
-                                        Value attribute_download; //type: empty
-                                        Value best_external; //type: boolean
-                                        Value additional_paths_receive; //type: BgpafAdditionalPathsCfgEnum
-                                        Value permanent_network; //type: string
-                                        Value next_hop_resolution_prefix_length_minimum; //type: uint32
-                                        Value reset_weight_on_import; //type: boolean
-                                        Value additional_paths_send; //type: BgpafAdditionalPathsCfgEnum
-                                        Value disable_as_path_loop_check; //type: empty
 
+
+                                        YLeaf af_name; //type: BgpAddressFamilyEnum
+                                        YLeaf rt_download; //type: empty
+                                        YLeaf allow_vpn_default_originate; //type: boolean
+                                        YLeaf dynamic_med_interval; //type: uint32
+                                        YLeaf enable; //type: empty
+                                        YLeaf table_policy; //type: string
+                                        YLeaf attribute_download; //type: empty
+                                        YLeaf best_external; //type: boolean
+                                        YLeaf additional_paths_receive; //type: BgpafAdditionalPathsCfgEnum
+                                        YLeaf permanent_network; //type: string
+                                        YLeaf next_hop_resolution_prefix_length_minimum; //type: uint32
+                                        YLeaf reset_weight_on_import; //type: boolean
+                                        YLeaf additional_paths_send; //type: BgpafAdditionalPathsCfgEnum
+                                        YLeaf disable_as_path_loop_check; //type: empty
 
                                     class Mvpn : public Entity
                                     {
@@ -249,10 +258,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value single_forwarder_selection; //type: BgpMvpnSfsSelectEnum
 
 
-                                            class BgpMvpnSfsSelectEnum;
+                                            YLeaf single_forwarder_selection; //type: BgpMvpnSfsSelectEnum
+
 
 
                                     }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGlobalAfs::VrfGlobalAf::Mvpn
@@ -271,11 +280,12 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value paths_value; //type: uint32
-                                            Value unequal_cost; //type: boolean
-                                            Value selective; //type: boolean
-                                            Value order_by_igp_metric; //type: boolean
 
+
+                                            YLeaf paths_value; //type: uint32
+                                            YLeaf unequal_cost; //type: boolean
+                                            YLeaf selective; //type: boolean
+                                            YLeaf order_by_igp_metric; //type: boolean
 
 
 
@@ -295,11 +305,12 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value paths_value; //type: uint32
-                                            Value unequal_cost; //type: boolean
-                                            Value selective; //type: boolean
-                                            Value order_by_igp_metric; //type: boolean
 
+
+                                            YLeaf paths_value; //type: uint32
+                                            YLeaf unequal_cost; //type: boolean
+                                            YLeaf selective; //type: boolean
+                                            YLeaf order_by_igp_metric; //type: boolean
 
 
 
@@ -319,11 +330,12 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value paths_value; //type: uint32
-                                            Value unequal_cost; //type: boolean
-                                            Value selective; //type: boolean
-                                            Value order_by_igp_metric; //type: boolean
 
+
+                                            YLeaf paths_value; //type: uint32
+                                            YLeaf unequal_cost; //type: boolean
+                                            YLeaf selective; //type: boolean
+                                            YLeaf order_by_igp_metric; //type: boolean
 
 
 
@@ -345,6 +357,7 @@ class Bgp : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class AggregateAddress : public Entity
                                         {
                                             public:
@@ -358,13 +371,14 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value aggregate_addr; //type: string
-                                                Value aggregate_prefix; //type: uint16
-                                                Value generate_set_info; //type: boolean
-                                                Value generate_confederation_set_info; //type: boolean
-                                                Value summary_only; //type: boolean
-                                                Value route_policy_name; //type: string
 
+
+                                                YLeaf aggregate_addr; //type: string
+                                                YLeaf aggregate_prefix; //type: uint16
+                                                YLeaf generate_set_info; //type: boolean
+                                                YLeaf generate_confederation_set_info; //type: boolean
+                                                YLeaf summary_only; //type: boolean
+                                                YLeaf route_policy_name; //type: string
 
 
 
@@ -390,12 +404,13 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value half_life; //type: uint32
-                                            Value reuse_threshold; //type: uint32
-                                            Value suppress_threshold; //type: uint32
-                                            Value suppress_time; //type: uint32
-                                            Value route_policy_name; //type: string
 
+
+                                            YLeaf half_life; //type: uint32
+                                            YLeaf reuse_threshold; //type: uint32
+                                            YLeaf suppress_threshold; //type: uint32
+                                            YLeaf suppress_time; //type: uint32
+                                            YLeaf route_policy_name; //type: string
 
 
 
@@ -415,10 +430,11 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value default_metric; //type: uint32
-                                            Value route_policy_name; //type: string
-                                            Value not_used; //type: uint32
 
+
+                                            YLeaf default_metric; //type: uint32
+                                            YLeaf route_policy_name; //type: string
+                                            YLeaf not_used; //type: uint32
 
 
 
@@ -438,9 +454,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value default_metric; //type: uint32
-                                            Value route_policy_name; //type: string
 
+
+                                            YLeaf default_metric; //type: uint32
+                                            YLeaf route_policy_name; //type: string
 
 
 
@@ -460,10 +477,11 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value default_metric; //type: uint32
-                                            Value route_policy_name; //type: string
-                                            Value not_used; //type: uint32
 
+
+                                            YLeaf default_metric; //type: uint32
+                                            YLeaf route_policy_name; //type: string
+                                            YLeaf not_used; //type: uint32
 
 
 
@@ -483,10 +501,11 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value external_routes; //type: uint32
-                                            Value internal_routes; //type: uint32
-                                            Value local_routes; //type: uint32
 
+
+                                            YLeaf external_routes; //type: uint32
+                                            YLeaf internal_routes; //type: uint32
+                                            YLeaf local_routes; //type: uint32
 
 
 
@@ -506,9 +525,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value label_allocation_mode; //type: string
-                                            Value route_policy_name; //type: string
 
+
+                                            YLeaf label_allocation_mode; //type: string
+                                            YLeaf route_policy_name; //type: string
 
 
 
@@ -530,6 +550,7 @@ class Bgp : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class EigrpRoute : public Entity
                                         {
                                             public:
@@ -543,11 +564,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value instance_name; //type: string
-                                                Value default_metric; //type: uint32
-                                                Value route_policy_name; //type: string
-                                                Value redist_type; //type: string
 
+
+                                                YLeaf instance_name; //type: string
+                                                YLeaf default_metric; //type: uint32
+                                                YLeaf route_policy_name; //type: string
+                                                YLeaf redist_type; //type: string
 
 
 
@@ -575,6 +597,7 @@ class Bgp : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class SourcedNetwork : public Entity
                                         {
                                             public:
@@ -588,11 +611,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value network_addr; //type: string
-                                                Value network_prefix; //type: uint16
-                                                Value backdoor; //type: boolean
-                                                Value route_policy_name; //type: string
 
+
+                                                YLeaf network_addr; //type: string
+                                                YLeaf network_prefix; //type: uint16
+                                                YLeaf backdoor; //type: boolean
+                                                YLeaf route_policy_name; //type: string
 
 
 
@@ -618,10 +642,11 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value default_metric; //type: uint32
-                                            Value route_policy_name; //type: string
-                                            Value not_used; //type: uint32
 
+
+                                            YLeaf default_metric; //type: uint32
+                                            YLeaf route_policy_name; //type: string
+                                            YLeaf not_used; //type: uint32
 
 
 
@@ -641,9 +666,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value all; //type: boolean
-                                            Value route_policy_name; //type: string
 
+
+                                            YLeaf all; //type: boolean
+                                            YLeaf route_policy_name; //type: string
 
 
 
@@ -663,11 +689,11 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value selection; //type: BgpafAdditionalPathsCfgEnum
-                                            Value route_policy_name; //type: string
 
 
-                                            class BgpafAdditionalPathsCfgEnum;
+                                            YLeaf selection; //type: BgpafAdditionalPathsCfgEnum
+                                            YLeaf route_policy_name; //type: string
+
 
 
                                     }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGlobalAfs::VrfGlobalAf::AdditionalPathsSelection
@@ -688,6 +714,7 @@ class Bgp : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class OspfRoute : public Entity
                                         {
                                             public:
@@ -701,11 +728,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value instance_name; //type: string
-                                                Value default_metric; //type: uint32
-                                                Value route_policy_name; //type: string
-                                                Value redist_type; //type: string
 
+
+                                                YLeaf instance_name; //type: string
+                                                YLeaf default_metric; //type: uint32
+                                                YLeaf route_policy_name; //type: string
+                                                YLeaf redist_type; //type: string
 
 
 
@@ -731,10 +759,11 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value default_metric; //type: uint32
-                                            Value route_policy_name; //type: string
-                                            Value not_used; //type: uint32
 
+
+                                            YLeaf default_metric; //type: uint32
+                                            YLeaf route_policy_name; //type: string
+                                            YLeaf not_used; //type: uint32
 
 
 
@@ -754,10 +783,11 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value default_metric; //type: uint32
-                                            Value route_policy_name; //type: string
-                                            Value not_used; //type: uint32
 
+
+                                            YLeaf default_metric; //type: uint32
+                                            YLeaf route_policy_name; //type: string
+                                            YLeaf not_used; //type: uint32
 
 
 
@@ -783,9 +813,6 @@ class Bgp : public Entity
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGlobalAfs::VrfGlobalAf::SourcedNetworks> sourced_networks;
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGlobalAfs::VrfGlobalAf::StaticRoutes> static_routes; // presence node
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGlobalAfs::VrfGlobalAf::SubscriberRoutes> subscriber_routes; // presence node
-                                        class BgpAddressFamilyEnum;
-                                        class BgpafAdditionalPathsCfgEnum;
-                                        class BgpafAdditionalPathsCfgEnum;
 
 
                                 }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGlobalAfs::VrfGlobalAf
@@ -812,6 +839,7 @@ class Bgp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class MplsActivatedInterface : public Entity
                                 {
                                     public:
@@ -825,8 +853,9 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
 
+
+                                        YLeaf interface_name; //type: string
 
 
 
@@ -852,10 +881,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value keepalive; //type: uint32
-                                    Value hold_time; //type: uint32
-                                    Value min_accept_hold_time; //type: uint32
 
+
+                                    YLeaf keepalive; //type: uint32
+                                    YLeaf hold_time; //type: uint32
+                                    YLeaf min_accept_hold_time; //type: uint32
 
 
 
@@ -875,9 +905,10 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value detection_multiplier; //type: uint32
-                                    Value interval; //type: uint32
 
+
+                                    YLeaf detection_multiplier; //type: uint32
+                                    YLeaf interval; //type: uint32
 
 
 
@@ -897,9 +928,10 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value socket_send_size; //type: uint32
-                                    Value bgp_send_size; //type: uint32
 
+
+                                    YLeaf socket_send_size; //type: uint32
+                                    YLeaf bgp_send_size; //type: uint32
 
 
 
@@ -919,9 +951,10 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value socket_receive_size; //type: uint32
-                                    Value bgp_receive_size; //type: uint32
 
+
+                                    YLeaf socket_receive_size; //type: uint32
+                                    YLeaf bgp_receive_size; //type: uint32
 
 
 
@@ -956,6 +989,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class VrfNeighbor : public Entity
                             {
                                 public:
@@ -969,32 +1003,33 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value neighbor_address; //type: string
-                                    Value internal_vpn_client_ibgpce; //type: boolean
-                                    Value session_group_add_member; //type: string
-                                    Value egress_peer_engineering; //type: boolean
-                                    Value neighbor_graceful_restart_stalepath_time; //type: uint32
-                                    Value shutdown; //type: boolean
-                                    Value description; //type: string
-                                    Value neighbor_group_add_member; //type: string
-                                    Value ebgp_recv_dmz; //type: boolean
-                                    Value neighbor_graceful_restart; //type: boolean
-                                    Value enforce_first_as; //type: boolean
-                                    Value session_open_mode; //type: BgpTcpModeEnum
-                                    Value ebgp_send_dmz_enable_modes; //type: BgpEbgpSendDmzEnableModeEnum
-                                    Value suppress_all_capabilities; //type: boolean
-                                    Value additional_paths_send_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
-                                    Value propagate_dmz_link_bandwidth; //type: boolean
-                                    Value bfd_enable_modes; //type: BgpBfdEnableModeEnum
-                                    Value ttl_security; //type: boolean
-                                    Value neighbor_graceful_restart_time; //type: uint32
-                                    Value bfd_multiplier; //type: uint32
-                                    Value bfd_minimum_interval; //type: uint32
-                                    Value additional_paths_receive_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
-                                    Value ignore_connected_check_ebgp; //type: boolean
-                                    Value suppress_four_byte_as_capability; //type: boolean
-                                    Value update_source_interface; //type: string
 
+
+                                    YLeaf neighbor_address; //type: string
+                                    YLeaf internal_vpn_client_ibgpce; //type: boolean
+                                    YLeaf session_group_add_member; //type: string
+                                    YLeaf egress_peer_engineering; //type: boolean
+                                    YLeaf neighbor_graceful_restart_stalepath_time; //type: uint32
+                                    YLeaf shutdown; //type: boolean
+                                    YLeaf description; //type: string
+                                    YLeaf neighbor_group_add_member; //type: string
+                                    YLeaf ebgp_recv_dmz; //type: boolean
+                                    YLeaf neighbor_graceful_restart; //type: boolean
+                                    YLeaf enforce_first_as; //type: boolean
+                                    YLeaf session_open_mode; //type: BgpTcpModeEnum
+                                    YLeaf ebgp_send_dmz_enable_modes; //type: BgpEbgpSendDmzEnableModeEnum
+                                    YLeaf suppress_all_capabilities; //type: boolean
+                                    YLeaf additional_paths_send_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
+                                    YLeaf propagate_dmz_link_bandwidth; //type: boolean
+                                    YLeaf bfd_enable_modes; //type: BgpBfdEnableModeEnum
+                                    YLeaf ttl_security; //type: boolean
+                                    YLeaf neighbor_graceful_restart_time; //type: uint32
+                                    YLeaf bfd_multiplier; //type: uint32
+                                    YLeaf bfd_minimum_interval; //type: uint32
+                                    YLeaf additional_paths_receive_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
+                                    YLeaf ignore_connected_check_ebgp; //type: boolean
+                                    YLeaf suppress_four_byte_as_capability; //type: boolean
+                                    YLeaf update_source_interface; //type: string
 
                                 class VrfNeighborAfs : public Entity
                                 {
@@ -1011,6 +1046,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class VrfNeighborAf : public Entity
                                     {
                                         public:
@@ -1024,33 +1060,34 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value af_name; //type: BgpAddressFamilyEnum
-                                            Value neighbor_af_long_lived_graceful_restart_capable; //type: boolean
-                                            Value send_ext_community_ebgp; //type: boolean
-                                            Value accept_route_legacy_rt; //type: boolean
-                                            Value send_community_ebgp; //type: boolean
-                                            Value next_hop_unchanged; //type: boolean
-                                            Value flowspec_validation; //type: BgpFlowspecValidationCfgEnum
-                                            Value encapsulation_type; //type: BgpAfEncapsulationEnum
-                                            Value as_override; //type: boolean
-                                            Value multipath; //type: empty
-                                            Value send_community_ebgp_graceful_shutdown; //type: boolean
-                                            Value activate; //type: empty
-                                            Value prefix_orf_policy; //type: string
-                                            Value aigp; //type: BgpAigpCfgEnum
-                                            Value aigp_send_med; //type: BgpAigpCfgEnum
-                                            Value allow_as_in; //type: uint32
-                                            Value advertise_orf; //type: BgpOrfEnum
-                                            Value route_reflector_client; //type: boolean
-                                            Value next_hop_self; //type: boolean
-                                            Value route_policy_in; //type: string
-                                            Value default_weight; //type: uint32
-                                            Value af_group; //type: string
-                                            Value next_hop_unchanged_multipath; //type: boolean
-                                            Value accept_own; //type: boolean
-                                            Value route_policy_out; //type: string
-                                            Value advertise_permanent_network; //type: empty
 
+
+                                            YLeaf af_name; //type: BgpAddressFamilyEnum
+                                            YLeaf neighbor_af_long_lived_graceful_restart_capable; //type: boolean
+                                            YLeaf send_ext_community_ebgp; //type: boolean
+                                            YLeaf accept_route_legacy_rt; //type: boolean
+                                            YLeaf send_community_ebgp; //type: boolean
+                                            YLeaf next_hop_unchanged; //type: boolean
+                                            YLeaf flowspec_validation; //type: BgpFlowspecValidationCfgEnum
+                                            YLeaf encapsulation_type; //type: BgpAfEncapsulationEnum
+                                            YLeaf as_override; //type: boolean
+                                            YLeaf multipath; //type: empty
+                                            YLeaf send_community_ebgp_graceful_shutdown; //type: boolean
+                                            YLeaf activate; //type: empty
+                                            YLeaf prefix_orf_policy; //type: string
+                                            YLeaf aigp; //type: BgpAigpCfgEnum
+                                            YLeaf aigp_send_med; //type: BgpAigpCfgEnum
+                                            YLeaf allow_as_in; //type: uint32
+                                            YLeaf advertise_orf; //type: BgpOrfEnum
+                                            YLeaf route_reflector_client; //type: boolean
+                                            YLeaf next_hop_self; //type: boolean
+                                            YLeaf route_policy_in; //type: string
+                                            YLeaf default_weight; //type: uint32
+                                            YLeaf af_group; //type: string
+                                            YLeaf next_hop_unchanged_multipath; //type: boolean
+                                            YLeaf accept_own; //type: boolean
+                                            YLeaf route_policy_out; //type: string
+                                            YLeaf advertise_permanent_network; //type: empty
 
                                         class AigpCostCommunity : public Entity
                                         {
@@ -1065,13 +1102,13 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value cost_community_id; //type: uint32
-                                                Value transitive; //type: boolean
-                                                Value cost_community_poi_type; //type: BgpAigpCfgPoiEnum
 
 
-                                                class BgpAigpCfgPoiEnum;
+                                                YLeaf enable; //type: boolean
+                                                YLeaf cost_community_id; //type: uint32
+                                                YLeaf transitive; //type: boolean
+                                                YLeaf cost_community_poi_type; //type: BgpAigpCfgPoiEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::AigpCostCommunity
@@ -1090,14 +1127,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::AdvertiseDefImpDisableV6
@@ -1116,14 +1151,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::AdvertiseDisable
@@ -1142,12 +1175,13 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value prefix_limit; //type: uint32
-                                                Value warning_percentage; //type: uint32
-                                                Value warning_only; //type: boolean
-                                                Value restart_time; //type: uint32
-                                                Value discard_extra_paths; //type: boolean
 
+
+                                                YLeaf prefix_limit; //type: uint32
+                                                YLeaf warning_percentage; //type: uint32
+                                                YLeaf warning_only; //type: boolean
+                                                YLeaf restart_time; //type: uint32
+                                                YLeaf discard_extra_paths; //type: boolean
 
 
 
@@ -1167,9 +1201,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value entire; //type: boolean
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf entire; //type: boolean
 
 
 
@@ -1189,14 +1224,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::AdvertiseDefImpDisableV4
@@ -1215,14 +1248,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::AdvertiseL2Vpnevpn
@@ -1241,14 +1272,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::AdvertiseLocalL2Vpnevpn
@@ -1267,9 +1296,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value stale_time_send; //type: uint32
-                                                Value stale_time_accept; //type: uint32
 
+
+                                                YLeaf stale_time_send; //type: uint32
+                                                YLeaf stale_time_accept; //type: uint32
 
 
 
@@ -1289,15 +1319,15 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value type; //type: BgpSiteOfOriginEnum
-                                                Value as_xx; //type: uint32
-                                                Value as; //type: uint32
-                                                Value as_index; //type: uint32
-                                                Value address; //type: string
-                                                Value address_index; //type: uint32
 
 
-                                                class BgpSiteOfOriginEnum;
+                                                YLeaf type; //type: BgpSiteOfOriginEnum
+                                                YLeaf as_xx; //type: uint32
+                                                YLeaf as; //type: uint32
+                                                YLeaf as_index; //type: uint32
+                                                YLeaf address; //type: string
+                                                YLeaf address_index; //type: uint32
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::SiteOfOrigin
@@ -1316,14 +1346,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::AdvertiseV6
@@ -1342,14 +1370,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::AdvertiseLocalV6
@@ -1368,10 +1394,11 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value import_stitching; //type: boolean
-                                                Value import_reoriginate; //type: boolean
-                                                Value import_reoriginate_stitching; //type: boolean
 
+
+                                                YLeaf import_stitching; //type: boolean
+                                                YLeaf import_reoriginate; //type: boolean
+                                                YLeaf import_reoriginate_stitching; //type: boolean
 
 
 
@@ -1391,9 +1418,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value route_policy_name; //type: string
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf route_policy_name; //type: string
 
 
 
@@ -1413,9 +1441,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value inbound_soft; //type: boolean
-                                                Value soft_always; //type: boolean
 
+
+                                                YLeaf inbound_soft; //type: boolean
+                                                YLeaf soft_always; //type: boolean
 
 
 
@@ -1435,14 +1464,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::AdvertiseV4
@@ -1461,14 +1488,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::AdvertiseLocalV4
@@ -1487,9 +1512,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value entire; //type: boolean
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf entire; //type: boolean
 
 
 
@@ -1514,12 +1540,6 @@ class Bgp : public Entity
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::RemovePrivateAsEntireAsPathInbound> remove_private_as_entire_as_path_inbound; // presence node
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::SiteOfOrigin> site_of_origin;
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::SoftReconfiguration> soft_reconfiguration;
-                                            class BgpAddressFamilyEnum;
-                                            class BgpOrfEnum;
-                                            class BgpAigpCfgEnum;
-                                            class BgpAigpCfgEnum;
-                                            class BgpAfEncapsulationEnum;
-                                            class BgpFlowspecValidationCfgEnum;
 
 
                                     }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf
@@ -1544,9 +1564,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value local_address_disable; //type: boolean
-                                        Value local_ip_address; //type: string
 
+
+                                        YLeaf local_address_disable; //type: boolean
+                                        YLeaf local_ip_address; //type: string
 
 
 
@@ -1568,6 +1589,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class BmpActivate : public Entity
                                     {
                                         public:
@@ -1581,8 +1603,9 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value server_id; //type: uint32
 
+
+                                            YLeaf server_id; //type: uint32
 
 
 
@@ -1608,9 +1631,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value max_hop_count; //type: uint32
-                                        Value mpls_deactivation; //type: boolean
 
+
+                                        YLeaf max_hop_count; //type: uint32
+                                        YLeaf mpls_deactivation; //type: boolean
 
 
 
@@ -1630,9 +1654,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_xx; //type: uint32
-                                        Value as_yy; //type: uint32
 
+
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf as_yy; //type: uint32
 
 
 
@@ -1652,13 +1677,14 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_xx; //type: uint32
-                                        Value as_yy; //type: uint32
-                                        Value no_prepend; //type: empty
-                                        Value disable; //type: empty
-                                        Value replace_as; //type: empty
-                                        Value dual_as; //type: empty
 
+
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf as_yy; //type: uint32
+                                        YLeaf no_prepend; //type: empty
+                                        YLeaf disable; //type: empty
+                                        YLeaf replace_as; //type: empty
+                                        YLeaf dual_as; //type: empty
 
 
 
@@ -1678,9 +1704,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value password_disable; //type: boolean
-                                        Value password; //type: string
 
+
+                                        YLeaf password_disable; //type: boolean
+                                        YLeaf password; //type: string
 
 
 
@@ -1700,9 +1727,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_interval; //type: uint32
-                                        Value minimum_interval_msecs; //type: uint32
 
+
+                                        YLeaf minimum_interval; //type: uint32
+                                        YLeaf minimum_interval_msecs; //type: uint32
 
 
 
@@ -1722,9 +1750,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value cluster_id_number; //type: uint32
-                                        Value cluster_id_address; //type: string
 
+
+                                        YLeaf cluster_id_number; //type: uint32
+                                        YLeaf cluster_id_address; //type: string
 
 
 
@@ -1744,9 +1773,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value tcpmss_disable; //type: boolean
-                                        Value mss; //type: uint32
 
+
+                                        YLeaf tcpmss_disable; //type: boolean
+                                        YLeaf mss; //type: uint32
 
 
 
@@ -1766,12 +1796,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value type; //type: BgpTosEnum
-                                        Value value_; //type: one of uint32, enumeration
 
 
-                                        class BgpTosEnum;
-                                        class BgpPrecedenceDscpEnum;
+                                        YLeaf type; //type: BgpTosEnum
+                                        YLeaf value_; //type: one of uint32, enumeration
+
 
 
                                 }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::Tos
@@ -1790,10 +1819,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value enable; //type: empty
-                                        Value update_in_filtering_attribute_filter_group; //type: string
-                                        Value update_in_filtering_syslog_disable; //type: empty
 
+
+                                        YLeaf enable; //type: empty
+                                        YLeaf update_in_filtering_attribute_filter_group; //type: string
+                                        YLeaf update_in_filtering_syslog_disable; //type: empty
 
                                     class UpdateInFilteringMessageBuffers : public Entity
                                     {
@@ -1808,9 +1838,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value number_of_buffers; //type: uint32
-                                            Value non_circular_buffer; //type: boolean
 
+
+                                            YLeaf number_of_buffers; //type: uint32
+                                            YLeaf non_circular_buffer; //type: boolean
 
 
 
@@ -1836,10 +1867,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value msg_buf_count; //type: uint32
-                                        Value msg_log_disable; //type: boolean
-                                        Value msg_log_inherit_disable; //type: boolean
 
+
+                                        YLeaf msg_buf_count; //type: uint32
+                                        YLeaf msg_log_disable; //type: boolean
+                                        YLeaf msg_log_inherit_disable; //type: boolean
 
 
 
@@ -1859,9 +1891,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value socket_receive_size; //type: uint32
-                                        Value bgp_receive_size; //type: uint32
 
+
+                                        YLeaf socket_receive_size; //type: uint32
+                                        YLeaf bgp_receive_size; //type: uint32
 
 
 
@@ -1881,10 +1914,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value msg_buf_count; //type: uint32
-                                        Value msg_log_disable; //type: boolean
-                                        Value msg_log_inherit_disable; //type: boolean
 
+
+                                        YLeaf msg_buf_count; //type: uint32
+                                        YLeaf msg_log_disable; //type: boolean
+                                        YLeaf msg_log_inherit_disable; //type: boolean
 
 
 
@@ -1904,9 +1938,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value socket_send_size; //type: uint32
-                                        Value bgp_send_size; //type: uint32
 
+
+                                        YLeaf socket_send_size; //type: uint32
+                                        YLeaf bgp_send_size; //type: uint32
 
 
 
@@ -1926,10 +1961,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value keepalive_interval; //type: uint32
-                                        Value hold_time; //type: uint32
-                                        Value min_accept_hold_time; //type: uint32
 
+
+                                        YLeaf keepalive_interval; //type: uint32
+                                        YLeaf hold_time; //type: uint32
+                                        YLeaf min_accept_hold_time; //type: uint32
 
 
 
@@ -1949,9 +1985,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value keychain_disable; //type: boolean
-                                        Value keychain_name; //type: string
 
+
+                                        YLeaf keychain_disable; //type: boolean
+                                        YLeaf keychain_name; //type: string
 
 
 
@@ -1971,9 +2008,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value enable; //type: empty
-                                        Value graceful_maintenance_activate; //type: boolean
 
+
+                                        YLeaf enable; //type: empty
+                                        YLeaf graceful_maintenance_activate; //type: boolean
 
                                     class GracefulMaintenanceLocalPreference : public Entity
                                     {
@@ -1988,9 +2026,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value gshut_loc_pref_disable; //type: boolean
-                                            Value local_preference; //type: uint32
 
+
+                                            YLeaf gshut_loc_pref_disable; //type: boolean
+                                            YLeaf local_preference; //type: uint32
 
 
 
@@ -2010,9 +2049,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value gshut_prepends_disable; //type: boolean
-                                            Value as_prepends; //type: uint32
 
+
+                                            YLeaf gshut_prepends_disable; //type: boolean
+                                            YLeaf as_prepends; //type: uint32
 
 
 
@@ -2045,11 +2085,6 @@ class Bgp : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::Tos> tos;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::UpdateInFiltering> update_in_filtering;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs> vrf_neighbor_afs;
-                                    class BgpNbrCapAdditionalPathsCfgEnum;
-                                    class BgpNbrCapAdditionalPathsCfgEnum;
-                                    class BgpBfdEnableModeEnum;
-                                    class BgpEbgpSendDmzEnableModeEnum;
-                                    class BgpTcpModeEnum;
 
 
                             }; // Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor
@@ -2089,6 +2124,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BgpEntity : public Entity
                     {
                         public:
@@ -2102,6 +2138,7 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
+
 
 
                         class Neighbors : public Entity
@@ -2119,6 +2156,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Neighbor : public Entity
                             {
                                 public:
@@ -2132,34 +2170,35 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value neighbor_address; //type: string
-                                    Value internal_vpn_client_ibgpce; //type: boolean
-                                    Value session_group_add_member; //type: string
-                                    Value egress_peer_engineering; //type: boolean
-                                    Value neighbor_graceful_restart_stalepath_time; //type: uint32
-                                    Value shutdown; //type: boolean
-                                    Value description; //type: string
-                                    Value neighbor_group_add_member; //type: string
-                                    Value ebgp_recv_dmz; //type: boolean
-                                    Value neighbor_graceful_restart; //type: boolean
-                                    Value enforce_first_as; //type: boolean
-                                    Value session_open_mode; //type: BgpTcpModeEnum
-                                    Value rpki_origin_as_validation_disable; //type: empty
-                                    Value ebgp_send_dmz_enable_modes; //type: BgpEbgpSendDmzEnableModeEnum
-                                    Value suppress_all_capabilities; //type: boolean
-                                    Value rpki_bestpath_origin_as_allow_invalid; //type: empty
-                                    Value additional_paths_send_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
-                                    Value propagate_dmz_link_bandwidth; //type: boolean
-                                    Value bfd_enable_modes; //type: BgpBfdEnableModeEnum
-                                    Value ttl_security; //type: boolean
-                                    Value neighbor_graceful_restart_time; //type: uint32
-                                    Value bfd_multiplier; //type: uint32
-                                    Value bfd_minimum_interval; //type: uint32
-                                    Value additional_paths_receive_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
-                                    Value ignore_connected_check_ebgp; //type: boolean
-                                    Value suppress_four_byte_as_capability; //type: boolean
-                                    Value update_source_interface; //type: string
 
+
+                                    YLeaf neighbor_address; //type: string
+                                    YLeaf internal_vpn_client_ibgpce; //type: boolean
+                                    YLeaf session_group_add_member; //type: string
+                                    YLeaf egress_peer_engineering; //type: boolean
+                                    YLeaf neighbor_graceful_restart_stalepath_time; //type: uint32
+                                    YLeaf shutdown; //type: boolean
+                                    YLeaf description; //type: string
+                                    YLeaf neighbor_group_add_member; //type: string
+                                    YLeaf ebgp_recv_dmz; //type: boolean
+                                    YLeaf neighbor_graceful_restart; //type: boolean
+                                    YLeaf enforce_first_as; //type: boolean
+                                    YLeaf session_open_mode; //type: BgpTcpModeEnum
+                                    YLeaf rpki_origin_as_validation_disable; //type: empty
+                                    YLeaf ebgp_send_dmz_enable_modes; //type: BgpEbgpSendDmzEnableModeEnum
+                                    YLeaf suppress_all_capabilities; //type: boolean
+                                    YLeaf rpki_bestpath_origin_as_allow_invalid; //type: empty
+                                    YLeaf additional_paths_send_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
+                                    YLeaf propagate_dmz_link_bandwidth; //type: boolean
+                                    YLeaf bfd_enable_modes; //type: BgpBfdEnableModeEnum
+                                    YLeaf ttl_security; //type: boolean
+                                    YLeaf neighbor_graceful_restart_time; //type: uint32
+                                    YLeaf bfd_multiplier; //type: uint32
+                                    YLeaf bfd_minimum_interval; //type: uint32
+                                    YLeaf additional_paths_receive_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
+                                    YLeaf ignore_connected_check_ebgp; //type: boolean
+                                    YLeaf suppress_four_byte_as_capability; //type: boolean
+                                    YLeaf update_source_interface; //type: string
 
                                 class NeighborAfs : public Entity
                                 {
@@ -2176,6 +2215,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class NeighborAf : public Entity
                                     {
                                         public:
@@ -2189,37 +2229,38 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value af_name; //type: BgpAddressFamilyEnum
-                                            Value neighbor_af_long_lived_graceful_restart_capable; //type: boolean
-                                            Value l2vpn_signalling; //type: BgpSignalEnum
-                                            Value send_ext_community_ebgp; //type: boolean
-                                            Value accept_route_legacy_rt; //type: boolean
-                                            Value send_community_ebgp; //type: boolean
-                                            Value send_multicast_attr; //type: BgpSendMcastAttrCfgEnum
-                                            Value next_hop_unchanged; //type: boolean
-                                            Value rpki_origin_as_validation_disable; //type: empty
-                                            Value flowspec_validation; //type: BgpFlowspecValidationCfgEnum
-                                            Value encapsulation_type; //type: BgpAfEncapsulationEnum
-                                            Value rpki_bestpath_origin_as_allow_invalid; //type: empty
-                                            Value as_override; //type: boolean
-                                            Value multipath; //type: empty
-                                            Value send_community_ebgp_graceful_shutdown; //type: boolean
-                                            Value activate; //type: empty
-                                            Value prefix_orf_policy; //type: string
-                                            Value aigp; //type: BgpAigpCfgEnum
-                                            Value aigp_send_med; //type: BgpAigpCfgEnum
-                                            Value allow_as_in; //type: uint32
-                                            Value advertise_orf; //type: BgpOrfEnum
-                                            Value route_reflector_client; //type: boolean
-                                            Value next_hop_self; //type: boolean
-                                            Value route_policy_in; //type: string
-                                            Value default_weight; //type: uint32
-                                            Value af_group; //type: string
-                                            Value next_hop_unchanged_multipath; //type: boolean
-                                            Value accept_own; //type: boolean
-                                            Value route_policy_out; //type: string
-                                            Value advertise_permanent_network; //type: empty
 
+
+                                            YLeaf af_name; //type: BgpAddressFamilyEnum
+                                            YLeaf neighbor_af_long_lived_graceful_restart_capable; //type: boolean
+                                            YLeaf l2vpn_signalling; //type: BgpSignalEnum
+                                            YLeaf send_ext_community_ebgp; //type: boolean
+                                            YLeaf accept_route_legacy_rt; //type: boolean
+                                            YLeaf send_community_ebgp; //type: boolean
+                                            YLeaf send_multicast_attr; //type: BgpSendMcastAttrCfgEnum
+                                            YLeaf next_hop_unchanged; //type: boolean
+                                            YLeaf rpki_origin_as_validation_disable; //type: empty
+                                            YLeaf flowspec_validation; //type: BgpFlowspecValidationCfgEnum
+                                            YLeaf encapsulation_type; //type: BgpAfEncapsulationEnum
+                                            YLeaf rpki_bestpath_origin_as_allow_invalid; //type: empty
+                                            YLeaf as_override; //type: boolean
+                                            YLeaf multipath; //type: empty
+                                            YLeaf send_community_ebgp_graceful_shutdown; //type: boolean
+                                            YLeaf activate; //type: empty
+                                            YLeaf prefix_orf_policy; //type: string
+                                            YLeaf aigp; //type: BgpAigpCfgEnum
+                                            YLeaf aigp_send_med; //type: BgpAigpCfgEnum
+                                            YLeaf allow_as_in; //type: uint32
+                                            YLeaf advertise_orf; //type: BgpOrfEnum
+                                            YLeaf route_reflector_client; //type: boolean
+                                            YLeaf next_hop_self; //type: boolean
+                                            YLeaf route_policy_in; //type: string
+                                            YLeaf default_weight; //type: uint32
+                                            YLeaf af_group; //type: string
+                                            YLeaf next_hop_unchanged_multipath; //type: boolean
+                                            YLeaf accept_own; //type: boolean
+                                            YLeaf route_policy_out; //type: string
+                                            YLeaf advertise_permanent_network; //type: empty
 
                                         class AigpCostCommunity : public Entity
                                         {
@@ -2234,13 +2275,13 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value cost_community_id; //type: uint32
-                                                Value transitive; //type: boolean
-                                                Value cost_community_poi_type; //type: BgpAigpCfgPoiEnum
 
 
-                                                class BgpAigpCfgPoiEnum;
+                                                YLeaf enable; //type: boolean
+                                                YLeaf cost_community_id; //type: uint32
+                                                YLeaf transitive; //type: boolean
+                                                YLeaf cost_community_poi_type; //type: BgpAigpCfgPoiEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AigpCostCommunity
@@ -2259,14 +2300,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseDefImpDisableV6
@@ -2285,14 +2324,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseDisable
@@ -2311,12 +2348,13 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value prefix_limit; //type: uint32
-                                                Value warning_percentage; //type: uint32
-                                                Value warning_only; //type: boolean
-                                                Value restart_time; //type: uint32
-                                                Value discard_extra_paths; //type: boolean
 
+
+                                                YLeaf prefix_limit; //type: uint32
+                                                YLeaf warning_percentage; //type: uint32
+                                                YLeaf warning_only; //type: boolean
+                                                YLeaf restart_time; //type: uint32
+                                                YLeaf discard_extra_paths; //type: boolean
 
 
 
@@ -2336,9 +2374,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value entire; //type: boolean
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf entire; //type: boolean
 
 
 
@@ -2358,14 +2397,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseDefImpDisableV4
@@ -2384,14 +2421,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseL2Vpnevpn
@@ -2410,14 +2445,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalL2Vpnevpn
@@ -2436,9 +2469,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value stale_time_send; //type: uint32
-                                                Value stale_time_accept; //type: uint32
 
+
+                                                YLeaf stale_time_send; //type: uint32
+                                                YLeaf stale_time_accept; //type: uint32
 
 
 
@@ -2458,14 +2492,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseV6
@@ -2484,14 +2516,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV6
@@ -2510,10 +2540,11 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value import_stitching; //type: boolean
-                                                Value import_reoriginate; //type: boolean
-                                                Value import_reoriginate_stitching; //type: boolean
 
+
+                                                YLeaf import_stitching; //type: boolean
+                                                YLeaf import_reoriginate; //type: boolean
+                                                YLeaf import_reoriginate_stitching; //type: boolean
 
 
 
@@ -2533,9 +2564,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value route_policy_name; //type: string
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf route_policy_name; //type: string
 
 
 
@@ -2555,9 +2587,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value inbound_soft; //type: boolean
-                                                Value soft_always; //type: boolean
 
+
+                                                YLeaf inbound_soft; //type: boolean
+                                                YLeaf soft_always; //type: boolean
 
 
 
@@ -2577,14 +2610,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseV4
@@ -2603,14 +2634,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV4
@@ -2629,9 +2658,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value entire; //type: boolean
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf entire; //type: boolean
 
 
 
@@ -2655,14 +2685,6 @@ class Bgp : public Entity
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::RemovePrivateAsEntireAsPath> remove_private_as_entire_as_path; // presence node
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::RemovePrivateAsEntireAsPathInbound> remove_private_as_entire_as_path_inbound; // presence node
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::SoftReconfiguration> soft_reconfiguration;
-                                            class BgpAddressFamilyEnum;
-                                            class BgpOrfEnum;
-                                            class BgpAigpCfgEnum;
-                                            class BgpAigpCfgEnum;
-                                            class BgpAfEncapsulationEnum;
-                                            class BgpFlowspecValidationCfgEnum;
-                                            class BgpSignalEnum;
-                                            class BgpSendMcastAttrCfgEnum;
 
 
                                     }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf
@@ -2687,9 +2709,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value local_address_disable; //type: boolean
-                                        Value local_ip_address; //type: string
 
+
+                                        YLeaf local_address_disable; //type: boolean
+                                        YLeaf local_ip_address; //type: string
 
 
 
@@ -2711,6 +2734,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class BmpActivate : public Entity
                                     {
                                         public:
@@ -2724,8 +2748,9 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value server_id; //type: uint32
 
+
+                                            YLeaf server_id; //type: uint32
 
 
 
@@ -2751,9 +2776,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value max_hop_count; //type: uint32
-                                        Value mpls_deactivation; //type: boolean
 
+
+                                        YLeaf max_hop_count; //type: uint32
+                                        YLeaf mpls_deactivation; //type: boolean
 
 
 
@@ -2773,9 +2799,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_xx; //type: uint32
-                                        Value as_yy; //type: uint32
 
+
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf as_yy; //type: uint32
 
 
 
@@ -2795,13 +2822,14 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_xx; //type: uint32
-                                        Value as_yy; //type: uint32
-                                        Value no_prepend; //type: empty
-                                        Value disable; //type: empty
-                                        Value replace_as; //type: empty
-                                        Value dual_as; //type: empty
 
+
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf as_yy; //type: uint32
+                                        YLeaf no_prepend; //type: empty
+                                        YLeaf disable; //type: empty
+                                        YLeaf replace_as; //type: empty
+                                        YLeaf dual_as; //type: empty
 
 
 
@@ -2821,9 +2849,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value password_disable; //type: boolean
-                                        Value password; //type: string
 
+
+                                        YLeaf password_disable; //type: boolean
+                                        YLeaf password; //type: string
 
 
 
@@ -2843,9 +2872,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_interval; //type: uint32
-                                        Value minimum_interval_msecs; //type: uint32
 
+
+                                        YLeaf minimum_interval; //type: uint32
+                                        YLeaf minimum_interval_msecs; //type: uint32
 
 
 
@@ -2865,9 +2895,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value cluster_id_number; //type: uint32
-                                        Value cluster_id_address; //type: string
 
+
+                                        YLeaf cluster_id_number; //type: uint32
+                                        YLeaf cluster_id_address; //type: string
 
 
 
@@ -2887,9 +2918,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value tcpmss_disable; //type: boolean
-                                        Value mss; //type: uint32
 
+
+                                        YLeaf tcpmss_disable; //type: boolean
+                                        YLeaf mss; //type: uint32
 
 
 
@@ -2909,12 +2941,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value type; //type: BgpTosEnum
-                                        Value value_; //type: one of uint32, enumeration
 
 
-                                        class BgpTosEnum;
-                                        class BgpPrecedenceDscpEnum;
+                                        YLeaf type; //type: BgpTosEnum
+                                        YLeaf value_; //type: one of uint32, enumeration
+
 
 
                                 }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::Tos
@@ -2933,10 +2964,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value enable; //type: empty
-                                        Value update_in_filtering_attribute_filter_group; //type: string
-                                        Value update_in_filtering_syslog_disable; //type: empty
 
+
+                                        YLeaf enable; //type: empty
+                                        YLeaf update_in_filtering_attribute_filter_group; //type: string
+                                        YLeaf update_in_filtering_syslog_disable; //type: empty
 
                                     class UpdateInFilteringMessageBuffers : public Entity
                                     {
@@ -2951,9 +2983,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value number_of_buffers; //type: uint32
-                                            Value non_circular_buffer; //type: boolean
 
+
+                                            YLeaf number_of_buffers; //type: uint32
+                                            YLeaf non_circular_buffer; //type: boolean
 
 
 
@@ -2979,10 +3012,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value msg_buf_count; //type: uint32
-                                        Value msg_log_disable; //type: boolean
-                                        Value msg_log_inherit_disable; //type: boolean
 
+
+                                        YLeaf msg_buf_count; //type: uint32
+                                        YLeaf msg_log_disable; //type: boolean
+                                        YLeaf msg_log_inherit_disable; //type: boolean
 
 
 
@@ -3002,9 +3036,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value socket_receive_size; //type: uint32
-                                        Value bgp_receive_size; //type: uint32
 
+
+                                        YLeaf socket_receive_size; //type: uint32
+                                        YLeaf bgp_receive_size; //type: uint32
 
 
 
@@ -3024,10 +3059,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value msg_buf_count; //type: uint32
-                                        Value msg_log_disable; //type: boolean
-                                        Value msg_log_inherit_disable; //type: boolean
 
+
+                                        YLeaf msg_buf_count; //type: uint32
+                                        YLeaf msg_log_disable; //type: boolean
+                                        YLeaf msg_log_inherit_disable; //type: boolean
 
 
 
@@ -3047,9 +3083,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value socket_send_size; //type: uint32
-                                        Value bgp_send_size; //type: uint32
 
+
+                                        YLeaf socket_send_size; //type: uint32
+                                        YLeaf bgp_send_size; //type: uint32
 
 
 
@@ -3069,10 +3106,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value keepalive_interval; //type: uint32
-                                        Value hold_time; //type: uint32
-                                        Value min_accept_hold_time; //type: uint32
 
+
+                                        YLeaf keepalive_interval; //type: uint32
+                                        YLeaf hold_time; //type: uint32
+                                        YLeaf min_accept_hold_time; //type: uint32
 
 
 
@@ -3092,9 +3130,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value keychain_disable; //type: boolean
-                                        Value keychain_name; //type: string
 
+
+                                        YLeaf keychain_disable; //type: boolean
+                                        YLeaf keychain_name; //type: string
 
 
 
@@ -3114,9 +3153,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value enable; //type: empty
-                                        Value graceful_maintenance_activate; //type: boolean
 
+
+                                        YLeaf enable; //type: empty
+                                        YLeaf graceful_maintenance_activate; //type: boolean
 
                                     class GracefulMaintenanceLocalPreference : public Entity
                                     {
@@ -3131,9 +3171,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value gshut_loc_pref_disable; //type: boolean
-                                            Value local_preference; //type: uint32
 
+
+                                            YLeaf gshut_loc_pref_disable; //type: boolean
+                                            YLeaf local_preference; //type: uint32
 
 
 
@@ -3153,9 +3194,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value gshut_prepends_disable; //type: boolean
-                                            Value as_prepends; //type: uint32
 
+
+                                            YLeaf gshut_prepends_disable; //type: boolean
+                                            YLeaf as_prepends; //type: uint32
 
 
 
@@ -3188,11 +3230,6 @@ class Bgp : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::Timers> timers;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::Tos> tos;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::UpdateInFiltering> update_in_filtering;
-                                    class BgpNbrCapAdditionalPathsCfgEnum;
-                                    class BgpNbrCapAdditionalPathsCfgEnum;
-                                    class BgpBfdEnableModeEnum;
-                                    class BgpEbgpSendDmzEnableModeEnum;
-                                    class BgpTcpModeEnum;
 
 
                             }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor
@@ -3219,6 +3256,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class NeighborGroup : public Entity
                             {
                                 public:
@@ -3232,35 +3270,36 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value neighbor_group_name; //type: string
-                                    Value neighbor_group_add_member; //type: string
-                                    Value internal_vpn_client_ibgpce; //type: boolean
-                                    Value session_group_add_member; //type: string
-                                    Value egress_peer_engineering; //type: boolean
-                                    Value neighbor_graceful_restart_stalepath_time; //type: uint32
-                                    Value shutdown; //type: boolean
-                                    Value description; //type: string
-                                    Value ebgp_recv_dmz; //type: boolean
-                                    Value neighbor_graceful_restart; //type: boolean
-                                    Value enforce_first_as; //type: boolean
-                                    Value session_open_mode; //type: BgpTcpModeEnum
-                                    Value rpki_origin_as_validation_disable; //type: empty
-                                    Value ebgp_send_dmz_enable_modes; //type: BgpEbgpSendDmzEnableModeEnum
-                                    Value suppress_all_capabilities; //type: boolean
-                                    Value rpki_bestpath_origin_as_allow_invalid; //type: empty
-                                    Value additional_paths_send_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
-                                    Value propagate_dmz_link_bandwidth; //type: boolean
-                                    Value bfd_enable_modes; //type: BgpBfdEnableModeEnum
-                                    Value ttl_security; //type: boolean
-                                    Value neighbor_graceful_restart_time; //type: uint32
-                                    Value bfd_multiplier; //type: uint32
-                                    Value bfd_minimum_interval; //type: uint32
-                                    Value additional_paths_receive_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
-                                    Value ignore_connected_check_ebgp; //type: boolean
-                                    Value suppress_four_byte_as_capability; //type: boolean
-                                    Value update_source_interface; //type: string
-                                    Value create; //type: empty
 
+
+                                    YLeaf neighbor_group_name; //type: string
+                                    YLeaf neighbor_group_add_member; //type: string
+                                    YLeaf internal_vpn_client_ibgpce; //type: boolean
+                                    YLeaf session_group_add_member; //type: string
+                                    YLeaf egress_peer_engineering; //type: boolean
+                                    YLeaf neighbor_graceful_restart_stalepath_time; //type: uint32
+                                    YLeaf shutdown; //type: boolean
+                                    YLeaf description; //type: string
+                                    YLeaf ebgp_recv_dmz; //type: boolean
+                                    YLeaf neighbor_graceful_restart; //type: boolean
+                                    YLeaf enforce_first_as; //type: boolean
+                                    YLeaf session_open_mode; //type: BgpTcpModeEnum
+                                    YLeaf rpki_origin_as_validation_disable; //type: empty
+                                    YLeaf ebgp_send_dmz_enable_modes; //type: BgpEbgpSendDmzEnableModeEnum
+                                    YLeaf suppress_all_capabilities; //type: boolean
+                                    YLeaf rpki_bestpath_origin_as_allow_invalid; //type: empty
+                                    YLeaf additional_paths_send_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
+                                    YLeaf propagate_dmz_link_bandwidth; //type: boolean
+                                    YLeaf bfd_enable_modes; //type: BgpBfdEnableModeEnum
+                                    YLeaf ttl_security; //type: boolean
+                                    YLeaf neighbor_graceful_restart_time; //type: uint32
+                                    YLeaf bfd_multiplier; //type: uint32
+                                    YLeaf bfd_minimum_interval; //type: uint32
+                                    YLeaf additional_paths_receive_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
+                                    YLeaf ignore_connected_check_ebgp; //type: boolean
+                                    YLeaf suppress_four_byte_as_capability; //type: boolean
+                                    YLeaf update_source_interface; //type: string
+                                    YLeaf create; //type: empty
 
                                 class NeighborGroupAfs : public Entity
                                 {
@@ -3277,6 +3316,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class NeighborGroupAf : public Entity
                                     {
                                         public:
@@ -3290,37 +3330,38 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value af_name; //type: BgpAddressFamilyEnum
-                                            Value neighbor_af_long_lived_graceful_restart_capable; //type: boolean
-                                            Value l2vpn_signalling; //type: BgpSignalEnum
-                                            Value send_ext_community_ebgp; //type: boolean
-                                            Value accept_route_legacy_rt; //type: boolean
-                                            Value send_community_ebgp; //type: boolean
-                                            Value send_multicast_attr; //type: BgpSendMcastAttrCfgEnum
-                                            Value next_hop_unchanged; //type: boolean
-                                            Value rpki_origin_as_validation_disable; //type: empty
-                                            Value flowspec_validation; //type: BgpFlowspecValidationCfgEnum
-                                            Value encapsulation_type; //type: BgpAfEncapsulationEnum
-                                            Value rpki_bestpath_origin_as_allow_invalid; //type: empty
-                                            Value as_override; //type: boolean
-                                            Value multipath; //type: empty
-                                            Value send_community_ebgp_graceful_shutdown; //type: boolean
-                                            Value activate; //type: empty
-                                            Value prefix_orf_policy; //type: string
-                                            Value aigp; //type: BgpAigpCfgEnum
-                                            Value aigp_send_med; //type: BgpAigpCfgEnum
-                                            Value allow_as_in; //type: uint32
-                                            Value advertise_orf; //type: BgpOrfEnum
-                                            Value route_reflector_client; //type: boolean
-                                            Value next_hop_self; //type: boolean
-                                            Value route_policy_in; //type: string
-                                            Value default_weight; //type: uint32
-                                            Value af_group; //type: string
-                                            Value next_hop_unchanged_multipath; //type: boolean
-                                            Value accept_own; //type: boolean
-                                            Value route_policy_out; //type: string
-                                            Value advertise_permanent_network; //type: empty
 
+
+                                            YLeaf af_name; //type: BgpAddressFamilyEnum
+                                            YLeaf neighbor_af_long_lived_graceful_restart_capable; //type: boolean
+                                            YLeaf l2vpn_signalling; //type: BgpSignalEnum
+                                            YLeaf send_ext_community_ebgp; //type: boolean
+                                            YLeaf accept_route_legacy_rt; //type: boolean
+                                            YLeaf send_community_ebgp; //type: boolean
+                                            YLeaf send_multicast_attr; //type: BgpSendMcastAttrCfgEnum
+                                            YLeaf next_hop_unchanged; //type: boolean
+                                            YLeaf rpki_origin_as_validation_disable; //type: empty
+                                            YLeaf flowspec_validation; //type: BgpFlowspecValidationCfgEnum
+                                            YLeaf encapsulation_type; //type: BgpAfEncapsulationEnum
+                                            YLeaf rpki_bestpath_origin_as_allow_invalid; //type: empty
+                                            YLeaf as_override; //type: boolean
+                                            YLeaf multipath; //type: empty
+                                            YLeaf send_community_ebgp_graceful_shutdown; //type: boolean
+                                            YLeaf activate; //type: empty
+                                            YLeaf prefix_orf_policy; //type: string
+                                            YLeaf aigp; //type: BgpAigpCfgEnum
+                                            YLeaf aigp_send_med; //type: BgpAigpCfgEnum
+                                            YLeaf allow_as_in; //type: uint32
+                                            YLeaf advertise_orf; //type: BgpOrfEnum
+                                            YLeaf route_reflector_client; //type: boolean
+                                            YLeaf next_hop_self; //type: boolean
+                                            YLeaf route_policy_in; //type: string
+                                            YLeaf default_weight; //type: uint32
+                                            YLeaf af_group; //type: string
+                                            YLeaf next_hop_unchanged_multipath; //type: boolean
+                                            YLeaf accept_own; //type: boolean
+                                            YLeaf route_policy_out; //type: string
+                                            YLeaf advertise_permanent_network; //type: empty
 
                                         class AigpCostCommunity : public Entity
                                         {
@@ -3335,13 +3376,13 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value cost_community_id; //type: uint32
-                                                Value transitive; //type: boolean
-                                                Value cost_community_poi_type; //type: BgpAigpCfgPoiEnum
 
 
-                                                class BgpAigpCfgPoiEnum;
+                                                YLeaf enable; //type: boolean
+                                                YLeaf cost_community_id; //type: uint32
+                                                YLeaf transitive; //type: boolean
+                                                YLeaf cost_community_poi_type; //type: BgpAigpCfgPoiEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AigpCostCommunity
@@ -3360,14 +3401,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AdvertiseDefImpDisableV6
@@ -3386,14 +3425,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AdvertiseDisable
@@ -3412,12 +3449,13 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value prefix_limit; //type: uint32
-                                                Value warning_percentage; //type: uint32
-                                                Value warning_only; //type: boolean
-                                                Value restart_time; //type: uint32
-                                                Value discard_extra_paths; //type: boolean
 
+
+                                                YLeaf prefix_limit; //type: uint32
+                                                YLeaf warning_percentage; //type: uint32
+                                                YLeaf warning_only; //type: boolean
+                                                YLeaf restart_time; //type: uint32
+                                                YLeaf discard_extra_paths; //type: boolean
 
 
 
@@ -3437,9 +3475,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value entire; //type: boolean
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf entire; //type: boolean
 
 
 
@@ -3459,14 +3498,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AdvertiseDefImpDisableV4
@@ -3485,14 +3522,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AdvertiseL2Vpnevpn
@@ -3511,14 +3546,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AdvertiseLocalL2Vpnevpn
@@ -3537,9 +3570,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value stale_time_send; //type: uint32
-                                                Value stale_time_accept; //type: uint32
 
+
+                                                YLeaf stale_time_send; //type: uint32
+                                                YLeaf stale_time_accept; //type: uint32
 
 
 
@@ -3559,15 +3593,15 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value type; //type: BgpSiteOfOriginEnum
-                                                Value as_xx; //type: uint32
-                                                Value as; //type: uint32
-                                                Value as_index; //type: uint32
-                                                Value address; //type: string
-                                                Value address_index; //type: uint32
 
 
-                                                class BgpSiteOfOriginEnum;
+                                                YLeaf type; //type: BgpSiteOfOriginEnum
+                                                YLeaf as_xx; //type: uint32
+                                                YLeaf as; //type: uint32
+                                                YLeaf as_index; //type: uint32
+                                                YLeaf address; //type: string
+                                                YLeaf address_index; //type: uint32
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::SiteOfOrigin
@@ -3586,14 +3620,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AdvertiseV6
@@ -3612,14 +3644,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AdvertiseLocalV6
@@ -3638,10 +3668,11 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value import_stitching; //type: boolean
-                                                Value import_reoriginate; //type: boolean
-                                                Value import_reoriginate_stitching; //type: boolean
 
+
+                                                YLeaf import_stitching; //type: boolean
+                                                YLeaf import_reoriginate; //type: boolean
+                                                YLeaf import_reoriginate_stitching; //type: boolean
 
 
 
@@ -3661,9 +3692,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value route_policy_name; //type: string
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf route_policy_name; //type: string
 
 
 
@@ -3683,9 +3715,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value inbound_soft; //type: boolean
-                                                Value soft_always; //type: boolean
 
+
+                                                YLeaf inbound_soft; //type: boolean
+                                                YLeaf soft_always; //type: boolean
 
 
 
@@ -3705,14 +3738,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AdvertiseV4
@@ -3731,14 +3762,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AdvertiseLocalV4
@@ -3757,9 +3786,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value entire; //type: boolean
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf entire; //type: boolean
 
 
 
@@ -3784,14 +3814,6 @@ class Bgp : public Entity
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::RemovePrivateAsEntireAsPathInbound> remove_private_as_entire_as_path_inbound; // presence node
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::SiteOfOrigin> site_of_origin;
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::SoftReconfiguration> soft_reconfiguration;
-                                            class BgpAddressFamilyEnum;
-                                            class BgpOrfEnum;
-                                            class BgpAigpCfgEnum;
-                                            class BgpAigpCfgEnum;
-                                            class BgpAfEncapsulationEnum;
-                                            class BgpFlowspecValidationCfgEnum;
-                                            class BgpSignalEnum;
-                                            class BgpSendMcastAttrCfgEnum;
 
 
                                     }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf
@@ -3816,9 +3838,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value local_address_disable; //type: boolean
-                                        Value local_ip_address; //type: string
 
+
+                                        YLeaf local_address_disable; //type: boolean
+                                        YLeaf local_ip_address; //type: string
 
 
 
@@ -3840,6 +3863,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class BmpActivate : public Entity
                                     {
                                         public:
@@ -3853,8 +3877,9 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value server_id; //type: uint32
 
+
+                                            YLeaf server_id; //type: uint32
 
 
 
@@ -3880,9 +3905,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value max_hop_count; //type: uint32
-                                        Value mpls_deactivation; //type: boolean
 
+
+                                        YLeaf max_hop_count; //type: uint32
+                                        YLeaf mpls_deactivation; //type: boolean
 
 
 
@@ -3902,9 +3928,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_xx; //type: uint32
-                                        Value as_yy; //type: uint32
 
+
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf as_yy; //type: uint32
 
 
 
@@ -3924,13 +3951,14 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_xx; //type: uint32
-                                        Value as_yy; //type: uint32
-                                        Value no_prepend; //type: empty
-                                        Value disable; //type: empty
-                                        Value replace_as; //type: empty
-                                        Value dual_as; //type: empty
 
+
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf as_yy; //type: uint32
+                                        YLeaf no_prepend; //type: empty
+                                        YLeaf disable; //type: empty
+                                        YLeaf replace_as; //type: empty
+                                        YLeaf dual_as; //type: empty
 
 
 
@@ -3950,9 +3978,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value password_disable; //type: boolean
-                                        Value password; //type: string
 
+
+                                        YLeaf password_disable; //type: boolean
+                                        YLeaf password; //type: string
 
 
 
@@ -3972,9 +4001,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_interval; //type: uint32
-                                        Value minimum_interval_msecs; //type: uint32
 
+
+                                        YLeaf minimum_interval; //type: uint32
+                                        YLeaf minimum_interval_msecs; //type: uint32
 
 
 
@@ -3994,9 +4024,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value cluster_id_number; //type: uint32
-                                        Value cluster_id_address; //type: string
 
+
+                                        YLeaf cluster_id_number; //type: uint32
+                                        YLeaf cluster_id_address; //type: string
 
 
 
@@ -4016,9 +4047,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value tcpmss_disable; //type: boolean
-                                        Value mss; //type: uint32
 
+
+                                        YLeaf tcpmss_disable; //type: boolean
+                                        YLeaf mss; //type: uint32
 
 
 
@@ -4038,12 +4070,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value type; //type: BgpTosEnum
-                                        Value value_; //type: one of uint32, enumeration
 
 
-                                        class BgpTosEnum;
-                                        class BgpPrecedenceDscpEnum;
+                                        YLeaf type; //type: BgpTosEnum
+                                        YLeaf value_; //type: one of uint32, enumeration
+
 
 
                                 }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::Tos
@@ -4062,10 +4093,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value enable; //type: empty
-                                        Value update_in_filtering_attribute_filter_group; //type: string
-                                        Value update_in_filtering_syslog_disable; //type: empty
 
+
+                                        YLeaf enable; //type: empty
+                                        YLeaf update_in_filtering_attribute_filter_group; //type: string
+                                        YLeaf update_in_filtering_syslog_disable; //type: empty
 
                                     class UpdateInFilteringMessageBuffers : public Entity
                                     {
@@ -4080,9 +4112,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value number_of_buffers; //type: uint32
-                                            Value non_circular_buffer; //type: boolean
 
+
+                                            YLeaf number_of_buffers; //type: uint32
+                                            YLeaf non_circular_buffer; //type: boolean
 
 
 
@@ -4108,10 +4141,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value msg_buf_count; //type: uint32
-                                        Value msg_log_disable; //type: boolean
-                                        Value msg_log_inherit_disable; //type: boolean
 
+
+                                        YLeaf msg_buf_count; //type: uint32
+                                        YLeaf msg_log_disable; //type: boolean
+                                        YLeaf msg_log_inherit_disable; //type: boolean
 
 
 
@@ -4131,9 +4165,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value socket_receive_size; //type: uint32
-                                        Value bgp_receive_size; //type: uint32
 
+
+                                        YLeaf socket_receive_size; //type: uint32
+                                        YLeaf bgp_receive_size; //type: uint32
 
 
 
@@ -4153,10 +4188,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value msg_buf_count; //type: uint32
-                                        Value msg_log_disable; //type: boolean
-                                        Value msg_log_inherit_disable; //type: boolean
 
+
+                                        YLeaf msg_buf_count; //type: uint32
+                                        YLeaf msg_log_disable; //type: boolean
+                                        YLeaf msg_log_inherit_disable; //type: boolean
 
 
 
@@ -4176,9 +4212,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value socket_send_size; //type: uint32
-                                        Value bgp_send_size; //type: uint32
 
+
+                                        YLeaf socket_send_size; //type: uint32
+                                        YLeaf bgp_send_size; //type: uint32
 
 
 
@@ -4198,10 +4235,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value keepalive_interval; //type: uint32
-                                        Value hold_time; //type: uint32
-                                        Value min_accept_hold_time; //type: uint32
 
+
+                                        YLeaf keepalive_interval; //type: uint32
+                                        YLeaf hold_time; //type: uint32
+                                        YLeaf min_accept_hold_time; //type: uint32
 
 
 
@@ -4221,9 +4259,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value keychain_disable; //type: boolean
-                                        Value keychain_name; //type: string
 
+
+                                        YLeaf keychain_disable; //type: boolean
+                                        YLeaf keychain_name; //type: string
 
 
 
@@ -4243,9 +4282,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value enable; //type: empty
-                                        Value graceful_maintenance_activate; //type: boolean
 
+
+                                        YLeaf enable; //type: empty
+                                        YLeaf graceful_maintenance_activate; //type: boolean
 
                                     class GracefulMaintenanceLocalPreference : public Entity
                                     {
@@ -4260,9 +4300,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value gshut_loc_pref_disable; //type: boolean
-                                            Value local_preference; //type: uint32
 
+
+                                            YLeaf gshut_loc_pref_disable; //type: boolean
+                                            YLeaf local_preference; //type: uint32
 
 
 
@@ -4282,9 +4323,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value gshut_prepends_disable; //type: boolean
-                                            Value as_prepends; //type: uint32
 
+
+                                            YLeaf gshut_prepends_disable; //type: boolean
+                                            YLeaf as_prepends; //type: uint32
 
 
 
@@ -4317,11 +4359,6 @@ class Bgp : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::Timers> timers;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::Tos> tos;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::UpdateInFiltering> update_in_filtering;
-                                    class BgpNbrCapAdditionalPathsCfgEnum;
-                                    class BgpNbrCapAdditionalPathsCfgEnum;
-                                    class BgpBfdEnableModeEnum;
-                                    class BgpEbgpSendDmzEnableModeEnum;
-                                    class BgpTcpModeEnum;
 
 
                             }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup
@@ -4348,6 +4385,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class AfGroup : public Entity
                             {
                                 public:
@@ -4361,8 +4399,9 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value af_group_name; //type: string
 
+
+                                    YLeaf af_group_name; //type: string
 
                                 class AfGroupAfs : public Entity
                                 {
@@ -4379,6 +4418,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class AfGroupAf : public Entity
                                     {
                                         public:
@@ -4392,37 +4432,38 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value af_name; //type: BgpAddressFamilyEnum
-                                            Value af_group; //type: string
-                                            Value create; //type: empty
-                                            Value neighbor_af_long_lived_graceful_restart_capable; //type: boolean
-                                            Value l2vpn_signalling; //type: BgpSignalEnum
-                                            Value send_ext_community_ebgp; //type: boolean
-                                            Value accept_route_legacy_rt; //type: boolean
-                                            Value send_community_ebgp; //type: boolean
-                                            Value send_multicast_attr; //type: BgpSendMcastAttrCfgEnum
-                                            Value next_hop_unchanged; //type: boolean
-                                            Value rpki_origin_as_validation_disable; //type: empty
-                                            Value flowspec_validation; //type: BgpFlowspecValidationCfgEnum
-                                            Value encapsulation_type; //type: BgpAfEncapsulationEnum
-                                            Value rpki_bestpath_origin_as_allow_invalid; //type: empty
-                                            Value as_override; //type: boolean
-                                            Value multipath; //type: empty
-                                            Value send_community_ebgp_graceful_shutdown; //type: boolean
-                                            Value prefix_orf_policy; //type: string
-                                            Value aigp; //type: BgpAigpCfgEnum
-                                            Value aigp_send_med; //type: BgpAigpCfgEnum
-                                            Value allow_as_in; //type: uint32
-                                            Value advertise_orf; //type: BgpOrfEnum
-                                            Value route_reflector_client; //type: boolean
-                                            Value next_hop_self; //type: boolean
-                                            Value route_policy_in; //type: string
-                                            Value default_weight; //type: uint32
-                                            Value next_hop_unchanged_multipath; //type: boolean
-                                            Value accept_own; //type: boolean
-                                            Value route_policy_out; //type: string
-                                            Value advertise_permanent_network; //type: empty
 
+
+                                            YLeaf af_name; //type: BgpAddressFamilyEnum
+                                            YLeaf af_group; //type: string
+                                            YLeaf create; //type: empty
+                                            YLeaf neighbor_af_long_lived_graceful_restart_capable; //type: boolean
+                                            YLeaf l2vpn_signalling; //type: BgpSignalEnum
+                                            YLeaf send_ext_community_ebgp; //type: boolean
+                                            YLeaf accept_route_legacy_rt; //type: boolean
+                                            YLeaf send_community_ebgp; //type: boolean
+                                            YLeaf send_multicast_attr; //type: BgpSendMcastAttrCfgEnum
+                                            YLeaf next_hop_unchanged; //type: boolean
+                                            YLeaf rpki_origin_as_validation_disable; //type: empty
+                                            YLeaf flowspec_validation; //type: BgpFlowspecValidationCfgEnum
+                                            YLeaf encapsulation_type; //type: BgpAfEncapsulationEnum
+                                            YLeaf rpki_bestpath_origin_as_allow_invalid; //type: empty
+                                            YLeaf as_override; //type: boolean
+                                            YLeaf multipath; //type: empty
+                                            YLeaf send_community_ebgp_graceful_shutdown; //type: boolean
+                                            YLeaf prefix_orf_policy; //type: string
+                                            YLeaf aigp; //type: BgpAigpCfgEnum
+                                            YLeaf aigp_send_med; //type: BgpAigpCfgEnum
+                                            YLeaf allow_as_in; //type: uint32
+                                            YLeaf advertise_orf; //type: BgpOrfEnum
+                                            YLeaf route_reflector_client; //type: boolean
+                                            YLeaf next_hop_self; //type: boolean
+                                            YLeaf route_policy_in; //type: string
+                                            YLeaf default_weight; //type: uint32
+                                            YLeaf next_hop_unchanged_multipath; //type: boolean
+                                            YLeaf accept_own; //type: boolean
+                                            YLeaf route_policy_out; //type: string
+                                            YLeaf advertise_permanent_network; //type: empty
 
                                         class AigpCostCommunity : public Entity
                                         {
@@ -4437,13 +4478,13 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value cost_community_id; //type: uint32
-                                                Value transitive; //type: boolean
-                                                Value cost_community_poi_type; //type: BgpAigpCfgPoiEnum
 
 
-                                                class BgpAigpCfgPoiEnum;
+                                                YLeaf enable; //type: boolean
+                                                YLeaf cost_community_id; //type: uint32
+                                                YLeaf transitive; //type: boolean
+                                                YLeaf cost_community_poi_type; //type: BgpAigpCfgPoiEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AigpCostCommunity
@@ -4462,14 +4503,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AdvertiseDefImpDisableV6
@@ -4488,14 +4527,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AdvertiseDisable
@@ -4514,12 +4551,13 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value prefix_limit; //type: uint32
-                                                Value warning_percentage; //type: uint32
-                                                Value warning_only; //type: boolean
-                                                Value restart_time; //type: uint32
-                                                Value discard_extra_paths; //type: boolean
 
+
+                                                YLeaf prefix_limit; //type: uint32
+                                                YLeaf warning_percentage; //type: uint32
+                                                YLeaf warning_only; //type: boolean
+                                                YLeaf restart_time; //type: uint32
+                                                YLeaf discard_extra_paths; //type: boolean
 
 
 
@@ -4539,9 +4577,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value entire; //type: boolean
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf entire; //type: boolean
 
 
 
@@ -4561,14 +4600,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AdvertiseDefImpDisableV4
@@ -4587,14 +4624,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AdvertiseL2Vpnevpn
@@ -4613,14 +4648,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AdvertiseLocalL2Vpnevpn
@@ -4639,9 +4672,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value stale_time_send; //type: uint32
-                                                Value stale_time_accept; //type: uint32
 
+
+                                                YLeaf stale_time_send; //type: uint32
+                                                YLeaf stale_time_accept; //type: uint32
 
 
 
@@ -4661,15 +4695,15 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value type; //type: BgpSiteOfOriginEnum
-                                                Value as_xx; //type: uint32
-                                                Value as; //type: uint32
-                                                Value as_index; //type: uint32
-                                                Value address; //type: string
-                                                Value address_index; //type: uint32
 
 
-                                                class BgpSiteOfOriginEnum;
+                                                YLeaf type; //type: BgpSiteOfOriginEnum
+                                                YLeaf as_xx; //type: uint32
+                                                YLeaf as; //type: uint32
+                                                YLeaf as_index; //type: uint32
+                                                YLeaf address; //type: string
+                                                YLeaf address_index; //type: uint32
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::SiteOfOrigin
@@ -4688,14 +4722,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AdvertiseV6
@@ -4714,14 +4746,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AdvertiseLocalV6
@@ -4740,10 +4770,11 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value import_stitching; //type: boolean
-                                                Value import_reoriginate; //type: boolean
-                                                Value import_reoriginate_stitching; //type: boolean
 
+
+                                                YLeaf import_stitching; //type: boolean
+                                                YLeaf import_reoriginate; //type: boolean
+                                                YLeaf import_reoriginate_stitching; //type: boolean
 
 
 
@@ -4763,9 +4794,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value route_policy_name; //type: string
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf route_policy_name; //type: string
 
 
 
@@ -4785,9 +4817,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value inbound_soft; //type: boolean
-                                                Value soft_always; //type: boolean
 
+
+                                                YLeaf inbound_soft; //type: boolean
+                                                YLeaf soft_always; //type: boolean
 
 
 
@@ -4807,14 +4840,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AdvertiseV4
@@ -4833,14 +4864,12 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value af_name; //type: BgpAddressFamilyEnum
-                                                Value reorg_option; //type: BgpReorgOptEnum
-                                                Value rt_type; //type: BgpAdvRtEnum
 
 
-                                                class BgpAddressFamilyEnum;
-                                                class BgpReorgOptEnum;
-                                                class BgpAdvRtEnum;
+                                                YLeaf af_name; //type: BgpAddressFamilyEnum
+                                                YLeaf reorg_option; //type: BgpReorgOptEnum
+                                                YLeaf rt_type; //type: BgpAdvRtEnum
+
 
 
                                         }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AdvertiseLocalV4
@@ -4859,9 +4888,10 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value entire; //type: boolean
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf entire; //type: boolean
 
 
 
@@ -4886,14 +4916,6 @@ class Bgp : public Entity
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::RemovePrivateAsEntireAsPathInbound> remove_private_as_entire_as_path_inbound; // presence node
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::SiteOfOrigin> site_of_origin;
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::SoftReconfiguration> soft_reconfiguration;
-                                            class BgpAddressFamilyEnum;
-                                            class BgpOrfEnum;
-                                            class BgpAigpCfgEnum;
-                                            class BgpAigpCfgEnum;
-                                            class BgpAfEncapsulationEnum;
-                                            class BgpFlowspecValidationCfgEnum;
-                                            class BgpSignalEnum;
-                                            class BgpSendMcastAttrCfgEnum;
 
 
                                     }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf
@@ -4932,6 +4954,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class SessionGroup : public Entity
                             {
                                 public:
@@ -4945,34 +4968,35 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value session_group_name; //type: string
-                                    Value session_group_add_member; //type: string
-                                    Value internal_vpn_client_ibgpce; //type: boolean
-                                    Value egress_peer_engineering; //type: boolean
-                                    Value neighbor_graceful_restart_stalepath_time; //type: uint32
-                                    Value shutdown; //type: boolean
-                                    Value description; //type: string
-                                    Value ebgp_recv_dmz; //type: boolean
-                                    Value neighbor_graceful_restart; //type: boolean
-                                    Value enforce_first_as; //type: boolean
-                                    Value session_open_mode; //type: BgpTcpModeEnum
-                                    Value rpki_origin_as_validation_disable; //type: empty
-                                    Value ebgp_send_dmz_enable_modes; //type: BgpEbgpSendDmzEnableModeEnum
-                                    Value suppress_all_capabilities; //type: boolean
-                                    Value rpki_bestpath_origin_as_allow_invalid; //type: empty
-                                    Value additional_paths_send_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
-                                    Value propagate_dmz_link_bandwidth; //type: boolean
-                                    Value bfd_enable_modes; //type: BgpBfdEnableModeEnum
-                                    Value ttl_security; //type: boolean
-                                    Value neighbor_graceful_restart_time; //type: uint32
-                                    Value bfd_multiplier; //type: uint32
-                                    Value bfd_minimum_interval; //type: uint32
-                                    Value additional_paths_receive_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
-                                    Value ignore_connected_check_ebgp; //type: boolean
-                                    Value suppress_four_byte_as_capability; //type: boolean
-                                    Value update_source_interface; //type: string
-                                    Value create; //type: empty
 
+
+                                    YLeaf session_group_name; //type: string
+                                    YLeaf session_group_add_member; //type: string
+                                    YLeaf internal_vpn_client_ibgpce; //type: boolean
+                                    YLeaf egress_peer_engineering; //type: boolean
+                                    YLeaf neighbor_graceful_restart_stalepath_time; //type: uint32
+                                    YLeaf shutdown; //type: boolean
+                                    YLeaf description; //type: string
+                                    YLeaf ebgp_recv_dmz; //type: boolean
+                                    YLeaf neighbor_graceful_restart; //type: boolean
+                                    YLeaf enforce_first_as; //type: boolean
+                                    YLeaf session_open_mode; //type: BgpTcpModeEnum
+                                    YLeaf rpki_origin_as_validation_disable; //type: empty
+                                    YLeaf ebgp_send_dmz_enable_modes; //type: BgpEbgpSendDmzEnableModeEnum
+                                    YLeaf suppress_all_capabilities; //type: boolean
+                                    YLeaf rpki_bestpath_origin_as_allow_invalid; //type: empty
+                                    YLeaf additional_paths_send_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
+                                    YLeaf propagate_dmz_link_bandwidth; //type: boolean
+                                    YLeaf bfd_enable_modes; //type: BgpBfdEnableModeEnum
+                                    YLeaf ttl_security; //type: boolean
+                                    YLeaf neighbor_graceful_restart_time; //type: uint32
+                                    YLeaf bfd_multiplier; //type: uint32
+                                    YLeaf bfd_minimum_interval; //type: uint32
+                                    YLeaf additional_paths_receive_capability; //type: BgpNbrCapAdditionalPathsCfgEnum
+                                    YLeaf ignore_connected_check_ebgp; //type: boolean
+                                    YLeaf suppress_four_byte_as_capability; //type: boolean
+                                    YLeaf update_source_interface; //type: string
+                                    YLeaf create; //type: empty
 
                                 class LocalAddress : public Entity
                                 {
@@ -4987,9 +5011,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value local_address_disable; //type: boolean
-                                        Value local_ip_address; //type: string
 
+
+                                        YLeaf local_address_disable; //type: boolean
+                                        YLeaf local_ip_address; //type: string
 
 
 
@@ -5011,6 +5036,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class BmpActivate : public Entity
                                     {
                                         public:
@@ -5024,8 +5050,9 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value server_id; //type: uint32
 
+
+                                            YLeaf server_id; //type: uint32
 
 
 
@@ -5051,9 +5078,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value max_hop_count; //type: uint32
-                                        Value mpls_deactivation; //type: boolean
 
+
+                                        YLeaf max_hop_count; //type: uint32
+                                        YLeaf mpls_deactivation; //type: boolean
 
 
 
@@ -5073,9 +5101,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_xx; //type: uint32
-                                        Value as_yy; //type: uint32
 
+
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf as_yy; //type: uint32
 
 
 
@@ -5095,13 +5124,14 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_xx; //type: uint32
-                                        Value as_yy; //type: uint32
-                                        Value no_prepend; //type: empty
-                                        Value disable; //type: empty
-                                        Value replace_as; //type: empty
-                                        Value dual_as; //type: empty
 
+
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf as_yy; //type: uint32
+                                        YLeaf no_prepend; //type: empty
+                                        YLeaf disable; //type: empty
+                                        YLeaf replace_as; //type: empty
+                                        YLeaf dual_as; //type: empty
 
 
 
@@ -5121,9 +5151,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value password_disable; //type: boolean
-                                        Value password; //type: string
 
+
+                                        YLeaf password_disable; //type: boolean
+                                        YLeaf password; //type: string
 
 
 
@@ -5143,9 +5174,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_interval; //type: uint32
-                                        Value minimum_interval_msecs; //type: uint32
 
+
+                                        YLeaf minimum_interval; //type: uint32
+                                        YLeaf minimum_interval_msecs; //type: uint32
 
 
 
@@ -5165,9 +5197,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value cluster_id_number; //type: uint32
-                                        Value cluster_id_address; //type: string
 
+
+                                        YLeaf cluster_id_number; //type: uint32
+                                        YLeaf cluster_id_address; //type: string
 
 
 
@@ -5187,9 +5220,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value tcpmss_disable; //type: boolean
-                                        Value mss; //type: uint32
 
+
+                                        YLeaf tcpmss_disable; //type: boolean
+                                        YLeaf mss; //type: uint32
 
 
 
@@ -5209,12 +5243,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value type; //type: BgpTosEnum
-                                        Value value_; //type: one of uint32, enumeration
 
 
-                                        class BgpTosEnum;
-                                        class BgpPrecedenceDscpEnum;
+                                        YLeaf type; //type: BgpTosEnum
+                                        YLeaf value_; //type: one of uint32, enumeration
+
 
 
                                 }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tos
@@ -5233,10 +5266,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value enable; //type: empty
-                                        Value update_in_filtering_attribute_filter_group; //type: string
-                                        Value update_in_filtering_syslog_disable; //type: empty
 
+
+                                        YLeaf enable; //type: empty
+                                        YLeaf update_in_filtering_attribute_filter_group; //type: string
+                                        YLeaf update_in_filtering_syslog_disable; //type: empty
 
                                     class UpdateInFilteringMessageBuffers : public Entity
                                     {
@@ -5251,9 +5285,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value number_of_buffers; //type: uint32
-                                            Value non_circular_buffer; //type: boolean
 
+
+                                            YLeaf number_of_buffers; //type: uint32
+                                            YLeaf non_circular_buffer; //type: boolean
 
 
 
@@ -5279,10 +5314,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value msg_buf_count; //type: uint32
-                                        Value msg_log_disable; //type: boolean
-                                        Value msg_log_inherit_disable; //type: boolean
 
+
+                                        YLeaf msg_buf_count; //type: uint32
+                                        YLeaf msg_log_disable; //type: boolean
+                                        YLeaf msg_log_inherit_disable; //type: boolean
 
 
 
@@ -5302,9 +5338,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value socket_receive_size; //type: uint32
-                                        Value bgp_receive_size; //type: uint32
 
+
+                                        YLeaf socket_receive_size; //type: uint32
+                                        YLeaf bgp_receive_size; //type: uint32
 
 
 
@@ -5324,10 +5361,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value msg_buf_count; //type: uint32
-                                        Value msg_log_disable; //type: boolean
-                                        Value msg_log_inherit_disable; //type: boolean
 
+
+                                        YLeaf msg_buf_count; //type: uint32
+                                        YLeaf msg_log_disable; //type: boolean
+                                        YLeaf msg_log_inherit_disable; //type: boolean
 
 
 
@@ -5347,9 +5385,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value socket_send_size; //type: uint32
-                                        Value bgp_send_size; //type: uint32
 
+
+                                        YLeaf socket_send_size; //type: uint32
+                                        YLeaf bgp_send_size; //type: uint32
 
 
 
@@ -5369,10 +5408,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value keepalive_interval; //type: uint32
-                                        Value hold_time; //type: uint32
-                                        Value min_accept_hold_time; //type: uint32
 
+
+                                        YLeaf keepalive_interval; //type: uint32
+                                        YLeaf hold_time; //type: uint32
+                                        YLeaf min_accept_hold_time; //type: uint32
 
 
 
@@ -5392,9 +5432,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value keychain_disable; //type: boolean
-                                        Value keychain_name; //type: string
 
+
+                                        YLeaf keychain_disable; //type: boolean
+                                        YLeaf keychain_name; //type: string
 
 
 
@@ -5414,9 +5455,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value enable; //type: empty
-                                        Value graceful_maintenance_activate; //type: boolean
 
+
+                                        YLeaf enable; //type: empty
+                                        YLeaf graceful_maintenance_activate; //type: boolean
 
                                     class GracefulMaintenanceLocalPreference : public Entity
                                     {
@@ -5431,9 +5473,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value gshut_loc_pref_disable; //type: boolean
-                                            Value local_preference; //type: uint32
 
+
+                                            YLeaf gshut_loc_pref_disable; //type: boolean
+                                            YLeaf local_preference; //type: uint32
 
 
 
@@ -5453,9 +5496,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value gshut_prepends_disable; //type: boolean
-                                            Value as_prepends; //type: uint32
 
+
+                                            YLeaf gshut_prepends_disable; //type: boolean
+                                            YLeaf as_prepends; //type: uint32
 
 
 
@@ -5487,11 +5531,6 @@ class Bgp : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Timers> timers;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tos> tos;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::UpdateInFiltering> update_in_filtering;
-                                    class BgpNbrCapAdditionalPathsCfgEnum;
-                                    class BgpNbrCapAdditionalPathsCfgEnum;
-                                    class BgpBfdEnableModeEnum;
-                                    class BgpEbgpSendDmzEnableModeEnum;
-                                    class BgpTcpModeEnum;
 
 
                             }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup
@@ -5525,51 +5564,52 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value graceful_restart; //type: empty
-                            Value update_out_logging; //type: empty
-                            Value install_diversion; //type: empty
-                            Value next_hop_trigger_delay; //type: uint32
-                            Value nsr; //type: boolean
-                            Value neighbor_logging_detail; //type: empty
-                            Value mvpn; //type: empty
-                            Value rpki_origin_as_validation_disable; //type: empty
-                            Value rpki_origin_as_validity_signal_ibgp; //type: empty
-                            Value global_scan_time; //type: uint32
-                            Value rpki_bestpath_use_origin_as_validity; //type: empty
-                            Value rpki_origin_as_validation_time; //type: uint32
-                            Value rpki_bestpath_origin_as_allow_invalid; //type: empty
-                            Value graceful_restart_purge_time; //type: uint32
-                            Value enforce_ibgp_out_policy; //type: empty
-                            Value update_limit_process; //type: uint32
-                            Value graceful_restart_time; //type: uint32
-                            Value update_error_handling_basic_ibgp_disable; //type: empty
-                            Value read_only; //type: empty
-                            Value graceful_restart_stalepath_time; //type: uint32
-                            Value update_error_handling_extended_ebgp; //type: empty
-                            Value update_error_handling_basic_ebgp_disable; //type: empty
-                            Value graceful_reset; //type: empty
-                            Value igp_loop_check; //type: empty
-                            Value update_error_handling_extended_ibgp; //type: empty
-                            Value router_id; //type: string
-                            Value disable_enforce_first_as; //type: empty
-                            Value best_path_cost_community; //type: empty
-                            Value best_path_aigp_ignore; //type: empty
-                            Value best_path_as_path_length; //type: empty
-                            Value igp_redist_internal; //type: empty
-                            Value multi_path_as_path_ignore_onwards; //type: empty
-                            Value disable_fast_external_fallover; //type: empty
-                            Value default_metric; //type: uint32
-                            Value default_info_originate; //type: empty
-                            Value best_path_confederation_paths; //type: empty
-                            Value best_path_as_multipath_relax; //type: empty
-                            Value disable_auto_soft_reset; //type: empty
-                            Value disable_msg_log; //type: empty
-                            Value disable_neighbor_logging; //type: empty
-                            Value best_path_med_always; //type: empty
-                            Value best_path_router_id; //type: empty
-                            Value best_path_med_missing; //type: empty
-                            Value local_preference; //type: uint32
 
+
+                            YLeaf graceful_restart; //type: empty
+                            YLeaf update_out_logging; //type: empty
+                            YLeaf install_diversion; //type: empty
+                            YLeaf next_hop_trigger_delay; //type: uint32
+                            YLeaf nsr; //type: boolean
+                            YLeaf neighbor_logging_detail; //type: empty
+                            YLeaf mvpn; //type: empty
+                            YLeaf rpki_origin_as_validation_disable; //type: empty
+                            YLeaf rpki_origin_as_validity_signal_ibgp; //type: empty
+                            YLeaf global_scan_time; //type: uint32
+                            YLeaf rpki_bestpath_use_origin_as_validity; //type: empty
+                            YLeaf rpki_origin_as_validation_time; //type: uint32
+                            YLeaf rpki_bestpath_origin_as_allow_invalid; //type: empty
+                            YLeaf graceful_restart_purge_time; //type: uint32
+                            YLeaf enforce_ibgp_out_policy; //type: empty
+                            YLeaf update_limit_process; //type: uint32
+                            YLeaf graceful_restart_time; //type: uint32
+                            YLeaf update_error_handling_basic_ibgp_disable; //type: empty
+                            YLeaf read_only; //type: empty
+                            YLeaf graceful_restart_stalepath_time; //type: uint32
+                            YLeaf update_error_handling_extended_ebgp; //type: empty
+                            YLeaf update_error_handling_basic_ebgp_disable; //type: empty
+                            YLeaf graceful_reset; //type: empty
+                            YLeaf igp_loop_check; //type: empty
+                            YLeaf update_error_handling_extended_ibgp; //type: empty
+                            YLeaf router_id; //type: string
+                            YLeaf disable_enforce_first_as; //type: empty
+                            YLeaf best_path_cost_community; //type: empty
+                            YLeaf best_path_aigp_ignore; //type: empty
+                            YLeaf best_path_as_path_length; //type: empty
+                            YLeaf igp_redist_internal; //type: empty
+                            YLeaf multi_path_as_path_ignore_onwards; //type: empty
+                            YLeaf disable_fast_external_fallover; //type: empty
+                            YLeaf default_metric; //type: uint32
+                            YLeaf default_info_originate; //type: empty
+                            YLeaf best_path_confederation_paths; //type: empty
+                            YLeaf best_path_as_multipath_relax; //type: empty
+                            YLeaf disable_auto_soft_reset; //type: empty
+                            YLeaf disable_msg_log; //type: empty
+                            YLeaf disable_neighbor_logging; //type: empty
+                            YLeaf best_path_med_always; //type: empty
+                            YLeaf best_path_router_id; //type: empty
+                            YLeaf best_path_med_missing; //type: empty
+                            YLeaf local_preference; //type: uint32
 
                         class ClusterId : public Entity
                         {
@@ -5584,9 +5624,10 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value cluster_id_number; //type: uint32
-                                Value cluster_id_address; //type: string
 
+
+                                YLeaf cluster_id_number; //type: uint32
+                                YLeaf cluster_id_address; //type: string
 
 
 
@@ -5606,10 +5647,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value formatted_messages; //type: uint32
-                                Value enqueued_messages; //type: uint32
-                                Value desynchronize; //type: boolean
 
+
+                                YLeaf formatted_messages; //type: uint32
+                                YLeaf enqueued_messages; //type: uint32
+                                YLeaf desynchronize; //type: boolean
 
 
 
@@ -5629,9 +5671,10 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value delay; //type: uint32
-                                Value always; //type: boolean
 
+
+                                YLeaf delay; //type: uint32
+                                YLeaf always; //type: boolean
 
 
 
@@ -5651,8 +5694,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: empty
 
+
+                                YLeaf enable; //type: empty
 
                             class Peers : public Entity
                             {
@@ -5669,6 +5713,7 @@ class Bgp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Peer : public Entity
                                 {
                                     public:
@@ -5682,9 +5727,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_xx; //type: uint32
-                                        Value as_yy; //type: uint32
 
+
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf as_yy; //type: uint32
 
 
 
@@ -5718,6 +5764,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class RpkiServer : public Entity
                             {
                                 public:
@@ -5731,15 +5778,16 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value server; //type: string
-                                    Value enable; //type: empty
-                                    Value shutdown; //type: empty
-                                    Value password; //type: string
-                                    Value response_time; //type: int32
-                                    Value username; //type: string
-                                    Value refresh_time; //type: int32
-                                    Value purge_time; //type: int32
 
+
+                                    YLeaf server; //type: string
+                                    YLeaf enable; //type: empty
+                                    YLeaf shutdown; //type: empty
+                                    YLeaf password; //type: string
+                                    YLeaf response_time; //type: int32
+                                    YLeaf username; //type: string
+                                    YLeaf refresh_time; //type: int32
+                                    YLeaf purge_time; //type: int32
 
                                 class Transport : public Entity
                                 {
@@ -5754,11 +5802,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value transport; //type: BgpRpkiTransportEnum
-                                        Value port; //type: uint16
 
 
-                                        class BgpRpkiTransportEnum;
+                                        YLeaf transport; //type: BgpRpkiTransportEnum
+                                        YLeaf port; //type: uint16
+
 
 
                                 }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServer::Transport
@@ -5789,8 +5837,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value maximum_neighbors; //type: uint32
 
+
+                                YLeaf maximum_neighbors; //type: uint32
 
 
 
@@ -5810,9 +5859,10 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value as_xx; //type: uint32
-                                Value as_yy; //type: uint32
 
+
+                                YLeaf as_xx; //type: uint32
+                                YLeaf as_yy; //type: uint32
 
 
 
@@ -5834,6 +5884,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class ConfederationPeerAs : public Entity
                             {
                                 public:
@@ -5847,9 +5898,10 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value as_xx; //type: uint32
-                                    Value as_yy; //type: uint32
 
+
+                                    YLeaf as_xx; //type: uint32
+                                    YLeaf as_yy; //type: uint32
 
 
 
@@ -5877,6 +5929,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class AttributeFilterGroup : public Entity
                             {
                                 public:
@@ -5890,9 +5943,10 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value attribute_filter_group_name; //type: string
-                                    Value enable; //type: empty
 
+
+                                    YLeaf attribute_filter_group_name; //type: string
+                                    YLeaf enable; //type: empty
 
                                 class AttributeFilters : public Entity
                                 {
@@ -5909,6 +5963,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class AttributeFilter : public Entity
                                     {
                                         public:
@@ -5922,12 +5977,12 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value attribute_start; //type: uint32
-                                            Value attribute_end; //type: uint32
-                                            Value filter_action; //type: BgpUpdateFilterActionEnum
 
 
-                                            class BgpUpdateFilterActionEnum;
+                                            YLeaf attribute_start; //type: uint32
+                                            YLeaf attribute_end; //type: uint32
+                                            YLeaf filter_action; //type: BgpUpdateFilterActionEnum
+
 
 
                                     }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::AttributeFilters::AttributeFilter
@@ -5964,9 +6019,10 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value all_neighbors; //type: boolean
-                                Value retain_routes; //type: boolean
 
+
+                                YLeaf all_neighbors; //type: boolean
+                                YLeaf retain_routes; //type: boolean
 
 
 
@@ -5988,6 +6044,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class GlobalAf : public Entity
                             {
                                 public:
@@ -6001,38 +6058,39 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value af_name; //type: BgpAddressFamilyEnum
-                                    Value inter_as_install; //type: empty
-                                    Value segmented_mcast; //type: empty
-                                    Value disable_default_martian_check; //type: empty
-                                    Value next_hop_critical_trigger_delay; //type: uint32
-                                    Value next_hop_non_critical_trigger_delay; //type: uint32
-                                    Value label_security_rpf; //type: empty
-                                    Value label_retain; //type: uint32
-                                    Value scan_time; //type: uint32
-                                    Value rpki_origin_as_validation_disable; //type: empty
-                                    Value rpki_origin_as_validity_signal_ibgp; //type: empty
-                                    Value update_limit_sub_group_ebgp; //type: uint32
-                                    Value update_limit_address_family; //type: uint32
-                                    Value rpki_bestpath_use_origin_as_validity; //type: empty
-                                    Value update_limit_sub_group_ibgp; //type: uint32
-                                    Value rpki_bestpath_origin_as_allow_invalid; //type: empty
-                                    Value disable_client_to_client_rr; //type: empty
-                                    Value next_hop_route_policy; //type: string
-                                    Value global_table_mcast; //type: empty
-                                    Value wait_rib_install; //type: empty
-                                    Value dynamic_med_interval; //type: uint32
-                                    Value enable; //type: empty
-                                    Value table_policy; //type: string
-                                    Value attribute_download; //type: empty
-                                    Value best_external; //type: boolean
-                                    Value additional_paths_receive; //type: BgpafAdditionalPathsCfgEnum
-                                    Value permanent_network; //type: string
-                                    Value next_hop_resolution_prefix_length_minimum; //type: uint32
-                                    Value reset_weight_on_import; //type: boolean
-                                    Value additional_paths_send; //type: BgpafAdditionalPathsCfgEnum
-                                    Value disable_as_path_loop_check; //type: empty
 
+
+                                    YLeaf af_name; //type: BgpAddressFamilyEnum
+                                    YLeaf inter_as_install; //type: empty
+                                    YLeaf segmented_mcast; //type: empty
+                                    YLeaf disable_default_martian_check; //type: empty
+                                    YLeaf next_hop_critical_trigger_delay; //type: uint32
+                                    YLeaf next_hop_non_critical_trigger_delay; //type: uint32
+                                    YLeaf label_security_rpf; //type: empty
+                                    YLeaf label_retain; //type: uint32
+                                    YLeaf scan_time; //type: uint32
+                                    YLeaf rpki_origin_as_validation_disable; //type: empty
+                                    YLeaf rpki_origin_as_validity_signal_ibgp; //type: empty
+                                    YLeaf update_limit_sub_group_ebgp; //type: uint32
+                                    YLeaf update_limit_address_family; //type: uint32
+                                    YLeaf rpki_bestpath_use_origin_as_validity; //type: empty
+                                    YLeaf update_limit_sub_group_ibgp; //type: uint32
+                                    YLeaf rpki_bestpath_origin_as_allow_invalid; //type: empty
+                                    YLeaf disable_client_to_client_rr; //type: empty
+                                    YLeaf next_hop_route_policy; //type: string
+                                    YLeaf global_table_mcast; //type: empty
+                                    YLeaf wait_rib_install; //type: empty
+                                    YLeaf dynamic_med_interval; //type: uint32
+                                    YLeaf enable; //type: empty
+                                    YLeaf table_policy; //type: string
+                                    YLeaf attribute_download; //type: empty
+                                    YLeaf best_external; //type: boolean
+                                    YLeaf additional_paths_receive; //type: BgpafAdditionalPathsCfgEnum
+                                    YLeaf permanent_network; //type: string
+                                    YLeaf next_hop_resolution_prefix_length_minimum; //type: uint32
+                                    YLeaf reset_weight_on_import; //type: boolean
+                                    YLeaf additional_paths_send; //type: BgpafAdditionalPathsCfgEnum
+                                    YLeaf disable_as_path_loop_check; //type: empty
 
                                 class IsisRoutes : public Entity
                                 {
@@ -6049,6 +6107,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class IsisRoute : public Entity
                                     {
                                         public:
@@ -6062,11 +6121,12 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value instance_name; //type: string
-                                            Value default_metric; //type: uint32
-                                            Value route_policy_name; //type: string
-                                            Value redist_type; //type: string
 
+
+                                            YLeaf instance_name; //type: string
+                                            YLeaf default_metric; //type: uint32
+                                            YLeaf route_policy_name; //type: string
+                                            YLeaf redist_type; //type: string
 
 
 
@@ -6092,9 +6152,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as; //type: uint32
-                                        Value router_id; //type: string
 
+
+                                        YLeaf as; //type: uint32
+                                        YLeaf router_id; //type: string
 
 
 
@@ -6114,10 +6175,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value enable; //type: empty
-                                        Value table_policy; //type: string
-                                        Value source_rt_import_policy; //type: empty
 
+
+                                        YLeaf enable; //type: empty
+                                        YLeaf table_policy; //type: string
+                                        YLeaf source_rt_import_policy; //type: empty
 
                                     class LabelMode : public Entity
                                     {
@@ -6132,9 +6194,10 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value label_allocation_mode; //type: string
-                                            Value route_policy_name; //type: string
 
+
+                                            YLeaf label_allocation_mode; //type: string
+                                            YLeaf route_policy_name; //type: string
 
 
 
@@ -6162,6 +6225,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class ApplicationRoute : public Entity
                                     {
                                         public:
@@ -6175,11 +6239,12 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value instance_name; //type: string
-                                            Value default_metric; //type: uint32
-                                            Value route_policy_name; //type: string
-                                            Value not_used; //type: uint32
 
+
+                                            YLeaf instance_name; //type: string
+                                            YLeaf default_metric; //type: uint32
+                                            YLeaf route_policy_name; //type: string
+                                            YLeaf not_used; //type: uint32
 
 
 
@@ -6207,6 +6272,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class DisableClusterClientToClientRr : public Entity
                                     {
                                         public:
@@ -6220,8 +6286,9 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value cluster_type; //type: BgpClusterIdEnum
 
+
+                                            YLeaf cluster_type; //type: BgpClusterIdEnum
 
                                         class Number : public Entity
                                         {
@@ -6236,8 +6303,9 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value cluster_id_number; //type: uint32
 
+
+                                                YLeaf cluster_id_number; //type: uint32
 
 
 
@@ -6257,8 +6325,9 @@ class Bgp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value cluster_id_address; //type: string
 
+
+                                                YLeaf cluster_id_address; //type: string
 
 
 
@@ -6267,7 +6336,6 @@ class Bgp : public Entity
 
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::Ipv4Address> > ipv4_address;
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::Number> > number;
-                                            class BgpClusterIdEnum;
 
 
                                     }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr
@@ -6292,9 +6360,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value seconds; //type: uint32
-                                        Value milliseconds; //type: uint32
 
+
+                                        YLeaf seconds; //type: uint32
+                                        YLeaf milliseconds; //type: uint32
 
 
 
@@ -6314,11 +6383,12 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value paths_value; //type: uint32
-                                        Value unequal_cost; //type: boolean
-                                        Value selective; //type: boolean
-                                        Value order_by_igp_metric; //type: boolean
 
+
+                                        YLeaf paths_value; //type: uint32
+                                        YLeaf unequal_cost; //type: boolean
+                                        YLeaf selective; //type: boolean
+                                        YLeaf order_by_igp_metric; //type: boolean
 
 
 
@@ -6338,11 +6408,12 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value paths_value; //type: uint32
-                                        Value unequal_cost; //type: boolean
-                                        Value selective; //type: boolean
-                                        Value order_by_igp_metric; //type: boolean
 
+
+                                        YLeaf paths_value; //type: uint32
+                                        YLeaf unequal_cost; //type: boolean
+                                        YLeaf selective; //type: boolean
+                                        YLeaf order_by_igp_metric; //type: boolean
 
 
 
@@ -6362,9 +6433,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all; //type: boolean
-                                        Value route_policy_name; //type: string
 
+
+                                        YLeaf all; //type: boolean
+                                        YLeaf route_policy_name; //type: string
 
 
 
@@ -6384,11 +6456,12 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value paths_value; //type: uint32
-                                        Value unequal_cost; //type: boolean
-                                        Value selective; //type: boolean
-                                        Value order_by_igp_metric; //type: boolean
 
+
+                                        YLeaf paths_value; //type: uint32
+                                        YLeaf unequal_cost; //type: boolean
+                                        YLeaf selective; //type: boolean
+                                        YLeaf order_by_igp_metric; //type: boolean
 
 
 
@@ -6408,9 +6481,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value seconds; //type: uint32
-                                        Value milliseconds; //type: uint32
 
+
+                                        YLeaf seconds; //type: uint32
+                                        YLeaf milliseconds; //type: uint32
 
 
 
@@ -6432,6 +6506,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class AggregateAddress : public Entity
                                     {
                                         public:
@@ -6445,13 +6520,14 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value aggregate_addr; //type: string
-                                            Value aggregate_prefix; //type: uint16
-                                            Value generate_set_info; //type: boolean
-                                            Value generate_confederation_set_info; //type: boolean
-                                            Value summary_only; //type: boolean
-                                            Value route_policy_name; //type: string
 
+
+                                            YLeaf aggregate_addr; //type: string
+                                            YLeaf aggregate_prefix; //type: uint16
+                                            YLeaf generate_set_info; //type: boolean
+                                            YLeaf generate_confederation_set_info; //type: boolean
+                                            YLeaf summary_only; //type: boolean
+                                            YLeaf route_policy_name; //type: string
 
 
 
@@ -6477,12 +6553,13 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value half_life; //type: uint32
-                                        Value reuse_threshold; //type: uint32
-                                        Value suppress_threshold; //type: uint32
-                                        Value suppress_time; //type: uint32
-                                        Value route_policy_name; //type: string
 
+
+                                        YLeaf half_life; //type: uint32
+                                        YLeaf reuse_threshold; //type: uint32
+                                        YLeaf suppress_threshold; //type: uint32
+                                        YLeaf suppress_time; //type: uint32
+                                        YLeaf route_policy_name; //type: string
 
 
 
@@ -6502,10 +6579,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value default_metric; //type: uint32
-                                        Value route_policy_name; //type: string
-                                        Value not_used; //type: uint32
 
+
+                                        YLeaf default_metric; //type: uint32
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf not_used; //type: uint32
 
 
 
@@ -6525,9 +6603,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value default_metric; //type: uint32
-                                        Value route_policy_name; //type: string
 
+
+                                        YLeaf default_metric; //type: uint32
+                                        YLeaf route_policy_name; //type: string
 
 
 
@@ -6547,10 +6626,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value default_metric; //type: uint32
-                                        Value route_policy_name; //type: string
-                                        Value not_used; //type: uint32
 
+
+                                        YLeaf default_metric; //type: uint32
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf not_used; //type: uint32
 
 
 
@@ -6570,10 +6650,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value external_routes; //type: uint32
-                                        Value internal_routes; //type: uint32
-                                        Value local_routes; //type: uint32
 
+
+                                        YLeaf external_routes; //type: uint32
+                                        YLeaf internal_routes; //type: uint32
+                                        YLeaf local_routes; //type: uint32
 
 
 
@@ -6593,9 +6674,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value label_allocation_mode; //type: string
-                                        Value route_policy_name; //type: string
 
+
+                                        YLeaf label_allocation_mode; //type: string
+                                        YLeaf route_policy_name; //type: string
 
 
 
@@ -6617,6 +6699,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class EigrpRoute : public Entity
                                     {
                                         public:
@@ -6630,11 +6713,12 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value instance_name; //type: string
-                                            Value default_metric; //type: uint32
-                                            Value route_policy_name; //type: string
-                                            Value redist_type; //type: string
 
+
+                                            YLeaf instance_name; //type: string
+                                            YLeaf default_metric; //type: uint32
+                                            YLeaf route_policy_name; //type: string
+                                            YLeaf redist_type; //type: string
 
 
 
@@ -6662,6 +6746,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class SourcedNetwork : public Entity
                                     {
                                         public:
@@ -6675,11 +6760,12 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value network_addr; //type: string
-                                            Value network_prefix; //type: uint16
-                                            Value backdoor; //type: boolean
-                                            Value route_policy_name; //type: string
 
+
+                                            YLeaf network_addr; //type: string
+                                            YLeaf network_prefix; //type: uint16
+                                            YLeaf backdoor; //type: boolean
+                                            YLeaf route_policy_name; //type: string
 
 
 
@@ -6705,10 +6791,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value default_metric; //type: uint32
-                                        Value route_policy_name; //type: string
-                                        Value not_used; //type: uint32
 
+
+                                        YLeaf default_metric; //type: uint32
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf not_used; //type: uint32
 
 
 
@@ -6728,9 +6815,10 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all; //type: boolean
-                                        Value route_policy_name; //type: string
 
+
+                                        YLeaf all; //type: boolean
+                                        YLeaf route_policy_name; //type: string
 
 
 
@@ -6750,11 +6838,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value selection; //type: BgpafAdditionalPathsCfgEnum
-                                        Value route_policy_name; //type: string
 
 
-                                        class BgpafAdditionalPathsCfgEnum;
+                                        YLeaf selection; //type: BgpafAdditionalPathsCfgEnum
+                                        YLeaf route_policy_name; //type: string
+
 
 
                                 }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AdditionalPathsSelection
@@ -6775,6 +6863,7 @@ class Bgp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class OspfRoute : public Entity
                                     {
                                         public:
@@ -6788,11 +6877,12 @@ class Bgp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value instance_name; //type: string
-                                            Value default_metric; //type: uint32
-                                            Value route_policy_name; //type: string
-                                            Value redist_type; //type: string
 
+
+                                            YLeaf instance_name; //type: string
+                                            YLeaf default_metric; //type: uint32
+                                            YLeaf route_policy_name; //type: string
+                                            YLeaf redist_type; //type: string
 
 
 
@@ -6818,10 +6908,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value default_metric; //type: uint32
-                                        Value route_policy_name; //type: string
-                                        Value not_used; //type: uint32
 
+
+                                        YLeaf default_metric; //type: uint32
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf not_used; //type: uint32
 
 
 
@@ -6841,10 +6932,11 @@ class Bgp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value default_metric; //type: uint32
-                                        Value route_policy_name; //type: string
-                                        Value not_used; //type: uint32
 
+
+                                        YLeaf default_metric; //type: uint32
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf not_used; //type: uint32
 
 
 
@@ -6877,9 +6969,6 @@ class Bgp : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::StaticRoutes> static_routes; // presence node
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SubscriberRoutes> subscriber_routes; // presence node
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_bgp_cfg::Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll> vrf_all;
-                                    class BgpAddressFamilyEnum;
-                                    class BgpafAdditionalPathsCfgEnum;
-                                    class BgpafAdditionalPathsCfgEnum;
 
 
                             }; // Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf
@@ -6906,6 +6995,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class RpkiStaticRoute : public Entity
                             {
                                 public:
@@ -6919,11 +7009,12 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value addrress; //type: string
-                                    Value minimum; //type: int32
-                                    Value maximum; //type: int32
-                                    Value as; //type: int32
 
+
+                                    YLeaf addrress; //type: string
+                                    YLeaf minimum; //type: int32
+                                    YLeaf maximum; //type: int32
+                                    YLeaf as; //type: int32
 
 
 
@@ -6951,6 +7042,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class MplsActivatedInterface : public Entity
                             {
                                 public:
@@ -6964,8 +7056,9 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
 
+
+                                    YLeaf interface_name; //type: string
 
 
 
@@ -6991,10 +7084,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value keepalive; //type: uint32
-                                Value hold_time; //type: uint32
-                                Value min_accept_hold_time; //type: uint32
 
+
+                                YLeaf keepalive; //type: uint32
+                                YLeaf hold_time; //type: uint32
+                                YLeaf min_accept_hold_time; //type: uint32
 
 
 
@@ -7014,9 +7108,10 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value detection_multiplier; //type: uint32
-                                Value interval; //type: uint32
 
+
+                                YLeaf detection_multiplier; //type: uint32
+                                YLeaf interval; //type: uint32
 
 
 
@@ -7036,9 +7131,10 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value socket_send_size; //type: uint32
-                                Value bgp_send_size; //type: uint32
 
+
+                                YLeaf socket_send_size; //type: uint32
+                                YLeaf bgp_send_size; //type: uint32
 
 
 
@@ -7058,9 +7154,10 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value socket_receive_size; //type: uint32
-                                Value bgp_receive_size; //type: uint32
 
+
+                                YLeaf socket_receive_size; //type: uint32
+                                YLeaf bgp_receive_size; //type: uint32
 
 
 
@@ -7136,6 +7233,7 @@ class BmpServers : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class BmpServer : public Entity
     {
         public:
@@ -7149,17 +7247,18 @@ class BmpServers : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value server_id; //type: uint32
-            Value create; //type: empty
-            Value maximum_buffer_size; //type: uint32
-            Value initial_delay; //type: uint32
-            Value flapping_delay; //type: uint32
-            Value status_report_interval; //type: uint32
-            Value description; //type: string
-            Value vrf; //type: string
-            Value shutdown; //type: boolean
-            Value update_source_interface; //type: string
 
+
+            YLeaf server_id; //type: uint32
+            YLeaf create; //type: empty
+            YLeaf maximum_buffer_size; //type: uint32
+            YLeaf initial_delay; //type: uint32
+            YLeaf flapping_delay; //type: uint32
+            YLeaf status_report_interval; //type: uint32
+            YLeaf description; //type: string
+            YLeaf vrf; //type: string
+            YLeaf shutdown; //type: boolean
+            YLeaf update_source_interface; //type: string
 
         class InitialRefreshDelay : public Entity
         {
@@ -7174,9 +7273,10 @@ class BmpServers : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value delay; //type: uint32
-                Value spread; //type: uint32
 
+
+                YLeaf delay; //type: uint32
+                YLeaf spread; //type: uint32
 
 
 
@@ -7196,9 +7296,10 @@ class BmpServers : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value host; //type: string
-                Value port; //type: uint16
 
+
+                YLeaf host; //type: string
+                YLeaf port; //type: uint16
 
 
 
@@ -7218,12 +7319,11 @@ class BmpServers : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: BgpTosEnum
-                Value value_; //type: one of uint32, enumeration
 
 
-                class BgpTosEnum;
-                class BgpPrecedenceDscpEnum;
+                YLeaf type; //type: BgpTosEnum
+                YLeaf value_; //type: one of uint32, enumeration
+
 
 
         }; // BmpServers::BmpServer::Tos
@@ -7246,156 +7346,156 @@ class BmpServers : public Entity
 class BgpOrfEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value receive;
-        static const Enum::Value send;
-        static const Enum::Value both;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf receive;
+        static const Enum::YLeaf send;
+        static const Enum::YLeaf both;
 
 };
 
 class BgpFlowspecValidationCfgEnum : public Enum
 {
     public:
-        static const Enum::Value enable;
-        static const Enum::Value disable;
-        static const Enum::Value redirect_nexhop_disable;
+        static const Enum::YLeaf enable;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf redirect_nexhop_disable;
 
 };
 
 class BgpSignalEnum : public Enum
 {
     public:
-        static const Enum::Value bgp_disable;
-        static const Enum::Value ldp_disable;
+        static const Enum::YLeaf bgp_disable;
+        static const Enum::YLeaf ldp_disable;
 
 };
 
 class BgpBfdEnableModeEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value default_;
-        static const Enum::Value strict;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf default_;
+        static const Enum::YLeaf strict;
 
 };
 
 class BgpVrfRouteTargetEnum : public Enum
 {
     public:
-        static const Enum::Value as;
-        static const Enum::Value ipv4_address;
-        static const Enum::Value four_byte_as;
+        static const Enum::YLeaf as;
+        static const Enum::YLeaf ipv4_address;
+        static const Enum::YLeaf four_byte_as;
 
 };
 
 class BgpClusterIdEnum : public Enum
 {
     public:
-        static const Enum::Value number;
-        static const Enum::Value ipv4_address;
+        static const Enum::YLeaf number;
+        static const Enum::YLeaf ipv4_address;
 
 };
 
 class BgpEbgpSendDmzEnableModeEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value default_;
-        static const Enum::Value cumulative;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf default_;
+        static const Enum::YLeaf cumulative;
 
 };
 
 class BgpRpkiTransportEnum : public Enum
 {
     public:
-        static const Enum::Value tcp;
-        static const Enum::Value ssh;
+        static const Enum::YLeaf tcp;
+        static const Enum::YLeaf ssh;
 
 };
 
 class BgpSiteOfOriginEnum : public Enum
 {
     public:
-        static const Enum::Value as;
-        static const Enum::Value ipv4_address;
-        static const Enum::Value four_byte_as;
+        static const Enum::YLeaf as;
+        static const Enum::YLeaf ipv4_address;
+        static const Enum::YLeaf four_byte_as;
 
 };
 
 class BgpAfEncapsulationEnum : public Enum
 {
     public:
-        static const Enum::Value vx_lan;
+        static const Enum::YLeaf vx_lan;
 
 };
 
 class BgpRouteDistinguisherEnum : public Enum
 {
     public:
-        static const Enum::Value auto_;
-        static const Enum::Value as;
-        static const Enum::Value four_byte_as;
-        static const Enum::Value ipv4_address;
+        static const Enum::YLeaf auto_;
+        static const Enum::YLeaf as;
+        static const Enum::YLeaf four_byte_as;
+        static const Enum::YLeaf ipv4_address;
 
 };
 
 class BgpMvpnSfsSelectEnum : public Enum
 {
     public:
-        static const Enum::Value all_paths;
-        static const Enum::Value highest_ip_address;
+        static const Enum::YLeaf all_paths;
+        static const Enum::YLeaf highest_ip_address;
 
 };
 
 class BgpAdvRtEnum : public Enum
 {
     public:
-        static const Enum::Value bgp_regular_rt;
-        static const Enum::Value bgp_stitching_rt;
+        static const Enum::YLeaf bgp_regular_rt;
+        static const Enum::YLeaf bgp_stitching_rt;
 
 };
 
 class BgpSendMcastAttrCfgEnum : public Enum
 {
     public:
-        static const Enum::Value enable;
-        static const Enum::Value disable;
+        static const Enum::YLeaf enable;
+        static const Enum::YLeaf disable;
 
 };
 
 class BgpTcpModeEnum : public Enum
 {
     public:
-        static const Enum::Value either;
-        static const Enum::Value active_only;
-        static const Enum::Value passive_only;
+        static const Enum::YLeaf either;
+        static const Enum::YLeaf active_only;
+        static const Enum::YLeaf passive_only;
 
 };
 
 class BgpReorgOptEnum : public Enum
 {
     public:
-        static const Enum::Value bgp_cfg_adv;
-        static const Enum::Value bgp_cfg_adv_reorg;
-        static const Enum::Value bgp_cfg_adv_disable;
-        static const Enum::Value bgp_cfg_adv_local;
-        static const Enum::Value bgp_cfg_adv_def_imp_disable;
+        static const Enum::YLeaf bgp_cfg_adv;
+        static const Enum::YLeaf bgp_cfg_adv_reorg;
+        static const Enum::YLeaf bgp_cfg_adv_disable;
+        static const Enum::YLeaf bgp_cfg_adv_local;
+        static const Enum::YLeaf bgp_cfg_adv_def_imp_disable;
 
 };
 
 class BgpAigpCfgPoiEnum : public Enum
 {
     public:
-        static const Enum::Value pre_best_path;
-        static const Enum::Value igp_cost;
+        static const Enum::YLeaf pre_best_path;
+        static const Enum::YLeaf igp_cost;
 
 };
 
 class BgpAigpCfgEnum : public Enum
 {
     public:
-        static const Enum::Value enable;
-        static const Enum::Value disable;
+        static const Enum::YLeaf enable;
+        static const Enum::YLeaf disable;
 
 };
 

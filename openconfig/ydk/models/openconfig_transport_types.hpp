@@ -948,18 +948,18 @@ class CfpIdentity : public openconfig_transport_types::Transceiver_Form_Factor_T
 class LoopbackModeTypeEnum : public Enum
 {
     public:
-        static const Enum::Value NONE;
-        static const Enum::Value FACILITY;
-        static const Enum::Value TERMINAL;
+        static const Enum::YLeaf NONE;
+        static const Enum::YLeaf FACILITY;
+        static const Enum::YLeaf TERMINAL;
 
 };
 
 class AdminStateTypeEnum : public Enum
 {
     public:
-        static const Enum::Value ENABLED;
-        static const Enum::Value DISABLED;
-        static const Enum::Value MAINT;
+        static const Enum::YLeaf ENABLED;
+        static const Enum::YLeaf DISABLED;
+        static const Enum::YLeaf MAINT;
 
 };
 

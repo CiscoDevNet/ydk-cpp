@@ -55,7 +55,7 @@ EntityPath Keychain::Keies::Key::Key_::KeyId::SendLifetime::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -167,7 +167,7 @@ EntityPath Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -268,8 +268,8 @@ bool Keychain::Keies::Key::Key_::KeyId::has_operation() const
 	|| is_set(cryptographic_algorithm.operation)
 	|| is_set(key_id.operation)
 	|| is_set(key_string.operation)
-	|| (accept_lifetime !=  nullptr && is_set(accept_lifetime->operation))
-	|| (send_lifetime !=  nullptr && is_set(send_lifetime->operation));
+	|| (accept_lifetime !=  nullptr && accept_lifetime->has_operation())
+	|| (send_lifetime !=  nullptr && send_lifetime->has_operation());
 }
 
 std::string Keychain::Keies::Key::Key_::KeyId::get_segment_path() const
@@ -286,7 +286,7 @@ EntityPath Keychain::Keies::Key::Key_::KeyId::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -429,7 +429,7 @@ EntityPath Keychain::Keies::Key::Key_::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -523,7 +523,7 @@ bool Keychain::Keies::Key::has_operation() const
     return is_set(operation)
 	|| is_set(key_name.operation)
 	|| is_set(accept_tolerance.operation)
-	|| (key !=  nullptr && is_set(key->operation));
+	|| (key !=  nullptr && key->has_operation());
 }
 
 std::string Keychain::Keies::Key::get_segment_path() const
@@ -742,7 +742,7 @@ bool Keychain::has_data() const
 bool Keychain::has_operation() const
 {
     return is_set(operation)
-	|| (keies !=  nullptr && is_set(keies->operation));
+	|| (keies !=  nullptr && keies->has_operation());
 }
 
 std::string Keychain::get_segment_path() const
@@ -759,7 +759,7 @@ EntityPath Keychain::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -823,12 +823,12 @@ std::unique_ptr<Entity> Keychain::clone_ptr()
     return std::make_unique<Keychain>();
 }
 
-const Enum::Value CrytoAlgoEnum::not_configured {0, "not-configured"};
-const Enum::Value CrytoAlgoEnum::hmac_sha1_12 {2, "hmac-sha1-12"};
-const Enum::Value CrytoAlgoEnum::md5 {3, "md5"};
-const Enum::Value CrytoAlgoEnum::sha1 {4, "sha1"};
-const Enum::Value CrytoAlgoEnum::hmac_md5 {5, "hmac-md5"};
-const Enum::Value CrytoAlgoEnum::hmac_sha1_20 {6, "hmac-sha1-20"};
+const Enum::YLeaf CrytoAlgoEnum::not_configured {0, "not-configured"};
+const Enum::YLeaf CrytoAlgoEnum::hmac_sha1_12 {2, "hmac-sha1-12"};
+const Enum::YLeaf CrytoAlgoEnum::md5 {3, "md5"};
+const Enum::YLeaf CrytoAlgoEnum::sha1 {4, "sha1"};
+const Enum::YLeaf CrytoAlgoEnum::hmac_md5 {5, "hmac-md5"};
+const Enum::YLeaf CrytoAlgoEnum::hmac_sha1_20 {6, "hmac-sha1-20"};
 
 
 }

@@ -26,6 +26,7 @@ class Fpd : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Fpd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Fpd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Devices : public Entity
             {
@@ -72,6 +75,7 @@ class Fpd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Device : public Entity
                 {
                     public:
@@ -85,17 +89,16 @@ class Fpd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value fpd_type; //type: FpdEnum
-                        Value instance; //type: int32
-                        Value sub_type; //type: FpdSubEnum
-                        Value card_type; //type: string
-                        Value hardware_version; //type: string
-                        Value software_version; //type: string
-                        Value is_upgrade_downgrade; //type: boolean
 
 
-                        class FpdEnum;
-                        class FpdSubEnum;
+                        YLeaf fpd_type; //type: FpdEnum
+                        YLeaf instance; //type: int32
+                        YLeaf sub_type; //type: FpdSubEnum
+                        YLeaf card_type; //type: string
+                        YLeaf hardware_version; //type: string
+                        YLeaf software_version; //type: string
+                        YLeaf is_upgrade_downgrade; //type: boolean
+
 
 
                 }; // Fpd::Nodes::Node::Devices::Device
@@ -134,6 +137,7 @@ class Fpd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class AllPackage : public Entity
         {
             public:
@@ -147,17 +151,16 @@ class Fpd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value card_type; //type: string
-                Value card_description; //type: string
-                Value fpd_type; //type: Fpd1Enum
-                Value fpd_sub_type; //type: FpdSub1Enum
-                Value software_version; //type: string
-                Value minimum_required_software_version; //type: string
-                Value minimum_required_hardware_version; //type: string
 
 
-                class FpdSub1Enum;
-                class Fpd1Enum;
+                YLeaf card_type; //type: string
+                YLeaf card_description; //type: string
+                YLeaf fpd_type; //type: Fpd1Enum
+                YLeaf fpd_sub_type; //type: FpdSub1Enum
+                YLeaf software_version; //type: string
+                YLeaf minimum_required_software_version; //type: string
+                YLeaf minimum_required_hardware_version; //type: string
+
 
 
         }; // Fpd::Packages::AllPackage
@@ -179,98 +182,98 @@ class Fpd : public Entity
 class FpdSub1Enum : public Enum
 {
     public:
-        static const Enum::Value fpga1;
-        static const Enum::Value rommon;
-        static const Enum::Value rommona;
-        static const Enum::Value fabric_loader;
-        static const Enum::Value fpga2;
-        static const Enum::Value fpga3;
-        static const Enum::Value fpga4;
-        static const Enum::Value fpga5;
-        static const Enum::Value fpga6;
-        static const Enum::Value fpga7;
-        static const Enum::Value fpga8;
-        static const Enum::Value fpga9;
-        static const Enum::Value fpga10;
-        static const Enum::Value fpga11;
-        static const Enum::Value fpga12;
-        static const Enum::Value fpga13;
-        static const Enum::Value fpga14;
-        static const Enum::Value cpld1;
-        static const Enum::Value cpld2;
-        static const Enum::Value cpld3;
-        static const Enum::Value cpld4;
-        static const Enum::Value cpld5;
-        static const Enum::Value cpld6;
-        static const Enum::Value cbc;
-        static const Enum::Value hsbi;
-        static const Enum::Value txpod;
-        static const Enum::Value rxpod;
-        static const Enum::Value ibmc;
-        static const Enum::Value fsbl;
-        static const Enum::Value lnx;
-        static const Enum::Value fpga15;
-        static const Enum::Value fpga16;
-        static const Enum::Value fc_fsbl;
-        static const Enum::Value fc_lnx;
+        static const Enum::YLeaf fpga1;
+        static const Enum::YLeaf rommon;
+        static const Enum::YLeaf rommona;
+        static const Enum::YLeaf fabric_loader;
+        static const Enum::YLeaf fpga2;
+        static const Enum::YLeaf fpga3;
+        static const Enum::YLeaf fpga4;
+        static const Enum::YLeaf fpga5;
+        static const Enum::YLeaf fpga6;
+        static const Enum::YLeaf fpga7;
+        static const Enum::YLeaf fpga8;
+        static const Enum::YLeaf fpga9;
+        static const Enum::YLeaf fpga10;
+        static const Enum::YLeaf fpga11;
+        static const Enum::YLeaf fpga12;
+        static const Enum::YLeaf fpga13;
+        static const Enum::YLeaf fpga14;
+        static const Enum::YLeaf cpld1;
+        static const Enum::YLeaf cpld2;
+        static const Enum::YLeaf cpld3;
+        static const Enum::YLeaf cpld4;
+        static const Enum::YLeaf cpld5;
+        static const Enum::YLeaf cpld6;
+        static const Enum::YLeaf cbc;
+        static const Enum::YLeaf hsbi;
+        static const Enum::YLeaf txpod;
+        static const Enum::YLeaf rxpod;
+        static const Enum::YLeaf ibmc;
+        static const Enum::YLeaf fsbl;
+        static const Enum::YLeaf lnx;
+        static const Enum::YLeaf fpga15;
+        static const Enum::YLeaf fpga16;
+        static const Enum::YLeaf fc_fsbl;
+        static const Enum::YLeaf fc_lnx;
 
 };
 
 class FpdEnum : public Enum
 {
     public:
-        static const Enum::Value spa;
-        static const Enum::Value lc;
-        static const Enum::Value sam;
+        static const Enum::YLeaf spa;
+        static const Enum::YLeaf lc;
+        static const Enum::YLeaf sam;
 
 };
 
 class Fpd1Enum : public Enum
 {
     public:
-        static const Enum::Value spa;
-        static const Enum::Value lc;
-        static const Enum::Value sam;
+        static const Enum::YLeaf spa;
+        static const Enum::YLeaf lc;
+        static const Enum::YLeaf sam;
 
 };
 
 class FpdSubEnum : public Enum
 {
     public:
-        static const Enum::Value fpga1;
-        static const Enum::Value rommon;
-        static const Enum::Value rommona;
-        static const Enum::Value fabldr;
-        static const Enum::Value fpga2;
-        static const Enum::Value fpga3;
-        static const Enum::Value fpga4;
-        static const Enum::Value fpga5;
-        static const Enum::Value fpga6;
-        static const Enum::Value fpga7;
-        static const Enum::Value fpga8;
-        static const Enum::Value fpga9;
-        static const Enum::Value fpga10;
-        static const Enum::Value fpga11;
-        static const Enum::Value fpga12;
-        static const Enum::Value fpga13;
-        static const Enum::Value fpga14;
-        static const Enum::Value cpld1;
-        static const Enum::Value cpld2;
-        static const Enum::Value cpld3;
-        static const Enum::Value cpld4;
-        static const Enum::Value cpld5;
-        static const Enum::Value cpld6;
-        static const Enum::Value cbc;
-        static const Enum::Value hsbi;
-        static const Enum::Value txpod;
-        static const Enum::Value rxpod;
-        static const Enum::Value ibmc;
-        static const Enum::Value fsbl;
-        static const Enum::Value lnx;
-        static const Enum::Value fpga15;
-        static const Enum::Value fpga16;
-        static const Enum::Value fc_fsbl;
-        static const Enum::Value fc_lnx;
+        static const Enum::YLeaf fpga1;
+        static const Enum::YLeaf rommon;
+        static const Enum::YLeaf rommona;
+        static const Enum::YLeaf fabldr;
+        static const Enum::YLeaf fpga2;
+        static const Enum::YLeaf fpga3;
+        static const Enum::YLeaf fpga4;
+        static const Enum::YLeaf fpga5;
+        static const Enum::YLeaf fpga6;
+        static const Enum::YLeaf fpga7;
+        static const Enum::YLeaf fpga8;
+        static const Enum::YLeaf fpga9;
+        static const Enum::YLeaf fpga10;
+        static const Enum::YLeaf fpga11;
+        static const Enum::YLeaf fpga12;
+        static const Enum::YLeaf fpga13;
+        static const Enum::YLeaf fpga14;
+        static const Enum::YLeaf cpld1;
+        static const Enum::YLeaf cpld2;
+        static const Enum::YLeaf cpld3;
+        static const Enum::YLeaf cpld4;
+        static const Enum::YLeaf cpld5;
+        static const Enum::YLeaf cpld6;
+        static const Enum::YLeaf cbc;
+        static const Enum::YLeaf hsbi;
+        static const Enum::YLeaf txpod;
+        static const Enum::YLeaf rxpod;
+        static const Enum::YLeaf ibmc;
+        static const Enum::YLeaf fsbl;
+        static const Enum::YLeaf lnx;
+        static const Enum::YLeaf fpga15;
+        static const Enum::YLeaf fpga16;
+        static const Enum::YLeaf fc_fsbl;
+        static const Enum::YLeaf fc_lnx;
 
 };
 

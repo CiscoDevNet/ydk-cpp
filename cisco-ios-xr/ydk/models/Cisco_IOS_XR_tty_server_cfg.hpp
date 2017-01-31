@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_tty_management_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_tty_server_cfg {
@@ -28,6 +27,7 @@ class Tty : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class TtyLines : public Entity
     {
         public:
@@ -43,6 +43,7 @@ class Tty : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TtyLine : public Entity
         {
             public:
@@ -56,8 +57,9 @@ class Tty : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
 
+
+                YLeaf name; //type: string
 
             class General : public Entity
             {
@@ -72,10 +74,11 @@ class Tty : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value length; //type: uint32
-                    Value absolute_timeout; //type: uint32
-                    Value width; //type: uint32
 
+
+                    YLeaf length; //type: uint32
+                    YLeaf absolute_timeout; //type: uint32
+                    YLeaf width; //type: uint32
 
 
 
@@ -95,8 +98,9 @@ class Tty : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value transparent; //type: empty
 
+
+                    YLeaf transparent; //type: empty
 
 
 
@@ -116,10 +120,11 @@ class Tty : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value login_timeout; //type: uint32
-                    Value secret; //type: string
-                    Value password; //type: string
 
+
+                    YLeaf login_timeout; //type: uint32
+                    YLeaf secret; //type: string
+                    YLeaf password; //type: string
 
                 class UserGroups : public Entity
                 {
@@ -136,6 +141,7 @@ class Tty : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class UserGroup : public Entity
                     {
                         public:
@@ -149,9 +155,10 @@ class Tty : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value name; //type: string
-                            Value category; //type: string
 
+
+                            YLeaf name; //type: string
+                            YLeaf category; //type: string
 
 
 
@@ -177,10 +184,11 @@ class Tty : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value exec; //type: string
-                        Value event_manager; //type: string
-                        Value commands; //type: string
 
+
+                        YLeaf exec; //type: string
+                        YLeaf event_manager; //type: string
+                        YLeaf commands; //type: string
 
 
 
@@ -200,8 +208,9 @@ class Tty : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value login; //type: string
 
+
+                        YLeaf login; //type: string
 
 
 
@@ -221,9 +230,10 @@ class Tty : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value exec; //type: string
-                        Value commands; //type: string
 
+
+                        YLeaf exec; //type: string
+                        YLeaf commands; //type: string
 
 
 
@@ -252,8 +262,9 @@ class Tty : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value time_stamp; //type: boolean
 
+
+                    YLeaf time_stamp; //type: boolean
 
                 class Timeout : public Entity
                 {
@@ -268,9 +279,10 @@ class Tty : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value minutes; //type: uint32
-                        Value seconds; //type: uint32
 
+
+                        YLeaf minutes; //type: uint32
+                        YLeaf seconds; //type: uint32
 
 
 
@@ -296,14 +308,15 @@ class Tty : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value disconnect_character; //type: one of string, uint8
-                    Value acl_in; //type: string
-                    Value acl_out; //type: string
-                    Value cli_white_space_completion; //type: empty
-                    Value session_limit; //type: uint32
-                    Value escape_character; //type: one of string, uint8
-                    Value transport_preferred; //type: TtyTransportProtocolEnum
 
+
+                    YLeaf disconnect_character; //type: one of string, uint8
+                    YLeaf acl_in; //type: string
+                    YLeaf acl_out; //type: string
+                    YLeaf cli_white_space_completion; //type: empty
+                    YLeaf session_limit; //type: uint32
+                    YLeaf escape_character; //type: one of string, uint8
+                    YLeaf transport_preferred; //type: TtyTransportProtocolEnum
 
                 class TransportInput : public Entity
                 {
@@ -318,15 +331,13 @@ class Tty : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value select; //type: TtyTransportProtocolSelectEnum
-                        Value protocol1; //type: TtyTransportProtocolEnum
-                        Value protocol2; //type: TtyTransportProtocolEnum
-                        Value none; //type: int32
 
 
-                        class TtyTransportProtocolEnum;
-                        class TtyTransportProtocolEnum;
-                        class TtyTransportProtocolSelectEnum;
+                        YLeaf select; //type: TtyTransportProtocolSelectEnum
+                        YLeaf protocol1; //type: TtyTransportProtocolEnum
+                        YLeaf protocol2; //type: TtyTransportProtocolEnum
+                        YLeaf none; //type: int32
+
 
 
                 }; // Tty::TtyLines::TtyLine::Connection::TransportInput
@@ -345,15 +356,13 @@ class Tty : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value select; //type: TtyTransportProtocolSelectEnum
-                        Value protocol1; //type: TtyTransportProtocolEnum
-                        Value protocol2; //type: TtyTransportProtocolEnum
-                        Value none; //type: int32
 
 
-                        class TtyTransportProtocolEnum;
-                        class TtyTransportProtocolEnum;
-                        class TtyTransportProtocolSelectEnum;
+                        YLeaf select; //type: TtyTransportProtocolSelectEnum
+                        YLeaf protocol1; //type: TtyTransportProtocolEnum
+                        YLeaf protocol2; //type: TtyTransportProtocolEnum
+                        YLeaf none; //type: int32
+
 
 
                 }; // Tty::TtyLines::TtyLine::Connection::TransportOutput
@@ -372,11 +381,11 @@ class Tty : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value timeout; //type: uint32
-                        Value direction; //type: TtySessionTimeoutDirectionEnum
 
 
-                        class TtySessionTimeoutDirectionEnum;
+                        YLeaf timeout; //type: uint32
+                        YLeaf direction; //type: TtySessionTimeoutDirectionEnum
+
 
 
                 }; // Tty::TtyLines::TtyLine::Connection::SessionTimeout
@@ -385,7 +394,6 @@ class Tty : public Entity
                     std::unique_ptr<Cisco_IOS_XR_tty_server_cfg::Tty::TtyLines::TtyLine::Connection::SessionTimeout> session_timeout; // presence node
                     std::unique_ptr<Cisco_IOS_XR_tty_server_cfg::Tty::TtyLines::TtyLine::Connection::TransportInput> transport_input;
                     std::unique_ptr<Cisco_IOS_XR_tty_server_cfg::Tty::TtyLines::TtyLine::Connection::TransportOutput> transport_output; // presence node
-                    class TtyTransportProtocolEnum;
 
 
             }; // Tty::TtyLines::TtyLine::Connection
@@ -404,10 +412,10 @@ class Tty : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value pager; //type: TtyPagerEnum
 
 
-                    class TtyPagerEnum;
+                    YLeaf pager; //type: TtyPagerEnum
+
 
 
             }; // Tty::TtyLines::TtyLine::ExecMode

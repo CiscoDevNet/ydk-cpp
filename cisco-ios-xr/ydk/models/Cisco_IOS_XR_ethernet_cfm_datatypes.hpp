@@ -14,37 +14,37 @@ namespace Cisco_IOS_XR_ethernet_cfm_datatypes {
 class BandwidthNotificationStateEnum : public Enum
 {
     public:
-        static const Enum::Value ok;
-        static const Enum::Value degraded;
+        static const Enum::YLeaf ok;
+        static const Enum::YLeaf degraded;
 
 };
 
 class CfmMepDirEnum : public Enum
 {
     public:
-        static const Enum::Value up;
-        static const Enum::Value down;
+        static const Enum::YLeaf up;
+        static const Enum::YLeaf down;
 
 };
 
 class CfmCcmIntervalEnum : public Enum
 {
     public:
-        static const Enum::Value Y_3__DOT__3ms;
-        static const Enum::Value Y_10ms;
-        static const Enum::Value Y_100ms;
-        static const Enum::Value Y_1s;
-        static const Enum::Value Y_10s;
-        static const Enum::Value Y_1m;
-        static const Enum::Value Y_10m;
+        static const Enum::YLeaf Y_3__DOT__3ms;
+        static const Enum::YLeaf Y_10ms;
+        static const Enum::YLeaf Y_100ms;
+        static const Enum::YLeaf Y_1s;
+        static const Enum::YLeaf Y_10s;
+        static const Enum::YLeaf Y_1m;
+        static const Enum::YLeaf Y_10m;
 
 };
 
 class CfmAisIntervalEnum : public Enum
 {
     public:
-        static const Enum::Value Y_1s;
-        static const Enum::Value Y_1m;
+        static const Enum::YLeaf Y_1s;
+        static const Enum::YLeaf Y_1m;
 
 };
 

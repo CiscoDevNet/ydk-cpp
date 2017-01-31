@@ -26,6 +26,7 @@ class Icmp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class IpProtocol : public Entity
     {
         public:
@@ -39,8 +40,9 @@ class Icmp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value protocol_type; //type: string
 
+
+            YLeaf protocol_type; //type: string
 
         class RateLimit : public Entity
         {
@@ -57,6 +59,7 @@ class Icmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Unreachable : public Entity
             {
                 public:
@@ -70,9 +73,10 @@ class Icmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value rate; //type: uint32
-                    Value fragmentation; //type: uint32
 
+
+                    YLeaf rate; //type: uint32
+                    YLeaf fragmentation; //type: uint32
 
 
 
@@ -98,10 +102,10 @@ class Icmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value source_address_policy; //type: SourcePolicyEnum
 
 
-                class SourcePolicyEnum;
+                YLeaf source_address_policy; //type: SourcePolicyEnum
+
 
 
         }; // Icmp::IpProtocol::Source
@@ -123,8 +127,8 @@ class Icmp : public Entity
 class SourcePolicyEnum : public Enum
 {
     public:
-        static const Enum::Value vrf;
-        static const Enum::Value rfc;
+        static const Enum::YLeaf vrf;
+        static const Enum::YLeaf rfc;
 
 };
 

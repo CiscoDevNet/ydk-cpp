@@ -109,7 +109,7 @@ bool MplsOam::ReplyMode::has_data() const
 bool MplsOam::ReplyMode::has_operation() const
 {
     return is_set(operation)
-	|| (control_channel !=  nullptr && is_set(control_channel->operation));
+	|| (control_channel !=  nullptr && control_channel->has_operation());
 }
 
 std::string MplsOam::ReplyMode::get_segment_path() const
@@ -217,7 +217,7 @@ bool MplsOam::has_operation() const
     return is_set(operation)
 	|| is_set(disable_vendor_extension.operation)
 	|| is_set(enable_oam.operation)
-	|| (reply_mode !=  nullptr && is_set(reply_mode->operation));
+	|| (reply_mode !=  nullptr && reply_mode->has_operation());
 }
 
 std::string MplsOam::get_segment_path() const
@@ -234,7 +234,7 @@ EntityPath MplsOam::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

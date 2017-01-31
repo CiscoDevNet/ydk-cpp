@@ -8,9 +8,9 @@ namespace ydk {
 namespace Cisco_IOS_XR_types {
 
 
-const Enum::Value EncryptionTypeEnum::none {0, "none"};
-const Enum::Value EncryptionTypeEnum::md5 {1, "md5"};
-const Enum::Value EncryptionTypeEnum::proprietary {2, "proprietary"};
+const Enum::YLeaf EncryptionTypeEnum::none {0, "none"};
+const Enum::YLeaf EncryptionTypeEnum::md5 {1, "md5"};
+const Enum::YLeaf EncryptionTypeEnum::proprietary {2, "proprietary"};
 
 
 }

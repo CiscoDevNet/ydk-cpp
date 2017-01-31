@@ -305,7 +305,7 @@ bool Netconf::Agent::Tty::has_data() const
 bool Netconf::Agent::Tty::has_operation() const
 {
     return is_set(operation)
-	|| (sessions !=  nullptr && is_set(sessions->operation));
+	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
 std::string Netconf::Agent::Tty::get_segment_path() const
@@ -406,7 +406,7 @@ bool Netconf::Agent::has_data() const
 bool Netconf::Agent::has_operation() const
 {
     return is_set(operation)
-	|| (tty !=  nullptr && is_set(tty->operation));
+	|| (tty !=  nullptr && tty->has_operation());
 }
 
 std::string Netconf::Agent::get_segment_path() const
@@ -507,7 +507,7 @@ bool Netconf::has_data() const
 bool Netconf::has_operation() const
 {
     return is_set(operation)
-	|| (agent !=  nullptr && is_set(agent->operation));
+	|| (agent !=  nullptr && agent->has_operation());
 }
 
 std::string Netconf::get_segment_path() const
@@ -524,7 +524,7 @@ EntityPath Netconf::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -885,7 +885,7 @@ bool XrXml::Agent::Tty::has_data() const
 bool XrXml::Agent::Tty::has_operation() const
 {
     return is_set(operation)
-	|| (sessions !=  nullptr && is_set(sessions->operation));
+	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
 std::string XrXml::Agent::Tty::get_segment_path() const
@@ -1262,7 +1262,7 @@ bool XrXml::Agent::Default_::has_data() const
 bool XrXml::Agent::Default_::has_operation() const
 {
     return is_set(operation)
-	|| (sessions !=  nullptr && is_set(sessions->operation));
+	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
 std::string XrXml::Agent::Default_::get_segment_path() const
@@ -1639,7 +1639,7 @@ bool XrXml::Agent::Ssl::has_data() const
 bool XrXml::Agent::Ssl::has_operation() const
 {
     return is_set(operation)
-	|| (sessions !=  nullptr && is_set(sessions->operation));
+	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
 std::string XrXml::Agent::Ssl::get_segment_path() const
@@ -1750,9 +1750,9 @@ bool XrXml::Agent::has_data() const
 bool XrXml::Agent::has_operation() const
 {
     return is_set(operation)
-	|| (default_ !=  nullptr && is_set(default_->operation))
-	|| (ssl !=  nullptr && is_set(ssl->operation))
-	|| (tty !=  nullptr && is_set(tty->operation));
+	|| (default_ !=  nullptr && default_->has_operation())
+	|| (ssl !=  nullptr && ssl->has_operation())
+	|| (tty !=  nullptr && tty->has_operation());
 }
 
 std::string XrXml::Agent::get_segment_path() const
@@ -1899,7 +1899,7 @@ bool XrXml::has_data() const
 bool XrXml::has_operation() const
 {
     return is_set(operation)
-	|| (agent !=  nullptr && is_set(agent->operation));
+	|| (agent !=  nullptr && agent->has_operation());
 }
 
 std::string XrXml::get_segment_path() const
@@ -1916,7 +1916,7 @@ EntityPath XrXml::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1980,11 +1980,11 @@ std::unique_ptr<Entity> XrXml::clone_ptr()
     return std::make_unique<XrXml>();
 }
 
-const Enum::Value XrXmlSessionAlarmRegisterEnum::registered {1, "registered"};
-const Enum::Value XrXmlSessionAlarmRegisterEnum::not_registered {2, "not-registered"};
+const Enum::YLeaf XrXmlSessionAlarmRegisterEnum::registered {1, "registered"};
+const Enum::YLeaf XrXmlSessionAlarmRegisterEnum::not_registered {2, "not-registered"};
 
-const Enum::Value XrXmlSessionStateEnum::idle {1, "idle"};
-const Enum::Value XrXmlSessionStateEnum::busy {2, "busy"};
+const Enum::YLeaf XrXmlSessionStateEnum::idle {1, "idle"};
+const Enum::YLeaf XrXmlSessionStateEnum::busy {2, "busy"};
 
 
 }

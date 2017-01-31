@@ -26,6 +26,7 @@ class FabricStats : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class FabricStats : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class FabricStats : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Statses : public Entity
             {
@@ -72,6 +75,7 @@ class FabricStats : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Stats : public Entity
                 {
                     public:
@@ -85,9 +89,10 @@ class FabricStats : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value type; //type: string
-                        Value stat_table_name; //type: string
 
+
+                        YLeaf type; //type: string
+                        YLeaf stat_table_name; //type: string
 
                     class StatsTable : public Entity
                     {
@@ -104,6 +109,7 @@ class FabricStats : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class FsiStat : public Entity
                         {
                             public:
@@ -117,9 +123,10 @@ class FabricStats : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value count; //type: uint64
-                                Value counter_name; //type: string
 
+
+                                YLeaf count; //type: uint64
+                                YLeaf counter_name; //type: string
 
 
 

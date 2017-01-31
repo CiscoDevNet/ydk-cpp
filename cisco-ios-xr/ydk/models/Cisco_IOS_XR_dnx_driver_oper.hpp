@@ -26,6 +26,7 @@ class Fia : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Fia : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Fia : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class RxLinkInformation : public Entity
             {
@@ -70,6 +73,7 @@ class Fia : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class LinkOptions : public Entity
@@ -87,6 +91,7 @@ class Fia : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class LinkOption : public Entity
                     {
                         public:
@@ -100,8 +105,9 @@ class Fia : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value option; //type: string
 
+
+                            YLeaf option; //type: string
 
                         class RxAsicInstances : public Entity
                         {
@@ -118,6 +124,7 @@ class Fia : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class RxAsicInstance : public Entity
                             {
                                 public:
@@ -131,8 +138,9 @@ class Fia : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value instance; //type: uint32
 
+
+                                    YLeaf instance; //type: uint32
 
                                 class RxLinks : public Entity
                                 {
@@ -149,6 +157,7 @@ class Fia : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class RxLink : public Entity
                                     {
                                         public:
@@ -162,10 +171,11 @@ class Fia : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_number; //type: uint32
-                                            Value end_number; //type: uint32
-                                            Value status_option; //type: string
 
+
+                                            YLeaf start_number; //type: uint32
+                                            YLeaf end_number; //type: uint32
+                                            YLeaf status_option; //type: string
 
                                         class RxLink_ : public Entity
                                         {
@@ -180,18 +190,19 @@ class Fia : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value link; //type: int32
-                                                Value speed; //type: uint32
-                                                Value stage; //type: LinkStageEnum
-                                                Value is_link_valid; //type: boolean
-                                                Value is_conf_pending; //type: boolean
-                                                Value admin_state; //type: AdminStateEnum
-                                                Value oper_state; //type: OperStateEnum
-                                                Value error_state; //type: LinkErrorStateEnum
-                                                Value flags; //type: string
-                                                Value flap_cnt; //type: uint32
-                                                Value num_admin_shuts; //type: uint32
 
+
+                                                YLeaf link; //type: int32
+                                                YLeaf speed; //type: uint32
+                                                YLeaf stage; //type: LinkStageEnum
+                                                YLeaf is_link_valid; //type: boolean
+                                                YLeaf is_conf_pending; //type: boolean
+                                                YLeaf admin_state; //type: AdminStateEnum
+                                                YLeaf oper_state; //type: OperStateEnum
+                                                YLeaf error_state; //type: LinkErrorStateEnum
+                                                YLeaf flags; //type: string
+                                                YLeaf flap_cnt; //type: uint32
+                                                YLeaf num_admin_shuts; //type: uint32
 
                                             class ThisLink : public Entity
                                             {
@@ -206,11 +217,12 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value link_type; //type: LinkEnum
-                                                    Value link_stage; //type: LinkStageEnum
-                                                    Value link_num; //type: uint32
-                                                    Value phy_link_num; //type: uint32
 
+
+                                                    YLeaf link_type; //type: LinkEnum
+                                                    YLeaf link_stage; //type: LinkStageEnum
+                                                    YLeaf link_num; //type: uint32
+                                                    YLeaf phy_link_num; //type: uint32
 
                                                 class AsicId : public Entity
                                                 {
@@ -225,23 +237,20 @@ class Fia : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value rack_type; //type: RackEnum
-                                                        Value asic_type; //type: AsicEnum
-                                                        Value rack_num; //type: uint32
-                                                        Value slot_num; //type: uint32
-                                                        Value asic_instance; //type: uint32
 
 
-                                                        class AsicEnum;
-                                                        class RackEnum;
+                                                        YLeaf rack_type; //type: RackEnum
+                                                        YLeaf asic_type; //type: AsicEnum
+                                                        YLeaf rack_num; //type: uint32
+                                                        YLeaf slot_num; //type: uint32
+                                                        YLeaf asic_instance; //type: uint32
+
 
 
                                                 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId
 
 
                                                     std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId> asic_id;
-                                                    class LinkStageEnum;
-                                                    class LinkEnum;
 
 
                                             }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink
@@ -260,11 +269,12 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value link_type; //type: LinkEnum
-                                                    Value link_stage; //type: LinkStageEnum
-                                                    Value link_num; //type: uint32
-                                                    Value phy_link_num; //type: uint32
 
+
+                                                    YLeaf link_type; //type: LinkEnum
+                                                    YLeaf link_stage; //type: LinkStageEnum
+                                                    YLeaf link_num; //type: uint32
+                                                    YLeaf phy_link_num; //type: uint32
 
                                                 class AsicId : public Entity
                                                 {
@@ -279,23 +289,20 @@ class Fia : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value rack_type; //type: RackEnum
-                                                        Value asic_type; //type: AsicEnum
-                                                        Value rack_num; //type: uint32
-                                                        Value slot_num; //type: uint32
-                                                        Value asic_instance; //type: uint32
 
 
-                                                        class AsicEnum;
-                                                        class RackEnum;
+                                                        YLeaf rack_type; //type: RackEnum
+                                                        YLeaf asic_type; //type: AsicEnum
+                                                        YLeaf rack_num; //type: uint32
+                                                        YLeaf slot_num; //type: uint32
+                                                        YLeaf asic_instance; //type: uint32
+
 
 
                                                 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId
 
 
                                                     std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId> asic_id;
-                                                    class LinkStageEnum;
-                                                    class LinkEnum;
 
 
                                             }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink
@@ -314,11 +321,12 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value link_type; //type: LinkEnum
-                                                    Value link_stage; //type: LinkStageEnum
-                                                    Value link_num; //type: uint32
-                                                    Value phy_link_num; //type: uint32
 
+
+                                                    YLeaf link_type; //type: LinkEnum
+                                                    YLeaf link_stage; //type: LinkStageEnum
+                                                    YLeaf link_num; //type: uint32
+                                                    YLeaf phy_link_num; //type: uint32
 
                                                 class AsicId : public Entity
                                                 {
@@ -333,23 +341,20 @@ class Fia : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value rack_type; //type: RackEnum
-                                                        Value asic_type; //type: AsicEnum
-                                                        Value rack_num; //type: uint32
-                                                        Value slot_num; //type: uint32
-                                                        Value asic_instance; //type: uint32
 
 
-                                                        class AsicEnum;
-                                                        class RackEnum;
+                                                        YLeaf rack_type; //type: RackEnum
+                                                        YLeaf asic_type; //type: AsicEnum
+                                                        YLeaf rack_num; //type: uint32
+                                                        YLeaf slot_num; //type: uint32
+                                                        YLeaf asic_instance; //type: uint32
+
 
 
                                                 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId
 
 
                                                     std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId> asic_id;
-                                                    class LinkStageEnum;
-                                                    class LinkEnum;
 
 
                                             }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw
@@ -368,9 +373,10 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value histnum; //type: uint8
-                                                    Value start_index; //type: uint8
 
+
+                                                    YLeaf histnum; //type: uint8
+                                                    YLeaf start_index; //type: uint8
 
                                                 class Hist : public Entity
                                                 {
@@ -385,16 +391,14 @@ class Fia : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value admin_state; //type: AdminStateEnum
-                                                        Value oper_state; //type: OperStateEnum
-                                                        Value error_state; //type: LinkErrorStateEnum
-                                                        Value timestamp; //type: uint64
-                                                        Value reasons; //type: string
 
 
-                                                        class AdminStateEnum;
-                                                        class LinkErrorStateEnum;
-                                                        class OperStateEnum;
+                                                        YLeaf admin_state; //type: AdminStateEnum
+                                                        YLeaf oper_state; //type: OperStateEnum
+                                                        YLeaf error_state; //type: LinkErrorStateEnum
+                                                        YLeaf timestamp; //type: uint64
+                                                        YLeaf reasons; //type: string
+
 
 
                                                 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist
@@ -410,10 +414,6 @@ class Fia : public Entity
                                                 std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw> far_end_link_in_hw;
                                                 std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History> history;
                                                 std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink> this_link;
-                                                class AdminStateEnum;
-                                                class LinkErrorStateEnum;
-                                                class OperStateEnum;
-                                                class LinkStageEnum;
 
 
                                         }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_
@@ -474,50 +474,51 @@ class Fia : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value drv_version; //type: uint32
-                    Value coeff_major_rev; //type: uint32
-                    Value coeff_minor_rev; //type: uint32
-                    Value functional_role; //type: uint8
-                    Value issu_role; //type: uint8
-                    Value rack_name; //type: string
-                    Value rack_type; //type: int32
-                    Value rack_num; //type: uint8
-                    Value is_driver_ready; //type: boolean
-                    Value card_avail_mask; //type: uint32
-                    Value asic_avail_mask; //type: uint64
-                    Value exp_asic_avail_mask; //type: uint64
-                    Value ucmc_ratio; //type: uint32
-                    Value asic_oper_notify_to_fsdb_pending_bmap; //type: uint64
-                    Value is_full_fgid_download_req; //type: boolean
-                    Value is_fgid_download_in_progress; //type: boolean
-                    Value is_fgid_download_completed; //type: boolean
-                    Value fsdb_conn_active; //type: boolean
-                    Value fgid_conn_active; //type: boolean
-                    Value issu_mgr_conn_active; //type: boolean
-                    Value fsdb_reg_active; //type: boolean
-                    Value fgid_reg_active; //type: boolean
-                    Value issu_mgr_reg_active; //type: boolean
-                    Value num_pm_conn_reqs; //type: uint8
-                    Value num_fsdb_conn_reqs; //type: uint8
-                    Value num_fgid_conn_reqs; //type: uint8
-                    Value num_fstats_conn_reqs; //type: uint8
-                    Value num_cm_conn_reqs; //type: uint8
-                    Value num_issu_mgr_conn_reqs; //type: uint8
-                    Value num_peer_fia_conn_reqs; //type: uint8
-                    Value is_gaspp_registered; //type: boolean
-                    Value is_cih_registered; //type: boolean
-                    Value drvr_initial_startup_timestamp; //type: string
-                    Value drvr_current_startup_timestamp; //type: string
-                    Value num_intf_ports; //type: uint32
-                    Value uc_weight; //type: uint8
-                    Value respawn_count; //type: uint8
-                    Value total_asics; //type: uint8
-                    Value issu_ready_ntfy_pending; //type: boolean
-                    Value issu_abort_sent; //type: boolean
-                    Value issu_abort_rcvd; //type: boolean
-                    Value fc_mode; //type: FcModeEnum
-                    Value board_rev_id; //type: uint32
 
+
+                    YLeaf drv_version; //type: uint32
+                    YLeaf coeff_major_rev; //type: uint32
+                    YLeaf coeff_minor_rev; //type: uint32
+                    YLeaf functional_role; //type: uint8
+                    YLeaf issu_role; //type: uint8
+                    YLeaf rack_name; //type: string
+                    YLeaf rack_type; //type: int32
+                    YLeaf rack_num; //type: uint8
+                    YLeaf is_driver_ready; //type: boolean
+                    YLeaf card_avail_mask; //type: uint32
+                    YLeaf asic_avail_mask; //type: uint64
+                    YLeaf exp_asic_avail_mask; //type: uint64
+                    YLeaf ucmc_ratio; //type: uint32
+                    YLeaf asic_oper_notify_to_fsdb_pending_bmap; //type: uint64
+                    YLeaf is_full_fgid_download_req; //type: boolean
+                    YLeaf is_fgid_download_in_progress; //type: boolean
+                    YLeaf is_fgid_download_completed; //type: boolean
+                    YLeaf fsdb_conn_active; //type: boolean
+                    YLeaf fgid_conn_active; //type: boolean
+                    YLeaf issu_mgr_conn_active; //type: boolean
+                    YLeaf fsdb_reg_active; //type: boolean
+                    YLeaf fgid_reg_active; //type: boolean
+                    YLeaf issu_mgr_reg_active; //type: boolean
+                    YLeaf num_pm_conn_reqs; //type: uint8
+                    YLeaf num_fsdb_conn_reqs; //type: uint8
+                    YLeaf num_fgid_conn_reqs; //type: uint8
+                    YLeaf num_fstats_conn_reqs; //type: uint8
+                    YLeaf num_cm_conn_reqs; //type: uint8
+                    YLeaf num_issu_mgr_conn_reqs; //type: uint8
+                    YLeaf num_peer_fia_conn_reqs; //type: uint8
+                    YLeaf is_gaspp_registered; //type: boolean
+                    YLeaf is_cih_registered; //type: boolean
+                    YLeaf drvr_initial_startup_timestamp; //type: string
+                    YLeaf drvr_current_startup_timestamp; //type: string
+                    YLeaf num_intf_ports; //type: uint32
+                    YLeaf uc_weight; //type: uint8
+                    YLeaf respawn_count; //type: uint8
+                    YLeaf total_asics; //type: uint8
+                    YLeaf issu_ready_ntfy_pending; //type: boolean
+                    YLeaf issu_abort_sent; //type: boolean
+                    YLeaf issu_abort_rcvd; //type: boolean
+                    YLeaf fc_mode; //type: FcModeEnum
+                    YLeaf board_rev_id; //type: uint32
 
                 class DeviceInfo : public Entity
                 {
@@ -532,18 +533,19 @@ class Fia : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value is_valid; //type: boolean
-                        Value fapid; //type: uint32
-                        Value hotplug_event; //type: uint32
-                        Value slice_state; //type: SliceStateEnum
-                        Value admin_state; //type: AdminStateEnum
-                        Value oper_state; //type: AsicOperStateEnum
-                        Value asic_state; //type: AsicAccessStateEnum
-                        Value last_init_cause; //type: AsicInitMethodEnum
-                        Value num_pon_resets; //type: uint32
-                        Value num_hard_resets; //type: uint32
-                        Value local_switch_state; //type: boolean
 
+
+                        YLeaf is_valid; //type: boolean
+                        YLeaf fapid; //type: uint32
+                        YLeaf hotplug_event; //type: uint32
+                        YLeaf slice_state; //type: SliceStateEnum
+                        YLeaf admin_state; //type: AdminStateEnum
+                        YLeaf oper_state; //type: AsicOperStateEnum
+                        YLeaf asic_state; //type: AsicAccessStateEnum
+                        YLeaf last_init_cause; //type: AsicInitMethodEnum
+                        YLeaf num_pon_resets; //type: uint32
+                        YLeaf num_hard_resets; //type: uint32
+                        YLeaf local_switch_state; //type: boolean
 
                     class AsicId : public Entity
                     {
@@ -558,26 +560,20 @@ class Fia : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rack_type; //type: RackEnum
-                            Value asic_type; //type: AsicEnum
-                            Value rack_num; //type: uint32
-                            Value slot_num; //type: uint32
-                            Value asic_instance; //type: uint32
 
 
-                            class AsicEnum;
-                            class RackEnum;
+                            YLeaf rack_type; //type: RackEnum
+                            YLeaf asic_type; //type: AsicEnum
+                            YLeaf rack_num; //type: uint32
+                            YLeaf slot_num; //type: uint32
+                            YLeaf asic_instance; //type: uint32
+
 
 
                     }; // Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId
 
 
                         std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId> asic_id;
-                        class AdminStateEnum;
-                        class AsicAccessStateEnum;
-                        class AsicInitMethodEnum;
-                        class AsicOperStateEnum;
-                        class SliceStateEnum;
 
 
                 }; // Fia::Nodes::Node::DriverInformation::DeviceInfo
@@ -596,22 +592,23 @@ class Fia : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value card_type; //type: int32
-                        Value card_name; //type: string
-                        Value slot_no; //type: int32
-                        Value card_flag; //type: int32
-                        Value evt_flag; //type: int32
-                        Value reg_flag; //type: int32
-                        Value instance; //type: int32
-                        Value card_state; //type: uint8
-                        Value exp_num_asics; //type: uint32
-                        Value exp_num_asics_per_fsdb; //type: uint32
-                        Value is_powered; //type: boolean
-                        Value cxp_avail_bitmap; //type: uint64
-                        Value num_ilkns_per_asic; //type: uint32
-                        Value num_local_ports_per_ilkn; //type: uint32
-                        Value num_cos_per_port; //type: uint8
 
+
+                        YLeaf card_type; //type: int32
+                        YLeaf card_name; //type: string
+                        YLeaf slot_no; //type: int32
+                        YLeaf card_flag; //type: int32
+                        YLeaf evt_flag; //type: int32
+                        YLeaf reg_flag; //type: int32
+                        YLeaf instance; //type: int32
+                        YLeaf card_state; //type: uint8
+                        YLeaf exp_num_asics; //type: uint32
+                        YLeaf exp_num_asics_per_fsdb; //type: uint32
+                        YLeaf is_powered; //type: boolean
+                        YLeaf cxp_avail_bitmap; //type: uint64
+                        YLeaf num_ilkns_per_asic; //type: uint32
+                        YLeaf num_local_ports_per_ilkn; //type: uint32
+                        YLeaf num_cos_per_port; //type: uint8
 
                     class OirCircularBuffer : public Entity
                     {
@@ -626,10 +623,11 @@ class Fia : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value count; //type: int32
-                            Value start; //type: int32
-                            Value end; //type: int32
 
+
+                            YLeaf count; //type: int32
+                            YLeaf start; //type: int32
+                            YLeaf end; //type: int32
 
                         class FiaOirInfo : public Entity
                         {
@@ -644,14 +642,15 @@ class Fia : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value card_flag; //type: int32
-                                Value card_type; //type: int32
-                                Value reg_flag; //type: int32
-                                Value evt_flag; //type: int32
-                                Value rack_num; //type: int32
-                                Value instance; //type: int32
-                                Value cur_card_state; //type: int32
 
+
+                                YLeaf card_flag; //type: int32
+                                YLeaf card_type; //type: int32
+                                YLeaf reg_flag; //type: int32
+                                YLeaf evt_flag; //type: int32
+                                YLeaf rack_num; //type: int32
+                                YLeaf instance; //type: int32
+                                YLeaf cur_card_state; //type: int32
 
 
 
@@ -672,7 +671,6 @@ class Fia : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DriverInformation::CardInfo> > card_info;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DriverInformation::DeviceInfo> > device_info;
-                    class FcModeEnum;
 
 
             }; // Fia::Nodes::Node::DriverInformation
@@ -693,6 +691,7 @@ class Fia : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AsicInstances : public Entity
                 {
                     public:
@@ -708,6 +707,7 @@ class Fia : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AsicInstance : public Entity
                     {
                         public:
@@ -721,9 +721,10 @@ class Fia : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value asic_instance; //type: uint32
-                            Value instance; //type: int32
 
+
+                            YLeaf asic_instance; //type: uint32
+                            YLeaf instance; //type: int32
 
 
 
@@ -757,6 +758,7 @@ class Fia : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TxStatusOptionTable : public Entity
                 {
                     public:
@@ -770,6 +772,7 @@ class Fia : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class TxStatusOption : public Entity
@@ -787,6 +790,7 @@ class Fia : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class TxAsicInstances : public Entity
                         {
                             public:
@@ -802,6 +806,7 @@ class Fia : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class TxAsicInstance : public Entity
                             {
                                 public:
@@ -815,8 +820,9 @@ class Fia : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value instance; //type: uint32
 
+
+                                    YLeaf instance; //type: uint32
 
                                 class TxLinks : public Entity
                                 {
@@ -833,6 +839,7 @@ class Fia : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class TxLink : public Entity
                                     {
                                         public:
@@ -846,9 +853,10 @@ class Fia : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_number; //type: uint32
-                                            Value end_number; //type: uint32
 
+
+                                            YLeaf start_number; //type: uint32
+                                            YLeaf end_number; //type: uint32
 
                                         class TxLink_ : public Entity
                                         {
@@ -863,19 +871,20 @@ class Fia : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value link; //type: int32
-                                                Value speed; //type: uint32
-                                                Value stage; //type: uint8
-                                                Value is_link_valid; //type: boolean
-                                                Value is_conf_pending; //type: boolean
-                                                Value is_power_enabled; //type: boolean
-                                                Value coeff1; //type: uint32
-                                                Value coeff2; //type: uint32
-                                                Value admin_state; //type: AdminStateEnum
-                                                Value oper_state; //type: OperStateEnum
-                                                Value error_state; //type: LinkErrorStateEnum
-                                                Value num_admin_shuts; //type: uint32
 
+
+                                                YLeaf link; //type: int32
+                                                YLeaf speed; //type: uint32
+                                                YLeaf stage; //type: uint8
+                                                YLeaf is_link_valid; //type: boolean
+                                                YLeaf is_conf_pending; //type: boolean
+                                                YLeaf is_power_enabled; //type: boolean
+                                                YLeaf coeff1; //type: uint32
+                                                YLeaf coeff2; //type: uint32
+                                                YLeaf admin_state; //type: AdminStateEnum
+                                                YLeaf oper_state; //type: OperStateEnum
+                                                YLeaf error_state; //type: LinkErrorStateEnum
+                                                YLeaf num_admin_shuts; //type: uint32
 
                                             class ThisLink : public Entity
                                             {
@@ -890,11 +899,12 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value link_type; //type: LinkEnum
-                                                    Value link_stage; //type: LinkStageEnum
-                                                    Value link_num; //type: uint32
-                                                    Value phy_link_num; //type: uint32
 
+
+                                                    YLeaf link_type; //type: LinkEnum
+                                                    YLeaf link_stage; //type: LinkStageEnum
+                                                    YLeaf link_num; //type: uint32
+                                                    YLeaf phy_link_num; //type: uint32
 
                                                 class AsicId : public Entity
                                                 {
@@ -909,23 +919,20 @@ class Fia : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value rack_type; //type: RackEnum
-                                                        Value asic_type; //type: AsicEnum
-                                                        Value rack_num; //type: uint32
-                                                        Value slot_num; //type: uint32
-                                                        Value asic_instance; //type: uint32
 
 
-                                                        class AsicEnum;
-                                                        class RackEnum;
+                                                        YLeaf rack_type; //type: RackEnum
+                                                        YLeaf asic_type; //type: AsicEnum
+                                                        YLeaf rack_num; //type: uint32
+                                                        YLeaf slot_num; //type: uint32
+                                                        YLeaf asic_instance; //type: uint32
+
 
 
                                                 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId
 
 
                                                     std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId> asic_id;
-                                                    class LinkStageEnum;
-                                                    class LinkEnum;
 
 
                                             }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink
@@ -944,11 +951,12 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value link_type; //type: LinkEnum
-                                                    Value link_stage; //type: LinkStageEnum
-                                                    Value link_num; //type: uint32
-                                                    Value phy_link_num; //type: uint32
 
+
+                                                    YLeaf link_type; //type: LinkEnum
+                                                    YLeaf link_stage; //type: LinkStageEnum
+                                                    YLeaf link_num; //type: uint32
+                                                    YLeaf phy_link_num; //type: uint32
 
                                                 class AsicId : public Entity
                                                 {
@@ -963,23 +971,20 @@ class Fia : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value rack_type; //type: RackEnum
-                                                        Value asic_type; //type: AsicEnum
-                                                        Value rack_num; //type: uint32
-                                                        Value slot_num; //type: uint32
-                                                        Value asic_instance; //type: uint32
 
 
-                                                        class AsicEnum;
-                                                        class RackEnum;
+                                                        YLeaf rack_type; //type: RackEnum
+                                                        YLeaf asic_type; //type: AsicEnum
+                                                        YLeaf rack_num; //type: uint32
+                                                        YLeaf slot_num; //type: uint32
+                                                        YLeaf asic_instance; //type: uint32
+
 
 
                                                 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId
 
 
                                                     std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId> asic_id;
-                                                    class LinkStageEnum;
-                                                    class LinkEnum;
 
 
                                             }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink
@@ -998,8 +1003,9 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value dummy; //type: uint32
 
+
+                                                    YLeaf dummy; //type: uint32
 
 
 
@@ -1019,9 +1025,10 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value histnum; //type: uint8
-                                                    Value start_index; //type: uint8
 
+
+                                                    YLeaf histnum; //type: uint8
+                                                    YLeaf start_index; //type: uint8
 
                                                 class Hist : public Entity
                                                 {
@@ -1036,16 +1043,14 @@ class Fia : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value admin_state; //type: AdminStateEnum
-                                                        Value oper_state; //type: OperStateEnum
-                                                        Value error_state; //type: LinkErrorStateEnum
-                                                        Value timestamp; //type: uint64
-                                                        Value reasons; //type: string
 
 
-                                                        class AdminStateEnum;
-                                                        class LinkErrorStateEnum;
-                                                        class OperStateEnum;
+                                                        YLeaf admin_state; //type: AdminStateEnum
+                                                        YLeaf oper_state; //type: OperStateEnum
+                                                        YLeaf error_state; //type: LinkErrorStateEnum
+                                                        YLeaf timestamp; //type: uint64
+                                                        YLeaf reasons; //type: string
+
 
 
                                                 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist
@@ -1061,9 +1066,6 @@ class Fia : public Entity
                                                 std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History> history;
                                                 std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats> stats;
                                                 std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink> this_link;
-                                                class AdminStateEnum;
-                                                class LinkErrorStateEnum;
-                                                class OperStateEnum;
 
 
                                         }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_
@@ -1126,6 +1128,7 @@ class Fia : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class RegisterDumpUnits : public Entity
                 {
                     public:
@@ -1141,6 +1144,7 @@ class Fia : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class RegisterDumpUnit : public Entity
                     {
                         public:
@@ -1154,9 +1158,10 @@ class Fia : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value unit; //type: int32
-                            Value output; //type: string
 
+
+                            YLeaf unit; //type: int32
+                            YLeaf output; //type: string
 
 
 
@@ -1190,6 +1195,7 @@ class Fia : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DiagShellUnits : public Entity
                 {
                     public:
@@ -1205,6 +1211,7 @@ class Fia : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class DiagShellUnit : public Entity
                     {
                         public:
@@ -1218,8 +1225,9 @@ class Fia : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value unit; //type: uint32
 
+
+                            YLeaf unit; //type: uint32
 
                         class Commands : public Entity
                         {
@@ -1236,6 +1244,7 @@ class Fia : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Command : public Entity
                             {
                                 public:
@@ -1249,8 +1258,9 @@ class Fia : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value cmd; //type: string
 
+
+                                    YLeaf cmd; //type: string
 
                                 class Output : public Entity
                                 {
@@ -1265,9 +1275,10 @@ class Fia : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value output; //type: string
-                                        Value output_xr; //type: string
 
+
+                                        YLeaf output; //type: string
+                                        YLeaf output_xr; //type: string
 
 
 
@@ -1319,6 +1330,7 @@ class Fia : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Flags : public Entity
                 {
                     public:
@@ -1334,6 +1346,7 @@ class Fia : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Flag : public Entity
                     {
                         public:
@@ -1347,8 +1360,9 @@ class Fia : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value flag; //type: int32
 
+
+                            YLeaf flag; //type: int32
 
                         class Slots : public Entity
                         {
@@ -1365,6 +1379,7 @@ class Fia : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Slot : public Entity
                             {
                                 public:
@@ -1378,51 +1393,52 @@ class Fia : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value slot; //type: int32
-                                    Value drv_version; //type: uint32
-                                    Value coeff_major_rev; //type: uint32
-                                    Value coeff_minor_rev; //type: uint32
-                                    Value functional_role; //type: uint8
-                                    Value issu_role; //type: uint8
-                                    Value rack_name; //type: string
-                                    Value rack_type; //type: int32
-                                    Value rack_num; //type: uint8
-                                    Value is_driver_ready; //type: boolean
-                                    Value card_avail_mask; //type: uint32
-                                    Value asic_avail_mask; //type: uint64
-                                    Value exp_asic_avail_mask; //type: uint64
-                                    Value ucmc_ratio; //type: uint32
-                                    Value asic_oper_notify_to_fsdb_pending_bmap; //type: uint64
-                                    Value is_full_fgid_download_req; //type: boolean
-                                    Value is_fgid_download_in_progress; //type: boolean
-                                    Value is_fgid_download_completed; //type: boolean
-                                    Value fsdb_conn_active; //type: boolean
-                                    Value fgid_conn_active; //type: boolean
-                                    Value issu_mgr_conn_active; //type: boolean
-                                    Value fsdb_reg_active; //type: boolean
-                                    Value fgid_reg_active; //type: boolean
-                                    Value issu_mgr_reg_active; //type: boolean
-                                    Value num_pm_conn_reqs; //type: uint8
-                                    Value num_fsdb_conn_reqs; //type: uint8
-                                    Value num_fgid_conn_reqs; //type: uint8
-                                    Value num_fstats_conn_reqs; //type: uint8
-                                    Value num_cm_conn_reqs; //type: uint8
-                                    Value num_issu_mgr_conn_reqs; //type: uint8
-                                    Value num_peer_fia_conn_reqs; //type: uint8
-                                    Value is_gaspp_registered; //type: boolean
-                                    Value is_cih_registered; //type: boolean
-                                    Value drvr_initial_startup_timestamp; //type: string
-                                    Value drvr_current_startup_timestamp; //type: string
-                                    Value num_intf_ports; //type: uint32
-                                    Value uc_weight; //type: uint8
-                                    Value respawn_count; //type: uint8
-                                    Value total_asics; //type: uint8
-                                    Value issu_ready_ntfy_pending; //type: boolean
-                                    Value issu_abort_sent; //type: boolean
-                                    Value issu_abort_rcvd; //type: boolean
-                                    Value fc_mode; //type: FcModeEnum
-                                    Value board_rev_id; //type: uint32
 
+
+                                    YLeaf slot; //type: int32
+                                    YLeaf drv_version; //type: uint32
+                                    YLeaf coeff_major_rev; //type: uint32
+                                    YLeaf coeff_minor_rev; //type: uint32
+                                    YLeaf functional_role; //type: uint8
+                                    YLeaf issu_role; //type: uint8
+                                    YLeaf rack_name; //type: string
+                                    YLeaf rack_type; //type: int32
+                                    YLeaf rack_num; //type: uint8
+                                    YLeaf is_driver_ready; //type: boolean
+                                    YLeaf card_avail_mask; //type: uint32
+                                    YLeaf asic_avail_mask; //type: uint64
+                                    YLeaf exp_asic_avail_mask; //type: uint64
+                                    YLeaf ucmc_ratio; //type: uint32
+                                    YLeaf asic_oper_notify_to_fsdb_pending_bmap; //type: uint64
+                                    YLeaf is_full_fgid_download_req; //type: boolean
+                                    YLeaf is_fgid_download_in_progress; //type: boolean
+                                    YLeaf is_fgid_download_completed; //type: boolean
+                                    YLeaf fsdb_conn_active; //type: boolean
+                                    YLeaf fgid_conn_active; //type: boolean
+                                    YLeaf issu_mgr_conn_active; //type: boolean
+                                    YLeaf fsdb_reg_active; //type: boolean
+                                    YLeaf fgid_reg_active; //type: boolean
+                                    YLeaf issu_mgr_reg_active; //type: boolean
+                                    YLeaf num_pm_conn_reqs; //type: uint8
+                                    YLeaf num_fsdb_conn_reqs; //type: uint8
+                                    YLeaf num_fgid_conn_reqs; //type: uint8
+                                    YLeaf num_fstats_conn_reqs; //type: uint8
+                                    YLeaf num_cm_conn_reqs; //type: uint8
+                                    YLeaf num_issu_mgr_conn_reqs; //type: uint8
+                                    YLeaf num_peer_fia_conn_reqs; //type: uint8
+                                    YLeaf is_gaspp_registered; //type: boolean
+                                    YLeaf is_cih_registered; //type: boolean
+                                    YLeaf drvr_initial_startup_timestamp; //type: string
+                                    YLeaf drvr_current_startup_timestamp; //type: string
+                                    YLeaf num_intf_ports; //type: uint32
+                                    YLeaf uc_weight; //type: uint8
+                                    YLeaf respawn_count; //type: uint8
+                                    YLeaf total_asics; //type: uint8
+                                    YLeaf issu_ready_ntfy_pending; //type: boolean
+                                    YLeaf issu_abort_sent; //type: boolean
+                                    YLeaf issu_abort_rcvd; //type: boolean
+                                    YLeaf fc_mode; //type: FcModeEnum
+                                    YLeaf board_rev_id; //type: uint32
 
                                 class DeviceInfo : public Entity
                                 {
@@ -1437,18 +1453,19 @@ class Fia : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value is_valid; //type: boolean
-                                        Value fapid; //type: uint32
-                                        Value hotplug_event; //type: uint32
-                                        Value slice_state; //type: SliceStateEnum
-                                        Value admin_state; //type: AdminStateEnum
-                                        Value oper_state; //type: AsicOperStateEnum
-                                        Value asic_state; //type: AsicAccessStateEnum
-                                        Value last_init_cause; //type: AsicInitMethodEnum
-                                        Value num_pon_resets; //type: uint32
-                                        Value num_hard_resets; //type: uint32
-                                        Value local_switch_state; //type: boolean
 
+
+                                        YLeaf is_valid; //type: boolean
+                                        YLeaf fapid; //type: uint32
+                                        YLeaf hotplug_event; //type: uint32
+                                        YLeaf slice_state; //type: SliceStateEnum
+                                        YLeaf admin_state; //type: AdminStateEnum
+                                        YLeaf oper_state; //type: AsicOperStateEnum
+                                        YLeaf asic_state; //type: AsicAccessStateEnum
+                                        YLeaf last_init_cause; //type: AsicInitMethodEnum
+                                        YLeaf num_pon_resets; //type: uint32
+                                        YLeaf num_hard_resets; //type: uint32
+                                        YLeaf local_switch_state; //type: boolean
 
                                     class AsicId : public Entity
                                     {
@@ -1463,26 +1480,20 @@ class Fia : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value rack_type; //type: RackEnum
-                                            Value asic_type; //type: AsicEnum
-                                            Value rack_num; //type: uint32
-                                            Value slot_num; //type: uint32
-                                            Value asic_instance; //type: uint32
 
 
-                                            class AsicEnum;
-                                            class RackEnum;
+                                            YLeaf rack_type; //type: RackEnum
+                                            YLeaf asic_type; //type: AsicEnum
+                                            YLeaf rack_num; //type: uint32
+                                            YLeaf slot_num; //type: uint32
+                                            YLeaf asic_instance; //type: uint32
+
 
 
                                     }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId
 
 
                                         std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId> asic_id;
-                                        class AdminStateEnum;
-                                        class AsicAccessStateEnum;
-                                        class AsicInitMethodEnum;
-                                        class AsicOperStateEnum;
-                                        class SliceStateEnum;
 
 
                                 }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo
@@ -1501,22 +1512,23 @@ class Fia : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value card_type; //type: int32
-                                        Value card_name; //type: string
-                                        Value slot_no; //type: int32
-                                        Value card_flag; //type: int32
-                                        Value evt_flag; //type: int32
-                                        Value reg_flag; //type: int32
-                                        Value instance; //type: int32
-                                        Value card_state; //type: uint8
-                                        Value exp_num_asics; //type: uint32
-                                        Value exp_num_asics_per_fsdb; //type: uint32
-                                        Value is_powered; //type: boolean
-                                        Value cxp_avail_bitmap; //type: uint64
-                                        Value num_ilkns_per_asic; //type: uint32
-                                        Value num_local_ports_per_ilkn; //type: uint32
-                                        Value num_cos_per_port; //type: uint8
 
+
+                                        YLeaf card_type; //type: int32
+                                        YLeaf card_name; //type: string
+                                        YLeaf slot_no; //type: int32
+                                        YLeaf card_flag; //type: int32
+                                        YLeaf evt_flag; //type: int32
+                                        YLeaf reg_flag; //type: int32
+                                        YLeaf instance; //type: int32
+                                        YLeaf card_state; //type: uint8
+                                        YLeaf exp_num_asics; //type: uint32
+                                        YLeaf exp_num_asics_per_fsdb; //type: uint32
+                                        YLeaf is_powered; //type: boolean
+                                        YLeaf cxp_avail_bitmap; //type: uint64
+                                        YLeaf num_ilkns_per_asic; //type: uint32
+                                        YLeaf num_local_ports_per_ilkn; //type: uint32
+                                        YLeaf num_cos_per_port; //type: uint8
 
                                     class OirCircularBuffer : public Entity
                                     {
@@ -1531,10 +1543,11 @@ class Fia : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value count; //type: int32
-                                            Value start; //type: int32
-                                            Value end; //type: int32
 
+
+                                            YLeaf count; //type: int32
+                                            YLeaf start; //type: int32
+                                            YLeaf end; //type: int32
 
                                         class FiaOirInfo : public Entity
                                         {
@@ -1549,14 +1562,15 @@ class Fia : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value card_flag; //type: int32
-                                                Value card_type; //type: int32
-                                                Value reg_flag; //type: int32
-                                                Value evt_flag; //type: int32
-                                                Value rack_num; //type: int32
-                                                Value instance; //type: int32
-                                                Value cur_card_state; //type: int32
 
+
+                                                YLeaf card_flag; //type: int32
+                                                YLeaf card_type; //type: int32
+                                                YLeaf reg_flag; //type: int32
+                                                YLeaf evt_flag; //type: int32
+                                                YLeaf rack_num; //type: int32
+                                                YLeaf instance; //type: int32
+                                                YLeaf cur_card_state; //type: int32
 
 
 
@@ -1577,7 +1591,6 @@ class Fia : public Entity
 
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo> > card_info;
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo> > device_info;
-                                    class FcModeEnum;
 
 
                             }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot
@@ -1622,6 +1635,7 @@ class Fia : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class StatisticsAsicInstances : public Entity
                 {
                     public:
@@ -1637,6 +1651,7 @@ class Fia : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class StatisticsAsicInstance : public Entity
                     {
                         public:
@@ -1650,8 +1665,9 @@ class Fia : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value instance; //type: uint32
 
+
+                            YLeaf instance; //type: uint32
 
                         class PbcStatistics : public Entity
                         {
@@ -1668,6 +1684,7 @@ class Fia : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PbcStats : public Entity
                             {
                                 public:
@@ -1681,12 +1698,13 @@ class Fia : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value valid; //type: boolean
-                                    Value rack_no; //type: uint32
-                                    Value slot_no; //type: uint32
-                                    Value asic_instance; //type: uint32
-                                    Value chip_ver; //type: uint16
 
+
+                                    YLeaf valid; //type: boolean
+                                    YLeaf rack_no; //type: uint32
+                                    YLeaf slot_no; //type: uint32
+                                    YLeaf asic_instance; //type: uint32
+                                    YLeaf chip_ver; //type: uint16
 
                                 class StatsInfo : public Entity
                                 {
@@ -1701,8 +1719,9 @@ class Fia : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_blocks; //type: uint8
 
+
+                                        YLeaf num_blocks; //type: uint8
 
                                     class BlockInfo : public Entity
                                     {
@@ -1717,9 +1736,10 @@ class Fia : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value block_name; //type: string
-                                            Value num_fields; //type: uint8
 
+
+                                            YLeaf block_name; //type: string
+                                            YLeaf num_fields; //type: uint8
 
                                         class FieldInfo : public Entity
                                         {
@@ -1734,10 +1754,11 @@ class Fia : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value field_name; //type: string
-                                                Value field_value; //type: uint64
-                                                Value is_ovf; //type: boolean
 
+
+                                                YLeaf field_name; //type: string
+                                                YLeaf field_value; //type: uint64
+                                                YLeaf is_ovf; //type: boolean
 
 
 
@@ -1783,6 +1804,7 @@ class Fia : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class FmacLinks : public Entity
                             {
                                 public:
@@ -1798,6 +1820,7 @@ class Fia : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class FmacLink : public Entity
                                 {
                                     public:
@@ -1811,8 +1834,9 @@ class Fia : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value link; //type: int32
 
+
+                                        YLeaf link; //type: int32
 
                                     class FmacAsic : public Entity
                                     {
@@ -1827,14 +1851,15 @@ class Fia : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value asic; //type: int32
-                                            Value valid; //type: boolean
-                                            Value rack_no; //type: uint32
-                                            Value slot_no; //type: uint32
-                                            Value asic_instance; //type: uint32
-                                            Value link_no; //type: uint32
-                                            Value link_valid; //type: boolean
 
+
+                                            YLeaf asic; //type: int32
+                                            YLeaf valid; //type: boolean
+                                            YLeaf rack_no; //type: uint32
+                                            YLeaf slot_no; //type: uint32
+                                            YLeaf asic_instance; //type: uint32
+                                            YLeaf link_no; //type: uint32
+                                            YLeaf link_valid; //type: boolean
 
                                         class AggrStats : public Entity
                                         {
@@ -1851,6 +1876,7 @@ class Fia : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class LinkErrorStatus : public Entity
                                             {
                                                 public:
@@ -1864,15 +1890,16 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value link_crc_error; //type: uint32
-                                                    Value link_size_error; //type: uint32
-                                                    Value link_mis_align_error; //type: uint32
-                                                    Value link_code_group_error; //type: uint32
-                                                    Value link_no_sig_lock_error; //type: uint32
-                                                    Value link_no_sig_accept_error; //type: uint32
-                                                    Value link_tokens_error; //type: uint32
-                                                    Value error_token_count; //type: uint32
 
+
+                                                    YLeaf link_crc_error; //type: uint32
+                                                    YLeaf link_size_error; //type: uint32
+                                                    YLeaf link_mis_align_error; //type: uint32
+                                                    YLeaf link_code_group_error; //type: uint32
+                                                    YLeaf link_no_sig_lock_error; //type: uint32
+                                                    YLeaf link_no_sig_accept_error; //type: uint32
+                                                    YLeaf link_tokens_error; //type: uint32
+                                                    YLeaf error_token_count; //type: uint32
 
 
 
@@ -1892,21 +1919,22 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tx_control_cells_counter; //type: uint64
-                                                    Value tx_data_cell_counter; //type: uint64
-                                                    Value tx_data_byte_counter; //type: uint64
-                                                    Value rx_crc_errors_counter; //type: uint64
-                                                    Value rx_lfec_fec_correctable_error; //type: uint64
-                                                    Value rx_8b_10b_disparity_errors; //type: uint64
-                                                    Value rx_control_cells_counter; //type: uint64
-                                                    Value rx_data_cell_counter; //type: uint64
-                                                    Value rx_data_byte_counter; //type: uint64
-                                                    Value rx_dropped_retransmitted_control; //type: uint64
-                                                    Value tx_asyn_fifo_rate; //type: uint64
-                                                    Value rx_asyn_fifo_rate; //type: uint64
-                                                    Value rx_lfec_fec_uncorrectable_errors; //type: uint64
-                                                    Value rx_8b_10b_code_errors; //type: uint64
 
+
+                                                    YLeaf tx_control_cells_counter; //type: uint64
+                                                    YLeaf tx_data_cell_counter; //type: uint64
+                                                    YLeaf tx_data_byte_counter; //type: uint64
+                                                    YLeaf rx_crc_errors_counter; //type: uint64
+                                                    YLeaf rx_lfec_fec_correctable_error; //type: uint64
+                                                    YLeaf rx_8b_10b_disparity_errors; //type: uint64
+                                                    YLeaf rx_control_cells_counter; //type: uint64
+                                                    YLeaf rx_data_cell_counter; //type: uint64
+                                                    YLeaf rx_data_byte_counter; //type: uint64
+                                                    YLeaf rx_dropped_retransmitted_control; //type: uint64
+                                                    YLeaf tx_asyn_fifo_rate; //type: uint64
+                                                    YLeaf rx_asyn_fifo_rate; //type: uint64
+                                                    YLeaf rx_lfec_fec_uncorrectable_errors; //type: uint64
+                                                    YLeaf rx_8b_10b_code_errors; //type: uint64
 
 
 
@@ -1926,21 +1954,22 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tx_control_cells_counter; //type: string
-                                                    Value tx_data_cell_counter; //type: string
-                                                    Value tx_data_byte_counter; //type: string
-                                                    Value rx_crc_errors_counter; //type: string
-                                                    Value rx_lfec_fec_correctable_error; //type: string
-                                                    Value rx_8b_10b_disparity_errors; //type: string
-                                                    Value rx_control_cells_counter; //type: string
-                                                    Value rx_data_cell_counter; //type: string
-                                                    Value rx_data_byte_counter; //type: string
-                                                    Value rx_dropped_retransmitted_control; //type: string
-                                                    Value tx_asyn_fifo_rate; //type: string
-                                                    Value rx_asyn_fifo_rate; //type: string
-                                                    Value rx_lfec_fec_uncorrectable_errors; //type: string
-                                                    Value rx_8b_10b_code_errors; //type: string
 
+
+                                                    YLeaf tx_control_cells_counter; //type: string
+                                                    YLeaf tx_data_cell_counter; //type: string
+                                                    YLeaf tx_data_byte_counter; //type: string
+                                                    YLeaf rx_crc_errors_counter; //type: string
+                                                    YLeaf rx_lfec_fec_correctable_error; //type: string
+                                                    YLeaf rx_8b_10b_disparity_errors; //type: string
+                                                    YLeaf rx_control_cells_counter; //type: string
+                                                    YLeaf rx_data_cell_counter; //type: string
+                                                    YLeaf rx_data_byte_counter; //type: string
+                                                    YLeaf rx_dropped_retransmitted_control; //type: string
+                                                    YLeaf tx_asyn_fifo_rate; //type: string
+                                                    YLeaf rx_asyn_fifo_rate; //type: string
+                                                    YLeaf rx_lfec_fec_uncorrectable_errors; //type: string
+                                                    YLeaf rx_8b_10b_code_errors; //type: string
 
 
 
@@ -1970,6 +1999,7 @@ class Fia : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class LinkErrorStatus : public Entity
                                             {
                                                 public:
@@ -1983,15 +2013,16 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value link_crc_error; //type: uint32
-                                                    Value link_size_error; //type: uint32
-                                                    Value link_mis_align_error; //type: uint32
-                                                    Value link_code_group_error; //type: uint32
-                                                    Value link_no_sig_lock_error; //type: uint32
-                                                    Value link_no_sig_accept_error; //type: uint32
-                                                    Value link_tokens_error; //type: uint32
-                                                    Value error_token_count; //type: uint32
 
+
+                                                    YLeaf link_crc_error; //type: uint32
+                                                    YLeaf link_size_error; //type: uint32
+                                                    YLeaf link_mis_align_error; //type: uint32
+                                                    YLeaf link_code_group_error; //type: uint32
+                                                    YLeaf link_no_sig_lock_error; //type: uint32
+                                                    YLeaf link_no_sig_accept_error; //type: uint32
+                                                    YLeaf link_tokens_error; //type: uint32
+                                                    YLeaf error_token_count; //type: uint32
 
 
 
@@ -2011,21 +2042,22 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tx_control_cells_counter; //type: uint64
-                                                    Value tx_data_cell_counter; //type: uint64
-                                                    Value tx_data_byte_counter; //type: uint64
-                                                    Value rx_crc_errors_counter; //type: uint64
-                                                    Value rx_lfec_fec_correctable_error; //type: uint64
-                                                    Value rx_8b_10b_disparity_errors; //type: uint64
-                                                    Value rx_control_cells_counter; //type: uint64
-                                                    Value rx_data_cell_counter; //type: uint64
-                                                    Value rx_data_byte_counter; //type: uint64
-                                                    Value rx_dropped_retransmitted_control; //type: uint64
-                                                    Value tx_asyn_fifo_rate; //type: uint64
-                                                    Value rx_asyn_fifo_rate; //type: uint64
-                                                    Value rx_lfec_fec_uncorrectable_errors; //type: uint64
-                                                    Value rx_8b_10b_code_errors; //type: uint64
 
+
+                                                    YLeaf tx_control_cells_counter; //type: uint64
+                                                    YLeaf tx_data_cell_counter; //type: uint64
+                                                    YLeaf tx_data_byte_counter; //type: uint64
+                                                    YLeaf rx_crc_errors_counter; //type: uint64
+                                                    YLeaf rx_lfec_fec_correctable_error; //type: uint64
+                                                    YLeaf rx_8b_10b_disparity_errors; //type: uint64
+                                                    YLeaf rx_control_cells_counter; //type: uint64
+                                                    YLeaf rx_data_cell_counter; //type: uint64
+                                                    YLeaf rx_data_byte_counter; //type: uint64
+                                                    YLeaf rx_dropped_retransmitted_control; //type: uint64
+                                                    YLeaf tx_asyn_fifo_rate; //type: uint64
+                                                    YLeaf rx_asyn_fifo_rate; //type: uint64
+                                                    YLeaf rx_lfec_fec_uncorrectable_errors; //type: uint64
+                                                    YLeaf rx_8b_10b_code_errors; //type: uint64
 
 
 
@@ -2045,21 +2077,22 @@ class Fia : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tx_control_cells_counter; //type: string
-                                                    Value tx_data_cell_counter; //type: string
-                                                    Value tx_data_byte_counter; //type: string
-                                                    Value rx_crc_errors_counter; //type: string
-                                                    Value rx_lfec_fec_correctable_error; //type: string
-                                                    Value rx_8b_10b_disparity_errors; //type: string
-                                                    Value rx_control_cells_counter; //type: string
-                                                    Value rx_data_cell_counter; //type: string
-                                                    Value rx_data_byte_counter; //type: string
-                                                    Value rx_dropped_retransmitted_control; //type: string
-                                                    Value tx_asyn_fifo_rate; //type: string
-                                                    Value rx_asyn_fifo_rate; //type: string
-                                                    Value rx_lfec_fec_uncorrectable_errors; //type: string
-                                                    Value rx_8b_10b_code_errors; //type: string
 
+
+                                                    YLeaf tx_control_cells_counter; //type: string
+                                                    YLeaf tx_data_cell_counter; //type: string
+                                                    YLeaf tx_data_byte_counter; //type: string
+                                                    YLeaf rx_crc_errors_counter; //type: string
+                                                    YLeaf rx_lfec_fec_correctable_error; //type: string
+                                                    YLeaf rx_8b_10b_disparity_errors; //type: string
+                                                    YLeaf rx_control_cells_counter; //type: string
+                                                    YLeaf rx_data_cell_counter; //type: string
+                                                    YLeaf rx_data_byte_counter; //type: string
+                                                    YLeaf rx_dropped_retransmitted_control; //type: string
+                                                    YLeaf tx_asyn_fifo_rate; //type: string
+                                                    YLeaf rx_asyn_fifo_rate; //type: string
+                                                    YLeaf rx_lfec_fec_uncorrectable_errors; //type: string
+                                                    YLeaf rx_8b_10b_code_errors; //type: string
 
 
 
@@ -2146,163 +2179,163 @@ class Fia : public Entity
 class SliceStateEnum : public Enum
 {
     public:
-        static const Enum::Value slice_oper_unset;
-        static const Enum::Value slice_oper_down;
-        static const Enum::Value slice_oper_up;
-        static const Enum::Value slice_oper_na;
+        static const Enum::YLeaf slice_oper_unset;
+        static const Enum::YLeaf slice_oper_down;
+        static const Enum::YLeaf slice_oper_up;
+        static const Enum::YLeaf slice_oper_na;
 
 };
 
 class AsicAccessStateEnum : public Enum
 {
     public:
-        static const Enum::Value asic_state_unset;
-        static const Enum::Value asic_state_none;
-        static const Enum::Value asic_state_device_off_line;
-        static const Enum::Value asic_state_device_created;
-        static const Enum::Value asic_state_device_online;
-        static const Enum::Value asic_state_warmboot;
-        static const Enum::Value asic_state_de_init_start;
-        static const Enum::Value asic_state_intr_de_init;
-        static const Enum::Value asic_state_bcm_detach;
-        static const Enum::Value asic_state_soc_de_init;
-        static const Enum::Value asic_state_de_init_done;
-        static const Enum::Value asic_state_soc_init;
-        static const Enum::Value asic_state_bcm_init;
-        static const Enum::Value asic_state_intr_init;
-        static const Enum::Value asic_state_soc_init_start;
-        static const Enum::Value asic_state_bcm_init_start;
-        static const Enum::Value asic_state_intr_init_start;
-        static const Enum::Value asic_state_hard_reset;
-        static const Enum::Value asic_state_normal;
-        static const Enum::Value asic_state_exception;
-        static const Enum::Value asic_state_hp_attached;
-        static const Enum::Value asic_state_quiesce;
-        static const Enum::Value asic_state_issu_started;
-        static const Enum::Value asic_state_issu_started_nn;
-        static const Enum::Value asic_state_issu_abort;
-        static const Enum::Value asic_state_max;
+        static const Enum::YLeaf asic_state_unset;
+        static const Enum::YLeaf asic_state_none;
+        static const Enum::YLeaf asic_state_device_off_line;
+        static const Enum::YLeaf asic_state_device_created;
+        static const Enum::YLeaf asic_state_device_online;
+        static const Enum::YLeaf asic_state_warmboot;
+        static const Enum::YLeaf asic_state_de_init_start;
+        static const Enum::YLeaf asic_state_intr_de_init;
+        static const Enum::YLeaf asic_state_bcm_detach;
+        static const Enum::YLeaf asic_state_soc_de_init;
+        static const Enum::YLeaf asic_state_de_init_done;
+        static const Enum::YLeaf asic_state_soc_init;
+        static const Enum::YLeaf asic_state_bcm_init;
+        static const Enum::YLeaf asic_state_intr_init;
+        static const Enum::YLeaf asic_state_soc_init_start;
+        static const Enum::YLeaf asic_state_bcm_init_start;
+        static const Enum::YLeaf asic_state_intr_init_start;
+        static const Enum::YLeaf asic_state_hard_reset;
+        static const Enum::YLeaf asic_state_normal;
+        static const Enum::YLeaf asic_state_exception;
+        static const Enum::YLeaf asic_state_hp_attached;
+        static const Enum::YLeaf asic_state_quiesce;
+        static const Enum::YLeaf asic_state_issu_started;
+        static const Enum::YLeaf asic_state_issu_started_nn;
+        static const Enum::YLeaf asic_state_issu_abort;
+        static const Enum::YLeaf asic_state_max;
 
 };
 
 class LinkErrorStateEnum : public Enum
 {
     public:
-        static const Enum::Value link_error_unset;
-        static const Enum::Value link_error_none;
-        static const Enum::Value link_error_shut;
-        static const Enum::Value link_error_max;
+        static const Enum::YLeaf link_error_unset;
+        static const Enum::YLeaf link_error_none;
+        static const Enum::YLeaf link_error_shut;
+        static const Enum::YLeaf link_error_max;
 
 };
 
 class FcModeEnum : public Enum
 {
     public:
-        static const Enum::Value fc_mode_unset;
-        static const Enum::Value fc_mode_unavail;
-        static const Enum::Value fc_mode_inband;
-        static const Enum::Value fc_mode_oob;
+        static const Enum::YLeaf fc_mode_unset;
+        static const Enum::YLeaf fc_mode_unavail;
+        static const Enum::YLeaf fc_mode_inband;
+        static const Enum::YLeaf fc_mode_oob;
 
 };
 
 class AsicEnum : public Enum
 {
     public:
-        static const Enum::Value asic_unset;
-        static const Enum::Value asic_unavail;
-        static const Enum::Value asic_fia;
-        static const Enum::Value asic_s123;
-        static const Enum::Value asic_s13;
-        static const Enum::Value asic_s2;
-        static const Enum::Value asic_b2b;
-        static const Enum::Value asic_unknown;
+        static const Enum::YLeaf asic_unset;
+        static const Enum::YLeaf asic_unavail;
+        static const Enum::YLeaf asic_fia;
+        static const Enum::YLeaf asic_s123;
+        static const Enum::YLeaf asic_s13;
+        static const Enum::YLeaf asic_s2;
+        static const Enum::YLeaf asic_b2b;
+        static const Enum::YLeaf asic_unknown;
 
 };
 
 class AsicOperStateEnum : public Enum
 {
     public:
-        static const Enum::Value asic_oper_unset;
-        static const Enum::Value asic_oper_unknown;
-        static const Enum::Value asic_oper_up;
-        static const Enum::Value asic_oper_down;
-        static const Enum::Value asic_card_down;
+        static const Enum::YLeaf asic_oper_unset;
+        static const Enum::YLeaf asic_oper_unknown;
+        static const Enum::YLeaf asic_oper_up;
+        static const Enum::YLeaf asic_oper_down;
+        static const Enum::YLeaf asic_card_down;
 
 };
 
 class LinkEnum : public Enum
 {
     public:
-        static const Enum::Value link_type_unset;
-        static const Enum::Value link_type_unavail;
-        static const Enum::Value link_type_tx;
-        static const Enum::Value link_type_rx;
+        static const Enum::YLeaf link_type_unset;
+        static const Enum::YLeaf link_type_unavail;
+        static const Enum::YLeaf link_type_tx;
+        static const Enum::YLeaf link_type_rx;
 
 };
 
 class OperStateEnum : public Enum
 {
     public:
-        static const Enum::Value oper_unset;
-        static const Enum::Value oper_unknown;
-        static const Enum::Value oper_up;
-        static const Enum::Value oper_down;
-        static const Enum::Value card_down;
+        static const Enum::YLeaf oper_unset;
+        static const Enum::YLeaf oper_unknown;
+        static const Enum::YLeaf oper_up;
+        static const Enum::YLeaf oper_down;
+        static const Enum::YLeaf card_down;
 
 };
 
 class AsicInitMethodEnum : public Enum
 {
     public:
-        static const Enum::Value asic_init_method_unset;
-        static const Enum::Value asic_init_method_no_reset;
-        static const Enum::Value asic_init_method_pon_reset;
-        static const Enum::Value asic_init_method_pon_reset_on_intr;
-        static const Enum::Value asic_init_method_hard_reset;
-        static const Enum::Value asic_init_method_warmboot;
-        static const Enum::Value asic_init_method_issu_wb;
-        static const Enum::Value asic_init_method_pci_shutdown;
-        static const Enum::Value asic_init_method_quiesce;
-        static const Enum::Value asic_init_method_issu_started;
-        static const Enum::Value asic_init_method_issu_rollback;
-        static const Enum::Value asic_init_method_issu_abort;
-        static const Enum::Value asic_init_method_slice_cleanup;
-        static const Enum::Value asic_init_method_lc_remove;
-        static const Enum::Value asic_init_method_node_down;
-        static const Enum::Value asic_init_method_intr;
-        static const Enum::Value asic_init_method_board_reload;
-        static const Enum::Value asic_init_method_max;
+        static const Enum::YLeaf asic_init_method_unset;
+        static const Enum::YLeaf asic_init_method_no_reset;
+        static const Enum::YLeaf asic_init_method_pon_reset;
+        static const Enum::YLeaf asic_init_method_pon_reset_on_intr;
+        static const Enum::YLeaf asic_init_method_hard_reset;
+        static const Enum::YLeaf asic_init_method_warmboot;
+        static const Enum::YLeaf asic_init_method_issu_wb;
+        static const Enum::YLeaf asic_init_method_pci_shutdown;
+        static const Enum::YLeaf asic_init_method_quiesce;
+        static const Enum::YLeaf asic_init_method_issu_started;
+        static const Enum::YLeaf asic_init_method_issu_rollback;
+        static const Enum::YLeaf asic_init_method_issu_abort;
+        static const Enum::YLeaf asic_init_method_slice_cleanup;
+        static const Enum::YLeaf asic_init_method_lc_remove;
+        static const Enum::YLeaf asic_init_method_node_down;
+        static const Enum::YLeaf asic_init_method_intr;
+        static const Enum::YLeaf asic_init_method_board_reload;
+        static const Enum::YLeaf asic_init_method_max;
 
 };
 
 class AdminStateEnum : public Enum
 {
     public:
-        static const Enum::Value admin_unset;
-        static const Enum::Value admin_up;
-        static const Enum::Value admin_down;
+        static const Enum::YLeaf admin_unset;
+        static const Enum::YLeaf admin_up;
+        static const Enum::YLeaf admin_down;
 
 };
 
 class LinkStageEnum : public Enum
 {
     public:
-        static const Enum::Value link_stage_unset;
-        static const Enum::Value link_stage_unused;
-        static const Enum::Value link_stage_fia;
-        static const Enum::Value link_stage_s1;
-        static const Enum::Value link_stage_s2;
-        static const Enum::Value link_stage_s3;
-        static const Enum::Value link_stage_unknown;
+        static const Enum::YLeaf link_stage_unset;
+        static const Enum::YLeaf link_stage_unused;
+        static const Enum::YLeaf link_stage_fia;
+        static const Enum::YLeaf link_stage_s1;
+        static const Enum::YLeaf link_stage_s2;
+        static const Enum::YLeaf link_stage_s3;
+        static const Enum::YLeaf link_stage_unknown;
 
 };
 
 class RackEnum : public Enum
 {
     public:
-        static const Enum::Value rack_type_unset;
-        static const Enum::Value rack_type_lcc;
-        static const Enum::Value rack_type_fcc;
+        static const Enum::YLeaf rack_type_unset;
+        static const Enum::YLeaf rack_type_lcc;
+        static const Enum::YLeaf rack_type_fcc;
 
 };
 

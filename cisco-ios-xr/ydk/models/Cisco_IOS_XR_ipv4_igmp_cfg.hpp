@@ -26,6 +26,7 @@ class Igmp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Vrfs : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Igmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -54,10 +56,11 @@ class Igmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value ssmdns_query_group; //type: empty
-                Value robustness; //type: uint32
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf ssmdns_query_group; //type: empty
+                YLeaf robustness; //type: uint32
 
             class Traffic : public Entity
             {
@@ -72,8 +75,9 @@ class Igmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value profile; //type: string
 
+
+                    YLeaf profile; //type: string
 
 
 
@@ -93,13 +97,14 @@ class Igmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value query_timeout; //type: uint32
-                    Value access_group; //type: string
-                    Value query_max_response_time; //type: uint32
-                    Value version; //type: uint32
-                    Value router_enable; //type: boolean
-                    Value query_interval; //type: uint32
 
+
+                    YLeaf query_timeout; //type: uint32
+                    YLeaf access_group; //type: string
+                    YLeaf query_max_response_time; //type: uint32
+                    YLeaf version; //type: uint32
+                    YLeaf router_enable; //type: boolean
+                    YLeaf query_interval; //type: uint32
 
                 class MaximumGroupsPerInterfaceOor : public Entity
                 {
@@ -114,10 +119,11 @@ class Igmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_groups; //type: uint32
-                        Value warning_threshold; //type: uint32
-                        Value access_list_name; //type: string
 
+
+                        YLeaf maximum_groups; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -137,9 +143,10 @@ class Igmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enable; //type: boolean
-                        Value access_list_name; //type: string
 
+
+                        YLeaf enable; //type: boolean
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -168,6 +175,7 @@ class Igmp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SsmAccessGroup : public Entity
                 {
                     public:
@@ -181,9 +189,10 @@ class Igmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value source_address; //type: string
-                        Value access_list_name; //type: string
 
+
+                        YLeaf source_address; //type: string
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -209,8 +218,9 @@ class Igmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value maximum_groups; //type: uint32
 
+
+                    YLeaf maximum_groups; //type: uint32
 
 
 
@@ -230,10 +240,11 @@ class Igmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value download_interval; //type: uint32
-                    Value adjustment_delay; //type: uint32
-                    Value hold_off; //type: uint32
 
+
+                    YLeaf download_interval; //type: uint32
+                    YLeaf adjustment_delay; //type: uint32
+                    YLeaf hold_off; //type: uint32
 
 
 
@@ -253,8 +264,9 @@ class Igmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value max_history; //type: uint32
 
+
+                    YLeaf max_history; //type: uint32
 
 
 
@@ -276,6 +288,7 @@ class Igmp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -289,14 +302,15 @@ class Igmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value query_timeout; //type: uint32
-                        Value access_group; //type: string
-                        Value query_max_response_time; //type: uint32
-                        Value version; //type: uint32
-                        Value router_enable; //type: boolean
-                        Value query_interval; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf query_timeout; //type: uint32
+                        YLeaf access_group; //type: string
+                        YLeaf query_max_response_time; //type: uint32
+                        YLeaf version; //type: uint32
+                        YLeaf router_enable; //type: boolean
+                        YLeaf query_interval; //type: uint32
 
                     class JoinGroups : public Entity
                     {
@@ -313,6 +327,7 @@ class Igmp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class JoinGroup : public Entity
                         {
                             public:
@@ -326,11 +341,11 @@ class Igmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value mode; //type: IgmpFilterEnum
 
 
-                                class IgmpFilterEnum;
+                                YLeaf group_address; //type: string
+                                YLeaf mode; //type: IgmpFilterEnum
+
 
 
                         }; // Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup
@@ -349,12 +364,12 @@ class Igmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value source_address; //type: string
-                                Value group_address; //type: string
-                                Value mode; //type: IgmpFilterEnum
 
 
-                                class IgmpFilterEnum;
+                                YLeaf source_address; //type: string
+                                YLeaf group_address; //type: string
+                                YLeaf mode; //type: IgmpFilterEnum
+
 
 
                         }; // Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress
@@ -382,6 +397,7 @@ class Igmp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class StaticGroupGroupAddress : public Entity
                         {
                             public:
@@ -395,11 +411,12 @@ class Igmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value group_count; //type: uint32
-                                Value source_count; //type: uint32
-                                Value suppress_report; //type: boolean
 
+
+                                YLeaf group_address; //type: string
+                                YLeaf group_count; //type: uint32
+                                YLeaf source_count; //type: uint32
+                                YLeaf suppress_report; //type: boolean
 
 
 
@@ -419,12 +436,13 @@ class Igmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value source_address; //type: string
-                                Value group_count; //type: uint32
-                                Value source_count; //type: uint32
-                                Value suppress_report; //type: boolean
 
+
+                                YLeaf group_address; //type: string
+                                YLeaf source_address; //type: string
+                                YLeaf group_count; //type: uint32
+                                YLeaf source_count; //type: uint32
+                                YLeaf suppress_report; //type: boolean
 
 
 
@@ -444,13 +462,14 @@ class Igmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value source_address; //type: string
-                                Value source_address_mask; //type: string
-                                Value group_count; //type: uint32
-                                Value source_count; //type: uint32
-                                Value suppress_report; //type: boolean
 
+
+                                YLeaf group_address; //type: string
+                                YLeaf source_address; //type: string
+                                YLeaf source_address_mask; //type: string
+                                YLeaf group_count; //type: uint32
+                                YLeaf source_count; //type: uint32
+                                YLeaf suppress_report; //type: boolean
 
 
 
@@ -470,12 +489,13 @@ class Igmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value group_address_mask; //type: string
-                                Value group_count; //type: uint32
-                                Value source_count; //type: uint32
-                                Value suppress_report; //type: boolean
 
+
+                                YLeaf group_address; //type: string
+                                YLeaf group_address_mask; //type: string
+                                YLeaf group_count; //type: uint32
+                                YLeaf source_count; //type: uint32
+                                YLeaf suppress_report; //type: boolean
 
 
 
@@ -495,13 +515,14 @@ class Igmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value group_address_mask; //type: string
-                                Value source_address; //type: string
-                                Value group_count; //type: uint32
-                                Value source_count; //type: uint32
-                                Value suppress_report; //type: boolean
 
+
+                                YLeaf group_address; //type: string
+                                YLeaf group_address_mask; //type: string
+                                YLeaf source_address; //type: string
+                                YLeaf group_count; //type: uint32
+                                YLeaf source_count; //type: uint32
+                                YLeaf suppress_report; //type: boolean
 
 
 
@@ -521,14 +542,15 @@ class Igmp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value group_address_mask; //type: string
-                                Value source_address; //type: string
-                                Value source_address_mask; //type: string
-                                Value group_count; //type: uint32
-                                Value source_count; //type: uint32
-                                Value suppress_report; //type: boolean
 
+
+                                YLeaf group_address; //type: string
+                                YLeaf group_address_mask; //type: string
+                                YLeaf source_address; //type: string
+                                YLeaf source_address_mask; //type: string
+                                YLeaf group_count; //type: uint32
+                                YLeaf source_count; //type: uint32
+                                YLeaf suppress_report; //type: boolean
 
 
 
@@ -559,10 +581,11 @@ class Igmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_groups; //type: uint32
-                            Value warning_threshold; //type: uint32
-                            Value access_list_name; //type: string
 
+
+                            YLeaf maximum_groups; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
+                            YLeaf access_list_name; //type: string
 
 
 
@@ -582,9 +605,10 @@ class Igmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: boolean
-                            Value access_list_name; //type: string
 
+
+                            YLeaf enable; //type: boolean
+                            YLeaf access_list_name; //type: string
 
 
 
@@ -637,9 +661,10 @@ class Igmp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value ssmdns_query_group; //type: empty
-            Value robustness; //type: uint32
 
+
+            YLeaf ssmdns_query_group; //type: empty
+            YLeaf robustness; //type: uint32
 
         class Nsf : public Entity
         {
@@ -654,8 +679,9 @@ class Igmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value lifetime; //type: uint32
 
+
+                YLeaf lifetime; //type: uint32
 
 
 
@@ -675,8 +701,9 @@ class Igmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value profile; //type: string
 
+
+                YLeaf profile; //type: string
 
 
 
@@ -696,13 +723,14 @@ class Igmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value query_timeout; //type: uint32
-                Value access_group; //type: string
-                Value query_max_response_time; //type: uint32
-                Value version; //type: uint32
-                Value router_enable; //type: boolean
-                Value query_interval; //type: uint32
 
+
+                YLeaf query_timeout; //type: uint32
+                YLeaf access_group; //type: string
+                YLeaf query_max_response_time; //type: uint32
+                YLeaf version; //type: uint32
+                YLeaf router_enable; //type: boolean
+                YLeaf query_interval; //type: uint32
 
             class MaximumGroupsPerInterfaceOor : public Entity
             {
@@ -717,10 +745,11 @@ class Igmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value maximum_groups; //type: uint32
-                    Value warning_threshold; //type: uint32
-                    Value access_list_name; //type: string
 
+
+                    YLeaf maximum_groups; //type: uint32
+                    YLeaf warning_threshold; //type: uint32
+                    YLeaf access_list_name; //type: string
 
 
 
@@ -740,9 +769,10 @@ class Igmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enable; //type: boolean
-                    Value access_list_name; //type: string
 
+
+                    YLeaf enable; //type: boolean
+                    YLeaf access_list_name; //type: string
 
 
 
@@ -771,6 +801,7 @@ class Igmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class SsmAccessGroup : public Entity
             {
                 public:
@@ -784,9 +815,10 @@ class Igmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value source_address; //type: string
-                    Value access_list_name; //type: string
 
+
+                    YLeaf source_address; //type: string
+                    YLeaf access_list_name; //type: string
 
 
 
@@ -812,8 +844,9 @@ class Igmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value maximum_groups; //type: uint32
 
+
+                YLeaf maximum_groups; //type: uint32
 
 
 
@@ -833,10 +866,11 @@ class Igmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value download_interval; //type: uint32
-                Value adjustment_delay; //type: uint32
-                Value hold_off; //type: uint32
 
+
+                YLeaf download_interval; //type: uint32
+                YLeaf adjustment_delay; //type: uint32
+                YLeaf hold_off; //type: uint32
 
 
 
@@ -856,8 +890,9 @@ class Igmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value max_history; //type: uint32
 
+
+                YLeaf max_history; //type: uint32
 
 
 
@@ -879,6 +914,7 @@ class Igmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -892,14 +928,15 @@ class Igmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value query_timeout; //type: uint32
-                    Value access_group; //type: string
-                    Value query_max_response_time; //type: uint32
-                    Value version; //type: uint32
-                    Value router_enable; //type: boolean
-                    Value query_interval; //type: uint32
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf query_timeout; //type: uint32
+                    YLeaf access_group; //type: string
+                    YLeaf query_max_response_time; //type: uint32
+                    YLeaf version; //type: uint32
+                    YLeaf router_enable; //type: boolean
+                    YLeaf query_interval; //type: uint32
 
                 class JoinGroups : public Entity
                 {
@@ -916,6 +953,7 @@ class Igmp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class JoinGroup : public Entity
                     {
                         public:
@@ -929,11 +967,11 @@ class Igmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value mode; //type: IgmpFilterEnum
 
 
-                            class IgmpFilterEnum;
+                            YLeaf group_address; //type: string
+                            YLeaf mode; //type: IgmpFilterEnum
+
 
 
                     }; // Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup
@@ -952,12 +990,12 @@ class Igmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source_address; //type: string
-                            Value group_address; //type: string
-                            Value mode; //type: IgmpFilterEnum
 
 
-                            class IgmpFilterEnum;
+                            YLeaf source_address; //type: string
+                            YLeaf group_address; //type: string
+                            YLeaf mode; //type: IgmpFilterEnum
+
 
 
                     }; // Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress
@@ -985,6 +1023,7 @@ class Igmp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class StaticGroupGroupAddress : public Entity
                     {
                         public:
@@ -998,11 +1037,12 @@ class Igmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value group_count; //type: uint32
-                            Value source_count; //type: uint32
-                            Value suppress_report; //type: boolean
 
+
+                            YLeaf group_address; //type: string
+                            YLeaf group_count; //type: uint32
+                            YLeaf source_count; //type: uint32
+                            YLeaf suppress_report; //type: boolean
 
 
 
@@ -1022,12 +1062,13 @@ class Igmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value source_address; //type: string
-                            Value group_count; //type: uint32
-                            Value source_count; //type: uint32
-                            Value suppress_report; //type: boolean
 
+
+                            YLeaf group_address; //type: string
+                            YLeaf source_address; //type: string
+                            YLeaf group_count; //type: uint32
+                            YLeaf source_count; //type: uint32
+                            YLeaf suppress_report; //type: boolean
 
 
 
@@ -1047,13 +1088,14 @@ class Igmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value source_address; //type: string
-                            Value source_address_mask; //type: string
-                            Value group_count; //type: uint32
-                            Value source_count; //type: uint32
-                            Value suppress_report; //type: boolean
 
+
+                            YLeaf group_address; //type: string
+                            YLeaf source_address; //type: string
+                            YLeaf source_address_mask; //type: string
+                            YLeaf group_count; //type: uint32
+                            YLeaf source_count; //type: uint32
+                            YLeaf suppress_report; //type: boolean
 
 
 
@@ -1073,12 +1115,13 @@ class Igmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value group_address_mask; //type: string
-                            Value group_count; //type: uint32
-                            Value source_count; //type: uint32
-                            Value suppress_report; //type: boolean
 
+
+                            YLeaf group_address; //type: string
+                            YLeaf group_address_mask; //type: string
+                            YLeaf group_count; //type: uint32
+                            YLeaf source_count; //type: uint32
+                            YLeaf suppress_report; //type: boolean
 
 
 
@@ -1098,13 +1141,14 @@ class Igmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value group_address_mask; //type: string
-                            Value source_address; //type: string
-                            Value group_count; //type: uint32
-                            Value source_count; //type: uint32
-                            Value suppress_report; //type: boolean
 
+
+                            YLeaf group_address; //type: string
+                            YLeaf group_address_mask; //type: string
+                            YLeaf source_address; //type: string
+                            YLeaf group_count; //type: uint32
+                            YLeaf source_count; //type: uint32
+                            YLeaf suppress_report; //type: boolean
 
 
 
@@ -1124,14 +1168,15 @@ class Igmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value group_address_mask; //type: string
-                            Value source_address; //type: string
-                            Value source_address_mask; //type: string
-                            Value group_count; //type: uint32
-                            Value source_count; //type: uint32
-                            Value suppress_report; //type: boolean
 
+
+                            YLeaf group_address; //type: string
+                            YLeaf group_address_mask; //type: string
+                            YLeaf source_address; //type: string
+                            YLeaf source_address_mask; //type: string
+                            YLeaf group_count; //type: uint32
+                            YLeaf source_count; //type: uint32
+                            YLeaf suppress_report; //type: boolean
 
 
 
@@ -1162,10 +1207,11 @@ class Igmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_groups; //type: uint32
-                        Value warning_threshold; //type: uint32
-                        Value access_list_name; //type: string
 
+
+                        YLeaf maximum_groups; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -1185,9 +1231,10 @@ class Igmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enable; //type: boolean
-                        Value access_list_name; //type: string
 
+
+                        YLeaf enable; //type: boolean
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -1242,17 +1289,18 @@ class Amt : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value maximum_v4_route_gateway; //type: uint32
-        Value gateway_filter; //type: string
-        Value maximum_v4_routes; //type: uint32
-        Value amttos; //type: uint32
-        Value amtttl; //type: uint32
-        Value maximum_v6_route_gateway; //type: uint32
-        Value maximum_gateway; //type: uint32
-        Value maximum_v6_routes; //type: uint32
-        Value amtqqic; //type: uint32
-        Value amtmtu; //type: uint32
 
+
+        YLeaf maximum_v4_route_gateway; //type: uint32
+        YLeaf gateway_filter; //type: string
+        YLeaf maximum_v4_routes; //type: uint32
+        YLeaf amttos; //type: uint32
+        YLeaf amtttl; //type: uint32
+        YLeaf maximum_v6_route_gateway; //type: uint32
+        YLeaf maximum_gateway; //type: uint32
+        YLeaf maximum_v6_routes; //type: uint32
+        YLeaf amtqqic; //type: uint32
+        YLeaf amtmtu; //type: uint32
 
     class RelayAdvAdd : public Entity
     {
@@ -1267,9 +1315,10 @@ class Amt : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value address; //type: string
-            Value interface; //type: string
 
+
+            YLeaf address; //type: string
+            YLeaf interface; //type: string
 
 
 
@@ -1289,9 +1338,10 @@ class Amt : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value address; //type: string
-            Value prefix_length; //type: uint32
 
+
+            YLeaf address; //type: string
+            YLeaf prefix_length; //type: uint32
 
 
 
@@ -1320,6 +1370,7 @@ class Mld : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Vrfs : public Entity
     {
         public:
@@ -1335,6 +1386,7 @@ class Mld : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -1348,10 +1400,11 @@ class Mld : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value ssmdns_query_group; //type: empty
-                Value robustness; //type: uint32
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf ssmdns_query_group; //type: empty
+                YLeaf robustness; //type: uint32
 
             class Traffic : public Entity
             {
@@ -1366,8 +1419,9 @@ class Mld : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value profile; //type: string
 
+
+                    YLeaf profile; //type: string
 
 
 
@@ -1387,13 +1441,14 @@ class Mld : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value query_timeout; //type: uint32
-                    Value access_group; //type: string
-                    Value query_max_response_time; //type: uint32
-                    Value version; //type: uint32
-                    Value router_enable; //type: boolean
-                    Value query_interval; //type: uint32
 
+
+                    YLeaf query_timeout; //type: uint32
+                    YLeaf access_group; //type: string
+                    YLeaf query_max_response_time; //type: uint32
+                    YLeaf version; //type: uint32
+                    YLeaf router_enable; //type: boolean
+                    YLeaf query_interval; //type: uint32
 
                 class MaximumGroupsPerInterfaceOor : public Entity
                 {
@@ -1408,10 +1463,11 @@ class Mld : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_groups; //type: uint32
-                        Value warning_threshold; //type: uint32
-                        Value access_list_name; //type: string
 
+
+                        YLeaf maximum_groups; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -1431,9 +1487,10 @@ class Mld : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enable; //type: boolean
-                        Value access_list_name; //type: string
 
+
+                        YLeaf enable; //type: boolean
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -1462,6 +1519,7 @@ class Mld : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SsmAccessGroup : public Entity
                 {
                     public:
@@ -1475,9 +1533,10 @@ class Mld : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value source_address; //type: string
-                        Value access_list_name; //type: string
 
+
+                        YLeaf source_address; //type: string
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -1503,8 +1562,9 @@ class Mld : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value maximum_groups; //type: uint32
 
+
+                    YLeaf maximum_groups; //type: uint32
 
 
 
@@ -1524,10 +1584,11 @@ class Mld : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value download_interval; //type: uint32
-                    Value adjustment_delay; //type: uint32
-                    Value hold_off; //type: uint32
 
+
+                    YLeaf download_interval; //type: uint32
+                    YLeaf adjustment_delay; //type: uint32
+                    YLeaf hold_off; //type: uint32
 
 
 
@@ -1547,8 +1608,9 @@ class Mld : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value max_history; //type: uint32
 
+
+                    YLeaf max_history; //type: uint32
 
 
 
@@ -1570,6 +1632,7 @@ class Mld : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -1583,14 +1646,15 @@ class Mld : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value query_timeout; //type: uint32
-                        Value access_group; //type: string
-                        Value query_max_response_time; //type: uint32
-                        Value version; //type: uint32
-                        Value router_enable; //type: boolean
-                        Value query_interval; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf query_timeout; //type: uint32
+                        YLeaf access_group; //type: string
+                        YLeaf query_max_response_time; //type: uint32
+                        YLeaf version; //type: uint32
+                        YLeaf router_enable; //type: boolean
+                        YLeaf query_interval; //type: uint32
 
                     class JoinGroups : public Entity
                     {
@@ -1607,6 +1671,7 @@ class Mld : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class JoinGroup : public Entity
                         {
                             public:
@@ -1620,11 +1685,11 @@ class Mld : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value mode; //type: IgmpFilterEnum
 
 
-                                class IgmpFilterEnum;
+                                YLeaf group_address; //type: string
+                                YLeaf mode; //type: IgmpFilterEnum
+
 
 
                         }; // Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup
@@ -1643,12 +1708,12 @@ class Mld : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value source_address; //type: string
-                                Value group_address; //type: string
-                                Value mode; //type: IgmpFilterEnum
 
 
-                                class IgmpFilterEnum;
+                                YLeaf source_address; //type: string
+                                YLeaf group_address; //type: string
+                                YLeaf mode; //type: IgmpFilterEnum
+
 
 
                         }; // Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress
@@ -1676,6 +1741,7 @@ class Mld : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class StaticGroupGroupAddress : public Entity
                         {
                             public:
@@ -1689,11 +1755,12 @@ class Mld : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value group_count; //type: uint32
-                                Value source_count; //type: uint32
-                                Value suppress_report; //type: boolean
 
+
+                                YLeaf group_address; //type: string
+                                YLeaf group_count; //type: uint32
+                                YLeaf source_count; //type: uint32
+                                YLeaf suppress_report; //type: boolean
 
 
 
@@ -1713,12 +1780,13 @@ class Mld : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value source_address; //type: string
-                                Value group_count; //type: uint32
-                                Value source_count; //type: uint32
-                                Value suppress_report; //type: boolean
 
+
+                                YLeaf group_address; //type: string
+                                YLeaf source_address; //type: string
+                                YLeaf group_count; //type: uint32
+                                YLeaf source_count; //type: uint32
+                                YLeaf suppress_report; //type: boolean
 
 
 
@@ -1738,13 +1806,14 @@ class Mld : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value source_address; //type: string
-                                Value source_address_mask; //type: string
-                                Value group_count; //type: uint32
-                                Value source_count; //type: uint32
-                                Value suppress_report; //type: boolean
 
+
+                                YLeaf group_address; //type: string
+                                YLeaf source_address; //type: string
+                                YLeaf source_address_mask; //type: string
+                                YLeaf group_count; //type: uint32
+                                YLeaf source_count; //type: uint32
+                                YLeaf suppress_report; //type: boolean
 
 
 
@@ -1764,12 +1833,13 @@ class Mld : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value group_address_mask; //type: string
-                                Value group_count; //type: uint32
-                                Value source_count; //type: uint32
-                                Value suppress_report; //type: boolean
 
+
+                                YLeaf group_address; //type: string
+                                YLeaf group_address_mask; //type: string
+                                YLeaf group_count; //type: uint32
+                                YLeaf source_count; //type: uint32
+                                YLeaf suppress_report; //type: boolean
 
 
 
@@ -1789,13 +1859,14 @@ class Mld : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value group_address_mask; //type: string
-                                Value source_address; //type: string
-                                Value group_count; //type: uint32
-                                Value source_count; //type: uint32
-                                Value suppress_report; //type: boolean
 
+
+                                YLeaf group_address; //type: string
+                                YLeaf group_address_mask; //type: string
+                                YLeaf source_address; //type: string
+                                YLeaf group_count; //type: uint32
+                                YLeaf source_count; //type: uint32
+                                YLeaf suppress_report; //type: boolean
 
 
 
@@ -1815,14 +1886,15 @@ class Mld : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_address; //type: string
-                                Value group_address_mask; //type: string
-                                Value source_address; //type: string
-                                Value source_address_mask; //type: string
-                                Value group_count; //type: uint32
-                                Value source_count; //type: uint32
-                                Value suppress_report; //type: boolean
 
+
+                                YLeaf group_address; //type: string
+                                YLeaf group_address_mask; //type: string
+                                YLeaf source_address; //type: string
+                                YLeaf source_address_mask; //type: string
+                                YLeaf group_count; //type: uint32
+                                YLeaf source_count; //type: uint32
+                                YLeaf suppress_report; //type: boolean
 
 
 
@@ -1853,10 +1925,11 @@ class Mld : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_groups; //type: uint32
-                            Value warning_threshold; //type: uint32
-                            Value access_list_name; //type: string
 
+
+                            YLeaf maximum_groups; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
+                            YLeaf access_list_name; //type: string
 
 
 
@@ -1876,9 +1949,10 @@ class Mld : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: boolean
-                            Value access_list_name; //type: string
 
+
+                            YLeaf enable; //type: boolean
+                            YLeaf access_list_name; //type: string
 
 
 
@@ -1931,9 +2005,10 @@ class Mld : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value ssmdns_query_group; //type: empty
-            Value robustness; //type: uint32
 
+
+            YLeaf ssmdns_query_group; //type: empty
+            YLeaf robustness; //type: uint32
 
         class Nsf : public Entity
         {
@@ -1948,8 +2023,9 @@ class Mld : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value lifetime; //type: uint32
 
+
+                YLeaf lifetime; //type: uint32
 
 
 
@@ -1969,8 +2045,9 @@ class Mld : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value profile; //type: string
 
+
+                YLeaf profile; //type: string
 
 
 
@@ -1990,13 +2067,14 @@ class Mld : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value query_timeout; //type: uint32
-                Value access_group; //type: string
-                Value query_max_response_time; //type: uint32
-                Value version; //type: uint32
-                Value router_enable; //type: boolean
-                Value query_interval; //type: uint32
 
+
+                YLeaf query_timeout; //type: uint32
+                YLeaf access_group; //type: string
+                YLeaf query_max_response_time; //type: uint32
+                YLeaf version; //type: uint32
+                YLeaf router_enable; //type: boolean
+                YLeaf query_interval; //type: uint32
 
             class MaximumGroupsPerInterfaceOor : public Entity
             {
@@ -2011,10 +2089,11 @@ class Mld : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value maximum_groups; //type: uint32
-                    Value warning_threshold; //type: uint32
-                    Value access_list_name; //type: string
 
+
+                    YLeaf maximum_groups; //type: uint32
+                    YLeaf warning_threshold; //type: uint32
+                    YLeaf access_list_name; //type: string
 
 
 
@@ -2034,9 +2113,10 @@ class Mld : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enable; //type: boolean
-                    Value access_list_name; //type: string
 
+
+                    YLeaf enable; //type: boolean
+                    YLeaf access_list_name; //type: string
 
 
 
@@ -2065,6 +2145,7 @@ class Mld : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class SsmAccessGroup : public Entity
             {
                 public:
@@ -2078,9 +2159,10 @@ class Mld : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value source_address; //type: string
-                    Value access_list_name; //type: string
 
+
+                    YLeaf source_address; //type: string
+                    YLeaf access_list_name; //type: string
 
 
 
@@ -2106,8 +2188,9 @@ class Mld : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value maximum_groups; //type: uint32
 
+
+                YLeaf maximum_groups; //type: uint32
 
 
 
@@ -2127,10 +2210,11 @@ class Mld : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value download_interval; //type: uint32
-                Value adjustment_delay; //type: uint32
-                Value hold_off; //type: uint32
 
+
+                YLeaf download_interval; //type: uint32
+                YLeaf adjustment_delay; //type: uint32
+                YLeaf hold_off; //type: uint32
 
 
 
@@ -2150,8 +2234,9 @@ class Mld : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value max_history; //type: uint32
 
+
+                YLeaf max_history; //type: uint32
 
 
 
@@ -2173,6 +2258,7 @@ class Mld : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -2186,14 +2272,15 @@ class Mld : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value query_timeout; //type: uint32
-                    Value access_group; //type: string
-                    Value query_max_response_time; //type: uint32
-                    Value version; //type: uint32
-                    Value router_enable; //type: boolean
-                    Value query_interval; //type: uint32
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf query_timeout; //type: uint32
+                    YLeaf access_group; //type: string
+                    YLeaf query_max_response_time; //type: uint32
+                    YLeaf version; //type: uint32
+                    YLeaf router_enable; //type: boolean
+                    YLeaf query_interval; //type: uint32
 
                 class JoinGroups : public Entity
                 {
@@ -2210,6 +2297,7 @@ class Mld : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class JoinGroup : public Entity
                     {
                         public:
@@ -2223,11 +2311,11 @@ class Mld : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value mode; //type: IgmpFilterEnum
 
 
-                            class IgmpFilterEnum;
+                            YLeaf group_address; //type: string
+                            YLeaf mode; //type: IgmpFilterEnum
+
 
 
                     }; // Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup
@@ -2246,12 +2334,12 @@ class Mld : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source_address; //type: string
-                            Value group_address; //type: string
-                            Value mode; //type: IgmpFilterEnum
 
 
-                            class IgmpFilterEnum;
+                            YLeaf source_address; //type: string
+                            YLeaf group_address; //type: string
+                            YLeaf mode; //type: IgmpFilterEnum
+
 
 
                     }; // Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress
@@ -2279,6 +2367,7 @@ class Mld : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class StaticGroupGroupAddress : public Entity
                     {
                         public:
@@ -2292,11 +2381,12 @@ class Mld : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value group_count; //type: uint32
-                            Value source_count; //type: uint32
-                            Value suppress_report; //type: boolean
 
+
+                            YLeaf group_address; //type: string
+                            YLeaf group_count; //type: uint32
+                            YLeaf source_count; //type: uint32
+                            YLeaf suppress_report; //type: boolean
 
 
 
@@ -2316,12 +2406,13 @@ class Mld : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value source_address; //type: string
-                            Value group_count; //type: uint32
-                            Value source_count; //type: uint32
-                            Value suppress_report; //type: boolean
 
+
+                            YLeaf group_address; //type: string
+                            YLeaf source_address; //type: string
+                            YLeaf group_count; //type: uint32
+                            YLeaf source_count; //type: uint32
+                            YLeaf suppress_report; //type: boolean
 
 
 
@@ -2341,13 +2432,14 @@ class Mld : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value source_address; //type: string
-                            Value source_address_mask; //type: string
-                            Value group_count; //type: uint32
-                            Value source_count; //type: uint32
-                            Value suppress_report; //type: boolean
 
+
+                            YLeaf group_address; //type: string
+                            YLeaf source_address; //type: string
+                            YLeaf source_address_mask; //type: string
+                            YLeaf group_count; //type: uint32
+                            YLeaf source_count; //type: uint32
+                            YLeaf suppress_report; //type: boolean
 
 
 
@@ -2367,12 +2459,13 @@ class Mld : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value group_address_mask; //type: string
-                            Value group_count; //type: uint32
-                            Value source_count; //type: uint32
-                            Value suppress_report; //type: boolean
 
+
+                            YLeaf group_address; //type: string
+                            YLeaf group_address_mask; //type: string
+                            YLeaf group_count; //type: uint32
+                            YLeaf source_count; //type: uint32
+                            YLeaf suppress_report; //type: boolean
 
 
 
@@ -2392,13 +2485,14 @@ class Mld : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value group_address_mask; //type: string
-                            Value source_address; //type: string
-                            Value group_count; //type: uint32
-                            Value source_count; //type: uint32
-                            Value suppress_report; //type: boolean
 
+
+                            YLeaf group_address; //type: string
+                            YLeaf group_address_mask; //type: string
+                            YLeaf source_address; //type: string
+                            YLeaf group_count; //type: uint32
+                            YLeaf source_count; //type: uint32
+                            YLeaf suppress_report; //type: boolean
 
 
 
@@ -2418,14 +2512,15 @@ class Mld : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_address; //type: string
-                            Value group_address_mask; //type: string
-                            Value source_address; //type: string
-                            Value source_address_mask; //type: string
-                            Value group_count; //type: uint32
-                            Value source_count; //type: uint32
-                            Value suppress_report; //type: boolean
 
+
+                            YLeaf group_address; //type: string
+                            YLeaf group_address_mask; //type: string
+                            YLeaf source_address; //type: string
+                            YLeaf source_address_mask; //type: string
+                            YLeaf group_count; //type: uint32
+                            YLeaf source_count; //type: uint32
+                            YLeaf suppress_report; //type: boolean
 
 
 
@@ -2456,10 +2551,11 @@ class Mld : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_groups; //type: uint32
-                        Value warning_threshold; //type: uint32
-                        Value access_list_name; //type: string
 
+
+                        YLeaf maximum_groups; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -2479,9 +2575,10 @@ class Mld : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enable; //type: boolean
-                        Value access_list_name; //type: string
 
+
+                        YLeaf enable; //type: boolean
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -2526,8 +2623,8 @@ class Mld : public Entity
 class IgmpFilterEnum : public Enum
 {
     public:
-        static const Enum::Value include;
-        static const Enum::Value exclude;
+        static const Enum::YLeaf include;
+        static const Enum::YLeaf exclude;
 
 };
 

@@ -265,7 +265,7 @@ bool ShowUsers::has_data() const
 bool ShowUsers::has_operation() const
 {
     return is_set(operation)
-	|| (sessions !=  nullptr && is_set(sessions->operation));
+	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
 std::string ShowUsers::get_segment_path() const
@@ -282,7 +282,7 @@ EntityPath ShowUsers::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

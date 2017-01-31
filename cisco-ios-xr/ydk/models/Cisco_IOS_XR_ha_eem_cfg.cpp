@@ -469,7 +469,7 @@ bool EventManager::SchedulerScript::has_data() const
 bool EventManager::SchedulerScript::has_operation() const
 {
     return is_set(operation)
-	|| (thread_classes !=  nullptr && is_set(thread_classes->operation));
+	|| (thread_classes !=  nullptr && thread_classes->has_operation());
 }
 
 std::string EventManager::SchedulerScript::get_segment_path() const
@@ -789,9 +789,9 @@ bool EventManager::has_operation() const
 	|| is_set(directory_user_policy.operation)
 	|| is_set(refresh_time.operation)
 	|| is_set(schedule_suspend.operation)
-	|| (environments !=  nullptr && is_set(environments->operation))
-	|| (policies !=  nullptr && is_set(policies->operation))
-	|| (scheduler_script !=  nullptr && is_set(scheduler_script->operation));
+	|| (environments !=  nullptr && environments->has_operation())
+	|| (policies !=  nullptr && policies->has_operation())
+	|| (scheduler_script !=  nullptr && scheduler_script->has_operation());
 }
 
 std::string EventManager::get_segment_path() const
@@ -808,7 +808,7 @@ EntityPath EventManager::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -938,17 +938,17 @@ std::unique_ptr<Entity> EventManager::clone_ptr()
     return std::make_unique<EventManager>();
 }
 
-const Enum::Value EventManagerPolicySecEnum::rsa_2048 {2, "rsa-2048"};
-const Enum::Value EventManagerPolicySecEnum::trust {3, "trust"};
+const Enum::YLeaf EventManagerPolicySecEnum::rsa_2048 {2, "rsa-2048"};
+const Enum::YLeaf EventManagerPolicySecEnum::trust {3, "trust"};
 
-const Enum::Value EventManagerPolicyModeEnum::cisco {1, "cisco"};
-const Enum::Value EventManagerPolicyModeEnum::trust {2, "trust"};
+const Enum::YLeaf EventManagerPolicyModeEnum::cisco {1, "cisco"};
+const Enum::YLeaf EventManagerPolicyModeEnum::trust {2, "trust"};
 
-const Enum::Value EventManagerChecksumEnum::sha_1 {1, "sha-1"};
-const Enum::Value EventManagerChecksumEnum::md5 {2, "md5"};
+const Enum::YLeaf EventManagerChecksumEnum::sha_1 {1, "sha-1"};
+const Enum::YLeaf EventManagerChecksumEnum::md5 {2, "md5"};
 
-const Enum::Value EventManagerPolicyEnum::system {0, "system"};
-const Enum::Value EventManagerPolicyEnum::user {1, "user"};
+const Enum::YLeaf EventManagerPolicyEnum::system {0, "system"};
+const Enum::YLeaf EventManagerPolicyEnum::user {1, "user"};
 
 
 }

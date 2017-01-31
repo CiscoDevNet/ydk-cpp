@@ -24,11 +24,12 @@ class Ipv6Configuration : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value ipv6_pmtu_time_out; //type: uint32
-        Value ipv6_source_route; //type: boolean
-        Value ipv6_pmtu_enable; //type: boolean
-        Value ipv6_hop_limit; //type: uint32
 
+
+        YLeaf ipv6_pmtu_time_out; //type: uint32
+        YLeaf ipv6_source_route; //type: boolean
+        YLeaf ipv6_pmtu_enable; //type: boolean
+        YLeaf ipv6_hop_limit; //type: uint32
 
     class Ipv6Assembler : public Entity
     {
@@ -43,9 +44,10 @@ class Ipv6Configuration : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value timeout; //type: uint32
-            Value max_packets; //type: uint32
 
+
+            YLeaf timeout; //type: uint32
+            YLeaf max_packets; //type: uint32
 
 
 
@@ -65,9 +67,10 @@ class Ipv6Configuration : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value error_interval; //type: uint32
-            Value bucket_size; //type: uint32
 
+
+            YLeaf error_interval; //type: uint32
+            YLeaf bucket_size; //type: uint32
 
 
 

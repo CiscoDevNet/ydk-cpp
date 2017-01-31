@@ -49,7 +49,7 @@ EntityPath Vlans::Vlan::Config::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -119,7 +119,7 @@ Vlans::Vlan::State::~State()
 
 bool Vlans::Vlan::State::has_data() const
 {
-    for (auto const & leaf : member_ports.getValues())
+    for (auto const & leaf : member_ports.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -131,12 +131,13 @@ bool Vlans::Vlan::State::has_data() const
 
 bool Vlans::Vlan::State::has_operation() const
 {
-    for (auto const & leaf : member_ports.getValues())
+    for (auto const & leaf : member_ports.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(member_ports.operation)
 	|| is_set(name.operation)
 	|| is_set(status.operation)
 	|| is_set(vlan_id.operation);
@@ -156,7 +157,7 @@ EntityPath Vlans::Vlan::State::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -247,8 +248,8 @@ bool Vlans::Vlan::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vlan_id.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Vlans::Vlan::get_segment_path() const
@@ -398,7 +399,7 @@ EntityPath Vlans::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -465,14 +466,14 @@ std::unique_ptr<Entity> Vlans::clone_ptr()
     return std::make_unique<Vlans>();
 }
 
-const Enum::Value VlanModeTypeEnum::ACCESS {0, "ACCESS"};
-const Enum::Value VlanModeTypeEnum::TRUNK {1, "TRUNK"};
+const Enum::YLeaf VlanModeTypeEnum::ACCESS {0, "ACCESS"};
+const Enum::YLeaf VlanModeTypeEnum::TRUNK {1, "TRUNK"};
 
-const Enum::Value Vlans::Vlan::Config::StatusEnum::ACTIVE {0, "ACTIVE"};
-const Enum::Value Vlans::Vlan::Config::StatusEnum::SUSPENDED {1, "SUSPENDED"};
+const Enum::YLeaf Vlans::Vlan::Config::StatusEnum::ACTIVE {0, "ACTIVE"};
+const Enum::YLeaf Vlans::Vlan::Config::StatusEnum::SUSPENDED {1, "SUSPENDED"};
 
-const Enum::Value Vlans::Vlan::State::StatusEnum::ACTIVE {0, "ACTIVE"};
-const Enum::Value Vlans::Vlan::State::StatusEnum::SUSPENDED {1, "SUSPENDED"};
+const Enum::YLeaf Vlans::Vlan::State::StatusEnum::ACTIVE {0, "ACTIVE"};
+const Enum::YLeaf Vlans::Vlan::State::StatusEnum::SUSPENDED {1, "SUSPENDED"};
 
 
 }

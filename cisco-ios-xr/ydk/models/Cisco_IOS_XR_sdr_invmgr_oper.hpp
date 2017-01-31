@@ -26,6 +26,7 @@ class SdrInventory : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Racks : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class SdrInventory : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Rack : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class SdrInventory : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
 
+
+                YLeaf name; //type: string
 
             class Slot : public Entity
             {
@@ -70,8 +73,9 @@ class SdrInventory : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
 
+
+                    YLeaf name; //type: string
 
                 class Card : public Entity
                 {
@@ -86,8 +90,9 @@ class SdrInventory : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
 
+
+                        YLeaf name; //type: string
 
                     class Attributes : public Entity
                     {
@@ -102,17 +107,18 @@ class SdrInventory : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value power; //type: int32
-                            Value config_state; //type: int32
-                            Value card_state; //type: int32
-                            Value vm_state; //type: int32
-                            Value card_admin_state; //type: int32
-                            Value card_type; //type: int32
-                            Value pi_slot_number; //type: int32
-                            Value shutdown; //type: int32
-                            Value ctype; //type: int32
-                            Value monitor; //type: int32
 
+
+                            YLeaf power; //type: int32
+                            YLeaf config_state; //type: int32
+                            YLeaf card_state; //type: int32
+                            YLeaf vm_state; //type: int32
+                            YLeaf card_admin_state; //type: int32
+                            YLeaf card_type; //type: int32
+                            YLeaf pi_slot_number; //type: int32
+                            YLeaf shutdown; //type: int32
+                            YLeaf ctype; //type: int32
+                            YLeaf monitor; //type: int32
 
 
 

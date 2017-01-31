@@ -109,7 +109,7 @@ bool Ipv4NetworkGlobal::Unnumbered::Mpls::has_data() const
 bool Ipv4NetworkGlobal::Unnumbered::Mpls::has_operation() const
 {
     return is_set(operation)
-	|| (te !=  nullptr && is_set(te->operation));
+	|| (te !=  nullptr && te->has_operation());
 }
 
 std::string Ipv4NetworkGlobal::Unnumbered::Mpls::get_segment_path() const
@@ -210,7 +210,7 @@ bool Ipv4NetworkGlobal::Unnumbered::has_data() const
 bool Ipv4NetworkGlobal::Unnumbered::has_operation() const
 {
     return is_set(operation)
-	|| (mpls !=  nullptr && is_set(mpls->operation));
+	|| (mpls !=  nullptr && mpls->has_operation());
 }
 
 std::string Ipv4NetworkGlobal::Unnumbered::get_segment_path() const
@@ -414,8 +414,8 @@ bool Ipv4NetworkGlobal::has_operation() const
 	|| is_set(reassemble_max_packets.operation)
 	|| is_set(reassemble_time_out.operation)
 	|| is_set(source_route.operation)
-	|| (qppb !=  nullptr && is_set(qppb->operation))
-	|| (unnumbered !=  nullptr && is_set(unnumbered->operation));
+	|| (qppb !=  nullptr && qppb->has_operation())
+	|| (unnumbered !=  nullptr && unnumbered->has_operation());
 }
 
 std::string Ipv4NetworkGlobal::get_segment_path() const
@@ -432,7 +432,7 @@ EntityPath Ipv4NetworkGlobal::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -569,7 +569,7 @@ EntityPath SubscriberPta::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -615,10 +615,10 @@ std::unique_ptr<Entity> SubscriberPta::clone_ptr()
     return std::make_unique<SubscriberPta>();
 }
 
-const Enum::Value Ipv4QppbEnum::none {0, "none"};
-const Enum::Value Ipv4QppbEnum::ip_prec {1, "ip-prec"};
-const Enum::Value Ipv4QppbEnum::qos_grp {2, "qos-grp"};
-const Enum::Value Ipv4QppbEnum::both {3, "both"};
+const Enum::YLeaf Ipv4QppbEnum::none {0, "none"};
+const Enum::YLeaf Ipv4QppbEnum::ip_prec {1, "ip-prec"};
+const Enum::YLeaf Ipv4QppbEnum::qos_grp {2, "qos-grp"};
+const Enum::YLeaf Ipv4QppbEnum::both {3, "both"};
 
 
 }

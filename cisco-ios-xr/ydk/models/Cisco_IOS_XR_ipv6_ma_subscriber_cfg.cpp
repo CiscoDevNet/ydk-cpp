@@ -8,7 +8,7 @@ namespace ydk {
 namespace Cisco_IOS_XR_ipv6_ma_subscriber_cfg {
 
 
-const Enum::Value Ipv6ReachableViaEnum::received {1, "received"};
+const Enum::YLeaf Ipv6ReachableViaEnum::received {1, "received"};
 
 
 }

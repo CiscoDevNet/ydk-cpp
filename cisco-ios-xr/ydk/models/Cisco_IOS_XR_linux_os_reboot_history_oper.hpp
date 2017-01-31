@@ -26,6 +26,7 @@ class RebootHistory : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Node : public Entity
     {
         public:
@@ -39,8 +40,9 @@ class RebootHistory : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value node_name; //type: string
 
+
+            YLeaf node_name; //type: string
 
         class RebootHistory_ : public Entity
         {
@@ -55,11 +57,12 @@ class RebootHistory : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value no; //type: uint32
-                Value time; //type: string
-                Value cause_code; //type: uint32
-                Value reason; //type: string
 
+
+                YLeaf no; //type: uint32
+                YLeaf time; //type: string
+                YLeaf cause_code; //type: uint32
+                YLeaf reason; //type: string
 
 
 

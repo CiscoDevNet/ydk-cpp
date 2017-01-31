@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.9)
 cmake_policy(SET CMP0048 NEW)
-project(ydk_cisco_ios_xr VERSION 0.5.2)
+project(ydk_cisco_ios_xr VERSION 0.5.3)
 
 
 
@@ -9,7 +9,7 @@ set(YDK_CISCO_IOS_XR_DESCRIPTION "openconfig ydk bundle")
 # set version
 set(YDK_CISCO_IOS_XR_MAJOR_VERSION 0)
 set(YDK_CISCO_IOS_XR_MINOR_VERSION 5)
-set(YDK_CISCO_IOS_XR_SERVICE_VERSION 2)
+set(YDK_CISCO_IOS_XR_SERVICE_VERSION 3)
 set(YDK_CISCO_IOS_XR_VERSION ${YDK_CISCO_IOS_XR_MAJOR_VERSION}.${YDK_CISCO_IOS_XR_MINOR_VERSION}.${YDK_CISCO_IOS_XR_SERVICE_VERSION})
 set(YDK_CISCO_IOS_XR_CORE_SOVERSION ${YDK_CISCO_IOS_XR_MAJOR_VERSION}.${YDK_CISCO_IOS_XR_MINOR_VERSION})
 
@@ -55,7 +55,7 @@ target_link_libraries(ydk_cisco_ios_xr
     ${LIBYDK_LIBRARIES}
 )
 
-set_property(TARGET ydk_cisco_ios_xr PROPERTY CXX_STANDARD 14)
+set_property(TARGET ydk_cisco_ios_xr PROPERTY CXX_STANDARD 11)
 set_property(TARGET ydk_cisco_ios_xr PROPERTY CXX_STANDARD_REQUIRED ON)
 
 # find YDK library

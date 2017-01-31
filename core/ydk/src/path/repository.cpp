@@ -38,21 +38,30 @@ namespace path
 {
 void libyang_log_callback(LY_LOG_LEVEL level, const char *msg, const char *path)
 {
-	std::ostringstream err_path{};
+	std::ostringstream error_message{};
+	error_message <<msg;
 	if(path)
 	{
-		err_path << "Path: '" << path<<"'";
+		error_message << " " << "Path: '" << path<<"'";
 	}
 	switch(level)
 	{
 		case LY_LLERR:
-			BOOST_LOG_TRIVIAL(error)<<"Libyang ERROR: "<<msg<<" "<<err_path.str();
+			if(error_message.str().find("Invalid value")!= std::string::npos
+					|| error_message.str().find("Failed to resolve")!= std::string::npos
+					|| error_message.str().find("Unexpected character")!= std::string::npos
+					|| error_message.str().find("does not satisfy the constraint")!= std::string::npos)
+			{
+				BOOST_LOG_TRIVIAL(error) << "Libyang ERROR: " << error_message.str();
+				BOOST_THROW_EXCEPTION(YCPPModelError{error_message.str()});
+			}
+			BOOST_LOG_TRIVIAL(error) << "Libyang ERROR: " << error_message.str();
 			break;
 		case LY_LLSILENT:
 		case LY_LLWRN:
 		case LY_LLVRB:
 		case LY_LLDBG:
-			BOOST_LOG_TRIVIAL(trace)<<"Libyang TRACE: "<<msg<<" "<<err_path.str();
+			BOOST_LOG_TRIVIAL(trace) << "Libyang TRACE: " << error_message.str();
 			break;
 	}
 }
@@ -65,6 +74,7 @@ ydk::path::Repository::Repository()
     path = fs::temp_directory_path();
     ly_verb(LY_LLSILENT); //turn off libyang logging at the beginning
     ly_set_log_clb(libyang_log_callback, 1);
+
 }
 
 
@@ -73,7 +83,7 @@ ydk::path::Repository::Repository(const std::string& search_dir)
 {
     if(!fs::exists(path) || !fs::is_directory(path)) {
         BOOST_LOG_TRIVIAL(error) << "Path " << search_dir << " is not a valid directory.";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"path is not a valid directory"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"path is not a valid directory"});
     }
 
     ly_verb(LY_LLSILENT); //turn off libyang logging at the beginning
@@ -105,10 +115,26 @@ namespace ydk {
             }
         }
 
+        char* get_enlarged_data(const std::string & buffer)
+        {
+        	char *enlarged_data = nullptr;
+			/* enlarge data by 2 bytes for flex */
+			auto data = buffer.c_str();
+			auto len = std::strlen(data);
+			enlarged_data = static_cast<char*>(std::malloc((len + 2) * sizeof *enlarged_data));
+			if (!enlarged_data) {
+				BOOST_THROW_EXCEPTION(std::bad_alloc{});
+			}
+			memcpy(enlarged_data, data, len);
+			enlarged_data[len] = enlarged_data[len + 1] = '\0';
+			return enlarged_data;
+        }
+
         extern "C" char* get_module_callback(const char* module_name, const char* module_rev, const char *submod_name, const char *sub_rev,
         							   void* user_data, LYS_INFORMAT* format, void (**free_module_data)(void *model_data))
         {
             BOOST_LOG_TRIVIAL(trace) << "Getting module " << module_name <<" submodule "<<(submod_name?submod_name:"none");
+            *free_module_data = c_free_data;
 
             if(user_data != nullptr){
                 ModelProvider::Format m_format = ModelProvider::Format::YANG;
@@ -149,21 +175,10 @@ namespace ydk {
 
                         yang_file.close();
 
-                        *free_module_data = c_free_data;
-                        char *enlarged_data = nullptr;
-                        /* enlarge data by 2 bytes for flex */
-                        auto data = model_data.c_str();
-                        auto len = std::strlen(data);
-                        enlarged_data = static_cast<char*>(std::malloc((len + 2) * sizeof *enlarged_data));
-                        if (!enlarged_data) {
-                            BOOST_THROW_EXCEPTION(std::bad_alloc{});
-                        }
-                        memcpy(enlarged_data, data, len);
-                        enlarged_data[len] = enlarged_data[len + 1] = '\0';
-                        return enlarged_data;
+                        return get_enlarged_data(model_data);
                     } else {
                         BOOST_LOG_TRIVIAL(error) << "Cannot open file " << yang_file_path_str;
-                        BOOST_THROW_EXCEPTION(YDKIllegalStateException("Cannot open file"));
+                        BOOST_THROW_EXCEPTION(YCPPIllegalStateError("Cannot open file"));
                     }
 
                 }
@@ -184,27 +199,16 @@ namespace ydk {
                     if(!model_data.empty()){
 
                         sink_to_file(yang_file_path_str, model_data);
-                        *free_module_data = c_free_data;
-                        char *enlarged_data = nullptr;
-                        /* enlarge data by 2 bytes for flex */
-                        auto data = model_data.c_str();
-                        auto len = std::strlen(data);
-                        enlarged_data = static_cast<char*>(std::malloc((len + 2) * sizeof *enlarged_data));
-                        if (!enlarged_data) {
-                            BOOST_THROW_EXCEPTION(std::bad_alloc{});
-                        }
-                        memcpy(enlarged_data, data, len);
-                        enlarged_data[len] = enlarged_data[len + 1] = '\0';
-                        return enlarged_data;
+                        return get_enlarged_data(model_data);
                     } else {
                         BOOST_LOG_TRIVIAL(trace) << "Cannot find model with module_name:- " << module_name << " module_rev:-" << (module_rev !=nullptr ? module_rev : "");
-//                        BOOST_THROW_EXCEPTION(YDKIllegalStateException{"Cannot find model"});
+//                        BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"Cannot find model"});
                         return {};
                     }
                 }
             }
             BOOST_LOG_TRIVIAL(trace) << "Cannot find model with module_name:- " << module_name;
-//            BOOST_THROW_EXCEPTION(YDKIllegalStateException{"Cannot find model"});
+//            BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"Cannot find model"});
             return {};
         }
     }
@@ -244,7 +248,8 @@ ydk::path::Repository::create_root_schema(const std::vector<path::Capability> & 
         BOOST_LOG_TRIVIAL(trace) << "Module " << c.module.c_str() << " Revision " << c.revision.c_str();
         auto p = ly_ctx_get_module(ctx, c.module.c_str(), c.revision.empty() ? 0 : c.revision.c_str());
 
-        if(!p) {
+        if(!p)
+        {
             p = ly_ctx_load_module(ctx, c.module.c_str(), c.revision.empty() ? 0 : c.revision.c_str());
         } else {
             BOOST_LOG_TRIVIAL(trace) << "Cache hit module name:-" << c.module;

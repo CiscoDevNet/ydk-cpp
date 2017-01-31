@@ -261,7 +261,7 @@ EntityPath Suppression::RuleDetails::RuleDetail::RuleSummary::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -357,7 +357,7 @@ EntityPath Suppression::RuleDetails::RuleDetail::Codes::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -437,7 +437,7 @@ bool Suppression::RuleDetails::RuleDetail::has_data() const
         if(codes[index]->has_data())
             return true;
     }
-    for (auto const & leaf : apply_source.getValues())
+    for (auto const & leaf : apply_source.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -455,7 +455,7 @@ bool Suppression::RuleDetails::RuleDetail::has_operation() const
         if(codes[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : apply_source.getValues())
+    for (auto const & leaf : apply_source.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -464,7 +464,8 @@ bool Suppression::RuleDetails::RuleDetail::has_operation() const
 	|| is_set(rule_name.operation)
 	|| is_set(alarm_severity.operation)
 	|| is_set(all_alarms.operation)
-	|| (rule_summary !=  nullptr && is_set(rule_summary->operation));
+	|| is_set(apply_source.operation)
+	|| (rule_summary !=  nullptr && rule_summary->has_operation());
 }
 
 std::string Suppression::RuleDetails::RuleDetail::get_segment_path() const
@@ -725,8 +726,8 @@ bool Suppression::has_data() const
 bool Suppression::has_operation() const
 {
     return is_set(operation)
-	|| (rule_details !=  nullptr && is_set(rule_details->operation))
-	|| (rule_summaries !=  nullptr && is_set(rule_summaries->operation));
+	|| (rule_details !=  nullptr && rule_details->has_operation())
+	|| (rule_summaries !=  nullptr && rule_summaries->has_operation());
 }
 
 std::string Suppression::get_segment_path() const
@@ -743,7 +744,7 @@ EntityPath Suppression::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -871,7 +872,7 @@ EntityPath Correlator::Rules::Rule::Codes::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -948,12 +949,12 @@ bool Correlator::Rules::Rule::has_data() const
         if(codes[index]->has_data())
             return true;
     }
-    for (auto const & leaf : apply_context.getValues())
+    for (auto const & leaf : apply_context.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : apply_location.getValues())
+    for (auto const & leaf : apply_location.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -971,18 +972,20 @@ bool Correlator::Rules::Rule::has_operation() const
         if(codes[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : apply_context.getValues())
+    for (auto const & leaf : apply_context.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : apply_location.getValues())
+    for (auto const & leaf : apply_location.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(rule_name.operation)
+	|| is_set(apply_context.operation)
+	|| is_set(apply_location.operation)
 	|| is_set(rule_name_xr.operation)
 	|| is_set(rule_state.operation)
 	|| is_set(timeout.operation);
@@ -1358,7 +1361,7 @@ EntityPath Correlator::Alarms::Alarm::AlarmInfo::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1479,7 +1482,7 @@ bool Correlator::Alarms::Alarm::has_operation() const
 	|| is_set(alarm_id.operation)
 	|| is_set(context.operation)
 	|| is_set(rule_name.operation)
-	|| (alarm_info !=  nullptr && is_set(alarm_info->operation));
+	|| (alarm_info !=  nullptr && alarm_info->has_operation());
 }
 
 std::string Correlator::Alarms::Alarm::get_segment_path() const
@@ -1922,7 +1925,7 @@ EntityPath Correlator::RuleSetDetails::RuleSetDetail::Rules::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2258,7 +2261,7 @@ EntityPath Correlator::RuleDetails::RuleDetail::RuleSummary::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2359,7 +2362,7 @@ EntityPath Correlator::RuleDetails::RuleDetail::Codes::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2444,12 +2447,12 @@ bool Correlator::RuleDetails::RuleDetail::has_data() const
         if(codes[index]->has_data())
             return true;
     }
-    for (auto const & leaf : apply_context.getValues())
+    for (auto const & leaf : apply_context.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : apply_location.getValues())
+    for (auto const & leaf : apply_location.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2471,25 +2474,27 @@ bool Correlator::RuleDetails::RuleDetail::has_operation() const
         if(codes[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : apply_context.getValues())
+    for (auto const & leaf : apply_context.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : apply_location.getValues())
+    for (auto const & leaf : apply_location.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(rule_name.operation)
+	|| is_set(apply_context.operation)
+	|| is_set(apply_location.operation)
 	|| is_set(context_correlation.operation)
 	|| is_set(internal.operation)
 	|| is_set(reissue_non_bistate.operation)
 	|| is_set(reparent.operation)
 	|| is_set(root_cause_timeout.operation)
 	|| is_set(timeout.operation)
-	|| (rule_summary !=  nullptr && is_set(rule_summary->operation));
+	|| (rule_summary !=  nullptr && rule_summary->has_operation());
 }
 
 std::string Correlator::RuleDetails::RuleDetail::get_segment_path() const
@@ -3021,13 +3026,13 @@ bool Correlator::has_data() const
 bool Correlator::has_operation() const
 {
     return is_set(operation)
-	|| (alarms !=  nullptr && is_set(alarms->operation))
-	|| (buffer_status !=  nullptr && is_set(buffer_status->operation))
-	|| (rule_details !=  nullptr && is_set(rule_details->operation))
-	|| (rule_set_details !=  nullptr && is_set(rule_set_details->operation))
-	|| (rule_set_summaries !=  nullptr && is_set(rule_set_summaries->operation))
-	|| (rule_summaries !=  nullptr && is_set(rule_summaries->operation))
-	|| (rules !=  nullptr && is_set(rules->operation));
+	|| (alarms !=  nullptr && alarms->has_operation())
+	|| (buffer_status !=  nullptr && buffer_status->has_operation())
+	|| (rule_details !=  nullptr && rule_details->has_operation())
+	|| (rule_set_details !=  nullptr && rule_set_details->has_operation())
+	|| (rule_set_summaries !=  nullptr && rule_set_summaries->has_operation())
+	|| (rule_summaries !=  nullptr && rule_summaries->has_operation())
+	|| (rules !=  nullptr && rules->has_operation());
 }
 
 std::string Correlator::get_segment_path() const
@@ -3044,7 +3049,7 @@ EntityPath Correlator::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3246,23 +3251,23 @@ std::unique_ptr<Entity> Correlator::clone_ptr()
     return std::make_unique<Correlator>();
 }
 
-const Enum::Value AlAlarmBistateEnum::not_available {0, "not-available"};
-const Enum::Value AlAlarmBistateEnum::active {1, "active"};
-const Enum::Value AlAlarmBistateEnum::clear {2, "clear"};
+const Enum::YLeaf AlAlarmBistateEnum::not_available {0, "not-available"};
+const Enum::YLeaf AlAlarmBistateEnum::active {1, "active"};
+const Enum::YLeaf AlAlarmBistateEnum::clear {2, "clear"};
 
-const Enum::Value AlAlarmSeverityEnum::unknown {-1, "unknown"};
-const Enum::Value AlAlarmSeverityEnum::emergency {0, "emergency"};
-const Enum::Value AlAlarmSeverityEnum::alert {1, "alert"};
-const Enum::Value AlAlarmSeverityEnum::critical {2, "critical"};
-const Enum::Value AlAlarmSeverityEnum::error {3, "error"};
-const Enum::Value AlAlarmSeverityEnum::warning {4, "warning"};
-const Enum::Value AlAlarmSeverityEnum::notice {5, "notice"};
-const Enum::Value AlAlarmSeverityEnum::informational {6, "informational"};
-const Enum::Value AlAlarmSeverityEnum::debugging {7, "debugging"};
+const Enum::YLeaf AlAlarmSeverityEnum::unknown {-1, "unknown"};
+const Enum::YLeaf AlAlarmSeverityEnum::emergency {0, "emergency"};
+const Enum::YLeaf AlAlarmSeverityEnum::alert {1, "alert"};
+const Enum::YLeaf AlAlarmSeverityEnum::critical {2, "critical"};
+const Enum::YLeaf AlAlarmSeverityEnum::error {3, "error"};
+const Enum::YLeaf AlAlarmSeverityEnum::warning {4, "warning"};
+const Enum::YLeaf AlAlarmSeverityEnum::notice {5, "notice"};
+const Enum::YLeaf AlAlarmSeverityEnum::informational {6, "informational"};
+const Enum::YLeaf AlAlarmSeverityEnum::debugging {7, "debugging"};
 
-const Enum::Value AcRuleStateEnum::rule_unapplied {0, "rule-unapplied"};
-const Enum::Value AcRuleStateEnum::rule_applied {1, "rule-applied"};
-const Enum::Value AcRuleStateEnum::rule_applied_all {2, "rule-applied-all"};
+const Enum::YLeaf AcRuleStateEnum::rule_unapplied {0, "rule-unapplied"};
+const Enum::YLeaf AcRuleStateEnum::rule_applied {1, "rule-applied"};
+const Enum::YLeaf AcRuleStateEnum::rule_applied_all {2, "rule-applied-all"};
 
 
 }

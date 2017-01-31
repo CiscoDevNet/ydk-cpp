@@ -26,6 +26,7 @@ class RedundancyGroupManager : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Controllers : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class RedundancyGroupManager : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Controller : public Entity
         {
             public:
@@ -54,15 +56,16 @@ class RedundancyGroupManager : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value controller_name; //type: string
-                Value multi_router_aps_group_number; //type: string
-                Value controller_name_xr; //type: string
-                Value controller_handle; //type: string
-                Value backup_interface_name; //type: string
-                Value backup_interface_handle; //type: string
-                Value backup_interface_next_hop_ip_address; //type: string
-                Value inter_chassis_group_state; //type: string
 
+
+                YLeaf controller_name; //type: string
+                YLeaf multi_router_aps_group_number; //type: string
+                YLeaf controller_name_xr; //type: string
+                YLeaf controller_handle; //type: string
+                YLeaf backup_interface_name; //type: string
+                YLeaf backup_interface_handle; //type: string
+                YLeaf backup_interface_next_hop_ip_address; //type: string
+                YLeaf inter_chassis_group_state; //type: string
 
 
 

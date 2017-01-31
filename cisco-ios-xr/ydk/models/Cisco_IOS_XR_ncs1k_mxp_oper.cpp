@@ -49,7 +49,7 @@ EntityPath HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -152,7 +152,7 @@ EntityPath HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -297,7 +297,7 @@ EntityPath HwModule::SliceIds::SliceId::SliceInfo::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1166,8 +1166,8 @@ bool HwModule::has_data() const
 bool HwModule::has_operation() const
 {
     return is_set(operation)
-	|| (slice_all !=  nullptr && is_set(slice_all->operation))
-	|| (slice_ids !=  nullptr && is_set(slice_ids->operation));
+	|| (slice_all !=  nullptr && slice_all->has_operation())
+	|| (slice_ids !=  nullptr && slice_ids->has_operation());
 }
 
 std::string HwModule::get_segment_path() const
@@ -1184,7 +1184,7 @@ EntityPath HwModule::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1271,12 +1271,12 @@ std::unique_ptr<Entity> HwModule::clone_ptr()
     return std::make_unique<HwModule>();
 }
 
-const Enum::Value HwModuleSliceStatusEnum::not_provisioned {0, "not-provisioned"};
-const Enum::Value HwModuleSliceStatusEnum::provisioning_in_progress {1, "provisioning-in-progress"};
-const Enum::Value HwModuleSliceStatusEnum::provisioned {2, "provisioned"};
-const Enum::Value HwModuleSliceStatusEnum::provisioning_failed {3, "provisioning-failed"};
-const Enum::Value HwModuleSliceStatusEnum::provisioning_scheduled {4, "provisioning-scheduled"};
-const Enum::Value HwModuleSliceStatusEnum::reprovisioning_aborted {5, "reprovisioning-aborted"};
+const Enum::YLeaf HwModuleSliceStatusEnum::not_provisioned {0, "not-provisioned"};
+const Enum::YLeaf HwModuleSliceStatusEnum::provisioning_in_progress {1, "provisioning-in-progress"};
+const Enum::YLeaf HwModuleSliceStatusEnum::provisioned {2, "provisioned"};
+const Enum::YLeaf HwModuleSliceStatusEnum::provisioning_failed {3, "provisioning-failed"};
+const Enum::YLeaf HwModuleSliceStatusEnum::provisioning_scheduled {4, "provisioning-scheduled"};
+const Enum::YLeaf HwModuleSliceStatusEnum::reprovisioning_aborted {5, "reprovisioning-aborted"};
 
 
 }

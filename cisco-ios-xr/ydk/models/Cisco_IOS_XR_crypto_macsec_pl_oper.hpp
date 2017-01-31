@@ -26,6 +26,7 @@ class Macsec : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Macsec : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Macsec : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Interfaces : public Entity
             {
@@ -72,6 +75,7 @@ class Macsec : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -85,8 +89,9 @@ class Macsec : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
 
+
+                        YLeaf name; //type: string
 
                     class HwStatistics : public Entity
                     {
@@ -101,8 +106,9 @@ class Macsec : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value hw_type; //type: uint8
 
+
+                            YLeaf hw_type; //type: uint8
 
                         class MsfpgaStats : public Entity
                         {
@@ -119,6 +125,7 @@ class Macsec : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class TxSaStats : public Entity
                             {
                                 public:
@@ -132,11 +139,12 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value out_pkts_protected; //type: uint64
-                                    Value out_pkts_encrypted; //type: uint64
-                                    Value out_octets_protected; //type: uint64
-                                    Value out_octets_encrypted; //type: uint64
 
+
+                                    YLeaf out_pkts_protected; //type: uint64
+                                    YLeaf out_pkts_encrypted; //type: uint64
+                                    YLeaf out_octets_protected; //type: uint64
+                                    YLeaf out_octets_encrypted; //type: uint64
 
 
 
@@ -156,17 +164,18 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_pkts_unused_sa; //type: uint64
-                                    Value in_pkts_not_using_sa; //type: uint64
-                                    Value in_pkts_not_valid; //type: uint64
-                                    Value in_pkts_invalid; //type: uint64
-                                    Value in_pkts_ok; //type: uint64
-                                    Value in_pkts_delayed; //type: uint64
-                                    Value in_pkts_late; //type: uint64
-                                    Value in_pkts_unchecked; //type: uint64
-                                    Value in_octets_validated; //type: uint64
-                                    Value in_octets_decrypted; //type: uint64
 
+
+                                    YLeaf in_pkts_unused_sa; //type: uint64
+                                    YLeaf in_pkts_not_using_sa; //type: uint64
+                                    YLeaf in_pkts_not_valid; //type: uint64
+                                    YLeaf in_pkts_invalid; //type: uint64
+                                    YLeaf in_pkts_ok; //type: uint64
+                                    YLeaf in_pkts_delayed; //type: uint64
+                                    YLeaf in_pkts_late; //type: uint64
+                                    YLeaf in_pkts_unchecked; //type: uint64
+                                    YLeaf in_octets_validated; //type: uint64
+                                    YLeaf in_octets_decrypted; //type: uint64
 
 
 
@@ -186,10 +195,11 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value out_pkt_uncontrolled; //type: uint64
-                                    Value out_pkt_untagged; //type: uint64
-                                    Value out_pkt_too_long; //type: uint64
 
+
+                                    YLeaf out_pkt_uncontrolled; //type: uint64
+                                    YLeaf out_pkt_untagged; //type: uint64
+                                    YLeaf out_pkt_too_long; //type: uint64
 
 
 
@@ -209,15 +219,16 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_pkt_untagged; //type: uint64
-                                    Value in_pkt_notag; //type: uint64
-                                    Value in_pkt_bad_tag; //type: uint64
-                                    Value in_pkt_no_sci; //type: uint64
-                                    Value in_pkt_unknown_sci; //type: uint64
-                                    Value in_pkt_tagged; //type: uint64
-                                    Value in_pkt_overrun; //type: uint64
-                                    Value in_pkt_uncontrolled; //type: uint64
 
+
+                                    YLeaf in_pkt_untagged; //type: uint64
+                                    YLeaf in_pkt_notag; //type: uint64
+                                    YLeaf in_pkt_bad_tag; //type: uint64
+                                    YLeaf in_pkt_no_sci; //type: uint64
+                                    YLeaf in_pkt_unknown_sci; //type: uint64
+                                    YLeaf in_pkt_tagged; //type: uint64
+                                    YLeaf in_pkt_overrun; //type: uint64
+                                    YLeaf in_pkt_uncontrolled; //type: uint64
 
 
 
@@ -248,6 +259,7 @@ class Macsec : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class MacsecTxStats : public Entity
                             {
                                 public:
@@ -261,14 +273,15 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sc_encrypted_octets; //type: uint64
-                                    Value sc_toolong_pkts; //type: uint64
-                                    Value sc_encrypted_pkts; //type: uint64
-                                    Value sc_untagged_pkts; //type: uint64
-                                    Value sc_overrun_pkts; //type: uint64
-                                    Value current_an; //type: uint64
-                                    Value sa_encrypted_pkts; //type: uint64
 
+
+                                    YLeaf sc_encrypted_octets; //type: uint64
+                                    YLeaf sc_toolong_pkts; //type: uint64
+                                    YLeaf sc_encrypted_pkts; //type: uint64
+                                    YLeaf sc_untagged_pkts; //type: uint64
+                                    YLeaf sc_overrun_pkts; //type: uint64
+                                    YLeaf current_an; //type: uint64
+                                    YLeaf sa_encrypted_pkts; //type: uint64
 
 
 
@@ -288,22 +301,23 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sc_decrypted_octets; //type: uint64
-                                    Value sc_no_tag_pkts; //type: uint64
-                                    Value sc_untagged_pkts; //type: uint64
-                                    Value sc_bad_tag_pkts; //type: uint64
-                                    Value sc_late_pkts; //type: uint64
-                                    Value sc_delayed_pkts; //type: uint64
-                                    Value sc_unchecked_pkts; //type: uint64
-                                    Value sc_no_sci_pkts; //type: uint64
-                                    Value sc_unknown_sci_pkts; //type: uint64
-                                    Value sc_ok_pkts; //type: uint64
-                                    Value sc_not_using_pkts; //type: uint64
-                                    Value sc_unused_pkts; //type: uint64
-                                    Value sc_not_valid_pkts; //type: uint64
-                                    Value sc_invalid_pkts; //type: uint64
-                                    Value sc_overrun_pkts; //type: uint64
 
+
+                                    YLeaf sc_decrypted_octets; //type: uint64
+                                    YLeaf sc_no_tag_pkts; //type: uint64
+                                    YLeaf sc_untagged_pkts; //type: uint64
+                                    YLeaf sc_bad_tag_pkts; //type: uint64
+                                    YLeaf sc_late_pkts; //type: uint64
+                                    YLeaf sc_delayed_pkts; //type: uint64
+                                    YLeaf sc_unchecked_pkts; //type: uint64
+                                    YLeaf sc_no_sci_pkts; //type: uint64
+                                    YLeaf sc_unknown_sci_pkts; //type: uint64
+                                    YLeaf sc_ok_pkts; //type: uint64
+                                    YLeaf sc_not_using_pkts; //type: uint64
+                                    YLeaf sc_unused_pkts; //type: uint64
+                                    YLeaf sc_not_valid_pkts; //type: uint64
+                                    YLeaf sc_invalid_pkts; //type: uint64
+                                    YLeaf sc_overrun_pkts; //type: uint64
 
                                 class RxSaStat : public Entity
                                 {
@@ -318,13 +332,14 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value an; //type: uint64
-                                        Value sa_ok_pkts; //type: uint64
-                                        Value sa_not_using_pkts; //type: uint64
-                                        Value sa_unused_pkts; //type: uint64
-                                        Value sa_not_valid_pkts; //type: uint64
-                                        Value sa_invalid_pkts; //type: uint64
 
+
+                                        YLeaf an; //type: uint64
+                                        YLeaf sa_ok_pkts; //type: uint64
+                                        YLeaf sa_not_using_pkts; //type: uint64
+                                        YLeaf sa_unused_pkts; //type: uint64
+                                        YLeaf sa_not_valid_pkts; //type: uint64
+                                        YLeaf sa_invalid_pkts; //type: uint64
 
 
 
@@ -359,6 +374,7 @@ class Macsec : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class TxSaStats : public Entity
                             {
                                 public:
@@ -372,12 +388,13 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value out_pkts_too_long; //type: uint64
-                                    Value out_pkts_encrypted_protected; //type: uint64
-                                    Value out_octets_encrypted_protected1; //type: uint64
-                                    Value out_octets_encrypted_protected2; //type: uint64
-                                    Value out_pkts_sa_not_in_use; //type: uint64
 
+
+                                    YLeaf out_pkts_too_long; //type: uint64
+                                    YLeaf out_pkts_encrypted_protected; //type: uint64
+                                    YLeaf out_octets_encrypted_protected1; //type: uint64
+                                    YLeaf out_octets_encrypted_protected2; //type: uint64
+                                    YLeaf out_pkts_sa_not_in_use; //type: uint64
 
 
 
@@ -397,19 +414,20 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_pkts_unchecked; //type: uint64
-                                    Value in_pkts_delayed; //type: uint64
-                                    Value in_pkts_late; //type: uint64
-                                    Value in_pkts_ok; //type: uint64
-                                    Value in_pkts_invalid; //type: uint64
-                                    Value in_pkts_not_valid; //type: uint64
-                                    Value in_pkts_not_using_sa; //type: uint64
-                                    Value in_pkts_unused_sa; //type: uint64
-                                    Value in_octets_decrypted_validated1; //type: uint64
-                                    Value in_octets_decrypted_validated2; //type: uint64
-                                    Value in_octets_validated; //type: uint64
-                                    Value in_pkts_sa_not_in_use; //type: uint64
 
+
+                                    YLeaf in_pkts_unchecked; //type: uint64
+                                    YLeaf in_pkts_delayed; //type: uint64
+                                    YLeaf in_pkts_late; //type: uint64
+                                    YLeaf in_pkts_ok; //type: uint64
+                                    YLeaf in_pkts_invalid; //type: uint64
+                                    YLeaf in_pkts_not_valid; //type: uint64
+                                    YLeaf in_pkts_not_using_sa; //type: uint64
+                                    YLeaf in_pkts_unused_sa; //type: uint64
+                                    YLeaf in_octets_decrypted_validated1; //type: uint64
+                                    YLeaf in_octets_decrypted_validated2; //type: uint64
+                                    YLeaf in_octets_validated; //type: uint64
+                                    YLeaf in_pkts_sa_not_in_use; //type: uint64
 
 
 
@@ -429,25 +447,26 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value transform_error_pkts; //type: uint64
-                                    Value out_pkt_ctrl; //type: uint64
-                                    Value out_pkts_untagged; //type: uint64
-                                    Value out_octets_unctrl; //type: uint64
-                                    Value out_octets_ctrl; //type: uint64
-                                    Value out_octets_common; //type: uint64
-                                    Value out_ucast_pkts_unctrl; //type: uint64
-                                    Value out_ucast_pkts_ctrl; //type: uint64
-                                    Value out_mcast_pkts_unctrl; //type: uint64
-                                    Value out_mcast_pkts_ctrl; //type: uint64
-                                    Value out_bcast_pkts_unctrl; //type: uint64
-                                    Value out_bcast_pkts_ctrl; //type: uint64
-                                    Value out_rx_drop_pkts_unctrl; //type: uint64
-                                    Value out_rx_drop_pkts_ctrl; //type: uint64
-                                    Value out_rx_err_pkts_unctrl; //type: uint64
-                                    Value out_rx_err_pkts_ctrl; //type: uint64
-                                    Value out_drop_pkts_class; //type: uint64
-                                    Value out_drop_pkts_data; //type: uint64
 
+
+                                    YLeaf transform_error_pkts; //type: uint64
+                                    YLeaf out_pkt_ctrl; //type: uint64
+                                    YLeaf out_pkts_untagged; //type: uint64
+                                    YLeaf out_octets_unctrl; //type: uint64
+                                    YLeaf out_octets_ctrl; //type: uint64
+                                    YLeaf out_octets_common; //type: uint64
+                                    YLeaf out_ucast_pkts_unctrl; //type: uint64
+                                    YLeaf out_ucast_pkts_ctrl; //type: uint64
+                                    YLeaf out_mcast_pkts_unctrl; //type: uint64
+                                    YLeaf out_mcast_pkts_ctrl; //type: uint64
+                                    YLeaf out_bcast_pkts_unctrl; //type: uint64
+                                    YLeaf out_bcast_pkts_ctrl; //type: uint64
+                                    YLeaf out_rx_drop_pkts_unctrl; //type: uint64
+                                    YLeaf out_rx_drop_pkts_ctrl; //type: uint64
+                                    YLeaf out_rx_err_pkts_unctrl; //type: uint64
+                                    YLeaf out_rx_err_pkts_ctrl; //type: uint64
+                                    YLeaf out_drop_pkts_class; //type: uint64
+                                    YLeaf out_drop_pkts_data; //type: uint64
 
 
 
@@ -467,29 +486,30 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value transform_error_pkts; //type: uint64
-                                    Value in_pkt_ctrl; //type: uint64
-                                    Value in_pkt_no_tag; //type: uint64
-                                    Value in_pkts_untagged; //type: uint64
-                                    Value in_pkt_bad_tag; //type: uint64
-                                    Value in_pkt_no_sci; //type: uint64
-                                    Value in_pkts_unknown_sci; //type: uint64
-                                    Value in_pkts_tagged_ctrl; //type: uint64
-                                    Value in_octets_unctrl; //type: uint64
-                                    Value in_octets_ctrl; //type: uint64
-                                    Value in_ucast_pkts_unctrl; //type: uint64
-                                    Value in_ucast_pkts_ctrl; //type: uint64
-                                    Value in_mcast_pkts_unctrl; //type: uint64
-                                    Value in_mcast_pkts_ctrl; //type: uint64
-                                    Value in_bcast_pkts_unctrl; //type: uint64
-                                    Value in_bcast_pkts_ctrl; //type: uint64
-                                    Value in_rx_drop_pkts_unctrl; //type: uint64
-                                    Value in_rx_drop_pkts_ctrl; //type: uint64
-                                    Value in_rx_error_pkts_unctrl; //type: uint64
-                                    Value in_rx_error_pkts_ctrl; //type: uint64
-                                    Value in_drop_pkts_class; //type: uint64
-                                    Value in_drop_pkts_data; //type: uint64
 
+
+                                    YLeaf transform_error_pkts; //type: uint64
+                                    YLeaf in_pkt_ctrl; //type: uint64
+                                    YLeaf in_pkt_no_tag; //type: uint64
+                                    YLeaf in_pkts_untagged; //type: uint64
+                                    YLeaf in_pkt_bad_tag; //type: uint64
+                                    YLeaf in_pkt_no_sci; //type: uint64
+                                    YLeaf in_pkts_unknown_sci; //type: uint64
+                                    YLeaf in_pkts_tagged_ctrl; //type: uint64
+                                    YLeaf in_octets_unctrl; //type: uint64
+                                    YLeaf in_octets_ctrl; //type: uint64
+                                    YLeaf in_ucast_pkts_unctrl; //type: uint64
+                                    YLeaf in_ucast_pkts_ctrl; //type: uint64
+                                    YLeaf in_mcast_pkts_unctrl; //type: uint64
+                                    YLeaf in_mcast_pkts_ctrl; //type: uint64
+                                    YLeaf in_bcast_pkts_unctrl; //type: uint64
+                                    YLeaf in_bcast_pkts_ctrl; //type: uint64
+                                    YLeaf in_rx_drop_pkts_unctrl; //type: uint64
+                                    YLeaf in_rx_drop_pkts_ctrl; //type: uint64
+                                    YLeaf in_rx_error_pkts_unctrl; //type: uint64
+                                    YLeaf in_rx_error_pkts_ctrl; //type: uint64
+                                    YLeaf in_drop_pkts_class; //type: uint64
+                                    YLeaf in_drop_pkts_data; //type: uint64
 
 
 
@@ -528,6 +548,7 @@ class Macsec : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class SwSa : public Entity
                         {
                             public:
@@ -541,9 +562,10 @@ class Macsec : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sa_id; //type: int32
-                                Value hw_type; //type: uint8
 
+
+                                YLeaf sa_id; //type: int32
+                                YLeaf hw_type; //type: uint8
 
                             class MsfpgaSa : public Entity
                             {
@@ -560,6 +582,7 @@ class Macsec : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TxSa : public Entity
                                 {
                                     public:
@@ -573,21 +596,22 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sa_id; //type: uint8
-                                        Value valid; //type: boolean
-                                        Value is_egress; //type: boolean
-                                        Value crypto_algo; //type: uint8
-                                        Value key_len; //type: uint8
-                                        Value an; //type: uint8
-                                        Value xpn; //type: uint8
-                                        Value sci; //type: uint64
-                                        Value in_use; //type: boolean
-                                        Value next_pn; //type: uint64
-                                        Value c_offset; //type: uint8
-                                        Value action; //type: uint8
-                                        Value q_bit; //type: boolean
-                                        Value qq_bit; //type: boolean
 
+
+                                        YLeaf sa_id; //type: uint8
+                                        YLeaf valid; //type: boolean
+                                        YLeaf is_egress; //type: boolean
+                                        YLeaf crypto_algo; //type: uint8
+                                        YLeaf key_len; //type: uint8
+                                        YLeaf an; //type: uint8
+                                        YLeaf xpn; //type: uint8
+                                        YLeaf sci; //type: uint64
+                                        YLeaf in_use; //type: boolean
+                                        YLeaf next_pn; //type: uint64
+                                        YLeaf c_offset; //type: uint8
+                                        YLeaf action; //type: uint8
+                                        YLeaf q_bit; //type: boolean
+                                        YLeaf qq_bit; //type: boolean
 
 
 
@@ -607,21 +631,22 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sa_id; //type: uint8
-                                        Value valid; //type: boolean
-                                        Value is_egress; //type: boolean
-                                        Value crypto_algo; //type: uint8
-                                        Value key_len; //type: uint8
-                                        Value an; //type: uint8
-                                        Value xpn; //type: uint8
-                                        Value sci; //type: uint64
-                                        Value in_use; //type: boolean
-                                        Value next_pn; //type: uint64
-                                        Value c_offset; //type: uint8
-                                        Value action; //type: uint8
-                                        Value q_bit; //type: boolean
-                                        Value qq_bit; //type: boolean
 
+
+                                        YLeaf sa_id; //type: uint8
+                                        YLeaf valid; //type: boolean
+                                        YLeaf is_egress; //type: boolean
+                                        YLeaf crypto_algo; //type: uint8
+                                        YLeaf key_len; //type: uint8
+                                        YLeaf an; //type: uint8
+                                        YLeaf xpn; //type: uint8
+                                        YLeaf sci; //type: uint64
+                                        YLeaf in_use; //type: boolean
+                                        YLeaf next_pn; //type: uint64
+                                        YLeaf c_offset; //type: uint8
+                                        YLeaf action; //type: uint8
+                                        YLeaf q_bit; //type: boolean
+                                        YLeaf qq_bit; //type: boolean
 
 
 
@@ -650,6 +675,7 @@ class Macsec : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TxSa : public Entity
                                 {
                                     public:
@@ -663,20 +689,21 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value protection_enable; //type: boolean
-                                        Value secure_mode; //type: uint8
-                                        Value secure_channel_id; //type: uint64
-                                        Value sectag_length; //type: uint32
-                                        Value cipher_suite; //type: uint32
-                                        Value confidentiality_offset; //type: uint8
-                                        Value fcs_err_cfg; //type: uint8
-                                        Value max_packet_num; //type: uint64
-                                        Value an; //type: uint8
-                                        Value initial_packet_number; //type: uint64
-                                        Value ssci; //type: uint32
-                                        Value current_packet_num; //type: uint64
-                                        Value crc_value; //type: uint32
 
+
+                                        YLeaf protection_enable; //type: boolean
+                                        YLeaf secure_mode; //type: uint8
+                                        YLeaf secure_channel_id; //type: uint64
+                                        YLeaf sectag_length; //type: uint32
+                                        YLeaf cipher_suite; //type: uint32
+                                        YLeaf confidentiality_offset; //type: uint8
+                                        YLeaf fcs_err_cfg; //type: uint8
+                                        YLeaf max_packet_num; //type: uint64
+                                        YLeaf an; //type: uint8
+                                        YLeaf initial_packet_number; //type: uint64
+                                        YLeaf ssci; //type: uint32
+                                        YLeaf current_packet_num; //type: uint64
+                                        YLeaf crc_value; //type: uint32
 
 
 
@@ -696,29 +723,30 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value protection_enable; //type: boolean
-                                        Value secure_mode; //type: uint32
-                                        Value replay_protect_mode; //type: boolean
-                                        Value validation_mode; //type: uint32
-                                        Value replay_window; //type: uint32
-                                        Value secure_channel_id; //type: uint64
-                                        Value cipher_suite; //type: uint32
-                                        Value confidentiality_offset; //type: uint8
-                                        Value fcs_err_cfg; //type: uint32
-                                        Value auth_err_cfg; //type: uint32
-                                        Value max_packet_num; //type: uint64
-                                        Value num_an_in_use; //type: uint32
-                                        Value an; //type: string
-                                        Value recent_an; //type: uint8
-                                        Value pkt_untagged_detected; //type: boolean
-                                        Value pkt_tagged_detected; //type: boolean
-                                        Value pkt_tagged_validated; //type: boolean
-                                        Value current_packet_num; //type: uint64
-                                        Value lowest_acceptable_packet_num; //type: uint64
-                                        Value next_expected_packet_num; //type: uint64
-                                        ValueList ssci; //type: list of  uint32
-                                        ValueList crc_value; //type: list of  uint32
 
+
+                                        YLeaf protection_enable; //type: boolean
+                                        YLeaf secure_mode; //type: uint32
+                                        YLeaf replay_protect_mode; //type: boolean
+                                        YLeaf validation_mode; //type: uint32
+                                        YLeaf replay_window; //type: uint32
+                                        YLeaf secure_channel_id; //type: uint64
+                                        YLeaf cipher_suite; //type: uint32
+                                        YLeaf confidentiality_offset; //type: uint8
+                                        YLeaf fcs_err_cfg; //type: uint32
+                                        YLeaf auth_err_cfg; //type: uint32
+                                        YLeaf max_packet_num; //type: uint64
+                                        YLeaf num_an_in_use; //type: uint32
+                                        YLeaf an; //type: string
+                                        YLeaf recent_an; //type: uint8
+                                        YLeaf pkt_untagged_detected; //type: boolean
+                                        YLeaf pkt_tagged_detected; //type: boolean
+                                        YLeaf pkt_tagged_validated; //type: boolean
+                                        YLeaf current_packet_num; //type: uint64
+                                        YLeaf lowest_acceptable_packet_num; //type: uint64
+                                        YLeaf next_expected_packet_num; //type: uint64
+                                        YLeafList ssci; //type: list of  uint32
+                                        YLeafList crc_value; //type: list of  uint32
 
 
 
@@ -747,6 +775,7 @@ class Macsec : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TxSa : public Entity
                                 {
                                     public:
@@ -760,15 +789,16 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value is_valid; //type: boolean
-                                        Value sa_id; //type: uint8
-                                        Value sc_no; //type: uint32
-                                        Value out_pkts_too_long; //type: uint8
-                                        Value out_pkts_encrypted_protected; //type: uint8
-                                        Value out_octets_encrypted_protected1; //type: uint8
-                                        Value out_octets_encrypted_protected2; //type: uint8
-                                        Value out_pkts_sa_not_in_use; //type: uint8
 
+
+                                        YLeaf is_valid; //type: boolean
+                                        YLeaf sa_id; //type: uint8
+                                        YLeaf sc_no; //type: uint32
+                                        YLeaf out_pkts_too_long; //type: uint8
+                                        YLeaf out_pkts_encrypted_protected; //type: uint8
+                                        YLeaf out_octets_encrypted_protected1; //type: uint8
+                                        YLeaf out_octets_encrypted_protected2; //type: uint8
+                                        YLeaf out_pkts_sa_not_in_use; //type: uint8
 
                                     class XformParams : public Entity
                                     {
@@ -783,14 +813,15 @@ class Macsec : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value replay_win_size; //type: uint32
-                                            Value crypt_algo; //type: uint32
-                                            Value is_egress_tr; //type: boolean
-                                            Value aes_key_len; //type: uint32
-                                            Value assoc_num; //type: uint8
-                                            Value is_seq_num64_bit; //type: boolean
-                                            Value bgen_auth_key; //type: boolean
 
+
+                                            YLeaf replay_win_size; //type: uint32
+                                            YLeaf crypt_algo; //type: uint32
+                                            YLeaf is_egress_tr; //type: boolean
+                                            YLeaf aes_key_len; //type: uint32
+                                            YLeaf assoc_num; //type: uint8
+                                            YLeaf is_seq_num64_bit; //type: boolean
+                                            YLeaf bgen_auth_key; //type: boolean
 
 
 
@@ -816,21 +847,22 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value is_valid; //type: boolean
-                                        Value sa_id; //type: uint8
-                                        Value sc_no; //type: uint32
-                                        Value in_pkts_unchecked; //type: uint8
-                                        Value in_pkts_delayed; //type: uint8
-                                        Value in_pkts_late; //type: uint8
-                                        Value in_pkts_ok; //type: uint8
-                                        Value in_pkts_invalid; //type: uint8
-                                        Value in_pkts_not_valid; //type: uint8
-                                        Value in_pkts_not_using_sa; //type: uint8
-                                        Value in_pkts_unused_sa; //type: uint8
-                                        Value in_octets_decrypted_validated1; //type: uint8
-                                        Value in_octets_decrypted_validated2; //type: uint8
-                                        Value in_octets_validated; //type: uint8
 
+
+                                        YLeaf is_valid; //type: boolean
+                                        YLeaf sa_id; //type: uint8
+                                        YLeaf sc_no; //type: uint32
+                                        YLeaf in_pkts_unchecked; //type: uint8
+                                        YLeaf in_pkts_delayed; //type: uint8
+                                        YLeaf in_pkts_late; //type: uint8
+                                        YLeaf in_pkts_ok; //type: uint8
+                                        YLeaf in_pkts_invalid; //type: uint8
+                                        YLeaf in_pkts_not_valid; //type: uint8
+                                        YLeaf in_pkts_not_using_sa; //type: uint8
+                                        YLeaf in_pkts_unused_sa; //type: uint8
+                                        YLeaf in_octets_decrypted_validated1; //type: uint8
+                                        YLeaf in_octets_decrypted_validated2; //type: uint8
+                                        YLeaf in_octets_validated; //type: uint8
 
                                     class XformParams : public Entity
                                     {
@@ -845,14 +877,15 @@ class Macsec : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value replay_win_size; //type: uint32
-                                            Value crypt_algo; //type: uint32
-                                            Value is_egress_tr; //type: boolean
-                                            Value aes_key_len; //type: uint32
-                                            Value assoc_num; //type: uint8
-                                            Value is_seq_num64_bit; //type: boolean
-                                            Value bgen_auth_key; //type: boolean
 
+
+                                            YLeaf replay_win_size; //type: uint32
+                                            YLeaf crypt_algo; //type: uint32
+                                            YLeaf is_egress_tr; //type: boolean
+                                            YLeaf aes_key_len; //type: uint32
+                                            YLeaf assoc_num; //type: uint8
+                                            YLeaf is_seq_num64_bit; //type: boolean
+                                            YLeaf bgen_auth_key; //type: boolean
 
 
 
@@ -901,6 +934,7 @@ class Macsec : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class HwSa : public Entity
                         {
                             public:
@@ -914,9 +948,10 @@ class Macsec : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sa_id; //type: int32
-                                Value hw_type; //type: uint8
 
+
+                                YLeaf sa_id; //type: int32
+                                YLeaf hw_type; //type: uint8
 
                             class MsfpgaSa : public Entity
                             {
@@ -933,6 +968,7 @@ class Macsec : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TxSa : public Entity
                                 {
                                     public:
@@ -946,21 +982,22 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sa_id; //type: uint8
-                                        Value valid; //type: boolean
-                                        Value is_egress; //type: boolean
-                                        Value crypto_algo; //type: uint8
-                                        Value key_len; //type: uint8
-                                        Value an; //type: uint8
-                                        Value xpn; //type: uint8
-                                        Value sci; //type: uint64
-                                        Value in_use; //type: boolean
-                                        Value next_pn; //type: uint64
-                                        Value c_offset; //type: uint8
-                                        Value action; //type: uint8
-                                        Value q_bit; //type: boolean
-                                        Value qq_bit; //type: boolean
 
+
+                                        YLeaf sa_id; //type: uint8
+                                        YLeaf valid; //type: boolean
+                                        YLeaf is_egress; //type: boolean
+                                        YLeaf crypto_algo; //type: uint8
+                                        YLeaf key_len; //type: uint8
+                                        YLeaf an; //type: uint8
+                                        YLeaf xpn; //type: uint8
+                                        YLeaf sci; //type: uint64
+                                        YLeaf in_use; //type: boolean
+                                        YLeaf next_pn; //type: uint64
+                                        YLeaf c_offset; //type: uint8
+                                        YLeaf action; //type: uint8
+                                        YLeaf q_bit; //type: boolean
+                                        YLeaf qq_bit; //type: boolean
 
 
 
@@ -980,21 +1017,22 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sa_id; //type: uint8
-                                        Value valid; //type: boolean
-                                        Value is_egress; //type: boolean
-                                        Value crypto_algo; //type: uint8
-                                        Value key_len; //type: uint8
-                                        Value an; //type: uint8
-                                        Value xpn; //type: uint8
-                                        Value sci; //type: uint64
-                                        Value in_use; //type: boolean
-                                        Value next_pn; //type: uint64
-                                        Value c_offset; //type: uint8
-                                        Value action; //type: uint8
-                                        Value q_bit; //type: boolean
-                                        Value qq_bit; //type: boolean
 
+
+                                        YLeaf sa_id; //type: uint8
+                                        YLeaf valid; //type: boolean
+                                        YLeaf is_egress; //type: boolean
+                                        YLeaf crypto_algo; //type: uint8
+                                        YLeaf key_len; //type: uint8
+                                        YLeaf an; //type: uint8
+                                        YLeaf xpn; //type: uint8
+                                        YLeaf sci; //type: uint64
+                                        YLeaf in_use; //type: boolean
+                                        YLeaf next_pn; //type: uint64
+                                        YLeaf c_offset; //type: uint8
+                                        YLeaf action; //type: uint8
+                                        YLeaf q_bit; //type: boolean
+                                        YLeaf qq_bit; //type: boolean
 
 
 
@@ -1023,6 +1061,7 @@ class Macsec : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TxSa : public Entity
                                 {
                                     public:
@@ -1036,20 +1075,21 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value protection_enable; //type: boolean
-                                        Value secure_mode; //type: uint8
-                                        Value secure_channel_id; //type: uint64
-                                        Value sectag_length; //type: uint32
-                                        Value cipher_suite; //type: uint32
-                                        Value confidentiality_offset; //type: uint8
-                                        Value fcs_err_cfg; //type: uint8
-                                        Value max_packet_num; //type: uint64
-                                        Value an; //type: uint8
-                                        Value initial_packet_number; //type: uint64
-                                        Value ssci; //type: uint32
-                                        Value current_packet_num; //type: uint64
-                                        Value crc_value; //type: uint32
 
+
+                                        YLeaf protection_enable; //type: boolean
+                                        YLeaf secure_mode; //type: uint8
+                                        YLeaf secure_channel_id; //type: uint64
+                                        YLeaf sectag_length; //type: uint32
+                                        YLeaf cipher_suite; //type: uint32
+                                        YLeaf confidentiality_offset; //type: uint8
+                                        YLeaf fcs_err_cfg; //type: uint8
+                                        YLeaf max_packet_num; //type: uint64
+                                        YLeaf an; //type: uint8
+                                        YLeaf initial_packet_number; //type: uint64
+                                        YLeaf ssci; //type: uint32
+                                        YLeaf current_packet_num; //type: uint64
+                                        YLeaf crc_value; //type: uint32
 
 
 
@@ -1069,29 +1109,30 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value protection_enable; //type: boolean
-                                        Value secure_mode; //type: uint32
-                                        Value replay_protect_mode; //type: boolean
-                                        Value validation_mode; //type: uint32
-                                        Value replay_window; //type: uint32
-                                        Value secure_channel_id; //type: uint64
-                                        Value cipher_suite; //type: uint32
-                                        Value confidentiality_offset; //type: uint8
-                                        Value fcs_err_cfg; //type: uint32
-                                        Value auth_err_cfg; //type: uint32
-                                        Value max_packet_num; //type: uint64
-                                        Value num_an_in_use; //type: uint32
-                                        Value an; //type: string
-                                        Value recent_an; //type: uint8
-                                        Value pkt_untagged_detected; //type: boolean
-                                        Value pkt_tagged_detected; //type: boolean
-                                        Value pkt_tagged_validated; //type: boolean
-                                        Value current_packet_num; //type: uint64
-                                        Value lowest_acceptable_packet_num; //type: uint64
-                                        Value next_expected_packet_num; //type: uint64
-                                        ValueList ssci; //type: list of  uint32
-                                        ValueList crc_value; //type: list of  uint32
 
+
+                                        YLeaf protection_enable; //type: boolean
+                                        YLeaf secure_mode; //type: uint32
+                                        YLeaf replay_protect_mode; //type: boolean
+                                        YLeaf validation_mode; //type: uint32
+                                        YLeaf replay_window; //type: uint32
+                                        YLeaf secure_channel_id; //type: uint64
+                                        YLeaf cipher_suite; //type: uint32
+                                        YLeaf confidentiality_offset; //type: uint8
+                                        YLeaf fcs_err_cfg; //type: uint32
+                                        YLeaf auth_err_cfg; //type: uint32
+                                        YLeaf max_packet_num; //type: uint64
+                                        YLeaf num_an_in_use; //type: uint32
+                                        YLeaf an; //type: string
+                                        YLeaf recent_an; //type: uint8
+                                        YLeaf pkt_untagged_detected; //type: boolean
+                                        YLeaf pkt_tagged_detected; //type: boolean
+                                        YLeaf pkt_tagged_validated; //type: boolean
+                                        YLeaf current_packet_num; //type: uint64
+                                        YLeaf lowest_acceptable_packet_num; //type: uint64
+                                        YLeaf next_expected_packet_num; //type: uint64
+                                        YLeafList ssci; //type: list of  uint32
+                                        YLeafList crc_value; //type: list of  uint32
 
 
 
@@ -1120,6 +1161,7 @@ class Macsec : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TxSa : public Entity
                                 {
                                     public:
@@ -1133,15 +1175,16 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value is_valid; //type: boolean
-                                        Value sa_id; //type: uint8
-                                        Value sc_no; //type: uint32
-                                        Value out_pkts_too_long; //type: uint8
-                                        Value out_pkts_encrypted_protected; //type: uint8
-                                        Value out_octets_encrypted_protected1; //type: uint8
-                                        Value out_octets_encrypted_protected2; //type: uint8
-                                        Value out_pkts_sa_not_in_use; //type: uint8
 
+
+                                        YLeaf is_valid; //type: boolean
+                                        YLeaf sa_id; //type: uint8
+                                        YLeaf sc_no; //type: uint32
+                                        YLeaf out_pkts_too_long; //type: uint8
+                                        YLeaf out_pkts_encrypted_protected; //type: uint8
+                                        YLeaf out_octets_encrypted_protected1; //type: uint8
+                                        YLeaf out_octets_encrypted_protected2; //type: uint8
+                                        YLeaf out_pkts_sa_not_in_use; //type: uint8
 
                                     class XformParams : public Entity
                                     {
@@ -1156,14 +1199,15 @@ class Macsec : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value replay_win_size; //type: uint32
-                                            Value crypt_algo; //type: uint32
-                                            Value is_egress_tr; //type: boolean
-                                            Value aes_key_len; //type: uint32
-                                            Value assoc_num; //type: uint8
-                                            Value is_seq_num64_bit; //type: boolean
-                                            Value bgen_auth_key; //type: boolean
 
+
+                                            YLeaf replay_win_size; //type: uint32
+                                            YLeaf crypt_algo; //type: uint32
+                                            YLeaf is_egress_tr; //type: boolean
+                                            YLeaf aes_key_len; //type: uint32
+                                            YLeaf assoc_num; //type: uint8
+                                            YLeaf is_seq_num64_bit; //type: boolean
+                                            YLeaf bgen_auth_key; //type: boolean
 
 
 
@@ -1189,21 +1233,22 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value is_valid; //type: boolean
-                                        Value sa_id; //type: uint8
-                                        Value sc_no; //type: uint32
-                                        Value in_pkts_unchecked; //type: uint8
-                                        Value in_pkts_delayed; //type: uint8
-                                        Value in_pkts_late; //type: uint8
-                                        Value in_pkts_ok; //type: uint8
-                                        Value in_pkts_invalid; //type: uint8
-                                        Value in_pkts_not_valid; //type: uint8
-                                        Value in_pkts_not_using_sa; //type: uint8
-                                        Value in_pkts_unused_sa; //type: uint8
-                                        Value in_octets_decrypted_validated1; //type: uint8
-                                        Value in_octets_decrypted_validated2; //type: uint8
-                                        Value in_octets_validated; //type: uint8
 
+
+                                        YLeaf is_valid; //type: boolean
+                                        YLeaf sa_id; //type: uint8
+                                        YLeaf sc_no; //type: uint32
+                                        YLeaf in_pkts_unchecked; //type: uint8
+                                        YLeaf in_pkts_delayed; //type: uint8
+                                        YLeaf in_pkts_late; //type: uint8
+                                        YLeaf in_pkts_ok; //type: uint8
+                                        YLeaf in_pkts_invalid; //type: uint8
+                                        YLeaf in_pkts_not_valid; //type: uint8
+                                        YLeaf in_pkts_not_using_sa; //type: uint8
+                                        YLeaf in_pkts_unused_sa; //type: uint8
+                                        YLeaf in_octets_decrypted_validated1; //type: uint8
+                                        YLeaf in_octets_decrypted_validated2; //type: uint8
+                                        YLeaf in_octets_validated; //type: uint8
 
                                     class XformParams : public Entity
                                     {
@@ -1218,14 +1263,15 @@ class Macsec : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value replay_win_size; //type: uint32
-                                            Value crypt_algo; //type: uint32
-                                            Value is_egress_tr; //type: boolean
-                                            Value aes_key_len; //type: uint32
-                                            Value assoc_num; //type: uint8
-                                            Value is_seq_num64_bit; //type: boolean
-                                            Value bgen_auth_key; //type: boolean
 
+
+                                            YLeaf replay_win_size; //type: uint32
+                                            YLeaf crypt_algo; //type: uint32
+                                            YLeaf is_egress_tr; //type: boolean
+                                            YLeaf aes_key_len; //type: uint32
+                                            YLeaf assoc_num; //type: uint8
+                                            YLeaf is_seq_num64_bit; //type: boolean
+                                            YLeaf bgen_auth_key; //type: boolean
 
 
 
@@ -1274,6 +1320,7 @@ class Macsec : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class HwFlow : public Entity
                         {
                             public:
@@ -1287,9 +1334,10 @@ class Macsec : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value flow_id; //type: int32
-                                Value hw_type; //type: uint8
 
+
+                                YLeaf flow_id; //type: int32
+                                YLeaf hw_type; //type: uint8
 
                             class MsfpgaFlow : public Entity
                             {
@@ -1306,6 +1354,7 @@ class Macsec : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TxFlow : public Entity
                                 {
                                     public:
@@ -1319,44 +1368,45 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value flow_id; //type: uint8
-                                        Value valid; //type: boolean
-                                        Value is_egress; //type: boolean
-                                        Value in_use; //type: boolean
-                                        Value action; //type: uint8
-                                        Value smac_inuse; //type: boolean
-                                        Value dmac_inuse; //type: boolean
-                                        Value ethertype; //type: uint16
-                                        Value outer_vlan; //type: uint16
-                                        Value outer_vlan_up; //type: uint8
-                                        Value outer_vlan_tpid; //type: uint16
-                                        Value inner_vlan; //type: uint16
-                                        Value inner_vlan_up; //type: uint8
-                                        Value inner_vlan_tpid; //type: uint16
-                                        Value source_port; //type: uint32
-                                        Value source_port_chk; //type: boolean
-                                        Value sci_inuse; //type: boolean
-                                        Value sci; //type: uint64
-                                        Value match_pri; //type: uint8
-                                        Value is_ctrl_pkt; //type: boolean
-                                        Value ctrl_check; //type: boolean
-                                        Value match_untagged; //type: boolean
-                                        Value match_tagged; //type: boolean
-                                        Value match_bad_tag; //type: boolean
-                                        Value match_kay_tag; //type: boolean
-                                        Value tci_v; //type: uint8
-                                        Value tci_e_xr; //type: uint8
-                                        Value tci_sc; //type: uint8
-                                        Value tci_scb; //type: uint8
-                                        Value tci; //type: uint8
-                                        Value tci_c; //type: uint8
-                                        Value tci_an; //type: uint8
-                                        Value tci_an_chk; //type: boolean
-                                        Value tci_chk; //type: boolean
-                                        Value sai; //type: uint32
-                                        ValueList macsa; //type: list of  uint8
-                                        ValueList macda; //type: list of  uint8
 
+
+                                        YLeaf flow_id; //type: uint8
+                                        YLeaf valid; //type: boolean
+                                        YLeaf is_egress; //type: boolean
+                                        YLeaf in_use; //type: boolean
+                                        YLeaf action; //type: uint8
+                                        YLeaf smac_inuse; //type: boolean
+                                        YLeaf dmac_inuse; //type: boolean
+                                        YLeaf ethertype; //type: uint16
+                                        YLeaf outer_vlan; //type: uint16
+                                        YLeaf outer_vlan_up; //type: uint8
+                                        YLeaf outer_vlan_tpid; //type: uint16
+                                        YLeaf inner_vlan; //type: uint16
+                                        YLeaf inner_vlan_up; //type: uint8
+                                        YLeaf inner_vlan_tpid; //type: uint16
+                                        YLeaf source_port; //type: uint32
+                                        YLeaf source_port_chk; //type: boolean
+                                        YLeaf sci_inuse; //type: boolean
+                                        YLeaf sci; //type: uint64
+                                        YLeaf match_pri; //type: uint8
+                                        YLeaf is_ctrl_pkt; //type: boolean
+                                        YLeaf ctrl_check; //type: boolean
+                                        YLeaf match_untagged; //type: boolean
+                                        YLeaf match_tagged; //type: boolean
+                                        YLeaf match_bad_tag; //type: boolean
+                                        YLeaf match_kay_tag; //type: boolean
+                                        YLeaf tci_v; //type: uint8
+                                        YLeaf tci_e_xr; //type: uint8
+                                        YLeaf tci_sc; //type: uint8
+                                        YLeaf tci_scb; //type: uint8
+                                        YLeaf tci; //type: uint8
+                                        YLeaf tci_c; //type: uint8
+                                        YLeaf tci_an; //type: uint8
+                                        YLeaf tci_an_chk; //type: boolean
+                                        YLeaf tci_chk; //type: boolean
+                                        YLeaf sai; //type: uint32
+                                        YLeafList macsa; //type: list of  uint8
+                                        YLeafList macda; //type: list of  uint8
 
 
 
@@ -1376,44 +1426,45 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value flow_id; //type: uint8
-                                        Value valid; //type: boolean
-                                        Value is_egress; //type: boolean
-                                        Value in_use; //type: boolean
-                                        Value action; //type: uint8
-                                        Value smac_inuse; //type: boolean
-                                        Value dmac_inuse; //type: boolean
-                                        Value ethertype; //type: uint16
-                                        Value outer_vlan; //type: uint16
-                                        Value outer_vlan_up; //type: uint8
-                                        Value outer_vlan_tpid; //type: uint16
-                                        Value inner_vlan; //type: uint16
-                                        Value inner_vlan_up; //type: uint8
-                                        Value inner_vlan_tpid; //type: uint16
-                                        Value source_port; //type: uint32
-                                        Value source_port_chk; //type: boolean
-                                        Value sci_inuse; //type: boolean
-                                        Value sci; //type: uint64
-                                        Value match_pri; //type: uint8
-                                        Value is_ctrl_pkt; //type: boolean
-                                        Value ctrl_check; //type: boolean
-                                        Value match_untagged; //type: boolean
-                                        Value match_tagged; //type: boolean
-                                        Value match_bad_tag; //type: boolean
-                                        Value match_kay_tag; //type: boolean
-                                        Value tci_v; //type: uint8
-                                        Value tci_e_xr; //type: uint8
-                                        Value tci_sc; //type: uint8
-                                        Value tci_scb; //type: uint8
-                                        Value tci; //type: uint8
-                                        Value tci_c; //type: uint8
-                                        Value tci_an; //type: uint8
-                                        Value tci_an_chk; //type: boolean
-                                        Value tci_chk; //type: boolean
-                                        Value sai; //type: uint32
-                                        ValueList macsa; //type: list of  uint8
-                                        ValueList macda; //type: list of  uint8
 
+
+                                        YLeaf flow_id; //type: uint8
+                                        YLeaf valid; //type: boolean
+                                        YLeaf is_egress; //type: boolean
+                                        YLeaf in_use; //type: boolean
+                                        YLeaf action; //type: uint8
+                                        YLeaf smac_inuse; //type: boolean
+                                        YLeaf dmac_inuse; //type: boolean
+                                        YLeaf ethertype; //type: uint16
+                                        YLeaf outer_vlan; //type: uint16
+                                        YLeaf outer_vlan_up; //type: uint8
+                                        YLeaf outer_vlan_tpid; //type: uint16
+                                        YLeaf inner_vlan; //type: uint16
+                                        YLeaf inner_vlan_up; //type: uint8
+                                        YLeaf inner_vlan_tpid; //type: uint16
+                                        YLeaf source_port; //type: uint32
+                                        YLeaf source_port_chk; //type: boolean
+                                        YLeaf sci_inuse; //type: boolean
+                                        YLeaf sci; //type: uint64
+                                        YLeaf match_pri; //type: uint8
+                                        YLeaf is_ctrl_pkt; //type: boolean
+                                        YLeaf ctrl_check; //type: boolean
+                                        YLeaf match_untagged; //type: boolean
+                                        YLeaf match_tagged; //type: boolean
+                                        YLeaf match_bad_tag; //type: boolean
+                                        YLeaf match_kay_tag; //type: boolean
+                                        YLeaf tci_v; //type: uint8
+                                        YLeaf tci_e_xr; //type: uint8
+                                        YLeaf tci_sc; //type: uint8
+                                        YLeaf tci_scb; //type: uint8
+                                        YLeaf tci; //type: uint8
+                                        YLeaf tci_c; //type: uint8
+                                        YLeaf tci_an; //type: uint8
+                                        YLeaf tci_an_chk; //type: boolean
+                                        YLeaf tci_chk; //type: boolean
+                                        YLeaf sai; //type: uint32
+                                        YLeafList macsa; //type: list of  uint8
+                                        YLeafList macda; //type: list of  uint8
 
 
 
@@ -1442,6 +1493,7 @@ class Macsec : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TxFlow : public Entity
                                 {
                                     public:
@@ -1455,55 +1507,56 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value flow_no; //type: uint32
-                                        Value is_flow_enabled; //type: boolean
-                                        Value ethertype; //type: uint16
-                                        Value outer_vlan_id; //type: uint16
-                                        Value outer_vlan_user_pri; //type: uint8
-                                        Value inner_vlan_id; //type: uint16
-                                        Value inner_vlan_user_pri; //type: uint8
-                                        Value psci; //type: uint64
-                                        Value match_priority; //type: uint8
-                                        Value tci_v; //type: uint8
-                                        Value tci_e_xr; //type: uint8
-                                        Value tci_sc; //type: uint8
-                                        Value tci_scb; //type: uint8
-                                        Value tci; //type: uint8
-                                        Value tci_c; //type: uint8
-                                        Value tci_chk; //type: boolean
-                                        Value pkt_type; //type: uint32
-                                        Value tag_num; //type: uint32
-                                        Value inner_vlan_dei; //type: boolean
-                                        Value outer_vlan_dei; //type: boolean
-                                        Value pbb_sid; //type: uint32
-                                        Value pbb_bvid; //type: uint32
-                                        Value pbb_pcp; //type: uint8
-                                        Value pbb_dei; //type: uint8
-                                        Value vlan_id; //type: uint16
-                                        Value vlan_pcp; //type: uint8
-                                        Value vlan_dei; //type: uint8
-                                        Value mpls1_label; //type: uint32
-                                        Value mpls1_exp; //type: uint8
-                                        Value mpls1_bos; //type: uint8
-                                        Value mpls2_label; //type: uint32
-                                        Value mpls2_exp; //type: uint8
-                                        Value mpls2_bos; //type: uint8
-                                        Value plain_bits; //type: uint64
-                                        Value plain_bits_size; //type: uint8
-                                        Value force_ctrl; //type: boolean
-                                        Value drop; //type: boolean
-                                        Value mask_da; //type: uint64
-                                        Value mask_ethertype; //type: uint32
-                                        Value mask_plain_bits; //type: uint64
-                                        Value multi_flow_match; //type: uint64
-                                        Value parser_dropped; //type: uint64
-                                        Value flow_miss; //type: uint64
-                                        Value pkts_ctrl; //type: uint64
-                                        Value pkts_data; //type: uint64
-                                        Value pkts_dropped; //type: uint64
-                                        Value pkts_err_in; //type: uint64
-                                        ValueList macda; //type: list of  uint8
 
+
+                                        YLeaf flow_no; //type: uint32
+                                        YLeaf is_flow_enabled; //type: boolean
+                                        YLeaf ethertype; //type: uint16
+                                        YLeaf outer_vlan_id; //type: uint16
+                                        YLeaf outer_vlan_user_pri; //type: uint8
+                                        YLeaf inner_vlan_id; //type: uint16
+                                        YLeaf inner_vlan_user_pri; //type: uint8
+                                        YLeaf psci; //type: uint64
+                                        YLeaf match_priority; //type: uint8
+                                        YLeaf tci_v; //type: uint8
+                                        YLeaf tci_e_xr; //type: uint8
+                                        YLeaf tci_sc; //type: uint8
+                                        YLeaf tci_scb; //type: uint8
+                                        YLeaf tci; //type: uint8
+                                        YLeaf tci_c; //type: uint8
+                                        YLeaf tci_chk; //type: boolean
+                                        YLeaf pkt_type; //type: uint32
+                                        YLeaf tag_num; //type: uint32
+                                        YLeaf inner_vlan_dei; //type: boolean
+                                        YLeaf outer_vlan_dei; //type: boolean
+                                        YLeaf pbb_sid; //type: uint32
+                                        YLeaf pbb_bvid; //type: uint32
+                                        YLeaf pbb_pcp; //type: uint8
+                                        YLeaf pbb_dei; //type: uint8
+                                        YLeaf vlan_id; //type: uint16
+                                        YLeaf vlan_pcp; //type: uint8
+                                        YLeaf vlan_dei; //type: uint8
+                                        YLeaf mpls1_label; //type: uint32
+                                        YLeaf mpls1_exp; //type: uint8
+                                        YLeaf mpls1_bos; //type: uint8
+                                        YLeaf mpls2_label; //type: uint32
+                                        YLeaf mpls2_exp; //type: uint8
+                                        YLeaf mpls2_bos; //type: uint8
+                                        YLeaf plain_bits; //type: uint64
+                                        YLeaf plain_bits_size; //type: uint8
+                                        YLeaf force_ctrl; //type: boolean
+                                        YLeaf drop; //type: boolean
+                                        YLeaf mask_da; //type: uint64
+                                        YLeaf mask_ethertype; //type: uint32
+                                        YLeaf mask_plain_bits; //type: uint64
+                                        YLeaf multi_flow_match; //type: uint64
+                                        YLeaf parser_dropped; //type: uint64
+                                        YLeaf flow_miss; //type: uint64
+                                        YLeaf pkts_ctrl; //type: uint64
+                                        YLeaf pkts_data; //type: uint64
+                                        YLeaf pkts_dropped; //type: uint64
+                                        YLeaf pkts_err_in; //type: uint64
+                                        YLeafList macda; //type: list of  uint8
 
 
 
@@ -1523,55 +1576,56 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value flow_no; //type: uint32
-                                        Value is_flow_enabled; //type: boolean
-                                        Value ethertype; //type: uint16
-                                        Value outer_vlan_id; //type: uint16
-                                        Value outer_vlan_user_pri; //type: uint8
-                                        Value inner_vlan_id; //type: uint16
-                                        Value inner_vlan_user_pri; //type: uint8
-                                        Value psci; //type: uint64
-                                        Value match_priority; //type: uint8
-                                        Value tci_v; //type: uint8
-                                        Value tci_e_xr; //type: uint8
-                                        Value tci_sc; //type: uint8
-                                        Value tci_scb; //type: uint8
-                                        Value tci; //type: uint8
-                                        Value tci_c; //type: uint8
-                                        Value tci_chk; //type: boolean
-                                        Value pkt_type; //type: uint32
-                                        Value tag_num; //type: uint32
-                                        Value inner_vlan_dei; //type: boolean
-                                        Value outer_vlan_dei; //type: boolean
-                                        Value pbb_sid; //type: uint32
-                                        Value pbb_bvid; //type: uint32
-                                        Value pbb_pcp; //type: uint8
-                                        Value pbb_dei; //type: uint8
-                                        Value vlan_id; //type: uint16
-                                        Value vlan_pcp; //type: uint8
-                                        Value vlan_dei; //type: uint8
-                                        Value mpls1_label; //type: uint32
-                                        Value mpls1_exp; //type: uint8
-                                        Value mpls1_bos; //type: uint8
-                                        Value mpls2_label; //type: uint32
-                                        Value mpls2_exp; //type: uint8
-                                        Value mpls2_bos; //type: uint8
-                                        Value plain_bits; //type: uint64
-                                        Value plain_bits_size; //type: uint8
-                                        Value force_ctrl; //type: boolean
-                                        Value drop; //type: boolean
-                                        Value mask_da; //type: uint64
-                                        Value mask_ethertype; //type: uint32
-                                        Value mask_plain_bits; //type: uint64
-                                        Value multi_flow_match; //type: uint64
-                                        Value parser_dropped; //type: uint64
-                                        Value flow_miss; //type: uint64
-                                        Value pkts_ctrl; //type: uint64
-                                        Value pkts_data; //type: uint64
-                                        Value pkts_dropped; //type: uint64
-                                        Value pkts_err_in; //type: uint64
-                                        ValueList macda; //type: list of  uint8
 
+
+                                        YLeaf flow_no; //type: uint32
+                                        YLeaf is_flow_enabled; //type: boolean
+                                        YLeaf ethertype; //type: uint16
+                                        YLeaf outer_vlan_id; //type: uint16
+                                        YLeaf outer_vlan_user_pri; //type: uint8
+                                        YLeaf inner_vlan_id; //type: uint16
+                                        YLeaf inner_vlan_user_pri; //type: uint8
+                                        YLeaf psci; //type: uint64
+                                        YLeaf match_priority; //type: uint8
+                                        YLeaf tci_v; //type: uint8
+                                        YLeaf tci_e_xr; //type: uint8
+                                        YLeaf tci_sc; //type: uint8
+                                        YLeaf tci_scb; //type: uint8
+                                        YLeaf tci; //type: uint8
+                                        YLeaf tci_c; //type: uint8
+                                        YLeaf tci_chk; //type: boolean
+                                        YLeaf pkt_type; //type: uint32
+                                        YLeaf tag_num; //type: uint32
+                                        YLeaf inner_vlan_dei; //type: boolean
+                                        YLeaf outer_vlan_dei; //type: boolean
+                                        YLeaf pbb_sid; //type: uint32
+                                        YLeaf pbb_bvid; //type: uint32
+                                        YLeaf pbb_pcp; //type: uint8
+                                        YLeaf pbb_dei; //type: uint8
+                                        YLeaf vlan_id; //type: uint16
+                                        YLeaf vlan_pcp; //type: uint8
+                                        YLeaf vlan_dei; //type: uint8
+                                        YLeaf mpls1_label; //type: uint32
+                                        YLeaf mpls1_exp; //type: uint8
+                                        YLeaf mpls1_bos; //type: uint8
+                                        YLeaf mpls2_label; //type: uint32
+                                        YLeaf mpls2_exp; //type: uint8
+                                        YLeaf mpls2_bos; //type: uint8
+                                        YLeaf plain_bits; //type: uint64
+                                        YLeaf plain_bits_size; //type: uint8
+                                        YLeaf force_ctrl; //type: boolean
+                                        YLeaf drop; //type: boolean
+                                        YLeaf mask_da; //type: uint64
+                                        YLeaf mask_ethertype; //type: uint32
+                                        YLeaf mask_plain_bits; //type: uint64
+                                        YLeaf multi_flow_match; //type: uint64
+                                        YLeaf parser_dropped; //type: uint64
+                                        YLeaf flow_miss; //type: uint64
+                                        YLeaf pkts_ctrl; //type: uint64
+                                        YLeaf pkts_data; //type: uint64
+                                        YLeaf pkts_dropped; //type: uint64
+                                        YLeaf pkts_err_in; //type: uint64
+                                        YLeafList macda; //type: list of  uint8
 
 
 
@@ -1613,6 +1667,7 @@ class Macsec : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class SwFlow : public Entity
                         {
                             public:
@@ -1626,9 +1681,10 @@ class Macsec : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value flow_id; //type: int32
-                                Value hw_type; //type: uint8
 
+
+                                YLeaf flow_id; //type: int32
+                                YLeaf hw_type; //type: uint8
 
                             class MsfpgaFlow : public Entity
                             {
@@ -1645,6 +1701,7 @@ class Macsec : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TxFlow : public Entity
                                 {
                                     public:
@@ -1658,44 +1715,45 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value flow_id; //type: uint8
-                                        Value valid; //type: boolean
-                                        Value is_egress; //type: boolean
-                                        Value in_use; //type: boolean
-                                        Value action; //type: uint8
-                                        Value smac_inuse; //type: boolean
-                                        Value dmac_inuse; //type: boolean
-                                        Value ethertype; //type: uint16
-                                        Value outer_vlan; //type: uint16
-                                        Value outer_vlan_up; //type: uint8
-                                        Value outer_vlan_tpid; //type: uint16
-                                        Value inner_vlan; //type: uint16
-                                        Value inner_vlan_up; //type: uint8
-                                        Value inner_vlan_tpid; //type: uint16
-                                        Value source_port; //type: uint32
-                                        Value source_port_chk; //type: boolean
-                                        Value sci_inuse; //type: boolean
-                                        Value sci; //type: uint64
-                                        Value match_pri; //type: uint8
-                                        Value is_ctrl_pkt; //type: boolean
-                                        Value ctrl_check; //type: boolean
-                                        Value match_untagged; //type: boolean
-                                        Value match_tagged; //type: boolean
-                                        Value match_bad_tag; //type: boolean
-                                        Value match_kay_tag; //type: boolean
-                                        Value tci_v; //type: uint8
-                                        Value tci_e_xr; //type: uint8
-                                        Value tci_sc; //type: uint8
-                                        Value tci_scb; //type: uint8
-                                        Value tci; //type: uint8
-                                        Value tci_c; //type: uint8
-                                        Value tci_an; //type: uint8
-                                        Value tci_an_chk; //type: boolean
-                                        Value tci_chk; //type: boolean
-                                        Value sai; //type: uint32
-                                        ValueList macsa; //type: list of  uint8
-                                        ValueList macda; //type: list of  uint8
 
+
+                                        YLeaf flow_id; //type: uint8
+                                        YLeaf valid; //type: boolean
+                                        YLeaf is_egress; //type: boolean
+                                        YLeaf in_use; //type: boolean
+                                        YLeaf action; //type: uint8
+                                        YLeaf smac_inuse; //type: boolean
+                                        YLeaf dmac_inuse; //type: boolean
+                                        YLeaf ethertype; //type: uint16
+                                        YLeaf outer_vlan; //type: uint16
+                                        YLeaf outer_vlan_up; //type: uint8
+                                        YLeaf outer_vlan_tpid; //type: uint16
+                                        YLeaf inner_vlan; //type: uint16
+                                        YLeaf inner_vlan_up; //type: uint8
+                                        YLeaf inner_vlan_tpid; //type: uint16
+                                        YLeaf source_port; //type: uint32
+                                        YLeaf source_port_chk; //type: boolean
+                                        YLeaf sci_inuse; //type: boolean
+                                        YLeaf sci; //type: uint64
+                                        YLeaf match_pri; //type: uint8
+                                        YLeaf is_ctrl_pkt; //type: boolean
+                                        YLeaf ctrl_check; //type: boolean
+                                        YLeaf match_untagged; //type: boolean
+                                        YLeaf match_tagged; //type: boolean
+                                        YLeaf match_bad_tag; //type: boolean
+                                        YLeaf match_kay_tag; //type: boolean
+                                        YLeaf tci_v; //type: uint8
+                                        YLeaf tci_e_xr; //type: uint8
+                                        YLeaf tci_sc; //type: uint8
+                                        YLeaf tci_scb; //type: uint8
+                                        YLeaf tci; //type: uint8
+                                        YLeaf tci_c; //type: uint8
+                                        YLeaf tci_an; //type: uint8
+                                        YLeaf tci_an_chk; //type: boolean
+                                        YLeaf tci_chk; //type: boolean
+                                        YLeaf sai; //type: uint32
+                                        YLeafList macsa; //type: list of  uint8
+                                        YLeafList macda; //type: list of  uint8
 
 
 
@@ -1715,44 +1773,45 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value flow_id; //type: uint8
-                                        Value valid; //type: boolean
-                                        Value is_egress; //type: boolean
-                                        Value in_use; //type: boolean
-                                        Value action; //type: uint8
-                                        Value smac_inuse; //type: boolean
-                                        Value dmac_inuse; //type: boolean
-                                        Value ethertype; //type: uint16
-                                        Value outer_vlan; //type: uint16
-                                        Value outer_vlan_up; //type: uint8
-                                        Value outer_vlan_tpid; //type: uint16
-                                        Value inner_vlan; //type: uint16
-                                        Value inner_vlan_up; //type: uint8
-                                        Value inner_vlan_tpid; //type: uint16
-                                        Value source_port; //type: uint32
-                                        Value source_port_chk; //type: boolean
-                                        Value sci_inuse; //type: boolean
-                                        Value sci; //type: uint64
-                                        Value match_pri; //type: uint8
-                                        Value is_ctrl_pkt; //type: boolean
-                                        Value ctrl_check; //type: boolean
-                                        Value match_untagged; //type: boolean
-                                        Value match_tagged; //type: boolean
-                                        Value match_bad_tag; //type: boolean
-                                        Value match_kay_tag; //type: boolean
-                                        Value tci_v; //type: uint8
-                                        Value tci_e_xr; //type: uint8
-                                        Value tci_sc; //type: uint8
-                                        Value tci_scb; //type: uint8
-                                        Value tci; //type: uint8
-                                        Value tci_c; //type: uint8
-                                        Value tci_an; //type: uint8
-                                        Value tci_an_chk; //type: boolean
-                                        Value tci_chk; //type: boolean
-                                        Value sai; //type: uint32
-                                        ValueList macsa; //type: list of  uint8
-                                        ValueList macda; //type: list of  uint8
 
+
+                                        YLeaf flow_id; //type: uint8
+                                        YLeaf valid; //type: boolean
+                                        YLeaf is_egress; //type: boolean
+                                        YLeaf in_use; //type: boolean
+                                        YLeaf action; //type: uint8
+                                        YLeaf smac_inuse; //type: boolean
+                                        YLeaf dmac_inuse; //type: boolean
+                                        YLeaf ethertype; //type: uint16
+                                        YLeaf outer_vlan; //type: uint16
+                                        YLeaf outer_vlan_up; //type: uint8
+                                        YLeaf outer_vlan_tpid; //type: uint16
+                                        YLeaf inner_vlan; //type: uint16
+                                        YLeaf inner_vlan_up; //type: uint8
+                                        YLeaf inner_vlan_tpid; //type: uint16
+                                        YLeaf source_port; //type: uint32
+                                        YLeaf source_port_chk; //type: boolean
+                                        YLeaf sci_inuse; //type: boolean
+                                        YLeaf sci; //type: uint64
+                                        YLeaf match_pri; //type: uint8
+                                        YLeaf is_ctrl_pkt; //type: boolean
+                                        YLeaf ctrl_check; //type: boolean
+                                        YLeaf match_untagged; //type: boolean
+                                        YLeaf match_tagged; //type: boolean
+                                        YLeaf match_bad_tag; //type: boolean
+                                        YLeaf match_kay_tag; //type: boolean
+                                        YLeaf tci_v; //type: uint8
+                                        YLeaf tci_e_xr; //type: uint8
+                                        YLeaf tci_sc; //type: uint8
+                                        YLeaf tci_scb; //type: uint8
+                                        YLeaf tci; //type: uint8
+                                        YLeaf tci_c; //type: uint8
+                                        YLeaf tci_an; //type: uint8
+                                        YLeaf tci_an_chk; //type: boolean
+                                        YLeaf tci_chk; //type: boolean
+                                        YLeaf sai; //type: uint32
+                                        YLeafList macsa; //type: list of  uint8
+                                        YLeafList macda; //type: list of  uint8
 
 
 
@@ -1781,6 +1840,7 @@ class Macsec : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TxFlow : public Entity
                                 {
                                     public:
@@ -1794,55 +1854,56 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value flow_no; //type: uint32
-                                        Value is_flow_enabled; //type: boolean
-                                        Value ethertype; //type: uint16
-                                        Value outer_vlan_id; //type: uint16
-                                        Value outer_vlan_user_pri; //type: uint8
-                                        Value inner_vlan_id; //type: uint16
-                                        Value inner_vlan_user_pri; //type: uint8
-                                        Value psci; //type: uint64
-                                        Value match_priority; //type: uint8
-                                        Value tci_v; //type: uint8
-                                        Value tci_e_xr; //type: uint8
-                                        Value tci_sc; //type: uint8
-                                        Value tci_scb; //type: uint8
-                                        Value tci; //type: uint8
-                                        Value tci_c; //type: uint8
-                                        Value tci_chk; //type: boolean
-                                        Value pkt_type; //type: uint32
-                                        Value tag_num; //type: uint32
-                                        Value inner_vlan_dei; //type: boolean
-                                        Value outer_vlan_dei; //type: boolean
-                                        Value pbb_sid; //type: uint32
-                                        Value pbb_bvid; //type: uint32
-                                        Value pbb_pcp; //type: uint8
-                                        Value pbb_dei; //type: uint8
-                                        Value vlan_id; //type: uint16
-                                        Value vlan_pcp; //type: uint8
-                                        Value vlan_dei; //type: uint8
-                                        Value mpls1_label; //type: uint32
-                                        Value mpls1_exp; //type: uint8
-                                        Value mpls1_bos; //type: uint8
-                                        Value mpls2_label; //type: uint32
-                                        Value mpls2_exp; //type: uint8
-                                        Value mpls2_bos; //type: uint8
-                                        Value plain_bits; //type: uint64
-                                        Value plain_bits_size; //type: uint8
-                                        Value force_ctrl; //type: boolean
-                                        Value drop; //type: boolean
-                                        Value mask_da; //type: uint64
-                                        Value mask_ethertype; //type: uint32
-                                        Value mask_plain_bits; //type: uint64
-                                        Value multi_flow_match; //type: uint64
-                                        Value parser_dropped; //type: uint64
-                                        Value flow_miss; //type: uint64
-                                        Value pkts_ctrl; //type: uint64
-                                        Value pkts_data; //type: uint64
-                                        Value pkts_dropped; //type: uint64
-                                        Value pkts_err_in; //type: uint64
-                                        ValueList macda; //type: list of  uint8
 
+
+                                        YLeaf flow_no; //type: uint32
+                                        YLeaf is_flow_enabled; //type: boolean
+                                        YLeaf ethertype; //type: uint16
+                                        YLeaf outer_vlan_id; //type: uint16
+                                        YLeaf outer_vlan_user_pri; //type: uint8
+                                        YLeaf inner_vlan_id; //type: uint16
+                                        YLeaf inner_vlan_user_pri; //type: uint8
+                                        YLeaf psci; //type: uint64
+                                        YLeaf match_priority; //type: uint8
+                                        YLeaf tci_v; //type: uint8
+                                        YLeaf tci_e_xr; //type: uint8
+                                        YLeaf tci_sc; //type: uint8
+                                        YLeaf tci_scb; //type: uint8
+                                        YLeaf tci; //type: uint8
+                                        YLeaf tci_c; //type: uint8
+                                        YLeaf tci_chk; //type: boolean
+                                        YLeaf pkt_type; //type: uint32
+                                        YLeaf tag_num; //type: uint32
+                                        YLeaf inner_vlan_dei; //type: boolean
+                                        YLeaf outer_vlan_dei; //type: boolean
+                                        YLeaf pbb_sid; //type: uint32
+                                        YLeaf pbb_bvid; //type: uint32
+                                        YLeaf pbb_pcp; //type: uint8
+                                        YLeaf pbb_dei; //type: uint8
+                                        YLeaf vlan_id; //type: uint16
+                                        YLeaf vlan_pcp; //type: uint8
+                                        YLeaf vlan_dei; //type: uint8
+                                        YLeaf mpls1_label; //type: uint32
+                                        YLeaf mpls1_exp; //type: uint8
+                                        YLeaf mpls1_bos; //type: uint8
+                                        YLeaf mpls2_label; //type: uint32
+                                        YLeaf mpls2_exp; //type: uint8
+                                        YLeaf mpls2_bos; //type: uint8
+                                        YLeaf plain_bits; //type: uint64
+                                        YLeaf plain_bits_size; //type: uint8
+                                        YLeaf force_ctrl; //type: boolean
+                                        YLeaf drop; //type: boolean
+                                        YLeaf mask_da; //type: uint64
+                                        YLeaf mask_ethertype; //type: uint32
+                                        YLeaf mask_plain_bits; //type: uint64
+                                        YLeaf multi_flow_match; //type: uint64
+                                        YLeaf parser_dropped; //type: uint64
+                                        YLeaf flow_miss; //type: uint64
+                                        YLeaf pkts_ctrl; //type: uint64
+                                        YLeaf pkts_data; //type: uint64
+                                        YLeaf pkts_dropped; //type: uint64
+                                        YLeaf pkts_err_in; //type: uint64
+                                        YLeafList macda; //type: list of  uint8
 
 
 
@@ -1862,55 +1923,56 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value flow_no; //type: uint32
-                                        Value is_flow_enabled; //type: boolean
-                                        Value ethertype; //type: uint16
-                                        Value outer_vlan_id; //type: uint16
-                                        Value outer_vlan_user_pri; //type: uint8
-                                        Value inner_vlan_id; //type: uint16
-                                        Value inner_vlan_user_pri; //type: uint8
-                                        Value psci; //type: uint64
-                                        Value match_priority; //type: uint8
-                                        Value tci_v; //type: uint8
-                                        Value tci_e_xr; //type: uint8
-                                        Value tci_sc; //type: uint8
-                                        Value tci_scb; //type: uint8
-                                        Value tci; //type: uint8
-                                        Value tci_c; //type: uint8
-                                        Value tci_chk; //type: boolean
-                                        Value pkt_type; //type: uint32
-                                        Value tag_num; //type: uint32
-                                        Value inner_vlan_dei; //type: boolean
-                                        Value outer_vlan_dei; //type: boolean
-                                        Value pbb_sid; //type: uint32
-                                        Value pbb_bvid; //type: uint32
-                                        Value pbb_pcp; //type: uint8
-                                        Value pbb_dei; //type: uint8
-                                        Value vlan_id; //type: uint16
-                                        Value vlan_pcp; //type: uint8
-                                        Value vlan_dei; //type: uint8
-                                        Value mpls1_label; //type: uint32
-                                        Value mpls1_exp; //type: uint8
-                                        Value mpls1_bos; //type: uint8
-                                        Value mpls2_label; //type: uint32
-                                        Value mpls2_exp; //type: uint8
-                                        Value mpls2_bos; //type: uint8
-                                        Value plain_bits; //type: uint64
-                                        Value plain_bits_size; //type: uint8
-                                        Value force_ctrl; //type: boolean
-                                        Value drop; //type: boolean
-                                        Value mask_da; //type: uint64
-                                        Value mask_ethertype; //type: uint32
-                                        Value mask_plain_bits; //type: uint64
-                                        Value multi_flow_match; //type: uint64
-                                        Value parser_dropped; //type: uint64
-                                        Value flow_miss; //type: uint64
-                                        Value pkts_ctrl; //type: uint64
-                                        Value pkts_data; //type: uint64
-                                        Value pkts_dropped; //type: uint64
-                                        Value pkts_err_in; //type: uint64
-                                        ValueList macda; //type: list of  uint8
 
+
+                                        YLeaf flow_no; //type: uint32
+                                        YLeaf is_flow_enabled; //type: boolean
+                                        YLeaf ethertype; //type: uint16
+                                        YLeaf outer_vlan_id; //type: uint16
+                                        YLeaf outer_vlan_user_pri; //type: uint8
+                                        YLeaf inner_vlan_id; //type: uint16
+                                        YLeaf inner_vlan_user_pri; //type: uint8
+                                        YLeaf psci; //type: uint64
+                                        YLeaf match_priority; //type: uint8
+                                        YLeaf tci_v; //type: uint8
+                                        YLeaf tci_e_xr; //type: uint8
+                                        YLeaf tci_sc; //type: uint8
+                                        YLeaf tci_scb; //type: uint8
+                                        YLeaf tci; //type: uint8
+                                        YLeaf tci_c; //type: uint8
+                                        YLeaf tci_chk; //type: boolean
+                                        YLeaf pkt_type; //type: uint32
+                                        YLeaf tag_num; //type: uint32
+                                        YLeaf inner_vlan_dei; //type: boolean
+                                        YLeaf outer_vlan_dei; //type: boolean
+                                        YLeaf pbb_sid; //type: uint32
+                                        YLeaf pbb_bvid; //type: uint32
+                                        YLeaf pbb_pcp; //type: uint8
+                                        YLeaf pbb_dei; //type: uint8
+                                        YLeaf vlan_id; //type: uint16
+                                        YLeaf vlan_pcp; //type: uint8
+                                        YLeaf vlan_dei; //type: uint8
+                                        YLeaf mpls1_label; //type: uint32
+                                        YLeaf mpls1_exp; //type: uint8
+                                        YLeaf mpls1_bos; //type: uint8
+                                        YLeaf mpls2_label; //type: uint32
+                                        YLeaf mpls2_exp; //type: uint8
+                                        YLeaf mpls2_bos; //type: uint8
+                                        YLeaf plain_bits; //type: uint64
+                                        YLeaf plain_bits_size; //type: uint8
+                                        YLeaf force_ctrl; //type: boolean
+                                        YLeaf drop; //type: boolean
+                                        YLeaf mask_da; //type: uint64
+                                        YLeaf mask_ethertype; //type: uint32
+                                        YLeaf mask_plain_bits; //type: uint64
+                                        YLeaf multi_flow_match; //type: uint64
+                                        YLeaf parser_dropped; //type: uint64
+                                        YLeaf flow_miss; //type: uint64
+                                        YLeaf pkts_ctrl; //type: uint64
+                                        YLeaf pkts_data; //type: uint64
+                                        YLeaf pkts_dropped; //type: uint64
+                                        YLeaf pkts_err_in; //type: uint64
+                                        YLeafList macda; //type: list of  uint8
 
 
 
@@ -1950,8 +2012,9 @@ class Macsec : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value hw_type; //type: uint8
 
+
+                            YLeaf hw_type; //type: uint8
 
                         class MsfpgaStats : public Entity
                         {
@@ -1968,6 +2031,7 @@ class Macsec : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class TxSaStats : public Entity
                             {
                                 public:
@@ -1981,11 +2045,12 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value out_pkts_protected; //type: uint64
-                                    Value out_pkts_encrypted; //type: uint64
-                                    Value out_octets_protected; //type: uint64
-                                    Value out_octets_encrypted; //type: uint64
 
+
+                                    YLeaf out_pkts_protected; //type: uint64
+                                    YLeaf out_pkts_encrypted; //type: uint64
+                                    YLeaf out_octets_protected; //type: uint64
+                                    YLeaf out_octets_encrypted; //type: uint64
 
 
 
@@ -2005,17 +2070,18 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_pkts_unused_sa; //type: uint64
-                                    Value in_pkts_not_using_sa; //type: uint64
-                                    Value in_pkts_not_valid; //type: uint64
-                                    Value in_pkts_invalid; //type: uint64
-                                    Value in_pkts_ok; //type: uint64
-                                    Value in_pkts_delayed; //type: uint64
-                                    Value in_pkts_late; //type: uint64
-                                    Value in_pkts_unchecked; //type: uint64
-                                    Value in_octets_validated; //type: uint64
-                                    Value in_octets_decrypted; //type: uint64
 
+
+                                    YLeaf in_pkts_unused_sa; //type: uint64
+                                    YLeaf in_pkts_not_using_sa; //type: uint64
+                                    YLeaf in_pkts_not_valid; //type: uint64
+                                    YLeaf in_pkts_invalid; //type: uint64
+                                    YLeaf in_pkts_ok; //type: uint64
+                                    YLeaf in_pkts_delayed; //type: uint64
+                                    YLeaf in_pkts_late; //type: uint64
+                                    YLeaf in_pkts_unchecked; //type: uint64
+                                    YLeaf in_octets_validated; //type: uint64
+                                    YLeaf in_octets_decrypted; //type: uint64
 
 
 
@@ -2035,10 +2101,11 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value out_pkt_uncontrolled; //type: uint64
-                                    Value out_pkt_untagged; //type: uint64
-                                    Value out_pkt_too_long; //type: uint64
 
+
+                                    YLeaf out_pkt_uncontrolled; //type: uint64
+                                    YLeaf out_pkt_untagged; //type: uint64
+                                    YLeaf out_pkt_too_long; //type: uint64
 
 
 
@@ -2058,15 +2125,16 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_pkt_untagged; //type: uint64
-                                    Value in_pkt_notag; //type: uint64
-                                    Value in_pkt_bad_tag; //type: uint64
-                                    Value in_pkt_no_sci; //type: uint64
-                                    Value in_pkt_unknown_sci; //type: uint64
-                                    Value in_pkt_tagged; //type: uint64
-                                    Value in_pkt_overrun; //type: uint64
-                                    Value in_pkt_uncontrolled; //type: uint64
 
+
+                                    YLeaf in_pkt_untagged; //type: uint64
+                                    YLeaf in_pkt_notag; //type: uint64
+                                    YLeaf in_pkt_bad_tag; //type: uint64
+                                    YLeaf in_pkt_no_sci; //type: uint64
+                                    YLeaf in_pkt_unknown_sci; //type: uint64
+                                    YLeaf in_pkt_tagged; //type: uint64
+                                    YLeaf in_pkt_overrun; //type: uint64
+                                    YLeaf in_pkt_uncontrolled; //type: uint64
 
 
 
@@ -2097,6 +2165,7 @@ class Macsec : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class MacsecTxStats : public Entity
                             {
                                 public:
@@ -2110,14 +2179,15 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sc_encrypted_octets; //type: uint64
-                                    Value sc_toolong_pkts; //type: uint64
-                                    Value sc_encrypted_pkts; //type: uint64
-                                    Value sc_untagged_pkts; //type: uint64
-                                    Value sc_overrun_pkts; //type: uint64
-                                    Value current_an; //type: uint64
-                                    Value sa_encrypted_pkts; //type: uint64
 
+
+                                    YLeaf sc_encrypted_octets; //type: uint64
+                                    YLeaf sc_toolong_pkts; //type: uint64
+                                    YLeaf sc_encrypted_pkts; //type: uint64
+                                    YLeaf sc_untagged_pkts; //type: uint64
+                                    YLeaf sc_overrun_pkts; //type: uint64
+                                    YLeaf current_an; //type: uint64
+                                    YLeaf sa_encrypted_pkts; //type: uint64
 
 
 
@@ -2137,22 +2207,23 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sc_decrypted_octets; //type: uint64
-                                    Value sc_no_tag_pkts; //type: uint64
-                                    Value sc_untagged_pkts; //type: uint64
-                                    Value sc_bad_tag_pkts; //type: uint64
-                                    Value sc_late_pkts; //type: uint64
-                                    Value sc_delayed_pkts; //type: uint64
-                                    Value sc_unchecked_pkts; //type: uint64
-                                    Value sc_no_sci_pkts; //type: uint64
-                                    Value sc_unknown_sci_pkts; //type: uint64
-                                    Value sc_ok_pkts; //type: uint64
-                                    Value sc_not_using_pkts; //type: uint64
-                                    Value sc_unused_pkts; //type: uint64
-                                    Value sc_not_valid_pkts; //type: uint64
-                                    Value sc_invalid_pkts; //type: uint64
-                                    Value sc_overrun_pkts; //type: uint64
 
+
+                                    YLeaf sc_decrypted_octets; //type: uint64
+                                    YLeaf sc_no_tag_pkts; //type: uint64
+                                    YLeaf sc_untagged_pkts; //type: uint64
+                                    YLeaf sc_bad_tag_pkts; //type: uint64
+                                    YLeaf sc_late_pkts; //type: uint64
+                                    YLeaf sc_delayed_pkts; //type: uint64
+                                    YLeaf sc_unchecked_pkts; //type: uint64
+                                    YLeaf sc_no_sci_pkts; //type: uint64
+                                    YLeaf sc_unknown_sci_pkts; //type: uint64
+                                    YLeaf sc_ok_pkts; //type: uint64
+                                    YLeaf sc_not_using_pkts; //type: uint64
+                                    YLeaf sc_unused_pkts; //type: uint64
+                                    YLeaf sc_not_valid_pkts; //type: uint64
+                                    YLeaf sc_invalid_pkts; //type: uint64
+                                    YLeaf sc_overrun_pkts; //type: uint64
 
                                 class RxSaStat : public Entity
                                 {
@@ -2167,13 +2238,14 @@ class Macsec : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value an; //type: uint64
-                                        Value sa_ok_pkts; //type: uint64
-                                        Value sa_not_using_pkts; //type: uint64
-                                        Value sa_unused_pkts; //type: uint64
-                                        Value sa_not_valid_pkts; //type: uint64
-                                        Value sa_invalid_pkts; //type: uint64
 
+
+                                        YLeaf an; //type: uint64
+                                        YLeaf sa_ok_pkts; //type: uint64
+                                        YLeaf sa_not_using_pkts; //type: uint64
+                                        YLeaf sa_unused_pkts; //type: uint64
+                                        YLeaf sa_not_valid_pkts; //type: uint64
+                                        YLeaf sa_invalid_pkts; //type: uint64
 
 
 
@@ -2208,6 +2280,7 @@ class Macsec : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class TxSaStats : public Entity
                             {
                                 public:
@@ -2221,12 +2294,13 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value out_pkts_too_long; //type: uint64
-                                    Value out_pkts_encrypted_protected; //type: uint64
-                                    Value out_octets_encrypted_protected1; //type: uint64
-                                    Value out_octets_encrypted_protected2; //type: uint64
-                                    Value out_pkts_sa_not_in_use; //type: uint64
 
+
+                                    YLeaf out_pkts_too_long; //type: uint64
+                                    YLeaf out_pkts_encrypted_protected; //type: uint64
+                                    YLeaf out_octets_encrypted_protected1; //type: uint64
+                                    YLeaf out_octets_encrypted_protected2; //type: uint64
+                                    YLeaf out_pkts_sa_not_in_use; //type: uint64
 
 
 
@@ -2246,19 +2320,20 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_pkts_unchecked; //type: uint64
-                                    Value in_pkts_delayed; //type: uint64
-                                    Value in_pkts_late; //type: uint64
-                                    Value in_pkts_ok; //type: uint64
-                                    Value in_pkts_invalid; //type: uint64
-                                    Value in_pkts_not_valid; //type: uint64
-                                    Value in_pkts_not_using_sa; //type: uint64
-                                    Value in_pkts_unused_sa; //type: uint64
-                                    Value in_octets_decrypted_validated1; //type: uint64
-                                    Value in_octets_decrypted_validated2; //type: uint64
-                                    Value in_octets_validated; //type: uint64
-                                    Value in_pkts_sa_not_in_use; //type: uint64
 
+
+                                    YLeaf in_pkts_unchecked; //type: uint64
+                                    YLeaf in_pkts_delayed; //type: uint64
+                                    YLeaf in_pkts_late; //type: uint64
+                                    YLeaf in_pkts_ok; //type: uint64
+                                    YLeaf in_pkts_invalid; //type: uint64
+                                    YLeaf in_pkts_not_valid; //type: uint64
+                                    YLeaf in_pkts_not_using_sa; //type: uint64
+                                    YLeaf in_pkts_unused_sa; //type: uint64
+                                    YLeaf in_octets_decrypted_validated1; //type: uint64
+                                    YLeaf in_octets_decrypted_validated2; //type: uint64
+                                    YLeaf in_octets_validated; //type: uint64
+                                    YLeaf in_pkts_sa_not_in_use; //type: uint64
 
 
 
@@ -2278,25 +2353,26 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value transform_error_pkts; //type: uint64
-                                    Value out_pkt_ctrl; //type: uint64
-                                    Value out_pkts_untagged; //type: uint64
-                                    Value out_octets_unctrl; //type: uint64
-                                    Value out_octets_ctrl; //type: uint64
-                                    Value out_octets_common; //type: uint64
-                                    Value out_ucast_pkts_unctrl; //type: uint64
-                                    Value out_ucast_pkts_ctrl; //type: uint64
-                                    Value out_mcast_pkts_unctrl; //type: uint64
-                                    Value out_mcast_pkts_ctrl; //type: uint64
-                                    Value out_bcast_pkts_unctrl; //type: uint64
-                                    Value out_bcast_pkts_ctrl; //type: uint64
-                                    Value out_rx_drop_pkts_unctrl; //type: uint64
-                                    Value out_rx_drop_pkts_ctrl; //type: uint64
-                                    Value out_rx_err_pkts_unctrl; //type: uint64
-                                    Value out_rx_err_pkts_ctrl; //type: uint64
-                                    Value out_drop_pkts_class; //type: uint64
-                                    Value out_drop_pkts_data; //type: uint64
 
+
+                                    YLeaf transform_error_pkts; //type: uint64
+                                    YLeaf out_pkt_ctrl; //type: uint64
+                                    YLeaf out_pkts_untagged; //type: uint64
+                                    YLeaf out_octets_unctrl; //type: uint64
+                                    YLeaf out_octets_ctrl; //type: uint64
+                                    YLeaf out_octets_common; //type: uint64
+                                    YLeaf out_ucast_pkts_unctrl; //type: uint64
+                                    YLeaf out_ucast_pkts_ctrl; //type: uint64
+                                    YLeaf out_mcast_pkts_unctrl; //type: uint64
+                                    YLeaf out_mcast_pkts_ctrl; //type: uint64
+                                    YLeaf out_bcast_pkts_unctrl; //type: uint64
+                                    YLeaf out_bcast_pkts_ctrl; //type: uint64
+                                    YLeaf out_rx_drop_pkts_unctrl; //type: uint64
+                                    YLeaf out_rx_drop_pkts_ctrl; //type: uint64
+                                    YLeaf out_rx_err_pkts_unctrl; //type: uint64
+                                    YLeaf out_rx_err_pkts_ctrl; //type: uint64
+                                    YLeaf out_drop_pkts_class; //type: uint64
+                                    YLeaf out_drop_pkts_data; //type: uint64
 
 
 
@@ -2316,29 +2392,30 @@ class Macsec : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value transform_error_pkts; //type: uint64
-                                    Value in_pkt_ctrl; //type: uint64
-                                    Value in_pkt_no_tag; //type: uint64
-                                    Value in_pkts_untagged; //type: uint64
-                                    Value in_pkt_bad_tag; //type: uint64
-                                    Value in_pkt_no_sci; //type: uint64
-                                    Value in_pkts_unknown_sci; //type: uint64
-                                    Value in_pkts_tagged_ctrl; //type: uint64
-                                    Value in_octets_unctrl; //type: uint64
-                                    Value in_octets_ctrl; //type: uint64
-                                    Value in_ucast_pkts_unctrl; //type: uint64
-                                    Value in_ucast_pkts_ctrl; //type: uint64
-                                    Value in_mcast_pkts_unctrl; //type: uint64
-                                    Value in_mcast_pkts_ctrl; //type: uint64
-                                    Value in_bcast_pkts_unctrl; //type: uint64
-                                    Value in_bcast_pkts_ctrl; //type: uint64
-                                    Value in_rx_drop_pkts_unctrl; //type: uint64
-                                    Value in_rx_drop_pkts_ctrl; //type: uint64
-                                    Value in_rx_error_pkts_unctrl; //type: uint64
-                                    Value in_rx_error_pkts_ctrl; //type: uint64
-                                    Value in_drop_pkts_class; //type: uint64
-                                    Value in_drop_pkts_data; //type: uint64
 
+
+                                    YLeaf transform_error_pkts; //type: uint64
+                                    YLeaf in_pkt_ctrl; //type: uint64
+                                    YLeaf in_pkt_no_tag; //type: uint64
+                                    YLeaf in_pkts_untagged; //type: uint64
+                                    YLeaf in_pkt_bad_tag; //type: uint64
+                                    YLeaf in_pkt_no_sci; //type: uint64
+                                    YLeaf in_pkts_unknown_sci; //type: uint64
+                                    YLeaf in_pkts_tagged_ctrl; //type: uint64
+                                    YLeaf in_octets_unctrl; //type: uint64
+                                    YLeaf in_octets_ctrl; //type: uint64
+                                    YLeaf in_ucast_pkts_unctrl; //type: uint64
+                                    YLeaf in_ucast_pkts_ctrl; //type: uint64
+                                    YLeaf in_mcast_pkts_unctrl; //type: uint64
+                                    YLeaf in_mcast_pkts_ctrl; //type: uint64
+                                    YLeaf in_bcast_pkts_unctrl; //type: uint64
+                                    YLeaf in_bcast_pkts_ctrl; //type: uint64
+                                    YLeaf in_rx_drop_pkts_unctrl; //type: uint64
+                                    YLeaf in_rx_drop_pkts_ctrl; //type: uint64
+                                    YLeaf in_rx_error_pkts_unctrl; //type: uint64
+                                    YLeaf in_rx_error_pkts_ctrl; //type: uint64
+                                    YLeaf in_drop_pkts_class; //type: uint64
+                                    YLeaf in_drop_pkts_data; //type: uint64
 
 
 

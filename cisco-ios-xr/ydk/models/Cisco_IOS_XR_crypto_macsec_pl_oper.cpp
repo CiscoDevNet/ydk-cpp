@@ -52,7 +52,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::MsfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -174,7 +174,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::MsfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -305,7 +305,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::MsfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -416,7 +416,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::MsfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -532,10 +532,10 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::MsfpgaStats::has_
 bool Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::MsfpgaStats::has_operation() const
 {
     return is_set(operation)
-	|| (rx_interface_macsec_stats !=  nullptr && is_set(rx_interface_macsec_stats->operation))
-	|| (rx_sa_stats !=  nullptr && is_set(rx_sa_stats->operation))
-	|| (tx_interface_macsec_stats !=  nullptr && is_set(tx_interface_macsec_stats->operation))
-	|| (tx_sa_stats !=  nullptr && is_set(tx_sa_stats->operation));
+	|| (rx_interface_macsec_stats !=  nullptr && rx_interface_macsec_stats->has_operation())
+	|| (rx_sa_stats !=  nullptr && rx_sa_stats->has_operation())
+	|| (tx_interface_macsec_stats !=  nullptr && tx_interface_macsec_stats->has_operation())
+	|| (tx_sa_stats !=  nullptr && tx_sa_stats->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::MsfpgaStats::get_segment_path() const
@@ -552,7 +552,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::MsfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -737,7 +737,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::XlfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -862,7 +862,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::XlfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1019,7 +1019,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::XlfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1186,8 +1186,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::XlfpgaStats::has_
 bool Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::XlfpgaStats::has_operation() const
 {
     return is_set(operation)
-	|| (macsec_rx_stats !=  nullptr && is_set(macsec_rx_stats->operation))
-	|| (macsec_tx_stats !=  nullptr && is_set(macsec_tx_stats->operation));
+	|| (macsec_rx_stats !=  nullptr && macsec_rx_stats->has_operation())
+	|| (macsec_tx_stats !=  nullptr && macsec_tx_stats->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::XlfpgaStats::get_segment_path() const
@@ -1204,7 +1204,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::XlfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1337,7 +1337,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::Es200Stats:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1470,7 +1470,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::Es200Stats:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1656,7 +1656,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::Es200Stats:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1884,7 +1884,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::Es200Stats:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2070,10 +2070,10 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::Es200Stats::has_d
 bool Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::Es200Stats::has_operation() const
 {
     return is_set(operation)
-	|| (rx_interface_macsec_stats !=  nullptr && is_set(rx_interface_macsec_stats->operation))
-	|| (rx_sa_stats !=  nullptr && is_set(rx_sa_stats->operation))
-	|| (tx_interface_macsec_stats !=  nullptr && is_set(tx_interface_macsec_stats->operation))
-	|| (tx_sa_stats !=  nullptr && is_set(tx_sa_stats->operation));
+	|| (rx_interface_macsec_stats !=  nullptr && rx_interface_macsec_stats->has_operation())
+	|| (rx_sa_stats !=  nullptr && rx_sa_stats->has_operation())
+	|| (tx_interface_macsec_stats !=  nullptr && tx_interface_macsec_stats->has_operation())
+	|| (tx_sa_stats !=  nullptr && tx_sa_stats->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::Es200Stats::get_segment_path() const
@@ -2090,7 +2090,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::Es200Stats:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2257,9 +2257,9 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::has_operation() c
 {
     return is_set(operation)
 	|| is_set(hw_type.operation)
-	|| (es200_stats !=  nullptr && is_set(es200_stats->operation))
-	|| (msfpga_stats !=  nullptr && is_set(msfpga_stats->operation))
-	|| (xlfpga_stats !=  nullptr && is_set(xlfpga_stats->operation));
+	|| (es200_stats !=  nullptr && es200_stats->has_operation())
+	|| (msfpga_stats !=  nullptr && msfpga_stats->has_operation())
+	|| (xlfpga_stats !=  nullptr && xlfpga_stats->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::get_segment_path() const
@@ -2276,7 +2276,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwStatistics::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2464,7 +2464,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::MsfpgaSa::Tx
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2648,7 +2648,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::MsfpgaSa::Rx
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2784,8 +2784,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::MsfpgaSa::has_data
 bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::MsfpgaSa::has_operation() const
 {
     return is_set(operation)
-	|| (rx_sa !=  nullptr && is_set(rx_sa->operation))
-	|| (tx_sa !=  nullptr && is_set(tx_sa->operation));
+	|| (rx_sa !=  nullptr && rx_sa->has_operation())
+	|| (tx_sa !=  nullptr && tx_sa->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::MsfpgaSa::get_segment_path() const
@@ -2802,7 +2802,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::MsfpgaSa::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2959,7 +2959,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::XlfpgaSa::Tx
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3097,12 +3097,12 @@ Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::XlfpgaSa::RxSa::~RxSa()
 
 bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::XlfpgaSa::RxSa::has_data() const
 {
-    for (auto const & leaf : crc_value.getValues())
+    for (auto const & leaf : crc_value.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ssci.getValues())
+    for (auto const & leaf : ssci.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3131,12 +3131,12 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::XlfpgaSa::RxSa::ha
 
 bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::XlfpgaSa::RxSa::has_operation() const
 {
-    for (auto const & leaf : crc_value.getValues())
+    for (auto const & leaf : crc_value.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ssci.getValues())
+    for (auto const & leaf : ssci.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -3146,6 +3146,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::XlfpgaSa::RxSa::ha
 	|| is_set(auth_err_cfg.operation)
 	|| is_set(cipher_suite.operation)
 	|| is_set(confidentiality_offset.operation)
+	|| is_set(crc_value.operation)
 	|| is_set(current_packet_num.operation)
 	|| is_set(fcs_err_cfg.operation)
 	|| is_set(lowest_acceptable_packet_num.operation)
@@ -3161,6 +3162,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::XlfpgaSa::RxSa::ha
 	|| is_set(replay_window.operation)
 	|| is_set(secure_channel_id.operation)
 	|| is_set(secure_mode.operation)
+	|| is_set(ssci.operation)
 	|| is_set(validation_mode.operation);
 }
 
@@ -3178,7 +3180,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::XlfpgaSa::Rx
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3356,8 +3358,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::XlfpgaSa::has_data
 bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::XlfpgaSa::has_operation() const
 {
     return is_set(operation)
-	|| (rx_sa !=  nullptr && is_set(rx_sa->operation))
-	|| (tx_sa !=  nullptr && is_set(tx_sa->operation));
+	|| (rx_sa !=  nullptr && rx_sa->has_operation())
+	|| (tx_sa !=  nullptr && tx_sa->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::XlfpgaSa::get_segment_path() const
@@ -3374,7 +3376,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::XlfpgaSa::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3513,7 +3515,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::Es200Sa::TxS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3634,7 +3636,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::Es200Sa::TxSa::has
 	|| is_set(out_pkts_too_long.operation)
 	|| is_set(sa_id.operation)
 	|| is_set(sc_no.operation)
-	|| (xform_params !=  nullptr && is_set(xform_params->operation));
+	|| (xform_params !=  nullptr && xform_params->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::Es200Sa::TxSa::get_segment_path() const
@@ -3651,7 +3653,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::Es200Sa::TxS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3807,7 +3809,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::Es200Sa::RxS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3946,7 +3948,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::Es200Sa::RxSa::has
 	|| is_set(is_valid.operation)
 	|| is_set(sa_id.operation)
 	|| is_set(sc_no.operation)
-	|| (xform_params !=  nullptr && is_set(xform_params->operation));
+	|| (xform_params !=  nullptr && xform_params->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::Es200Sa::RxSa::get_segment_path() const
@@ -3963,7 +3965,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::Es200Sa::RxS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4122,8 +4124,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::Es200Sa::has_data(
 bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::Es200Sa::has_operation() const
 {
     return is_set(operation)
-	|| (rx_sa !=  nullptr && is_set(rx_sa->operation))
-	|| (tx_sa !=  nullptr && is_set(tx_sa->operation));
+	|| (rx_sa !=  nullptr && rx_sa->has_operation())
+	|| (tx_sa !=  nullptr && tx_sa->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::Es200Sa::get_segment_path() const
@@ -4140,7 +4142,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::Es200Sa::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4264,9 +4266,9 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::has_operation() co
     return is_set(operation)
 	|| is_set(sa_id.operation)
 	|| is_set(hw_type.operation)
-	|| (es200_sa !=  nullptr && is_set(es200_sa->operation))
-	|| (msfpga_sa !=  nullptr && is_set(msfpga_sa->operation))
-	|| (xlfpga_sa !=  nullptr && is_set(xlfpga_sa->operation));
+	|| (es200_sa !=  nullptr && es200_sa->has_operation())
+	|| (msfpga_sa !=  nullptr && msfpga_sa->has_operation())
+	|| (xlfpga_sa !=  nullptr && xlfpga_sa->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::get_segment_path() const
@@ -4283,7 +4285,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::SwSa::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4444,7 +4446,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwSas::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4584,7 +4586,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::MsfpgaSa::Tx
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4768,7 +4770,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::MsfpgaSa::Rx
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4904,8 +4906,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::MsfpgaSa::has_data
 bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::MsfpgaSa::has_operation() const
 {
     return is_set(operation)
-	|| (rx_sa !=  nullptr && is_set(rx_sa->operation))
-	|| (tx_sa !=  nullptr && is_set(tx_sa->operation));
+	|| (rx_sa !=  nullptr && rx_sa->has_operation())
+	|| (tx_sa !=  nullptr && tx_sa->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::MsfpgaSa::get_segment_path() const
@@ -4922,7 +4924,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::MsfpgaSa::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5079,7 +5081,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::XlfpgaSa::Tx
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5217,12 +5219,12 @@ Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::XlfpgaSa::RxSa::~RxSa()
 
 bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::XlfpgaSa::RxSa::has_data() const
 {
-    for (auto const & leaf : crc_value.getValues())
+    for (auto const & leaf : crc_value.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ssci.getValues())
+    for (auto const & leaf : ssci.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -5251,12 +5253,12 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::XlfpgaSa::RxSa::ha
 
 bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::XlfpgaSa::RxSa::has_operation() const
 {
-    for (auto const & leaf : crc_value.getValues())
+    for (auto const & leaf : crc_value.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ssci.getValues())
+    for (auto const & leaf : ssci.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -5266,6 +5268,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::XlfpgaSa::RxSa::ha
 	|| is_set(auth_err_cfg.operation)
 	|| is_set(cipher_suite.operation)
 	|| is_set(confidentiality_offset.operation)
+	|| is_set(crc_value.operation)
 	|| is_set(current_packet_num.operation)
 	|| is_set(fcs_err_cfg.operation)
 	|| is_set(lowest_acceptable_packet_num.operation)
@@ -5281,6 +5284,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::XlfpgaSa::RxSa::ha
 	|| is_set(replay_window.operation)
 	|| is_set(secure_channel_id.operation)
 	|| is_set(secure_mode.operation)
+	|| is_set(ssci.operation)
 	|| is_set(validation_mode.operation);
 }
 
@@ -5298,7 +5302,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::XlfpgaSa::Rx
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5476,8 +5480,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::XlfpgaSa::has_data
 bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::XlfpgaSa::has_operation() const
 {
     return is_set(operation)
-	|| (rx_sa !=  nullptr && is_set(rx_sa->operation))
-	|| (tx_sa !=  nullptr && is_set(tx_sa->operation));
+	|| (rx_sa !=  nullptr && rx_sa->has_operation())
+	|| (tx_sa !=  nullptr && tx_sa->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::XlfpgaSa::get_segment_path() const
@@ -5494,7 +5498,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::XlfpgaSa::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5633,7 +5637,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Es200Sa::TxS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5754,7 +5758,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Es200Sa::TxSa::has
 	|| is_set(out_pkts_too_long.operation)
 	|| is_set(sa_id.operation)
 	|| is_set(sc_no.operation)
-	|| (xform_params !=  nullptr && is_set(xform_params->operation));
+	|| (xform_params !=  nullptr && xform_params->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Es200Sa::TxSa::get_segment_path() const
@@ -5771,7 +5775,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Es200Sa::TxS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5927,7 +5931,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Es200Sa::RxS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6066,7 +6070,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Es200Sa::RxSa::has
 	|| is_set(is_valid.operation)
 	|| is_set(sa_id.operation)
 	|| is_set(sc_no.operation)
-	|| (xform_params !=  nullptr && is_set(xform_params->operation));
+	|| (xform_params !=  nullptr && xform_params->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Es200Sa::RxSa::get_segment_path() const
@@ -6083,7 +6087,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Es200Sa::RxS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6242,8 +6246,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Es200Sa::has_data(
 bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Es200Sa::has_operation() const
 {
     return is_set(operation)
-	|| (rx_sa !=  nullptr && is_set(rx_sa->operation))
-	|| (tx_sa !=  nullptr && is_set(tx_sa->operation));
+	|| (rx_sa !=  nullptr && rx_sa->has_operation())
+	|| (tx_sa !=  nullptr && tx_sa->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Es200Sa::get_segment_path() const
@@ -6260,7 +6264,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Es200Sa::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6384,9 +6388,9 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::has_operation() co
     return is_set(operation)
 	|| is_set(sa_id.operation)
 	|| is_set(hw_type.operation)
-	|| (es200_sa !=  nullptr && is_set(es200_sa->operation))
-	|| (msfpga_sa !=  nullptr && is_set(msfpga_sa->operation))
-	|| (xlfpga_sa !=  nullptr && is_set(xlfpga_sa->operation));
+	|| (es200_sa !=  nullptr && es200_sa->has_operation())
+	|| (msfpga_sa !=  nullptr && msfpga_sa->has_operation())
+	|| (xlfpga_sa !=  nullptr && xlfpga_sa->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::get_segment_path() const
@@ -6403,7 +6407,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::HwSa::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6564,7 +6568,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwSas::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6678,12 +6682,12 @@ Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::TxFlow:
 
 bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::TxFlow::has_data() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : macsa.getValues())
+    for (auto const & leaf : macsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -6727,12 +6731,12 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::Tx
 
 bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::TxFlow::has_operation() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : macsa.getValues())
+    for (auto const & leaf : macsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -6749,6 +6753,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::Tx
 	|| is_set(inner_vlan_up.operation)
 	|| is_set(is_ctrl_pkt.operation)
 	|| is_set(is_egress.operation)
+	|| is_set(macda.operation)
+	|| is_set(macsa.operation)
 	|| is_set(match_bad_tag.operation)
 	|| is_set(match_kay_tag.operation)
 	|| is_set(match_pri.operation)
@@ -6789,7 +6795,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7064,12 +7070,12 @@ Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::RxFlow:
 
 bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::RxFlow::has_data() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : macsa.getValues())
+    for (auto const & leaf : macsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -7113,12 +7119,12 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::Rx
 
 bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::RxFlow::has_operation() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : macsa.getValues())
+    for (auto const & leaf : macsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -7135,6 +7141,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::Rx
 	|| is_set(inner_vlan_up.operation)
 	|| is_set(is_ctrl_pkt.operation)
 	|| is_set(is_egress.operation)
+	|| is_set(macda.operation)
+	|| is_set(macsa.operation)
 	|| is_set(match_bad_tag.operation)
 	|| is_set(match_kay_tag.operation)
 	|| is_set(match_pri.operation)
@@ -7175,7 +7183,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7428,8 +7436,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::ha
 bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::has_operation() const
 {
     return is_set(operation)
-	|| (rx_flow !=  nullptr && is_set(rx_flow->operation))
-	|| (tx_flow !=  nullptr && is_set(tx_flow->operation));
+	|| (rx_flow !=  nullptr && rx_flow->has_operation())
+	|| (tx_flow !=  nullptr && tx_flow->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFlow::get_segment_path() const
@@ -7446,7 +7454,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::MsfpgaFl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7591,7 +7599,7 @@ Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::TxFlow::
 
 bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::TxFlow::has_data() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -7647,7 +7655,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::TxF
 
 bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::TxFlow::has_operation() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -7662,6 +7670,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::TxF
 	|| is_set(inner_vlan_id.operation)
 	|| is_set(inner_vlan_user_pri.operation)
 	|| is_set(is_flow_enabled.operation)
+	|| is_set(macda.operation)
 	|| is_set(mask_da.operation)
 	|| is_set(mask_ethertype.operation)
 	|| is_set(mask_plain_bits.operation)
@@ -7716,7 +7725,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8056,7 +8065,7 @@ Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::RxFlow::
 
 bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::RxFlow::has_data() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8112,7 +8121,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::RxF
 
 bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::RxFlow::has_operation() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -8127,6 +8136,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::RxF
 	|| is_set(inner_vlan_id.operation)
 	|| is_set(inner_vlan_user_pri.operation)
 	|| is_set(is_flow_enabled.operation)
+	|| is_set(macda.operation)
 	|| is_set(mask_da.operation)
 	|| is_set(mask_ethertype.operation)
 	|| is_set(mask_plain_bits.operation)
@@ -8181,7 +8191,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8488,8 +8498,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::has
 bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::has_operation() const
 {
     return is_set(operation)
-	|| (rx_flow !=  nullptr && is_set(rx_flow->operation))
-	|| (tx_flow !=  nullptr && is_set(tx_flow->operation));
+	|| (rx_flow !=  nullptr && rx_flow->has_operation())
+	|| (tx_flow !=  nullptr && tx_flow->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flow::get_segment_path() const
@@ -8506,7 +8516,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Es200Flo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8625,8 +8635,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::has_operation(
     return is_set(operation)
 	|| is_set(flow_id.operation)
 	|| is_set(hw_type.operation)
-	|| (es200_flow !=  nullptr && is_set(es200_flow->operation))
-	|| (msfpga_flow !=  nullptr && is_set(msfpga_flow->operation));
+	|| (es200_flow !=  nullptr && es200_flow->has_operation())
+	|| (msfpga_flow !=  nullptr && msfpga_flow->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::get_segment_path() const
@@ -8643,7 +8653,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8781,7 +8791,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::HwFlowS::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8895,12 +8905,12 @@ Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::TxFlow:
 
 bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::TxFlow::has_data() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : macsa.getValues())
+    for (auto const & leaf : macsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8944,12 +8954,12 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::Tx
 
 bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::TxFlow::has_operation() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : macsa.getValues())
+    for (auto const & leaf : macsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -8966,6 +8976,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::Tx
 	|| is_set(inner_vlan_up.operation)
 	|| is_set(is_ctrl_pkt.operation)
 	|| is_set(is_egress.operation)
+	|| is_set(macda.operation)
+	|| is_set(macsa.operation)
 	|| is_set(match_bad_tag.operation)
 	|| is_set(match_kay_tag.operation)
 	|| is_set(match_pri.operation)
@@ -9006,7 +9018,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9281,12 +9293,12 @@ Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::RxFlow:
 
 bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::RxFlow::has_data() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : macsa.getValues())
+    for (auto const & leaf : macsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9330,12 +9342,12 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::Rx
 
 bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::RxFlow::has_operation() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : macsa.getValues())
+    for (auto const & leaf : macsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -9352,6 +9364,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::Rx
 	|| is_set(inner_vlan_up.operation)
 	|| is_set(is_ctrl_pkt.operation)
 	|| is_set(is_egress.operation)
+	|| is_set(macda.operation)
+	|| is_set(macsa.operation)
 	|| is_set(match_bad_tag.operation)
 	|| is_set(match_kay_tag.operation)
 	|| is_set(match_pri.operation)
@@ -9392,7 +9406,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9645,8 +9659,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::ha
 bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::has_operation() const
 {
     return is_set(operation)
-	|| (rx_flow !=  nullptr && is_set(rx_flow->operation))
-	|| (tx_flow !=  nullptr && is_set(tx_flow->operation));
+	|| (rx_flow !=  nullptr && rx_flow->has_operation())
+	|| (tx_flow !=  nullptr && tx_flow->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFlow::get_segment_path() const
@@ -9663,7 +9677,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::MsfpgaFl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9808,7 +9822,7 @@ Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::TxFlow::
 
 bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::TxFlow::has_data() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9864,7 +9878,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::TxF
 
 bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::TxFlow::has_operation() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -9879,6 +9893,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::TxF
 	|| is_set(inner_vlan_id.operation)
 	|| is_set(inner_vlan_user_pri.operation)
 	|| is_set(is_flow_enabled.operation)
+	|| is_set(macda.operation)
 	|| is_set(mask_da.operation)
 	|| is_set(mask_ethertype.operation)
 	|| is_set(mask_plain_bits.operation)
@@ -9933,7 +9948,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10273,7 +10288,7 @@ Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::RxFlow::
 
 bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::RxFlow::has_data() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10329,7 +10344,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::RxF
 
 bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::RxFlow::has_operation() const
 {
-    for (auto const & leaf : macda.getValues())
+    for (auto const & leaf : macda.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -10344,6 +10359,7 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::RxF
 	|| is_set(inner_vlan_id.operation)
 	|| is_set(inner_vlan_user_pri.operation)
 	|| is_set(is_flow_enabled.operation)
+	|| is_set(macda.operation)
 	|| is_set(mask_da.operation)
 	|| is_set(mask_ethertype.operation)
 	|| is_set(mask_plain_bits.operation)
@@ -10398,7 +10414,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10705,8 +10721,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::has
 bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::has_operation() const
 {
     return is_set(operation)
-	|| (rx_flow !=  nullptr && is_set(rx_flow->operation))
-	|| (tx_flow !=  nullptr && is_set(tx_flow->operation));
+	|| (rx_flow !=  nullptr && rx_flow->has_operation())
+	|| (tx_flow !=  nullptr && tx_flow->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flow::get_segment_path() const
@@ -10723,7 +10739,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::Es200Flo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10842,8 +10858,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::has_operation(
     return is_set(operation)
 	|| is_set(flow_id.operation)
 	|| is_set(hw_type.operation)
-	|| (es200_flow !=  nullptr && is_set(es200_flow->operation))
-	|| (msfpga_flow !=  nullptr && is_set(msfpga_flow->operation));
+	|| (es200_flow !=  nullptr && es200_flow->has_operation())
+	|| (msfpga_flow !=  nullptr && msfpga_flow->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::get_segment_path() const
@@ -10860,7 +10876,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::SwFlow::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10998,7 +11014,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwFlowS::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11108,7 +11124,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::MsfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11230,7 +11246,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::MsfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11361,7 +11377,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::MsfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11472,7 +11488,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::MsfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11588,10 +11604,10 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::MsfpgaStats::has_
 bool Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::MsfpgaStats::has_operation() const
 {
     return is_set(operation)
-	|| (rx_interface_macsec_stats !=  nullptr && is_set(rx_interface_macsec_stats->operation))
-	|| (rx_sa_stats !=  nullptr && is_set(rx_sa_stats->operation))
-	|| (tx_interface_macsec_stats !=  nullptr && is_set(tx_interface_macsec_stats->operation))
-	|| (tx_sa_stats !=  nullptr && is_set(tx_sa_stats->operation));
+	|| (rx_interface_macsec_stats !=  nullptr && rx_interface_macsec_stats->has_operation())
+	|| (rx_sa_stats !=  nullptr && rx_sa_stats->has_operation())
+	|| (tx_interface_macsec_stats !=  nullptr && tx_interface_macsec_stats->has_operation())
+	|| (tx_sa_stats !=  nullptr && tx_sa_stats->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::MsfpgaStats::get_segment_path() const
@@ -11608,7 +11624,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::MsfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11793,7 +11809,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::XlfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11918,7 +11934,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::XlfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12075,7 +12091,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::XlfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12242,8 +12258,8 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::XlfpgaStats::has_
 bool Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::XlfpgaStats::has_operation() const
 {
     return is_set(operation)
-	|| (macsec_rx_stats !=  nullptr && is_set(macsec_rx_stats->operation))
-	|| (macsec_tx_stats !=  nullptr && is_set(macsec_tx_stats->operation));
+	|| (macsec_rx_stats !=  nullptr && macsec_rx_stats->has_operation())
+	|| (macsec_tx_stats !=  nullptr && macsec_tx_stats->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::XlfpgaStats::get_segment_path() const
@@ -12260,7 +12276,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::XlfpgaStats
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12393,7 +12409,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::Es200Stats:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12526,7 +12542,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::Es200Stats:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12712,7 +12728,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::Es200Stats:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12940,7 +12956,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::Es200Stats:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13126,10 +13142,10 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::Es200Stats::has_d
 bool Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::Es200Stats::has_operation() const
 {
     return is_set(operation)
-	|| (rx_interface_macsec_stats !=  nullptr && is_set(rx_interface_macsec_stats->operation))
-	|| (rx_sa_stats !=  nullptr && is_set(rx_sa_stats->operation))
-	|| (tx_interface_macsec_stats !=  nullptr && is_set(tx_interface_macsec_stats->operation))
-	|| (tx_sa_stats !=  nullptr && is_set(tx_sa_stats->operation));
+	|| (rx_interface_macsec_stats !=  nullptr && rx_interface_macsec_stats->has_operation())
+	|| (rx_sa_stats !=  nullptr && rx_sa_stats->has_operation())
+	|| (tx_interface_macsec_stats !=  nullptr && tx_interface_macsec_stats->has_operation())
+	|| (tx_sa_stats !=  nullptr && tx_sa_stats->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::Es200Stats::get_segment_path() const
@@ -13146,7 +13162,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::Es200Stats:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13313,9 +13329,9 @@ bool Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::has_operation() c
 {
     return is_set(operation)
 	|| is_set(hw_type.operation)
-	|| (es200_stats !=  nullptr && is_set(es200_stats->operation))
-	|| (msfpga_stats !=  nullptr && is_set(msfpga_stats->operation))
-	|| (xlfpga_stats !=  nullptr && is_set(xlfpga_stats->operation));
+	|| (es200_stats !=  nullptr && es200_stats->has_operation())
+	|| (msfpga_stats !=  nullptr && msfpga_stats->has_operation())
+	|| (xlfpga_stats !=  nullptr && xlfpga_stats->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::get_segment_path() const
@@ -13332,7 +13348,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::SwStatistics::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13496,12 +13512,12 @@ bool Macsec::Nodes::Node::Interfaces::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (hw_flow_s !=  nullptr && is_set(hw_flow_s->operation))
-	|| (hw_sas !=  nullptr && is_set(hw_sas->operation))
-	|| (hw_statistics !=  nullptr && is_set(hw_statistics->operation))
-	|| (sw_flow_s !=  nullptr && is_set(sw_flow_s->operation))
-	|| (sw_sas !=  nullptr && is_set(sw_sas->operation))
-	|| (sw_statistics !=  nullptr && is_set(sw_statistics->operation));
+	|| (hw_flow_s !=  nullptr && hw_flow_s->has_operation())
+	|| (hw_sas !=  nullptr && hw_sas->has_operation())
+	|| (hw_statistics !=  nullptr && hw_statistics->has_operation())
+	|| (sw_flow_s !=  nullptr && sw_flow_s->has_operation())
+	|| (sw_sas !=  nullptr && sw_sas->has_operation())
+	|| (sw_statistics !=  nullptr && sw_statistics->has_operation());
 }
 
 std::string Macsec::Nodes::Node::Interfaces::Interface::get_segment_path() const
@@ -13518,7 +13534,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13743,7 +13759,7 @@ EntityPath Macsec::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13834,7 +13850,7 @@ bool Macsec::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string Macsec::Nodes::Node::get_segment_path() const
@@ -14048,7 +14064,7 @@ bool Macsec::has_data() const
 bool Macsec::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Macsec::get_segment_path() const
@@ -14065,7 +14081,7 @@ EntityPath Macsec::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

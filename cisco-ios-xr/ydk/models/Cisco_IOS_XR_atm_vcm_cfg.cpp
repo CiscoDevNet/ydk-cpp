@@ -8,12 +8,12 @@ namespace ydk {
 namespace Cisco_IOS_XR_atm_vcm_cfg {
 
 
-const Enum::Value AtmVpiBitsModeEnum::twelve {12, "twelve"};
+const Enum::YLeaf AtmVpiBitsModeEnum::twelve {12, "twelve"};
 
-const Enum::Value AtmPvcTestModeEnum::loop {1, "loop"};
-const Enum::Value AtmPvcTestModeEnum::reserved {2, "reserved"};
+const Enum::YLeaf AtmPvcTestModeEnum::loop {1, "loop"};
+const Enum::YLeaf AtmPvcTestModeEnum::reserved {2, "reserved"};
 
-const Enum::Value AtmPvpTestModeEnum::loop {1, "loop"};
+const Enum::YLeaf AtmPvpTestModeEnum::loop {1, "loop"};
 
 
 }

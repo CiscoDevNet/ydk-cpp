@@ -171,7 +171,7 @@ EntityPath Interfaces::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -318,7 +318,7 @@ EntityPath InterfacesState::Interface::Statistics::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -476,7 +476,7 @@ EntityPath InterfacesState::Interface::Bandwidth::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -556,12 +556,12 @@ InterfacesState::Interface::~Interface()
 
 bool InterfacesState::Interface::has_data() const
 {
-    for (auto const & leaf : higher_layer_if.getValues())
+    for (auto const & leaf : higher_layer_if.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lower_layer_if.getValues())
+    for (auto const & leaf : lower_layer_if.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -580,12 +580,12 @@ bool InterfacesState::Interface::has_data() const
 
 bool InterfacesState::Interface::has_operation() const
 {
-    for (auto const & leaf : higher_layer_if.getValues())
+    for (auto const & leaf : higher_layer_if.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lower_layer_if.getValues())
+    for (auto const & leaf : lower_layer_if.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -593,14 +593,16 @@ bool InterfacesState::Interface::has_operation() const
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(admin_status.operation)
+	|| is_set(higher_layer_if.operation)
 	|| is_set(if_index.operation)
 	|| is_set(last_change.operation)
+	|| is_set(lower_layer_if.operation)
 	|| is_set(oper_status.operation)
 	|| is_set(phys_address.operation)
 	|| is_set(speed.operation)
 	|| is_set(type.operation)
-	|| (bandwidth !=  nullptr && is_set(bandwidth->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string InterfacesState::Interface::get_segment_path() const
@@ -797,7 +799,7 @@ EntityPath InterfacesState::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -864,20 +866,20 @@ std::unique_ptr<Entity> InterfacesState::clone_ptr()
     return std::make_unique<InterfacesState>();
 }
 
-const Enum::Value Interfaces::Interface::LinkUpDownTrapEnableEnum::enabled {1, "enabled"};
-const Enum::Value Interfaces::Interface::LinkUpDownTrapEnableEnum::disabled {2, "disabled"};
+const Enum::YLeaf Interfaces::Interface::LinkUpDownTrapEnableEnum::enabled {1, "enabled"};
+const Enum::YLeaf Interfaces::Interface::LinkUpDownTrapEnableEnum::disabled {2, "disabled"};
 
-const Enum::Value InterfacesState::Interface::AdminStatusEnum::up {1, "up"};
-const Enum::Value InterfacesState::Interface::AdminStatusEnum::down {2, "down"};
-const Enum::Value InterfacesState::Interface::AdminStatusEnum::testing {3, "testing"};
+const Enum::YLeaf InterfacesState::Interface::AdminStatusEnum::up {1, "up"};
+const Enum::YLeaf InterfacesState::Interface::AdminStatusEnum::down {2, "down"};
+const Enum::YLeaf InterfacesState::Interface::AdminStatusEnum::testing {3, "testing"};
 
-const Enum::Value InterfacesState::Interface::OperStatusEnum::up {1, "up"};
-const Enum::Value InterfacesState::Interface::OperStatusEnum::down {2, "down"};
-const Enum::Value InterfacesState::Interface::OperStatusEnum::testing {3, "testing"};
-const Enum::Value InterfacesState::Interface::OperStatusEnum::unknown {4, "unknown"};
-const Enum::Value InterfacesState::Interface::OperStatusEnum::dormant {5, "dormant"};
-const Enum::Value InterfacesState::Interface::OperStatusEnum::not_present {6, "not-present"};
-const Enum::Value InterfacesState::Interface::OperStatusEnum::lower_layer_down {7, "lower-layer-down"};
+const Enum::YLeaf InterfacesState::Interface::OperStatusEnum::up {1, "up"};
+const Enum::YLeaf InterfacesState::Interface::OperStatusEnum::down {2, "down"};
+const Enum::YLeaf InterfacesState::Interface::OperStatusEnum::testing {3, "testing"};
+const Enum::YLeaf InterfacesState::Interface::OperStatusEnum::unknown {4, "unknown"};
+const Enum::YLeaf InterfacesState::Interface::OperStatusEnum::dormant {5, "dormant"};
+const Enum::YLeaf InterfacesState::Interface::OperStatusEnum::not_present {6, "not-present"};
+const Enum::YLeaf InterfacesState::Interface::OperStatusEnum::lower_layer_down {7, "lower-layer-down"};
 
 
 }

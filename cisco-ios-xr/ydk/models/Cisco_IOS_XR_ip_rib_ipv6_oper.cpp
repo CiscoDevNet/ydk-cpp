@@ -52,7 +52,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -156,7 +156,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeN
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -260,7 +260,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeO
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -364,7 +364,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeO
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -468,7 +468,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeO
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -572,7 +572,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeO
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -676,7 +676,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeO
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -780,7 +780,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -884,7 +884,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -988,7 +988,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1092,7 +1092,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1196,7 +1196,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeB
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1300,7 +1300,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeB
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1404,7 +1404,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeB
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1508,7 +1508,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeO
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1612,7 +1612,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeO
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1716,7 +1716,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1820,7 +1820,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1996,24 +1996,24 @@ bool Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::has_operatio
 	|| is_set(protoid.operation)
 	|| is_set(instance.operation)
 	|| is_set(name.operation)
-	|| (proto_route_count !=  nullptr && is_set(proto_route_count->operation))
-	|| (rtype_bgp_ext !=  nullptr && is_set(rtype_bgp_ext->operation))
-	|| (rtype_bgp_int !=  nullptr && is_set(rtype_bgp_int->operation))
-	|| (rtype_bgp_loc !=  nullptr && is_set(rtype_bgp_loc->operation))
-	|| (rtype_igrp2_ext !=  nullptr && is_set(rtype_igrp2_ext->operation))
-	|| (rtype_igrp2_int !=  nullptr && is_set(rtype_igrp2_int->operation))
-	|| (rtype_isis_l1 !=  nullptr && is_set(rtype_isis_l1->operation))
-	|| (rtype_isis_l1_ia !=  nullptr && is_set(rtype_isis_l1_ia->operation))
-	|| (rtype_isis_l2 !=  nullptr && is_set(rtype_isis_l2->operation))
-	|| (rtype_isis_sum !=  nullptr && is_set(rtype_isis_sum->operation))
-	|| (rtype_none !=  nullptr && is_set(rtype_none->operation))
-	|| (rtype_ospf_extern1 !=  nullptr && is_set(rtype_ospf_extern1->operation))
-	|| (rtype_ospf_extern2 !=  nullptr && is_set(rtype_ospf_extern2->operation))
-	|| (rtype_ospf_inter !=  nullptr && is_set(rtype_ospf_inter->operation))
-	|| (rtype_ospf_intra !=  nullptr && is_set(rtype_ospf_intra->operation))
-	|| (rtype_ospf_nssa1 !=  nullptr && is_set(rtype_ospf_nssa1->operation))
-	|| (rtype_ospf_nssa2 !=  nullptr && is_set(rtype_ospf_nssa2->operation))
-	|| (rtype_other !=  nullptr && is_set(rtype_other->operation));
+	|| (proto_route_count !=  nullptr && proto_route_count->has_operation())
+	|| (rtype_bgp_ext !=  nullptr && rtype_bgp_ext->has_operation())
+	|| (rtype_bgp_int !=  nullptr && rtype_bgp_int->has_operation())
+	|| (rtype_bgp_loc !=  nullptr && rtype_bgp_loc->has_operation())
+	|| (rtype_igrp2_ext !=  nullptr && rtype_igrp2_ext->has_operation())
+	|| (rtype_igrp2_int !=  nullptr && rtype_igrp2_int->has_operation())
+	|| (rtype_isis_l1 !=  nullptr && rtype_isis_l1->has_operation())
+	|| (rtype_isis_l1_ia !=  nullptr && rtype_isis_l1_ia->has_operation())
+	|| (rtype_isis_l2 !=  nullptr && rtype_isis_l2->has_operation())
+	|| (rtype_isis_sum !=  nullptr && rtype_isis_sum->has_operation())
+	|| (rtype_none !=  nullptr && rtype_none->has_operation())
+	|| (rtype_ospf_extern1 !=  nullptr && rtype_ospf_extern1->has_operation())
+	|| (rtype_ospf_extern2 !=  nullptr && rtype_ospf_extern2->has_operation())
+	|| (rtype_ospf_inter !=  nullptr && rtype_ospf_inter->has_operation())
+	|| (rtype_ospf_intra !=  nullptr && rtype_ospf_intra->has_operation())
+	|| (rtype_ospf_nssa1 !=  nullptr && rtype_ospf_nssa1->has_operation())
+	|| (rtype_ospf_nssa2 !=  nullptr && rtype_ospf_nssa2->has_operation())
+	|| (rtype_other !=  nullptr && rtype_other->has_operation());
 }
 
 std::string Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::get_segment_path() const
@@ -2030,7 +2030,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2541,7 +2541,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2655,12 +2655,12 @@ Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::R
 
 bool Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2704,12 +2704,12 @@ bool Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRou
 
 bool Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -2723,6 +2723,7 @@ bool Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -2743,6 +2744,7 @@ bool Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -2766,7 +2768,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3035,7 +3037,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3222,7 +3224,7 @@ bool Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::get_segment_path() const
@@ -3239,7 +3241,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3512,7 +3514,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3625,7 +3627,7 @@ EntityPath Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3721,8 +3723,8 @@ bool Ipv6Rib::RibTableIds::RibTableId::has_operation() const
 {
     return is_set(operation)
 	|| is_set(tableid.operation)
-	|| (rib_table_itf_hndls !=  nullptr && is_set(rib_table_itf_hndls->operation))
-	|| (summary_protos !=  nullptr && is_set(summary_protos->operation));
+	|| (rib_table_itf_hndls !=  nullptr && rib_table_itf_hndls->has_operation())
+	|| (summary_protos !=  nullptr && summary_protos->has_operation());
 }
 
 std::string Ipv6Rib::RibTableIds::RibTableId::get_segment_path() const
@@ -3986,12 +3988,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4035,12 +4037,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -4054,6 +4056,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -4074,6 +4077,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -4097,7 +4101,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4366,7 +4370,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4556,7 +4560,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::get_segment_path() const
@@ -4573,7 +4577,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4848,7 +4852,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4962,12 +4966,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -5011,12 +5015,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -5030,6 +5034,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -5050,6 +5055,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -5073,7 +5079,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5342,7 +5348,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5532,7 +5538,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::get_segment_path() const
@@ -5549,7 +5555,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5824,7 +5830,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5938,12 +5944,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -5987,12 +5993,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -6006,6 +6012,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -6026,6 +6033,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -6049,7 +6057,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6318,7 +6326,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6505,7 +6513,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::get_segment_path() const
@@ -6522,7 +6530,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6792,7 +6800,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6906,12 +6914,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -6955,12 +6963,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -6974,6 +6982,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -6994,6 +7003,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -7017,7 +7027,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7286,7 +7296,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7473,7 +7483,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::get_segment_path() const
@@ -7490,7 +7500,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7760,7 +7770,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7862,10 +7872,10 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::has_operation() const
 {
     return is_set(operation)
-	|| (dest_backup_routes !=  nullptr && is_set(dest_backup_routes->operation))
-	|| (dest_best_routes !=  nullptr && is_set(dest_best_routes->operation))
-	|| (dest_next_hop_routes !=  nullptr && is_set(dest_next_hop_routes->operation))
-	|| (dest_q_routes !=  nullptr && is_set(dest_q_routes->operation));
+	|| (dest_backup_routes !=  nullptr && dest_backup_routes->has_operation())
+	|| (dest_best_routes !=  nullptr && dest_best_routes->has_operation())
+	|| (dest_next_hop_routes !=  nullptr && dest_next_hop_routes->has_operation())
+	|| (dest_q_routes !=  nullptr && dest_q_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::get_segment_path() const
@@ -7882,7 +7892,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8070,7 +8080,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8198,7 +8208,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8316,7 +8326,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8430,12 +8440,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8479,12 +8489,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -8498,6 +8508,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -8518,6 +8529,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -8541,7 +8553,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8810,7 +8822,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9000,7 +9012,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::get_segment_path() const
@@ -9017,7 +9029,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9292,7 +9304,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9423,7 +9435,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9566,12 +9578,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9615,12 +9627,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -9634,6 +9646,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -9654,6 +9667,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -9677,7 +9691,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9946,7 +9960,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10136,7 +10150,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -10153,7 +10167,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10428,7 +10442,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10520,8 +10534,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::get_segment_path() const
@@ -10538,7 +10552,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10689,7 +10703,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10832,12 +10846,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10881,12 +10895,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -10900,6 +10914,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -10920,6 +10935,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -10943,7 +10959,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11212,7 +11228,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11402,7 +11418,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -11419,7 +11435,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11694,7 +11710,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11786,8 +11802,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::get_segment_path() const
@@ -11804,7 +11820,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11916,8 +11932,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::has_operation() const
 {
     return is_set(operation)
-	|| (lspv !=  nullptr && is_set(lspv->operation))
-	|| (non_as !=  nullptr && is_set(non_as->operation));
+	|| (lspv !=  nullptr && lspv->has_operation())
+	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::get_segment_path() const
@@ -11934,7 +11950,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12085,7 +12101,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12228,12 +12244,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -12277,12 +12293,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -12296,6 +12312,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -12316,6 +12333,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -12339,7 +12357,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12608,7 +12626,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12798,7 +12816,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -12815,7 +12833,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13090,7 +13108,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13186,8 +13204,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 {
     return is_set(operation)
 	|| is_set(as.operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::get_segment_path() const
@@ -13204,7 +13222,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13337,7 +13355,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13468,7 +13486,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13611,12 +13629,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -13660,12 +13678,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -13679,6 +13697,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -13699,6 +13718,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -13722,7 +13742,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13991,7 +14011,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14181,7 +14201,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -14198,7 +14218,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14473,7 +14493,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14565,8 +14585,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::get_segment_path() const
@@ -14583,7 +14603,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14690,7 +14710,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::has_operation() const
 {
     return is_set(operation)
-	|| (non_as !=  nullptr && is_set(non_as->operation));
+	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::get_segment_path() const
@@ -14707,7 +14727,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14835,7 +14855,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14978,12 +14998,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -15027,12 +15047,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -15046,6 +15066,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -15066,6 +15087,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -15089,7 +15111,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15358,7 +15380,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15548,7 +15570,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -15565,7 +15587,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15840,7 +15862,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15936,8 +15958,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 {
     return is_set(operation)
 	|| is_set(as.operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::get_segment_path() const
@@ -15954,7 +15976,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16087,7 +16109,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16218,7 +16240,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16361,12 +16383,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -16410,12 +16432,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -16429,6 +16451,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -16449,6 +16472,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -16472,7 +16496,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16741,7 +16765,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16931,7 +16955,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -16948,7 +16972,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17223,7 +17247,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17319,8 +17343,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 {
     return is_set(operation)
 	|| is_set(as.operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::get_segment_path() const
@@ -17337,7 +17361,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17470,7 +17494,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17601,7 +17625,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17744,12 +17768,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -17793,12 +17817,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -17812,6 +17836,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -17832,6 +17857,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -17855,7 +17881,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18124,7 +18150,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18314,7 +18340,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -18331,7 +18357,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18606,7 +18632,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18698,8 +18724,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::get_segment_path() const
@@ -18716,7 +18742,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18823,7 +18849,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::has_operation() const
 {
     return is_set(operation)
-	|| (non_as !=  nullptr && is_set(non_as->operation));
+	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::get_segment_path() const
@@ -18840,7 +18866,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18968,7 +18994,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19111,12 +19137,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -19160,12 +19186,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -19179,6 +19205,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -19199,6 +19226,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -19222,7 +19250,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19491,7 +19519,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19681,7 +19709,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -19698,7 +19726,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19973,7 +20001,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20065,8 +20093,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::get_segment_path() const
@@ -20083,7 +20111,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20190,7 +20218,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::has_operation() const
 {
     return is_set(operation)
-	|| (non_as !=  nullptr && is_set(non_as->operation));
+	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::get_segment_path() const
@@ -20207,7 +20235,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20335,7 +20363,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20478,12 +20506,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -20527,12 +20555,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -20546,6 +20574,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -20566,6 +20595,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -20589,7 +20619,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20858,7 +20888,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21048,7 +21078,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -21065,7 +21095,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21340,7 +21370,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21432,8 +21462,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::get_segment_path() const
@@ -21450,7 +21480,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21557,7 +21587,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::has_operation() const
 {
     return is_set(operation)
-	|| (non_as !=  nullptr && is_set(non_as->operation));
+	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::get_segment_path() const
@@ -21574,7 +21604,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21702,7 +21732,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21845,12 +21875,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -21894,12 +21924,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -21913,6 +21943,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -21933,6 +21964,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -21956,7 +21988,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22225,7 +22257,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22415,7 +22447,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -22432,7 +22464,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22707,7 +22739,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22803,8 +22835,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 {
     return is_set(operation)
 	|| is_set(as.operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::get_segment_path() const
@@ -22821,7 +22853,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22954,7 +22986,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23085,7 +23117,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23228,12 +23260,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -23277,12 +23309,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -23296,6 +23328,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -23316,6 +23349,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -23339,7 +23373,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23608,7 +23642,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23798,7 +23832,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -23815,7 +23849,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24090,7 +24124,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24182,8 +24216,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::get_segment_path() const
@@ -24200,7 +24234,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24351,7 +24385,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24494,12 +24528,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -24543,12 +24577,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -24562,6 +24596,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -24582,6 +24617,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -24605,7 +24641,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24874,7 +24910,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25064,7 +25100,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -25081,7 +25117,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25356,7 +25392,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25448,8 +25484,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::get_segment_path() const
@@ -25466,7 +25502,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25578,8 +25614,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::has_operation() const
 {
     return is_set(operation)
-	|| (l2vpn !=  nullptr && is_set(l2vpn->operation))
-	|| (non_as !=  nullptr && is_set(non_as->operation));
+	|| (l2vpn !=  nullptr && l2vpn->has_operation())
+	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::get_segment_path() const
@@ -25596,7 +25632,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25747,7 +25783,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25890,12 +25926,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -25939,12 +25975,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -25958,6 +25994,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -25978,6 +26015,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -26001,7 +26039,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26270,7 +26308,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26460,7 +26498,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -26477,7 +26515,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26752,7 +26790,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26848,8 +26886,8 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 {
     return is_set(operation)
 	|| is_set(as.operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::get_segment_path() const
@@ -26866,7 +26904,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26999,7 +27037,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27136,17 +27174,17 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::has_operation() const
 {
     return is_set(operation)
-	|| (bgp !=  nullptr && is_set(bgp->operation))
-	|| (connected !=  nullptr && is_set(connected->operation))
-	|| (eigrp !=  nullptr && is_set(eigrp->operation))
-	|| (isis !=  nullptr && is_set(isis->operation))
-	|| (local !=  nullptr && is_set(local->operation))
-	|| (mobile !=  nullptr && is_set(mobile->operation))
-	|| (ospf !=  nullptr && is_set(ospf->operation))
-	|| (rpl !=  nullptr && is_set(rpl->operation))
-	|| (static_ !=  nullptr && is_set(static_->operation))
-	|| (subscriber !=  nullptr && is_set(subscriber->operation))
-	|| (te_client !=  nullptr && is_set(te_client->operation));
+	|| (bgp !=  nullptr && bgp->has_operation())
+	|| (connected !=  nullptr && connected->has_operation())
+	|| (eigrp !=  nullptr && eigrp->has_operation())
+	|| (isis !=  nullptr && isis->has_operation())
+	|| (local !=  nullptr && local->has_operation())
+	|| (mobile !=  nullptr && mobile->has_operation())
+	|| (ospf !=  nullptr && ospf->has_operation())
+	|| (rpl !=  nullptr && rpl->has_operation())
+	|| (static_ !=  nullptr && static_->has_operation())
+	|| (subscriber !=  nullptr && subscriber->has_operation())
+	|| (te_client !=  nullptr && te_client->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::get_segment_path() const
@@ -27163,7 +27201,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27504,12 +27542,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Routes::Route::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -27553,12 +27591,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Routes::Route::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -27572,6 +27610,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -27592,6 +27631,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -27615,7 +27655,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27884,7 +27924,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28080,7 +28120,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Routes::Route::get_segment_path() const
@@ -28097,7 +28137,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28382,7 +28422,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28496,12 +28536,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -28545,12 +28585,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -28564,6 +28604,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -28584,6 +28625,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -28607,7 +28649,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28876,7 +28918,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29066,7 +29108,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::get_segment_path() const
@@ -29083,7 +29125,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29358,7 +29400,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29472,12 +29514,12 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -29521,12 +29563,12 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -29540,6 +29582,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -29560,6 +29603,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -29583,7 +29627,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29852,7 +29896,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30045,7 +30089,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::get_segment_path() const
@@ -30062,7 +30106,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30342,7 +30386,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30463,13 +30507,13 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 {
     return is_set(operation)
 	|| is_set(route_table_name.operation)
-	|| (adverts !=  nullptr && is_set(adverts->operation))
-	|| (backup_routes !=  nullptr && is_set(backup_routes->operation))
-	|| (deleted_routes !=  nullptr && is_set(deleted_routes->operation))
-	|| (destination_kw !=  nullptr && is_set(destination_kw->operation))
-	|| (protocol !=  nullptr && is_set(protocol->operation))
-	|| (q_routes !=  nullptr && is_set(q_routes->operation))
-	|| (routes !=  nullptr && is_set(routes->operation));
+	|| (adverts !=  nullptr && adverts->has_operation())
+	|| (backup_routes !=  nullptr && backup_routes->has_operation())
+	|| (deleted_routes !=  nullptr && deleted_routes->has_operation())
+	|| (destination_kw !=  nullptr && destination_kw->has_operation())
+	|| (protocol !=  nullptr && protocol->has_operation())
+	|| (q_routes !=  nullptr && q_routes->has_operation())
+	|| (routes !=  nullptr && routes->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::get_segment_path() const
@@ -30486,7 +30530,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30734,7 +30778,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30825,7 +30869,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(saf_name.operation)
-	|| (ip_rib_route_table_names !=  nullptr && is_set(ip_rib_route_table_names->operation));
+	|| (ip_rib_route_table_names !=  nullptr && ip_rib_route_table_names->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::get_segment_path() const
@@ -30842,7 +30886,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30952,7 +30996,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31043,7 +31087,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::has_operation() const
 {
     return is_set(operation)
 	|| is_set(af_name.operation)
-	|| (safs !=  nullptr && is_set(safs->operation));
+	|| (safs !=  nullptr && safs->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::get_segment_path() const
@@ -31060,7 +31104,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::Af::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31170,7 +31214,7 @@ EntityPath Ipv6Rib::Vrfs::Vrf::Afs::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31261,7 +31305,7 @@ bool Ipv6Rib::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (afs !=  nullptr && is_set(afs->operation));
+	|| (afs !=  nullptr && afs->has_operation());
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::get_segment_path() const
@@ -31480,8 +31524,8 @@ bool Ipv6Rib::has_data() const
 bool Ipv6Rib::has_operation() const
 {
     return is_set(operation)
-	|| (rib_table_ids !=  nullptr && is_set(rib_table_ids->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (rib_table_ids !=  nullptr && rib_table_ids->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Ipv6Rib::get_segment_path() const
@@ -31498,7 +31542,7 @@ EntityPath Ipv6Rib::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -31629,7 +31673,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31733,7 +31777,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31837,7 +31881,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31941,7 +31985,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32045,7 +32089,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32149,7 +32193,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32253,7 +32297,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32357,7 +32401,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32461,7 +32505,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32565,7 +32609,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32669,7 +32713,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32773,7 +32817,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32877,7 +32921,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32981,7 +33025,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33085,7 +33129,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33189,7 +33233,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33293,7 +33337,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33397,7 +33441,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::R
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33573,24 +33617,24 @@ bool Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::has_ope
 	|| is_set(protoid.operation)
 	|| is_set(instance.operation)
 	|| is_set(name.operation)
-	|| (proto_route_count !=  nullptr && is_set(proto_route_count->operation))
-	|| (rtype_bgp_ext !=  nullptr && is_set(rtype_bgp_ext->operation))
-	|| (rtype_bgp_int !=  nullptr && is_set(rtype_bgp_int->operation))
-	|| (rtype_bgp_loc !=  nullptr && is_set(rtype_bgp_loc->operation))
-	|| (rtype_igrp2_ext !=  nullptr && is_set(rtype_igrp2_ext->operation))
-	|| (rtype_igrp2_int !=  nullptr && is_set(rtype_igrp2_int->operation))
-	|| (rtype_isis_l1 !=  nullptr && is_set(rtype_isis_l1->operation))
-	|| (rtype_isis_l1_ia !=  nullptr && is_set(rtype_isis_l1_ia->operation))
-	|| (rtype_isis_l2 !=  nullptr && is_set(rtype_isis_l2->operation))
-	|| (rtype_isis_sum !=  nullptr && is_set(rtype_isis_sum->operation))
-	|| (rtype_none !=  nullptr && is_set(rtype_none->operation))
-	|| (rtype_ospf_extern1 !=  nullptr && is_set(rtype_ospf_extern1->operation))
-	|| (rtype_ospf_extern2 !=  nullptr && is_set(rtype_ospf_extern2->operation))
-	|| (rtype_ospf_inter !=  nullptr && is_set(rtype_ospf_inter->operation))
-	|| (rtype_ospf_intra !=  nullptr && is_set(rtype_ospf_intra->operation))
-	|| (rtype_ospf_nssa1 !=  nullptr && is_set(rtype_ospf_nssa1->operation))
-	|| (rtype_ospf_nssa2 !=  nullptr && is_set(rtype_ospf_nssa2->operation))
-	|| (rtype_other !=  nullptr && is_set(rtype_other->operation));
+	|| (proto_route_count !=  nullptr && proto_route_count->has_operation())
+	|| (rtype_bgp_ext !=  nullptr && rtype_bgp_ext->has_operation())
+	|| (rtype_bgp_int !=  nullptr && rtype_bgp_int->has_operation())
+	|| (rtype_bgp_loc !=  nullptr && rtype_bgp_loc->has_operation())
+	|| (rtype_igrp2_ext !=  nullptr && rtype_igrp2_ext->has_operation())
+	|| (rtype_igrp2_int !=  nullptr && rtype_igrp2_int->has_operation())
+	|| (rtype_isis_l1 !=  nullptr && rtype_isis_l1->has_operation())
+	|| (rtype_isis_l1_ia !=  nullptr && rtype_isis_l1_ia->has_operation())
+	|| (rtype_isis_l2 !=  nullptr && rtype_isis_l2->has_operation())
+	|| (rtype_isis_sum !=  nullptr && rtype_isis_sum->has_operation())
+	|| (rtype_none !=  nullptr && rtype_none->has_operation())
+	|| (rtype_ospf_extern1 !=  nullptr && rtype_ospf_extern1->has_operation())
+	|| (rtype_ospf_extern2 !=  nullptr && rtype_ospf_extern2->has_operation())
+	|| (rtype_ospf_inter !=  nullptr && rtype_ospf_inter->has_operation())
+	|| (rtype_ospf_intra !=  nullptr && rtype_ospf_intra->has_operation())
+	|| (rtype_ospf_nssa1 !=  nullptr && rtype_ospf_nssa1->has_operation())
+	|| (rtype_ospf_nssa2 !=  nullptr && rtype_ospf_nssa2->has_operation())
+	|| (rtype_other !=  nullptr && rtype_other->has_operation());
 }
 
 std::string Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::get_segment_path() const
@@ -33607,7 +33651,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::SummaryProto::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34118,7 +34162,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::SummaryProtos::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34232,12 +34276,12 @@ Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRou
 
 bool Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -34281,12 +34325,12 @@ bool Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::I
 
 bool Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -34300,6 +34344,7 @@ bool Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::I
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -34320,6 +34365,7 @@ bool Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::I
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -34343,7 +34389,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfH
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34612,7 +34658,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfH
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34799,7 +34845,7 @@ bool Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::I
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::get_segment_path() const
@@ -34816,7 +34862,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfH
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35089,7 +35135,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfH
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35202,7 +35248,7 @@ EntityPath Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35298,8 +35344,8 @@ bool Ipv6RibStdby::RibTableIds::RibTableId::has_operation() const
 {
     return is_set(operation)
 	|| is_set(tableid.operation)
-	|| (rib_table_itf_hndls !=  nullptr && is_set(rib_table_itf_hndls->operation))
-	|| (summary_protos !=  nullptr && is_set(summary_protos->operation));
+	|| (rib_table_itf_hndls !=  nullptr && rib_table_itf_hndls->has_operation())
+	|| (summary_protos !=  nullptr && summary_protos->has_operation());
 }
 
 std::string Ipv6RibStdby::RibTableIds::RibTableId::get_segment_path() const
@@ -35563,12 +35609,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -35612,12 +35658,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -35631,6 +35677,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -35651,6 +35698,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -35674,7 +35722,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35943,7 +35991,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36133,7 +36181,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::get_segment_path() const
@@ -36150,7 +36198,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36425,7 +36473,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36539,12 +36587,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -36588,12 +36636,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -36607,6 +36655,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -36627,6 +36676,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -36650,7 +36700,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36919,7 +36969,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37109,7 +37159,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::get_segment_path() const
@@ -37126,7 +37176,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37401,7 +37451,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37515,12 +37565,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -37564,12 +37614,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -37583,6 +37633,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -37603,6 +37654,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -37626,7 +37678,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37895,7 +37947,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38082,7 +38134,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::get_segment_path() const
@@ -38099,7 +38151,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38369,7 +38421,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38483,12 +38535,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -38532,12 +38584,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -38551,6 +38603,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -38571,6 +38624,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -38594,7 +38648,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38863,7 +38917,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39050,7 +39104,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::get_segment_path() const
@@ -39067,7 +39121,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39337,7 +39391,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39439,10 +39493,10 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::has_operation() const
 {
     return is_set(operation)
-	|| (dest_backup_routes !=  nullptr && is_set(dest_backup_routes->operation))
-	|| (dest_best_routes !=  nullptr && is_set(dest_best_routes->operation))
-	|| (dest_next_hop_routes !=  nullptr && is_set(dest_next_hop_routes->operation))
-	|| (dest_q_routes !=  nullptr && is_set(dest_q_routes->operation));
+	|| (dest_backup_routes !=  nullptr && dest_backup_routes->has_operation())
+	|| (dest_best_routes !=  nullptr && dest_best_routes->has_operation())
+	|| (dest_next_hop_routes !=  nullptr && dest_next_hop_routes->has_operation())
+	|| (dest_q_routes !=  nullptr && dest_q_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::get_segment_path() const
@@ -39459,7 +39513,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39647,7 +39701,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39775,7 +39829,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39893,7 +39947,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40007,12 +40061,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -40056,12 +40110,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -40075,6 +40129,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -40095,6 +40150,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -40118,7 +40174,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40387,7 +40443,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40577,7 +40633,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::get_segment_path() const
@@ -40594,7 +40650,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40869,7 +40925,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41000,7 +41056,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41143,12 +41199,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -41192,12 +41248,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -41211,6 +41267,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -41231,6 +41288,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -41254,7 +41312,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41523,7 +41581,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41713,7 +41771,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -41730,7 +41788,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42005,7 +42063,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42097,8 +42155,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::get_segment_path() const
@@ -42115,7 +42173,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42266,7 +42324,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42409,12 +42467,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -42458,12 +42516,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -42477,6 +42535,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -42497,6 +42556,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -42520,7 +42580,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42789,7 +42849,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42979,7 +43039,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -42996,7 +43056,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43271,7 +43331,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43363,8 +43423,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::get_segment_path() const
@@ -43381,7 +43441,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43493,8 +43553,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::has_operation() const
 {
     return is_set(operation)
-	|| (lspv !=  nullptr && is_set(lspv->operation))
-	|| (non_as !=  nullptr && is_set(non_as->operation));
+	|| (lspv !=  nullptr && lspv->has_operation())
+	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::get_segment_path() const
@@ -43511,7 +43571,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43662,7 +43722,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43805,12 +43865,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -43854,12 +43914,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -43873,6 +43933,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -43893,6 +43954,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -43916,7 +43978,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44185,7 +44247,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44375,7 +44437,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -44392,7 +44454,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44667,7 +44729,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44763,8 +44825,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 {
     return is_set(operation)
 	|| is_set(as.operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::get_segment_path() const
@@ -44781,7 +44843,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44914,7 +44976,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45045,7 +45107,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45188,12 +45250,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -45237,12 +45299,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -45256,6 +45318,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -45276,6 +45339,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -45299,7 +45363,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45568,7 +45632,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45758,7 +45822,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -45775,7 +45839,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46050,7 +46114,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46142,8 +46206,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::get_segment_path() const
@@ -46160,7 +46224,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46267,7 +46331,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::has_operation() const
 {
     return is_set(operation)
-	|| (non_as !=  nullptr && is_set(non_as->operation));
+	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::get_segment_path() const
@@ -46284,7 +46348,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46412,7 +46476,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46555,12 +46619,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -46604,12 +46668,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -46623,6 +46687,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -46643,6 +46708,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -46666,7 +46732,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46935,7 +47001,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47125,7 +47191,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -47142,7 +47208,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47417,7 +47483,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47513,8 +47579,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 {
     return is_set(operation)
 	|| is_set(as.operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::get_segment_path() const
@@ -47531,7 +47597,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47664,7 +47730,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47795,7 +47861,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47938,12 +48004,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -47987,12 +48053,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -48006,6 +48072,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -48026,6 +48093,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -48049,7 +48117,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48318,7 +48386,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48508,7 +48576,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -48525,7 +48593,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48800,7 +48868,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48896,8 +48964,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 {
     return is_set(operation)
 	|| is_set(as.operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::get_segment_path() const
@@ -48914,7 +48982,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49047,7 +49115,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49178,7 +49246,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49321,12 +49389,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -49370,12 +49438,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -49389,6 +49457,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -49409,6 +49478,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -49432,7 +49502,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49701,7 +49771,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49891,7 +49961,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -49908,7 +49978,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50183,7 +50253,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50275,8 +50345,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::get_segment_path() const
@@ -50293,7 +50363,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50400,7 +50470,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::has_operation() const
 {
     return is_set(operation)
-	|| (non_as !=  nullptr && is_set(non_as->operation));
+	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::get_segment_path() const
@@ -50417,7 +50487,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50545,7 +50615,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50688,12 +50758,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -50737,12 +50807,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -50756,6 +50826,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -50776,6 +50847,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -50799,7 +50871,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51068,7 +51140,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51258,7 +51330,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -51275,7 +51347,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51550,7 +51622,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51642,8 +51714,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::get_segment_path() const
@@ -51660,7 +51732,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51767,7 +51839,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::has_operation() const
 {
     return is_set(operation)
-	|| (non_as !=  nullptr && is_set(non_as->operation));
+	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::get_segment_path() const
@@ -51784,7 +51856,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51912,7 +51984,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52055,12 +52127,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -52104,12 +52176,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -52123,6 +52195,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -52143,6 +52216,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -52166,7 +52240,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52435,7 +52509,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52625,7 +52699,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -52642,7 +52716,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52917,7 +52991,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53009,8 +53083,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::get_segment_path() const
@@ -53027,7 +53101,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53134,7 +53208,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::has_operation() const
 {
     return is_set(operation)
-	|| (non_as !=  nullptr && is_set(non_as->operation));
+	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::get_segment_path() const
@@ -53151,7 +53225,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53279,7 +53353,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53422,12 +53496,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -53471,12 +53545,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -53490,6 +53564,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -53510,6 +53585,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -53533,7 +53609,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53802,7 +53878,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53992,7 +54068,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -54009,7 +54085,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54284,7 +54360,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54380,8 +54456,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 {
     return is_set(operation)
 	|| is_set(as.operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::get_segment_path() const
@@ -54398,7 +54474,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54531,7 +54607,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54662,7 +54738,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54805,12 +54881,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -54854,12 +54930,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -54873,6 +54949,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -54893,6 +54970,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -54916,7 +54994,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55185,7 +55263,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55375,7 +55453,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -55392,7 +55470,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55667,7 +55745,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55759,8 +55837,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::get_segment_path() const
@@ -55777,7 +55855,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55928,7 +56006,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56071,12 +56149,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -56120,12 +56198,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -56139,6 +56217,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -56159,6 +56238,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -56182,7 +56262,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56451,7 +56531,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56641,7 +56721,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -56658,7 +56738,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56933,7 +57013,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57025,8 +57105,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::has_operation() const
 {
     return is_set(operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::get_segment_path() const
@@ -57043,7 +57123,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57155,8 +57235,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::has_operation() const
 {
     return is_set(operation)
-	|| (l2vpn !=  nullptr && is_set(l2vpn->operation))
-	|| (non_as !=  nullptr && is_set(non_as->operation));
+	|| (l2vpn !=  nullptr && l2vpn->has_operation())
+	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::get_segment_path() const
@@ -57173,7 +57253,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57324,7 +57404,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57467,12 +57547,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -57516,12 +57596,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -57535,6 +57615,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -57555,6 +57636,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -57578,7 +57660,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57847,7 +57929,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58037,7 +58119,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::get_segment_path() const
@@ -58054,7 +58136,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58329,7 +58411,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58425,8 +58507,8 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 {
     return is_set(operation)
 	|| is_set(as.operation)
-	|| (information !=  nullptr && is_set(information->operation))
-	|| (protocol_routes !=  nullptr && is_set(protocol_routes->operation));
+	|| (information !=  nullptr && information->has_operation())
+	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::get_segment_path() const
@@ -58443,7 +58525,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58576,7 +58658,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58713,17 +58795,17 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::has_operation() const
 {
     return is_set(operation)
-	|| (bgp !=  nullptr && is_set(bgp->operation))
-	|| (connected !=  nullptr && is_set(connected->operation))
-	|| (eigrp !=  nullptr && is_set(eigrp->operation))
-	|| (isis !=  nullptr && is_set(isis->operation))
-	|| (local !=  nullptr && is_set(local->operation))
-	|| (mobile !=  nullptr && is_set(mobile->operation))
-	|| (ospf !=  nullptr && is_set(ospf->operation))
-	|| (rpl !=  nullptr && is_set(rpl->operation))
-	|| (static_ !=  nullptr && is_set(static_->operation))
-	|| (subscriber !=  nullptr && is_set(subscriber->operation))
-	|| (te_client !=  nullptr && is_set(te_client->operation));
+	|| (bgp !=  nullptr && bgp->has_operation())
+	|| (connected !=  nullptr && connected->has_operation())
+	|| (eigrp !=  nullptr && eigrp->has_operation())
+	|| (isis !=  nullptr && isis->has_operation())
+	|| (local !=  nullptr && local->has_operation())
+	|| (mobile !=  nullptr && mobile->has_operation())
+	|| (ospf !=  nullptr && ospf->has_operation())
+	|| (rpl !=  nullptr && rpl->has_operation())
+	|| (static_ !=  nullptr && static_->has_operation())
+	|| (subscriber !=  nullptr && subscriber->has_operation())
+	|| (te_client !=  nullptr && te_client->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::get_segment_path() const
@@ -58740,7 +58822,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59081,12 +59163,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Routes::Route::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -59130,12 +59212,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Routes::Route::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -59149,6 +59231,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -59169,6 +59252,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -59192,7 +59276,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59461,7 +59545,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59657,7 +59741,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Routes::Route::get_segment_path() const
@@ -59674,7 +59758,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59959,7 +60043,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60073,12 +60157,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -60122,12 +60206,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -60141,6 +60225,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -60161,6 +60246,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -60184,7 +60270,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60453,7 +60539,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60643,7 +60729,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::get_segment_path() const
@@ -60660,7 +60746,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60935,7 +61021,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61049,12 +61135,12 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -61098,12 +61184,12 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
-    for (auto const & leaf : labelstk.getValues())
+    for (auto const & leaf : labelstk.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_backup_addr.getValues())
+    for (auto const & leaf : remote_backup_addr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -61117,6 +61203,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(has_labelstk.operation)
 	|| is_set(information_source.operation)
 	|| is_set(interface_name.operation)
+	|| is_set(labelstk.operation)
 	|| is_set(load_metric.operation)
 	|| is_set(looped.operation)
 	|| is_set(metric.operation)
@@ -61137,6 +61224,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(pathid.operation)
 	|| is_set(private_flags.operation)
 	|| is_set(ref_cnt_of_backup.operation)
+	|| is_set(remote_backup_addr.operation)
 	|| is_set(route_label.operation)
 	|| is_set(segmented_nexthop_present.operation)
 	|| is_set(source_asrt_present.operation)
@@ -61160,7 +61248,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61429,7 +61517,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61622,7 +61710,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| is_set(tbl_version.operation)
 	|| is_set(traffic_index.operation)
 	|| is_set(version.operation)
-	|| (route_path !=  nullptr && is_set(route_path->operation));
+	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::get_segment_path() const
@@ -61639,7 +61727,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61919,7 +62007,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62040,13 +62128,13 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 {
     return is_set(operation)
 	|| is_set(route_table_name.operation)
-	|| (adverts !=  nullptr && is_set(adverts->operation))
-	|| (backup_routes !=  nullptr && is_set(backup_routes->operation))
-	|| (deleted_routes !=  nullptr && is_set(deleted_routes->operation))
-	|| (destination_kw !=  nullptr && is_set(destination_kw->operation))
-	|| (protocol !=  nullptr && is_set(protocol->operation))
-	|| (q_routes !=  nullptr && is_set(q_routes->operation))
-	|| (routes !=  nullptr && is_set(routes->operation));
+	|| (adverts !=  nullptr && adverts->has_operation())
+	|| (backup_routes !=  nullptr && backup_routes->has_operation())
+	|| (deleted_routes !=  nullptr && deleted_routes->has_operation())
+	|| (destination_kw !=  nullptr && destination_kw->has_operation())
+	|| (protocol !=  nullptr && protocol->has_operation())
+	|| (q_routes !=  nullptr && q_routes->has_operation())
+	|| (routes !=  nullptr && routes->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::get_segment_path() const
@@ -62063,7 +62151,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62311,7 +62399,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62402,7 +62490,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(saf_name.operation)
-	|| (ip_rib_route_table_names !=  nullptr && is_set(ip_rib_route_table_names->operation));
+	|| (ip_rib_route_table_names !=  nullptr && ip_rib_route_table_names->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::get_segment_path() const
@@ -62419,7 +62507,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62529,7 +62617,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62620,7 +62708,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::has_operation() const
 {
     return is_set(operation)
 	|| is_set(af_name.operation)
-	|| (safs !=  nullptr && is_set(safs->operation));
+	|| (safs !=  nullptr && safs->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::get_segment_path() const
@@ -62637,7 +62725,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::Af::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62747,7 +62835,7 @@ EntityPath Ipv6RibStdby::Vrfs::Vrf::Afs::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62838,7 +62926,7 @@ bool Ipv6RibStdby::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (afs !=  nullptr && is_set(afs->operation));
+	|| (afs !=  nullptr && afs->has_operation());
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::get_segment_path() const
@@ -63057,8 +63145,8 @@ bool Ipv6RibStdby::has_data() const
 bool Ipv6RibStdby::has_operation() const
 {
     return is_set(operation)
-	|| (rib_table_ids !=  nullptr && is_set(rib_table_ids->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (rib_table_ids !=  nullptr && rib_table_ids->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Ipv6RibStdby::get_segment_path() const
@@ -63075,7 +63163,7 @@ EntityPath Ipv6RibStdby::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

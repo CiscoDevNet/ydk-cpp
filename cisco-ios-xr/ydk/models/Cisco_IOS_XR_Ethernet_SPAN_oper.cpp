@@ -290,7 +290,7 @@ EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Destinatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -378,7 +378,7 @@ EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Destinatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -469,7 +469,7 @@ EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Destinatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -565,7 +565,7 @@ EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Destinatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -663,10 +663,10 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData:
     return is_set(operation)
 	|| is_set(destination_class.operation)
 	|| is_set(invalid_value.operation)
-	|| (interface_data !=  nullptr && is_set(interface_data->operation))
-	|| (next_hop_ipv4_data !=  nullptr && is_set(next_hop_ipv4_data->operation))
-	|| (next_hop_ipv6_data !=  nullptr && is_set(next_hop_ipv6_data->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation));
+	|| (interface_data !=  nullptr && interface_data->has_operation())
+	|| (next_hop_ipv4_data !=  nullptr && next_hop_ipv4_data->has_operation())
+	|| (next_hop_ipv6_data !=  nullptr && next_hop_ipv6_data->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation());
 }
 
 std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::get_segment_path() const
@@ -683,7 +683,7 @@ EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Destinatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -863,7 +863,7 @@ EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Destinatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -951,7 +951,7 @@ EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Destinatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1040,8 +1040,8 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::h
 	|| is_set(interface.operation)
 	|| is_set(invalid_value.operation)
 	|| is_set(pseudowire_id.operation)
-	|| (ipv4_address_and_vrf !=  nullptr && is_set(ipv4_address_and_vrf->operation))
-	|| (ipv6_address_and_vrf !=  nullptr && is_set(ipv6_address_and_vrf->operation));
+	|| (ipv4_address_and_vrf !=  nullptr && ipv4_address_and_vrf->has_operation())
+	|| (ipv6_address_and_vrf !=  nullptr && ipv6_address_and_vrf->has_operation());
 }
 
 std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::get_segment_path() const
@@ -1058,7 +1058,7 @@ EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Destinatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1215,8 +1215,8 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::has_operation() 
 	|| is_set(interface_error.operation)
 	|| is_set(name.operation)
 	|| is_set(session_class.operation)
-	|| (destination_data !=  nullptr && is_set(destination_data->operation))
-	|| (destination_id !=  nullptr && is_set(destination_id->operation));
+	|| (destination_data !=  nullptr && destination_data->has_operation())
+	|| (destination_id !=  nullptr && destination_id->has_operation());
 }
 
 std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::get_segment_path() const
@@ -1493,8 +1493,8 @@ bool SpanMonitorSession::Global::has_data() const
 bool SpanMonitorSession::Global::has_operation() const
 {
     return is_set(operation)
-	|| (global_sessions !=  nullptr && is_set(global_sessions->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (global_sessions !=  nullptr && global_sessions->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string SpanMonitorSession::Global::get_segment_path() const
@@ -1644,7 +1644,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficPara
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1747,7 +1747,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Attachments::Attachment::Destination
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1835,7 +1835,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Attachments::Attachment::Destination
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1924,8 +1924,8 @@ bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::ha
 	|| is_set(interface.operation)
 	|| is_set(invalid_value.operation)
 	|| is_set(pseudowire_id.operation)
-	|| (ipv4_address_and_vrf !=  nullptr && is_set(ipv4_address_and_vrf->operation))
-	|| (ipv6_address_and_vrf !=  nullptr && is_set(ipv6_address_and_vrf->operation));
+	|| (ipv4_address_and_vrf !=  nullptr && ipv4_address_and_vrf->has_operation())
+	|| (ipv6_address_and_vrf !=  nullptr && ipv6_address_and_vrf->has_operation());
 }
 
 std::string SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::get_segment_path() const
@@ -1942,7 +1942,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Attachments::Attachment::Destination
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2114,8 +2114,8 @@ bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::has_operation() c
 	|| is_set(source_interface.operation)
 	|| is_set(source_interface_state.operation)
 	|| is_set(traffic_direction.operation)
-	|| (destination_id !=  nullptr && is_set(destination_id->operation))
-	|| (traffic_parameters !=  nullptr && is_set(traffic_parameters->operation));
+	|| (destination_id !=  nullptr && destination_id->has_operation())
+	|| (traffic_parameters !=  nullptr && traffic_parameters->has_operation());
 }
 
 std::string SpanMonitorSession::Nodes::Node::Attachments::Attachment::get_segment_path() const
@@ -2132,7 +2132,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Attachments::Attachment::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2325,7 +2325,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Attachments::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2429,7 +2429,7 @@ EntityPath SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2517,7 +2517,7 @@ EntityPath SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2606,8 +2606,8 @@ bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::Destina
 	|| is_set(interface.operation)
 	|| is_set(invalid_value.operation)
 	|| is_set(pseudowire_id.operation)
-	|| (ipv4_address_and_vrf !=  nullptr && is_set(ipv4_address_and_vrf->operation))
-	|| (ipv6_address_and_vrf !=  nullptr && is_set(ipv6_address_and_vrf->operation));
+	|| (ipv4_address_and_vrf !=  nullptr && ipv4_address_and_vrf->has_operation())
+	|| (ipv6_address_and_vrf !=  nullptr && ipv6_address_and_vrf->has_operation());
 }
 
 std::string SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::get_segment_path() const
@@ -2624,7 +2624,7 @@ EntityPath SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2773,7 +2773,7 @@ bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::has_ope
 	|| is_set(session_class.operation)
 	|| is_set(session_class_xr.operation)
 	|| is_set(session_id.operation)
-	|| (destination_id !=  nullptr && is_set(destination_id->operation));
+	|| (destination_id !=  nullptr && destination_id->has_operation());
 }
 
 std::string SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::get_segment_path() const
@@ -2790,7 +2790,7 @@ EntityPath SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2930,7 +2930,7 @@ EntityPath SpanMonitorSession::Nodes::Node::HardwareSessions::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3034,7 +3034,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3122,7 +3122,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3211,8 +3211,8 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::has_
 	|| is_set(interface.operation)
 	|| is_set(invalid_value.operation)
 	|| is_set(pseudowire_id.operation)
-	|| (ipv4_address_and_vrf !=  nullptr && is_set(ipv4_address_and_vrf->operation))
-	|| (ipv6_address_and_vrf !=  nullptr && is_set(ipv6_address_and_vrf->operation));
+	|| (ipv4_address_and_vrf !=  nullptr && ipv4_address_and_vrf->has_operation())
+	|| (ipv6_address_and_vrf !=  nullptr && ipv6_address_and_vrf->has_operation());
 }
 
 std::string SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::get_segment_path() const
@@ -3229,7 +3229,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3382,7 +3382,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirror
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3485,7 +3485,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3573,7 +3573,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3662,8 +3662,8 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Destina
 	|| is_set(interface.operation)
 	|| is_set(invalid_value.operation)
 	|| is_set(pseudowire_id.operation)
-	|| (ipv4_address_and_vrf !=  nullptr && is_set(ipv4_address_and_vrf->operation))
-	|| (ipv6_address_and_vrf !=  nullptr && is_set(ipv6_address_and_vrf->operation));
+	|| (ipv4_address_and_vrf !=  nullptr && ipv4_address_and_vrf->has_operation())
+	|| (ipv6_address_and_vrf !=  nullptr && ipv6_address_and_vrf->has_operation());
 }
 
 std::string SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::get_segment_path() const
@@ -3680,7 +3680,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3833,7 +3833,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::T
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3928,8 +3928,8 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::has_ope
 {
     return is_set(operation)
 	|| is_set(class_.operation)
-	|| (destination_id !=  nullptr && is_set(destination_id->operation))
-	|| (traffic_mirroring_parameters !=  nullptr && is_set(traffic_mirroring_parameters->operation));
+	|| (destination_id !=  nullptr && destination_id->has_operation())
+	|| (traffic_mirroring_parameters !=  nullptr && traffic_mirroring_parameters->has_operation());
 }
 
 std::string SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::get_segment_path() const
@@ -3946,7 +3946,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4089,8 +4089,8 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::has_operation() con
 	|| is_set(platform_error.operation)
 	|| is_set(source_interface.operation)
 	|| is_set(traffic_direction.operation)
-	|| (destination_id !=  nullptr && is_set(destination_id->operation))
-	|| (traffic_mirroring_parameters !=  nullptr && is_set(traffic_mirroring_parameters->operation));
+	|| (destination_id !=  nullptr && destination_id->has_operation())
+	|| (traffic_mirroring_parameters !=  nullptr && traffic_mirroring_parameters->has_operation());
 }
 
 std::string SpanMonitorSession::Nodes::Node::Interfaces::Interface::get_segment_path() const
@@ -4107,7 +4107,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4286,7 +4286,7 @@ EntityPath SpanMonitorSession::Nodes::Node::Interfaces::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4387,9 +4387,9 @@ bool SpanMonitorSession::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node.operation)
-	|| (attachments !=  nullptr && is_set(attachments->operation))
-	|| (hardware_sessions !=  nullptr && is_set(hardware_sessions->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (attachments !=  nullptr && attachments->has_operation())
+	|| (hardware_sessions !=  nullptr && hardware_sessions->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string SpanMonitorSession::Nodes::Node::get_segment_path() const
@@ -4654,8 +4654,8 @@ bool SpanMonitorSession::has_data() const
 bool SpanMonitorSession::has_operation() const
 {
     return is_set(operation)
-	|| (global !=  nullptr && is_set(global->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (global !=  nullptr && global->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string SpanMonitorSession::get_segment_path() const
@@ -4672,7 +4672,7 @@ EntityPath SpanMonitorSession::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -4759,49 +4759,49 @@ std::unique_ptr<Entity> SpanMonitorSession::clone_ptr()
     return std::make_unique<SpanMonitorSession>();
 }
 
-const Enum::Value ImStateEnumEnum::im_state_not_ready {0, "im-state-not-ready"};
-const Enum::Value ImStateEnumEnum::im_state_admin_down {1, "im-state-admin-down"};
-const Enum::Value ImStateEnumEnum::im_state_down {2, "im-state-down"};
-const Enum::Value ImStateEnumEnum::im_state_up {3, "im-state-up"};
-const Enum::Value ImStateEnumEnum::im_state_shutdown {4, "im-state-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_err_disable {5, "im-state-err-disable"};
-const Enum::Value ImStateEnumEnum::im_state_down_immediate {6, "im-state-down-immediate"};
-const Enum::Value ImStateEnumEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
-const Enum::Value ImStateEnumEnum::im_state_down_graceful {8, "im-state-down-graceful"};
-const Enum::Value ImStateEnumEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
-const Enum::Value ImStateEnumEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
-const Enum::Value ImStateEnumEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
-const Enum::Value ImStateEnumEnum::im_state_reset {14, "im-state-reset"};
-const Enum::Value ImStateEnumEnum::im_state_operational {15, "im-state-operational"};
-const Enum::Value ImStateEnumEnum::im_state_not_operational {16, "im-state-not-operational"};
-const Enum::Value ImStateEnumEnum::im_state_unknown {17, "im-state-unknown"};
-const Enum::Value ImStateEnumEnum::im_state_last {18, "im-state-last"};
+const Enum::YLeaf ImStateEnumEnum::im_state_not_ready {0, "im-state-not-ready"};
+const Enum::YLeaf ImStateEnumEnum::im_state_admin_down {1, "im-state-admin-down"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down {2, "im-state-down"};
+const Enum::YLeaf ImStateEnumEnum::im_state_up {3, "im-state-up"};
+const Enum::YLeaf ImStateEnumEnum::im_state_shutdown {4, "im-state-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_err_disable {5, "im-state-err-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate {6, "im-state-down-immediate"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_graceful {8, "im-state-down-graceful"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
+const Enum::YLeaf ImStateEnumEnum::im_state_reset {14, "im-state-reset"};
+const Enum::YLeaf ImStateEnumEnum::im_state_operational {15, "im-state-operational"};
+const Enum::YLeaf ImStateEnumEnum::im_state_not_operational {16, "im-state-not-operational"};
+const Enum::YLeaf ImStateEnumEnum::im_state_unknown {17, "im-state-unknown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_last {18, "im-state-last"};
 
-const Enum::Value DestinationClassEnum::interface_class {0, "interface-class"};
-const Enum::Value DestinationClassEnum::pseudowire_class {1, "pseudowire-class"};
-const Enum::Value DestinationClassEnum::next_hop_ipv4_class {2, "next-hop-ipv4-class"};
-const Enum::Value DestinationClassEnum::next_hop_ipv6_class {3, "next-hop-ipv6-class"};
-const Enum::Value DestinationClassEnum::invalid_class {255, "invalid-class"};
+const Enum::YLeaf DestinationClassEnum::interface_class {0, "interface-class"};
+const Enum::YLeaf DestinationClassEnum::pseudowire_class {1, "pseudowire-class"};
+const Enum::YLeaf DestinationClassEnum::next_hop_ipv4_class {2, "next-hop-ipv4-class"};
+const Enum::YLeaf DestinationClassEnum::next_hop_ipv6_class {3, "next-hop-ipv6-class"};
+const Enum::YLeaf DestinationClassEnum::invalid_class {255, "invalid-class"};
 
-const Enum::Value TrafficDirectionEnum::invalid {0, "invalid"};
-const Enum::Value TrafficDirectionEnum::rx_only {1, "rx-only"};
-const Enum::Value TrafficDirectionEnum::tx_only {2, "tx-only"};
-const Enum::Value TrafficDirectionEnum::both {3, "both"};
+const Enum::YLeaf TrafficDirectionEnum::invalid {0, "invalid"};
+const Enum::YLeaf TrafficDirectionEnum::rx_only {1, "rx-only"};
+const Enum::YLeaf TrafficDirectionEnum::tx_only {2, "tx-only"};
+const Enum::YLeaf TrafficDirectionEnum::both {3, "both"};
 
-const Enum::Value SessionClassEnum::ethernet_class {0, "ethernet-class"};
-const Enum::Value SessionClassEnum::ipv4_class {1, "ipv4-class"};
-const Enum::Value SessionClassEnum::ipv6_class {2, "ipv6-class"};
-const Enum::Value SessionClassEnum::invalid_class {65535, "invalid-class"};
+const Enum::YLeaf SessionClassEnum::ethernet_class {0, "ethernet-class"};
+const Enum::YLeaf SessionClassEnum::ipv4_class {1, "ipv4-class"};
+const Enum::YLeaf SessionClassEnum::ipv6_class {2, "ipv6-class"};
+const Enum::YLeaf SessionClassEnum::invalid_class {65535, "invalid-class"};
 
-const Enum::Value MirrorIntervalEnum::mirror_interval_all {0, "mirror-interval-all"};
-const Enum::Value MirrorIntervalEnum::mirror_interval512 {1, "mirror-interval512"};
-const Enum::Value MirrorIntervalEnum::mirror_interval1k {2, "mirror-interval1k"};
-const Enum::Value MirrorIntervalEnum::mirror_interval2k {3, "mirror-interval2k"};
-const Enum::Value MirrorIntervalEnum::mirror_interval4k {4, "mirror-interval4k"};
-const Enum::Value MirrorIntervalEnum::mirror_interval8k {5, "mirror-interval8k"};
-const Enum::Value MirrorIntervalEnum::mirror_interval16k {6, "mirror-interval16k"};
+const Enum::YLeaf MirrorIntervalEnum::mirror_interval_all {0, "mirror-interval-all"};
+const Enum::YLeaf MirrorIntervalEnum::mirror_interval512 {1, "mirror-interval512"};
+const Enum::YLeaf MirrorIntervalEnum::mirror_interval1k {2, "mirror-interval1k"};
+const Enum::YLeaf MirrorIntervalEnum::mirror_interval2k {3, "mirror-interval2k"};
+const Enum::YLeaf MirrorIntervalEnum::mirror_interval4k {4, "mirror-interval4k"};
+const Enum::YLeaf MirrorIntervalEnum::mirror_interval8k {5, "mirror-interval8k"};
+const Enum::YLeaf MirrorIntervalEnum::mirror_interval16k {6, "mirror-interval16k"};
 
 
 }

@@ -117,7 +117,7 @@ bool Logging::has_data() const
 bool Logging::has_operation() const
 {
     return is_set(operation)
-	|| (history !=  nullptr && is_set(history->operation));
+	|| (history !=  nullptr && history->has_operation());
 }
 
 std::string Logging::get_segment_path() const
@@ -134,7 +134,7 @@ EntityPath Logging::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1639,11 +1639,11 @@ bool Syslog::LoggingStatistics::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (buffer_logging_stats !=  nullptr && is_set(buffer_logging_stats->operation))
-	|| (console_logging_stats !=  nullptr && is_set(console_logging_stats->operation))
-	|| (logging_stats !=  nullptr && is_set(logging_stats->operation))
-	|| (monitor_logging_stats !=  nullptr && is_set(monitor_logging_stats->operation))
-	|| (trap_logging_stats !=  nullptr && is_set(trap_logging_stats->operation));
+	|| (buffer_logging_stats !=  nullptr && buffer_logging_stats->has_operation())
+	|| (console_logging_stats !=  nullptr && console_logging_stats->has_operation())
+	|| (logging_stats !=  nullptr && logging_stats->has_operation())
+	|| (monitor_logging_stats !=  nullptr && monitor_logging_stats->has_operation())
+	|| (trap_logging_stats !=  nullptr && trap_logging_stats->has_operation());
 }
 
 std::string Syslog::LoggingStatistics::get_segment_path() const
@@ -1903,10 +1903,10 @@ bool Syslog::has_data() const
 bool Syslog::has_operation() const
 {
     return is_set(operation)
-	|| (an_remote_servers !=  nullptr && is_set(an_remote_servers->operation))
-	|| (logging_files !=  nullptr && is_set(logging_files->operation))
-	|| (logging_statistics !=  nullptr && is_set(logging_statistics->operation))
-	|| (messages !=  nullptr && is_set(messages->operation));
+	|| (an_remote_servers !=  nullptr && an_remote_servers->has_operation())
+	|| (logging_files !=  nullptr && logging_files->has_operation())
+	|| (logging_statistics !=  nullptr && logging_statistics->has_operation())
+	|| (messages !=  nullptr && messages->has_operation());
 }
 
 std::string Syslog::get_segment_path() const
@@ -1923,7 +1923,7 @@ EntityPath Syslog::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2056,15 +2056,15 @@ std::unique_ptr<Entity> Syslog::clone_ptr()
     return std::make_unique<Syslog>();
 }
 
-const Enum::Value SystemMessageSeverityEnum::message_severity_unknown {-1, "message-severity-unknown"};
-const Enum::Value SystemMessageSeverityEnum::message_severity_emergency {0, "message-severity-emergency"};
-const Enum::Value SystemMessageSeverityEnum::message_severity_alert {1, "message-severity-alert"};
-const Enum::Value SystemMessageSeverityEnum::message_severity_critical {2, "message-severity-critical"};
-const Enum::Value SystemMessageSeverityEnum::message_severity_error {3, "message-severity-error"};
-const Enum::Value SystemMessageSeverityEnum::message_severity_warning {4, "message-severity-warning"};
-const Enum::Value SystemMessageSeverityEnum::message_severity_notice {5, "message-severity-notice"};
-const Enum::Value SystemMessageSeverityEnum::message_severity_informational {6, "message-severity-informational"};
-const Enum::Value SystemMessageSeverityEnum::message_severity_debug {7, "message-severity-debug"};
+const Enum::YLeaf SystemMessageSeverityEnum::message_severity_unknown {-1, "message-severity-unknown"};
+const Enum::YLeaf SystemMessageSeverityEnum::message_severity_emergency {0, "message-severity-emergency"};
+const Enum::YLeaf SystemMessageSeverityEnum::message_severity_alert {1, "message-severity-alert"};
+const Enum::YLeaf SystemMessageSeverityEnum::message_severity_critical {2, "message-severity-critical"};
+const Enum::YLeaf SystemMessageSeverityEnum::message_severity_error {3, "message-severity-error"};
+const Enum::YLeaf SystemMessageSeverityEnum::message_severity_warning {4, "message-severity-warning"};
+const Enum::YLeaf SystemMessageSeverityEnum::message_severity_notice {5, "message-severity-notice"};
+const Enum::YLeaf SystemMessageSeverityEnum::message_severity_informational {6, "message-severity-informational"};
+const Enum::YLeaf SystemMessageSeverityEnum::message_severity_debug {7, "message-severity-debug"};
 
 
 }

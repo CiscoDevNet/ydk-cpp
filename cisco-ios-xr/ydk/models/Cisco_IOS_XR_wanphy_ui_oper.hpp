@@ -26,6 +26,7 @@ class Wanphy : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Controllers : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Wanphy : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Controller : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Wanphy : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value controller_name; //type: string
 
+
+                YLeaf controller_name; //type: string
 
             class Info : public Entity
             {
@@ -70,57 +73,54 @@ class Wanphy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value admin_mode; //type: WanphyModeInfoEnum
-                    Value port_state; //type: uint32
-                    Value section_lof; //type: uint32
-                    Value section_los; //type: uint32
-                    Value section_bip; //type: uint64
-                    Value line_ais; //type: uint32
-                    Value line_rdi; //type: uint32
-                    Value line_febe; //type: uint64
-                    Value line_bip; //type: uint64
-                    Value path_ais; //type: uint32
-                    Value path_rdi; //type: uint32
-                    Value path_febe; //type: uint64
-                    Value path_bip; //type: uint64
-                    Value path_lop; //type: uint32
-                    Value path_newptr; //type: uint32
-                    Value path_pse; //type: uint32
-                    Value path_nse; //type: uint32
-                    Value wis_alarms_ser; //type: uint32
-                    Value wis_alarms_felcdp; //type: uint32
-                    Value wis_alarms_feaisp; //type: uint32
-                    Value wis_alarms_wlos; //type: uint32
-                    Value wis_alarms_plcd; //type: uint32
-                    Value wis_alarms_lfebip; //type: uint64
-                    Value wis_alarms_pbec; //type: uint64
-                    Value wis_alarms_plmp; //type: uint32
-                    Value sf_ber_threshold; //type: uint32
-                    Value sd_ber_threshold; //type: uint32
-                    Value sf_ber_report; //type: WanphyAlarmRepStatusEnum
-                    Value sd_ber_report; //type: WanphyAlarmRepStatusEnum
-                    Value operational_mode; //type: WanphyModeInfoEnum
-                    Value remote_ip; //type: string
-                    Value register_p_febe; //type: uint32
-                    Value register_l_fe_bip; //type: uint32
-                    Value register_l_bip; //type: uint32
-                    Value register_p_bec; //type: uint32
-                    Value register_s_bip; //type: uint32
-                    Value register_j1_rx0; //type: uint32
-                    Value register_j1_rx1; //type: uint32
-                    Value register_j1_rx2; //type: uint32
-                    Value register_j1_rx3; //type: uint32
-                    Value register_j1_rx4; //type: uint32
-                    Value register_j1_rx5; //type: uint32
-                    Value register_j1_rx6; //type: uint32
-                    Value register_j1_rx7; //type: uint32
-                    Value wanphy_poll_timer; //type: uint32
 
 
-                    class WanphyModeInfoEnum;
-                    class WanphyModeInfoEnum;
-                    class WanphyAlarmRepStatusEnum;
-                    class WanphyAlarmRepStatusEnum;
+                    YLeaf admin_mode; //type: WanphyModeInfoEnum
+                    YLeaf port_state; //type: uint32
+                    YLeaf section_lof; //type: uint32
+                    YLeaf section_los; //type: uint32
+                    YLeaf section_bip; //type: uint64
+                    YLeaf line_ais; //type: uint32
+                    YLeaf line_rdi; //type: uint32
+                    YLeaf line_febe; //type: uint64
+                    YLeaf line_bip; //type: uint64
+                    YLeaf path_ais; //type: uint32
+                    YLeaf path_rdi; //type: uint32
+                    YLeaf path_febe; //type: uint64
+                    YLeaf path_bip; //type: uint64
+                    YLeaf path_lop; //type: uint32
+                    YLeaf path_newptr; //type: uint32
+                    YLeaf path_pse; //type: uint32
+                    YLeaf path_nse; //type: uint32
+                    YLeaf wis_alarms_ser; //type: uint32
+                    YLeaf wis_alarms_felcdp; //type: uint32
+                    YLeaf wis_alarms_feaisp; //type: uint32
+                    YLeaf wis_alarms_wlos; //type: uint32
+                    YLeaf wis_alarms_plcd; //type: uint32
+                    YLeaf wis_alarms_lfebip; //type: uint64
+                    YLeaf wis_alarms_pbec; //type: uint64
+                    YLeaf wis_alarms_plmp; //type: uint32
+                    YLeaf sf_ber_threshold; //type: uint32
+                    YLeaf sd_ber_threshold; //type: uint32
+                    YLeaf sf_ber_report; //type: WanphyAlarmRepStatusEnum
+                    YLeaf sd_ber_report; //type: WanphyAlarmRepStatusEnum
+                    YLeaf operational_mode; //type: WanphyModeInfoEnum
+                    YLeaf remote_ip; //type: string
+                    YLeaf register_p_febe; //type: uint32
+                    YLeaf register_l_fe_bip; //type: uint32
+                    YLeaf register_l_bip; //type: uint32
+                    YLeaf register_p_bec; //type: uint32
+                    YLeaf register_s_bip; //type: uint32
+                    YLeaf register_j1_rx0; //type: uint32
+                    YLeaf register_j1_rx1; //type: uint32
+                    YLeaf register_j1_rx2; //type: uint32
+                    YLeaf register_j1_rx3; //type: uint32
+                    YLeaf register_j1_rx4; //type: uint32
+                    YLeaf register_j1_rx5; //type: uint32
+                    YLeaf register_j1_rx6; //type: uint32
+                    YLeaf register_j1_rx7; //type: uint32
+                    YLeaf wanphy_poll_timer; //type: uint32
+
 
 
             }; // Wanphy::Controllers::Controller::Info
@@ -147,16 +147,16 @@ class Wanphy : public Entity
 class WanphyAlarmRepStatusEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value enable;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf enable;
 
 };
 
 class WanphyModeInfoEnum : public Enum
 {
     public:
-        static const Enum::Value lan;
-        static const Enum::Value wan;
+        static const Enum::YLeaf lan;
+        static const Enum::YLeaf wan;
 
 };
 

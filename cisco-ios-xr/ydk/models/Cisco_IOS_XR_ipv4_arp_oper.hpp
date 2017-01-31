@@ -26,6 +26,7 @@ class ArpGmp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class VrfInfos : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class ArpGmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class VrfInfo : public Entity
         {
             public:
@@ -54,13 +56,14 @@ class ArpGmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value vrf_name_xr; //type: string
-                Value vrf_id_number; //type: uint32
-                Value table_id; //type: uint32
-                Value rsi_handle; //type: uint32
-                Value rsi_handle_high; //type: uint32
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf vrf_name_xr; //type: string
+                YLeaf vrf_id_number; //type: uint32
+                YLeaf table_id; //type: uint32
+                YLeaf rsi_handle; //type: uint32
+                YLeaf rsi_handle_high; //type: uint32
 
 
 
@@ -88,6 +91,7 @@ class ArpGmp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -101,8 +105,9 @@ class ArpGmp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
             class ConfiguredIpAddresses : public Entity
             {
@@ -119,6 +124,7 @@ class ArpGmp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ConfiguredIpAddress : public Entity
                 {
                     public:
@@ -132,15 +138,14 @@ class ArpGmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value ip_address; //type: string
-                        Value hardware_address; //type: string
-                        Value encapsulation_type; //type: ArpGmpBagEncapEnum
-                        Value entry_type; //type: ArpGmpBagEntryEnum
 
 
-                        class ArpGmpBagEncapEnum;
-                        class ArpGmpBagEntryEnum;
+                        YLeaf address; //type: string
+                        YLeaf ip_address; //type: string
+                        YLeaf hardware_address; //type: string
+                        YLeaf encapsulation_type; //type: ArpGmpBagEncapEnum
+                        YLeaf entry_type; //type: ArpGmpBagEntryEnum
+
 
 
                 }; // ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress
@@ -167,6 +172,7 @@ class ArpGmp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Route : public Entity
                 {
                     public:
@@ -180,13 +186,14 @@ class ArpGmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value prefix_length; //type: uint32
-                        Value ip_address; //type: string
-                        Value prefix_length_xr; //type: uint8
-                        Value interface_name_xr; //type: string
-                        ValueList interface_name; //type: list of  string
 
+
+                        YLeaf address; //type: string
+                        YLeaf prefix_length; //type: uint32
+                        YLeaf ip_address; //type: string
+                        YLeaf prefix_length_xr; //type: uint8
+                        YLeaf interface_name_xr; //type: string
+                        YLeafList interface_name; //type: list of  string
 
 
 
@@ -214,6 +221,7 @@ class ArpGmp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class InterfaceConfiguredIp : public Entity
                 {
                     public:
@@ -227,11 +235,12 @@ class ArpGmp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value address; //type: string
-                        Value interface_name_xr; //type: string
-                        Value reference_count; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf address; //type: string
+                        YLeaf interface_name_xr; //type: string
+                        YLeaf reference_count; //type: uint32
 
                     class AssociatedConfigurationEntry : public Entity
                     {
@@ -246,14 +255,13 @@ class ArpGmp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ip_address; //type: string
-                            Value hardware_address; //type: string
-                            Value encapsulation_type; //type: ArpGmpBagEncapEnum
-                            Value entry_type; //type: ArpGmpBagEntryEnum
 
 
-                            class ArpGmpBagEncapEnum;
-                            class ArpGmpBagEntryEnum;
+                            YLeaf ip_address; //type: string
+                            YLeaf hardware_address; //type: string
+                            YLeaf encapsulation_type; //type: ArpGmpBagEncapEnum
+                            YLeaf entry_type; //type: ArpGmpBagEntryEnum
+
 
 
                     }; // ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry
@@ -307,6 +315,7 @@ class Arp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -322,6 +331,7 @@ class Arp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -335,8 +345,9 @@ class Arp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class ResolutionHistoryDynamic : public Entity
             {
@@ -353,6 +364,7 @@ class Arp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ArpEntry : public Entity
                 {
                     public:
@@ -366,17 +378,17 @@ class Arp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value nsec_timestamp; //type: uint64
-                        Value idb_interface_name; //type: string
-                        Value ipv4_address; //type: string
-                        Value mac_address; //type: string
-                        Value status; //type: ArpResolutionHistoryStatusEnum
-                        Value client_id; //type: int32
-                        Value entry_state; //type: int32
-                        Value resolution_request_count; //type: uint32
 
 
-                        class ArpResolutionHistoryStatusEnum;
+                        YLeaf nsec_timestamp; //type: uint64
+                        YLeaf idb_interface_name; //type: string
+                        YLeaf ipv4_address; //type: string
+                        YLeaf mac_address; //type: string
+                        YLeaf status; //type: ArpResolutionHistoryStatusEnum
+                        YLeaf client_id; //type: int32
+                        YLeaf entry_state; //type: int32
+                        YLeaf resolution_request_count; //type: uint32
+
 
 
                 }; // Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry
@@ -403,6 +415,7 @@ class Arp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TrafficVrf : public Entity
                 {
                     public:
@@ -416,36 +429,37 @@ class Arp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value vrf_name; //type: string
-                        Value requests_received; //type: uint32
-                        Value replies_received; //type: uint32
-                        Value requests_sent; //type: uint32
-                        Value replies_sent; //type: uint32
-                        Value proxy_replies_sent; //type: uint32
-                        Value subscr_requests_received; //type: uint32
-                        Value subscr_replies_sent; //type: uint32
-                        Value subscr_replies_gratg_sent; //type: uint32
-                        Value local_proxy_replies_sent; //type: uint32
-                        Value gratuitous_replies_sent; //type: uint32
-                        Value resolution_requests_received; //type: uint32
-                        Value resolution_replies_received; //type: uint32
-                        Value resolution_requests_dropped; //type: uint32
-                        Value out_of_memory_errors; //type: uint32
-                        Value no_buffer_errors; //type: uint32
-                        Value total_entries; //type: uint32
-                        Value dynamic_entries; //type: uint32
-                        Value static_entries; //type: uint32
-                        Value alias_entries; //type: uint32
-                        Value interface_entries; //type: uint32
-                        Value standby_entries; //type: uint32
-                        Value dhcp_entries; //type: uint32
-                        Value vxlan_entries; //type: uint32
-                        Value ip_packets_dropped_node; //type: uint32
-                        Value arp_packet_node_out_of_subnet; //type: uint32
-                        Value ip_packets_dropped_interface; //type: uint32
-                        Value arp_packet_interface_out_of_subnet; //type: uint32
-                        Value idb_structures; //type: uint32
 
+
+                        YLeaf vrf_name; //type: string
+                        YLeaf requests_received; //type: uint32
+                        YLeaf replies_received; //type: uint32
+                        YLeaf requests_sent; //type: uint32
+                        YLeaf replies_sent; //type: uint32
+                        YLeaf proxy_replies_sent; //type: uint32
+                        YLeaf subscr_requests_received; //type: uint32
+                        YLeaf subscr_replies_sent; //type: uint32
+                        YLeaf subscr_replies_gratg_sent; //type: uint32
+                        YLeaf local_proxy_replies_sent; //type: uint32
+                        YLeaf gratuitous_replies_sent; //type: uint32
+                        YLeaf resolution_requests_received; //type: uint32
+                        YLeaf resolution_replies_received; //type: uint32
+                        YLeaf resolution_requests_dropped; //type: uint32
+                        YLeaf out_of_memory_errors; //type: uint32
+                        YLeaf no_buffer_errors; //type: uint32
+                        YLeaf total_entries; //type: uint32
+                        YLeaf dynamic_entries; //type: uint32
+                        YLeaf static_entries; //type: uint32
+                        YLeaf alias_entries; //type: uint32
+                        YLeaf interface_entries; //type: uint32
+                        YLeaf standby_entries; //type: uint32
+                        YLeaf dhcp_entries; //type: uint32
+                        YLeaf vxlan_entries; //type: uint32
+                        YLeaf ip_packets_dropped_node; //type: uint32
+                        YLeaf arp_packet_node_out_of_subnet; //type: uint32
+                        YLeaf ip_packets_dropped_interface; //type: uint32
+                        YLeaf arp_packet_interface_out_of_subnet; //type: uint32
+                        YLeaf idb_structures; //type: uint32
 
 
 
@@ -471,35 +485,36 @@ class Arp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value requests_received; //type: uint32
-                    Value replies_received; //type: uint32
-                    Value requests_sent; //type: uint32
-                    Value replies_sent; //type: uint32
-                    Value proxy_replies_sent; //type: uint32
-                    Value subscr_requests_received; //type: uint32
-                    Value subscr_replies_sent; //type: uint32
-                    Value subscr_replies_gratg_sent; //type: uint32
-                    Value local_proxy_replies_sent; //type: uint32
-                    Value gratuitous_replies_sent; //type: uint32
-                    Value resolution_requests_received; //type: uint32
-                    Value resolution_replies_received; //type: uint32
-                    Value resolution_requests_dropped; //type: uint32
-                    Value out_of_memory_errors; //type: uint32
-                    Value no_buffer_errors; //type: uint32
-                    Value total_entries; //type: uint32
-                    Value dynamic_entries; //type: uint32
-                    Value static_entries; //type: uint32
-                    Value alias_entries; //type: uint32
-                    Value interface_entries; //type: uint32
-                    Value standby_entries; //type: uint32
-                    Value dhcp_entries; //type: uint32
-                    Value vxlan_entries; //type: uint32
-                    Value ip_packets_dropped_node; //type: uint32
-                    Value arp_packet_node_out_of_subnet; //type: uint32
-                    Value ip_packets_dropped_interface; //type: uint32
-                    Value arp_packet_interface_out_of_subnet; //type: uint32
-                    Value idb_structures; //type: uint32
 
+
+                    YLeaf requests_received; //type: uint32
+                    YLeaf replies_received; //type: uint32
+                    YLeaf requests_sent; //type: uint32
+                    YLeaf replies_sent; //type: uint32
+                    YLeaf proxy_replies_sent; //type: uint32
+                    YLeaf subscr_requests_received; //type: uint32
+                    YLeaf subscr_replies_sent; //type: uint32
+                    YLeaf subscr_replies_gratg_sent; //type: uint32
+                    YLeaf local_proxy_replies_sent; //type: uint32
+                    YLeaf gratuitous_replies_sent; //type: uint32
+                    YLeaf resolution_requests_received; //type: uint32
+                    YLeaf resolution_replies_received; //type: uint32
+                    YLeaf resolution_requests_dropped; //type: uint32
+                    YLeaf out_of_memory_errors; //type: uint32
+                    YLeaf no_buffer_errors; //type: uint32
+                    YLeaf total_entries; //type: uint32
+                    YLeaf dynamic_entries; //type: uint32
+                    YLeaf static_entries; //type: uint32
+                    YLeaf alias_entries; //type: uint32
+                    YLeaf interface_entries; //type: uint32
+                    YLeaf standby_entries; //type: uint32
+                    YLeaf dhcp_entries; //type: uint32
+                    YLeaf vxlan_entries; //type: uint32
+                    YLeaf ip_packets_dropped_node; //type: uint32
+                    YLeaf arp_packet_node_out_of_subnet; //type: uint32
+                    YLeaf ip_packets_dropped_interface; //type: uint32
+                    YLeaf arp_packet_interface_out_of_subnet; //type: uint32
+                    YLeaf idb_structures; //type: uint32
 
 
 
@@ -521,6 +536,7 @@ class Arp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ArpEntry : public Entity
                 {
                     public:
@@ -534,17 +550,17 @@ class Arp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value nsec_timestamp; //type: uint64
-                        Value idb_interface_name; //type: string
-                        Value ipv4_address; //type: string
-                        Value mac_address; //type: string
-                        Value status; //type: ArpResolutionHistoryStatusEnum
-                        Value client_id; //type: int32
-                        Value entry_state; //type: int32
-                        Value resolution_request_count; //type: uint32
 
 
-                        class ArpResolutionHistoryStatusEnum;
+                        YLeaf nsec_timestamp; //type: uint64
+                        YLeaf idb_interface_name; //type: string
+                        YLeaf ipv4_address; //type: string
+                        YLeaf mac_address; //type: string
+                        YLeaf status; //type: ArpResolutionHistoryStatusEnum
+                        YLeaf client_id; //type: int32
+                        YLeaf entry_state; //type: int32
+                        YLeaf resolution_request_count; //type: uint32
+
 
 
                 }; // Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry
@@ -571,6 +587,7 @@ class Arp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Entry : public Entity
                 {
                     public:
@@ -584,19 +601,17 @@ class Arp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value interface_name; //type: string
-                        Value media_type; //type: IpArpBagMediaEnum
-                        Value state; //type: IpArpBagStateEnum
-                        Value age; //type: uint64
-                        Value encapsulation_type; //type: IpArpBagEncapEnum
-                        Value hardware_length; //type: uint8
-                        Value hardware_address; //type: string
 
 
-                        class IpArpBagEncapEnum;
-                        class IpArpBagMediaEnum;
-                        class IpArpBagStateEnum;
+                        YLeaf address; //type: string
+                        YLeaf interface_name; //type: string
+                        YLeaf media_type; //type: IpArpBagMediaEnum
+                        YLeaf state; //type: IpArpBagStateEnum
+                        YLeaf age; //type: uint64
+                        YLeaf encapsulation_type; //type: IpArpBagEncapEnum
+                        YLeaf hardware_length; //type: uint8
+                        YLeaf hardware_address; //type: string
+
 
 
                 }; // Arp::Nodes::Node::Entries::Entry
@@ -623,6 +638,7 @@ class Arp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TrafficInterface : public Entity
                 {
                     public:
@@ -636,36 +652,37 @@ class Arp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value requests_received; //type: uint32
-                        Value replies_received; //type: uint32
-                        Value requests_sent; //type: uint32
-                        Value replies_sent; //type: uint32
-                        Value proxy_replies_sent; //type: uint32
-                        Value subscr_requests_received; //type: uint32
-                        Value subscr_replies_sent; //type: uint32
-                        Value subscr_replies_gratg_sent; //type: uint32
-                        Value local_proxy_replies_sent; //type: uint32
-                        Value gratuitous_replies_sent; //type: uint32
-                        Value resolution_requests_received; //type: uint32
-                        Value resolution_replies_received; //type: uint32
-                        Value resolution_requests_dropped; //type: uint32
-                        Value out_of_memory_errors; //type: uint32
-                        Value no_buffer_errors; //type: uint32
-                        Value total_entries; //type: uint32
-                        Value dynamic_entries; //type: uint32
-                        Value static_entries; //type: uint32
-                        Value alias_entries; //type: uint32
-                        Value interface_entries; //type: uint32
-                        Value standby_entries; //type: uint32
-                        Value dhcp_entries; //type: uint32
-                        Value vxlan_entries; //type: uint32
-                        Value ip_packets_dropped_node; //type: uint32
-                        Value arp_packet_node_out_of_subnet; //type: uint32
-                        Value ip_packets_dropped_interface; //type: uint32
-                        Value arp_packet_interface_out_of_subnet; //type: uint32
-                        Value idb_structures; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf requests_received; //type: uint32
+                        YLeaf replies_received; //type: uint32
+                        YLeaf requests_sent; //type: uint32
+                        YLeaf replies_sent; //type: uint32
+                        YLeaf proxy_replies_sent; //type: uint32
+                        YLeaf subscr_requests_received; //type: uint32
+                        YLeaf subscr_replies_sent; //type: uint32
+                        YLeaf subscr_replies_gratg_sent; //type: uint32
+                        YLeaf local_proxy_replies_sent; //type: uint32
+                        YLeaf gratuitous_replies_sent; //type: uint32
+                        YLeaf resolution_requests_received; //type: uint32
+                        YLeaf resolution_replies_received; //type: uint32
+                        YLeaf resolution_requests_dropped; //type: uint32
+                        YLeaf out_of_memory_errors; //type: uint32
+                        YLeaf no_buffer_errors; //type: uint32
+                        YLeaf total_entries; //type: uint32
+                        YLeaf dynamic_entries; //type: uint32
+                        YLeaf static_entries; //type: uint32
+                        YLeaf alias_entries; //type: uint32
+                        YLeaf interface_entries; //type: uint32
+                        YLeaf standby_entries; //type: uint32
+                        YLeaf dhcp_entries; //type: uint32
+                        YLeaf vxlan_entries; //type: uint32
+                        YLeaf ip_packets_dropped_node; //type: uint32
+                        YLeaf arp_packet_node_out_of_subnet; //type: uint32
+                        YLeaf ip_packets_dropped_interface; //type: uint32
+                        YLeaf arp_packet_interface_out_of_subnet; //type: uint32
+                        YLeaf idb_structures; //type: uint32
 
 
 
@@ -704,94 +721,94 @@ class Arp : public Entity
 class ArpResolutionHistoryStatusEnum : public Enum
 {
     public:
-        static const Enum::Value status_none;
-        static const Enum::Value status_resolution_request;
-        static const Enum::Value status_resolved_reply;
-        static const Enum::Value status_resolved_grat_arp;
-        static const Enum::Value status_resolved_request;
-        static const Enum::Value status_resolved_lc_sync;
-        static const Enum::Value status_resolved_lc_sync_purge_delay;
-        static const Enum::Value status_resolved_client;
-        static const Enum::Value status_removed_client;
-        static const Enum::Value status_already_resolved;
-        static const Enum::Value status_failed;
-        static const Enum::Value status_dropped_interface_down;
-        static const Enum::Value status_dropped_broadcast_disabled;
-        static const Enum::Value status_dropped_interface_unavailable;
-        static const Enum::Value status_dropped_bad_subnet;
-        static const Enum::Value status_dropped_dynamic_learning_disabled;
-        static const Enum::Value status_dropped_out_of_subnet_disabled;
-        static const Enum::Value status_removed_client_sweep;
-        static const Enum::Value status_added_client;
-        static const Enum::Value status_added_v1;
-        static const Enum::Value status_removed_v1;
-        static const Enum::Value status_resolved_peer_sync;
+        static const Enum::YLeaf status_none;
+        static const Enum::YLeaf status_resolution_request;
+        static const Enum::YLeaf status_resolved_reply;
+        static const Enum::YLeaf status_resolved_grat_arp;
+        static const Enum::YLeaf status_resolved_request;
+        static const Enum::YLeaf status_resolved_lc_sync;
+        static const Enum::YLeaf status_resolved_lc_sync_purge_delay;
+        static const Enum::YLeaf status_resolved_client;
+        static const Enum::YLeaf status_removed_client;
+        static const Enum::YLeaf status_already_resolved;
+        static const Enum::YLeaf status_failed;
+        static const Enum::YLeaf status_dropped_interface_down;
+        static const Enum::YLeaf status_dropped_broadcast_disabled;
+        static const Enum::YLeaf status_dropped_interface_unavailable;
+        static const Enum::YLeaf status_dropped_bad_subnet;
+        static const Enum::YLeaf status_dropped_dynamic_learning_disabled;
+        static const Enum::YLeaf status_dropped_out_of_subnet_disabled;
+        static const Enum::YLeaf status_removed_client_sweep;
+        static const Enum::YLeaf status_added_client;
+        static const Enum::YLeaf status_added_v1;
+        static const Enum::YLeaf status_removed_v1;
+        static const Enum::YLeaf status_resolved_peer_sync;
 
 };
 
 class IpArpBagEncapEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value arpa;
-        static const Enum::Value snap;
-        static const Enum::Value ieee802_1q;
-        static const Enum::Value srp;
-        static const Enum::Value srpa;
-        static const Enum::Value srpb;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf arpa;
+        static const Enum::YLeaf snap;
+        static const Enum::YLeaf ieee802_1q;
+        static const Enum::YLeaf srp;
+        static const Enum::YLeaf srpa;
+        static const Enum::YLeaf srpb;
 
 };
 
 class ArpGmpBagEncapEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value arpa;
-        static const Enum::Value snap;
-        static const Enum::Value ieee802_1q;
-        static const Enum::Value srp;
-        static const Enum::Value srpa;
-        static const Enum::Value srpb;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf arpa;
+        static const Enum::YLeaf snap;
+        static const Enum::YLeaf ieee802_1q;
+        static const Enum::YLeaf srp;
+        static const Enum::YLeaf srpa;
+        static const Enum::YLeaf srpb;
 
 };
 
 class IpArpBagMediaEnum : public Enum
 {
     public:
-        static const Enum::Value media_arpa;
-        static const Enum::Value media_srp;
-        static const Enum::Value media_unknown;
+        static const Enum::YLeaf media_arpa;
+        static const Enum::YLeaf media_srp;
+        static const Enum::YLeaf media_unknown;
 
 };
 
 class ArpGmpBagEntryEnum : public Enum
 {
     public:
-        static const Enum::Value null;
-        static const Enum::Value static_;
-        static const Enum::Value alias;
+        static const Enum::YLeaf null;
+        static const Enum::YLeaf static_;
+        static const Enum::YLeaf alias;
 
 };
 
 class IpArpBagStateEnum : public Enum
 {
     public:
-        static const Enum::Value state_none;
-        static const Enum::Value state_interface;
-        static const Enum::Value state_standby;
-        static const Enum::Value state_static;
-        static const Enum::Value state_alias;
-        static const Enum::Value state_mobile;
-        static const Enum::Value state_incomplete;
-        static const Enum::Value state_deleted;
-        static const Enum::Value state_dynamic;
-        static const Enum::Value state_probe;
-        static const Enum::Value state_purge_delayed;
-        static const Enum::Value state_dhcp;
-        static const Enum::Value state_vxlan;
-        static const Enum::Value state_sat;
-        static const Enum::Value state_r_sync;
-        static const Enum::Value state_max;
+        static const Enum::YLeaf state_none;
+        static const Enum::YLeaf state_interface;
+        static const Enum::YLeaf state_standby;
+        static const Enum::YLeaf state_static;
+        static const Enum::YLeaf state_alias;
+        static const Enum::YLeaf state_mobile;
+        static const Enum::YLeaf state_incomplete;
+        static const Enum::YLeaf state_deleted;
+        static const Enum::YLeaf state_dynamic;
+        static const Enum::YLeaf state_probe;
+        static const Enum::YLeaf state_purge_delayed;
+        static const Enum::YLeaf state_dhcp;
+        static const Enum::YLeaf state_vxlan;
+        static const Enum::YLeaf state_sat;
+        static const Enum::YLeaf state_r_sync;
+        static const Enum::YLeaf state_max;
 
 };
 

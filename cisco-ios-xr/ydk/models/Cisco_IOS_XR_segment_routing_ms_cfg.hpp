@@ -24,8 +24,9 @@ class Sr : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable; //type: empty
 
+
+        YLeaf enable; //type: empty
 
     class GlobalBlock : public Entity
     {
@@ -40,9 +41,10 @@ class Sr : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value lower_bound; //type: uint32
-            Value upper_bound; //type: uint32
 
+
+            YLeaf lower_bound; //type: uint32
+            YLeaf upper_bound; //type: uint32
 
 
 
@@ -64,6 +66,7 @@ class Sr : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Mapping : public Entity
         {
             public:
@@ -77,15 +80,15 @@ class Sr : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value af; //type: string
-                Value ip; //type: string
-                Value mask; //type: int32
-                Value sid_start; //type: uint32
-                Value sid_range; //type: int32
-                Value flag_attached; //type: SrmsMiFlagEnum
 
 
-                class SrmsMiFlagEnum;
+                YLeaf af; //type: string
+                YLeaf ip; //type: string
+                YLeaf mask; //type: int32
+                YLeaf sid_start; //type: uint32
+                YLeaf sid_range; //type: int32
+                YLeaf flag_attached; //type: SrmsMiFlagEnum
+
 
 
         }; // Sr::Mappings::Mapping
@@ -107,8 +110,8 @@ class Sr : public Entity
 class SrmsMiFlagEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value enable;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf enable;
 
 };
 

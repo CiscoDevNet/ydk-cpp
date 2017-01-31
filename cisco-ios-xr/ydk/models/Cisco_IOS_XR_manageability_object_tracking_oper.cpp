@@ -432,10 +432,10 @@ bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::has_operation
 {
     return is_set(operation)
 	|| is_set(discriminant.operation)
-	|| (bfd_tracks !=  nullptr && is_set(bfd_tracks->operation))
-	|| (interface_tracks !=  nullptr && is_set(interface_tracks->operation))
-	|| (ipsla_tracks !=  nullptr && is_set(ipsla_tracks->operation))
-	|| (route_tracks !=  nullptr && is_set(route_tracks->operation));
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_segment_path() const
@@ -1336,11 +1336,11 @@ bool ObjectTracking::TrackTypeInterface::TrackInfo::has_operation() const
 	|| is_set(track_state.operation)
 	|| is_set(tracke_name.operation)
 	|| is_set(type.operation)
-	|| (bool_tracks !=  nullptr && is_set(bool_tracks->operation))
-	|| (delayed !=  nullptr && is_set(delayed->operation))
-	|| (threshold_tracks !=  nullptr && is_set(threshold_tracks->operation))
-	|| (track_type_info !=  nullptr && is_set(track_type_info->operation))
-	|| (tracking_interaces !=  nullptr && is_set(tracking_interaces->operation));
+	|| (bool_tracks !=  nullptr && bool_tracks->has_operation())
+	|| (delayed !=  nullptr && delayed->has_operation())
+	|| (threshold_tracks !=  nullptr && threshold_tracks->has_operation())
+	|| (track_type_info !=  nullptr && track_type_info->has_operation())
+	|| (tracking_interaces !=  nullptr && tracking_interaces->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeInterface::TrackInfo::get_segment_path() const
@@ -1690,7 +1690,7 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1779,7 +1779,7 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1880,7 +1880,7 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1979,7 +1979,7 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2079,10 +2079,10 @@ bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::has
 {
     return is_set(operation)
 	|| is_set(discriminant.operation)
-	|| (bfd_tracks !=  nullptr && is_set(bfd_tracks->operation))
-	|| (interface_tracks !=  nullptr && is_set(interface_tracks->operation))
-	|| (ipsla_tracks !=  nullptr && is_set(ipsla_tracks->operation))
-	|| (route_tracks !=  nullptr && is_set(route_tracks->operation));
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation());
 }
 
 std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_segment_path() const
@@ -2099,7 +2099,7 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2267,7 +2267,7 @@ bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::has_operation() co
 	|| is_set(track_state.operation)
 	|| is_set(tracke_name.operation)
 	|| is_set(type.operation)
-	|| (track_type_info !=  nullptr && is_set(track_type_info->operation));
+	|| (track_type_info !=  nullptr && track_type_info->has_operation());
 }
 
 std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_segment_path() const
@@ -2284,7 +2284,7 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3010,10 +3010,10 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::has_ope
 {
     return is_set(operation)
 	|| is_set(discriminant.operation)
-	|| (bfd_tracks !=  nullptr && is_set(bfd_tracks->operation))
-	|| (interface_tracks !=  nullptr && is_set(interface_tracks->operation))
-	|| (ipsla_tracks !=  nullptr && is_set(ipsla_tracks->operation))
-	|| (route_tracks !=  nullptr && is_set(route_tracks->operation));
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_segment_path() const
@@ -3914,11 +3914,11 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::has_operation() const
 	|| is_set(track_state.operation)
 	|| is_set(tracke_name.operation)
 	|| is_set(type.operation)
-	|| (bool_tracks !=  nullptr && is_set(bool_tracks->operation))
-	|| (delayed !=  nullptr && is_set(delayed->operation))
-	|| (threshold_tracks !=  nullptr && is_set(threshold_tracks->operation))
-	|| (track_type_info !=  nullptr && is_set(track_type_info->operation))
-	|| (tracking_interaces !=  nullptr && is_set(tracking_interaces->operation));
+	|| (bool_tracks !=  nullptr && bool_tracks->has_operation())
+	|| (delayed !=  nullptr && delayed->has_operation())
+	|| (threshold_tracks !=  nullptr && threshold_tracks->has_operation())
+	|| (track_type_info !=  nullptr && track_type_info->has_operation())
+	|| (tracking_interaces !=  nullptr && tracking_interaces->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_segment_path() const
@@ -4657,10 +4657,10 @@ bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInf
 {
     return is_set(operation)
 	|| is_set(discriminant.operation)
-	|| (bfd_tracks !=  nullptr && is_set(bfd_tracks->operation))
-	|| (interface_tracks !=  nullptr && is_set(interface_tracks->operation))
-	|| (ipsla_tracks !=  nullptr && is_set(ipsla_tracks->operation))
-	|| (route_tracks !=  nullptr && is_set(route_tracks->operation));
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_segment_path() const
@@ -4845,7 +4845,7 @@ bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::has_operatio
 	|| is_set(track_state.operation)
 	|| is_set(tracke_name.operation)
 	|| is_set(type.operation)
-	|| (track_type_info !=  nullptr && is_set(track_type_info->operation));
+	|| (track_type_info !=  nullptr && track_type_info->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_segment_path() const
@@ -5083,7 +5083,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTra
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5172,7 +5172,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5273,7 +5273,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5372,7 +5372,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5472,10 +5472,10 @@ bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::has_operation() co
 {
     return is_set(operation)
 	|| is_set(discriminant.operation)
-	|| (bfd_tracks !=  nullptr && is_set(bfd_tracks->operation))
-	|| (interface_tracks !=  nullptr && is_set(interface_tracks->operation))
-	|| (ipsla_tracks !=  nullptr && is_set(ipsla_tracks->operation))
-	|| (route_tracks !=  nullptr && is_set(route_tracks->operation));
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation());
 }
 
 std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_segment_path() const
@@ -5492,7 +5492,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5670,7 +5670,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5767,7 +5767,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5874,7 +5874,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5971,7 +5971,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6072,7 +6072,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::Interfac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6159,7 +6159,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6263,7 +6263,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6376,11 +6376,11 @@ bool ObjectTracking::Tracks::Track::TrackInfo::has_operation() const
 	|| is_set(track_state.operation)
 	|| is_set(tracke_name.operation)
 	|| is_set(type.operation)
-	|| (bool_tracks !=  nullptr && is_set(bool_tracks->operation))
-	|| (delayed !=  nullptr && is_set(delayed->operation))
-	|| (threshold_tracks !=  nullptr && is_set(threshold_tracks->operation))
-	|| (track_type_info !=  nullptr && is_set(track_type_info->operation))
-	|| (tracking_interaces !=  nullptr && is_set(tracking_interaces->operation));
+	|| (bool_tracks !=  nullptr && bool_tracks->has_operation())
+	|| (delayed !=  nullptr && delayed->has_operation())
+	|| (threshold_tracks !=  nullptr && threshold_tracks->has_operation())
+	|| (track_type_info !=  nullptr && track_type_info->has_operation())
+	|| (tracking_interaces !=  nullptr && tracking_interaces->has_operation());
 }
 
 std::string ObjectTracking::Tracks::Track::TrackInfo::get_segment_path() const
@@ -6397,7 +6397,7 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7235,10 +7235,10 @@ bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::has
 {
     return is_set(operation)
 	|| is_set(discriminant.operation)
-	|| (bfd_tracks !=  nullptr && is_set(bfd_tracks->operation))
-	|| (interface_tracks !=  nullptr && is_set(interface_tracks->operation))
-	|| (ipsla_tracks !=  nullptr && is_set(ipsla_tracks->operation))
-	|| (route_tracks !=  nullptr && is_set(route_tracks->operation));
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_segment_path() const
@@ -7423,7 +7423,7 @@ bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::has_operation() co
 	|| is_set(track_state.operation)
 	|| is_set(tracke_name.operation)
 	|| is_set(type.operation)
-	|| (track_type_info !=  nullptr && is_set(track_type_info->operation));
+	|| (track_type_info !=  nullptr && track_type_info->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_segment_path() const
@@ -8050,10 +8050,10 @@ bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::has_operation
 {
     return is_set(operation)
 	|| is_set(discriminant.operation)
-	|| (bfd_tracks !=  nullptr && is_set(bfd_tracks->operation))
-	|| (interface_tracks !=  nullptr && is_set(interface_tracks->operation))
-	|| (ipsla_tracks !=  nullptr && is_set(ipsla_tracks->operation))
-	|| (route_tracks !=  nullptr && is_set(route_tracks->operation));
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_segment_path() const
@@ -8954,11 +8954,11 @@ bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::has_operation() const
 	|| is_set(track_state.operation)
 	|| is_set(tracke_name.operation)
 	|| is_set(type.operation)
-	|| (bool_tracks !=  nullptr && is_set(bool_tracks->operation))
-	|| (delayed !=  nullptr && is_set(delayed->operation))
-	|| (threshold_tracks !=  nullptr && is_set(threshold_tracks->operation))
-	|| (track_type_info !=  nullptr && is_set(track_type_info->operation))
-	|| (tracking_interaces !=  nullptr && is_set(tracking_interaces->operation));
+	|| (bool_tracks !=  nullptr && bool_tracks->has_operation())
+	|| (delayed !=  nullptr && delayed->has_operation())
+	|| (threshold_tracks !=  nullptr && threshold_tracks->has_operation())
+	|| (track_type_info !=  nullptr && track_type_info->has_operation())
+	|| (tracking_interaces !=  nullptr && tracking_interaces->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_segment_path() const
@@ -9697,10 +9697,10 @@ bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::has
 {
     return is_set(operation)
 	|| is_set(discriminant.operation)
-	|| (bfd_tracks !=  nullptr && is_set(bfd_tracks->operation))
-	|| (interface_tracks !=  nullptr && is_set(interface_tracks->operation))
-	|| (ipsla_tracks !=  nullptr && is_set(ipsla_tracks->operation))
-	|| (route_tracks !=  nullptr && is_set(route_tracks->operation));
+	|| (bfd_tracks !=  nullptr && bfd_tracks->has_operation())
+	|| (interface_tracks !=  nullptr && interface_tracks->has_operation())
+	|| (ipsla_tracks !=  nullptr && ipsla_tracks->has_operation())
+	|| (route_tracks !=  nullptr && route_tracks->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_segment_path() const
@@ -9885,7 +9885,7 @@ bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::has_operation() co
 	|| is_set(track_state.operation)
 	|| is_set(tracke_name.operation)
 	|| is_set(type.operation)
-	|| (track_type_info !=  nullptr && is_set(track_type_info->operation));
+	|| (track_type_info !=  nullptr && track_type_info->has_operation());
 }
 
 std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_segment_path() const
@@ -10144,14 +10144,14 @@ bool ObjectTracking::has_data() const
 bool ObjectTracking::has_operation() const
 {
     return is_set(operation)
-	|| (track_briefs !=  nullptr && is_set(track_briefs->operation))
-	|| (track_type_interface !=  nullptr && is_set(track_type_interface->operation))
-	|| (track_type_interface_brief !=  nullptr && is_set(track_type_interface_brief->operation))
-	|| (track_type_ipv4_route !=  nullptr && is_set(track_type_ipv4_route->operation))
-	|| (track_type_ipv4_route_brief !=  nullptr && is_set(track_type_ipv4_route_brief->operation))
-	|| (track_type_rtr_reachability !=  nullptr && is_set(track_type_rtr_reachability->operation))
-	|| (track_type_rtr_reachability_brief !=  nullptr && is_set(track_type_rtr_reachability_brief->operation))
-	|| (tracks !=  nullptr && is_set(tracks->operation));
+	|| (track_briefs !=  nullptr && track_briefs->has_operation())
+	|| (track_type_interface !=  nullptr && track_type_interface->has_operation())
+	|| (track_type_interface_brief !=  nullptr && track_type_interface_brief->has_operation())
+	|| (track_type_ipv4_route !=  nullptr && track_type_ipv4_route->has_operation())
+	|| (track_type_ipv4_route_brief !=  nullptr && track_type_ipv4_route_brief->has_operation())
+	|| (track_type_rtr_reachability !=  nullptr && track_type_rtr_reachability->has_operation())
+	|| (track_type_rtr_reachability_brief !=  nullptr && track_type_rtr_reachability_brief->has_operation())
+	|| (tracks !=  nullptr && tracks->has_operation());
 }
 
 std::string ObjectTracking::get_segment_path() const
@@ -10168,7 +10168,7 @@ EntityPath ObjectTracking::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -10393,15 +10393,15 @@ std::unique_ptr<Entity> ObjectTracking::clone_ptr()
     return std::make_unique<ObjectTracking>();
 }
 
-const Enum::Value TrackEnum::interface_type {1, "interface-type"};
-const Enum::Value TrackEnum::route_type {2, "route-type"};
-const Enum::Value TrackEnum::bool_and_type {3, "bool-and-type"};
-const Enum::Value TrackEnum::bool_or_type {4, "bool-or-type"};
-const Enum::Value TrackEnum::ipsla_type {5, "ipsla-type"};
-const Enum::Value TrackEnum::undefined_type {6, "undefined-type"};
-const Enum::Value TrackEnum::threshold_weight {7, "threshold-weight"};
-const Enum::Value TrackEnum::threshold_percentage {8, "threshold-percentage"};
-const Enum::Value TrackEnum::bfd_type {9, "bfd-type"};
+const Enum::YLeaf TrackEnum::interface_type {1, "interface-type"};
+const Enum::YLeaf TrackEnum::route_type {2, "route-type"};
+const Enum::YLeaf TrackEnum::bool_and_type {3, "bool-and-type"};
+const Enum::YLeaf TrackEnum::bool_or_type {4, "bool-or-type"};
+const Enum::YLeaf TrackEnum::ipsla_type {5, "ipsla-type"};
+const Enum::YLeaf TrackEnum::undefined_type {6, "undefined-type"};
+const Enum::YLeaf TrackEnum::threshold_weight {7, "threshold-weight"};
+const Enum::YLeaf TrackEnum::threshold_percentage {8, "threshold-percentage"};
+const Enum::YLeaf TrackEnum::bfd_type {9, "bfd-type"};
 
 
 }

@@ -7,9 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_aaa_locald_cfg.hpp"
-#include "Cisco_IOS_XR_aaa_protocol_radius_cfg.hpp"
-#include "Cisco_IOS_XR_aaa_tacacs_cfg.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_aaa_lib_cfg {
@@ -28,8 +25,9 @@ class Aaa : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value default_taskgroup; //type: string
 
+
+        YLeaf default_taskgroup; //type: string
 
     class Accountings : public Entity
     {
@@ -46,6 +44,7 @@ class Aaa : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Accounting : public Entity
         {
             public:
@@ -59,19 +58,16 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: string
-                Value listname; //type: string
-                Value rp_failover; //type: AaaAccountingRpFailoverEnum
-                Value broadcast; //type: AaaAccountingBroadcastEnum
-                Value type_xr; //type: AaaAccountingEnum
-                ValueList method; //type: list of  AaaMethodEnum
-                ValueList server_group_name; //type: list of  string
 
 
-                class AaaAccountingBroadcastEnum;
-                class AaaMethodEnum;
-                class AaaAccountingRpFailoverEnum;
-                class AaaAccountingEnum;
+                YLeaf type; //type: string
+                YLeaf listname; //type: string
+                YLeaf rp_failover; //type: AaaAccountingRpFailoverEnum
+                YLeaf broadcast; //type: AaaAccountingBroadcastEnum
+                YLeaf type_xr; //type: AaaAccountingEnum
+                YLeafList method; //type: list of  AaaMethodEnum
+                YLeafList server_group_name; //type: list of  string
+
 
 
         }; // Aaa::Accountings::Accounting
@@ -98,6 +94,7 @@ class Aaa : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Authorization : public Entity
         {
             public:
@@ -111,13 +108,13 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: string
-                Value listname; //type: string
-                ValueList method; //type: list of  AaaMethodEnum
-                ValueList server_group_name; //type: list of  string
 
 
-                class AaaMethodEnum;
+                YLeaf type; //type: string
+                YLeaf listname; //type: string
+                YLeafList method; //type: list of  AaaMethodEnum
+                YLeafList server_group_name; //type: list of  string
+
 
 
         }; // Aaa::Authorizations::Authorization
@@ -142,11 +139,11 @@ class Aaa : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value type; //type: AaaAccountingUpdateEnum
-            Value periodic_interval; //type: uint32
 
 
-            class AaaAccountingUpdateEnum;
+            YLeaf type; //type: AaaAccountingUpdateEnum
+            YLeaf periodic_interval; //type: uint32
+
 
 
     }; // Aaa::AccountingUpdate
@@ -167,6 +164,7 @@ class Aaa : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Authentication : public Entity
         {
             public:
@@ -180,13 +178,13 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: string
-                Value listname; //type: string
-                ValueList method; //type: list of  AaaMethodEnum
-                ValueList server_group_name; //type: list of  string
 
 
-                class AaaMethodEnum;
+                YLeaf type; //type: string
+                YLeaf listname; //type: string
+                YLeafList method; //type: list of  AaaMethodEnum
+                YLeafList server_group_name; //type: list of  string
+
 
 
         }; // Aaa::Authentications::Authentication
@@ -213,6 +211,7 @@ class Aaa : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RadiusServerGroups : public Entity
         {
             public:
@@ -228,6 +227,7 @@ class Aaa : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RadiusServerGroup : public Entity
             {
                 public:
@@ -241,11 +241,12 @@ class Aaa : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value server_group_name; //type: string
-                    Value dead_time; //type: uint32
-                    Value source_interface; //type: string
-                    Value vrf; //type: string
 
+
+                    YLeaf server_group_name; //type: string
+                    YLeaf dead_time; //type: uint32
+                    YLeaf source_interface; //type: string
+                    YLeaf vrf; //type: string
 
                 class Accounting : public Entity
                 {
@@ -262,6 +263,7 @@ class Aaa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Request : public Entity
                     {
                         public:
@@ -275,11 +277,11 @@ class Aaa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value action; //type: AaaActionEnum
-                            Value attribute_list_name; //type: string
 
 
-                            class AaaActionEnum;
+                            YLeaf action; //type: AaaActionEnum
+                            YLeaf attribute_list_name; //type: string
+
 
 
                     }; // Aaa::ServerGroups::RadiusServerGroups::RadiusServerGroup::Accounting::Request
@@ -298,11 +300,11 @@ class Aaa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value action; //type: AaaActionEnum
-                            Value attribute_list_name; //type: string
 
 
-                            class AaaActionEnum;
+                            YLeaf action; //type: AaaActionEnum
+                            YLeaf attribute_list_name; //type: string
+
 
 
                     }; // Aaa::ServerGroups::RadiusServerGroups::RadiusServerGroup::Accounting::Reply
@@ -330,6 +332,7 @@ class Aaa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Server : public Entity
                     {
                         public:
@@ -343,11 +346,12 @@ class Aaa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ordering_index; //type: int32
-                            Value ip_address; //type: string
-                            Value auth_port_number; //type: uint16
-                            Value acct_port_number; //type: uint16
 
+
+                            YLeaf ordering_index; //type: int32
+                            YLeaf ip_address; //type: string
+                            YLeaf auth_port_number; //type: uint16
+                            YLeaf acct_port_number; //type: uint16
 
 
 
@@ -375,6 +379,7 @@ class Aaa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrivateServer : public Entity
                     {
                         public:
@@ -388,18 +393,19 @@ class Aaa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ordering_index; //type: int32
-                            Value ip_address; //type: string
-                            Value auth_port_number; //type: uint16
-                            Value acct_port_number; //type: uint16
-                            Value private_timeout; //type: uint32
-                            Value ignore_accounting_port; //type: boolean
-                            Value private_retransmit; //type: uint32
-                            Value idle_time; //type: uint32
-                            Value private_key; //type: string
-                            Value username; //type: string
-                            Value ignore_auth_port; //type: boolean
 
+
+                            YLeaf ordering_index; //type: int32
+                            YLeaf ip_address; //type: string
+                            YLeaf auth_port_number; //type: uint16
+                            YLeaf acct_port_number; //type: uint16
+                            YLeaf private_timeout; //type: uint32
+                            YLeaf ignore_accounting_port; //type: boolean
+                            YLeaf private_retransmit; //type: uint32
+                            YLeaf idle_time; //type: uint32
+                            YLeaf private_key; //type: string
+                            YLeaf username; //type: string
+                            YLeaf ignore_auth_port; //type: boolean
 
 
 
@@ -425,10 +431,11 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value access; //type: uint32
-                        Value access_timeout; //type: uint32
-                        Value accounting; //type: uint32
 
+
+                        YLeaf access; //type: uint32
+                        YLeaf access_timeout; //type: uint32
+                        YLeaf accounting; //type: uint32
 
 
 
@@ -450,6 +457,7 @@ class Aaa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Method : public Entity
                     {
                         public:
@@ -465,6 +473,7 @@ class Aaa : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Name : public Entity
                         {
                             public:
@@ -478,10 +487,11 @@ class Aaa : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value least_outstanding; //type: int32
-                                Value batch_size; //type: uint32
-                                Value ignore_preferred_server; //type: int32
 
+
+                                YLeaf least_outstanding; //type: int32
+                                YLeaf batch_size; //type: uint32
+                                YLeaf ignore_preferred_server; //type: int32
 
 
 
@@ -515,6 +525,7 @@ class Aaa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Request : public Entity
                     {
                         public:
@@ -528,11 +539,11 @@ class Aaa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value action; //type: AaaActionEnum
-                            Value attribute_list_name; //type: string
 
 
-                            class AaaActionEnum;
+                            YLeaf action; //type: AaaActionEnum
+                            YLeaf attribute_list_name; //type: string
+
 
 
                     }; // Aaa::ServerGroups::RadiusServerGroups::RadiusServerGroup::Authorization::Request
@@ -551,11 +562,11 @@ class Aaa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value action; //type: AaaActionEnum
-                            Value attribute_list_name; //type: string
 
 
-                            class AaaActionEnum;
+                            YLeaf action; //type: AaaActionEnum
+                            YLeaf attribute_list_name; //type: string
+
 
 
                     }; // Aaa::ServerGroups::RadiusServerGroups::RadiusServerGroup::Authorization::Reply
@@ -600,6 +611,7 @@ class Aaa : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TacacsServerGroup : public Entity
             {
                 public:
@@ -613,9 +625,10 @@ class Aaa : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value server_group_name; //type: string
-                    Value vrf; //type: string
 
+
+                    YLeaf server_group_name; //type: string
+                    YLeaf vrf; //type: string
 
                 class Servers : public Entity
                 {
@@ -632,6 +645,7 @@ class Aaa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Server : public Entity
                     {
                         public:
@@ -645,9 +659,10 @@ class Aaa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ordering_index; //type: int32
-                            Value ip_address; //type: string
 
+
+                            YLeaf ordering_index; //type: int32
+                            YLeaf ip_address; //type: string
 
 
 
@@ -675,6 +690,7 @@ class Aaa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrivateServer : public Entity
                     {
                         public:
@@ -688,12 +704,13 @@ class Aaa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ordering_index; //type: int32
-                            Value ip_address; //type: string
-                            Value port_number; //type: uint32
-                            Value key; //type: string
-                            Value timeout; //type: uint32
 
+
+                            YLeaf ordering_index; //type: int32
+                            YLeaf ip_address; //type: string
+                            YLeaf port_number; //type: uint32
+                            YLeaf key; //type: string
+                            YLeaf timeout; //type: uint32
 
 
 
@@ -741,6 +758,7 @@ class Aaa : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Username : public Entity
         {
             public:
@@ -754,11 +772,12 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value ordering_index; //type: int32
-                Value name; //type: string
-                Value secret; //type: string
-                Value password; //type: string
 
+
+                YLeaf ordering_index; //type: int32
+                YLeaf name; //type: string
+                YLeaf secret; //type: string
+                YLeaf password; //type: string
 
             class UsergroupUnderUsernames : public Entity
             {
@@ -775,6 +794,7 @@ class Aaa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class UsergroupUnderUsername : public Entity
                 {
                     public:
@@ -788,8 +808,9 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
 
+
+                        YLeaf name; //type: string
 
 
 
@@ -829,6 +850,7 @@ class Aaa : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Taskgroup : public Entity
         {
             public:
@@ -842,9 +864,10 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value description; //type: string
 
+
+                YLeaf name; //type: string
+                YLeaf description; //type: string
 
             class TaskgroupUnderTaskgroups : public Entity
             {
@@ -861,6 +884,7 @@ class Aaa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TaskgroupUnderTaskgroup : public Entity
                 {
                     public:
@@ -874,8 +898,9 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
 
+
+                        YLeaf name; //type: string
 
 
 
@@ -903,6 +928,7 @@ class Aaa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Task : public Entity
                 {
                     public:
@@ -916,11 +942,11 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value type; //type: AaaLocaldTaskClassEnum
-                        Value task_id; //type: string
 
 
-                        class AaaLocaldTaskClassEnum;
+                        YLeaf type; //type: AaaLocaldTaskClassEnum
+                        YLeaf task_id; //type: string
+
 
 
                 }; // Aaa::Taskgroups::Taskgroup::Tasks::Task
@@ -960,6 +986,7 @@ class Aaa : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Usergroup : public Entity
         {
             public:
@@ -973,9 +1000,10 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value description; //type: string
 
+
+                YLeaf name; //type: string
+                YLeaf description; //type: string
 
             class TaskgroupUnderUsergroups : public Entity
             {
@@ -992,6 +1020,7 @@ class Aaa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TaskgroupUnderUsergroup : public Entity
                 {
                     public:
@@ -1005,8 +1034,9 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
 
+
+                        YLeaf name; //type: string
 
 
 
@@ -1034,6 +1064,7 @@ class Aaa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class UsergroupUnderUsergroup : public Entity
                 {
                     public:
@@ -1047,8 +1078,9 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
 
+
+                        YLeaf name; //type: string
 
 
 
@@ -1087,15 +1119,16 @@ class Aaa : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value retransmit; //type: uint32
-            Value dead_time; //type: uint32
-            Value key; //type: string
-            Value timeout; //type: uint32
-            Value ignore_accounting_port; //type: boolean
-            Value idle_time; //type: uint32
-            Value username; //type: string
-            Value ignore_auth_port; //type: boolean
 
+
+            YLeaf retransmit; //type: uint32
+            YLeaf dead_time; //type: uint32
+            YLeaf key; //type: string
+            YLeaf timeout; //type: uint32
+            YLeaf ignore_accounting_port; //type: boolean
+            YLeaf idle_time; //type: uint32
+            YLeaf username; //type: string
+            YLeaf ignore_auth_port; //type: boolean
 
         class Hosts : public Entity
         {
@@ -1112,6 +1145,7 @@ class Aaa : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Host : public Entity
             {
                 public:
@@ -1125,18 +1159,19 @@ class Aaa : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ordering_index; //type: int32
-                    Value ip_address; //type: string
-                    Value auth_port_number; //type: uint16
-                    Value acct_port_number; //type: uint16
-                    Value host_retransmit; //type: uint32
-                    Value host_timeout; //type: uint32
-                    Value host_key; //type: string
-                    Value ignore_accounting_port; //type: boolean
-                    Value idle_time; //type: uint32
-                    Value username; //type: string
-                    Value ignore_auth_port; //type: boolean
 
+
+                    YLeaf ordering_index; //type: int32
+                    YLeaf ip_address; //type: string
+                    YLeaf auth_port_number; //type: uint16
+                    YLeaf acct_port_number; //type: uint16
+                    YLeaf host_retransmit; //type: uint32
+                    YLeaf host_timeout; //type: uint32
+                    YLeaf host_key; //type: string
+                    YLeaf ignore_accounting_port; //type: boolean
+                    YLeaf idle_time; //type: uint32
+                    YLeaf username; //type: string
+                    YLeaf ignore_auth_port; //type: boolean
 
 
 
@@ -1162,9 +1197,10 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value tries; //type: uint32
-                Value time; //type: uint32
 
+
+                YLeaf tries; //type: uint32
+                YLeaf time; //type: uint32
 
 
 
@@ -1184,8 +1220,9 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value null_username; //type: int32
 
+
+                YLeaf null_username; //type: int32
 
 
 
@@ -1205,10 +1242,10 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value dscp; //type: one of uint32, enumeration
 
 
-                class AaaDscpValueEnum;
+                YLeaf dscp; //type: one of uint32, enumeration
+
 
 
         }; // Aaa::Radius::Ipv6
@@ -1227,11 +1264,12 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value ignore; //type: AaaSelectKeyEnum
-                Value port; //type: uint32
-                Value authentication_type; //type: AaaAuthenticationEnum
-                Value server_key; //type: string
 
+
+                YLeaf ignore; //type: AaaSelectKeyEnum
+                YLeaf port; //type: uint32
+                YLeaf authentication_type; //type: AaaAuthenticationEnum
+                YLeaf server_key; //type: string
 
             class Clients : public Entity
             {
@@ -1248,6 +1286,7 @@ class Aaa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Client : public Entity
                 {
                     public:
@@ -1261,9 +1300,10 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ip_address; //type: string
-                        Value server_key; //type: string
 
+
+                        YLeaf ip_address; //type: string
+                        YLeaf server_key; //type: string
 
 
 
@@ -1283,10 +1323,11 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value vrf_name; //type: string
-                        Value ip_address; //type: string
-                        Value server_key; //type: string
 
+
+                        YLeaf vrf_name; //type: string
+                        YLeaf ip_address; //type: string
+                        YLeaf server_key; //type: string
 
 
 
@@ -1301,8 +1342,6 @@ class Aaa : public Entity
 
 
                 std::unique_ptr<Cisco_IOS_XR_aaa_lib_cfg::Aaa::Radius::DynamicAuthorization::Clients> clients;
-                class AaaAuthenticationEnum;
-                class AaaSelectKeyEnum;
 
 
         }; // Aaa::Radius::DynamicAuthorization
@@ -1323,6 +1362,7 @@ class Aaa : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class LoadBalanceMethod : public Entity
             {
                 public:
@@ -1338,6 +1378,7 @@ class Aaa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BatchSize : public Entity
                 {
                     public:
@@ -1351,9 +1392,10 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value batch_size; //type: uint32
-                        Value ignore_preferred_server; //type: int32
 
+
+                        YLeaf batch_size; //type: uint32
+                        YLeaf ignore_preferred_server; //type: int32
 
 
 
@@ -1387,6 +1429,7 @@ class Aaa : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Vrf : public Entity
             {
                 public:
@@ -1400,9 +1443,10 @@ class Aaa : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value vrf_name; //type: string
-                    Value source_interface; //type: string
 
+
+                    YLeaf vrf_name; //type: string
+                    YLeaf source_interface; //type: string
 
 
 
@@ -1428,10 +1472,11 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value access; //type: uint32
-                Value access_timeout; //type: uint32
-                Value accounting; //type: uint32
 
+
+                YLeaf access; //type: uint32
+                YLeaf access_timeout; //type: uint32
+                YLeaf accounting; //type: uint32
 
 
 
@@ -1453,6 +1498,7 @@ class Aaa : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Attribute : public Entity
             {
                 public:
@@ -1468,6 +1514,7 @@ class Aaa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ignore : public Entity
                 {
                     public:
@@ -1481,8 +1528,9 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value unknown; //type: empty
 
+
+                        YLeaf unknown; //type: empty
 
 
 
@@ -1514,10 +1562,10 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value dscp; //type: one of uint32, enumeration
 
 
-                class AaaDscpValueEnum;
+                YLeaf dscp; //type: one of uint32, enumeration
+
 
 
         }; // Aaa::Radius::Ipv4
@@ -1538,6 +1586,7 @@ class Aaa : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class AcctMultiSessionId : public Entity
             {
                 public:
@@ -1553,6 +1602,7 @@ class Aaa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class IncludeParentSessionId : public Entity
                 {
                     public:
@@ -1566,10 +1616,10 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value config; //type: AaaConfigEnum
 
 
-                        class AaaConfigEnum;
+                        YLeaf config; //type: AaaConfigEnum
+
 
 
                 }; // Aaa::Radius::RadiusAttribute::AcctMultiSessionId::IncludeParentSessionId
@@ -1596,6 +1646,7 @@ class Aaa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PrependNasPortId : public Entity
                 {
                     public:
@@ -1609,10 +1660,10 @@ class Aaa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value config; //type: AaaConfigEnum
 
 
-                        class AaaConfigEnum;
+                        YLeaf config; //type: AaaConfigEnum
+
 
 
                 }; // Aaa::Radius::RadiusAttribute::AcctSessionId::PrependNasPortId
@@ -1646,6 +1697,7 @@ class Aaa : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Attribute : public Entity
             {
                 public:
@@ -1659,9 +1711,10 @@ class Aaa : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value attribute_list_name; //type: string
-                    Value attribute; //type: string
 
+
+                    YLeaf attribute_list_name; //type: string
+                    YLeaf attribute; //type: string
 
 
 
@@ -1687,8 +1740,9 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value extended; //type: empty
 
+
+                YLeaf extended; //type: empty
 
 
 
@@ -1726,10 +1780,11 @@ class Aaa : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value key; //type: string
-            Value timeout; //type: uint32
-            Value single_connect; //type: boolean
 
+
+            YLeaf key; //type: string
+            YLeaf timeout; //type: uint32
+            YLeaf single_connect; //type: boolean
 
         class Ipv6 : public Entity
         {
@@ -1744,10 +1799,10 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value dscp; //type: one of uint32, enumeration
 
 
-                class TacacsDscpValueEnum;
+                YLeaf dscp; //type: one of uint32, enumeration
+
 
 
         }; // Aaa::Tacacs::Ipv6
@@ -1768,6 +1823,7 @@ class Aaa : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Host : public Entity
             {
                 public:
@@ -1781,13 +1837,14 @@ class Aaa : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ordering_index; //type: int32
-                    Value ip_address; //type: string
-                    Value port_number; //type: uint32
-                    Value key; //type: string
-                    Value timeout; //type: uint32
-                    Value single_connect; //type: boolean
 
+
+                    YLeaf ordering_index; //type: int32
+                    YLeaf ip_address; //type: string
+                    YLeaf port_number; //type: uint32
+                    YLeaf key; //type: string
+                    YLeaf timeout; //type: uint32
+                    YLeaf single_connect; //type: boolean
 
 
 
@@ -1813,10 +1870,10 @@ class Aaa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value dscp; //type: one of uint32, enumeration
 
 
-                class TacacsDscpValueEnum;
+                YLeaf dscp; //type: one of uint32, enumeration
+
 
 
         }; // Aaa::Tacacs::Ipv4
@@ -1837,6 +1894,7 @@ class Aaa : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Vrf : public Entity
             {
                 public:
@@ -1850,9 +1908,10 @@ class Aaa : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value vrf_name; //type: string
-                    Value source_interface; //type: string
 
+
+                    YLeaf vrf_name; //type: string
+                    YLeaf source_interface; //type: string
 
 
 
@@ -1892,57 +1951,57 @@ class Aaa : public Entity
 class AaaMethodEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value none;
-        static const Enum::Value local;
-        static const Enum::Value radius;
-        static const Enum::Value tacacs_plus;
-        static const Enum::Value dsmd;
-        static const Enum::Value sgbp;
-        static const Enum::Value acct_d;
-        static const Enum::Value error;
-        static const Enum::Value if_authenticated;
-        static const Enum::Value server_group;
-        static const Enum::Value server_group_not_defined;
-        static const Enum::Value line;
-        static const Enum::Value enable;
-        static const Enum::Value kerberos;
-        static const Enum::Value diameter;
-        static const Enum::Value last;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf local;
+        static const Enum::YLeaf radius;
+        static const Enum::YLeaf tacacs_plus;
+        static const Enum::YLeaf dsmd;
+        static const Enum::YLeaf sgbp;
+        static const Enum::YLeaf acct_d;
+        static const Enum::YLeaf error;
+        static const Enum::YLeaf if_authenticated;
+        static const Enum::YLeaf server_group;
+        static const Enum::YLeaf server_group_not_defined;
+        static const Enum::YLeaf line;
+        static const Enum::YLeaf enable;
+        static const Enum::YLeaf kerberos;
+        static const Enum::YLeaf diameter;
+        static const Enum::YLeaf last;
 
 };
 
 class AaaAccountingUpdateEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value newinfo;
-        static const Enum::Value periodic;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf newinfo;
+        static const Enum::YLeaf periodic;
 
 };
 
 class AaaAccountingRpFailoverEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value set;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf set;
 
 };
 
 class AaaAccountingEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value start_stop;
-        static const Enum::Value stop_only;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf start_stop;
+        static const Enum::YLeaf stop_only;
 
 };
 
 class AaaAccountingBroadcastEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value set;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf set;
 
 };
 

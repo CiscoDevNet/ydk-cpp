@@ -26,6 +26,7 @@ class LacpBundles : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Bundles : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class LacpBundles : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Bundle : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class LacpBundles : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value bundle_interface; //type: string
 
+
+                YLeaf bundle_interface; //type: string
 
             class Data : public Entity
             {
@@ -70,11 +73,12 @@ class LacpBundles : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value actor_operational_key; //type: uint16
-                    Value partner_system_priority; //type: uint16
-                    Value partner_system_mac_address; //type: string
-                    Value partner_operational_key; //type: uint16
 
+
+                    YLeaf actor_operational_key; //type: uint16
+                    YLeaf partner_system_priority; //type: uint16
+                    YLeaf partner_system_mac_address; //type: string
+                    YLeaf partner_operational_key; //type: uint16
 
                 class ActorBundleData : public Entity
                 {
@@ -89,45 +93,46 @@ class LacpBundles : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bundle_interface_name; //type: string
-                        Value available_bandwidth; //type: uint32
-                        Value effective_bandwidth; //type: uint32
-                        Value configured_bandwidth; //type: uint32
-                        Value minimum_active_links; //type: uint8
-                        Value maximum_active_links; //type: uint8
-                        Value maximum_active_links_source; //type: BmWhichSystemEnum
-                        Value minimum_bandwidth; //type: uint32
-                        Value primary_member; //type: string
-                        Value bundle_status; //type: BmBdlStateEnum
-                        Value active_member_count; //type: uint16
-                        Value standby_member_count; //type: uint16
-                        Value configured_member_count; //type: uint16
-                        Value mac_source; //type: BmBdlMacSourceEnum
-                        Value mac_source_member; //type: string
-                        Value inter_chassis; //type: boolean
-                        Value is_active; //type: boolean
-                        Value lacp_status; //type: BmFeatureStatusEnum
-                        Value mlacp_status; //type: BmFeatureStatusEnum
-                        Value ipv4bfd_status; //type: BmFeatureStatusEnum
-                        Value link_order_status; //type: BmFeatureStatusEnum
-                        Value ipv6bfd_status; //type: BmFeatureStatusEnum
-                        Value load_balance_hash_type; //type: string
-                        Value load_balance_locality_threshold; //type: uint16
-                        Value suppression_timer; //type: uint16
-                        Value wait_while_timer; //type: uint16
-                        Value collector_max_delay; //type: uint16
-                        Value cisco_extensions; //type: boolean
-                        Value lacp_nonrevertive; //type: boolean
-                        Value iccp_group_id; //type: uint32
-                        Value active_foreign_member_count; //type: uint16
-                        Value configured_foreign_member_count; //type: uint16
-                        Value switchover_type; //type: BmdMlacpSwitchoverEnum
-                        Value maximize_threshold_value_links; //type: uint32
-                        Value maximize_threshold_value_band_width; //type: uint32
-                        Value mlacp_mode; //type: BundleMlacpModeEnum
-                        Value recovery_delay; //type: uint16
-                        Value singleton; //type: boolean
 
+
+                        YLeaf bundle_interface_name; //type: string
+                        YLeaf available_bandwidth; //type: uint32
+                        YLeaf effective_bandwidth; //type: uint32
+                        YLeaf configured_bandwidth; //type: uint32
+                        YLeaf minimum_active_links; //type: uint8
+                        YLeaf maximum_active_links; //type: uint8
+                        YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
+                        YLeaf minimum_bandwidth; //type: uint32
+                        YLeaf primary_member; //type: string
+                        YLeaf bundle_status; //type: BmBdlStateEnum
+                        YLeaf active_member_count; //type: uint16
+                        YLeaf standby_member_count; //type: uint16
+                        YLeaf configured_member_count; //type: uint16
+                        YLeaf mac_source; //type: BmBdlMacSourceEnum
+                        YLeaf mac_source_member; //type: string
+                        YLeaf inter_chassis; //type: boolean
+                        YLeaf is_active; //type: boolean
+                        YLeaf lacp_status; //type: BmFeatureStatusEnum
+                        YLeaf mlacp_status; //type: BmFeatureStatusEnum
+                        YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
+                        YLeaf link_order_status; //type: BmFeatureStatusEnum
+                        YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
+                        YLeaf load_balance_hash_type; //type: string
+                        YLeaf load_balance_locality_threshold; //type: uint16
+                        YLeaf suppression_timer; //type: uint16
+                        YLeaf wait_while_timer; //type: uint16
+                        YLeaf collector_max_delay; //type: uint16
+                        YLeaf cisco_extensions; //type: boolean
+                        YLeaf lacp_nonrevertive; //type: boolean
+                        YLeaf iccp_group_id; //type: uint32
+                        YLeaf active_foreign_member_count; //type: uint16
+                        YLeaf configured_foreign_member_count; //type: uint16
+                        YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
+                        YLeaf maximize_threshold_value_links; //type: uint32
+                        YLeaf maximize_threshold_value_band_width; //type: uint32
+                        YLeaf mlacp_mode; //type: BundleMlacpModeEnum
+                        YLeaf recovery_delay; //type: uint16
+                        YLeaf singleton; //type: boolean
 
                     class MacAddress : public Entity
                     {
@@ -142,8 +147,9 @@ class LacpBundles : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
 
+
+                            YLeaf address; //type: string
 
 
 
@@ -163,15 +169,16 @@ class LacpBundles : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bundle_status; //type: BmdBfdBdlStateEnum
-                            Value start_timer; //type: uint32
-                            Value nbr_unconfig_timer; //type: uint32
-                            Value pref_multiplier; //type: uint16
-                            Value pref_min_interval; //type: uint32
-                            Value pref_echo_min_interval; //type: uint32
-                            Value fast_detect; //type: boolean
-                            Value mode_info; //type: uint32
 
+
+                            YLeaf bundle_status; //type: BmdBfdBdlStateEnum
+                            YLeaf start_timer; //type: uint32
+                            YLeaf nbr_unconfig_timer; //type: uint32
+                            YLeaf pref_multiplier; //type: uint16
+                            YLeaf pref_min_interval; //type: uint32
+                            YLeaf pref_echo_min_interval; //type: uint32
+                            YLeaf fast_detect; //type: boolean
+                            YLeaf mode_info; //type: uint32
 
                         class DestinationAddress : public Entity
                         {
@@ -186,19 +193,18 @@ class LacpBundles : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value af; //type: BmAfIdEnum
-                                Value ipv4; //type: string
-                                Value ipv6; //type: string
 
 
-                                class BmAfIdEnum;
+                                YLeaf af; //type: BmAfIdEnum
+                                YLeaf ipv4; //type: string
+                                YLeaf ipv6; //type: string
+
 
 
                         }; // LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress
 
 
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress> destination_address;
-                            class BmdBfdBdlStateEnum;
 
 
                     }; // LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig
@@ -206,16 +212,6 @@ class LacpBundles : public Entity
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig> > bfd_config;
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress> mac_address;
-                        class BmBdlStateEnum;
-                        class BmFeatureStatusEnum;
-                        class BmFeatureStatusEnum;
-                        class BmFeatureStatusEnum;
-                        class BmFeatureStatusEnum;
-                        class BmBdlMacSourceEnum;
-                        class BmWhichSystemEnum;
-                        class BundleMlacpModeEnum;
-                        class BmFeatureStatusEnum;
-                        class BmdMlacpSwitchoverEnum;
 
 
                 }; // LacpBundles::Bundles::Bundle::Data::ActorBundleData
@@ -234,8 +230,9 @@ class LacpBundles : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value system_prio; //type: uint16
 
+
+                        YLeaf system_prio; //type: uint16
 
                     class SystemMacAddr : public Entity
                     {
@@ -250,8 +247,9 @@ class LacpBundles : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value macaddr; //type: string
 
+
+                            YLeaf macaddr; //type: string
 
 
 
@@ -286,6 +284,7 @@ class LacpBundles : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Member : public Entity
                 {
                     public:
@@ -299,17 +298,18 @@ class LacpBundles : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value member_interface; //type: string
-                        Value bandwidth; //type: uint32
-                        Value port_priority; //type: uint16
-                        Value port_number; //type: uint16
-                        Value underlying_link_id; //type: uint16
-                        Value link_order_number; //type: uint16
-                        Value interface_name; //type: string
-                        Value iccp_node; //type: uint32
-                        Value member_type; //type: BmdMemberTypeEnumEnum
-                        Value member_name; //type: string
 
+
+                        YLeaf member_interface; //type: string
+                        YLeaf bandwidth; //type: uint32
+                        YLeaf port_priority; //type: uint16
+                        YLeaf port_number; //type: uint16
+                        YLeaf underlying_link_id; //type: uint16
+                        YLeaf link_order_number; //type: uint16
+                        YLeaf interface_name; //type: string
+                        YLeaf iccp_node; //type: uint32
+                        YLeaf member_type; //type: BmdMemberTypeEnumEnum
+                        YLeaf member_name; //type: string
 
                     class Counters : public Entity
                     {
@@ -324,18 +324,19 @@ class LacpBundles : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value lacpd_us_received; //type: uint32
-                            Value lacpd_us_transmitted; //type: uint32
-                            Value marker_packets_received; //type: uint32
-                            Value marker_responses_transmitted; //type: uint32
-                            Value illegal_packets_received; //type: uint32
-                            Value excess_lacpd_us_received; //type: uint32
-                            Value excess_marker_packets_received; //type: uint32
-                            Value defaulted; //type: uint32
-                            Value expired; //type: uint32
-                            Value last_cleared_sec; //type: uint32
-                            Value last_cleared_nsec; //type: uint32
 
+
+                            YLeaf lacpd_us_received; //type: uint32
+                            YLeaf lacpd_us_transmitted; //type: uint32
+                            YLeaf marker_packets_received; //type: uint32
+                            YLeaf marker_responses_transmitted; //type: uint32
+                            YLeaf illegal_packets_received; //type: uint32
+                            YLeaf excess_lacpd_us_received; //type: uint32
+                            YLeaf excess_marker_packets_received; //type: uint32
+                            YLeaf defaulted; //type: uint32
+                            YLeaf expired; //type: uint32
+                            YLeaf last_cleared_sec; //type: uint32
+                            YLeaf last_cleared_nsec; //type: uint32
 
 
 
@@ -355,22 +356,23 @@ class LacpBundles : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_handle; //type: string
-                            Value actor_system_priority; //type: uint16
-                            Value actor_system_mac_address; //type: string
-                            Value actor_operational_key; //type: uint16
-                            Value partner_system_priority; //type: uint16
-                            Value partner_system_mac_address; //type: string
-                            Value partner_operational_key; //type: uint16
-                            Value selected_aggregator_id; //type: uint32
-                            Value attached_aggregator_id; //type: uint32
-                            Value actor_port_id; //type: uint16
-                            Value actor_port_priority; //type: uint16
-                            Value partner_port_id; //type: uint16
-                            Value partner_port_priority; //type: uint16
-                            Value actor_port_state; //type: uint8
-                            Value partner_port_state; //type: uint8
 
+
+                            YLeaf interface_handle; //type: string
+                            YLeaf actor_system_priority; //type: uint16
+                            YLeaf actor_system_mac_address; //type: string
+                            YLeaf actor_operational_key; //type: uint16
+                            YLeaf partner_system_priority; //type: uint16
+                            YLeaf partner_system_mac_address; //type: string
+                            YLeaf partner_operational_key; //type: uint16
+                            YLeaf selected_aggregator_id; //type: uint32
+                            YLeaf attached_aggregator_id; //type: uint32
+                            YLeaf actor_port_id; //type: uint16
+                            YLeaf actor_port_priority; //type: uint16
+                            YLeaf partner_port_id; //type: uint16
+                            YLeaf partner_port_priority; //type: uint16
+                            YLeaf actor_port_state; //type: uint8
+                            YLeaf partner_port_state; //type: uint8
 
 
 
@@ -390,12 +392,13 @@ class LacpBundles : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value mux_state; //type: BmMuxstateEnum
-                            Value error; //type: uint32
-                            Value member_mux_state_reason; //type: BmMbrStateReasonEnum
-                            Value member_state; //type: BmdMemberStateEnum
-                            Value mux_state_reason; //type: BmMuxreasonEnum
 
+
+                            YLeaf mux_state; //type: BmMuxstateEnum
+                            YLeaf error; //type: uint32
+                            YLeaf member_mux_state_reason; //type: BmMbrStateReasonEnum
+                            YLeaf member_state; //type: BmdMemberStateEnum
+                            YLeaf mux_state_reason; //type: BmMuxreasonEnum
 
                         class MemberMuxStateReasonData : public Entity
                         {
@@ -410,22 +413,17 @@ class LacpBundles : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value reason_type; //type: BmStateReasonTargetEnum
-                                Value severity; //type: BmSeverityEnum
 
 
-                                class BmStateReasonTargetEnum;
-                                class BmSeverityEnum;
+                                YLeaf reason_type; //type: BmStateReasonTargetEnum
+                                YLeaf severity; //type: BmSeverityEnum
+
 
 
                         }; // LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData
 
 
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData> member_mux_state_reason_data;
-                            class BmMbrStateReasonEnum;
-                            class BmdMemberStateEnum;
-                            class BmMuxstateEnum;
-                            class BmMuxreasonEnum;
 
 
                     }; // LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData
@@ -444,8 +442,9 @@ class LacpBundles : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
 
+
+                            YLeaf address; //type: string
 
 
 
@@ -456,7 +455,6 @@ class LacpBundles : public Entity
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Members::Member::LinkData> link_data;
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Members::Member::MacAddress> mac_address;
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData> member_mux_data;
-                        class BmdMemberTypeEnumEnum;
 
 
                 }; // LacpBundles::Bundles::Bundle::Members::Member
@@ -502,6 +500,7 @@ class BundleInformation : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class BfdCounters : public Entity
     {
         public:
@@ -515,6 +514,7 @@ class BundleInformation : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class BfdCountersBundles : public Entity
@@ -532,6 +532,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class BfdCountersBundle : public Entity
             {
                 public:
@@ -545,8 +546,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class BfdCountersBundleDescendant : public Entity
                 {
@@ -563,6 +565,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BundleName : public Entity
                     {
                         public:
@@ -576,8 +579,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value item_name; //type: string
 
+
+                            YLeaf item_name; //type: string
 
 
 
@@ -597,16 +601,17 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value member_name; //type: string
-                            Value last_time_cleared; //type: uint64
-                            Value starting; //type: uint32
-                            Value up; //type: uint32
-                            Value down; //type: uint32
-                            Value neighbor_unconfigured; //type: uint32
-                            Value start_timeouts; //type: uint32
-                            Value neighbor_unconfigured_timeouts; //type: uint32
-                            Value time_since_cleared; //type: uint64
 
+
+                            YLeaf member_name; //type: string
+                            YLeaf last_time_cleared; //type: uint64
+                            YLeaf starting; //type: uint32
+                            YLeaf up; //type: uint32
+                            YLeaf down; //type: uint32
+                            YLeaf neighbor_unconfigured; //type: uint32
+                            YLeaf start_timeouts; //type: uint32
+                            YLeaf neighbor_unconfigured_timeouts; //type: uint32
+                            YLeaf time_since_cleared; //type: uint64
 
 
 
@@ -635,6 +640,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BfdCountersBundleChildrenMember : public Entity
                     {
                         public:
@@ -648,17 +654,18 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value member_interface; //type: string
-                            Value member_name; //type: string
-                            Value last_time_cleared; //type: uint64
-                            Value starting; //type: uint32
-                            Value up; //type: uint32
-                            Value down; //type: uint32
-                            Value neighbor_unconfigured; //type: uint32
-                            Value start_timeouts; //type: uint32
-                            Value neighbor_unconfigured_timeouts; //type: uint32
-                            Value time_since_cleared; //type: uint64
 
+
+                            YLeaf member_interface; //type: string
+                            YLeaf member_name; //type: string
+                            YLeaf last_time_cleared; //type: uint64
+                            YLeaf starting; //type: uint32
+                            YLeaf up; //type: uint32
+                            YLeaf down; //type: uint32
+                            YLeaf neighbor_unconfigured; //type: uint32
+                            YLeaf start_timeouts; //type: uint32
+                            YLeaf neighbor_unconfigured_timeouts; //type: uint32
+                            YLeaf time_since_cleared; //type: uint64
 
 
 
@@ -684,8 +691,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value item_name; //type: string
 
+
+                        YLeaf item_name; //type: string
 
 
 
@@ -721,6 +729,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class BfdCountersMember : public Entity
             {
                 public:
@@ -734,8 +743,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value member_interface; //type: string
 
+
+                    YLeaf member_interface; //type: string
 
                 class BfdCountersMemberItem : public Entity
                 {
@@ -750,16 +760,17 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value member_name; //type: string
-                        Value last_time_cleared; //type: uint64
-                        Value starting; //type: uint32
-                        Value up; //type: uint32
-                        Value down; //type: uint32
-                        Value neighbor_unconfigured; //type: uint32
-                        Value start_timeouts; //type: uint32
-                        Value neighbor_unconfigured_timeouts; //type: uint32
-                        Value time_since_cleared; //type: uint64
 
+
+                        YLeaf member_name; //type: string
+                        YLeaf last_time_cleared; //type: uint64
+                        YLeaf starting; //type: uint32
+                        YLeaf up; //type: uint32
+                        YLeaf down; //type: uint32
+                        YLeaf neighbor_unconfigured; //type: uint32
+                        YLeaf start_timeouts; //type: uint32
+                        YLeaf neighbor_unconfigured_timeouts; //type: uint32
+                        YLeaf time_since_cleared; //type: uint64
 
 
 
@@ -800,6 +811,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ScheduledActionsBundles : public Entity
         {
             public:
@@ -815,6 +827,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class ScheduledActionsBundle : public Entity
             {
                 public:
@@ -828,8 +841,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class ScheduledActionsBundleItem : public Entity
                 {
@@ -844,8 +858,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bundle_name; //type: string
 
+
+                        YLeaf bundle_name; //type: string
 
                     class ScheduledAction : public Entity
                     {
@@ -860,13 +875,12 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value mlacp_action; //type: BmdBagMlacpSchActionItemEnum
-                            Value time_remaining; //type: uint64
-                            Value action_state; //type: BmdSwitchReasonEnum
 
 
-                            class BmdSwitchReasonEnum;
-                            class BmdBagMlacpSchActionItemEnum;
+                            YLeaf mlacp_action; //type: BmdBagMlacpSchActionItemEnum
+                            YLeaf time_remaining; //type: uint64
+                            YLeaf action_state; //type: BmdSwitchReasonEnum
+
 
 
                     }; // BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction
@@ -911,6 +925,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class BundleBundles : public Entity
         {
             public:
@@ -926,6 +941,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class BundleBundle : public Entity
             {
                 public:
@@ -939,8 +955,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class BundleBundleDescendant : public Entity
                 {
@@ -957,6 +974,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BundleData : public Entity
                     {
                         public:
@@ -970,45 +988,46 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bundle_interface_name; //type: string
-                            Value available_bandwidth; //type: uint32
-                            Value effective_bandwidth; //type: uint32
-                            Value configured_bandwidth; //type: uint32
-                            Value minimum_active_links; //type: uint8
-                            Value maximum_active_links; //type: uint8
-                            Value maximum_active_links_source; //type: BmWhichSystemEnum
-                            Value minimum_bandwidth; //type: uint32
-                            Value primary_member; //type: string
-                            Value bundle_status; //type: BmBdlStateEnum
-                            Value active_member_count; //type: uint16
-                            Value standby_member_count; //type: uint16
-                            Value configured_member_count; //type: uint16
-                            Value mac_source; //type: BmBdlMacSourceEnum
-                            Value mac_source_member; //type: string
-                            Value inter_chassis; //type: boolean
-                            Value is_active; //type: boolean
-                            Value lacp_status; //type: BmFeatureStatusEnum
-                            Value mlacp_status; //type: BmFeatureStatusEnum
-                            Value ipv4bfd_status; //type: BmFeatureStatusEnum
-                            Value link_order_status; //type: BmFeatureStatusEnum
-                            Value ipv6bfd_status; //type: BmFeatureStatusEnum
-                            Value load_balance_hash_type; //type: string
-                            Value load_balance_locality_threshold; //type: uint16
-                            Value suppression_timer; //type: uint16
-                            Value wait_while_timer; //type: uint16
-                            Value collector_max_delay; //type: uint16
-                            Value cisco_extensions; //type: boolean
-                            Value lacp_nonrevertive; //type: boolean
-                            Value iccp_group_id; //type: uint32
-                            Value active_foreign_member_count; //type: uint16
-                            Value configured_foreign_member_count; //type: uint16
-                            Value switchover_type; //type: BmdMlacpSwitchoverEnum
-                            Value maximize_threshold_value_links; //type: uint32
-                            Value maximize_threshold_value_band_width; //type: uint32
-                            Value mlacp_mode; //type: BundleMlacpModeEnum
-                            Value recovery_delay; //type: uint16
-                            Value singleton; //type: boolean
 
+
+                            YLeaf bundle_interface_name; //type: string
+                            YLeaf available_bandwidth; //type: uint32
+                            YLeaf effective_bandwidth; //type: uint32
+                            YLeaf configured_bandwidth; //type: uint32
+                            YLeaf minimum_active_links; //type: uint8
+                            YLeaf maximum_active_links; //type: uint8
+                            YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
+                            YLeaf minimum_bandwidth; //type: uint32
+                            YLeaf primary_member; //type: string
+                            YLeaf bundle_status; //type: BmBdlStateEnum
+                            YLeaf active_member_count; //type: uint16
+                            YLeaf standby_member_count; //type: uint16
+                            YLeaf configured_member_count; //type: uint16
+                            YLeaf mac_source; //type: BmBdlMacSourceEnum
+                            YLeaf mac_source_member; //type: string
+                            YLeaf inter_chassis; //type: boolean
+                            YLeaf is_active; //type: boolean
+                            YLeaf lacp_status; //type: BmFeatureStatusEnum
+                            YLeaf mlacp_status; //type: BmFeatureStatusEnum
+                            YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
+                            YLeaf link_order_status; //type: BmFeatureStatusEnum
+                            YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
+                            YLeaf load_balance_hash_type; //type: string
+                            YLeaf load_balance_locality_threshold; //type: uint16
+                            YLeaf suppression_timer; //type: uint16
+                            YLeaf wait_while_timer; //type: uint16
+                            YLeaf collector_max_delay; //type: uint16
+                            YLeaf cisco_extensions; //type: boolean
+                            YLeaf lacp_nonrevertive; //type: boolean
+                            YLeaf iccp_group_id; //type: uint32
+                            YLeaf active_foreign_member_count; //type: uint16
+                            YLeaf configured_foreign_member_count; //type: uint16
+                            YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
+                            YLeaf maximize_threshold_value_links; //type: uint32
+                            YLeaf maximize_threshold_value_band_width; //type: uint32
+                            YLeaf mlacp_mode; //type: BundleMlacpModeEnum
+                            YLeaf recovery_delay; //type: uint16
+                            YLeaf singleton; //type: boolean
 
                         class MacAddress : public Entity
                         {
@@ -1023,8 +1042,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
 
+
+                                YLeaf address; //type: string
 
 
 
@@ -1044,15 +1064,16 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_status; //type: BmdBfdBdlStateEnum
-                                Value start_timer; //type: uint32
-                                Value nbr_unconfig_timer; //type: uint32
-                                Value pref_multiplier; //type: uint16
-                                Value pref_min_interval; //type: uint32
-                                Value pref_echo_min_interval; //type: uint32
-                                Value fast_detect; //type: boolean
-                                Value mode_info; //type: uint32
 
+
+                                YLeaf bundle_status; //type: BmdBfdBdlStateEnum
+                                YLeaf start_timer; //type: uint32
+                                YLeaf nbr_unconfig_timer; //type: uint32
+                                YLeaf pref_multiplier; //type: uint16
+                                YLeaf pref_min_interval; //type: uint32
+                                YLeaf pref_echo_min_interval; //type: uint32
+                                YLeaf fast_detect; //type: boolean
+                                YLeaf mode_info; //type: uint32
 
                             class DestinationAddress : public Entity
                             {
@@ -1067,19 +1088,18 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value af; //type: BmAfIdEnum
-                                    Value ipv4; //type: string
-                                    Value ipv6; //type: string
 
 
-                                    class BmAfIdEnum;
+                                    YLeaf af; //type: BmAfIdEnum
+                                    YLeaf ipv4; //type: string
+                                    YLeaf ipv6; //type: string
+
 
 
                             }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress> destination_address;
-                                class BmdBfdBdlStateEnum;
 
 
                         }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig
@@ -1087,16 +1107,6 @@ class BundleInformation : public Entity
 
                             std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig> > bfd_config;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress> mac_address;
-                            class BmBdlStateEnum;
-                            class BmFeatureStatusEnum;
-                            class BmFeatureStatusEnum;
-                            class BmFeatureStatusEnum;
-                            class BmFeatureStatusEnum;
-                            class BmBdlMacSourceEnum;
-                            class BmWhichSystemEnum;
-                            class BundleMlacpModeEnum;
-                            class BmFeatureStatusEnum;
-                            class BmdMlacpSwitchoverEnum;
 
 
                     }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData
@@ -1115,16 +1125,17 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bandwidth; //type: uint32
-                            Value port_priority; //type: uint16
-                            Value port_number; //type: uint16
-                            Value underlying_link_id; //type: uint16
-                            Value link_order_number; //type: uint16
-                            Value interface_name; //type: string
-                            Value iccp_node; //type: uint32
-                            Value member_type; //type: BmdMemberTypeEnumEnum
-                            Value member_name; //type: string
 
+
+                            YLeaf bandwidth; //type: uint32
+                            YLeaf port_priority; //type: uint16
+                            YLeaf port_number; //type: uint16
+                            YLeaf underlying_link_id; //type: uint16
+                            YLeaf link_order_number; //type: uint16
+                            YLeaf interface_name; //type: string
+                            YLeaf iccp_node; //type: uint32
+                            YLeaf member_type; //type: BmdMemberTypeEnumEnum
+                            YLeaf member_name; //type: string
 
                         class Counters : public Entity
                         {
@@ -1139,18 +1150,19 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lacpd_us_received; //type: uint32
-                                Value lacpd_us_transmitted; //type: uint32
-                                Value marker_packets_received; //type: uint32
-                                Value marker_responses_transmitted; //type: uint32
-                                Value illegal_packets_received; //type: uint32
-                                Value excess_lacpd_us_received; //type: uint32
-                                Value excess_marker_packets_received; //type: uint32
-                                Value defaulted; //type: uint32
-                                Value expired; //type: uint32
-                                Value last_cleared_sec; //type: uint32
-                                Value last_cleared_nsec; //type: uint32
 
+
+                                YLeaf lacpd_us_received; //type: uint32
+                                YLeaf lacpd_us_transmitted; //type: uint32
+                                YLeaf marker_packets_received; //type: uint32
+                                YLeaf marker_responses_transmitted; //type: uint32
+                                YLeaf illegal_packets_received; //type: uint32
+                                YLeaf excess_lacpd_us_received; //type: uint32
+                                YLeaf excess_marker_packets_received; //type: uint32
+                                YLeaf defaulted; //type: uint32
+                                YLeaf expired; //type: uint32
+                                YLeaf last_cleared_sec; //type: uint32
+                                YLeaf last_cleared_nsec; //type: uint32
 
 
 
@@ -1170,22 +1182,23 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_handle; //type: string
-                                Value actor_system_priority; //type: uint16
-                                Value actor_system_mac_address; //type: string
-                                Value actor_operational_key; //type: uint16
-                                Value partner_system_priority; //type: uint16
-                                Value partner_system_mac_address; //type: string
-                                Value partner_operational_key; //type: uint16
-                                Value selected_aggregator_id; //type: uint32
-                                Value attached_aggregator_id; //type: uint32
-                                Value actor_port_id; //type: uint16
-                                Value actor_port_priority; //type: uint16
-                                Value partner_port_id; //type: uint16
-                                Value partner_port_priority; //type: uint16
-                                Value actor_port_state; //type: uint8
-                                Value partner_port_state; //type: uint8
 
+
+                                YLeaf interface_handle; //type: string
+                                YLeaf actor_system_priority; //type: uint16
+                                YLeaf actor_system_mac_address; //type: string
+                                YLeaf actor_operational_key; //type: uint16
+                                YLeaf partner_system_priority; //type: uint16
+                                YLeaf partner_system_mac_address; //type: string
+                                YLeaf partner_operational_key; //type: uint16
+                                YLeaf selected_aggregator_id; //type: uint32
+                                YLeaf attached_aggregator_id; //type: uint32
+                                YLeaf actor_port_id; //type: uint16
+                                YLeaf actor_port_priority; //type: uint16
+                                YLeaf partner_port_id; //type: uint16
+                                YLeaf partner_port_priority; //type: uint16
+                                YLeaf actor_port_state; //type: uint8
+                                YLeaf partner_port_state; //type: uint8
 
 
 
@@ -1205,12 +1218,13 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mux_state; //type: BmMuxstateEnum
-                                Value error; //type: uint32
-                                Value member_mux_state_reason; //type: BmMbrStateReasonEnum
-                                Value member_state; //type: BmdMemberStateEnum
-                                Value mux_state_reason; //type: BmMuxreasonEnum
 
+
+                                YLeaf mux_state; //type: BmMuxstateEnum
+                                YLeaf error; //type: uint32
+                                YLeaf member_mux_state_reason; //type: BmMbrStateReasonEnum
+                                YLeaf member_state; //type: BmdMemberStateEnum
+                                YLeaf mux_state_reason; //type: BmMuxreasonEnum
 
                             class MemberMuxStateReasonData : public Entity
                             {
@@ -1225,22 +1239,17 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value reason_type; //type: BmStateReasonTargetEnum
-                                    Value severity; //type: BmSeverityEnum
 
 
-                                    class BmStateReasonTargetEnum;
-                                    class BmSeverityEnum;
+                                    YLeaf reason_type; //type: BmStateReasonTargetEnum
+                                    YLeaf severity; //type: BmSeverityEnum
+
 
 
                             }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData> member_mux_state_reason_data;
-                                class BmMbrStateReasonEnum;
-                                class BmdMemberStateEnum;
-                                class BmMuxstateEnum;
-                                class BmMuxreasonEnum;
 
 
                         }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData
@@ -1259,8 +1268,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
 
+
+                                YLeaf address; //type: string
 
 
 
@@ -1271,7 +1281,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData> link_data;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress> mac_address;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData> member_mux_data;
-                            class BmdMemberTypeEnumEnum;
 
 
                     }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData
@@ -1299,6 +1308,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BundleBundleChildrenMember : public Entity
                     {
                         public:
@@ -1312,17 +1322,18 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value member_interface; //type: string
-                            Value bandwidth; //type: uint32
-                            Value port_priority; //type: uint16
-                            Value port_number; //type: uint16
-                            Value underlying_link_id; //type: uint16
-                            Value link_order_number; //type: uint16
-                            Value interface_name; //type: string
-                            Value iccp_node; //type: uint32
-                            Value member_type; //type: BmdMemberTypeEnumEnum
-                            Value member_name; //type: string
 
+
+                            YLeaf member_interface; //type: string
+                            YLeaf bandwidth; //type: uint32
+                            YLeaf port_priority; //type: uint16
+                            YLeaf port_number; //type: uint16
+                            YLeaf underlying_link_id; //type: uint16
+                            YLeaf link_order_number; //type: uint16
+                            YLeaf interface_name; //type: string
+                            YLeaf iccp_node; //type: uint32
+                            YLeaf member_type; //type: BmdMemberTypeEnumEnum
+                            YLeaf member_name; //type: string
 
                         class Counters : public Entity
                         {
@@ -1337,18 +1348,19 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lacpd_us_received; //type: uint32
-                                Value lacpd_us_transmitted; //type: uint32
-                                Value marker_packets_received; //type: uint32
-                                Value marker_responses_transmitted; //type: uint32
-                                Value illegal_packets_received; //type: uint32
-                                Value excess_lacpd_us_received; //type: uint32
-                                Value excess_marker_packets_received; //type: uint32
-                                Value defaulted; //type: uint32
-                                Value expired; //type: uint32
-                                Value last_cleared_sec; //type: uint32
-                                Value last_cleared_nsec; //type: uint32
 
+
+                                YLeaf lacpd_us_received; //type: uint32
+                                YLeaf lacpd_us_transmitted; //type: uint32
+                                YLeaf marker_packets_received; //type: uint32
+                                YLeaf marker_responses_transmitted; //type: uint32
+                                YLeaf illegal_packets_received; //type: uint32
+                                YLeaf excess_lacpd_us_received; //type: uint32
+                                YLeaf excess_marker_packets_received; //type: uint32
+                                YLeaf defaulted; //type: uint32
+                                YLeaf expired; //type: uint32
+                                YLeaf last_cleared_sec; //type: uint32
+                                YLeaf last_cleared_nsec; //type: uint32
 
 
 
@@ -1368,22 +1380,23 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_handle; //type: string
-                                Value actor_system_priority; //type: uint16
-                                Value actor_system_mac_address; //type: string
-                                Value actor_operational_key; //type: uint16
-                                Value partner_system_priority; //type: uint16
-                                Value partner_system_mac_address; //type: string
-                                Value partner_operational_key; //type: uint16
-                                Value selected_aggregator_id; //type: uint32
-                                Value attached_aggregator_id; //type: uint32
-                                Value actor_port_id; //type: uint16
-                                Value actor_port_priority; //type: uint16
-                                Value partner_port_id; //type: uint16
-                                Value partner_port_priority; //type: uint16
-                                Value actor_port_state; //type: uint8
-                                Value partner_port_state; //type: uint8
 
+
+                                YLeaf interface_handle; //type: string
+                                YLeaf actor_system_priority; //type: uint16
+                                YLeaf actor_system_mac_address; //type: string
+                                YLeaf actor_operational_key; //type: uint16
+                                YLeaf partner_system_priority; //type: uint16
+                                YLeaf partner_system_mac_address; //type: string
+                                YLeaf partner_operational_key; //type: uint16
+                                YLeaf selected_aggregator_id; //type: uint32
+                                YLeaf attached_aggregator_id; //type: uint32
+                                YLeaf actor_port_id; //type: uint16
+                                YLeaf actor_port_priority; //type: uint16
+                                YLeaf partner_port_id; //type: uint16
+                                YLeaf partner_port_priority; //type: uint16
+                                YLeaf actor_port_state; //type: uint8
+                                YLeaf partner_port_state; //type: uint8
 
 
 
@@ -1403,12 +1416,13 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mux_state; //type: BmMuxstateEnum
-                                Value error; //type: uint32
-                                Value member_mux_state_reason; //type: BmMbrStateReasonEnum
-                                Value member_state; //type: BmdMemberStateEnum
-                                Value mux_state_reason; //type: BmMuxreasonEnum
 
+
+                                YLeaf mux_state; //type: BmMuxstateEnum
+                                YLeaf error; //type: uint32
+                                YLeaf member_mux_state_reason; //type: BmMbrStateReasonEnum
+                                YLeaf member_state; //type: BmdMemberStateEnum
+                                YLeaf mux_state_reason; //type: BmMuxreasonEnum
 
                             class MemberMuxStateReasonData : public Entity
                             {
@@ -1423,22 +1437,17 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value reason_type; //type: BmStateReasonTargetEnum
-                                    Value severity; //type: BmSeverityEnum
 
 
-                                    class BmStateReasonTargetEnum;
-                                    class BmSeverityEnum;
+                                    YLeaf reason_type; //type: BmStateReasonTargetEnum
+                                    YLeaf severity; //type: BmSeverityEnum
+
 
 
                             }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData> member_mux_state_reason_data;
-                                class BmMbrStateReasonEnum;
-                                class BmdMemberStateEnum;
-                                class BmMuxstateEnum;
-                                class BmMuxreasonEnum;
 
 
                         }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData
@@ -1457,8 +1466,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
 
+
+                                YLeaf address; //type: string
 
 
 
@@ -1469,7 +1479,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData> link_data;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress> mac_address;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData> member_mux_data;
-                            class BmdMemberTypeEnumEnum;
 
 
                     }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember
@@ -1494,45 +1503,46 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bundle_interface_name; //type: string
-                        Value available_bandwidth; //type: uint32
-                        Value effective_bandwidth; //type: uint32
-                        Value configured_bandwidth; //type: uint32
-                        Value minimum_active_links; //type: uint8
-                        Value maximum_active_links; //type: uint8
-                        Value maximum_active_links_source; //type: BmWhichSystemEnum
-                        Value minimum_bandwidth; //type: uint32
-                        Value primary_member; //type: string
-                        Value bundle_status; //type: BmBdlStateEnum
-                        Value active_member_count; //type: uint16
-                        Value standby_member_count; //type: uint16
-                        Value configured_member_count; //type: uint16
-                        Value mac_source; //type: BmBdlMacSourceEnum
-                        Value mac_source_member; //type: string
-                        Value inter_chassis; //type: boolean
-                        Value is_active; //type: boolean
-                        Value lacp_status; //type: BmFeatureStatusEnum
-                        Value mlacp_status; //type: BmFeatureStatusEnum
-                        Value ipv4bfd_status; //type: BmFeatureStatusEnum
-                        Value link_order_status; //type: BmFeatureStatusEnum
-                        Value ipv6bfd_status; //type: BmFeatureStatusEnum
-                        Value load_balance_hash_type; //type: string
-                        Value load_balance_locality_threshold; //type: uint16
-                        Value suppression_timer; //type: uint16
-                        Value wait_while_timer; //type: uint16
-                        Value collector_max_delay; //type: uint16
-                        Value cisco_extensions; //type: boolean
-                        Value lacp_nonrevertive; //type: boolean
-                        Value iccp_group_id; //type: uint32
-                        Value active_foreign_member_count; //type: uint16
-                        Value configured_foreign_member_count; //type: uint16
-                        Value switchover_type; //type: BmdMlacpSwitchoverEnum
-                        Value maximize_threshold_value_links; //type: uint32
-                        Value maximize_threshold_value_band_width; //type: uint32
-                        Value mlacp_mode; //type: BundleMlacpModeEnum
-                        Value recovery_delay; //type: uint16
-                        Value singleton; //type: boolean
 
+
+                        YLeaf bundle_interface_name; //type: string
+                        YLeaf available_bandwidth; //type: uint32
+                        YLeaf effective_bandwidth; //type: uint32
+                        YLeaf configured_bandwidth; //type: uint32
+                        YLeaf minimum_active_links; //type: uint8
+                        YLeaf maximum_active_links; //type: uint8
+                        YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
+                        YLeaf minimum_bandwidth; //type: uint32
+                        YLeaf primary_member; //type: string
+                        YLeaf bundle_status; //type: BmBdlStateEnum
+                        YLeaf active_member_count; //type: uint16
+                        YLeaf standby_member_count; //type: uint16
+                        YLeaf configured_member_count; //type: uint16
+                        YLeaf mac_source; //type: BmBdlMacSourceEnum
+                        YLeaf mac_source_member; //type: string
+                        YLeaf inter_chassis; //type: boolean
+                        YLeaf is_active; //type: boolean
+                        YLeaf lacp_status; //type: BmFeatureStatusEnum
+                        YLeaf mlacp_status; //type: BmFeatureStatusEnum
+                        YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
+                        YLeaf link_order_status; //type: BmFeatureStatusEnum
+                        YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
+                        YLeaf load_balance_hash_type; //type: string
+                        YLeaf load_balance_locality_threshold; //type: uint16
+                        YLeaf suppression_timer; //type: uint16
+                        YLeaf wait_while_timer; //type: uint16
+                        YLeaf collector_max_delay; //type: uint16
+                        YLeaf cisco_extensions; //type: boolean
+                        YLeaf lacp_nonrevertive; //type: boolean
+                        YLeaf iccp_group_id; //type: uint32
+                        YLeaf active_foreign_member_count; //type: uint16
+                        YLeaf configured_foreign_member_count; //type: uint16
+                        YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
+                        YLeaf maximize_threshold_value_links; //type: uint32
+                        YLeaf maximize_threshold_value_band_width; //type: uint32
+                        YLeaf mlacp_mode; //type: BundleMlacpModeEnum
+                        YLeaf recovery_delay; //type: uint16
+                        YLeaf singleton; //type: boolean
 
                     class MacAddress : public Entity
                     {
@@ -1547,8 +1557,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
 
+
+                            YLeaf address; //type: string
 
 
 
@@ -1568,15 +1579,16 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bundle_status; //type: BmdBfdBdlStateEnum
-                            Value start_timer; //type: uint32
-                            Value nbr_unconfig_timer; //type: uint32
-                            Value pref_multiplier; //type: uint16
-                            Value pref_min_interval; //type: uint32
-                            Value pref_echo_min_interval; //type: uint32
-                            Value fast_detect; //type: boolean
-                            Value mode_info; //type: uint32
 
+
+                            YLeaf bundle_status; //type: BmdBfdBdlStateEnum
+                            YLeaf start_timer; //type: uint32
+                            YLeaf nbr_unconfig_timer; //type: uint32
+                            YLeaf pref_multiplier; //type: uint16
+                            YLeaf pref_min_interval; //type: uint32
+                            YLeaf pref_echo_min_interval; //type: uint32
+                            YLeaf fast_detect; //type: boolean
+                            YLeaf mode_info; //type: uint32
 
                         class DestinationAddress : public Entity
                         {
@@ -1591,19 +1603,18 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value af; //type: BmAfIdEnum
-                                Value ipv4; //type: string
-                                Value ipv6; //type: string
 
 
-                                class BmAfIdEnum;
+                                YLeaf af; //type: BmAfIdEnum
+                                YLeaf ipv4; //type: string
+                                YLeaf ipv6; //type: string
+
 
 
                         }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress
 
 
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress> destination_address;
-                            class BmdBfdBdlStateEnum;
 
 
                     }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig
@@ -1611,16 +1622,6 @@ class BundleInformation : public Entity
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig> > bfd_config;
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress> mac_address;
-                        class BmBdlStateEnum;
-                        class BmFeatureStatusEnum;
-                        class BmFeatureStatusEnum;
-                        class BmFeatureStatusEnum;
-                        class BmFeatureStatusEnum;
-                        class BmBdlMacSourceEnum;
-                        class BmWhichSystemEnum;
-                        class BundleMlacpModeEnum;
-                        class BmFeatureStatusEnum;
-                        class BmdMlacpSwitchoverEnum;
 
 
                 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem
@@ -1655,6 +1656,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class BundleMember : public Entity
             {
                 public:
@@ -1668,8 +1670,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value member_interface; //type: string
 
+
+                    YLeaf member_interface; //type: string
 
                 class BundleMemberAncestor : public Entity
                 {
@@ -1686,6 +1689,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BundleData : public Entity
                     {
                         public:
@@ -1699,45 +1703,46 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bundle_interface_name; //type: string
-                            Value available_bandwidth; //type: uint32
-                            Value effective_bandwidth; //type: uint32
-                            Value configured_bandwidth; //type: uint32
-                            Value minimum_active_links; //type: uint8
-                            Value maximum_active_links; //type: uint8
-                            Value maximum_active_links_source; //type: BmWhichSystemEnum
-                            Value minimum_bandwidth; //type: uint32
-                            Value primary_member; //type: string
-                            Value bundle_status; //type: BmBdlStateEnum
-                            Value active_member_count; //type: uint16
-                            Value standby_member_count; //type: uint16
-                            Value configured_member_count; //type: uint16
-                            Value mac_source; //type: BmBdlMacSourceEnum
-                            Value mac_source_member; //type: string
-                            Value inter_chassis; //type: boolean
-                            Value is_active; //type: boolean
-                            Value lacp_status; //type: BmFeatureStatusEnum
-                            Value mlacp_status; //type: BmFeatureStatusEnum
-                            Value ipv4bfd_status; //type: BmFeatureStatusEnum
-                            Value link_order_status; //type: BmFeatureStatusEnum
-                            Value ipv6bfd_status; //type: BmFeatureStatusEnum
-                            Value load_balance_hash_type; //type: string
-                            Value load_balance_locality_threshold; //type: uint16
-                            Value suppression_timer; //type: uint16
-                            Value wait_while_timer; //type: uint16
-                            Value collector_max_delay; //type: uint16
-                            Value cisco_extensions; //type: boolean
-                            Value lacp_nonrevertive; //type: boolean
-                            Value iccp_group_id; //type: uint32
-                            Value active_foreign_member_count; //type: uint16
-                            Value configured_foreign_member_count; //type: uint16
-                            Value switchover_type; //type: BmdMlacpSwitchoverEnum
-                            Value maximize_threshold_value_links; //type: uint32
-                            Value maximize_threshold_value_band_width; //type: uint32
-                            Value mlacp_mode; //type: BundleMlacpModeEnum
-                            Value recovery_delay; //type: uint16
-                            Value singleton; //type: boolean
 
+
+                            YLeaf bundle_interface_name; //type: string
+                            YLeaf available_bandwidth; //type: uint32
+                            YLeaf effective_bandwidth; //type: uint32
+                            YLeaf configured_bandwidth; //type: uint32
+                            YLeaf minimum_active_links; //type: uint8
+                            YLeaf maximum_active_links; //type: uint8
+                            YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
+                            YLeaf minimum_bandwidth; //type: uint32
+                            YLeaf primary_member; //type: string
+                            YLeaf bundle_status; //type: BmBdlStateEnum
+                            YLeaf active_member_count; //type: uint16
+                            YLeaf standby_member_count; //type: uint16
+                            YLeaf configured_member_count; //type: uint16
+                            YLeaf mac_source; //type: BmBdlMacSourceEnum
+                            YLeaf mac_source_member; //type: string
+                            YLeaf inter_chassis; //type: boolean
+                            YLeaf is_active; //type: boolean
+                            YLeaf lacp_status; //type: BmFeatureStatusEnum
+                            YLeaf mlacp_status; //type: BmFeatureStatusEnum
+                            YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
+                            YLeaf link_order_status; //type: BmFeatureStatusEnum
+                            YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
+                            YLeaf load_balance_hash_type; //type: string
+                            YLeaf load_balance_locality_threshold; //type: uint16
+                            YLeaf suppression_timer; //type: uint16
+                            YLeaf wait_while_timer; //type: uint16
+                            YLeaf collector_max_delay; //type: uint16
+                            YLeaf cisco_extensions; //type: boolean
+                            YLeaf lacp_nonrevertive; //type: boolean
+                            YLeaf iccp_group_id; //type: uint32
+                            YLeaf active_foreign_member_count; //type: uint16
+                            YLeaf configured_foreign_member_count; //type: uint16
+                            YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
+                            YLeaf maximize_threshold_value_links; //type: uint32
+                            YLeaf maximize_threshold_value_band_width; //type: uint32
+                            YLeaf mlacp_mode; //type: BundleMlacpModeEnum
+                            YLeaf recovery_delay; //type: uint16
+                            YLeaf singleton; //type: boolean
 
                         class MacAddress : public Entity
                         {
@@ -1752,8 +1757,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
 
+
+                                YLeaf address; //type: string
 
 
 
@@ -1773,15 +1779,16 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_status; //type: BmdBfdBdlStateEnum
-                                Value start_timer; //type: uint32
-                                Value nbr_unconfig_timer; //type: uint32
-                                Value pref_multiplier; //type: uint16
-                                Value pref_min_interval; //type: uint32
-                                Value pref_echo_min_interval; //type: uint32
-                                Value fast_detect; //type: boolean
-                                Value mode_info; //type: uint32
 
+
+                                YLeaf bundle_status; //type: BmdBfdBdlStateEnum
+                                YLeaf start_timer; //type: uint32
+                                YLeaf nbr_unconfig_timer; //type: uint32
+                                YLeaf pref_multiplier; //type: uint16
+                                YLeaf pref_min_interval; //type: uint32
+                                YLeaf pref_echo_min_interval; //type: uint32
+                                YLeaf fast_detect; //type: boolean
+                                YLeaf mode_info; //type: uint32
 
                             class DestinationAddress : public Entity
                             {
@@ -1796,19 +1803,18 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value af; //type: BmAfIdEnum
-                                    Value ipv4; //type: string
-                                    Value ipv6; //type: string
 
 
-                                    class BmAfIdEnum;
+                                    YLeaf af; //type: BmAfIdEnum
+                                    YLeaf ipv4; //type: string
+                                    YLeaf ipv6; //type: string
+
 
 
                             }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress> destination_address;
-                                class BmdBfdBdlStateEnum;
 
 
                         }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig
@@ -1816,16 +1822,6 @@ class BundleInformation : public Entity
 
                             std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig> > bfd_config;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress> mac_address;
-                            class BmBdlStateEnum;
-                            class BmFeatureStatusEnum;
-                            class BmFeatureStatusEnum;
-                            class BmFeatureStatusEnum;
-                            class BmFeatureStatusEnum;
-                            class BmBdlMacSourceEnum;
-                            class BmWhichSystemEnum;
-                            class BundleMlacpModeEnum;
-                            class BmFeatureStatusEnum;
-                            class BmdMlacpSwitchoverEnum;
 
 
                     }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData
@@ -1844,16 +1840,17 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bandwidth; //type: uint32
-                            Value port_priority; //type: uint16
-                            Value port_number; //type: uint16
-                            Value underlying_link_id; //type: uint16
-                            Value link_order_number; //type: uint16
-                            Value interface_name; //type: string
-                            Value iccp_node; //type: uint32
-                            Value member_type; //type: BmdMemberTypeEnumEnum
-                            Value member_name; //type: string
 
+
+                            YLeaf bandwidth; //type: uint32
+                            YLeaf port_priority; //type: uint16
+                            YLeaf port_number; //type: uint16
+                            YLeaf underlying_link_id; //type: uint16
+                            YLeaf link_order_number; //type: uint16
+                            YLeaf interface_name; //type: string
+                            YLeaf iccp_node; //type: uint32
+                            YLeaf member_type; //type: BmdMemberTypeEnumEnum
+                            YLeaf member_name; //type: string
 
                         class Counters : public Entity
                         {
@@ -1868,18 +1865,19 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lacpd_us_received; //type: uint32
-                                Value lacpd_us_transmitted; //type: uint32
-                                Value marker_packets_received; //type: uint32
-                                Value marker_responses_transmitted; //type: uint32
-                                Value illegal_packets_received; //type: uint32
-                                Value excess_lacpd_us_received; //type: uint32
-                                Value excess_marker_packets_received; //type: uint32
-                                Value defaulted; //type: uint32
-                                Value expired; //type: uint32
-                                Value last_cleared_sec; //type: uint32
-                                Value last_cleared_nsec; //type: uint32
 
+
+                                YLeaf lacpd_us_received; //type: uint32
+                                YLeaf lacpd_us_transmitted; //type: uint32
+                                YLeaf marker_packets_received; //type: uint32
+                                YLeaf marker_responses_transmitted; //type: uint32
+                                YLeaf illegal_packets_received; //type: uint32
+                                YLeaf excess_lacpd_us_received; //type: uint32
+                                YLeaf excess_marker_packets_received; //type: uint32
+                                YLeaf defaulted; //type: uint32
+                                YLeaf expired; //type: uint32
+                                YLeaf last_cleared_sec; //type: uint32
+                                YLeaf last_cleared_nsec; //type: uint32
 
 
 
@@ -1899,22 +1897,23 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_handle; //type: string
-                                Value actor_system_priority; //type: uint16
-                                Value actor_system_mac_address; //type: string
-                                Value actor_operational_key; //type: uint16
-                                Value partner_system_priority; //type: uint16
-                                Value partner_system_mac_address; //type: string
-                                Value partner_operational_key; //type: uint16
-                                Value selected_aggregator_id; //type: uint32
-                                Value attached_aggregator_id; //type: uint32
-                                Value actor_port_id; //type: uint16
-                                Value actor_port_priority; //type: uint16
-                                Value partner_port_id; //type: uint16
-                                Value partner_port_priority; //type: uint16
-                                Value actor_port_state; //type: uint8
-                                Value partner_port_state; //type: uint8
 
+
+                                YLeaf interface_handle; //type: string
+                                YLeaf actor_system_priority; //type: uint16
+                                YLeaf actor_system_mac_address; //type: string
+                                YLeaf actor_operational_key; //type: uint16
+                                YLeaf partner_system_priority; //type: uint16
+                                YLeaf partner_system_mac_address; //type: string
+                                YLeaf partner_operational_key; //type: uint16
+                                YLeaf selected_aggregator_id; //type: uint32
+                                YLeaf attached_aggregator_id; //type: uint32
+                                YLeaf actor_port_id; //type: uint16
+                                YLeaf actor_port_priority; //type: uint16
+                                YLeaf partner_port_id; //type: uint16
+                                YLeaf partner_port_priority; //type: uint16
+                                YLeaf actor_port_state; //type: uint8
+                                YLeaf partner_port_state; //type: uint8
 
 
 
@@ -1934,12 +1933,13 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mux_state; //type: BmMuxstateEnum
-                                Value error; //type: uint32
-                                Value member_mux_state_reason; //type: BmMbrStateReasonEnum
-                                Value member_state; //type: BmdMemberStateEnum
-                                Value mux_state_reason; //type: BmMuxreasonEnum
 
+
+                                YLeaf mux_state; //type: BmMuxstateEnum
+                                YLeaf error; //type: uint32
+                                YLeaf member_mux_state_reason; //type: BmMbrStateReasonEnum
+                                YLeaf member_state; //type: BmdMemberStateEnum
+                                YLeaf mux_state_reason; //type: BmMuxreasonEnum
 
                             class MemberMuxStateReasonData : public Entity
                             {
@@ -1954,22 +1954,17 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value reason_type; //type: BmStateReasonTargetEnum
-                                    Value severity; //type: BmSeverityEnum
 
 
-                                    class BmStateReasonTargetEnum;
-                                    class BmSeverityEnum;
+                                    YLeaf reason_type; //type: BmStateReasonTargetEnum
+                                    YLeaf severity; //type: BmSeverityEnum
+
 
 
                             }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData> member_mux_state_reason_data;
-                                class BmMbrStateReasonEnum;
-                                class BmdMemberStateEnum;
-                                class BmMuxstateEnum;
-                                class BmMuxreasonEnum;
 
 
                         }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData
@@ -1988,8 +1983,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
 
+
+                                YLeaf address; //type: string
 
 
 
@@ -2000,7 +1996,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData> link_data;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress> mac_address;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData> member_mux_data;
-                            class BmdMemberTypeEnumEnum;
 
 
                     }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData
@@ -2026,16 +2021,17 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bandwidth; //type: uint32
-                        Value port_priority; //type: uint16
-                        Value port_number; //type: uint16
-                        Value underlying_link_id; //type: uint16
-                        Value link_order_number; //type: uint16
-                        Value interface_name; //type: string
-                        Value iccp_node; //type: uint32
-                        Value member_type; //type: BmdMemberTypeEnumEnum
-                        Value member_name; //type: string
 
+
+                        YLeaf bandwidth; //type: uint32
+                        YLeaf port_priority; //type: uint16
+                        YLeaf port_number; //type: uint16
+                        YLeaf underlying_link_id; //type: uint16
+                        YLeaf link_order_number; //type: uint16
+                        YLeaf interface_name; //type: string
+                        YLeaf iccp_node; //type: uint32
+                        YLeaf member_type; //type: BmdMemberTypeEnumEnum
+                        YLeaf member_name; //type: string
 
                     class Counters : public Entity
                     {
@@ -2050,18 +2046,19 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value lacpd_us_received; //type: uint32
-                            Value lacpd_us_transmitted; //type: uint32
-                            Value marker_packets_received; //type: uint32
-                            Value marker_responses_transmitted; //type: uint32
-                            Value illegal_packets_received; //type: uint32
-                            Value excess_lacpd_us_received; //type: uint32
-                            Value excess_marker_packets_received; //type: uint32
-                            Value defaulted; //type: uint32
-                            Value expired; //type: uint32
-                            Value last_cleared_sec; //type: uint32
-                            Value last_cleared_nsec; //type: uint32
 
+
+                            YLeaf lacpd_us_received; //type: uint32
+                            YLeaf lacpd_us_transmitted; //type: uint32
+                            YLeaf marker_packets_received; //type: uint32
+                            YLeaf marker_responses_transmitted; //type: uint32
+                            YLeaf illegal_packets_received; //type: uint32
+                            YLeaf excess_lacpd_us_received; //type: uint32
+                            YLeaf excess_marker_packets_received; //type: uint32
+                            YLeaf defaulted; //type: uint32
+                            YLeaf expired; //type: uint32
+                            YLeaf last_cleared_sec; //type: uint32
+                            YLeaf last_cleared_nsec; //type: uint32
 
 
 
@@ -2081,22 +2078,23 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_handle; //type: string
-                            Value actor_system_priority; //type: uint16
-                            Value actor_system_mac_address; //type: string
-                            Value actor_operational_key; //type: uint16
-                            Value partner_system_priority; //type: uint16
-                            Value partner_system_mac_address; //type: string
-                            Value partner_operational_key; //type: uint16
-                            Value selected_aggregator_id; //type: uint32
-                            Value attached_aggregator_id; //type: uint32
-                            Value actor_port_id; //type: uint16
-                            Value actor_port_priority; //type: uint16
-                            Value partner_port_id; //type: uint16
-                            Value partner_port_priority; //type: uint16
-                            Value actor_port_state; //type: uint8
-                            Value partner_port_state; //type: uint8
 
+
+                            YLeaf interface_handle; //type: string
+                            YLeaf actor_system_priority; //type: uint16
+                            YLeaf actor_system_mac_address; //type: string
+                            YLeaf actor_operational_key; //type: uint16
+                            YLeaf partner_system_priority; //type: uint16
+                            YLeaf partner_system_mac_address; //type: string
+                            YLeaf partner_operational_key; //type: uint16
+                            YLeaf selected_aggregator_id; //type: uint32
+                            YLeaf attached_aggregator_id; //type: uint32
+                            YLeaf actor_port_id; //type: uint16
+                            YLeaf actor_port_priority; //type: uint16
+                            YLeaf partner_port_id; //type: uint16
+                            YLeaf partner_port_priority; //type: uint16
+                            YLeaf actor_port_state; //type: uint8
+                            YLeaf partner_port_state; //type: uint8
 
 
 
@@ -2116,12 +2114,13 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value mux_state; //type: BmMuxstateEnum
-                            Value error; //type: uint32
-                            Value member_mux_state_reason; //type: BmMbrStateReasonEnum
-                            Value member_state; //type: BmdMemberStateEnum
-                            Value mux_state_reason; //type: BmMuxreasonEnum
 
+
+                            YLeaf mux_state; //type: BmMuxstateEnum
+                            YLeaf error; //type: uint32
+                            YLeaf member_mux_state_reason; //type: BmMbrStateReasonEnum
+                            YLeaf member_state; //type: BmdMemberStateEnum
+                            YLeaf mux_state_reason; //type: BmMuxreasonEnum
 
                         class MemberMuxStateReasonData : public Entity
                         {
@@ -2136,22 +2135,17 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value reason_type; //type: BmStateReasonTargetEnum
-                                Value severity; //type: BmSeverityEnum
 
 
-                                class BmStateReasonTargetEnum;
-                                class BmSeverityEnum;
+                                YLeaf reason_type; //type: BmStateReasonTargetEnum
+                                YLeaf severity; //type: BmSeverityEnum
+
 
 
                         }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData
 
 
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData> member_mux_state_reason_data;
-                            class BmMbrStateReasonEnum;
-                            class BmdMemberStateEnum;
-                            class BmMuxstateEnum;
-                            class BmMuxreasonEnum;
 
 
                     }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData
@@ -2170,8 +2164,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
 
+
+                            YLeaf address; //type: string
 
 
 
@@ -2182,7 +2177,6 @@ class BundleInformation : public Entity
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData> link_data;
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress> mac_address;
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData> member_mux_data;
-                        class BmdMemberTypeEnumEnum;
 
 
                 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem
@@ -2223,6 +2217,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class EventsRgMembers : public Entity
         {
             public:
@@ -2238,6 +2233,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EventsRgMember : public Entity
             {
                 public:
@@ -2251,8 +2247,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value member_interface; //type: string
 
+
+                    YLeaf member_interface; //type: string
 
                 class EventsRgMemberAncestor : public Entity
                 {
@@ -2267,8 +2264,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value item_name; //type: string
 
+
+                        YLeaf item_name; //type: string
 
                     class Items : public Entity
                     {
@@ -2283,8 +2281,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_type; //type: BmdBagTargetEnum
 
+
+                            YLeaf event_type; //type: BmdBagTargetEnum
 
                         class MemberEvtInfo : public Entity
                         {
@@ -2299,9 +2298,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -2316,20 +2316,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data> data;
-                                class BmdBagEventMbrItemEnum;
 
 
                         }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo
@@ -2348,9 +2347,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -2365,20 +2365,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data> data;
-                                class BmdBagEventBdlItemEnum;
 
 
                         }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo
@@ -2397,9 +2396,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -2414,20 +2414,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data> data;
-                                class BmdBagEventRgItemEnum;
 
 
                         }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo
@@ -2436,7 +2435,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo> bundle_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo> member_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo> rg_evt_info;
-                            class BmdBagTargetEnum;
 
 
                     }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items
@@ -2475,6 +2473,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EventsRgIccpGroup : public Entity
             {
                 public:
@@ -2488,8 +2487,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value iccp_group; //type: uint32
 
+
+                    YLeaf iccp_group; //type: uint32
 
                 class EventsRgBundleItemIccpGroup : public Entity
                 {
@@ -2504,8 +2504,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value item_name; //type: string
 
+
+                        YLeaf item_name; //type: string
 
                     class Items : public Entity
                     {
@@ -2520,8 +2521,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_type; //type: BmdBagTargetEnum
 
+
+                            YLeaf event_type; //type: BmdBagTargetEnum
 
                         class MemberEvtInfo : public Entity
                         {
@@ -2536,9 +2538,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -2553,20 +2556,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data> data;
-                                class BmdBagEventMbrItemEnum;
 
 
                         }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo
@@ -2585,9 +2587,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -2602,20 +2605,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data> data;
-                                class BmdBagEventBdlItemEnum;
 
 
                         }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo
@@ -2634,9 +2636,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -2651,20 +2654,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data> data;
-                                class BmdBagEventRgItemEnum;
 
 
                         }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo
@@ -2673,7 +2675,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo> bundle_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo> member_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo> rg_evt_info;
-                            class BmdBagTargetEnum;
 
 
                     }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items
@@ -2712,6 +2713,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EventsRgBundle : public Entity
             {
                 public:
@@ -2725,8 +2727,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class EventsRgBundleAncestor : public Entity
                 {
@@ -2741,8 +2744,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value item_name; //type: string
 
+
+                        YLeaf item_name; //type: string
 
                     class Items : public Entity
                     {
@@ -2757,8 +2761,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_type; //type: BmdBagTargetEnum
 
+
+                            YLeaf event_type; //type: BmdBagTargetEnum
 
                         class MemberEvtInfo : public Entity
                         {
@@ -2773,9 +2778,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -2790,20 +2796,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data> data;
-                                class BmdBagEventMbrItemEnum;
 
 
                         }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo
@@ -2822,9 +2827,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -2839,20 +2845,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data> data;
-                                class BmdBagEventBdlItemEnum;
 
 
                         }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo
@@ -2871,9 +2876,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -2888,20 +2894,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data> data;
-                                class BmdBagEventRgItemEnum;
 
 
                         }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo
@@ -2910,7 +2915,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo> bundle_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo> member_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo> rg_evt_info;
-                            class BmdBagTargetEnum;
 
 
                     }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items
@@ -2957,6 +2961,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LacpBundles : public Entity
         {
             public:
@@ -2972,6 +2977,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class LacpBundle : public Entity
             {
                 public:
@@ -2985,8 +2991,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class LacpBundleItem : public Entity
                 {
@@ -3001,11 +3008,12 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value actor_operational_key; //type: uint16
-                        Value partner_system_priority; //type: uint16
-                        Value partner_system_mac_address; //type: string
-                        Value partner_operational_key; //type: uint16
 
+
+                        YLeaf actor_operational_key; //type: uint16
+                        YLeaf partner_system_priority; //type: uint16
+                        YLeaf partner_system_mac_address; //type: string
+                        YLeaf partner_operational_key; //type: uint16
 
                     class ActorBundleData : public Entity
                     {
@@ -3020,45 +3028,46 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bundle_interface_name; //type: string
-                            Value available_bandwidth; //type: uint32
-                            Value effective_bandwidth; //type: uint32
-                            Value configured_bandwidth; //type: uint32
-                            Value minimum_active_links; //type: uint8
-                            Value maximum_active_links; //type: uint8
-                            Value maximum_active_links_source; //type: BmWhichSystemEnum
-                            Value minimum_bandwidth; //type: uint32
-                            Value primary_member; //type: string
-                            Value bundle_status; //type: BmBdlStateEnum
-                            Value active_member_count; //type: uint16
-                            Value standby_member_count; //type: uint16
-                            Value configured_member_count; //type: uint16
-                            Value mac_source; //type: BmBdlMacSourceEnum
-                            Value mac_source_member; //type: string
-                            Value inter_chassis; //type: boolean
-                            Value is_active; //type: boolean
-                            Value lacp_status; //type: BmFeatureStatusEnum
-                            Value mlacp_status; //type: BmFeatureStatusEnum
-                            Value ipv4bfd_status; //type: BmFeatureStatusEnum
-                            Value link_order_status; //type: BmFeatureStatusEnum
-                            Value ipv6bfd_status; //type: BmFeatureStatusEnum
-                            Value load_balance_hash_type; //type: string
-                            Value load_balance_locality_threshold; //type: uint16
-                            Value suppression_timer; //type: uint16
-                            Value wait_while_timer; //type: uint16
-                            Value collector_max_delay; //type: uint16
-                            Value cisco_extensions; //type: boolean
-                            Value lacp_nonrevertive; //type: boolean
-                            Value iccp_group_id; //type: uint32
-                            Value active_foreign_member_count; //type: uint16
-                            Value configured_foreign_member_count; //type: uint16
-                            Value switchover_type; //type: BmdMlacpSwitchoverEnum
-                            Value maximize_threshold_value_links; //type: uint32
-                            Value maximize_threshold_value_band_width; //type: uint32
-                            Value mlacp_mode; //type: BundleMlacpModeEnum
-                            Value recovery_delay; //type: uint16
-                            Value singleton; //type: boolean
 
+
+                            YLeaf bundle_interface_name; //type: string
+                            YLeaf available_bandwidth; //type: uint32
+                            YLeaf effective_bandwidth; //type: uint32
+                            YLeaf configured_bandwidth; //type: uint32
+                            YLeaf minimum_active_links; //type: uint8
+                            YLeaf maximum_active_links; //type: uint8
+                            YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
+                            YLeaf minimum_bandwidth; //type: uint32
+                            YLeaf primary_member; //type: string
+                            YLeaf bundle_status; //type: BmBdlStateEnum
+                            YLeaf active_member_count; //type: uint16
+                            YLeaf standby_member_count; //type: uint16
+                            YLeaf configured_member_count; //type: uint16
+                            YLeaf mac_source; //type: BmBdlMacSourceEnum
+                            YLeaf mac_source_member; //type: string
+                            YLeaf inter_chassis; //type: boolean
+                            YLeaf is_active; //type: boolean
+                            YLeaf lacp_status; //type: BmFeatureStatusEnum
+                            YLeaf mlacp_status; //type: BmFeatureStatusEnum
+                            YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
+                            YLeaf link_order_status; //type: BmFeatureStatusEnum
+                            YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
+                            YLeaf load_balance_hash_type; //type: string
+                            YLeaf load_balance_locality_threshold; //type: uint16
+                            YLeaf suppression_timer; //type: uint16
+                            YLeaf wait_while_timer; //type: uint16
+                            YLeaf collector_max_delay; //type: uint16
+                            YLeaf cisco_extensions; //type: boolean
+                            YLeaf lacp_nonrevertive; //type: boolean
+                            YLeaf iccp_group_id; //type: uint32
+                            YLeaf active_foreign_member_count; //type: uint16
+                            YLeaf configured_foreign_member_count; //type: uint16
+                            YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
+                            YLeaf maximize_threshold_value_links; //type: uint32
+                            YLeaf maximize_threshold_value_band_width; //type: uint32
+                            YLeaf mlacp_mode; //type: BundleMlacpModeEnum
+                            YLeaf recovery_delay; //type: uint16
+                            YLeaf singleton; //type: boolean
 
                         class MacAddress : public Entity
                         {
@@ -3073,8 +3082,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
 
+
+                                YLeaf address; //type: string
 
 
 
@@ -3094,15 +3104,16 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_status; //type: BmdBfdBdlStateEnum
-                                Value start_timer; //type: uint32
-                                Value nbr_unconfig_timer; //type: uint32
-                                Value pref_multiplier; //type: uint16
-                                Value pref_min_interval; //type: uint32
-                                Value pref_echo_min_interval; //type: uint32
-                                Value fast_detect; //type: boolean
-                                Value mode_info; //type: uint32
 
+
+                                YLeaf bundle_status; //type: BmdBfdBdlStateEnum
+                                YLeaf start_timer; //type: uint32
+                                YLeaf nbr_unconfig_timer; //type: uint32
+                                YLeaf pref_multiplier; //type: uint16
+                                YLeaf pref_min_interval; //type: uint32
+                                YLeaf pref_echo_min_interval; //type: uint32
+                                YLeaf fast_detect; //type: boolean
+                                YLeaf mode_info; //type: uint32
 
                             class DestinationAddress : public Entity
                             {
@@ -3117,19 +3128,18 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value af; //type: BmAfIdEnum
-                                    Value ipv4; //type: string
-                                    Value ipv6; //type: string
 
 
-                                    class BmAfIdEnum;
+                                    YLeaf af; //type: BmAfIdEnum
+                                    YLeaf ipv4; //type: string
+                                    YLeaf ipv6; //type: string
+
 
 
                             }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress> destination_address;
-                                class BmdBfdBdlStateEnum;
 
 
                         }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig
@@ -3137,16 +3147,6 @@ class BundleInformation : public Entity
 
                             std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig> > bfd_config;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress> mac_address;
-                            class BmBdlStateEnum;
-                            class BmFeatureStatusEnum;
-                            class BmFeatureStatusEnum;
-                            class BmFeatureStatusEnum;
-                            class BmFeatureStatusEnum;
-                            class BmBdlMacSourceEnum;
-                            class BmWhichSystemEnum;
-                            class BundleMlacpModeEnum;
-                            class BmFeatureStatusEnum;
-                            class BmdMlacpSwitchoverEnum;
 
 
                     }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData
@@ -3165,8 +3165,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value system_prio; //type: uint16
 
+
+                            YLeaf system_prio; //type: uint16
 
                         class SystemMacAddr : public Entity
                         {
@@ -3181,8 +3182,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value macaddr; //type: string
 
+
+                                YLeaf macaddr; //type: string
 
 
 
@@ -3217,6 +3219,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BundleData : public Entity
                     {
                         public:
@@ -3230,11 +3233,12 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value actor_operational_key; //type: uint16
-                            Value partner_system_priority; //type: uint16
-                            Value partner_system_mac_address; //type: string
-                            Value partner_operational_key; //type: uint16
 
+
+                            YLeaf actor_operational_key; //type: uint16
+                            YLeaf partner_system_priority; //type: uint16
+                            YLeaf partner_system_mac_address; //type: string
+                            YLeaf partner_operational_key; //type: uint16
 
                         class ActorBundleData : public Entity
                         {
@@ -3249,45 +3253,46 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_interface_name; //type: string
-                                Value available_bandwidth; //type: uint32
-                                Value effective_bandwidth; //type: uint32
-                                Value configured_bandwidth; //type: uint32
-                                Value minimum_active_links; //type: uint8
-                                Value maximum_active_links; //type: uint8
-                                Value maximum_active_links_source; //type: BmWhichSystemEnum
-                                Value minimum_bandwidth; //type: uint32
-                                Value primary_member; //type: string
-                                Value bundle_status; //type: BmBdlStateEnum
-                                Value active_member_count; //type: uint16
-                                Value standby_member_count; //type: uint16
-                                Value configured_member_count; //type: uint16
-                                Value mac_source; //type: BmBdlMacSourceEnum
-                                Value mac_source_member; //type: string
-                                Value inter_chassis; //type: boolean
-                                Value is_active; //type: boolean
-                                Value lacp_status; //type: BmFeatureStatusEnum
-                                Value mlacp_status; //type: BmFeatureStatusEnum
-                                Value ipv4bfd_status; //type: BmFeatureStatusEnum
-                                Value link_order_status; //type: BmFeatureStatusEnum
-                                Value ipv6bfd_status; //type: BmFeatureStatusEnum
-                                Value load_balance_hash_type; //type: string
-                                Value load_balance_locality_threshold; //type: uint16
-                                Value suppression_timer; //type: uint16
-                                Value wait_while_timer; //type: uint16
-                                Value collector_max_delay; //type: uint16
-                                Value cisco_extensions; //type: boolean
-                                Value lacp_nonrevertive; //type: boolean
-                                Value iccp_group_id; //type: uint32
-                                Value active_foreign_member_count; //type: uint16
-                                Value configured_foreign_member_count; //type: uint16
-                                Value switchover_type; //type: BmdMlacpSwitchoverEnum
-                                Value maximize_threshold_value_links; //type: uint32
-                                Value maximize_threshold_value_band_width; //type: uint32
-                                Value mlacp_mode; //type: BundleMlacpModeEnum
-                                Value recovery_delay; //type: uint16
-                                Value singleton; //type: boolean
 
+
+                                YLeaf bundle_interface_name; //type: string
+                                YLeaf available_bandwidth; //type: uint32
+                                YLeaf effective_bandwidth; //type: uint32
+                                YLeaf configured_bandwidth; //type: uint32
+                                YLeaf minimum_active_links; //type: uint8
+                                YLeaf maximum_active_links; //type: uint8
+                                YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
+                                YLeaf minimum_bandwidth; //type: uint32
+                                YLeaf primary_member; //type: string
+                                YLeaf bundle_status; //type: BmBdlStateEnum
+                                YLeaf active_member_count; //type: uint16
+                                YLeaf standby_member_count; //type: uint16
+                                YLeaf configured_member_count; //type: uint16
+                                YLeaf mac_source; //type: BmBdlMacSourceEnum
+                                YLeaf mac_source_member; //type: string
+                                YLeaf inter_chassis; //type: boolean
+                                YLeaf is_active; //type: boolean
+                                YLeaf lacp_status; //type: BmFeatureStatusEnum
+                                YLeaf mlacp_status; //type: BmFeatureStatusEnum
+                                YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
+                                YLeaf link_order_status; //type: BmFeatureStatusEnum
+                                YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
+                                YLeaf load_balance_hash_type; //type: string
+                                YLeaf load_balance_locality_threshold; //type: uint16
+                                YLeaf suppression_timer; //type: uint16
+                                YLeaf wait_while_timer; //type: uint16
+                                YLeaf collector_max_delay; //type: uint16
+                                YLeaf cisco_extensions; //type: boolean
+                                YLeaf lacp_nonrevertive; //type: boolean
+                                YLeaf iccp_group_id; //type: uint32
+                                YLeaf active_foreign_member_count; //type: uint16
+                                YLeaf configured_foreign_member_count; //type: uint16
+                                YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
+                                YLeaf maximize_threshold_value_links; //type: uint32
+                                YLeaf maximize_threshold_value_band_width; //type: uint32
+                                YLeaf mlacp_mode; //type: BundleMlacpModeEnum
+                                YLeaf recovery_delay; //type: uint16
+                                YLeaf singleton; //type: boolean
 
                             class MacAddress : public Entity
                             {
@@ -3302,8 +3307,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
 
+
+                                    YLeaf address; //type: string
 
 
 
@@ -3323,15 +3329,16 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_status; //type: BmdBfdBdlStateEnum
-                                    Value start_timer; //type: uint32
-                                    Value nbr_unconfig_timer; //type: uint32
-                                    Value pref_multiplier; //type: uint16
-                                    Value pref_min_interval; //type: uint32
-                                    Value pref_echo_min_interval; //type: uint32
-                                    Value fast_detect; //type: boolean
-                                    Value mode_info; //type: uint32
 
+
+                                    YLeaf bundle_status; //type: BmdBfdBdlStateEnum
+                                    YLeaf start_timer; //type: uint32
+                                    YLeaf nbr_unconfig_timer; //type: uint32
+                                    YLeaf pref_multiplier; //type: uint16
+                                    YLeaf pref_min_interval; //type: uint32
+                                    YLeaf pref_echo_min_interval; //type: uint32
+                                    YLeaf fast_detect; //type: boolean
+                                    YLeaf mode_info; //type: uint32
 
                                 class DestinationAddress : public Entity
                                 {
@@ -3346,19 +3353,18 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af; //type: BmAfIdEnum
-                                        Value ipv4; //type: string
-                                        Value ipv6; //type: string
 
 
-                                        class BmAfIdEnum;
+                                        YLeaf af; //type: BmAfIdEnum
+                                        YLeaf ipv4; //type: string
+                                        YLeaf ipv6; //type: string
+
 
 
                                 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress> destination_address;
-                                    class BmdBfdBdlStateEnum;
 
 
                             }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig
@@ -3366,16 +3372,6 @@ class BundleInformation : public Entity
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig> > bfd_config;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress> mac_address;
-                                class BmBdlStateEnum;
-                                class BmFeatureStatusEnum;
-                                class BmFeatureStatusEnum;
-                                class BmFeatureStatusEnum;
-                                class BmFeatureStatusEnum;
-                                class BmBdlMacSourceEnum;
-                                class BmWhichSystemEnum;
-                                class BundleMlacpModeEnum;
-                                class BmFeatureStatusEnum;
-                                class BmdMlacpSwitchoverEnum;
 
 
                         }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData
@@ -3394,8 +3390,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value system_prio; //type: uint16
 
+
+                                YLeaf system_prio; //type: uint16
 
                             class SystemMacAddr : public Entity
                             {
@@ -3410,8 +3407,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value macaddr; //type: string
 
+
+                                    YLeaf macaddr; //type: string
 
 
 
@@ -3444,16 +3442,17 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value selected_aggregator_id; //type: uint32
-                            Value attached_aggregator_id; //type: uint32
-                            Value selection_state; //type: LacpSelStateEnum
-                            Value period_state; //type: LacpPeriodStateEnum
-                            Value receive_machine_state; //type: RxstatesEnum
-                            Value mux_state; //type: BmMuxstateEnum
-                            Value actor_churn_state; //type: LacpChurnstatesEnum
-                            Value partner_churn_state; //type: LacpChurnstatesEnum
-                            Value iccp_group_id; //type: uint32
 
+
+                            YLeaf selected_aggregator_id; //type: uint32
+                            YLeaf attached_aggregator_id; //type: uint32
+                            YLeaf selection_state; //type: LacpSelStateEnum
+                            YLeaf period_state; //type: LacpPeriodStateEnum
+                            YLeaf receive_machine_state; //type: RxstatesEnum
+                            YLeaf mux_state; //type: BmMuxstateEnum
+                            YLeaf actor_churn_state; //type: LacpChurnstatesEnum
+                            YLeaf partner_churn_state; //type: LacpChurnstatesEnum
+                            YLeaf iccp_group_id; //type: uint32
 
                         class ActorInfo : public Entity
                         {
@@ -3468,8 +3467,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tx_period; //type: uint32
 
+
+                                YLeaf tx_period; //type: uint32
 
                             class PortInfo : public Entity
                             {
@@ -3484,9 +3484,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value key; //type: uint16
-                                    Value state; //type: uint8
 
+
+                                    YLeaf key; //type: uint16
+                                    YLeaf state; //type: uint8
 
                                 class System : public Entity
                                 {
@@ -3501,8 +3502,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value system_prio; //type: uint16
 
+
+                                        YLeaf system_prio; //type: uint16
 
                                     class SystemMacAddr : public Entity
                                     {
@@ -3517,8 +3519,9 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value macaddr; //type: string
 
+
+                                            YLeaf macaddr; //type: string
 
 
 
@@ -3544,9 +3547,10 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value link_priority; //type: uint16
-                                        Value link_number; //type: uint16
 
+
+                                        YLeaf link_priority; //type: uint16
+                                        YLeaf link_number; //type: uint16
 
 
 
@@ -3579,8 +3583,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tx_period; //type: uint32
 
+
+                                YLeaf tx_period; //type: uint32
 
                             class PortInfo : public Entity
                             {
@@ -3595,9 +3600,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value key; //type: uint16
-                                    Value state; //type: uint8
 
+
+                                    YLeaf key; //type: uint16
+                                    YLeaf state; //type: uint8
 
                                 class System : public Entity
                                 {
@@ -3612,8 +3618,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value system_prio; //type: uint16
 
+
+                                        YLeaf system_prio; //type: uint16
 
                                     class SystemMacAddr : public Entity
                                     {
@@ -3628,8 +3635,9 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value macaddr; //type: string
 
+
+                                            YLeaf macaddr; //type: string
 
 
 
@@ -3655,9 +3663,10 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value link_priority; //type: uint16
-                                        Value link_number; //type: uint16
 
+
+                                        YLeaf link_priority; //type: uint16
+                                        YLeaf link_number; //type: uint16
 
 
 
@@ -3690,8 +3699,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mbr_type; //type: BmdMemberTypeEnumEnum
 
+
+                                YLeaf mbr_type; //type: BmdMemberTypeEnumEnum
 
                             class Local : public Entity
                             {
@@ -3706,8 +3716,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_handle; //type: string
 
+
+                                    YLeaf interface_handle; //type: string
 
 
 
@@ -3727,9 +3738,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_address; //type: string
-                                    Value member_name; //type: string
 
+
+                                    YLeaf peer_address; //type: string
+                                    YLeaf member_name; //type: string
 
 
 
@@ -3738,7 +3750,6 @@ class BundleInformation : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign> foreign;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local> local;
-                                class BmdMemberTypeEnumEnum;
 
 
                         }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo
@@ -3747,12 +3758,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo> actor_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo> additional_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo> partner_info;
-                            class LacpChurnstatesEnum;
-                            class BmMuxstateEnum;
-                            class LacpChurnstatesEnum;
-                            class LacpPeriodStateEnum;
-                            class RxstatesEnum;
-                            class LacpSelStateEnum;
 
 
                     }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData
@@ -3780,6 +3785,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class LacpBundleChildrenMember : public Entity
                     {
                         public:
@@ -3793,17 +3799,18 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value member_interface; //type: string
-                            Value selected_aggregator_id; //type: uint32
-                            Value attached_aggregator_id; //type: uint32
-                            Value selection_state; //type: LacpSelStateEnum
-                            Value period_state; //type: LacpPeriodStateEnum
-                            Value receive_machine_state; //type: RxstatesEnum
-                            Value mux_state; //type: BmMuxstateEnum
-                            Value actor_churn_state; //type: LacpChurnstatesEnum
-                            Value partner_churn_state; //type: LacpChurnstatesEnum
-                            Value iccp_group_id; //type: uint32
 
+
+                            YLeaf member_interface; //type: string
+                            YLeaf selected_aggregator_id; //type: uint32
+                            YLeaf attached_aggregator_id; //type: uint32
+                            YLeaf selection_state; //type: LacpSelStateEnum
+                            YLeaf period_state; //type: LacpPeriodStateEnum
+                            YLeaf receive_machine_state; //type: RxstatesEnum
+                            YLeaf mux_state; //type: BmMuxstateEnum
+                            YLeaf actor_churn_state; //type: LacpChurnstatesEnum
+                            YLeaf partner_churn_state; //type: LacpChurnstatesEnum
+                            YLeaf iccp_group_id; //type: uint32
 
                         class ActorInfo : public Entity
                         {
@@ -3818,8 +3825,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tx_period; //type: uint32
 
+
+                                YLeaf tx_period; //type: uint32
 
                             class PortInfo : public Entity
                             {
@@ -3834,9 +3842,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value key; //type: uint16
-                                    Value state; //type: uint8
 
+
+                                    YLeaf key; //type: uint16
+                                    YLeaf state; //type: uint8
 
                                 class System : public Entity
                                 {
@@ -3851,8 +3860,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value system_prio; //type: uint16
 
+
+                                        YLeaf system_prio; //type: uint16
 
                                     class SystemMacAddr : public Entity
                                     {
@@ -3867,8 +3877,9 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value macaddr; //type: string
 
+
+                                            YLeaf macaddr; //type: string
 
 
 
@@ -3894,9 +3905,10 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value link_priority; //type: uint16
-                                        Value link_number; //type: uint16
 
+
+                                        YLeaf link_priority; //type: uint16
+                                        YLeaf link_number; //type: uint16
 
 
 
@@ -3929,8 +3941,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tx_period; //type: uint32
 
+
+                                YLeaf tx_period; //type: uint32
 
                             class PortInfo : public Entity
                             {
@@ -3945,9 +3958,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value key; //type: uint16
-                                    Value state; //type: uint8
 
+
+                                    YLeaf key; //type: uint16
+                                    YLeaf state; //type: uint8
 
                                 class System : public Entity
                                 {
@@ -3962,8 +3976,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value system_prio; //type: uint16
 
+
+                                        YLeaf system_prio; //type: uint16
 
                                     class SystemMacAddr : public Entity
                                     {
@@ -3978,8 +3993,9 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value macaddr; //type: string
 
+
+                                            YLeaf macaddr; //type: string
 
 
 
@@ -4005,9 +4021,10 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value link_priority; //type: uint16
-                                        Value link_number; //type: uint16
 
+
+                                        YLeaf link_priority; //type: uint16
+                                        YLeaf link_number; //type: uint16
 
 
 
@@ -4040,8 +4057,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mbr_type; //type: BmdMemberTypeEnumEnum
 
+
+                                YLeaf mbr_type; //type: BmdMemberTypeEnumEnum
 
                             class Local : public Entity
                             {
@@ -4056,8 +4074,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_handle; //type: string
 
+
+                                    YLeaf interface_handle; //type: string
 
 
 
@@ -4077,9 +4096,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_address; //type: string
-                                    Value member_name; //type: string
 
+
+                                    YLeaf peer_address; //type: string
+                                    YLeaf member_name; //type: string
 
 
 
@@ -4088,7 +4108,6 @@ class BundleInformation : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::Foreign> foreign;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::Local> local;
-                                class BmdMemberTypeEnumEnum;
 
 
                         }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo
@@ -4097,12 +4116,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo> actor_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo> additional_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo> partner_info;
-                            class LacpChurnstatesEnum;
-                            class BmMuxstateEnum;
-                            class LacpChurnstatesEnum;
-                            class LacpPeriodStateEnum;
-                            class RxstatesEnum;
-                            class LacpSelStateEnum;
 
 
                     }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember
@@ -4143,6 +4156,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class LacpMember : public Entity
             {
                 public:
@@ -4156,8 +4170,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value member_interface; //type: string
 
+
+                    YLeaf member_interface; //type: string
 
                 class LacpMemberAncestor : public Entity
                 {
@@ -4174,6 +4189,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BundleData : public Entity
                     {
                         public:
@@ -4187,11 +4203,12 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value actor_operational_key; //type: uint16
-                            Value partner_system_priority; //type: uint16
-                            Value partner_system_mac_address; //type: string
-                            Value partner_operational_key; //type: uint16
 
+
+                            YLeaf actor_operational_key; //type: uint16
+                            YLeaf partner_system_priority; //type: uint16
+                            YLeaf partner_system_mac_address; //type: string
+                            YLeaf partner_operational_key; //type: uint16
 
                         class ActorBundleData : public Entity
                         {
@@ -4206,45 +4223,46 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_interface_name; //type: string
-                                Value available_bandwidth; //type: uint32
-                                Value effective_bandwidth; //type: uint32
-                                Value configured_bandwidth; //type: uint32
-                                Value minimum_active_links; //type: uint8
-                                Value maximum_active_links; //type: uint8
-                                Value maximum_active_links_source; //type: BmWhichSystemEnum
-                                Value minimum_bandwidth; //type: uint32
-                                Value primary_member; //type: string
-                                Value bundle_status; //type: BmBdlStateEnum
-                                Value active_member_count; //type: uint16
-                                Value standby_member_count; //type: uint16
-                                Value configured_member_count; //type: uint16
-                                Value mac_source; //type: BmBdlMacSourceEnum
-                                Value mac_source_member; //type: string
-                                Value inter_chassis; //type: boolean
-                                Value is_active; //type: boolean
-                                Value lacp_status; //type: BmFeatureStatusEnum
-                                Value mlacp_status; //type: BmFeatureStatusEnum
-                                Value ipv4bfd_status; //type: BmFeatureStatusEnum
-                                Value link_order_status; //type: BmFeatureStatusEnum
-                                Value ipv6bfd_status; //type: BmFeatureStatusEnum
-                                Value load_balance_hash_type; //type: string
-                                Value load_balance_locality_threshold; //type: uint16
-                                Value suppression_timer; //type: uint16
-                                Value wait_while_timer; //type: uint16
-                                Value collector_max_delay; //type: uint16
-                                Value cisco_extensions; //type: boolean
-                                Value lacp_nonrevertive; //type: boolean
-                                Value iccp_group_id; //type: uint32
-                                Value active_foreign_member_count; //type: uint16
-                                Value configured_foreign_member_count; //type: uint16
-                                Value switchover_type; //type: BmdMlacpSwitchoverEnum
-                                Value maximize_threshold_value_links; //type: uint32
-                                Value maximize_threshold_value_band_width; //type: uint32
-                                Value mlacp_mode; //type: BundleMlacpModeEnum
-                                Value recovery_delay; //type: uint16
-                                Value singleton; //type: boolean
 
+
+                                YLeaf bundle_interface_name; //type: string
+                                YLeaf available_bandwidth; //type: uint32
+                                YLeaf effective_bandwidth; //type: uint32
+                                YLeaf configured_bandwidth; //type: uint32
+                                YLeaf minimum_active_links; //type: uint8
+                                YLeaf maximum_active_links; //type: uint8
+                                YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
+                                YLeaf minimum_bandwidth; //type: uint32
+                                YLeaf primary_member; //type: string
+                                YLeaf bundle_status; //type: BmBdlStateEnum
+                                YLeaf active_member_count; //type: uint16
+                                YLeaf standby_member_count; //type: uint16
+                                YLeaf configured_member_count; //type: uint16
+                                YLeaf mac_source; //type: BmBdlMacSourceEnum
+                                YLeaf mac_source_member; //type: string
+                                YLeaf inter_chassis; //type: boolean
+                                YLeaf is_active; //type: boolean
+                                YLeaf lacp_status; //type: BmFeatureStatusEnum
+                                YLeaf mlacp_status; //type: BmFeatureStatusEnum
+                                YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
+                                YLeaf link_order_status; //type: BmFeatureStatusEnum
+                                YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
+                                YLeaf load_balance_hash_type; //type: string
+                                YLeaf load_balance_locality_threshold; //type: uint16
+                                YLeaf suppression_timer; //type: uint16
+                                YLeaf wait_while_timer; //type: uint16
+                                YLeaf collector_max_delay; //type: uint16
+                                YLeaf cisco_extensions; //type: boolean
+                                YLeaf lacp_nonrevertive; //type: boolean
+                                YLeaf iccp_group_id; //type: uint32
+                                YLeaf active_foreign_member_count; //type: uint16
+                                YLeaf configured_foreign_member_count; //type: uint16
+                                YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
+                                YLeaf maximize_threshold_value_links; //type: uint32
+                                YLeaf maximize_threshold_value_band_width; //type: uint32
+                                YLeaf mlacp_mode; //type: BundleMlacpModeEnum
+                                YLeaf recovery_delay; //type: uint16
+                                YLeaf singleton; //type: boolean
 
                             class MacAddress : public Entity
                             {
@@ -4259,8 +4277,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
 
+
+                                    YLeaf address; //type: string
 
 
 
@@ -4280,15 +4299,16 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_status; //type: BmdBfdBdlStateEnum
-                                    Value start_timer; //type: uint32
-                                    Value nbr_unconfig_timer; //type: uint32
-                                    Value pref_multiplier; //type: uint16
-                                    Value pref_min_interval; //type: uint32
-                                    Value pref_echo_min_interval; //type: uint32
-                                    Value fast_detect; //type: boolean
-                                    Value mode_info; //type: uint32
 
+
+                                    YLeaf bundle_status; //type: BmdBfdBdlStateEnum
+                                    YLeaf start_timer; //type: uint32
+                                    YLeaf nbr_unconfig_timer; //type: uint32
+                                    YLeaf pref_multiplier; //type: uint16
+                                    YLeaf pref_min_interval; //type: uint32
+                                    YLeaf pref_echo_min_interval; //type: uint32
+                                    YLeaf fast_detect; //type: boolean
+                                    YLeaf mode_info; //type: uint32
 
                                 class DestinationAddress : public Entity
                                 {
@@ -4303,19 +4323,18 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value af; //type: BmAfIdEnum
-                                        Value ipv4; //type: string
-                                        Value ipv6; //type: string
 
 
-                                        class BmAfIdEnum;
+                                        YLeaf af; //type: BmAfIdEnum
+                                        YLeaf ipv4; //type: string
+                                        YLeaf ipv6; //type: string
+
 
 
                                 }; // BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::BfdConfig::DestinationAddress
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::BfdConfig::DestinationAddress> destination_address;
-                                    class BmdBfdBdlStateEnum;
 
 
                             }; // BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::BfdConfig
@@ -4323,16 +4342,6 @@ class BundleInformation : public Entity
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::BfdConfig> > bfd_config;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::MacAddress> mac_address;
-                                class BmBdlStateEnum;
-                                class BmFeatureStatusEnum;
-                                class BmFeatureStatusEnum;
-                                class BmFeatureStatusEnum;
-                                class BmFeatureStatusEnum;
-                                class BmBdlMacSourceEnum;
-                                class BmWhichSystemEnum;
-                                class BundleMlacpModeEnum;
-                                class BmFeatureStatusEnum;
-                                class BmdMlacpSwitchoverEnum;
 
 
                         }; // BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData
@@ -4351,8 +4360,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value system_prio; //type: uint16
 
+
+                                YLeaf system_prio; //type: uint16
 
                             class SystemMacAddr : public Entity
                             {
@@ -4367,8 +4377,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value macaddr; //type: string
 
+
+                                    YLeaf macaddr; //type: string
 
 
 
@@ -4401,16 +4412,17 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value selected_aggregator_id; //type: uint32
-                            Value attached_aggregator_id; //type: uint32
-                            Value selection_state; //type: LacpSelStateEnum
-                            Value period_state; //type: LacpPeriodStateEnum
-                            Value receive_machine_state; //type: RxstatesEnum
-                            Value mux_state; //type: BmMuxstateEnum
-                            Value actor_churn_state; //type: LacpChurnstatesEnum
-                            Value partner_churn_state; //type: LacpChurnstatesEnum
-                            Value iccp_group_id; //type: uint32
 
+
+                            YLeaf selected_aggregator_id; //type: uint32
+                            YLeaf attached_aggregator_id; //type: uint32
+                            YLeaf selection_state; //type: LacpSelStateEnum
+                            YLeaf period_state; //type: LacpPeriodStateEnum
+                            YLeaf receive_machine_state; //type: RxstatesEnum
+                            YLeaf mux_state; //type: BmMuxstateEnum
+                            YLeaf actor_churn_state; //type: LacpChurnstatesEnum
+                            YLeaf partner_churn_state; //type: LacpChurnstatesEnum
+                            YLeaf iccp_group_id; //type: uint32
 
                         class ActorInfo : public Entity
                         {
@@ -4425,8 +4437,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tx_period; //type: uint32
 
+
+                                YLeaf tx_period; //type: uint32
 
                             class PortInfo : public Entity
                             {
@@ -4441,9 +4454,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value key; //type: uint16
-                                    Value state; //type: uint8
 
+
+                                    YLeaf key; //type: uint16
+                                    YLeaf state; //type: uint8
 
                                 class System : public Entity
                                 {
@@ -4458,8 +4472,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value system_prio; //type: uint16
 
+
+                                        YLeaf system_prio; //type: uint16
 
                                     class SystemMacAddr : public Entity
                                     {
@@ -4474,8 +4489,9 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value macaddr; //type: string
 
+
+                                            YLeaf macaddr; //type: string
 
 
 
@@ -4501,9 +4517,10 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value link_priority; //type: uint16
-                                        Value link_number; //type: uint16
 
+
+                                        YLeaf link_priority; //type: uint16
+                                        YLeaf link_number; //type: uint16
 
 
 
@@ -4536,8 +4553,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tx_period; //type: uint32
 
+
+                                YLeaf tx_period; //type: uint32
 
                             class PortInfo : public Entity
                             {
@@ -4552,9 +4570,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value key; //type: uint16
-                                    Value state; //type: uint8
 
+
+                                    YLeaf key; //type: uint16
+                                    YLeaf state; //type: uint8
 
                                 class System : public Entity
                                 {
@@ -4569,8 +4588,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value system_prio; //type: uint16
 
+
+                                        YLeaf system_prio; //type: uint16
 
                                     class SystemMacAddr : public Entity
                                     {
@@ -4585,8 +4605,9 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value macaddr; //type: string
 
+
+                                            YLeaf macaddr; //type: string
 
 
 
@@ -4612,9 +4633,10 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value link_priority; //type: uint16
-                                        Value link_number; //type: uint16
 
+
+                                        YLeaf link_priority; //type: uint16
+                                        YLeaf link_number; //type: uint16
 
 
 
@@ -4647,8 +4669,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mbr_type; //type: BmdMemberTypeEnumEnum
 
+
+                                YLeaf mbr_type; //type: BmdMemberTypeEnumEnum
 
                             class Local : public Entity
                             {
@@ -4663,8 +4686,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_handle; //type: string
 
+
+                                    YLeaf interface_handle; //type: string
 
 
 
@@ -4684,9 +4708,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value peer_address; //type: string
-                                    Value member_name; //type: string
 
+
+                                    YLeaf peer_address; //type: string
+                                    YLeaf member_name; //type: string
 
 
 
@@ -4695,7 +4720,6 @@ class BundleInformation : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::Foreign> foreign;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::Local> local;
-                                class BmdMemberTypeEnumEnum;
 
 
                         }; // BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo
@@ -4704,12 +4728,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo> actor_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo> additional_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo> partner_info;
-                            class LacpChurnstatesEnum;
-                            class BmMuxstateEnum;
-                            class LacpChurnstatesEnum;
-                            class LacpPeriodStateEnum;
-                            class RxstatesEnum;
-                            class LacpSelStateEnum;
 
 
                     }; // BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
@@ -4735,16 +4753,17 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value selected_aggregator_id; //type: uint32
-                        Value attached_aggregator_id; //type: uint32
-                        Value selection_state; //type: LacpSelStateEnum
-                        Value period_state; //type: LacpPeriodStateEnum
-                        Value receive_machine_state; //type: RxstatesEnum
-                        Value mux_state; //type: BmMuxstateEnum
-                        Value actor_churn_state; //type: LacpChurnstatesEnum
-                        Value partner_churn_state; //type: LacpChurnstatesEnum
-                        Value iccp_group_id; //type: uint32
 
+
+                        YLeaf selected_aggregator_id; //type: uint32
+                        YLeaf attached_aggregator_id; //type: uint32
+                        YLeaf selection_state; //type: LacpSelStateEnum
+                        YLeaf period_state; //type: LacpPeriodStateEnum
+                        YLeaf receive_machine_state; //type: RxstatesEnum
+                        YLeaf mux_state; //type: BmMuxstateEnum
+                        YLeaf actor_churn_state; //type: LacpChurnstatesEnum
+                        YLeaf partner_churn_state; //type: LacpChurnstatesEnum
+                        YLeaf iccp_group_id; //type: uint32
 
                     class ActorInfo : public Entity
                     {
@@ -4759,8 +4778,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value tx_period; //type: uint32
 
+
+                            YLeaf tx_period; //type: uint32
 
                         class PortInfo : public Entity
                         {
@@ -4775,9 +4795,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value key; //type: uint16
-                                Value state; //type: uint8
 
+
+                                YLeaf key; //type: uint16
+                                YLeaf state; //type: uint8
 
                             class System : public Entity
                             {
@@ -4792,8 +4813,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value system_prio; //type: uint16
 
+
+                                    YLeaf system_prio; //type: uint16
 
                                 class SystemMacAddr : public Entity
                                 {
@@ -4808,8 +4830,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value macaddr; //type: string
 
+
+                                        YLeaf macaddr; //type: string
 
 
 
@@ -4835,9 +4858,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value link_priority; //type: uint16
-                                    Value link_number; //type: uint16
 
+
+                                    YLeaf link_priority; //type: uint16
+                                    YLeaf link_number; //type: uint16
 
 
 
@@ -4870,8 +4894,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value tx_period; //type: uint32
 
+
+                            YLeaf tx_period; //type: uint32
 
                         class PortInfo : public Entity
                         {
@@ -4886,9 +4911,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value key; //type: uint16
-                                Value state; //type: uint8
 
+
+                                YLeaf key; //type: uint16
+                                YLeaf state; //type: uint8
 
                             class System : public Entity
                             {
@@ -4903,8 +4929,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value system_prio; //type: uint16
 
+
+                                    YLeaf system_prio; //type: uint16
 
                                 class SystemMacAddr : public Entity
                                 {
@@ -4919,8 +4946,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value macaddr; //type: string
 
+
+                                        YLeaf macaddr; //type: string
 
 
 
@@ -4946,9 +4974,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value link_priority; //type: uint16
-                                    Value link_number; //type: uint16
 
+
+                                    YLeaf link_priority; //type: uint16
+                                    YLeaf link_number; //type: uint16
 
 
 
@@ -4981,8 +5010,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value mbr_type; //type: BmdMemberTypeEnumEnum
 
+
+                            YLeaf mbr_type; //type: BmdMemberTypeEnumEnum
 
                         class Local : public Entity
                         {
@@ -4997,8 +5027,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_handle; //type: string
 
+
+                                YLeaf interface_handle; //type: string
 
 
 
@@ -5018,9 +5049,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value peer_address; //type: string
-                                Value member_name; //type: string
 
+
+                                YLeaf peer_address; //type: string
+                                YLeaf member_name; //type: string
 
 
 
@@ -5029,7 +5061,6 @@ class BundleInformation : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::Foreign> foreign;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::Local> local;
-                            class BmdMemberTypeEnumEnum;
 
 
                     }; // BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo
@@ -5038,12 +5069,6 @@ class BundleInformation : public Entity
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo> actor_info;
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo> additional_info;
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo> partner_info;
-                        class LacpChurnstatesEnum;
-                        class BmMuxstateEnum;
-                        class LacpChurnstatesEnum;
-                        class LacpPeriodStateEnum;
-                        class RxstatesEnum;
-                        class LacpSelStateEnum;
 
 
                 }; // BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem
@@ -5084,6 +5109,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class IccpGroups : public Entity
         {
             public:
@@ -5099,6 +5125,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class IccpGroup : public Entity
             {
                 public:
@@ -5112,8 +5139,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value iccp_group; //type: uint32
 
+
+                    YLeaf iccp_group; //type: uint32
 
                 class IccpGroupItem : public Entity
                 {
@@ -5130,6 +5158,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class IccpGroupData : public Entity
                     {
                         public:
@@ -5143,8 +5172,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value iccp_group_id; //type: uint32
 
+
+                            YLeaf iccp_group_id; //type: uint32
 
                         class MlacpSyncRequestsOnAllLocalPorts : public Entity
                         {
@@ -5159,9 +5189,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value last_time_cleared; //type: uint64
-                                Value time_since_cleared; //type: uint64
 
+
+                                YLeaf last_time_cleared; //type: uint64
+                                YLeaf time_since_cleared; //type: uint64
 
                             class ReceivedSyncRequests : public Entity
                             {
@@ -5176,10 +5207,11 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value all_syncs; //type: uint32
-                                    Value config_syncs; //type: uint32
-                                    Value state_syncs; //type: uint32
 
+
+                                    YLeaf all_syncs; //type: uint32
+                                    YLeaf config_syncs; //type: uint32
+                                    YLeaf state_syncs; //type: uint32
 
 
 
@@ -5205,9 +5237,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value last_time_cleared; //type: uint64
-                                Value time_since_cleared; //type: uint64
 
+
+                                YLeaf last_time_cleared; //type: uint64
+                                YLeaf time_since_cleared; //type: uint64
 
                             class ReceivedSyncRequests : public Entity
                             {
@@ -5222,10 +5255,11 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value all_syncs; //type: uint32
-                                    Value config_syncs; //type: uint32
-                                    Value state_syncs; //type: uint32
 
+
+                                    YLeaf all_syncs; //type: uint32
+                                    YLeaf config_syncs; //type: uint32
+                                    YLeaf state_syncs; //type: uint32
 
 
 
@@ -5251,8 +5285,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_name; //type: string
 
+
+                                YLeaf bundle_name; //type: string
 
                             class MlacpTlvCounters : public Entity
                             {
@@ -5267,15 +5302,16 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sent_config_tl_vs; //type: uint32
-                                    Value sent_state_tl_vs; //type: uint32
-                                    Value sent_priority_tl_vs; //type: uint32
-                                    Value received_priority_tl_vs; //type: uint32
-                                    Value received_nak_tl_vs; //type: uint32
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
-                                    Value last_unexpected_event; //type: uint64
 
+
+                                    YLeaf sent_config_tl_vs; //type: uint32
+                                    YLeaf sent_state_tl_vs; //type: uint32
+                                    YLeaf sent_priority_tl_vs; //type: uint32
+                                    YLeaf received_priority_tl_vs; //type: uint32
+                                    YLeaf received_nak_tl_vs; //type: uint32
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
+                                    YLeaf last_unexpected_event; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -5290,10 +5326,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -5335,6 +5372,7 @@ class BundleInformation : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NodeData_ : public Entity
                         {
                             public:
@@ -5348,8 +5386,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value node_id; //type: uint32
 
+
+                                YLeaf node_id; //type: uint32
 
                             class MlacpSyncRequestsOnAllForeignPorts : public Entity
                             {
@@ -5364,9 +5403,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
 
+
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -5381,10 +5421,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -5410,9 +5451,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
 
+
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -5427,10 +5469,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -5463,8 +5506,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_name; //type: string
 
+
+                                YLeaf bundle_name; //type: string
 
                             class MlacpTlvCounters : public Entity
                             {
@@ -5479,15 +5523,16 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sent_config_tl_vs; //type: uint32
-                                    Value sent_state_tl_vs; //type: uint32
-                                    Value sent_priority_tl_vs; //type: uint32
-                                    Value received_priority_tl_vs; //type: uint32
-                                    Value received_nak_tl_vs; //type: uint32
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
-                                    Value last_unexpected_event; //type: uint64
 
+
+                                    YLeaf sent_config_tl_vs; //type: uint32
+                                    YLeaf sent_state_tl_vs; //type: uint32
+                                    YLeaf sent_priority_tl_vs; //type: uint32
+                                    YLeaf received_priority_tl_vs; //type: uint32
+                                    YLeaf received_nak_tl_vs; //type: uint32
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
+                                    YLeaf last_unexpected_event; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -5502,10 +5547,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -5565,6 +5611,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Bundle : public Entity
             {
                 public:
@@ -5578,8 +5625,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class BundleItem : public Entity
                 {
@@ -5594,6 +5642,7 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class IccpGroup : public Entity
@@ -5611,6 +5660,7 @@ class BundleInformation : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class IccpGroupData : public Entity
                         {
                             public:
@@ -5624,8 +5674,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value iccp_group_id; //type: uint32
 
+
+                                YLeaf iccp_group_id; //type: uint32
 
                             class MlacpSyncRequestsOnAllLocalPorts : public Entity
                             {
@@ -5640,9 +5691,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
 
+
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -5657,10 +5709,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -5686,9 +5739,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
 
+
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -5703,10 +5757,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -5732,8 +5787,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_name; //type: string
 
+
+                                    YLeaf bundle_name; //type: string
 
                                 class MlacpTlvCounters : public Entity
                                 {
@@ -5748,15 +5804,16 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sent_config_tl_vs; //type: uint32
-                                        Value sent_state_tl_vs; //type: uint32
-                                        Value sent_priority_tl_vs; //type: uint32
-                                        Value received_priority_tl_vs; //type: uint32
-                                        Value received_nak_tl_vs; //type: uint32
-                                        Value last_time_cleared; //type: uint64
-                                        Value time_since_cleared; //type: uint64
-                                        Value last_unexpected_event; //type: uint64
 
+
+                                        YLeaf sent_config_tl_vs; //type: uint32
+                                        YLeaf sent_state_tl_vs; //type: uint32
+                                        YLeaf sent_priority_tl_vs; //type: uint32
+                                        YLeaf received_priority_tl_vs; //type: uint32
+                                        YLeaf received_nak_tl_vs; //type: uint32
+                                        YLeaf last_time_cleared; //type: uint64
+                                        YLeaf time_since_cleared; //type: uint64
+                                        YLeaf last_unexpected_event; //type: uint64
 
                                     class ReceivedSyncRequests : public Entity
                                     {
@@ -5771,10 +5828,11 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value all_syncs; //type: uint32
-                                            Value config_syncs; //type: uint32
-                                            Value state_syncs; //type: uint32
 
+
+                                            YLeaf all_syncs; //type: uint32
+                                            YLeaf config_syncs; //type: uint32
+                                            YLeaf state_syncs; //type: uint32
 
 
 
@@ -5816,6 +5874,7 @@ class BundleInformation : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class NodeData_ : public Entity
                             {
                                 public:
@@ -5829,8 +5888,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_id; //type: uint32
 
+
+                                    YLeaf node_id; //type: uint32
 
                                 class MlacpSyncRequestsOnAllForeignPorts : public Entity
                                 {
@@ -5845,9 +5905,10 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value last_time_cleared; //type: uint64
-                                        Value time_since_cleared; //type: uint64
 
+
+                                        YLeaf last_time_cleared; //type: uint64
+                                        YLeaf time_since_cleared; //type: uint64
 
                                     class ReceivedSyncRequests : public Entity
                                     {
@@ -5862,10 +5923,11 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value all_syncs; //type: uint32
-                                            Value config_syncs; //type: uint32
-                                            Value state_syncs; //type: uint32
 
+
+                                            YLeaf all_syncs; //type: uint32
+                                            YLeaf config_syncs; //type: uint32
+                                            YLeaf state_syncs; //type: uint32
 
 
 
@@ -5891,9 +5953,10 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value last_time_cleared; //type: uint64
-                                        Value time_since_cleared; //type: uint64
 
+
+                                        YLeaf last_time_cleared; //type: uint64
+                                        YLeaf time_since_cleared; //type: uint64
 
                                     class ReceivedSyncRequests : public Entity
                                     {
@@ -5908,10 +5971,11 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value all_syncs; //type: uint32
-                                            Value config_syncs; //type: uint32
-                                            Value state_syncs; //type: uint32
 
+
+                                            YLeaf all_syncs; //type: uint32
+                                            YLeaf config_syncs; //type: uint32
+                                            YLeaf state_syncs; //type: uint32
 
 
 
@@ -5944,8 +6008,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_name; //type: string
 
+
+                                    YLeaf bundle_name; //type: string
 
                                 class MlacpTlvCounters : public Entity
                                 {
@@ -5960,15 +6025,16 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sent_config_tl_vs; //type: uint32
-                                        Value sent_state_tl_vs; //type: uint32
-                                        Value sent_priority_tl_vs; //type: uint32
-                                        Value received_priority_tl_vs; //type: uint32
-                                        Value received_nak_tl_vs; //type: uint32
-                                        Value last_time_cleared; //type: uint64
-                                        Value time_since_cleared; //type: uint64
-                                        Value last_unexpected_event; //type: uint64
 
+
+                                        YLeaf sent_config_tl_vs; //type: uint32
+                                        YLeaf sent_state_tl_vs; //type: uint32
+                                        YLeaf sent_priority_tl_vs; //type: uint32
+                                        YLeaf received_priority_tl_vs; //type: uint32
+                                        YLeaf received_nak_tl_vs; //type: uint32
+                                        YLeaf last_time_cleared; //type: uint64
+                                        YLeaf time_since_cleared; //type: uint64
+                                        YLeaf last_unexpected_event; //type: uint64
 
                                     class ReceivedSyncRequests : public Entity
                                     {
@@ -5983,10 +6049,11 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value all_syncs; //type: uint32
-                                            Value config_syncs; //type: uint32
-                                            Value state_syncs; //type: uint32
 
+
+                                            YLeaf all_syncs; //type: uint32
+                                            YLeaf config_syncs; //type: uint32
+                                            YLeaf state_syncs; //type: uint32
 
 
 
@@ -6052,6 +6119,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Node : public Entity
             {
                 public:
@@ -6065,8 +6133,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value node; //type: string
 
+
+                    YLeaf node; //type: string
 
                 class NodeItem : public Entity
                 {
@@ -6083,6 +6152,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class IccpGroupData : public Entity
                     {
                         public:
@@ -6096,8 +6166,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value iccp_group_id; //type: uint32
 
+
+                            YLeaf iccp_group_id; //type: uint32
 
                         class MlacpSyncRequestsOnAllLocalPorts : public Entity
                         {
@@ -6112,9 +6183,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value last_time_cleared; //type: uint64
-                                Value time_since_cleared; //type: uint64
 
+
+                                YLeaf last_time_cleared; //type: uint64
+                                YLeaf time_since_cleared; //type: uint64
 
                             class ReceivedSyncRequests : public Entity
                             {
@@ -6129,10 +6201,11 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value all_syncs; //type: uint32
-                                    Value config_syncs; //type: uint32
-                                    Value state_syncs; //type: uint32
 
+
+                                    YLeaf all_syncs; //type: uint32
+                                    YLeaf config_syncs; //type: uint32
+                                    YLeaf state_syncs; //type: uint32
 
 
 
@@ -6158,9 +6231,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value last_time_cleared; //type: uint64
-                                Value time_since_cleared; //type: uint64
 
+
+                                YLeaf last_time_cleared; //type: uint64
+                                YLeaf time_since_cleared; //type: uint64
 
                             class ReceivedSyncRequests : public Entity
                             {
@@ -6175,10 +6249,11 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value all_syncs; //type: uint32
-                                    Value config_syncs; //type: uint32
-                                    Value state_syncs; //type: uint32
 
+
+                                    YLeaf all_syncs; //type: uint32
+                                    YLeaf config_syncs; //type: uint32
+                                    YLeaf state_syncs; //type: uint32
 
 
 
@@ -6204,8 +6279,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_name; //type: string
 
+
+                                YLeaf bundle_name; //type: string
 
                             class MlacpTlvCounters : public Entity
                             {
@@ -6220,15 +6296,16 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sent_config_tl_vs; //type: uint32
-                                    Value sent_state_tl_vs; //type: uint32
-                                    Value sent_priority_tl_vs; //type: uint32
-                                    Value received_priority_tl_vs; //type: uint32
-                                    Value received_nak_tl_vs; //type: uint32
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
-                                    Value last_unexpected_event; //type: uint64
 
+
+                                    YLeaf sent_config_tl_vs; //type: uint32
+                                    YLeaf sent_state_tl_vs; //type: uint32
+                                    YLeaf sent_priority_tl_vs; //type: uint32
+                                    YLeaf received_priority_tl_vs; //type: uint32
+                                    YLeaf received_nak_tl_vs; //type: uint32
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
+                                    YLeaf last_unexpected_event; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -6243,10 +6320,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -6288,6 +6366,7 @@ class BundleInformation : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NodeData_ : public Entity
                         {
                             public:
@@ -6301,8 +6380,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value node_id; //type: uint32
 
+
+                                YLeaf node_id; //type: uint32
 
                             class MlacpSyncRequestsOnAllForeignPorts : public Entity
                             {
@@ -6317,9 +6397,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
 
+
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -6334,10 +6415,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -6363,9 +6445,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
 
+
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -6380,10 +6463,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -6416,8 +6500,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_name; //type: string
 
+
+                                YLeaf bundle_name; //type: string
 
                             class MlacpTlvCounters : public Entity
                             {
@@ -6432,15 +6517,16 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sent_config_tl_vs; //type: uint32
-                                    Value sent_state_tl_vs; //type: uint32
-                                    Value sent_priority_tl_vs; //type: uint32
-                                    Value received_priority_tl_vs; //type: uint32
-                                    Value received_nak_tl_vs; //type: uint32
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
-                                    Value last_unexpected_event; //type: uint64
 
+
+                                    YLeaf sent_config_tl_vs; //type: uint32
+                                    YLeaf sent_state_tl_vs; //type: uint32
+                                    YLeaf sent_priority_tl_vs; //type: uint32
+                                    YLeaf received_priority_tl_vs; //type: uint32
+                                    YLeaf received_nak_tl_vs; //type: uint32
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
+                                    YLeaf last_unexpected_event; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -6455,10 +6541,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -6526,6 +6613,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ProtectBundles : public Entity
         {
             public:
@@ -6541,6 +6629,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class ProtectBundle : public Entity
             {
                 public:
@@ -6554,8 +6643,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class ProtectBundleItem : public Entity
                 {
@@ -6570,16 +6660,17 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bundle_interface_handle; //type: string
-                        Value interface_up; //type: boolean
-                        Value registered; //type: boolean
-                        Value slow_path_up; //type: boolean
-                        Value slow_path_trigger; //type: boolean
-                        Value minimum_active_links; //type: uint32
-                        Value minimum_bandwidth; //type: uint32
-                        Value event_type; //type: BmdBagTargetEnum
-                        Value time_stamp; //type: uint64
 
+
+                        YLeaf bundle_interface_handle; //type: string
+                        YLeaf interface_up; //type: boolean
+                        YLeaf registered; //type: boolean
+                        YLeaf slow_path_up; //type: boolean
+                        YLeaf slow_path_trigger; //type: boolean
+                        YLeaf minimum_active_links; //type: uint32
+                        YLeaf minimum_bandwidth; //type: uint32
+                        YLeaf event_type; //type: BmdBagTargetEnum
+                        YLeaf time_stamp; //type: uint64
 
                     class MemberInfo : public Entity
                     {
@@ -6594,16 +6685,17 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_handle; //type: string
-                            Value underlying_link_id; //type: uint16
-                            Value link_order_number; //type: uint16
-                            Value bandwidth; //type: uint32
-                            Value node; //type: string
-                            Value active; //type: boolean
-                            Value notification_received; //type: boolean
-                            Value slow_path_up; //type: boolean
-                            Value time_stamp; //type: uint64
 
+
+                            YLeaf interface_handle; //type: string
+                            YLeaf underlying_link_id; //type: uint16
+                            YLeaf link_order_number; //type: uint16
+                            YLeaf bandwidth; //type: uint32
+                            YLeaf node; //type: string
+                            YLeaf active; //type: boolean
+                            YLeaf notification_received; //type: boolean
+                            YLeaf slow_path_up; //type: boolean
+                            YLeaf time_stamp; //type: uint64
 
 
 
@@ -6611,7 +6703,6 @@ class BundleInformation : public Entity
 
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem::MemberInfo> > member_info;
-                        class BmdBagTargetEnum;
 
 
                 }; // BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem
@@ -6650,6 +6741,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class MlacpBundleBriefs : public Entity
         {
             public:
@@ -6665,6 +6757,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class MlacpBundleBrief : public Entity
             {
                 public:
@@ -6678,8 +6771,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class MlacpBundleItemBrief : public Entity
                 {
@@ -6694,6 +6788,7 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class MlacpData : public Entity
@@ -6711,6 +6806,7 @@ class BundleInformation : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class IccpGroupData : public Entity
                         {
                             public:
@@ -6724,10 +6820,11 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value iccp_group_id; //type: uint32
-                                Value singleton; //type: boolean
-                                Value connect_timer_running; //type: uint64
 
+
+                                YLeaf iccp_group_id; //type: uint32
+                                YLeaf singleton; //type: boolean
+                                YLeaf connect_timer_running; //type: uint64
 
                             class NodeData : public Entity
                             {
@@ -6742,12 +6839,13 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value mlacp_node_id; //type: uint8
-                                    Value ldp_id; //type: string
-                                    Value version_number; //type: uint32
-                                    Value node_state; //type: BmdMlacpNodeStateEnumEnum
-                                    Value iccp_group_state; //type: BmdMlacpNodeSyncEnumEnum
 
+
+                                    YLeaf mlacp_node_id; //type: uint8
+                                    YLeaf ldp_id; //type: string
+                                    YLeaf version_number; //type: uint32
+                                    YLeaf node_state; //type: BmdMlacpNodeStateEnumEnum
+                                    YLeaf iccp_group_state; //type: BmdMlacpNodeSyncEnumEnum
 
                                 class SystemId : public Entity
                                 {
@@ -6762,8 +6860,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value system_prio; //type: uint16
 
+
+                                        YLeaf system_prio; //type: uint16
 
                                     class SystemMacAddr : public Entity
                                     {
@@ -6778,8 +6877,9 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value macaddr; //type: string
 
+
+                                            YLeaf macaddr; //type: string
 
 
 
@@ -6793,8 +6893,6 @@ class BundleInformation : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData::SystemId> system_id;
-                                    class BmdMlacpNodeSyncEnumEnum;
-                                    class BmdMlacpNodeStateEnumEnum;
 
 
                             }; // BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData
@@ -6819,10 +6917,11 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_interface_key; //type: uint16
-                                Value media_type; //type: BundleMediaEnum
-                                Value redundancy_object_id; //type: uint64
 
+
+                                YLeaf bundle_interface_key; //type: uint16
+                                YLeaf media_type; //type: BundleMediaEnum
+                                YLeaf redundancy_object_id; //type: uint64
 
                             class MlacpBundleData : public Entity
                             {
@@ -6837,12 +6936,13 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_name; //type: string
-                                    Value mlacp_node_id; //type: uint8
-                                    Value aggregator_id; //type: uint16
-                                    Value bundle_state; //type: BmdMlacpBdlStateEnumEnum
-                                    Value port_priority; //type: uint16
 
+
+                                    YLeaf bundle_name; //type: string
+                                    YLeaf mlacp_node_id; //type: uint8
+                                    YLeaf aggregator_id; //type: uint16
+                                    YLeaf bundle_state; //type: BmdMlacpBdlStateEnumEnum
+                                    YLeaf port_priority; //type: uint16
 
                                 class MacAddress : public Entity
                                 {
@@ -6857,8 +6957,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
 
+
+                                        YLeaf address; //type: string
 
 
 
@@ -6866,7 +6967,6 @@ class BundleInformation : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpBundleData::MacAddress> mac_address;
-                                    class BmdMlacpBdlStateEnumEnum;
 
 
                             }; // BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpBundleData
@@ -6885,16 +6985,16 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value port_name; //type: string
-                                    Value interface_handle; //type: string
-                                    Value mlacp_node_id; //type: uint8
-                                    Value port_number; //type: uint16
-                                    Value operational_priority; //type: uint16
-                                    Value configured_priority; //type: uint16
-                                    Value member_state; //type: BmdMlacpMbrStateEnumEnum
 
 
-                                    class BmdMlacpMbrStateEnumEnum;
+                                    YLeaf port_name; //type: string
+                                    YLeaf interface_handle; //type: string
+                                    YLeaf mlacp_node_id; //type: uint8
+                                    YLeaf port_number; //type: uint16
+                                    YLeaf operational_priority; //type: uint16
+                                    YLeaf configured_priority; //type: uint16
+                                    YLeaf member_state; //type: BmdMlacpMbrStateEnumEnum
+
 
 
                             }; // BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpMemberData
@@ -6902,7 +7002,6 @@ class BundleInformation : public Entity
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpBundleData> > mlacp_bundle_data;
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpMemberData> > mlacp_member_data;
-                                class BundleMediaEnum;
 
 
                         }; // BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData
@@ -6948,6 +7047,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class MlacpBriefIccpGroup : public Entity
             {
                 public:
@@ -6961,8 +7061,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value iccp_group; //type: uint32
 
+
+                    YLeaf iccp_group; //type: uint32
 
                 class MlacpBriefIccpGroupItem : public Entity
                 {
@@ -6979,6 +7080,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class IccpGroupData : public Entity
                     {
                         public:
@@ -6992,10 +7094,11 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value iccp_group_id; //type: uint32
-                            Value singleton; //type: boolean
-                            Value connect_timer_running; //type: uint64
 
+
+                            YLeaf iccp_group_id; //type: uint32
+                            YLeaf singleton; //type: boolean
+                            YLeaf connect_timer_running; //type: uint64
 
                         class NodeData : public Entity
                         {
@@ -7010,12 +7113,13 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mlacp_node_id; //type: uint8
-                                Value ldp_id; //type: string
-                                Value version_number; //type: uint32
-                                Value node_state; //type: BmdMlacpNodeStateEnumEnum
-                                Value iccp_group_state; //type: BmdMlacpNodeSyncEnumEnum
 
+
+                                YLeaf mlacp_node_id; //type: uint8
+                                YLeaf ldp_id; //type: string
+                                YLeaf version_number; //type: uint32
+                                YLeaf node_state; //type: BmdMlacpNodeStateEnumEnum
+                                YLeaf iccp_group_state; //type: BmdMlacpNodeSyncEnumEnum
 
                             class SystemId : public Entity
                             {
@@ -7030,8 +7134,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value system_prio; //type: uint16
 
+
+                                    YLeaf system_prio; //type: uint16
 
                                 class SystemMacAddr : public Entity
                                 {
@@ -7046,8 +7151,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value macaddr; //type: string
 
+
+                                        YLeaf macaddr; //type: string
 
 
 
@@ -7061,8 +7167,6 @@ class BundleInformation : public Entity
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData::SystemId> system_id;
-                                class BmdMlacpNodeSyncEnumEnum;
-                                class BmdMlacpNodeStateEnumEnum;
 
 
                         }; // BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData
@@ -7087,10 +7191,11 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bundle_interface_key; //type: uint16
-                            Value media_type; //type: BundleMediaEnum
-                            Value redundancy_object_id; //type: uint64
 
+
+                            YLeaf bundle_interface_key; //type: uint16
+                            YLeaf media_type; //type: BundleMediaEnum
+                            YLeaf redundancy_object_id; //type: uint64
 
                         class MlacpBundleData : public Entity
                         {
@@ -7105,12 +7210,13 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_name; //type: string
-                                Value mlacp_node_id; //type: uint8
-                                Value aggregator_id; //type: uint16
-                                Value bundle_state; //type: BmdMlacpBdlStateEnumEnum
-                                Value port_priority; //type: uint16
 
+
+                                YLeaf bundle_name; //type: string
+                                YLeaf mlacp_node_id; //type: uint8
+                                YLeaf aggregator_id; //type: uint16
+                                YLeaf bundle_state; //type: BmdMlacpBdlStateEnumEnum
+                                YLeaf port_priority; //type: uint16
 
                             class MacAddress : public Entity
                             {
@@ -7125,8 +7231,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
 
+
+                                    YLeaf address; //type: string
 
 
 
@@ -7134,7 +7241,6 @@ class BundleInformation : public Entity
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpBundleData::MacAddress> mac_address;
-                                class BmdMlacpBdlStateEnumEnum;
 
 
                         }; // BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpBundleData
@@ -7153,16 +7259,16 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value port_name; //type: string
-                                Value interface_handle; //type: string
-                                Value mlacp_node_id; //type: uint8
-                                Value port_number; //type: uint16
-                                Value operational_priority; //type: uint16
-                                Value configured_priority; //type: uint16
-                                Value member_state; //type: BmdMlacpMbrStateEnumEnum
 
 
-                                class BmdMlacpMbrStateEnumEnum;
+                                YLeaf port_name; //type: string
+                                YLeaf interface_handle; //type: string
+                                YLeaf mlacp_node_id; //type: uint8
+                                YLeaf port_number; //type: uint16
+                                YLeaf operational_priority; //type: uint16
+                                YLeaf configured_priority; //type: uint16
+                                YLeaf member_state; //type: BmdMlacpMbrStateEnumEnum
+
 
 
                         }; // BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpMemberData
@@ -7170,7 +7276,6 @@ class BundleInformation : public Entity
 
                             std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpBundleData> > mlacp_bundle_data;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpMemberData> > mlacp_member_data;
-                            class BundleMediaEnum;
 
 
                     }; // BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData
@@ -7217,6 +7322,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class MlacpBundles : public Entity
         {
             public:
@@ -7232,6 +7338,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class MlacpBundle : public Entity
             {
                 public:
@@ -7245,8 +7352,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class MlacpBundleItem : public Entity
                 {
@@ -7261,6 +7369,7 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class MlacpData : public Entity
@@ -7278,6 +7387,7 @@ class BundleInformation : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class IccpGroupData : public Entity
                         {
                             public:
@@ -7291,10 +7401,11 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value iccp_group_id; //type: uint32
-                                Value singleton; //type: boolean
-                                Value connect_timer_running; //type: uint64
 
+
+                                YLeaf iccp_group_id; //type: uint32
+                                YLeaf singleton; //type: boolean
+                                YLeaf connect_timer_running; //type: uint64
 
                             class NodeData : public Entity
                             {
@@ -7309,12 +7420,13 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value mlacp_node_id; //type: uint8
-                                    Value ldp_id; //type: string
-                                    Value version_number; //type: uint32
-                                    Value node_state; //type: BmdMlacpNodeStateEnumEnum
-                                    Value iccp_group_state; //type: BmdMlacpNodeSyncEnumEnum
 
+
+                                    YLeaf mlacp_node_id; //type: uint8
+                                    YLeaf ldp_id; //type: string
+                                    YLeaf version_number; //type: uint32
+                                    YLeaf node_state; //type: BmdMlacpNodeStateEnumEnum
+                                    YLeaf iccp_group_state; //type: BmdMlacpNodeSyncEnumEnum
 
                                 class SystemId : public Entity
                                 {
@@ -7329,8 +7441,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value system_prio; //type: uint16
 
+
+                                        YLeaf system_prio; //type: uint16
 
                                     class SystemMacAddr : public Entity
                                     {
@@ -7345,8 +7458,9 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value macaddr; //type: string
 
+
+                                            YLeaf macaddr; //type: string
 
 
 
@@ -7360,8 +7474,6 @@ class BundleInformation : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData::SystemId> system_id;
-                                    class BmdMlacpNodeSyncEnumEnum;
-                                    class BmdMlacpNodeStateEnumEnum;
 
 
                             }; // BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData
@@ -7386,10 +7498,11 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_interface_key; //type: uint16
-                                Value media_type; //type: BundleMediaEnum
-                                Value redundancy_object_id; //type: uint64
 
+
+                                YLeaf bundle_interface_key; //type: uint16
+                                YLeaf media_type; //type: BundleMediaEnum
+                                YLeaf redundancy_object_id; //type: uint64
 
                             class MlacpBundleData : public Entity
                             {
@@ -7404,12 +7517,13 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_name; //type: string
-                                    Value mlacp_node_id; //type: uint8
-                                    Value aggregator_id; //type: uint16
-                                    Value bundle_state; //type: BmdMlacpBdlStateEnumEnum
-                                    Value port_priority; //type: uint16
 
+
+                                    YLeaf bundle_name; //type: string
+                                    YLeaf mlacp_node_id; //type: uint8
+                                    YLeaf aggregator_id; //type: uint16
+                                    YLeaf bundle_state; //type: BmdMlacpBdlStateEnumEnum
+                                    YLeaf port_priority; //type: uint16
 
                                 class MacAddress : public Entity
                                 {
@@ -7424,8 +7538,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
 
+
+                                        YLeaf address; //type: string
 
 
 
@@ -7433,7 +7548,6 @@ class BundleInformation : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpBundleData::MacAddress> mac_address;
-                                    class BmdMlacpBdlStateEnumEnum;
 
 
                             }; // BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpBundleData
@@ -7452,16 +7566,16 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value port_name; //type: string
-                                    Value interface_handle; //type: string
-                                    Value mlacp_node_id; //type: uint8
-                                    Value port_number; //type: uint16
-                                    Value operational_priority; //type: uint16
-                                    Value configured_priority; //type: uint16
-                                    Value member_state; //type: BmdMlacpMbrStateEnumEnum
 
 
-                                    class BmdMlacpMbrStateEnumEnum;
+                                    YLeaf port_name; //type: string
+                                    YLeaf interface_handle; //type: string
+                                    YLeaf mlacp_node_id; //type: uint8
+                                    YLeaf port_number; //type: uint16
+                                    YLeaf operational_priority; //type: uint16
+                                    YLeaf configured_priority; //type: uint16
+                                    YLeaf member_state; //type: BmdMlacpMbrStateEnumEnum
+
 
 
                             }; // BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpMemberData
@@ -7469,7 +7583,6 @@ class BundleInformation : public Entity
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpBundleData> > mlacp_bundle_data;
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpMemberData> > mlacp_member_data;
-                                class BundleMediaEnum;
 
 
                         }; // BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData
@@ -7515,6 +7628,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class MlacpIccpGroup : public Entity
             {
                 public:
@@ -7528,8 +7642,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value iccp_group; //type: uint32
 
+
+                    YLeaf iccp_group; //type: uint32
 
                 class MlacpIccpGroupItem : public Entity
                 {
@@ -7546,6 +7661,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class IccpGroupData : public Entity
                     {
                         public:
@@ -7559,10 +7675,11 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value iccp_group_id; //type: uint32
-                            Value singleton; //type: boolean
-                            Value connect_timer_running; //type: uint64
 
+
+                            YLeaf iccp_group_id; //type: uint32
+                            YLeaf singleton; //type: boolean
+                            YLeaf connect_timer_running; //type: uint64
 
                         class NodeData : public Entity
                         {
@@ -7577,12 +7694,13 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mlacp_node_id; //type: uint8
-                                Value ldp_id; //type: string
-                                Value version_number; //type: uint32
-                                Value node_state; //type: BmdMlacpNodeStateEnumEnum
-                                Value iccp_group_state; //type: BmdMlacpNodeSyncEnumEnum
 
+
+                                YLeaf mlacp_node_id; //type: uint8
+                                YLeaf ldp_id; //type: string
+                                YLeaf version_number; //type: uint32
+                                YLeaf node_state; //type: BmdMlacpNodeStateEnumEnum
+                                YLeaf iccp_group_state; //type: BmdMlacpNodeSyncEnumEnum
 
                             class SystemId : public Entity
                             {
@@ -7597,8 +7715,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value system_prio; //type: uint16
 
+
+                                    YLeaf system_prio; //type: uint16
 
                                 class SystemMacAddr : public Entity
                                 {
@@ -7613,8 +7732,9 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value macaddr; //type: string
 
+
+                                        YLeaf macaddr; //type: string
 
 
 
@@ -7628,8 +7748,6 @@ class BundleInformation : public Entity
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::SystemId> system_id;
-                                class BmdMlacpNodeSyncEnumEnum;
-                                class BmdMlacpNodeStateEnumEnum;
 
 
                         }; // BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData
@@ -7654,10 +7772,11 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bundle_interface_key; //type: uint16
-                            Value media_type; //type: BundleMediaEnum
-                            Value redundancy_object_id; //type: uint64
 
+
+                            YLeaf bundle_interface_key; //type: uint16
+                            YLeaf media_type; //type: BundleMediaEnum
+                            YLeaf redundancy_object_id; //type: uint64
 
                         class MlacpBundleData : public Entity
                         {
@@ -7672,12 +7791,13 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_name; //type: string
-                                Value mlacp_node_id; //type: uint8
-                                Value aggregator_id; //type: uint16
-                                Value bundle_state; //type: BmdMlacpBdlStateEnumEnum
-                                Value port_priority; //type: uint16
 
+
+                                YLeaf bundle_name; //type: string
+                                YLeaf mlacp_node_id; //type: uint8
+                                YLeaf aggregator_id; //type: uint16
+                                YLeaf bundle_state; //type: BmdMlacpBdlStateEnumEnum
+                                YLeaf port_priority; //type: uint16
 
                             class MacAddress : public Entity
                             {
@@ -7692,8 +7812,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
 
+
+                                    YLeaf address; //type: string
 
 
 
@@ -7701,7 +7822,6 @@ class BundleInformation : public Entity
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData::MacAddress> mac_address;
-                                class BmdMlacpBdlStateEnumEnum;
 
 
                         }; // BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData
@@ -7720,16 +7840,16 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value port_name; //type: string
-                                Value interface_handle; //type: string
-                                Value mlacp_node_id; //type: uint8
-                                Value port_number; //type: uint16
-                                Value operational_priority; //type: uint16
-                                Value configured_priority; //type: uint16
-                                Value member_state; //type: BmdMlacpMbrStateEnumEnum
 
 
-                                class BmdMlacpMbrStateEnumEnum;
+                                YLeaf port_name; //type: string
+                                YLeaf interface_handle; //type: string
+                                YLeaf mlacp_node_id; //type: uint8
+                                YLeaf port_number; //type: uint16
+                                YLeaf operational_priority; //type: uint16
+                                YLeaf configured_priority; //type: uint16
+                                YLeaf member_state; //type: BmdMlacpMbrStateEnumEnum
+
 
 
                         }; // BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpMemberData
@@ -7737,7 +7857,6 @@ class BundleInformation : public Entity
 
                             std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData> > mlacp_bundle_data;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpMemberData> > mlacp_member_data;
-                            class BundleMediaEnum;
 
 
                     }; // BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData
@@ -7784,6 +7903,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class MacAllocationGlobal : public Entity
         {
             public:
@@ -7797,6 +7917,7 @@ class BundleInformation : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class MacAllocationGlobalItem : public Entity
@@ -7814,6 +7935,7 @@ class BundleInformation : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class MacAddress : public Entity
                 {
                     public:
@@ -7827,8 +7949,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
 
+
+                        YLeaf address; //type: string
 
 
 
@@ -7868,6 +7991,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class EventsMembers : public Entity
         {
             public:
@@ -7883,6 +8007,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EventsMember : public Entity
             {
                 public:
@@ -7896,8 +8021,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value member_interface; //type: string
 
+
+                    YLeaf member_interface; //type: string
 
                 class EventsMemberItem : public Entity
                 {
@@ -7912,8 +8038,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value item_name; //type: string
 
+
+                        YLeaf item_name; //type: string
 
                     class Items : public Entity
                     {
@@ -7928,8 +8055,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_type; //type: BmdBagTargetEnum
 
+
+                            YLeaf event_type; //type: BmdBagTargetEnum
 
                         class MemberEvtInfo : public Entity
                         {
@@ -7944,9 +8072,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -7961,20 +8090,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo::Data> data;
-                                class BmdBagEventMbrItemEnum;
 
 
                         }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo
@@ -7993,9 +8121,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -8010,20 +8139,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo::Data> data;
-                                class BmdBagEventBdlItemEnum;
 
 
                         }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo
@@ -8042,9 +8170,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -8059,20 +8188,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo::Data> data;
-                                class BmdBagEventRgItemEnum;
 
 
                         }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo
@@ -8081,7 +8209,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo> bundle_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo> member_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo> rg_evt_info;
-                            class BmdBagTargetEnum;
 
 
                     }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items
@@ -8106,8 +8233,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value item_name; //type: string
 
+
+                        YLeaf item_name; //type: string
 
                     class Items : public Entity
                     {
@@ -8122,8 +8250,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_type; //type: BmdBagTargetEnum
 
+
+                            YLeaf event_type; //type: BmdBagTargetEnum
 
                         class MemberEvtInfo : public Entity
                         {
@@ -8138,9 +8267,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -8155,20 +8285,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo::Data> data;
-                                class BmdBagEventMbrItemEnum;
 
 
                         }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo
@@ -8187,9 +8316,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -8204,20 +8334,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo::Data> data;
-                                class BmdBagEventBdlItemEnum;
 
 
                         }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo
@@ -8236,9 +8365,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -8253,20 +8383,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo::Data> data;
-                                class BmdBagEventRgItemEnum;
 
 
                         }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo
@@ -8275,7 +8404,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo> bundle_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo> member_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo> rg_evt_info;
-                            class BmdBagTargetEnum;
 
 
                     }; // BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items
@@ -8315,6 +8443,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EventsBundle : public Entity
             {
                 public:
@@ -8328,8 +8457,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class EventsBundleAncestor : public Entity
                 {
@@ -8344,8 +8474,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value item_name; //type: string
 
+
+                        YLeaf item_name; //type: string
 
                     class Items : public Entity
                     {
@@ -8360,8 +8491,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_type; //type: BmdBagTargetEnum
 
+
+                            YLeaf event_type; //type: BmdBagTargetEnum
 
                         class MemberEvtInfo : public Entity
                         {
@@ -8376,9 +8508,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -8393,20 +8526,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo::Data> data;
-                                class BmdBagEventMbrItemEnum;
 
 
                         }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo
@@ -8425,9 +8557,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -8442,20 +8575,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo::Data> data;
-                                class BmdBagEventBdlItemEnum;
 
 
                         }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo
@@ -8474,9 +8606,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -8491,20 +8624,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo::Data> data;
-                                class BmdBagEventRgItemEnum;
 
 
                         }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo
@@ -8513,7 +8645,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo> bundle_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo> member_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo> rg_evt_info;
-                            class BmdBagTargetEnum;
 
 
                     }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items
@@ -8538,8 +8669,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value item_name; //type: string
 
+
+                        YLeaf item_name; //type: string
 
                     class Items : public Entity
                     {
@@ -8554,8 +8686,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_type; //type: BmdBagTargetEnum
 
+
+                            YLeaf event_type; //type: BmdBagTargetEnum
 
                         class MemberEvtInfo : public Entity
                         {
@@ -8570,9 +8703,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -8587,20 +8721,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo::Data> data;
-                                class BmdBagEventMbrItemEnum;
 
 
                         }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo
@@ -8619,9 +8752,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -8636,20 +8770,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo::Data> data;
-                                class BmdBagEventBdlItemEnum;
 
 
                         }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo
@@ -8668,9 +8801,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -8685,20 +8819,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo::Data> data;
-                                class BmdBagEventRgItemEnum;
 
 
                         }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo
@@ -8707,7 +8840,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo> bundle_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo> member_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo> rg_evt_info;
-                            class BmdBagTargetEnum;
 
 
                     }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items
@@ -8734,6 +8866,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class EventsItem : public Entity
                     {
                         public:
@@ -8747,8 +8880,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value item_name; //type: string
 
+
+                            YLeaf item_name; //type: string
 
                         class Items : public Entity
                         {
@@ -8763,8 +8897,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value event_type; //type: BmdBagTargetEnum
 
+
+                                YLeaf event_type; //type: BmdBagTargetEnum
 
                             class MemberEvtInfo : public Entity
                             {
@@ -8779,9 +8914,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -8796,20 +8932,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo::Data> data;
-                                    class BmdBagEventMbrItemEnum;
 
 
                             }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo
@@ -8828,9 +8963,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -8845,20 +8981,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo::Data> data;
-                                    class BmdBagEventBdlItemEnum;
 
 
                             }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo
@@ -8877,9 +9012,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -8894,20 +9030,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo::Data> data;
-                                    class BmdBagEventRgItemEnum;
 
 
                             }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo
@@ -8916,7 +9051,6 @@ class BundleInformation : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo> bundle_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo> member_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo> rg_evt_info;
-                                class BmdBagTargetEnum;
 
 
                         }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items
@@ -8949,6 +9083,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class EventsBundleChildrenMember : public Entity
                     {
                         public:
@@ -8962,9 +9097,10 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value member_interface; //type: string
-                            Value item_name; //type: string
 
+
+                            YLeaf member_interface; //type: string
+                            YLeaf item_name; //type: string
 
                         class Items : public Entity
                         {
@@ -8979,8 +9115,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value event_type; //type: BmdBagTargetEnum
 
+
+                                YLeaf event_type; //type: BmdBagTargetEnum
 
                             class MemberEvtInfo : public Entity
                             {
@@ -8995,9 +9132,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -9012,20 +9150,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo::Data> data;
-                                    class BmdBagEventMbrItemEnum;
 
 
                             }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo
@@ -9044,9 +9181,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -9061,20 +9199,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo::Data> data;
-                                    class BmdBagEventBdlItemEnum;
 
 
                             }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo
@@ -9093,9 +9230,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -9110,20 +9248,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo::Data> data;
-                                    class BmdBagEventRgItemEnum;
 
 
                             }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo
@@ -9132,7 +9269,6 @@ class BundleInformation : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo> bundle_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo> member_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo> rg_evt_info;
-                                class BmdBagTargetEnum;
 
 
                         }; // BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items
@@ -9187,6 +9323,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class EventsBdlMembers : public Entity
         {
             public:
@@ -9202,6 +9339,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EventsBdlMember : public Entity
             {
                 public:
@@ -9215,8 +9353,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value member_interface; //type: string
 
+
+                    YLeaf member_interface; //type: string
 
                 class EventsBdlMemberAncestor : public Entity
                 {
@@ -9231,8 +9370,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value item_name; //type: string
 
+
+                        YLeaf item_name; //type: string
 
                     class Items : public Entity
                     {
@@ -9247,8 +9387,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_type; //type: BmdBagTargetEnum
 
+
+                            YLeaf event_type; //type: BmdBagTargetEnum
 
                         class MemberEvtInfo : public Entity
                         {
@@ -9263,9 +9404,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -9280,20 +9422,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo::Data> data;
-                                class BmdBagEventMbrItemEnum;
 
 
                         }; // BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo
@@ -9312,9 +9453,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -9329,20 +9471,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo::Data> data;
-                                class BmdBagEventBdlItemEnum;
 
 
                         }; // BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo
@@ -9361,9 +9502,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -9378,20 +9520,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo::Data> data;
-                                class BmdBagEventRgItemEnum;
 
 
                         }; // BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo
@@ -9400,7 +9541,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo> bundle_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo> member_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo> rg_evt_info;
-                            class BmdBagTargetEnum;
 
 
                     }; // BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items
@@ -9439,6 +9579,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EventsBdlBundle : public Entity
             {
                 public:
@@ -9452,8 +9593,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class EventsBdlBundleItem : public Entity
                 {
@@ -9468,8 +9610,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value item_name; //type: string
 
+
+                        YLeaf item_name; //type: string
 
                     class Items : public Entity
                     {
@@ -9484,8 +9627,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_type; //type: BmdBagTargetEnum
 
+
+                            YLeaf event_type; //type: BmdBagTargetEnum
 
                         class MemberEvtInfo : public Entity
                         {
@@ -9500,9 +9644,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -9517,20 +9662,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo::Data> data;
-                                class BmdBagEventMbrItemEnum;
 
 
                         }; // BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo
@@ -9549,9 +9693,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -9566,20 +9711,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo::Data> data;
-                                class BmdBagEventBdlItemEnum;
 
 
                         }; // BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo
@@ -9598,9 +9742,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -9615,20 +9760,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo::Data> data;
-                                class BmdBagEventRgItemEnum;
 
 
                         }; // BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo
@@ -9637,7 +9781,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo> bundle_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo> member_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo> rg_evt_info;
-                            class BmdBagTargetEnum;
 
 
                     }; // BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items
@@ -9676,6 +9819,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EventsBdlIccpGroup : public Entity
             {
                 public:
@@ -9689,8 +9833,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value iccp_group; //type: uint32
 
+
+                    YLeaf iccp_group; //type: uint32
 
                 class EventsBdlBundleDescendantIccpGroup : public Entity
                 {
@@ -9707,6 +9852,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class EventsItem : public Entity
                     {
                         public:
@@ -9720,8 +9866,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value item_name; //type: string
 
+
+                            YLeaf item_name; //type: string
 
                         class Items : public Entity
                         {
@@ -9736,8 +9883,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value event_type; //type: BmdBagTargetEnum
 
+
+                                YLeaf event_type; //type: BmdBagTargetEnum
 
                             class MemberEvtInfo : public Entity
                             {
@@ -9752,9 +9900,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -9769,20 +9918,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::Data> data;
-                                    class BmdBagEventMbrItemEnum;
 
 
                             }; // BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo
@@ -9801,9 +9949,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -9818,20 +9967,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::Data> data;
-                                    class BmdBagEventBdlItemEnum;
 
 
                             }; // BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo
@@ -9850,9 +9998,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -9867,20 +10016,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::Data> data;
-                                    class BmdBagEventRgItemEnum;
 
 
                             }; // BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo
@@ -9889,7 +10037,6 @@ class BundleInformation : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo> bundle_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo> member_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo> rg_evt_info;
-                                class BmdBagTargetEnum;
 
 
                         }; // BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items
@@ -9942,6 +10089,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class BundleBrief : public Entity
         {
             public:
@@ -9955,8 +10103,9 @@ class BundleInformation : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value bundle_interface; //type: string
 
+
+                YLeaf bundle_interface; //type: string
 
             class BundleBriefItem : public Entity
             {
@@ -9971,45 +10120,46 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface_name; //type: string
-                    Value available_bandwidth; //type: uint32
-                    Value effective_bandwidth; //type: uint32
-                    Value configured_bandwidth; //type: uint32
-                    Value minimum_active_links; //type: uint8
-                    Value maximum_active_links; //type: uint8
-                    Value maximum_active_links_source; //type: BmWhichSystemEnum
-                    Value minimum_bandwidth; //type: uint32
-                    Value primary_member; //type: string
-                    Value bundle_status; //type: BmBdlStateEnum
-                    Value active_member_count; //type: uint16
-                    Value standby_member_count; //type: uint16
-                    Value configured_member_count; //type: uint16
-                    Value mac_source; //type: BmBdlMacSourceEnum
-                    Value mac_source_member; //type: string
-                    Value inter_chassis; //type: boolean
-                    Value is_active; //type: boolean
-                    Value lacp_status; //type: BmFeatureStatusEnum
-                    Value mlacp_status; //type: BmFeatureStatusEnum
-                    Value ipv4bfd_status; //type: BmFeatureStatusEnum
-                    Value link_order_status; //type: BmFeatureStatusEnum
-                    Value ipv6bfd_status; //type: BmFeatureStatusEnum
-                    Value load_balance_hash_type; //type: string
-                    Value load_balance_locality_threshold; //type: uint16
-                    Value suppression_timer; //type: uint16
-                    Value wait_while_timer; //type: uint16
-                    Value collector_max_delay; //type: uint16
-                    Value cisco_extensions; //type: boolean
-                    Value lacp_nonrevertive; //type: boolean
-                    Value iccp_group_id; //type: uint32
-                    Value active_foreign_member_count; //type: uint16
-                    Value configured_foreign_member_count; //type: uint16
-                    Value switchover_type; //type: BmdMlacpSwitchoverEnum
-                    Value maximize_threshold_value_links; //type: uint32
-                    Value maximize_threshold_value_band_width; //type: uint32
-                    Value mlacp_mode; //type: BundleMlacpModeEnum
-                    Value recovery_delay; //type: uint16
-                    Value singleton; //type: boolean
 
+
+                    YLeaf bundle_interface_name; //type: string
+                    YLeaf available_bandwidth; //type: uint32
+                    YLeaf effective_bandwidth; //type: uint32
+                    YLeaf configured_bandwidth; //type: uint32
+                    YLeaf minimum_active_links; //type: uint8
+                    YLeaf maximum_active_links; //type: uint8
+                    YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
+                    YLeaf minimum_bandwidth; //type: uint32
+                    YLeaf primary_member; //type: string
+                    YLeaf bundle_status; //type: BmBdlStateEnum
+                    YLeaf active_member_count; //type: uint16
+                    YLeaf standby_member_count; //type: uint16
+                    YLeaf configured_member_count; //type: uint16
+                    YLeaf mac_source; //type: BmBdlMacSourceEnum
+                    YLeaf mac_source_member; //type: string
+                    YLeaf inter_chassis; //type: boolean
+                    YLeaf is_active; //type: boolean
+                    YLeaf lacp_status; //type: BmFeatureStatusEnum
+                    YLeaf mlacp_status; //type: BmFeatureStatusEnum
+                    YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
+                    YLeaf link_order_status; //type: BmFeatureStatusEnum
+                    YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
+                    YLeaf load_balance_hash_type; //type: string
+                    YLeaf load_balance_locality_threshold; //type: uint16
+                    YLeaf suppression_timer; //type: uint16
+                    YLeaf wait_while_timer; //type: uint16
+                    YLeaf collector_max_delay; //type: uint16
+                    YLeaf cisco_extensions; //type: boolean
+                    YLeaf lacp_nonrevertive; //type: boolean
+                    YLeaf iccp_group_id; //type: uint32
+                    YLeaf active_foreign_member_count; //type: uint16
+                    YLeaf configured_foreign_member_count; //type: uint16
+                    YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
+                    YLeaf maximize_threshold_value_links; //type: uint32
+                    YLeaf maximize_threshold_value_band_width; //type: uint32
+                    YLeaf mlacp_mode; //type: BundleMlacpModeEnum
+                    YLeaf recovery_delay; //type: uint16
+                    YLeaf singleton; //type: boolean
 
                 class MacAddress : public Entity
                 {
@@ -10024,8 +10174,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
 
+
+                        YLeaf address; //type: string
 
 
 
@@ -10045,15 +10196,16 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bundle_status; //type: BmdBfdBdlStateEnum
-                        Value start_timer; //type: uint32
-                        Value nbr_unconfig_timer; //type: uint32
-                        Value pref_multiplier; //type: uint16
-                        Value pref_min_interval; //type: uint32
-                        Value pref_echo_min_interval; //type: uint32
-                        Value fast_detect; //type: boolean
-                        Value mode_info; //type: uint32
 
+
+                        YLeaf bundle_status; //type: BmdBfdBdlStateEnum
+                        YLeaf start_timer; //type: uint32
+                        YLeaf nbr_unconfig_timer; //type: uint32
+                        YLeaf pref_multiplier; //type: uint16
+                        YLeaf pref_min_interval; //type: uint32
+                        YLeaf pref_echo_min_interval; //type: uint32
+                        YLeaf fast_detect; //type: boolean
+                        YLeaf mode_info; //type: uint32
 
                     class DestinationAddress : public Entity
                     {
@@ -10068,19 +10220,18 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af; //type: BmAfIdEnum
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BmAfIdEnum;
+                            YLeaf af; //type: BmAfIdEnum
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::DestinationAddress
 
 
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::DestinationAddress> destination_address;
-                        class BmdBfdBdlStateEnum;
 
 
                 }; // BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig
@@ -10088,16 +10239,6 @@ class BundleInformation : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig> > bfd_config;
                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::MacAddress> mac_address;
-                    class BmBdlStateEnum;
-                    class BmFeatureStatusEnum;
-                    class BmFeatureStatusEnum;
-                    class BmFeatureStatusEnum;
-                    class BmFeatureStatusEnum;
-                    class BmBdlMacSourceEnum;
-                    class BmWhichSystemEnum;
-                    class BundleMlacpModeEnum;
-                    class BmFeatureStatusEnum;
-                    class BmdMlacpSwitchoverEnum;
 
 
             }; // BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem
@@ -10130,6 +10271,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class EventsMbrBundles : public Entity
         {
             public:
@@ -10145,6 +10287,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EventsMbrBundle : public Entity
             {
                 public:
@@ -10158,8 +10301,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class EventsMbrBundleChildrenMembers : public Entity
                 {
@@ -10176,6 +10320,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class EventsMbrBundleChildrenMember : public Entity
                     {
                         public:
@@ -10189,9 +10334,10 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value member_interface; //type: string
-                            Value item_name; //type: string
 
+
+                            YLeaf member_interface; //type: string
+                            YLeaf item_name; //type: string
 
                         class Items : public Entity
                         {
@@ -10206,8 +10352,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value event_type; //type: BmdBagTargetEnum
 
+
+                                YLeaf event_type; //type: BmdBagTargetEnum
 
                             class MemberEvtInfo : public Entity
                             {
@@ -10222,9 +10369,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -10239,20 +10387,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo::Data> data;
-                                    class BmdBagEventMbrItemEnum;
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo
@@ -10271,9 +10418,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -10288,20 +10436,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo::Data> data;
-                                    class BmdBagEventBdlItemEnum;
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo
@@ -10320,9 +10467,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -10337,20 +10485,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo::Data> data;
-                                    class BmdBagEventRgItemEnum;
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo
@@ -10359,7 +10506,6 @@ class BundleInformation : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo> bundle_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo> member_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo> rg_evt_info;
-                                class BmdBagTargetEnum;
 
 
                         }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items
@@ -10392,6 +10538,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class EventsItem : public Entity
                     {
                         public:
@@ -10405,8 +10552,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value item_name; //type: string
 
+
+                            YLeaf item_name; //type: string
 
                         class Items : public Entity
                         {
@@ -10421,8 +10569,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value event_type; //type: BmdBagTargetEnum
 
+
+                                YLeaf event_type; //type: BmdBagTargetEnum
 
                             class MemberEvtInfo : public Entity
                             {
@@ -10437,9 +10586,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -10454,20 +10604,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo::Data> data;
-                                    class BmdBagEventMbrItemEnum;
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo
@@ -10486,9 +10635,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -10503,20 +10653,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo::Data> data;
-                                    class BmdBagEventBdlItemEnum;
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo
@@ -10535,9 +10684,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -10552,20 +10702,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo::Data> data;
-                                    class BmdBagEventRgItemEnum;
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo
@@ -10574,7 +10723,6 @@ class BundleInformation : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo> bundle_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo> member_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo> rg_evt_info;
-                                class BmdBagTargetEnum;
 
 
                         }; // BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items
@@ -10620,6 +10768,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EventsMbrMember : public Entity
             {
                 public:
@@ -10633,8 +10782,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value member_interface; //type: string
 
+
+                    YLeaf member_interface; //type: string
 
                 class EventsMbrMemberItem : public Entity
                 {
@@ -10649,8 +10799,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value item_name; //type: string
 
+
+                        YLeaf item_name; //type: string
 
                     class Items : public Entity
                     {
@@ -10665,8 +10816,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_type; //type: BmdBagTargetEnum
 
+
+                            YLeaf event_type; //type: BmdBagTargetEnum
 
                         class MemberEvtInfo : public Entity
                         {
@@ -10681,9 +10833,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -10698,20 +10851,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo::Data> data;
-                                class BmdBagEventMbrItemEnum;
 
 
                         }; // BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo
@@ -10730,9 +10882,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -10747,20 +10900,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo::Data> data;
-                                class BmdBagEventBdlItemEnum;
 
 
                         }; // BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo
@@ -10779,9 +10931,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                Value time_stamp; //type: uint64
 
+
+                                YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                YLeaf time_stamp; //type: uint64
 
                             class Data : public Entity
                             {
@@ -10796,20 +10949,19 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value data_type; //type: BmdBagEventDataEnum
-                                    Value no_data; //type: uint8
-                                    Value error; //type: uint32
-                                    Value string_data; //type: string
 
 
-                                    class BmdBagEventDataEnum;
+                                    YLeaf data_type; //type: BmdBagEventDataEnum
+                                    YLeaf no_data; //type: uint8
+                                    YLeaf error; //type: uint32
+                                    YLeaf string_data; //type: string
+
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo::Data
 
 
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo::Data> data;
-                                class BmdBagEventRgItemEnum;
 
 
                         }; // BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo
@@ -10818,7 +10970,6 @@ class BundleInformation : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo> bundle_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo> member_evt_info;
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo> rg_evt_info;
-                            class BmdBagTargetEnum;
 
 
                     }; // BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items
@@ -10857,6 +11008,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EventsMbrIccpGroup : public Entity
             {
                 public:
@@ -10870,8 +11022,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value iccp_group; //type: uint32
 
+
+                    YLeaf iccp_group; //type: uint32
 
                 class EventsMbrBundleChildrenMemberIccpGroups : public Entity
                 {
@@ -10888,6 +11041,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class EventsMbrBundleChildrenMemberIccpGroup : public Entity
                     {
                         public:
@@ -10901,9 +11055,10 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value member_interface; //type: string
-                            Value item_name; //type: string
 
+
+                            YLeaf member_interface; //type: string
+                            YLeaf item_name; //type: string
 
                         class Items : public Entity
                         {
@@ -10918,8 +11073,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value event_type; //type: BmdBagTargetEnum
 
+
+                                YLeaf event_type; //type: BmdBagTargetEnum
 
                             class MemberEvtInfo : public Entity
                             {
@@ -10934,9 +11090,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -10951,20 +11108,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo::Data> data;
-                                    class BmdBagEventMbrItemEnum;
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo
@@ -10983,9 +11139,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -11000,20 +11157,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo::Data> data;
-                                    class BmdBagEventBdlItemEnum;
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo
@@ -11032,9 +11188,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -11049,20 +11206,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo::Data> data;
-                                    class BmdBagEventRgItemEnum;
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo
@@ -11071,7 +11227,6 @@ class BundleInformation : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo> bundle_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo> member_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo> rg_evt_info;
-                                class BmdBagTargetEnum;
 
 
                         }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items
@@ -11104,6 +11259,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class EventsItem : public Entity
                     {
                         public:
@@ -11117,8 +11273,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value item_name; //type: string
 
+
+                            YLeaf item_name; //type: string
 
                         class Items : public Entity
                         {
@@ -11133,8 +11290,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value event_type; //type: BmdBagTargetEnum
 
+
+                                YLeaf event_type; //type: BmdBagTargetEnum
 
                             class MemberEvtInfo : public Entity
                             {
@@ -11149,9 +11307,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value member_event_type; //type: BmdBagEventMbrItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -11166,20 +11325,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::Data> data;
-                                    class BmdBagEventMbrItemEnum;
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo
@@ -11198,9 +11356,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bundle_event_type; //type: BmdBagEventBdlItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -11215,20 +11374,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::Data> data;
-                                    class BmdBagEventBdlItemEnum;
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo
@@ -11247,9 +11405,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rg_event_type; //type: BmdBagEventRgItemEnum
-                                    Value time_stamp; //type: uint64
 
+
+                                    YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
+                                    YLeaf time_stamp; //type: uint64
 
                                 class Data : public Entity
                                 {
@@ -11264,20 +11423,19 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value data_type; //type: BmdBagEventDataEnum
-                                        Value no_data; //type: uint8
-                                        Value error; //type: uint32
-                                        Value string_data; //type: string
 
 
-                                        class BmdBagEventDataEnum;
+                                        YLeaf data_type; //type: BmdBagEventDataEnum
+                                        YLeaf no_data; //type: uint8
+                                        YLeaf error; //type: uint32
+                                        YLeaf string_data; //type: string
+
 
 
                                 }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::Data
 
 
                                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::Data> data;
-                                    class BmdBagEventRgItemEnum;
 
 
                             }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo
@@ -11286,7 +11444,6 @@ class BundleInformation : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo> bundle_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo> member_evt_info;
                                 std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo> rg_evt_info;
-                                class BmdBagTargetEnum;
 
 
                         }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items
@@ -11340,6 +11497,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class IccpGroups : public Entity
         {
             public:
@@ -11355,6 +11513,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class IccpGroup : public Entity
             {
                 public:
@@ -11368,8 +11527,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value iccp_group; //type: uint32
 
+
+                    YLeaf iccp_group; //type: uint32
 
                 class IccpGroupAncestorBundle : public Entity
                 {
@@ -11384,8 +11544,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value iccp_group_id; //type: uint32
 
+
+                        YLeaf iccp_group_id; //type: uint32
 
                     class IccpGroupCounters : public Entity
                     {
@@ -11400,10 +11561,11 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value last_time_cleared; //type: uint64
-                            Value time_since_cleared; //type: uint64
-                            Value last_unexpected_event; //type: uint64
 
+
+                            YLeaf last_time_cleared; //type: uint64
+                            YLeaf time_since_cleared; //type: uint64
+                            YLeaf last_unexpected_event; //type: uint64
 
                         class Connection : public Entity
                         {
@@ -11418,17 +11580,18 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_connects; //type: uint32
-                                Value received_connects; //type: uint32
-                                Value iccp_invalid_connects; //type: uint32
-                                Value iccp_config_connect_errors; //type: uint32
-                                Value iccp_count_connect_errors; //type: uint32
-                                Value sent_wrong_versions; //type: uint32
-                                Value received_wrong_versions; //type: uint32
-                                Value sent_disconnects; //type: uint32
-                                Value received_disconnects; //type: uint32
-                                Value iccp_invalid_disconnects; //type: uint32
 
+
+                                YLeaf sent_connects; //type: uint32
+                                YLeaf received_connects; //type: uint32
+                                YLeaf iccp_invalid_connects; //type: uint32
+                                YLeaf iccp_config_connect_errors; //type: uint32
+                                YLeaf iccp_count_connect_errors; //type: uint32
+                                YLeaf sent_wrong_versions; //type: uint32
+                                YLeaf received_wrong_versions; //type: uint32
+                                YLeaf sent_disconnects; //type: uint32
+                                YLeaf received_disconnects; //type: uint32
+                                YLeaf iccp_invalid_disconnects; //type: uint32
 
 
 
@@ -11448,23 +11611,24 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_config; //type: uint32
-                                Value received_config; //type: uint32
-                                Value sent_state; //type: uint32
-                                Value received_state; //type: uint32
-                                Value sent_na_ks; //type: uint32
-                                Value received_na_ks; //type: uint32
-                                Value sent_sync_requests; //type: uint32
-                                Value received_sync_requests; //type: uint32
-                                Value sent_state_sync_requests; //type: uint32
-                                Value received_state_sync_requests; //type: uint32
-                                Value sent_config_sync_requests; //type: uint32
-                                Value received_config_sync_requests; //type: uint32
-                                Value sent_solicited_sync_data; //type: uint32
-                                Value received_solicited_sync_data; //type: uint32
-                                Value sent_unsolicited_sync_data; //type: uint32
-                                Value received_unsolicited_sync_data; //type: uint32
 
+
+                                YLeaf sent_config; //type: uint32
+                                YLeaf received_config; //type: uint32
+                                YLeaf sent_state; //type: uint32
+                                YLeaf received_state; //type: uint32
+                                YLeaf sent_na_ks; //type: uint32
+                                YLeaf received_na_ks; //type: uint32
+                                YLeaf sent_sync_requests; //type: uint32
+                                YLeaf received_sync_requests; //type: uint32
+                                YLeaf sent_state_sync_requests; //type: uint32
+                                YLeaf received_state_sync_requests; //type: uint32
+                                YLeaf sent_config_sync_requests; //type: uint32
+                                YLeaf received_config_sync_requests; //type: uint32
+                                YLeaf sent_solicited_sync_data; //type: uint32
+                                YLeaf received_solicited_sync_data; //type: uint32
+                                YLeaf sent_unsolicited_sync_data; //type: uint32
+                                YLeaf received_unsolicited_sync_data; //type: uint32
 
 
 
@@ -11484,12 +11648,13 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value incorrect_length; //type: uint32
-                                Value invalid_type; //type: uint32
-                                Value invalid_data; //type: uint32
-                                Value unknown_bundle; //type: uint32
-                                Value unknown_port; //type: uint32
 
+
+                                YLeaf incorrect_length; //type: uint32
+                                YLeaf invalid_type; //type: uint32
+                                YLeaf invalid_data; //type: uint32
+                                YLeaf unknown_bundle; //type: uint32
+                                YLeaf unknown_port; //type: uint32
 
 
 
@@ -11509,11 +11674,12 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_messages; //type: uint32
-                                Value sent_buffer_messages; //type: uint32
-                                Value received_messages; //type: uint32
-                                Value transmission_errors; //type: uint32
 
+
+                                YLeaf sent_messages; //type: uint32
+                                YLeaf sent_buffer_messages; //type: uint32
+                                YLeaf received_messages; //type: uint32
+                                YLeaf transmission_errors; //type: uint32
 
 
 
@@ -11533,18 +11699,19 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value transport_up; //type: uint32
-                                Value transport_down; //type: uint32
-                                Value transport_unavailable; //type: uint32
-                                Value configured_set; //type: uint32
-                                Value configured_clear; //type: uint32
-                                Value reachability_set; //type: uint32
-                                Value reachability_cleared; //type: uint32
-                                Value member_status_up; //type: uint32
-                                Value member_status_down; //type: uint32
-                                Value pe_isolated; //type: uint32
-                                Value pe_isolated_clear; //type: uint32
 
+
+                                YLeaf transport_up; //type: uint32
+                                YLeaf transport_down; //type: uint32
+                                YLeaf transport_unavailable; //type: uint32
+                                YLeaf configured_set; //type: uint32
+                                YLeaf configured_clear; //type: uint32
+                                YLeaf reachability_set; //type: uint32
+                                YLeaf reachability_cleared; //type: uint32
+                                YLeaf member_status_up; //type: uint32
+                                YLeaf member_status_down; //type: uint32
+                                YLeaf pe_isolated; //type: uint32
+                                YLeaf pe_isolated_clear; //type: uint32
 
 
 
@@ -11580,8 +11747,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value iccp_group_id; //type: uint32
 
+
+                        YLeaf iccp_group_id; //type: uint32
 
                     class IccpGroupCounters : public Entity
                     {
@@ -11596,10 +11764,11 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value last_time_cleared; //type: uint64
-                            Value time_since_cleared; //type: uint64
-                            Value last_unexpected_event; //type: uint64
 
+
+                            YLeaf last_time_cleared; //type: uint64
+                            YLeaf time_since_cleared; //type: uint64
+                            YLeaf last_unexpected_event; //type: uint64
 
                         class Connection : public Entity
                         {
@@ -11614,17 +11783,18 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_connects; //type: uint32
-                                Value received_connects; //type: uint32
-                                Value iccp_invalid_connects; //type: uint32
-                                Value iccp_config_connect_errors; //type: uint32
-                                Value iccp_count_connect_errors; //type: uint32
-                                Value sent_wrong_versions; //type: uint32
-                                Value received_wrong_versions; //type: uint32
-                                Value sent_disconnects; //type: uint32
-                                Value received_disconnects; //type: uint32
-                                Value iccp_invalid_disconnects; //type: uint32
 
+
+                                YLeaf sent_connects; //type: uint32
+                                YLeaf received_connects; //type: uint32
+                                YLeaf iccp_invalid_connects; //type: uint32
+                                YLeaf iccp_config_connect_errors; //type: uint32
+                                YLeaf iccp_count_connect_errors; //type: uint32
+                                YLeaf sent_wrong_versions; //type: uint32
+                                YLeaf received_wrong_versions; //type: uint32
+                                YLeaf sent_disconnects; //type: uint32
+                                YLeaf received_disconnects; //type: uint32
+                                YLeaf iccp_invalid_disconnects; //type: uint32
 
 
 
@@ -11644,23 +11814,24 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_config; //type: uint32
-                                Value received_config; //type: uint32
-                                Value sent_state; //type: uint32
-                                Value received_state; //type: uint32
-                                Value sent_na_ks; //type: uint32
-                                Value received_na_ks; //type: uint32
-                                Value sent_sync_requests; //type: uint32
-                                Value received_sync_requests; //type: uint32
-                                Value sent_state_sync_requests; //type: uint32
-                                Value received_state_sync_requests; //type: uint32
-                                Value sent_config_sync_requests; //type: uint32
-                                Value received_config_sync_requests; //type: uint32
-                                Value sent_solicited_sync_data; //type: uint32
-                                Value received_solicited_sync_data; //type: uint32
-                                Value sent_unsolicited_sync_data; //type: uint32
-                                Value received_unsolicited_sync_data; //type: uint32
 
+
+                                YLeaf sent_config; //type: uint32
+                                YLeaf received_config; //type: uint32
+                                YLeaf sent_state; //type: uint32
+                                YLeaf received_state; //type: uint32
+                                YLeaf sent_na_ks; //type: uint32
+                                YLeaf received_na_ks; //type: uint32
+                                YLeaf sent_sync_requests; //type: uint32
+                                YLeaf received_sync_requests; //type: uint32
+                                YLeaf sent_state_sync_requests; //type: uint32
+                                YLeaf received_state_sync_requests; //type: uint32
+                                YLeaf sent_config_sync_requests; //type: uint32
+                                YLeaf received_config_sync_requests; //type: uint32
+                                YLeaf sent_solicited_sync_data; //type: uint32
+                                YLeaf received_solicited_sync_data; //type: uint32
+                                YLeaf sent_unsolicited_sync_data; //type: uint32
+                                YLeaf received_unsolicited_sync_data; //type: uint32
 
 
 
@@ -11680,12 +11851,13 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value incorrect_length; //type: uint32
-                                Value invalid_type; //type: uint32
-                                Value invalid_data; //type: uint32
-                                Value unknown_bundle; //type: uint32
-                                Value unknown_port; //type: uint32
 
+
+                                YLeaf incorrect_length; //type: uint32
+                                YLeaf invalid_type; //type: uint32
+                                YLeaf invalid_data; //type: uint32
+                                YLeaf unknown_bundle; //type: uint32
+                                YLeaf unknown_port; //type: uint32
 
 
 
@@ -11705,11 +11877,12 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_messages; //type: uint32
-                                Value sent_buffer_messages; //type: uint32
-                                Value received_messages; //type: uint32
-                                Value transmission_errors; //type: uint32
 
+
+                                YLeaf sent_messages; //type: uint32
+                                YLeaf sent_buffer_messages; //type: uint32
+                                YLeaf received_messages; //type: uint32
+                                YLeaf transmission_errors; //type: uint32
 
 
 
@@ -11729,18 +11902,19 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value transport_up; //type: uint32
-                                Value transport_down; //type: uint32
-                                Value transport_unavailable; //type: uint32
-                                Value configured_set; //type: uint32
-                                Value configured_clear; //type: uint32
-                                Value reachability_set; //type: uint32
-                                Value reachability_cleared; //type: uint32
-                                Value member_status_up; //type: uint32
-                                Value member_status_down; //type: uint32
-                                Value pe_isolated; //type: uint32
-                                Value pe_isolated_clear; //type: uint32
 
+
+                                YLeaf transport_up; //type: uint32
+                                YLeaf transport_down; //type: uint32
+                                YLeaf transport_unavailable; //type: uint32
+                                YLeaf configured_set; //type: uint32
+                                YLeaf configured_clear; //type: uint32
+                                YLeaf reachability_set; //type: uint32
+                                YLeaf reachability_cleared; //type: uint32
+                                YLeaf member_status_up; //type: uint32
+                                YLeaf member_status_down; //type: uint32
+                                YLeaf pe_isolated; //type: uint32
+                                YLeaf pe_isolated_clear; //type: uint32
 
 
 
@@ -11776,8 +11950,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value iccp_group_id; //type: uint32
 
+
+                        YLeaf iccp_group_id; //type: uint32
 
                     class IccpGroupCounters : public Entity
                     {
@@ -11792,10 +11967,11 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value last_time_cleared; //type: uint64
-                            Value time_since_cleared; //type: uint64
-                            Value last_unexpected_event; //type: uint64
 
+
+                            YLeaf last_time_cleared; //type: uint64
+                            YLeaf time_since_cleared; //type: uint64
+                            YLeaf last_unexpected_event; //type: uint64
 
                         class Connection : public Entity
                         {
@@ -11810,17 +11986,18 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_connects; //type: uint32
-                                Value received_connects; //type: uint32
-                                Value iccp_invalid_connects; //type: uint32
-                                Value iccp_config_connect_errors; //type: uint32
-                                Value iccp_count_connect_errors; //type: uint32
-                                Value sent_wrong_versions; //type: uint32
-                                Value received_wrong_versions; //type: uint32
-                                Value sent_disconnects; //type: uint32
-                                Value received_disconnects; //type: uint32
-                                Value iccp_invalid_disconnects; //type: uint32
 
+
+                                YLeaf sent_connects; //type: uint32
+                                YLeaf received_connects; //type: uint32
+                                YLeaf iccp_invalid_connects; //type: uint32
+                                YLeaf iccp_config_connect_errors; //type: uint32
+                                YLeaf iccp_count_connect_errors; //type: uint32
+                                YLeaf sent_wrong_versions; //type: uint32
+                                YLeaf received_wrong_versions; //type: uint32
+                                YLeaf sent_disconnects; //type: uint32
+                                YLeaf received_disconnects; //type: uint32
+                                YLeaf iccp_invalid_disconnects; //type: uint32
 
 
 
@@ -11840,23 +12017,24 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_config; //type: uint32
-                                Value received_config; //type: uint32
-                                Value sent_state; //type: uint32
-                                Value received_state; //type: uint32
-                                Value sent_na_ks; //type: uint32
-                                Value received_na_ks; //type: uint32
-                                Value sent_sync_requests; //type: uint32
-                                Value received_sync_requests; //type: uint32
-                                Value sent_state_sync_requests; //type: uint32
-                                Value received_state_sync_requests; //type: uint32
-                                Value sent_config_sync_requests; //type: uint32
-                                Value received_config_sync_requests; //type: uint32
-                                Value sent_solicited_sync_data; //type: uint32
-                                Value received_solicited_sync_data; //type: uint32
-                                Value sent_unsolicited_sync_data; //type: uint32
-                                Value received_unsolicited_sync_data; //type: uint32
 
+
+                                YLeaf sent_config; //type: uint32
+                                YLeaf received_config; //type: uint32
+                                YLeaf sent_state; //type: uint32
+                                YLeaf received_state; //type: uint32
+                                YLeaf sent_na_ks; //type: uint32
+                                YLeaf received_na_ks; //type: uint32
+                                YLeaf sent_sync_requests; //type: uint32
+                                YLeaf received_sync_requests; //type: uint32
+                                YLeaf sent_state_sync_requests; //type: uint32
+                                YLeaf received_state_sync_requests; //type: uint32
+                                YLeaf sent_config_sync_requests; //type: uint32
+                                YLeaf received_config_sync_requests; //type: uint32
+                                YLeaf sent_solicited_sync_data; //type: uint32
+                                YLeaf received_solicited_sync_data; //type: uint32
+                                YLeaf sent_unsolicited_sync_data; //type: uint32
+                                YLeaf received_unsolicited_sync_data; //type: uint32
 
 
 
@@ -11876,12 +12054,13 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value incorrect_length; //type: uint32
-                                Value invalid_type; //type: uint32
-                                Value invalid_data; //type: uint32
-                                Value unknown_bundle; //type: uint32
-                                Value unknown_port; //type: uint32
 
+
+                                YLeaf incorrect_length; //type: uint32
+                                YLeaf invalid_type; //type: uint32
+                                YLeaf invalid_data; //type: uint32
+                                YLeaf unknown_bundle; //type: uint32
+                                YLeaf unknown_port; //type: uint32
 
 
 
@@ -11901,11 +12080,12 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_messages; //type: uint32
-                                Value sent_buffer_messages; //type: uint32
-                                Value received_messages; //type: uint32
-                                Value transmission_errors; //type: uint32
 
+
+                                YLeaf sent_messages; //type: uint32
+                                YLeaf sent_buffer_messages; //type: uint32
+                                YLeaf received_messages; //type: uint32
+                                YLeaf transmission_errors; //type: uint32
 
 
 
@@ -11925,18 +12105,19 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value transport_up; //type: uint32
-                                Value transport_down; //type: uint32
-                                Value transport_unavailable; //type: uint32
-                                Value configured_set; //type: uint32
-                                Value configured_clear; //type: uint32
-                                Value reachability_set; //type: uint32
-                                Value reachability_cleared; //type: uint32
-                                Value member_status_up; //type: uint32
-                                Value member_status_down; //type: uint32
-                                Value pe_isolated; //type: uint32
-                                Value pe_isolated_clear; //type: uint32
 
+
+                                YLeaf transport_up; //type: uint32
+                                YLeaf transport_down; //type: uint32
+                                YLeaf transport_unavailable; //type: uint32
+                                YLeaf configured_set; //type: uint32
+                                YLeaf configured_clear; //type: uint32
+                                YLeaf reachability_set; //type: uint32
+                                YLeaf reachability_cleared; //type: uint32
+                                YLeaf member_status_up; //type: uint32
+                                YLeaf member_status_down; //type: uint32
+                                YLeaf pe_isolated; //type: uint32
+                                YLeaf pe_isolated_clear; //type: uint32
 
 
 
@@ -11972,8 +12153,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value iccp_group_id; //type: uint32
 
+
+                        YLeaf iccp_group_id; //type: uint32
 
                     class IccpGroupCounters : public Entity
                     {
@@ -11988,10 +12170,11 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value last_time_cleared; //type: uint64
-                            Value time_since_cleared; //type: uint64
-                            Value last_unexpected_event; //type: uint64
 
+
+                            YLeaf last_time_cleared; //type: uint64
+                            YLeaf time_since_cleared; //type: uint64
+                            YLeaf last_unexpected_event; //type: uint64
 
                         class Connection : public Entity
                         {
@@ -12006,17 +12189,18 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_connects; //type: uint32
-                                Value received_connects; //type: uint32
-                                Value iccp_invalid_connects; //type: uint32
-                                Value iccp_config_connect_errors; //type: uint32
-                                Value iccp_count_connect_errors; //type: uint32
-                                Value sent_wrong_versions; //type: uint32
-                                Value received_wrong_versions; //type: uint32
-                                Value sent_disconnects; //type: uint32
-                                Value received_disconnects; //type: uint32
-                                Value iccp_invalid_disconnects; //type: uint32
 
+
+                                YLeaf sent_connects; //type: uint32
+                                YLeaf received_connects; //type: uint32
+                                YLeaf iccp_invalid_connects; //type: uint32
+                                YLeaf iccp_config_connect_errors; //type: uint32
+                                YLeaf iccp_count_connect_errors; //type: uint32
+                                YLeaf sent_wrong_versions; //type: uint32
+                                YLeaf received_wrong_versions; //type: uint32
+                                YLeaf sent_disconnects; //type: uint32
+                                YLeaf received_disconnects; //type: uint32
+                                YLeaf iccp_invalid_disconnects; //type: uint32
 
 
 
@@ -12036,23 +12220,24 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_config; //type: uint32
-                                Value received_config; //type: uint32
-                                Value sent_state; //type: uint32
-                                Value received_state; //type: uint32
-                                Value sent_na_ks; //type: uint32
-                                Value received_na_ks; //type: uint32
-                                Value sent_sync_requests; //type: uint32
-                                Value received_sync_requests; //type: uint32
-                                Value sent_state_sync_requests; //type: uint32
-                                Value received_state_sync_requests; //type: uint32
-                                Value sent_config_sync_requests; //type: uint32
-                                Value received_config_sync_requests; //type: uint32
-                                Value sent_solicited_sync_data; //type: uint32
-                                Value received_solicited_sync_data; //type: uint32
-                                Value sent_unsolicited_sync_data; //type: uint32
-                                Value received_unsolicited_sync_data; //type: uint32
 
+
+                                YLeaf sent_config; //type: uint32
+                                YLeaf received_config; //type: uint32
+                                YLeaf sent_state; //type: uint32
+                                YLeaf received_state; //type: uint32
+                                YLeaf sent_na_ks; //type: uint32
+                                YLeaf received_na_ks; //type: uint32
+                                YLeaf sent_sync_requests; //type: uint32
+                                YLeaf received_sync_requests; //type: uint32
+                                YLeaf sent_state_sync_requests; //type: uint32
+                                YLeaf received_state_sync_requests; //type: uint32
+                                YLeaf sent_config_sync_requests; //type: uint32
+                                YLeaf received_config_sync_requests; //type: uint32
+                                YLeaf sent_solicited_sync_data; //type: uint32
+                                YLeaf received_solicited_sync_data; //type: uint32
+                                YLeaf sent_unsolicited_sync_data; //type: uint32
+                                YLeaf received_unsolicited_sync_data; //type: uint32
 
 
 
@@ -12072,12 +12257,13 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value incorrect_length; //type: uint32
-                                Value invalid_type; //type: uint32
-                                Value invalid_data; //type: uint32
-                                Value unknown_bundle; //type: uint32
-                                Value unknown_port; //type: uint32
 
+
+                                YLeaf incorrect_length; //type: uint32
+                                YLeaf invalid_type; //type: uint32
+                                YLeaf invalid_data; //type: uint32
+                                YLeaf unknown_bundle; //type: uint32
+                                YLeaf unknown_port; //type: uint32
 
 
 
@@ -12097,11 +12283,12 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_messages; //type: uint32
-                                Value sent_buffer_messages; //type: uint32
-                                Value received_messages; //type: uint32
-                                Value transmission_errors; //type: uint32
 
+
+                                YLeaf sent_messages; //type: uint32
+                                YLeaf sent_buffer_messages; //type: uint32
+                                YLeaf received_messages; //type: uint32
+                                YLeaf transmission_errors; //type: uint32
 
 
 
@@ -12121,18 +12308,19 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value transport_up; //type: uint32
-                                Value transport_down; //type: uint32
-                                Value transport_unavailable; //type: uint32
-                                Value configured_set; //type: uint32
-                                Value configured_clear; //type: uint32
-                                Value reachability_set; //type: uint32
-                                Value reachability_cleared; //type: uint32
-                                Value member_status_up; //type: uint32
-                                Value member_status_down; //type: uint32
-                                Value pe_isolated; //type: uint32
-                                Value pe_isolated_clear; //type: uint32
 
+
+                                YLeaf transport_up; //type: uint32
+                                YLeaf transport_down; //type: uint32
+                                YLeaf transport_unavailable; //type: uint32
+                                YLeaf configured_set; //type: uint32
+                                YLeaf configured_clear; //type: uint32
+                                YLeaf reachability_set; //type: uint32
+                                YLeaf reachability_cleared; //type: uint32
+                                YLeaf member_status_up; //type: uint32
+                                YLeaf member_status_down; //type: uint32
+                                YLeaf pe_isolated; //type: uint32
+                                YLeaf pe_isolated_clear; //type: uint32
 
 
 
@@ -12191,6 +12379,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SystemIdGlobal : public Entity
         {
             public:
@@ -12206,6 +12395,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class SystemIdGlobalItem : public Entity
             {
                 public:
@@ -12219,10 +12409,11 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value iccp_group_id; //type: uint32
-                    Value system_priority; //type: uint16
-                    Value system_mac_address; //type: string
 
+
+                    YLeaf iccp_group_id; //type: uint32
+                    YLeaf system_priority; //type: uint16
+                    YLeaf system_mac_address; //type: string
 
                 class SystemId_ : public Entity
                 {
@@ -12237,8 +12428,9 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value system_prio; //type: uint16
 
+
+                        YLeaf system_prio; //type: uint16
 
                     class SystemMacAddr : public Entity
                     {
@@ -12253,8 +12445,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value macaddr; //type: string
 
+
+                            YLeaf macaddr; //type: string
 
 
 
@@ -12294,6 +12487,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class SystemIdIccpGroup : public Entity
             {
                 public:
@@ -12307,8 +12501,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value iccp_group; //type: uint32
 
+
+                    YLeaf iccp_group; //type: uint32
 
                 class SystemIdIccpGroupItem : public Entity
                 {
@@ -12323,10 +12518,11 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value iccp_group_id; //type: uint32
-                        Value system_priority; //type: uint16
-                        Value system_mac_address; //type: string
 
+
+                        YLeaf iccp_group_id; //type: uint32
+                        YLeaf system_priority; //type: uint16
+                        YLeaf system_mac_address; //type: string
 
                     class SystemId_ : public Entity
                     {
@@ -12341,8 +12537,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value system_prio; //type: uint16
 
+
+                            YLeaf system_prio; //type: uint16
 
                         class SystemMacAddr : public Entity
                         {
@@ -12357,8 +12554,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value macaddr; //type: string
 
+
+                                YLeaf macaddr; //type: string
 
 
 
@@ -12411,6 +12609,7 @@ class BundleInformation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class IccpGroups : public Entity
         {
             public:
@@ -12426,6 +12625,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class IccpGroup : public Entity
             {
                 public:
@@ -12439,8 +12639,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value iccp_group; //type: uint32
 
+
+                    YLeaf iccp_group; //type: uint32
 
                 class IccpGroupItem : public Entity
                 {
@@ -12455,6 +12656,7 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class Items : public Entity
@@ -12472,6 +12674,7 @@ class BundleInformation : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class BundleData : public Entity
                         {
                             public:
@@ -12485,9 +12688,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_name; //type: string
-                                Value iccp_group_id; //type: uint32
 
+
+                                YLeaf bundle_name; //type: string
+                                YLeaf iccp_group_id; //type: uint32
 
                             class MlacpSyncRequestsOnAllLocalPorts : public Entity
                             {
@@ -12502,9 +12706,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
 
+
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -12519,10 +12724,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -12556,6 +12762,7 @@ class BundleInformation : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class NodeData_ : public Entity
                             {
                                 public:
@@ -12569,9 +12776,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_id; //type: uint32
-                                    Value iccp_group_id; //type: uint32
 
+
+                                    YLeaf node_id; //type: uint32
+                                    YLeaf iccp_group_id; //type: uint32
 
 
 
@@ -12591,9 +12799,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
 
+
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -12608,10 +12817,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -12637,8 +12847,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value port_name; //type: string
 
+
+                                    YLeaf port_name; //type: string
 
                                 class MlacpTlvCounters : public Entity
                                 {
@@ -12653,15 +12864,16 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sent_config_tl_vs; //type: uint32
-                                        Value sent_state_tl_vs; //type: uint32
-                                        Value sent_priority_tl_vs; //type: uint32
-                                        Value received_priority_tl_vs; //type: uint32
-                                        Value received_nak_tl_vs; //type: uint32
-                                        Value last_time_cleared; //type: uint64
-                                        Value time_since_cleared; //type: uint64
-                                        Value last_unexpected_event; //type: uint64
 
+
+                                        YLeaf sent_config_tl_vs; //type: uint32
+                                        YLeaf sent_state_tl_vs; //type: uint32
+                                        YLeaf sent_priority_tl_vs; //type: uint32
+                                        YLeaf received_priority_tl_vs; //type: uint32
+                                        YLeaf received_nak_tl_vs; //type: uint32
+                                        YLeaf last_time_cleared; //type: uint64
+                                        YLeaf time_since_cleared; //type: uint64
+                                        YLeaf last_unexpected_event; //type: uint64
 
                                     class ReceivedSyncRequests : public Entity
                                     {
@@ -12676,10 +12888,11 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value all_syncs; //type: uint32
-                                            Value config_syncs; //type: uint32
-                                            Value state_syncs; //type: uint32
 
+
+                                            YLeaf all_syncs; //type: uint32
+                                            YLeaf config_syncs; //type: uint32
+                                            YLeaf state_syncs; //type: uint32
 
 
 
@@ -12719,8 +12932,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value port_name; //type: string
 
+
+                                YLeaf port_name; //type: string
 
                             class MlacpTlvCounters : public Entity
                             {
@@ -12735,15 +12949,16 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sent_config_tl_vs; //type: uint32
-                                    Value sent_state_tl_vs; //type: uint32
-                                    Value sent_priority_tl_vs; //type: uint32
-                                    Value received_priority_tl_vs; //type: uint32
-                                    Value received_nak_tl_vs; //type: uint32
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
-                                    Value last_unexpected_event; //type: uint64
 
+
+                                    YLeaf sent_config_tl_vs; //type: uint32
+                                    YLeaf sent_state_tl_vs; //type: uint32
+                                    YLeaf sent_priority_tl_vs; //type: uint32
+                                    YLeaf received_priority_tl_vs; //type: uint32
+                                    YLeaf received_nak_tl_vs; //type: uint32
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
+                                    YLeaf last_unexpected_event; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -12758,10 +12973,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -12821,6 +13037,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Member : public Entity
             {
                 public:
@@ -12834,8 +13051,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value member_interface; //type: string
 
+
+                    YLeaf member_interface; //type: string
 
                 class MemberItem : public Entity
                 {
@@ -12850,6 +13068,7 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class Items : public Entity
@@ -12867,6 +13086,7 @@ class BundleInformation : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class BundleData : public Entity
                         {
                             public:
@@ -12880,9 +13100,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_name; //type: string
-                                Value iccp_group_id; //type: uint32
 
+
+                                YLeaf bundle_name; //type: string
+                                YLeaf iccp_group_id; //type: uint32
 
                             class MlacpSyncRequestsOnAllLocalPorts : public Entity
                             {
@@ -12897,9 +13118,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
 
+
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -12914,10 +13136,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -12951,6 +13174,7 @@ class BundleInformation : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class NodeData_ : public Entity
                             {
                                 public:
@@ -12964,9 +13188,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_id; //type: uint32
-                                    Value iccp_group_id; //type: uint32
 
+
+                                    YLeaf node_id; //type: uint32
+                                    YLeaf iccp_group_id; //type: uint32
 
 
 
@@ -12986,9 +13211,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
 
+
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -13003,10 +13229,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -13032,8 +13259,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value port_name; //type: string
 
+
+                                    YLeaf port_name; //type: string
 
                                 class MlacpTlvCounters : public Entity
                                 {
@@ -13048,15 +13276,16 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sent_config_tl_vs; //type: uint32
-                                        Value sent_state_tl_vs; //type: uint32
-                                        Value sent_priority_tl_vs; //type: uint32
-                                        Value received_priority_tl_vs; //type: uint32
-                                        Value received_nak_tl_vs; //type: uint32
-                                        Value last_time_cleared; //type: uint64
-                                        Value time_since_cleared; //type: uint64
-                                        Value last_unexpected_event; //type: uint64
 
+
+                                        YLeaf sent_config_tl_vs; //type: uint32
+                                        YLeaf sent_state_tl_vs; //type: uint32
+                                        YLeaf sent_priority_tl_vs; //type: uint32
+                                        YLeaf received_priority_tl_vs; //type: uint32
+                                        YLeaf received_nak_tl_vs; //type: uint32
+                                        YLeaf last_time_cleared; //type: uint64
+                                        YLeaf time_since_cleared; //type: uint64
+                                        YLeaf last_unexpected_event; //type: uint64
 
                                     class ReceivedSyncRequests : public Entity
                                     {
@@ -13071,10 +13300,11 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value all_syncs; //type: uint32
-                                            Value config_syncs; //type: uint32
-                                            Value state_syncs; //type: uint32
 
+
+                                            YLeaf all_syncs; //type: uint32
+                                            YLeaf config_syncs; //type: uint32
+                                            YLeaf state_syncs; //type: uint32
 
 
 
@@ -13114,8 +13344,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value port_name; //type: string
 
+
+                                YLeaf port_name; //type: string
 
                             class MlacpTlvCounters : public Entity
                             {
@@ -13130,15 +13361,16 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sent_config_tl_vs; //type: uint32
-                                    Value sent_state_tl_vs; //type: uint32
-                                    Value sent_priority_tl_vs; //type: uint32
-                                    Value received_priority_tl_vs; //type: uint32
-                                    Value received_nak_tl_vs; //type: uint32
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
-                                    Value last_unexpected_event; //type: uint64
 
+
+                                    YLeaf sent_config_tl_vs; //type: uint32
+                                    YLeaf sent_state_tl_vs; //type: uint32
+                                    YLeaf sent_priority_tl_vs; //type: uint32
+                                    YLeaf received_priority_tl_vs; //type: uint32
+                                    YLeaf received_nak_tl_vs; //type: uint32
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
+                                    YLeaf last_unexpected_event; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -13153,10 +13385,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -13216,6 +13449,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Bundle : public Entity
             {
                 public:
@@ -13229,8 +13463,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface; //type: string
 
+
+                    YLeaf bundle_interface; //type: string
 
                 class BundleItem : public Entity
                 {
@@ -13247,6 +13482,7 @@ class BundleInformation : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BundleData : public Entity
                     {
                         public:
@@ -13260,9 +13496,10 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bundle_name; //type: string
-                            Value iccp_group_id; //type: uint32
 
+
+                            YLeaf bundle_name; //type: string
+                            YLeaf iccp_group_id; //type: uint32
 
                         class MlacpSyncRequestsOnAllLocalPorts : public Entity
                         {
@@ -13277,9 +13514,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value last_time_cleared; //type: uint64
-                                Value time_since_cleared; //type: uint64
 
+
+                                YLeaf last_time_cleared; //type: uint64
+                                YLeaf time_since_cleared; //type: uint64
 
                             class ReceivedSyncRequests : public Entity
                             {
@@ -13294,10 +13532,11 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value all_syncs; //type: uint32
-                                    Value config_syncs; //type: uint32
-                                    Value state_syncs; //type: uint32
 
+
+                                    YLeaf all_syncs; //type: uint32
+                                    YLeaf config_syncs; //type: uint32
+                                    YLeaf state_syncs; //type: uint32
 
 
 
@@ -13331,6 +13570,7 @@ class BundleInformation : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NodeData_ : public Entity
                         {
                             public:
@@ -13344,9 +13584,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value node_id; //type: uint32
-                                Value iccp_group_id; //type: uint32
 
+
+                                YLeaf node_id; //type: uint32
+                                YLeaf iccp_group_id; //type: uint32
 
 
 
@@ -13366,9 +13607,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value last_time_cleared; //type: uint64
-                                Value time_since_cleared; //type: uint64
 
+
+                                YLeaf last_time_cleared; //type: uint64
+                                YLeaf time_since_cleared; //type: uint64
 
                             class ReceivedSyncRequests : public Entity
                             {
@@ -13383,10 +13625,11 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value all_syncs; //type: uint32
-                                    Value config_syncs; //type: uint32
-                                    Value state_syncs; //type: uint32
 
+
+                                    YLeaf all_syncs; //type: uint32
+                                    YLeaf config_syncs; //type: uint32
+                                    YLeaf state_syncs; //type: uint32
 
 
 
@@ -13412,8 +13655,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value port_name; //type: string
 
+
+                                YLeaf port_name; //type: string
 
                             class MlacpTlvCounters : public Entity
                             {
@@ -13428,15 +13672,16 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sent_config_tl_vs; //type: uint32
-                                    Value sent_state_tl_vs; //type: uint32
-                                    Value sent_priority_tl_vs; //type: uint32
-                                    Value received_priority_tl_vs; //type: uint32
-                                    Value received_nak_tl_vs; //type: uint32
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
-                                    Value last_unexpected_event; //type: uint64
 
+
+                                    YLeaf sent_config_tl_vs; //type: uint32
+                                    YLeaf sent_state_tl_vs; //type: uint32
+                                    YLeaf sent_priority_tl_vs; //type: uint32
+                                    YLeaf received_priority_tl_vs; //type: uint32
+                                    YLeaf received_nak_tl_vs; //type: uint32
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
+                                    YLeaf last_unexpected_event; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -13451,10 +13696,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -13494,8 +13740,9 @@ class BundleInformation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value port_name; //type: string
 
+
+                            YLeaf port_name; //type: string
 
                         class MlacpTlvCounters : public Entity
                         {
@@ -13510,15 +13757,16 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_config_tl_vs; //type: uint32
-                                Value sent_state_tl_vs; //type: uint32
-                                Value sent_priority_tl_vs; //type: uint32
-                                Value received_priority_tl_vs; //type: uint32
-                                Value received_nak_tl_vs; //type: uint32
-                                Value last_time_cleared; //type: uint64
-                                Value time_since_cleared; //type: uint64
-                                Value last_unexpected_event; //type: uint64
 
+
+                                YLeaf sent_config_tl_vs; //type: uint32
+                                YLeaf sent_state_tl_vs; //type: uint32
+                                YLeaf sent_priority_tl_vs; //type: uint32
+                                YLeaf received_priority_tl_vs; //type: uint32
+                                YLeaf received_nak_tl_vs; //type: uint32
+                                YLeaf last_time_cleared; //type: uint64
+                                YLeaf time_since_cleared; //type: uint64
+                                YLeaf last_unexpected_event; //type: uint64
 
                             class ReceivedSyncRequests : public Entity
                             {
@@ -13533,10 +13781,11 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value all_syncs; //type: uint32
-                                    Value config_syncs; //type: uint32
-                                    Value state_syncs; //type: uint32
 
+
+                                    YLeaf all_syncs; //type: uint32
+                                    YLeaf config_syncs; //type: uint32
+                                    YLeaf state_syncs; //type: uint32
 
 
 
@@ -13590,6 +13839,7 @@ class BundleInformation : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Node : public Entity
             {
                 public:
@@ -13603,8 +13853,9 @@ class BundleInformation : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value node; //type: string
 
+
+                    YLeaf node; //type: string
 
                 class NodeItem : public Entity
                 {
@@ -13619,6 +13870,7 @@ class BundleInformation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class Items : public Entity
@@ -13636,6 +13888,7 @@ class BundleInformation : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class BundleData : public Entity
                         {
                             public:
@@ -13649,9 +13902,10 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_name; //type: string
-                                Value iccp_group_id; //type: uint32
 
+
+                                YLeaf bundle_name; //type: string
+                                YLeaf iccp_group_id; //type: uint32
 
                             class MlacpSyncRequestsOnAllLocalPorts : public Entity
                             {
@@ -13666,9 +13920,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
 
+
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -13683,10 +13938,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -13720,6 +13976,7 @@ class BundleInformation : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class NodeData_ : public Entity
                             {
                                 public:
@@ -13733,9 +13990,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_id; //type: uint32
-                                    Value iccp_group_id; //type: uint32
 
+
+                                    YLeaf node_id; //type: uint32
+                                    YLeaf iccp_group_id; //type: uint32
 
 
 
@@ -13755,9 +14013,10 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
 
+
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -13772,10 +14031,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -13801,8 +14061,9 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value port_name; //type: string
 
+
+                                    YLeaf port_name; //type: string
 
                                 class MlacpTlvCounters : public Entity
                                 {
@@ -13817,15 +14078,16 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sent_config_tl_vs; //type: uint32
-                                        Value sent_state_tl_vs; //type: uint32
-                                        Value sent_priority_tl_vs; //type: uint32
-                                        Value received_priority_tl_vs; //type: uint32
-                                        Value received_nak_tl_vs; //type: uint32
-                                        Value last_time_cleared; //type: uint64
-                                        Value time_since_cleared; //type: uint64
-                                        Value last_unexpected_event; //type: uint64
 
+
+                                        YLeaf sent_config_tl_vs; //type: uint32
+                                        YLeaf sent_state_tl_vs; //type: uint32
+                                        YLeaf sent_priority_tl_vs; //type: uint32
+                                        YLeaf received_priority_tl_vs; //type: uint32
+                                        YLeaf received_nak_tl_vs; //type: uint32
+                                        YLeaf last_time_cleared; //type: uint64
+                                        YLeaf time_since_cleared; //type: uint64
+                                        YLeaf last_unexpected_event; //type: uint64
 
                                     class ReceivedSyncRequests : public Entity
                                     {
@@ -13840,10 +14102,11 @@ class BundleInformation : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value all_syncs; //type: uint32
-                                            Value config_syncs; //type: uint32
-                                            Value state_syncs; //type: uint32
 
+
+                                            YLeaf all_syncs; //type: uint32
+                                            YLeaf config_syncs; //type: uint32
+                                            YLeaf state_syncs; //type: uint32
 
 
 
@@ -13883,8 +14146,9 @@ class BundleInformation : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value port_name; //type: string
 
+
+                                YLeaf port_name; //type: string
 
                             class MlacpTlvCounters : public Entity
                             {
@@ -13899,15 +14163,16 @@ class BundleInformation : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sent_config_tl_vs; //type: uint32
-                                    Value sent_state_tl_vs; //type: uint32
-                                    Value sent_priority_tl_vs; //type: uint32
-                                    Value received_priority_tl_vs; //type: uint32
-                                    Value received_nak_tl_vs; //type: uint32
-                                    Value last_time_cleared; //type: uint64
-                                    Value time_since_cleared; //type: uint64
-                                    Value last_unexpected_event; //type: uint64
 
+
+                                    YLeaf sent_config_tl_vs; //type: uint32
+                                    YLeaf sent_state_tl_vs; //type: uint32
+                                    YLeaf sent_priority_tl_vs; //type: uint32
+                                    YLeaf received_priority_tl_vs; //type: uint32
+                                    YLeaf received_nak_tl_vs; //type: uint32
+                                    YLeaf last_time_cleared; //type: uint64
+                                    YLeaf time_since_cleared; //type: uint64
+                                    YLeaf last_unexpected_event; //type: uint64
 
                                 class ReceivedSyncRequests : public Entity
                                 {
@@ -13922,10 +14187,11 @@ class BundleInformation : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value all_syncs; //type: uint32
-                                        Value config_syncs; //type: uint32
-                                        Value state_syncs; //type: uint32
 
+
+                                        YLeaf all_syncs; //type: uint32
+                                        YLeaf config_syncs; //type: uint32
+                                        YLeaf state_syncs; //type: uint32
 
 
 
@@ -14016,6 +14282,7 @@ class LacpData : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Global : public Entity
     {
         public:
@@ -14031,6 +14298,7 @@ class LacpData : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SystemId : public Entity
         {
             public:
@@ -14044,10 +14312,11 @@ class LacpData : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value iccp_group_id; //type: uint32
-                Value system_priority; //type: uint16
-                Value system_mac_address; //type: string
 
+
+                YLeaf iccp_group_id; //type: uint32
+                YLeaf system_priority; //type: uint16
+                YLeaf system_mac_address; //type: string
 
             class SystemId_ : public Entity
             {
@@ -14062,8 +14331,9 @@ class LacpData : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value system_prio; //type: uint16
 
+
+                    YLeaf system_prio; //type: uint16
 
                 class SystemMacAddr : public Entity
                 {
@@ -14078,8 +14348,9 @@ class LacpData : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value macaddr; //type: string
 
+
+                        YLeaf macaddr; //type: string
 
 
 
@@ -14125,6 +14396,7 @@ class Bundles : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Bundles_ : public Entity
     {
         public:
@@ -14140,6 +14412,7 @@ class Bundles : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Bundle : public Entity
         {
             public:
@@ -14153,8 +14426,9 @@ class Bundles : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value bundle_interface; //type: string
 
+
+                YLeaf bundle_interface; //type: string
 
             class Data : public Entity
             {
@@ -14169,45 +14443,46 @@ class Bundles : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bundle_interface_name; //type: string
-                    Value available_bandwidth; //type: uint32
-                    Value effective_bandwidth; //type: uint32
-                    Value configured_bandwidth; //type: uint32
-                    Value minimum_active_links; //type: uint8
-                    Value maximum_active_links; //type: uint8
-                    Value maximum_active_links_source; //type: BmWhichSystemEnum
-                    Value minimum_bandwidth; //type: uint32
-                    Value primary_member; //type: string
-                    Value bundle_status; //type: BmBdlStateEnum
-                    Value active_member_count; //type: uint16
-                    Value standby_member_count; //type: uint16
-                    Value configured_member_count; //type: uint16
-                    Value mac_source; //type: BmBdlMacSourceEnum
-                    Value mac_source_member; //type: string
-                    Value inter_chassis; //type: boolean
-                    Value is_active; //type: boolean
-                    Value lacp_status; //type: BmFeatureStatusEnum
-                    Value mlacp_status; //type: BmFeatureStatusEnum
-                    Value ipv4bfd_status; //type: BmFeatureStatusEnum
-                    Value link_order_status; //type: BmFeatureStatusEnum
-                    Value ipv6bfd_status; //type: BmFeatureStatusEnum
-                    Value load_balance_hash_type; //type: string
-                    Value load_balance_locality_threshold; //type: uint16
-                    Value suppression_timer; //type: uint16
-                    Value wait_while_timer; //type: uint16
-                    Value collector_max_delay; //type: uint16
-                    Value cisco_extensions; //type: boolean
-                    Value lacp_nonrevertive; //type: boolean
-                    Value iccp_group_id; //type: uint32
-                    Value active_foreign_member_count; //type: uint16
-                    Value configured_foreign_member_count; //type: uint16
-                    Value switchover_type; //type: BmdMlacpSwitchoverEnum
-                    Value maximize_threshold_value_links; //type: uint32
-                    Value maximize_threshold_value_band_width; //type: uint32
-                    Value mlacp_mode; //type: BundleMlacpModeEnum
-                    Value recovery_delay; //type: uint16
-                    Value singleton; //type: boolean
 
+
+                    YLeaf bundle_interface_name; //type: string
+                    YLeaf available_bandwidth; //type: uint32
+                    YLeaf effective_bandwidth; //type: uint32
+                    YLeaf configured_bandwidth; //type: uint32
+                    YLeaf minimum_active_links; //type: uint8
+                    YLeaf maximum_active_links; //type: uint8
+                    YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
+                    YLeaf minimum_bandwidth; //type: uint32
+                    YLeaf primary_member; //type: string
+                    YLeaf bundle_status; //type: BmBdlStateEnum
+                    YLeaf active_member_count; //type: uint16
+                    YLeaf standby_member_count; //type: uint16
+                    YLeaf configured_member_count; //type: uint16
+                    YLeaf mac_source; //type: BmBdlMacSourceEnum
+                    YLeaf mac_source_member; //type: string
+                    YLeaf inter_chassis; //type: boolean
+                    YLeaf is_active; //type: boolean
+                    YLeaf lacp_status; //type: BmFeatureStatusEnum
+                    YLeaf mlacp_status; //type: BmFeatureStatusEnum
+                    YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
+                    YLeaf link_order_status; //type: BmFeatureStatusEnum
+                    YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
+                    YLeaf load_balance_hash_type; //type: string
+                    YLeaf load_balance_locality_threshold; //type: uint16
+                    YLeaf suppression_timer; //type: uint16
+                    YLeaf wait_while_timer; //type: uint16
+                    YLeaf collector_max_delay; //type: uint16
+                    YLeaf cisco_extensions; //type: boolean
+                    YLeaf lacp_nonrevertive; //type: boolean
+                    YLeaf iccp_group_id; //type: uint32
+                    YLeaf active_foreign_member_count; //type: uint16
+                    YLeaf configured_foreign_member_count; //type: uint16
+                    YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
+                    YLeaf maximize_threshold_value_links; //type: uint32
+                    YLeaf maximize_threshold_value_band_width; //type: uint32
+                    YLeaf mlacp_mode; //type: BundleMlacpModeEnum
+                    YLeaf recovery_delay; //type: uint16
+                    YLeaf singleton; //type: boolean
 
                 class MacAddress : public Entity
                 {
@@ -14222,8 +14497,9 @@ class Bundles : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
 
+
+                        YLeaf address; //type: string
 
 
 
@@ -14243,15 +14519,16 @@ class Bundles : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bundle_status; //type: BmdBfdBdlStateEnum
-                        Value start_timer; //type: uint32
-                        Value nbr_unconfig_timer; //type: uint32
-                        Value pref_multiplier; //type: uint16
-                        Value pref_min_interval; //type: uint32
-                        Value pref_echo_min_interval; //type: uint32
-                        Value fast_detect; //type: boolean
-                        Value mode_info; //type: uint32
 
+
+                        YLeaf bundle_status; //type: BmdBfdBdlStateEnum
+                        YLeaf start_timer; //type: uint32
+                        YLeaf nbr_unconfig_timer; //type: uint32
+                        YLeaf pref_multiplier; //type: uint16
+                        YLeaf pref_min_interval; //type: uint32
+                        YLeaf pref_echo_min_interval; //type: uint32
+                        YLeaf fast_detect; //type: boolean
+                        YLeaf mode_info; //type: uint32
 
                     class DestinationAddress : public Entity
                     {
@@ -14266,19 +14543,18 @@ class Bundles : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af; //type: BmAfIdEnum
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BmAfIdEnum;
+                            YLeaf af; //type: BmAfIdEnum
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bundles::Bundles_::Bundle::Data::BfdConfig::DestinationAddress
 
 
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Data::BfdConfig::DestinationAddress> destination_address;
-                        class BmdBfdBdlStateEnum;
 
 
                 }; // Bundles::Bundles_::Bundle::Data::BfdConfig
@@ -14286,16 +14562,6 @@ class Bundles : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Data::BfdConfig> > bfd_config;
                     std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Data::MacAddress> mac_address;
-                    class BmBdlStateEnum;
-                    class BmFeatureStatusEnum;
-                    class BmFeatureStatusEnum;
-                    class BmFeatureStatusEnum;
-                    class BmFeatureStatusEnum;
-                    class BmBdlMacSourceEnum;
-                    class BmWhichSystemEnum;
-                    class BundleMlacpModeEnum;
-                    class BmFeatureStatusEnum;
-                    class BmdMlacpSwitchoverEnum;
 
 
             }; // Bundles::Bundles_::Bundle::Data
@@ -14316,6 +14582,7 @@ class Bundles : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Member : public Entity
                 {
                     public:
@@ -14329,17 +14596,18 @@ class Bundles : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value member_interface; //type: string
-                        Value bandwidth; //type: uint32
-                        Value port_priority; //type: uint16
-                        Value port_number; //type: uint16
-                        Value underlying_link_id; //type: uint16
-                        Value link_order_number; //type: uint16
-                        Value interface_name; //type: string
-                        Value iccp_node; //type: uint32
-                        Value member_type; //type: BmdMemberTypeEnumEnum
-                        Value member_name; //type: string
 
+
+                        YLeaf member_interface; //type: string
+                        YLeaf bandwidth; //type: uint32
+                        YLeaf port_priority; //type: uint16
+                        YLeaf port_number; //type: uint16
+                        YLeaf underlying_link_id; //type: uint16
+                        YLeaf link_order_number; //type: uint16
+                        YLeaf interface_name; //type: string
+                        YLeaf iccp_node; //type: uint32
+                        YLeaf member_type; //type: BmdMemberTypeEnumEnum
+                        YLeaf member_name; //type: string
 
                     class Counters : public Entity
                     {
@@ -14354,18 +14622,19 @@ class Bundles : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value lacpd_us_received; //type: uint32
-                            Value lacpd_us_transmitted; //type: uint32
-                            Value marker_packets_received; //type: uint32
-                            Value marker_responses_transmitted; //type: uint32
-                            Value illegal_packets_received; //type: uint32
-                            Value excess_lacpd_us_received; //type: uint32
-                            Value excess_marker_packets_received; //type: uint32
-                            Value defaulted; //type: uint32
-                            Value expired; //type: uint32
-                            Value last_cleared_sec; //type: uint32
-                            Value last_cleared_nsec; //type: uint32
 
+
+                            YLeaf lacpd_us_received; //type: uint32
+                            YLeaf lacpd_us_transmitted; //type: uint32
+                            YLeaf marker_packets_received; //type: uint32
+                            YLeaf marker_responses_transmitted; //type: uint32
+                            YLeaf illegal_packets_received; //type: uint32
+                            YLeaf excess_lacpd_us_received; //type: uint32
+                            YLeaf excess_marker_packets_received; //type: uint32
+                            YLeaf defaulted; //type: uint32
+                            YLeaf expired; //type: uint32
+                            YLeaf last_cleared_sec; //type: uint32
+                            YLeaf last_cleared_nsec; //type: uint32
 
 
 
@@ -14385,22 +14654,23 @@ class Bundles : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_handle; //type: string
-                            Value actor_system_priority; //type: uint16
-                            Value actor_system_mac_address; //type: string
-                            Value actor_operational_key; //type: uint16
-                            Value partner_system_priority; //type: uint16
-                            Value partner_system_mac_address; //type: string
-                            Value partner_operational_key; //type: uint16
-                            Value selected_aggregator_id; //type: uint32
-                            Value attached_aggregator_id; //type: uint32
-                            Value actor_port_id; //type: uint16
-                            Value actor_port_priority; //type: uint16
-                            Value partner_port_id; //type: uint16
-                            Value partner_port_priority; //type: uint16
-                            Value actor_port_state; //type: uint8
-                            Value partner_port_state; //type: uint8
 
+
+                            YLeaf interface_handle; //type: string
+                            YLeaf actor_system_priority; //type: uint16
+                            YLeaf actor_system_mac_address; //type: string
+                            YLeaf actor_operational_key; //type: uint16
+                            YLeaf partner_system_priority; //type: uint16
+                            YLeaf partner_system_mac_address; //type: string
+                            YLeaf partner_operational_key; //type: uint16
+                            YLeaf selected_aggregator_id; //type: uint32
+                            YLeaf attached_aggregator_id; //type: uint32
+                            YLeaf actor_port_id; //type: uint16
+                            YLeaf actor_port_priority; //type: uint16
+                            YLeaf partner_port_id; //type: uint16
+                            YLeaf partner_port_priority; //type: uint16
+                            YLeaf actor_port_state; //type: uint8
+                            YLeaf partner_port_state; //type: uint8
 
 
 
@@ -14420,12 +14690,13 @@ class Bundles : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value mux_state; //type: BmMuxstateEnum
-                            Value error; //type: uint32
-                            Value member_mux_state_reason; //type: BmMbrStateReasonEnum
-                            Value member_state; //type: BmdMemberStateEnum
-                            Value mux_state_reason; //type: BmMuxreasonEnum
 
+
+                            YLeaf mux_state; //type: BmMuxstateEnum
+                            YLeaf error; //type: uint32
+                            YLeaf member_mux_state_reason; //type: BmMbrStateReasonEnum
+                            YLeaf member_state; //type: BmdMemberStateEnum
+                            YLeaf mux_state_reason; //type: BmMuxreasonEnum
 
                         class MemberMuxStateReasonData : public Entity
                         {
@@ -14440,22 +14711,17 @@ class Bundles : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value reason_type; //type: BmStateReasonTargetEnum
-                                Value severity; //type: BmSeverityEnum
 
 
-                                class BmStateReasonTargetEnum;
-                                class BmSeverityEnum;
+                                YLeaf reason_type; //type: BmStateReasonTargetEnum
+                                YLeaf severity; //type: BmSeverityEnum
+
 
 
                         }; // Bundles::Bundles_::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData
 
 
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData> member_mux_state_reason_data;
-                            class BmMbrStateReasonEnum;
-                            class BmdMemberStateEnum;
-                            class BmMuxstateEnum;
-                            class BmMuxreasonEnum;
 
 
                     }; // Bundles::Bundles_::Bundle::Members::Member::MemberMuxData
@@ -14474,8 +14740,9 @@ class Bundles : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
 
+
+                            YLeaf address; //type: string
 
 
 
@@ -14486,7 +14753,6 @@ class Bundles : public Entity
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Members::Member::LinkData> link_data;
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Members::Member::MacAddress> mac_address;
                         std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Members::Member::MemberMuxData> member_mux_data;
-                        class BmdMemberTypeEnumEnum;
 
 
                 }; // Bundles::Bundles_::Bundle::Members::Member
@@ -14532,6 +14798,7 @@ class LacpBundleMembers : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -14547,6 +14814,7 @@ class LacpBundleMembers : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -14560,8 +14828,9 @@ class LacpBundleMembers : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node; //type: string
 
+
+                YLeaf node; //type: string
 
             class Counters : public Entity
             {
@@ -14576,14 +14845,15 @@ class LacpBundleMembers : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value wrong_port_count; //type: uint32
-                    Value last_wrong_port; //type: uint32
-                    Value unknown_port_count; //type: uint32
-                    Value undecodable_packets; //type: uint32
-                    Value time_since_cleared; //type: uint64
-                    Value time_since_unexpected_event; //type: uint64
-                    Value time_since_last_updated; //type: uint64
 
+
+                    YLeaf wrong_port_count; //type: uint32
+                    YLeaf last_wrong_port; //type: uint32
+                    YLeaf unknown_port_count; //type: uint32
+                    YLeaf undecodable_packets; //type: uint32
+                    YLeaf time_since_cleared; //type: uint64
+                    YLeaf time_since_unexpected_event; //type: uint64
+                    YLeaf time_since_last_updated; //type: uint64
 
 
 
@@ -14617,6 +14887,7 @@ class LacpBundleMembers : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Member : public Entity
         {
             public:
@@ -14630,8 +14901,9 @@ class LacpBundleMembers : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value member_interface; //type: string
 
+
+                YLeaf member_interface; //type: string
 
             class Data : public Entity
             {
@@ -14646,22 +14918,23 @@ class LacpBundleMembers : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_handle; //type: string
-                    Value actor_system_priority; //type: uint16
-                    Value actor_system_mac_address; //type: string
-                    Value actor_operational_key; //type: uint16
-                    Value partner_system_priority; //type: uint16
-                    Value partner_system_mac_address; //type: string
-                    Value partner_operational_key; //type: uint16
-                    Value selected_aggregator_id; //type: uint32
-                    Value attached_aggregator_id; //type: uint32
-                    Value actor_port_id; //type: uint16
-                    Value actor_port_priority; //type: uint16
-                    Value partner_port_id; //type: uint16
-                    Value partner_port_priority; //type: uint16
-                    Value actor_port_state; //type: uint8
-                    Value partner_port_state; //type: uint8
 
+
+                    YLeaf interface_handle; //type: string
+                    YLeaf actor_system_priority; //type: uint16
+                    YLeaf actor_system_mac_address; //type: string
+                    YLeaf actor_operational_key; //type: uint16
+                    YLeaf partner_system_priority; //type: uint16
+                    YLeaf partner_system_mac_address; //type: string
+                    YLeaf partner_operational_key; //type: uint16
+                    YLeaf selected_aggregator_id; //type: uint32
+                    YLeaf attached_aggregator_id; //type: uint32
+                    YLeaf actor_port_id; //type: uint16
+                    YLeaf actor_port_priority; //type: uint16
+                    YLeaf partner_port_id; //type: uint16
+                    YLeaf partner_port_priority; //type: uint16
+                    YLeaf actor_port_state; //type: uint8
+                    YLeaf partner_port_state; //type: uint8
 
 
 
@@ -14681,21 +14954,22 @@ class LacpBundleMembers : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lacpd_us_received; //type: uint32
-                    Value lacpd_us_transmitted; //type: uint32
-                    Value marker_packets_received; //type: uint32
-                    Value marker_responses_transmitted; //type: uint32
-                    Value illegal_packets_received; //type: uint32
-                    Value excess_lacpd_us_received; //type: uint32
-                    Value excess_marker_packets_received; //type: uint32
-                    Value defaulted; //type: uint32
-                    Value expired; //type: uint32
-                    Value time_since_last_lacpdu_received; //type: uint64
-                    Value time_since_cleared; //type: uint64
-                    Value time_since_unexpected_event; //type: uint64
-                    Value last_cleared_sec; //type: uint32
-                    Value last_cleared_nsec; //type: uint32
 
+
+                    YLeaf lacpd_us_received; //type: uint32
+                    YLeaf lacpd_us_transmitted; //type: uint32
+                    YLeaf marker_packets_received; //type: uint32
+                    YLeaf marker_responses_transmitted; //type: uint32
+                    YLeaf illegal_packets_received; //type: uint32
+                    YLeaf excess_lacpd_us_received; //type: uint32
+                    YLeaf excess_marker_packets_received; //type: uint32
+                    YLeaf defaulted; //type: uint32
+                    YLeaf expired; //type: uint32
+                    YLeaf time_since_last_lacpdu_received; //type: uint64
+                    YLeaf time_since_cleared; //type: uint64
+                    YLeaf time_since_unexpected_event; //type: uint64
+                    YLeaf last_cleared_sec; //type: uint32
+                    YLeaf last_cleared_nsec; //type: uint32
 
 
 
@@ -14737,6 +15011,7 @@ class BundlesAdjacency : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -14752,6 +15027,7 @@ class BundlesAdjacency : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -14765,8 +15041,9 @@ class BundlesAdjacency : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Brief : public Entity
             {
@@ -14783,6 +15060,7 @@ class BundlesAdjacency : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BundleData : public Entity
                 {
                     public:
@@ -14796,11 +15074,12 @@ class BundlesAdjacency : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value sub_interface_count; //type: uint32
-                        Value member_count; //type: uint32
-                        Value total_weight; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf sub_interface_count; //type: uint32
+                        YLeaf member_count; //type: uint32
+                        YLeaf total_weight; //type: uint32
 
                     class SubInterface : public Entity
                     {
@@ -14815,8 +15094,9 @@ class BundlesAdjacency : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
 
                         class LoadBalanceData : public Entity
                         {
@@ -14831,12 +15111,12 @@ class BundlesAdjacency : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value type; //type: LoadBalanceEnum
-                                Value value_; //type: uint32
-                                Value local_link_threshold; //type: uint32
 
 
-                                class LoadBalanceEnum;
+                                YLeaf type; //type: LoadBalanceEnum
+                                YLeaf value_; //type: uint32
+                                YLeaf local_link_threshold; //type: uint32
+
 
 
                         }; // BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData
@@ -14875,6 +15155,7 @@ class BundlesAdjacency : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Bundle : public Entity
                 {
                     public:
@@ -14888,8 +15169,9 @@ class BundlesAdjacency : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bundle_name; //type: string
 
+
+                        YLeaf bundle_name; //type: string
 
                     class BundleInfo : public Entity
                     {
@@ -14904,10 +15186,11 @@ class BundlesAdjacency : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value media; //type: BundleMedia1Enum
-                            Value max_member_count; //type: uint32
-                            Value avoid_rebalance; //type: boolean
 
+
+                            YLeaf media; //type: BundleMedia1Enum
+                            YLeaf max_member_count; //type: uint32
+                            YLeaf avoid_rebalance; //type: boolean
 
                         class Brief : public Entity
                         {
@@ -14922,11 +15205,12 @@ class BundlesAdjacency : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value sub_interface_count; //type: uint32
-                                Value member_count; //type: uint32
-                                Value total_weight; //type: uint32
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf sub_interface_count; //type: uint32
+                                YLeaf member_count; //type: uint32
+                                YLeaf total_weight; //type: uint32
 
                             class SubInterface : public Entity
                             {
@@ -14941,8 +15225,9 @@ class BundlesAdjacency : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
 
+
+                                    YLeaf interface_name; //type: string
 
                                 class LoadBalanceData : public Entity
                                 {
@@ -14957,12 +15242,12 @@ class BundlesAdjacency : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value type; //type: LoadBalanceEnum
-                                        Value value_; //type: uint32
-                                        Value local_link_threshold; //type: uint32
 
 
-                                        class LoadBalanceEnum;
+                                        YLeaf type; //type: LoadBalanceEnum
+                                        YLeaf value_; //type: uint32
+                                        YLeaf local_link_threshold; //type: uint32
+
 
 
                                 }; // BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData
@@ -14993,12 +15278,12 @@ class BundlesAdjacency : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value type; //type: LoadBalanceEnum
-                                Value value_; //type: uint32
-                                Value local_link_threshold; //type: uint32
 
 
-                                class LoadBalanceEnum;
+                                YLeaf type; //type: LoadBalanceEnum
+                                YLeaf value_; //type: uint32
+                                YLeaf local_link_threshold; //type: uint32
+
 
 
                         }; // BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData
@@ -15017,11 +15302,12 @@ class BundlesAdjacency : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value link_id; //type: uint8
-                                Value link_order_number; //type: uint8
-                                Value bandwidth; //type: uint8
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf link_id; //type: uint8
+                                YLeaf link_order_number; //type: uint8
+                                YLeaf bandwidth; //type: uint8
 
 
 
@@ -15041,8 +15327,9 @@ class BundlesAdjacency : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
 
+
+                                YLeaf interface_name; //type: string
 
                             class LoadBalanceData : public Entity
                             {
@@ -15057,12 +15344,12 @@ class BundlesAdjacency : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value type; //type: LoadBalanceEnum
-                                    Value value_; //type: uint32
-                                    Value local_link_threshold; //type: uint32
 
 
-                                    class LoadBalanceEnum;
+                                    YLeaf type; //type: LoadBalanceEnum
+                                    YLeaf value_; //type: uint32
+                                    YLeaf local_link_threshold; //type: uint32
+
 
 
                             }; // BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData
@@ -15078,7 +15365,6 @@ class BundlesAdjacency : public Entity
                             std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData> load_balance_data;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member> > member;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface> > sub_interface;
-                            class BundleMedia1Enum;
 
 
                     }; // BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo
@@ -15118,469 +15404,469 @@ class BundlesAdjacency : public Entity
 class BmdMlacpSwitchoverEnum : public Enum
 {
     public:
-        static const Enum::Value bmd_mlacp_switchover_nonrevertive;
-        static const Enum::Value bmd_mlacp_switchover_brute_force;
-        static const Enum::Value bmd_mlacp_switchover_revertive;
-        static const Enum::Value bmd_mlacp_switchover_count;
+        static const Enum::YLeaf bmd_mlacp_switchover_nonrevertive;
+        static const Enum::YLeaf bmd_mlacp_switchover_brute_force;
+        static const Enum::YLeaf bmd_mlacp_switchover_revertive;
+        static const Enum::YLeaf bmd_mlacp_switchover_count;
 
 };
 
 class LoadBalanceEnum : public Enum
 {
     public:
-        static const Enum::Value default_;
-        static const Enum::Value auto_;
-        static const Enum::Value value_;
-        static const Enum::Value source_ip;
-        static const Enum::Value destination_ip;
-        static const Enum::Value unknown;
+        static const Enum::YLeaf default_;
+        static const Enum::YLeaf auto_;
+        static const Enum::YLeaf value_;
+        static const Enum::YLeaf source_ip;
+        static const Enum::YLeaf destination_ip;
+        static const Enum::YLeaf unknown;
 
 };
 
 class BmBdlStateEnum : public Enum
 {
     public:
-        static const Enum::Value bm_bdl_state_admin_down;
-        static const Enum::Value bm_bdl_state_down;
-        static const Enum::Value bm_bdl_state_ptnr_down;
-        static const Enum::Value bm_bdl_state_bundle_shutdown;
-        static const Enum::Value bm_bdl_state_pe_isolated;
-        static const Enum::Value bm_bdl_state_nak;
-        static const Enum::Value bm_bdl_state_up_active;
-        static const Enum::Value bm_bdl_state_mlacp_hot_standby;
-        static const Enum::Value bm_bdl_state_mlacp_cold_standby;
-        static const Enum::Value bm_bdl_state_unknown;
-        static const Enum::Value bm_bdl_state_cold_standby;
-        static const Enum::Value bm_bdl_state_error_disabled;
-        static const Enum::Value bm_bdl_state_efd_disabled;
+        static const Enum::YLeaf bm_bdl_state_admin_down;
+        static const Enum::YLeaf bm_bdl_state_down;
+        static const Enum::YLeaf bm_bdl_state_ptnr_down;
+        static const Enum::YLeaf bm_bdl_state_bundle_shutdown;
+        static const Enum::YLeaf bm_bdl_state_pe_isolated;
+        static const Enum::YLeaf bm_bdl_state_nak;
+        static const Enum::YLeaf bm_bdl_state_up_active;
+        static const Enum::YLeaf bm_bdl_state_mlacp_hot_standby;
+        static const Enum::YLeaf bm_bdl_state_mlacp_cold_standby;
+        static const Enum::YLeaf bm_bdl_state_unknown;
+        static const Enum::YLeaf bm_bdl_state_cold_standby;
+        static const Enum::YLeaf bm_bdl_state_error_disabled;
+        static const Enum::YLeaf bm_bdl_state_efd_disabled;
 
 };
 
 class LacpPeriodStateEnum : public Enum
 {
     public:
-        static const Enum::Value period_s_low;
-        static const Enum::Value period_fast;
-        static const Enum::Value period_none;
+        static const Enum::YLeaf period_s_low;
+        static const Enum::YLeaf period_fast;
+        static const Enum::YLeaf period_none;
 
 };
 
 class BundleMediaEnum : public Enum
 {
     public:
-        static const Enum::Value bundle_media_ethernet;
-        static const Enum::Value bundle_media_pos;
-        static const Enum::Value bundle_media_count;
+        static const Enum::YLeaf bundle_media_ethernet;
+        static const Enum::YLeaf bundle_media_pos;
+        static const Enum::YLeaf bundle_media_count;
 
 };
 
 class BmdMlacpBdlStateEnumEnum : public Enum
 {
     public:
-        static const Enum::Value bdl_state_nak;
-        static const Enum::Value bdl_state_unknown;
-        static const Enum::Value bdl_state_no_sync;
-        static const Enum::Value bdl_state_rec_delay;
-        static const Enum::Value bdl_state_up;
-        static const Enum::Value bdl_state_down;
-        static const Enum::Value bdl_state_admin_down;
-        static const Enum::Value bdl_state_test;
-        static const Enum::Value bdl_state_error;
+        static const Enum::YLeaf bdl_state_nak;
+        static const Enum::YLeaf bdl_state_unknown;
+        static const Enum::YLeaf bdl_state_no_sync;
+        static const Enum::YLeaf bdl_state_rec_delay;
+        static const Enum::YLeaf bdl_state_up;
+        static const Enum::YLeaf bdl_state_down;
+        static const Enum::YLeaf bdl_state_admin_down;
+        static const Enum::YLeaf bdl_state_test;
+        static const Enum::YLeaf bdl_state_error;
 
 };
 
 class BundleMedia1Enum : public Enum
 {
     public:
-        static const Enum::Value ethernet;
-        static const Enum::Value pos;
+        static const Enum::YLeaf ethernet;
+        static const Enum::YLeaf pos;
 
 };
 
 class RxstatesEnum : public Enum
 {
     public:
-        static const Enum::Value current_rx;
-        static const Enum::Value expired;
-        static const Enum::Value defaulted;
-        static const Enum::Value initialize;
-        static const Enum::Value lacp_disabled;
-        static const Enum::Value port_disabled;
+        static const Enum::YLeaf current_rx;
+        static const Enum::YLeaf expired;
+        static const Enum::YLeaf defaulted;
+        static const Enum::YLeaf initialize;
+        static const Enum::YLeaf lacp_disabled;
+        static const Enum::YLeaf port_disabled;
 
 };
 
 class LacpChurnstatesEnum : public Enum
 {
     public:
-        static const Enum::Value no_churn;
-        static const Enum::Value churn;
-        static const Enum::Value churn_monitor;
+        static const Enum::YLeaf no_churn;
+        static const Enum::YLeaf churn;
+        static const Enum::YLeaf churn_monitor;
 
 };
 
 class BmdBagEventMbrItemEnum : public Enum
 {
     public:
-        static const Enum::Value bmd_event_mbr_idb_create;
-        static const Enum::Value bmd_event_mbr_bdl_add;
-        static const Enum::Value bmd_event_mbr_im_state;
-        static const Enum::Value bmd_event_mbr_sel_logic;
-        static const Enum::Value bmd_event_mbr_mux;
-        static const Enum::Value bmd_event_mbr_bfd;
-        static const Enum::Value bmd_event_mbr_expired;
-        static const Enum::Value bmd_event_mbr_defaulted;
-        static const Enum::Value bmd_event_mbr_first_retry;
-        static const Enum::Value bmd_event_mbr_msg;
-        static const Enum::Value bmd_event_mbr_error;
-        static const Enum::Value bmd_event_mbr_mlacp_tlv;
-        static const Enum::Value bmd_event_mbr_redundancy_role;
-        static const Enum::Value bmd_event_mbr_count;
+        static const Enum::YLeaf bmd_event_mbr_idb_create;
+        static const Enum::YLeaf bmd_event_mbr_bdl_add;
+        static const Enum::YLeaf bmd_event_mbr_im_state;
+        static const Enum::YLeaf bmd_event_mbr_sel_logic;
+        static const Enum::YLeaf bmd_event_mbr_mux;
+        static const Enum::YLeaf bmd_event_mbr_bfd;
+        static const Enum::YLeaf bmd_event_mbr_expired;
+        static const Enum::YLeaf bmd_event_mbr_defaulted;
+        static const Enum::YLeaf bmd_event_mbr_first_retry;
+        static const Enum::YLeaf bmd_event_mbr_msg;
+        static const Enum::YLeaf bmd_event_mbr_error;
+        static const Enum::YLeaf bmd_event_mbr_mlacp_tlv;
+        static const Enum::YLeaf bmd_event_mbr_redundancy_role;
+        static const Enum::YLeaf bmd_event_mbr_count;
 
 };
 
 class BmdBagEventDataEnum : public Enum
 {
     public:
-        static const Enum::Value bmd_bag_evt_data_none;
-        static const Enum::Value bmd_bag_evt_data_error;
-        static const Enum::Value bmd_bag_evt_data_string;
+        static const Enum::YLeaf bmd_bag_evt_data_none;
+        static const Enum::YLeaf bmd_bag_evt_data_error;
+        static const Enum::YLeaf bmd_bag_evt_data_string;
 
 };
 
 class BmdSwitchReasonEnum : public Enum
 {
     public:
-        static const Enum::Value bm_switch_reason_none;
-        static const Enum::Value bm_switch_reason_noop;
-        static const Enum::Value bm_switch_reason_not_mlacp;
-        static const Enum::Value bm_switch_reason_revertive;
-        static const Enum::Value bm_switch_reason_bdl_down;
-        static const Enum::Value bm_switch_reason_recovery;
-        static const Enum::Value bm_switch_reason_preceding_error;
-        static const Enum::Value bm_switch_reason_wrong_order;
-        static const Enum::Value bm_switch_reason_singleton;
+        static const Enum::YLeaf bm_switch_reason_none;
+        static const Enum::YLeaf bm_switch_reason_noop;
+        static const Enum::YLeaf bm_switch_reason_not_mlacp;
+        static const Enum::YLeaf bm_switch_reason_revertive;
+        static const Enum::YLeaf bm_switch_reason_bdl_down;
+        static const Enum::YLeaf bm_switch_reason_recovery;
+        static const Enum::YLeaf bm_switch_reason_preceding_error;
+        static const Enum::YLeaf bm_switch_reason_wrong_order;
+        static const Enum::YLeaf bm_switch_reason_singleton;
 
 };
 
 class BmdMemberTypeEnumEnum : public Enum
 {
     public:
-        static const Enum::Value bmd_mbr_local;
-        static const Enum::Value bmd_mbr_foreign;
-        static const Enum::Value bmd_mbr_unknown;
+        static const Enum::YLeaf bmd_mbr_local;
+        static const Enum::YLeaf bmd_mbr_foreign;
+        static const Enum::YLeaf bmd_mbr_unknown;
 
 };
 
 class BmAfIdEnum : public Enum
 {
     public:
-        static const Enum::Value bm_af_id_ipv4;
-        static const Enum::Value bm_af_id_ipv6;
+        static const Enum::YLeaf bm_af_id_ipv4;
+        static const Enum::YLeaf bm_af_id_ipv6;
 
 };
 
 class BmMbrStateReasonEnum : public Enum
 {
     public:
-        static const Enum::Value bm_mbr_state_reason_unknown;
-        static const Enum::Value bm_mbr_state_reason_unselectable_unknown;
-        static const Enum::Value bm_mbr_state_reason_link_down;
-        static const Enum::Value bm_mbr_state_reason_link_deleting;
-        static const Enum::Value bm_mbr_state_reason_creating;
-        static const Enum::Value bm_mbr_state_reason_bundle_creating;
-        static const Enum::Value bm_mbr_state_reason_bundle_deleting;
-        static const Enum::Value bm_mbr_state_reason_bundle_admin_down;
-        static const Enum::Value bm_mbr_state_reason_replicating;
-        static const Enum::Value bm_mbr_state_reason_bandwidth;
-        static const Enum::Value bm_mbr_state_reason_loop_back;
-        static const Enum::Value bm_mbr_state_reason_activity_type;
-        static const Enum::Value bm_mbr_state_reason_bundle_shutdown;
-        static const Enum::Value bm_mbr_state_reason_min_selected;
-        static const Enum::Value bm_mbr_state_reason_max_selected;
-        static const Enum::Value bm_mbr_state_reason_link_limit;
-        static const Enum::Value bm_mbr_state_reason_active_limit;
-        static const Enum::Value bm_mbr_state_reason_standby_unknown;
-        static const Enum::Value bm_mbr_state_reason_expired;
-        static const Enum::Value bm_mbr_state_reason_defaulted;
-        static const Enum::Value bm_mbr_state_reason_act_or_not_agg;
-        static const Enum::Value bm_mbr_state_reason_partner_not_agg;
-        static const Enum::Value bm_mbr_state_reason_lagid;
-        static const Enum::Value bm_mbr_state_reason_bundle_not_cfgd;
-        static const Enum::Value bm_mbr_state_reason_bundle_not_ready;
-        static const Enum::Value bm_mbr_state_reason_partner_ood;
-        static const Enum::Value bm_mbr_state_reason_partner_not_in_sync;
-        static const Enum::Value bm_mbr_state_reason_foreign_partner_oos;
-        static const Enum::Value bm_mbr_state_reason_attach_unknown;
-        static const Enum::Value bm_mbr_state_reason_partner_not_collecting;
-        static const Enum::Value bm_mbr_state_reason_collect_unknown;
-        static const Enum::Value bm_mbr_state_reason_standby_foreign;
-        static const Enum::Value bm_mbr_state_reason_bfd_starting;
-        static const Enum::Value bm_mbr_state_reason_bfd_down;
-        static const Enum::Value bm_mbr_state_reason_bfd_nbr_unconfig;
-        static const Enum::Value bm_mbr_state_reason_mlacp;
-        static const Enum::Value bm_mbr_state_reason_pe_isolated;
-        static const Enum::Value bm_mbr_state_reason_forced_switchover;
-        static const Enum::Value bm_mbr_state_reason_errdis_unknown;
-        static const Enum::Value bm_mbr_state_reason_mlacp_no_mbr_state_info;
-        static const Enum::Value bm_mbr_state_reason_active;
-        static const Enum::Value bm_mbr_state_reason_mlacp_no_bdl_state_info;
-        static const Enum::Value bm_mbr_state_reason_mlacp_no_bdl_config_info;
-        static const Enum::Value bm_mbr_state_reason_mlacp_no_bdl_sync;
-        static const Enum::Value bm_mbr_state_reason_mlacp_bdl_has_no_peer;
-        static const Enum::Value bm_mbr_state_reason_mlacp_nak;
-        static const Enum::Value bm_mbr_state_reason_mlacp_transport_unavailable;
-        static const Enum::Value bm_mbr_state_reason_mlacp_not_configured;
-        static const Enum::Value bm_mbr_state_reason_recovery_timer;
-        static const Enum::Value bm_mbr_state_reason_mlacp_standby;
-        static const Enum::Value bm_mbr_state_reason_maximized_out;
-        static const Enum::Value bm_mbr_state_reason_mlacp_peer_selected;
-        static const Enum::Value bm_mbr_state_reason_mlacp_connect_timer_running;
-        static const Enum::Value bm_mbr_state_reason_bundle_not_mlacp;
-        static const Enum::Value bm_mbr_state_reason_no_lon;
-        static const Enum::Value bm_mbr_state_reason_cumul_rel_bw_limit;
-        static const Enum::Value bm_mbr_state_reason_no_mac;
-        static const Enum::Value bm_mbr_state_reason_no_system_id;
-        static const Enum::Value bm_mbr_state_reason_link_shutdown;
-        static const Enum::Value bm_mbr_state_reason_activity_mlacp;
-        static const Enum::Value bm_mbr_state_reason_activity_iccp;
-        static const Enum::Value bm_mbr_state_reason_bundle_icpe_mlacp;
-        static const Enum::Value bm_mbr_state_reason_no_link_num;
-        static const Enum::Value bm_mbr_state_reason_standby_peer_higher_prio;
-        static const Enum::Value bm_mbr_state_reason_red_state_standby;
-        static const Enum::Value bm_mbr_state_reason_other_red_state_standby;
-        static const Enum::Value bm_mbr_state_reason_hold_ing;
-        static const Enum::Value bm_mbr_state_reason_bundle_error_disabled;
-        static const Enum::Value bm_mbr_state_reason_bundle_efd_disabled;
-        static const Enum::Value bm_mbr_state_reason_singleton_pe_isolated;
-        static const Enum::Value bm_mbr_state_reason_bfd_ipv6_starting;
-        static const Enum::Value bm_mbr_state_reason_bfd_ipv6_down;
-        static const Enum::Value bm_mbr_state_reason_bfd_ipv6_nbr_unconfig;
-        static const Enum::Value bm_mbr_state_reason_timer_running;
-        static const Enum::Value bm_mbr_state_reason_count;
+        static const Enum::YLeaf bm_mbr_state_reason_unknown;
+        static const Enum::YLeaf bm_mbr_state_reason_unselectable_unknown;
+        static const Enum::YLeaf bm_mbr_state_reason_link_down;
+        static const Enum::YLeaf bm_mbr_state_reason_link_deleting;
+        static const Enum::YLeaf bm_mbr_state_reason_creating;
+        static const Enum::YLeaf bm_mbr_state_reason_bundle_creating;
+        static const Enum::YLeaf bm_mbr_state_reason_bundle_deleting;
+        static const Enum::YLeaf bm_mbr_state_reason_bundle_admin_down;
+        static const Enum::YLeaf bm_mbr_state_reason_replicating;
+        static const Enum::YLeaf bm_mbr_state_reason_bandwidth;
+        static const Enum::YLeaf bm_mbr_state_reason_loop_back;
+        static const Enum::YLeaf bm_mbr_state_reason_activity_type;
+        static const Enum::YLeaf bm_mbr_state_reason_bundle_shutdown;
+        static const Enum::YLeaf bm_mbr_state_reason_min_selected;
+        static const Enum::YLeaf bm_mbr_state_reason_max_selected;
+        static const Enum::YLeaf bm_mbr_state_reason_link_limit;
+        static const Enum::YLeaf bm_mbr_state_reason_active_limit;
+        static const Enum::YLeaf bm_mbr_state_reason_standby_unknown;
+        static const Enum::YLeaf bm_mbr_state_reason_expired;
+        static const Enum::YLeaf bm_mbr_state_reason_defaulted;
+        static const Enum::YLeaf bm_mbr_state_reason_act_or_not_agg;
+        static const Enum::YLeaf bm_mbr_state_reason_partner_not_agg;
+        static const Enum::YLeaf bm_mbr_state_reason_lagid;
+        static const Enum::YLeaf bm_mbr_state_reason_bundle_not_cfgd;
+        static const Enum::YLeaf bm_mbr_state_reason_bundle_not_ready;
+        static const Enum::YLeaf bm_mbr_state_reason_partner_ood;
+        static const Enum::YLeaf bm_mbr_state_reason_partner_not_in_sync;
+        static const Enum::YLeaf bm_mbr_state_reason_foreign_partner_oos;
+        static const Enum::YLeaf bm_mbr_state_reason_attach_unknown;
+        static const Enum::YLeaf bm_mbr_state_reason_partner_not_collecting;
+        static const Enum::YLeaf bm_mbr_state_reason_collect_unknown;
+        static const Enum::YLeaf bm_mbr_state_reason_standby_foreign;
+        static const Enum::YLeaf bm_mbr_state_reason_bfd_starting;
+        static const Enum::YLeaf bm_mbr_state_reason_bfd_down;
+        static const Enum::YLeaf bm_mbr_state_reason_bfd_nbr_unconfig;
+        static const Enum::YLeaf bm_mbr_state_reason_mlacp;
+        static const Enum::YLeaf bm_mbr_state_reason_pe_isolated;
+        static const Enum::YLeaf bm_mbr_state_reason_forced_switchover;
+        static const Enum::YLeaf bm_mbr_state_reason_errdis_unknown;
+        static const Enum::YLeaf bm_mbr_state_reason_mlacp_no_mbr_state_info;
+        static const Enum::YLeaf bm_mbr_state_reason_active;
+        static const Enum::YLeaf bm_mbr_state_reason_mlacp_no_bdl_state_info;
+        static const Enum::YLeaf bm_mbr_state_reason_mlacp_no_bdl_config_info;
+        static const Enum::YLeaf bm_mbr_state_reason_mlacp_no_bdl_sync;
+        static const Enum::YLeaf bm_mbr_state_reason_mlacp_bdl_has_no_peer;
+        static const Enum::YLeaf bm_mbr_state_reason_mlacp_nak;
+        static const Enum::YLeaf bm_mbr_state_reason_mlacp_transport_unavailable;
+        static const Enum::YLeaf bm_mbr_state_reason_mlacp_not_configured;
+        static const Enum::YLeaf bm_mbr_state_reason_recovery_timer;
+        static const Enum::YLeaf bm_mbr_state_reason_mlacp_standby;
+        static const Enum::YLeaf bm_mbr_state_reason_maximized_out;
+        static const Enum::YLeaf bm_mbr_state_reason_mlacp_peer_selected;
+        static const Enum::YLeaf bm_mbr_state_reason_mlacp_connect_timer_running;
+        static const Enum::YLeaf bm_mbr_state_reason_bundle_not_mlacp;
+        static const Enum::YLeaf bm_mbr_state_reason_no_lon;
+        static const Enum::YLeaf bm_mbr_state_reason_cumul_rel_bw_limit;
+        static const Enum::YLeaf bm_mbr_state_reason_no_mac;
+        static const Enum::YLeaf bm_mbr_state_reason_no_system_id;
+        static const Enum::YLeaf bm_mbr_state_reason_link_shutdown;
+        static const Enum::YLeaf bm_mbr_state_reason_activity_mlacp;
+        static const Enum::YLeaf bm_mbr_state_reason_activity_iccp;
+        static const Enum::YLeaf bm_mbr_state_reason_bundle_icpe_mlacp;
+        static const Enum::YLeaf bm_mbr_state_reason_no_link_num;
+        static const Enum::YLeaf bm_mbr_state_reason_standby_peer_higher_prio;
+        static const Enum::YLeaf bm_mbr_state_reason_red_state_standby;
+        static const Enum::YLeaf bm_mbr_state_reason_other_red_state_standby;
+        static const Enum::YLeaf bm_mbr_state_reason_hold_ing;
+        static const Enum::YLeaf bm_mbr_state_reason_bundle_error_disabled;
+        static const Enum::YLeaf bm_mbr_state_reason_bundle_efd_disabled;
+        static const Enum::YLeaf bm_mbr_state_reason_singleton_pe_isolated;
+        static const Enum::YLeaf bm_mbr_state_reason_bfd_ipv6_starting;
+        static const Enum::YLeaf bm_mbr_state_reason_bfd_ipv6_down;
+        static const Enum::YLeaf bm_mbr_state_reason_bfd_ipv6_nbr_unconfig;
+        static const Enum::YLeaf bm_mbr_state_reason_timer_running;
+        static const Enum::YLeaf bm_mbr_state_reason_count;
 
 };
 
 class BmdBagEventBdlItemEnum : public Enum
 {
     public:
-        static const Enum::Value bmd_event_bdl_idb_create;
-        static const Enum::Value bmd_event_bdl_configured;
-        static const Enum::Value bmd_event_bdl_im_state;
-        static const Enum::Value bmd_event_bdl_mbr_added;
-        static const Enum::Value bmd_event_bdl_mbr_deleted;
-        static const Enum::Value bmd_event_bdl_mac_addr;
-        static const Enum::Value bmd_event_bdl_first_retry;
-        static const Enum::Value bmd_event_bdl_user_config;
-        static const Enum::Value bmd_event_bdl_error;
-        static const Enum::Value bmd_event_bdl_mlacp_tlv;
-        static const Enum::Value bmd_event_bdl_redundancy_role;
-        static const Enum::Value bdl_bfd_state_change;
-        static const Enum::Value bmd_event_bdl_icl;
-        static const Enum::Value bmd_event_bdl_count;
+        static const Enum::YLeaf bmd_event_bdl_idb_create;
+        static const Enum::YLeaf bmd_event_bdl_configured;
+        static const Enum::YLeaf bmd_event_bdl_im_state;
+        static const Enum::YLeaf bmd_event_bdl_mbr_added;
+        static const Enum::YLeaf bmd_event_bdl_mbr_deleted;
+        static const Enum::YLeaf bmd_event_bdl_mac_addr;
+        static const Enum::YLeaf bmd_event_bdl_first_retry;
+        static const Enum::YLeaf bmd_event_bdl_user_config;
+        static const Enum::YLeaf bmd_event_bdl_error;
+        static const Enum::YLeaf bmd_event_bdl_mlacp_tlv;
+        static const Enum::YLeaf bmd_event_bdl_redundancy_role;
+        static const Enum::YLeaf bdl_bfd_state_change;
+        static const Enum::YLeaf bmd_event_bdl_icl;
+        static const Enum::YLeaf bmd_event_bdl_count;
 
 };
 
 class BmdMlacpNodeStateEnumEnum : public Enum
 {
     public:
-        static const Enum::Value node_state_incomplete;
-        static const Enum::Value node_state_conn_rejected;
-        static const Enum::Value node_state_connect_sent;
-        static const Enum::Value node_state_unconfigured;
-        static const Enum::Value node_state_unreachable;
-        static const Enum::Value node_state_iccp_down;
-        static const Enum::Value node_state_nak;
-        static const Enum::Value node_state_unknown;
-        static const Enum::Value node_state_mlacp_down;
-        static const Enum::Value node_state_admin_down;
-        static const Enum::Value node_state_pe_isolated;
-        static const Enum::Value node_state_error;
-        static const Enum::Value node_state_test;
-        static const Enum::Value node_state_up;
+        static const Enum::YLeaf node_state_incomplete;
+        static const Enum::YLeaf node_state_conn_rejected;
+        static const Enum::YLeaf node_state_connect_sent;
+        static const Enum::YLeaf node_state_unconfigured;
+        static const Enum::YLeaf node_state_unreachable;
+        static const Enum::YLeaf node_state_iccp_down;
+        static const Enum::YLeaf node_state_nak;
+        static const Enum::YLeaf node_state_unknown;
+        static const Enum::YLeaf node_state_mlacp_down;
+        static const Enum::YLeaf node_state_admin_down;
+        static const Enum::YLeaf node_state_pe_isolated;
+        static const Enum::YLeaf node_state_error;
+        static const Enum::YLeaf node_state_test;
+        static const Enum::YLeaf node_state_up;
 
 };
 
 class BmdBagEventRgItemEnum : public Enum
 {
     public:
-        static const Enum::Value bmd_event_rg_idb_create;
-        static const Enum::Value bmd_event_rg_configured;
-        static const Enum::Value bmd_event_rg_user_config;
-        static const Enum::Value bmd_event_rg_connect_ion;
-        static const Enum::Value bmd_event_rg_data;
-        static const Enum::Value bmd_event_rg_sync;
-        static const Enum::Value bmd_event_rg_first_retry;
-        static const Enum::Value bmd_event_rg_error;
-        static const Enum::Value bmd_event_rg_mlacp_tlv;
-        static const Enum::Value bmd_event_rg_iccp_event;
-        static const Enum::Value bmd_event_rg_count;
+        static const Enum::YLeaf bmd_event_rg_idb_create;
+        static const Enum::YLeaf bmd_event_rg_configured;
+        static const Enum::YLeaf bmd_event_rg_user_config;
+        static const Enum::YLeaf bmd_event_rg_connect_ion;
+        static const Enum::YLeaf bmd_event_rg_data;
+        static const Enum::YLeaf bmd_event_rg_sync;
+        static const Enum::YLeaf bmd_event_rg_first_retry;
+        static const Enum::YLeaf bmd_event_rg_error;
+        static const Enum::YLeaf bmd_event_rg_mlacp_tlv;
+        static const Enum::YLeaf bmd_event_rg_iccp_event;
+        static const Enum::YLeaf bmd_event_rg_count;
 
 };
 
 class BmWhichSystemEnum : public Enum
 {
     public:
-        static const Enum::Value bm_which_system_actr;
-        static const Enum::Value bm_which_system_ptnr;
+        static const Enum::YLeaf bm_which_system_actr;
+        static const Enum::YLeaf bm_which_system_ptnr;
 
 };
 
 class BmdBfdBdlStateEnum : public Enum
 {
     public:
-        static const Enum::Value bmd_bfd_bdl_down;
-        static const Enum::Value bmd_bfd_bdl_unknown;
-        static const Enum::Value bmd_bfd_bdl_up;
-        static const Enum::Value bmd_bfd_bdl_count;
+        static const Enum::YLeaf bmd_bfd_bdl_down;
+        static const Enum::YLeaf bmd_bfd_bdl_unknown;
+        static const Enum::YLeaf bmd_bfd_bdl_up;
+        static const Enum::YLeaf bmd_bfd_bdl_count;
 
 };
 
 class BmdMlacpMbrStateEnumEnum : public Enum
 {
     public:
-        static const Enum::Value mbr_state_nak;
-        static const Enum::Value mbr_state_unknown;
-        static const Enum::Value mbr_state_up;
-        static const Enum::Value mbr_state_down;
-        static const Enum::Value mbr_state_admin_down;
-        static const Enum::Value mbr_state_test;
-        static const Enum::Value mbr_state_error;
+        static const Enum::YLeaf mbr_state_nak;
+        static const Enum::YLeaf mbr_state_unknown;
+        static const Enum::YLeaf mbr_state_up;
+        static const Enum::YLeaf mbr_state_down;
+        static const Enum::YLeaf mbr_state_admin_down;
+        static const Enum::YLeaf mbr_state_test;
+        static const Enum::YLeaf mbr_state_error;
 
 };
 
 class BmdBagTargetEnum : public Enum
 {
     public:
-        static const Enum::Value bm_bag_target_mbr;
-        static const Enum::Value bm_bag_target_bdl;
-        static const Enum::Value bm_bag_target_node;
-        static const Enum::Value bm_bag_target_rg;
+        static const Enum::YLeaf bm_bag_target_mbr;
+        static const Enum::YLeaf bm_bag_target_bdl;
+        static const Enum::YLeaf bm_bag_target_node;
+        static const Enum::YLeaf bm_bag_target_rg;
 
 };
 
 class BmMuxstateEnum : public Enum
 {
     public:
-        static const Enum::Value detached;
-        static const Enum::Value waiting;
-        static const Enum::Value attached;
-        static const Enum::Value collecting;
-        static const Enum::Value distributing;
-        static const Enum::Value collecting_distributing;
+        static const Enum::YLeaf detached;
+        static const Enum::YLeaf waiting;
+        static const Enum::YLeaf attached;
+        static const Enum::YLeaf collecting;
+        static const Enum::YLeaf distributing;
+        static const Enum::YLeaf collecting_distributing;
 
 };
 
 class LacpSelStateEnum : public Enum
 {
     public:
-        static const Enum::Value unselected;
-        static const Enum::Value standby;
-        static const Enum::Value selected;
+        static const Enum::YLeaf unselected;
+        static const Enum::YLeaf standby;
+        static const Enum::YLeaf selected;
 
 };
 
 class BmdMemberStateEnum : public Enum
 {
     public:
-        static const Enum::Value bmd_mbr_state_configured;
-        static const Enum::Value bmd_mbr_state_standby;
-        static const Enum::Value bmd_mbr_state_hot_standby;
-        static const Enum::Value bmd_mbr_state_negotiating;
-        static const Enum::Value bmd_mbr_state_bfd_running;
-        static const Enum::Value bmd_mbr_state_active;
+        static const Enum::YLeaf bmd_mbr_state_configured;
+        static const Enum::YLeaf bmd_mbr_state_standby;
+        static const Enum::YLeaf bmd_mbr_state_hot_standby;
+        static const Enum::YLeaf bmd_mbr_state_negotiating;
+        static const Enum::YLeaf bmd_mbr_state_bfd_running;
+        static const Enum::YLeaf bmd_mbr_state_active;
 
 };
 
 class BmMuxreasonEnum : public Enum
 {
     public:
-        static const Enum::Value bm_mux_reason_no_reason;
-        static const Enum::Value bm_mux_reason_link_down;
-        static const Enum::Value bm_mux_reason_link_deleted;
-        static const Enum::Value bm_mux_reason_duplex;
-        static const Enum::Value bm_mux_reason_bandwidth;
-        static const Enum::Value bm_mux_reason_loop_back;
-        static const Enum::Value bm_mux_reason_activity_type;
-        static const Enum::Value bm_mux_reason_link_limit;
-        static const Enum::Value bm_mux_reason_shared;
-        static const Enum::Value bm_mux_reason_lagid;
-        static const Enum::Value bm_mux_reason_no_bundle;
-        static const Enum::Value bm_mux_reason_no_primary;
-        static const Enum::Value bm_mux_reason_bundle_down;
-        static const Enum::Value bm_mux_reason_individual;
-        static const Enum::Value bm_mux_reason_defaulted;
-        static const Enum::Value bm_mux_reason_in_sync;
-        static const Enum::Value bm_mux_reason_collecting;
-        static const Enum::Value bm_mux_reason_active_link_limit;
-        static const Enum::Value bm_mux_reason_distributing;
-        static const Enum::Value bm_mux_reason_count;
+        static const Enum::YLeaf bm_mux_reason_no_reason;
+        static const Enum::YLeaf bm_mux_reason_link_down;
+        static const Enum::YLeaf bm_mux_reason_link_deleted;
+        static const Enum::YLeaf bm_mux_reason_duplex;
+        static const Enum::YLeaf bm_mux_reason_bandwidth;
+        static const Enum::YLeaf bm_mux_reason_loop_back;
+        static const Enum::YLeaf bm_mux_reason_activity_type;
+        static const Enum::YLeaf bm_mux_reason_link_limit;
+        static const Enum::YLeaf bm_mux_reason_shared;
+        static const Enum::YLeaf bm_mux_reason_lagid;
+        static const Enum::YLeaf bm_mux_reason_no_bundle;
+        static const Enum::YLeaf bm_mux_reason_no_primary;
+        static const Enum::YLeaf bm_mux_reason_bundle_down;
+        static const Enum::YLeaf bm_mux_reason_individual;
+        static const Enum::YLeaf bm_mux_reason_defaulted;
+        static const Enum::YLeaf bm_mux_reason_in_sync;
+        static const Enum::YLeaf bm_mux_reason_collecting;
+        static const Enum::YLeaf bm_mux_reason_active_link_limit;
+        static const Enum::YLeaf bm_mux_reason_distributing;
+        static const Enum::YLeaf bm_mux_reason_count;
 
 };
 
 class BmFeatureStatusEnum : public Enum
 {
     public:
-        static const Enum::Value bm_feature_not_configured;
-        static const Enum::Value bm_feature_not_operational;
-        static const Enum::Value bm_feature_operational;
+        static const Enum::YLeaf bm_feature_not_configured;
+        static const Enum::YLeaf bm_feature_not_operational;
+        static const Enum::YLeaf bm_feature_operational;
 
 };
 
 class BmSeverityEnum : public Enum
 {
     public:
-        static const Enum::Value ok;
-        static const Enum::Value information;
-        static const Enum::Value misconfiguration;
-        static const Enum::Value warning;
-        static const Enum::Value error;
+        static const Enum::YLeaf ok;
+        static const Enum::YLeaf information;
+        static const Enum::YLeaf misconfiguration;
+        static const Enum::YLeaf warning;
+        static const Enum::YLeaf error;
 
 };
 
 class BundleMlacpModeEnum : public Enum
 {
     public:
-        static const Enum::Value bundle_mlacp_mode_standby;
-        static const Enum::Value bundle_mlacp_mode_active;
-        static const Enum::Value bundle_mlacp_mode_count;
+        static const Enum::YLeaf bundle_mlacp_mode_standby;
+        static const Enum::YLeaf bundle_mlacp_mode_active;
+        static const Enum::YLeaf bundle_mlacp_mode_count;
 
 };
 
 class BmdBagMlacpSchActionItemEnum : public Enum
 {
     public:
-        static const Enum::Value switchover;
-        static const Enum::Value switchback;
+        static const Enum::YLeaf switchover;
+        static const Enum::YLeaf switchback;
 
 };
 
 class BmStateReasonTargetEnum : public Enum
 {
     public:
-        static const Enum::Value member_reason;
-        static const Enum::Value bundle_reason;
+        static const Enum::YLeaf member_reason;
+        static const Enum::YLeaf bundle_reason;
 
 };
 
 class BmdMlacpNodeSyncEnumEnum : public Enum
 {
     public:
-        static const Enum::Value node_sync_req;
-        static const Enum::Value node_sync_done;
-        static const Enum::Value node_sync_start;
-        static const Enum::Value node_sync_init;
-        static const Enum::Value node_sync_singleton;
+        static const Enum::YLeaf node_sync_req;
+        static const Enum::YLeaf node_sync_done;
+        static const Enum::YLeaf node_sync_start;
+        static const Enum::YLeaf node_sync_init;
+        static const Enum::YLeaf node_sync_singleton;
 
 };
 
 class BmBdlMacSourceEnum : public Enum
 {
     public:
-        static const Enum::Value bm_bdl_mac_source_unknown;
-        static const Enum::Value bm_bdl_mac_source_chassis;
-        static const Enum::Value bm_bdl_mac_source_configured;
-        static const Enum::Value bm_bdl_mac_source_member;
-        static const Enum::Value bm_bdl_mac_source_peer;
+        static const Enum::YLeaf bm_bdl_mac_source_unknown;
+        static const Enum::YLeaf bm_bdl_mac_source_chassis;
+        static const Enum::YLeaf bm_bdl_mac_source_configured;
+        static const Enum::YLeaf bm_bdl_mac_source_member;
+        static const Enum::YLeaf bm_bdl_mac_source_peer;
 
 };
 

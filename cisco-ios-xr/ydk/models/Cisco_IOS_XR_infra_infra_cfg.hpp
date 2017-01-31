@@ -26,6 +26,7 @@ class Banners : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Banner : public Entity
     {
         public:
@@ -39,11 +40,11 @@ class Banners : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value banner_name; //type: BannerEnum
-            Value banner_text; //type: string
 
 
-            class BannerEnum;
+            YLeaf banner_name; //type: BannerEnum
+            YLeaf banner_text; //type: string
+
 
 
     }; // Banners::Banner
@@ -58,12 +59,12 @@ class Banners : public Entity
 class BannerEnum : public Enum
 {
     public:
-        static const Enum::Value exec;
-        static const Enum::Value incoming;
-        static const Enum::Value motd;
-        static const Enum::Value login;
-        static const Enum::Value slip_ppp;
-        static const Enum::Value prompt_timeout;
+        static const Enum::YLeaf exec;
+        static const Enum::YLeaf incoming;
+        static const Enum::YLeaf motd;
+        static const Enum::YLeaf login;
+        static const Enum::YLeaf slip_ppp;
+        static const Enum::YLeaf prompt_timeout;
 
 };
 

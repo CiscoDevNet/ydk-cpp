@@ -45,8 +45,7 @@ ydk::path::DataNode::create(const std::string& path)
 ydk::path::DataNode*
 ydk::path::DataNode::create_filter(const std::string& path)
 {
-	//TODO
-    return nullptr;
+    return create_filter(path, "");
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -107,17 +106,22 @@ ydk::path::DataNodeImpl::path() const
 ydk::path::DataNode*
 ydk::path::DataNodeImpl::create_filter(const std::string& path, const std::string& value)
 {
-	//TODO
-    return nullptr;
+	return create_helper(path, value, true);
 }
 
 ydk::path::DataNode*
 ydk::path::DataNodeImpl::create(const std::string& path, const std::string& value)
 {
+	return create_helper(path, value, false);
+}
+
+ydk::path::DataNode*
+ydk::path::DataNodeImpl::create_helper(const std::string& path, const std::string& value, bool is_filter)
+{
     if(path.empty())
     {
         BOOST_LOG_TRIVIAL(error) << "Path is empty.";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"Path is empty."});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Path is empty."});
     }
 
     std::vector<std::string> segments = segmentalize(path);
@@ -155,7 +159,7 @@ ydk::path::DataNodeImpl::create(const std::string& path, const std::string& valu
         else if(r.size() != 1)
         {
             BOOST_LOG_TRIVIAL(error) << "Path " << path << " is ambiguous";
-            BOOST_THROW_EXCEPTION(YDKPathException{YDKPathException::Error::PATH_AMBIGUOUS});
+            BOOST_THROW_EXCEPTION(YCPPPathError{YCPPPathError::Error::PATH_AMBIGUOUS});
         }
         else
         {
@@ -163,7 +167,7 @@ ydk::path::DataNodeImpl::create(const std::string& path, const std::string& valu
             if (dn == nullptr)
             {
                 BOOST_LOG_TRIVIAL(error) << "Invalid data node";
-                BOOST_THROW_EXCEPTION(YDKCoreException{"Invalid data node"});
+                BOOST_THROW_EXCEPTION(YCPPCoreError{"Invalid data node"});
             }
             ++iter;
             start_index++;
@@ -172,8 +176,8 @@ ydk::path::DataNodeImpl::create(const std::string& path, const std::string& valu
 
     if (segments.empty())
     {
-        BOOST_LOG_TRIVIAL(error) << "path " << path << " points to existing node";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"path points to existing node."});
+        BOOST_LOG_TRIVIAL(error) << "Path " << path << " points to existing node";
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Path points to existing node: " + path});
     }
 
     std::vector<struct lyd_node*> nodes_created;
@@ -187,15 +191,22 @@ ydk::path::DataNodeImpl::create(const std::string& path, const std::string& valu
     		BOOST_LOG_TRIVIAL(trace) << "Skipping segment same as "<<top_container_path;
 			continue;
 		}
-        if (i != segments.size() - 1)
+
+    	auto child_segment = segments[i];
+    	if(is_filter)
+		{
+			BOOST_LOG_TRIVIAL(trace) << "Creating new filter path '" << child_segment <<"' in '"<<cn->schema->name<<"'";
+			cn = lyd_new_output(cn, nullptr, child_segment.c_str());
+		}
+    	else if (i != segments.size() - 1)
         {
-        	BOOST_LOG_TRIVIAL(trace) << "Creating new data path '" << segments[i] <<"' in '"<<cn->schema->name<<"'";
-            cn = lyd_new_path(cn, nullptr, segments[i].c_str(), nullptr, LYD_ANYDATA_SXML, 0);
+			BOOST_LOG_TRIVIAL(trace) << "Creating new data path '" << child_segment <<"' in '"<<cn->schema->name<<"'";
+			cn = lyd_new_path(cn, nullptr, child_segment.c_str(), nullptr, LYD_ANYDATA_SXML, 0);
 		}
         else
         {
-			BOOST_LOG_TRIVIAL(trace) << "Creating new data path '" << segments[i] <<"', with value '"<<value<<"' in '"<<cn->schema->name<<"'";
-			cn = lyd_new_path(cn, nullptr, segments[i].c_str(), (void*)value.c_str(), LYD_ANYDATA_SXML, 0);
+			BOOST_LOG_TRIVIAL(trace) << "Creating new data path '" << child_segment <<"', with value '"<<value<<"' in '"<<cn->schema->name<<"'";
+			cn = lyd_new_path(cn, nullptr, child_segment.c_str(), (void*)value.c_str(), LYD_ANYDATA_SXML, 0);
 		}
 
 		if (cn == nullptr)
@@ -205,7 +216,8 @@ ydk::path::DataNodeImpl::create(const std::string& path, const std::string& valu
 				lyd_unlink(first_node_created);
 				lyd_free(first_node_created);
             }
-            BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"invalid path"});
+            BOOST_LOG_TRIVIAL(error) << "Invalid path: " + segments[i];
+            BOOST_THROW_EXCEPTION(YCPPModelError{"Invalid path: " + segments[i]});
         }
 		else if (!first_node_created)
         {
@@ -246,7 +258,7 @@ ydk::path::DataNodeImpl::set(const std::string& value)
         if(lyd_change_leaf(leaf, value.c_str()))
         {
             BOOST_LOG_TRIVIAL(error) << "Invalid value " << value;
-            BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"Invalid value"});
+            BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Invalid value"});
         }
     }
     else if (s_node->nodetype == LYS_ANYXML)
@@ -257,7 +269,7 @@ ydk::path::DataNodeImpl::set(const std::string& value)
     else
     {
         BOOST_LOG_TRIVIAL(error) << "Trying to set value " << value << " for a non leaf non anyxml node.";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"Cannot set value for this Data Node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Cannot set value for this Data Node"});
     }
 }
 
@@ -413,13 +425,13 @@ ydk::path::DataNodeImpl::get_dn_for_desc_node(struct lyd_node* desc_node) const
 			   else
 			   {
 				   BOOST_LOG_TRIVIAL(error) << "Cannot find child DataNode";
-				   BOOST_THROW_EXCEPTION(YDKCoreException{"Cannot find child!"});
+				   BOOST_THROW_EXCEPTION(YCPPCoreError{"Cannot find child!"});
 			   }
 		   }
 		   else
 		   {
 			   BOOST_LOG_TRIVIAL(error) << "Parent is nullptr";
-			   BOOST_THROW_EXCEPTION(YDKCoreException{"Parent is nullptr"});
+			   BOOST_THROW_EXCEPTION(YCPPCoreError{"Parent is nullptr"});
 		   }
        }
 	   parent = dn;
@@ -434,7 +446,7 @@ void ydk::path::DataNodeImpl::add_annotation(const ydk::path::Annotation& an)
     if(!m_node)
     {
         BOOST_LOG_TRIVIAL(error) << "Cannot annotate uninitialized node";
-        BOOST_THROW_EXCEPTION(YDKIllegalStateException{"Cannot annotate node"});
+        BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"Cannot annotate node"});
     }
 
     std::string name { an.m_ns + ":" + an.m_name };
@@ -445,7 +457,7 @@ void ydk::path::DataNodeImpl::add_annotation(const ydk::path::Annotation& an)
     if(attr == nullptr)
     {
         BOOST_LOG_TRIVIAL(error) << "Cannot find module " << name.c_str();
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException("Cannot find module with given namespace."));
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError("Cannot find module with given namespace."));
     }
 }
 

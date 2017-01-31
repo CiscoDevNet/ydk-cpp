@@ -76,7 +76,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -211,7 +211,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -291,7 +291,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -362,8 +362,8 @@ bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::has_data() c
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::has_operation() const
 {
     return is_set(operation)
-	|| (frac_secs !=  nullptr && is_set(frac_secs->operation))
-	|| (sec !=  nullptr && is_set(sec->operation));
+	|| (frac_secs !=  nullptr && frac_secs->has_operation())
+	|| (sec !=  nullptr && sec->has_operation());
 }
 
 std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::get_segment_path() const
@@ -380,7 +380,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -501,7 +501,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -581,7 +581,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -652,8 +652,8 @@ bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::has_da
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::has_operation() const
 {
     return is_set(operation)
-	|| (frac_secs !=  nullptr && is_set(frac_secs->operation))
-	|| (sec !=  nullptr && is_set(sec->operation));
+	|| (frac_secs !=  nullptr && frac_secs->has_operation())
+	|| (sec !=  nullptr && sec->has_operation());
 }
 
 std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::get_segment_path() const
@@ -670,7 +670,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -791,7 +791,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -871,7 +871,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Fr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -942,8 +942,8 @@ bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::has_data
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::has_operation() const
 {
     return is_set(operation)
-	|| (frac_secs !=  nullptr && is_set(frac_secs->operation))
-	|| (sec !=  nullptr && is_set(sec->operation));
+	|| (frac_secs !=  nullptr && frac_secs->has_operation())
+	|| (sec !=  nullptr && sec->has_operation());
 }
 
 std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::get_segment_path() const
@@ -960,7 +960,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1081,7 +1081,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1161,7 +1161,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::F
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1232,8 +1232,8 @@ bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::has_dat
 bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::has_operation() const
 {
     return is_set(operation)
-	|| (frac_secs !=  nullptr && is_set(frac_secs->operation))
-	|| (sec !=  nullptr && is_set(sec->operation));
+	|| (frac_secs !=  nullptr && frac_secs->has_operation())
+	|| (sec !=  nullptr && sec->has_operation());
 }
 
 std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::get_segment_path() const
@@ -1250,7 +1250,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1377,7 +1377,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1517,11 +1517,11 @@ bool Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::has_operation() const
 	|| is_set(root_dispersion.operation)
 	|| is_set(synch_distance.operation)
 	|| is_set(version.operation)
-	|| (originate_time !=  nullptr && is_set(originate_time->operation))
-	|| (peer_info_common !=  nullptr && is_set(peer_info_common->operation))
-	|| (receive_time !=  nullptr && is_set(receive_time->operation))
-	|| (ref_time !=  nullptr && is_set(ref_time->operation))
-	|| (transmit_time !=  nullptr && is_set(transmit_time->operation));
+	|| (originate_time !=  nullptr && originate_time->has_operation())
+	|| (peer_info_common !=  nullptr && peer_info_common->has_operation())
+	|| (receive_time !=  nullptr && receive_time->has_operation())
+	|| (ref_time !=  nullptr && ref_time->has_operation())
+	|| (transmit_time !=  nullptr && transmit_time->has_operation());
 }
 
 std::string Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::get_segment_path() const
@@ -1538,7 +1538,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1822,7 +1822,7 @@ EntityPath Ntp::Nodes::Node::AssociationsDetail::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1933,7 +1933,7 @@ EntityPath Ntp::Nodes::Node::Status::SysRefTime::Sec::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2013,7 +2013,7 @@ EntityPath Ntp::Nodes::Node::Status::SysRefTime::FracSecs::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2084,8 +2084,8 @@ bool Ntp::Nodes::Node::Status::SysRefTime::has_data() const
 bool Ntp::Nodes::Node::Status::SysRefTime::has_operation() const
 {
     return is_set(operation)
-	|| (frac_secs !=  nullptr && is_set(frac_secs->operation))
-	|| (sec !=  nullptr && is_set(sec->operation));
+	|| (frac_secs !=  nullptr && frac_secs->has_operation())
+	|| (sec !=  nullptr && sec->has_operation());
 }
 
 std::string Ntp::Nodes::Node::Status::SysRefTime::get_segment_path() const
@@ -2102,7 +2102,7 @@ EntityPath Ntp::Nodes::Node::Status::SysRefTime::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2223,7 +2223,7 @@ EntityPath Ntp::Nodes::Node::Status::SysDrift::Sec::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2303,7 +2303,7 @@ EntityPath Ntp::Nodes::Node::Status::SysDrift::FracSecs::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2374,8 +2374,8 @@ bool Ntp::Nodes::Node::Status::SysDrift::has_data() const
 bool Ntp::Nodes::Node::Status::SysDrift::has_operation() const
 {
     return is_set(operation)
-	|| (frac_secs !=  nullptr && is_set(frac_secs->operation))
-	|| (sec !=  nullptr && is_set(sec->operation));
+	|| (frac_secs !=  nullptr && frac_secs->has_operation())
+	|| (sec !=  nullptr && sec->has_operation());
 }
 
 std::string Ntp::Nodes::Node::Status::SysDrift::get_segment_path() const
@@ -2392,7 +2392,7 @@ EntityPath Ntp::Nodes::Node::Status::SysDrift::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2547,8 +2547,8 @@ bool Ntp::Nodes::Node::Status::has_operation() const
 	|| is_set(sys_root_delay.operation)
 	|| is_set(sys_root_dispersion.operation)
 	|| is_set(sys_stratum.operation)
-	|| (sys_drift !=  nullptr && is_set(sys_drift->operation))
-	|| (sys_ref_time !=  nullptr && is_set(sys_ref_time->operation));
+	|| (sys_drift !=  nullptr && sys_drift->has_operation())
+	|| (sys_ref_time !=  nullptr && sys_ref_time->has_operation());
 }
 
 std::string Ntp::Nodes::Node::Status::get_segment_path() const
@@ -2565,7 +2565,7 @@ EntityPath Ntp::Nodes::Node::Status::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2789,7 +2789,7 @@ EntityPath Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2914,7 +2914,7 @@ bool Ntp::Nodes::Node::Associations::PeerSummaryInfo::has_operation() const
 {
     return is_set(operation)
 	|| is_set(time_since.operation)
-	|| (peer_info_common !=  nullptr && is_set(peer_info_common->operation));
+	|| (peer_info_common !=  nullptr && peer_info_common->has_operation());
 }
 
 std::string Ntp::Nodes::Node::Associations::PeerSummaryInfo::get_segment_path() const
@@ -2931,7 +2931,7 @@ EntityPath Ntp::Nodes::Node::Associations::PeerSummaryInfo::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3047,7 +3047,7 @@ EntityPath Ntp::Nodes::Node::Associations::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3158,9 +3158,9 @@ bool Ntp::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node.operation)
-	|| (associations !=  nullptr && is_set(associations->operation))
-	|| (associations_detail !=  nullptr && is_set(associations_detail->operation))
-	|| (status !=  nullptr && is_set(status->operation));
+	|| (associations !=  nullptr && associations->has_operation())
+	|| (associations_detail !=  nullptr && associations_detail->has_operation())
+	|| (status !=  nullptr && status->has_operation());
 }
 
 std::string Ntp::Nodes::Node::get_segment_path() const
@@ -3420,7 +3420,7 @@ bool Ntp::has_data() const
 bool Ntp::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Ntp::get_segment_path() const
@@ -3437,7 +3437,7 @@ EntityPath Ntp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3501,40 +3501,40 @@ std::unique_ptr<Entity> Ntp::clone_ptr()
     return std::make_unique<Ntp>();
 }
 
-const Enum::Value NtpPeerStatusEnum::ntp_ctl_pst_sel_reject {0, "ntp-ctl-pst-sel-reject"};
-const Enum::Value NtpPeerStatusEnum::ntp_ctl_pst_sel_sane {1, "ntp-ctl-pst-sel-sane"};
-const Enum::Value NtpPeerStatusEnum::ntp_ctl_pst_sel_correct {2, "ntp-ctl-pst-sel-correct"};
-const Enum::Value NtpPeerStatusEnum::ntp_ctl_pst_sel_selcand {3, "ntp-ctl-pst-sel-selcand"};
-const Enum::Value NtpPeerStatusEnum::ntp_ctl_pst_sel_sync_cand {4, "ntp-ctl-pst-sel-sync-cand"};
-const Enum::Value NtpPeerStatusEnum::ntp_ctl_pst_sel_distsys_peer {5, "ntp-ctl-pst-sel-distsys-peer"};
-const Enum::Value NtpPeerStatusEnum::ntp_ctl_pst_sel_sys_peer {6, "ntp-ctl-pst-sel-sys-peer"};
-const Enum::Value NtpPeerStatusEnum::ntp_ctl_pst_sel_pps {7, "ntp-ctl-pst-sel-pps"};
+const Enum::YLeaf NtpPeerStatusEnum::ntp_ctl_pst_sel_reject {0, "ntp-ctl-pst-sel-reject"};
+const Enum::YLeaf NtpPeerStatusEnum::ntp_ctl_pst_sel_sane {1, "ntp-ctl-pst-sel-sane"};
+const Enum::YLeaf NtpPeerStatusEnum::ntp_ctl_pst_sel_correct {2, "ntp-ctl-pst-sel-correct"};
+const Enum::YLeaf NtpPeerStatusEnum::ntp_ctl_pst_sel_selcand {3, "ntp-ctl-pst-sel-selcand"};
+const Enum::YLeaf NtpPeerStatusEnum::ntp_ctl_pst_sel_sync_cand {4, "ntp-ctl-pst-sel-sync-cand"};
+const Enum::YLeaf NtpPeerStatusEnum::ntp_ctl_pst_sel_distsys_peer {5, "ntp-ctl-pst-sel-distsys-peer"};
+const Enum::YLeaf NtpPeerStatusEnum::ntp_ctl_pst_sel_sys_peer {6, "ntp-ctl-pst-sel-sys-peer"};
+const Enum::YLeaf NtpPeerStatusEnum::ntp_ctl_pst_sel_pps {7, "ntp-ctl-pst-sel-pps"};
 
-const Enum::Value NtpModeEnum::ntp_mode_unspec {0, "ntp-mode-unspec"};
-const Enum::Value NtpModeEnum::ntp_mode_symetric_active {1, "ntp-mode-symetric-active"};
-const Enum::Value NtpModeEnum::ntp_mode_symetric_passive {2, "ntp-mode-symetric-passive"};
-const Enum::Value NtpModeEnum::ntp_mode_client {3, "ntp-mode-client"};
-const Enum::Value NtpModeEnum::ntp_mode_server {4, "ntp-mode-server"};
-const Enum::Value NtpModeEnum::ntp_mode_xcast_server {5, "ntp-mode-xcast-server"};
-const Enum::Value NtpModeEnum::ntp_mode_control {6, "ntp-mode-control"};
-const Enum::Value NtpModeEnum::ntp_mode_private {7, "ntp-mode-private"};
-const Enum::Value NtpModeEnum::ntp_mode_xcast_client {8, "ntp-mode-xcast-client"};
+const Enum::YLeaf NtpModeEnum::ntp_mode_unspec {0, "ntp-mode-unspec"};
+const Enum::YLeaf NtpModeEnum::ntp_mode_symetric_active {1, "ntp-mode-symetric-active"};
+const Enum::YLeaf NtpModeEnum::ntp_mode_symetric_passive {2, "ntp-mode-symetric-passive"};
+const Enum::YLeaf NtpModeEnum::ntp_mode_client {3, "ntp-mode-client"};
+const Enum::YLeaf NtpModeEnum::ntp_mode_server {4, "ntp-mode-server"};
+const Enum::YLeaf NtpModeEnum::ntp_mode_xcast_server {5, "ntp-mode-xcast-server"};
+const Enum::YLeaf NtpModeEnum::ntp_mode_control {6, "ntp-mode-control"};
+const Enum::YLeaf NtpModeEnum::ntp_mode_private {7, "ntp-mode-private"};
+const Enum::YLeaf NtpModeEnum::ntp_mode_xcast_client {8, "ntp-mode-xcast-client"};
 
-const Enum::Value ClockUpdateNodeEnum::clk_never_updated {0, "clk-never-updated"};
-const Enum::Value ClockUpdateNodeEnum::clk_updated {1, "clk-updated"};
-const Enum::Value ClockUpdateNodeEnum::clk_no_update_info {2, "clk-no-update-info"};
+const Enum::YLeaf ClockUpdateNodeEnum::clk_never_updated {0, "clk-never-updated"};
+const Enum::YLeaf ClockUpdateNodeEnum::clk_updated {1, "clk-updated"};
+const Enum::YLeaf ClockUpdateNodeEnum::clk_no_update_info {2, "clk-no-update-info"};
 
-const Enum::Value NtpLoopFilterStateEnum::ntp_loop_flt_n_set {0, "ntp-loop-flt-n-set"};
-const Enum::Value NtpLoopFilterStateEnum::ntp_loop_flt_f_set {1, "ntp-loop-flt-f-set"};
-const Enum::Value NtpLoopFilterStateEnum::ntp_loop_flt_spik {2, "ntp-loop-flt-spik"};
-const Enum::Value NtpLoopFilterStateEnum::ntp_loop_flt_freq {3, "ntp-loop-flt-freq"};
-const Enum::Value NtpLoopFilterStateEnum::ntp_loop_flt_sync {4, "ntp-loop-flt-sync"};
-const Enum::Value NtpLoopFilterStateEnum::ntp_loop_flt_unkn {5, "ntp-loop-flt-unkn"};
+const Enum::YLeaf NtpLoopFilterStateEnum::ntp_loop_flt_n_set {0, "ntp-loop-flt-n-set"};
+const Enum::YLeaf NtpLoopFilterStateEnum::ntp_loop_flt_f_set {1, "ntp-loop-flt-f-set"};
+const Enum::YLeaf NtpLoopFilterStateEnum::ntp_loop_flt_spik {2, "ntp-loop-flt-spik"};
+const Enum::YLeaf NtpLoopFilterStateEnum::ntp_loop_flt_freq {3, "ntp-loop-flt-freq"};
+const Enum::YLeaf NtpLoopFilterStateEnum::ntp_loop_flt_sync {4, "ntp-loop-flt-sync"};
+const Enum::YLeaf NtpLoopFilterStateEnum::ntp_loop_flt_unkn {5, "ntp-loop-flt-unkn"};
 
-const Enum::Value NtpLeapEnum::ntp_leap_no_warning {0, "ntp-leap-no-warning"};
-const Enum::Value NtpLeapEnum::ntp_leap_addse_cond {1, "ntp-leap-addse-cond"};
-const Enum::Value NtpLeapEnum::ntp_leap_delse_cond {2, "ntp-leap-delse-cond"};
-const Enum::Value NtpLeapEnum::ntp_leap_not_in_sync {3, "ntp-leap-not-in-sync"};
+const Enum::YLeaf NtpLeapEnum::ntp_leap_no_warning {0, "ntp-leap-no-warning"};
+const Enum::YLeaf NtpLeapEnum::ntp_leap_addse_cond {1, "ntp-leap-addse-cond"};
+const Enum::YLeaf NtpLeapEnum::ntp_leap_delse_cond {2, "ntp-leap-delse-cond"};
+const Enum::YLeaf NtpLeapEnum::ntp_leap_not_in_sync {3, "ntp-leap-not-in-sync"};
 
 
 }

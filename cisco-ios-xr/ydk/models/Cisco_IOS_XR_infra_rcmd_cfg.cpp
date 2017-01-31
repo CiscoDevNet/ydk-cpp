@@ -58,7 +58,7 @@ EntityPath RouterConvergence::Protocols::Protocol::Priorities::Priority::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -170,7 +170,7 @@ EntityPath RouterConvergence::Protocols::Protocol::Priorities::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -264,7 +264,7 @@ bool RouterConvergence::Protocols::Protocol::has_operation() const
     return is_set(operation)
 	|| is_set(protocol_name.operation)
 	|| is_set(enable.operation)
-	|| (priorities !=  nullptr && is_set(priorities->operation));
+	|| (priorities !=  nullptr && priorities->has_operation());
 }
 
 std::string RouterConvergence::Protocols::Protocol::get_segment_path() const
@@ -664,7 +664,7 @@ bool RouterConvergence::MplsLdp::has_data() const
 bool RouterConvergence::MplsLdp::has_operation() const
 {
     return is_set(operation)
-	|| (remote_lfa !=  nullptr && is_set(remote_lfa->operation));
+	|| (remote_lfa !=  nullptr && remote_lfa->has_operation());
 }
 
 std::string RouterConvergence::MplsLdp::get_segment_path() const
@@ -1198,11 +1198,11 @@ bool RouterConvergence::has_operation() const
 	|| is_set(max_events_stored.operation)
 	|| is_set(monitoring_interval.operation)
 	|| is_set(prefix_monitor_limit.operation)
-	|| (collect_diagnostics !=  nullptr && is_set(collect_diagnostics->operation))
-	|| (mpls_ldp !=  nullptr && is_set(mpls_ldp->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation))
-	|| (protocols !=  nullptr && is_set(protocols->operation))
-	|| (storage_location !=  nullptr && is_set(storage_location->operation));
+	|| (collect_diagnostics !=  nullptr && collect_diagnostics->has_operation())
+	|| (mpls_ldp !=  nullptr && mpls_ldp->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation())
+	|| (protocols !=  nullptr && protocols->has_operation())
+	|| (storage_location !=  nullptr && storage_location->has_operation());
 }
 
 std::string RouterConvergence::get_segment_path() const
@@ -1219,7 +1219,7 @@ EntityPath RouterConvergence::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1405,13 +1405,13 @@ std::unique_ptr<Entity> RouterConvergence::clone_ptr()
     return std::make_unique<RouterConvergence>();
 }
 
-const Enum::Value RcmdPriorityEnum::critical {0, "critical"};
-const Enum::Value RcmdPriorityEnum::high {1, "high"};
-const Enum::Value RcmdPriorityEnum::medium {2, "medium"};
-const Enum::Value RcmdPriorityEnum::low {3, "low"};
+const Enum::YLeaf RcmdPriorityEnum::critical {0, "critical"};
+const Enum::YLeaf RcmdPriorityEnum::high {1, "high"};
+const Enum::YLeaf RcmdPriorityEnum::medium {2, "medium"};
+const Enum::YLeaf RcmdPriorityEnum::low {3, "low"};
 
-const Enum::Value ProtocolNameEnum::ospf {0, "ospf"};
-const Enum::Value ProtocolNameEnum::isis {1, "isis"};
+const Enum::YLeaf ProtocolNameEnum::ospf {0, "ospf"};
+const Enum::YLeaf ProtocolNameEnum::isis {1, "isis"};
 
 
 }

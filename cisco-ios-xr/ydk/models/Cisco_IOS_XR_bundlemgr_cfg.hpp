@@ -24,9 +24,10 @@ class Lacp : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value system_mac; //type: string
-        Value system_priority; //type: uint32
 
+
+        YLeaf system_mac; //type: string
+        YLeaf system_priority; //type: uint32
 
 
 
@@ -36,94 +37,94 @@ class Lacp : public Entity
 class BundleMaximumActiveLinksModeEnum : public Enum
 {
     public:
-        static const Enum::Value default_;
-        static const Enum::Value hot_standby;
+        static const Enum::YLeaf default_;
+        static const Enum::YLeaf hot_standby;
 
 };
 
 class BundleCiscoExtTypesEnum : public Enum
 {
     public:
-        static const Enum::Value lon_signaling_off;
-        static const Enum::Value lon_signaling_on;
+        static const Enum::YLeaf lon_signaling_off;
+        static const Enum::YLeaf lon_signaling_on;
 
 };
 
 class BundleModeEnum : public Enum
 {
     public:
-        static const Enum::Value on;
-        static const Enum::Value active;
-        static const Enum::Value passive;
+        static const Enum::YLeaf on;
+        static const Enum::YLeaf active;
+        static const Enum::YLeaf passive;
 
 };
 
 class BundleLoadBalanceEnum : public Enum
 {
     public:
-        static const Enum::Value default_;
-        static const Enum::Value efp_auto;
-        static const Enum::Value efp_value;
-        static const Enum::Value source_ip;
-        static const Enum::Value destination_ip;
+        static const Enum::YLeaf default_;
+        static const Enum::YLeaf efp_auto;
+        static const Enum::YLeaf efp_value;
+        static const Enum::YLeaf source_ip;
+        static const Enum::YLeaf destination_ip;
 
 };
 
 class ChurnLoggingEnum : public Enum
 {
     public:
-        static const Enum::Value actor;
-        static const Enum::Value partner;
-        static const Enum::Value both;
+        static const Enum::YLeaf actor;
+        static const Enum::YLeaf partner;
+        static const Enum::YLeaf both;
 
 };
 
 class MlacpSwitchoverEnum : public Enum
 {
     public:
-        static const Enum::Value brute_force;
-        static const Enum::Value revertive;
+        static const Enum::YLeaf brute_force;
+        static const Enum::YLeaf revertive;
 
 };
 
 class MlacpMaximizeParameterEnum : public Enum
 {
     public:
-        static const Enum::Value links;
-        static const Enum::Value bandwidth;
+        static const Enum::YLeaf links;
+        static const Enum::YLeaf bandwidth;
 
 };
 
 class BfdModeEnum : public Enum
 {
     public:
-        static const Enum::Value no_cfg;
-        static const Enum::Value cisco;
-        static const Enum::Value ietf;
+        static const Enum::YLeaf no_cfg;
+        static const Enum::YLeaf cisco;
+        static const Enum::YLeaf ietf;
 
 };
 
 class PeriodShortEnumEnum : public Enum
 {
     public:
-        static const Enum::Value true_;
+        static const Enum::YLeaf true_;
 
 };
 
 class BundlePeriodEnum : public Enum
 {
     public:
-        static const Enum::Value true_;
+        static const Enum::YLeaf true_;
 
 };
 
 class BundlePortActivityEnum : public Enum
 {
     public:
-        static const Enum::Value on;
-        static const Enum::Value active;
-        static const Enum::Value passive;
-        static const Enum::Value inherit;
+        static const Enum::YLeaf on;
+        static const Enum::YLeaf active;
+        static const Enum::YLeaf passive;
+        static const Enum::YLeaf inherit;
 
 };
 

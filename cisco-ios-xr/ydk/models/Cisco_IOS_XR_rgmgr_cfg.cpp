@@ -137,7 +137,7 @@ EntityPath RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -234,7 +234,7 @@ EntityPath RedundancyGroupManager::Aps::Groups::Group::Controllers::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -325,7 +325,7 @@ bool RedundancyGroupManager::Aps::Groups::Group::has_operation() const
 {
     return is_set(operation)
 	|| is_set(group_id.operation)
-	|| (controllers !=  nullptr && is_set(controllers->operation));
+	|| (controllers !=  nullptr && controllers->has_operation());
 }
 
 std::string RedundancyGroupManager::Aps::Groups::Group::get_segment_path() const
@@ -544,8 +544,8 @@ bool RedundancyGroupManager::Aps::has_data() const
 bool RedundancyGroupManager::Aps::has_operation() const
 {
     return is_set(operation)
-	|| (default_redundancy_group !=  nullptr && is_set(default_redundancy_group->operation))
-	|| (groups !=  nullptr && is_set(groups->operation));
+	|| (default_redundancy_group !=  nullptr && default_redundancy_group->has_operation())
+	|| (groups !=  nullptr && groups->has_operation());
 }
 
 std::string RedundancyGroupManager::Aps::get_segment_path() const
@@ -683,7 +683,7 @@ EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -770,7 +770,7 @@ EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -871,7 +871,7 @@ EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -958,7 +958,7 @@ EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1059,7 +1059,7 @@ EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1145,9 +1145,9 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_operation() const
 	|| is_set(group_number.operation)
 	|| is_set(isolation_recovery_delay.operation)
 	|| is_set(mode.operation)
-	|| (backbones !=  nullptr && is_set(backbones->operation))
-	|| (members !=  nullptr && is_set(members->operation))
-	|| (nv_satellite !=  nullptr && is_set(nv_satellite->operation));
+	|| (backbones !=  nullptr && backbones->has_operation())
+	|| (members !=  nullptr && members->has_operation())
+	|| (nv_satellite !=  nullptr && nv_satellite->has_operation());
 }
 
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_segment_path() const
@@ -1417,7 +1417,7 @@ bool RedundancyGroupManager::Iccp::has_data() const
 bool RedundancyGroupManager::Iccp::has_operation() const
 {
     return is_set(operation)
-	|| (iccp_groups !=  nullptr && is_set(iccp_groups->operation));
+	|| (iccp_groups !=  nullptr && iccp_groups->has_operation());
 }
 
 std::string RedundancyGroupManager::Iccp::get_segment_path() const
@@ -1527,8 +1527,8 @@ bool RedundancyGroupManager::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (aps !=  nullptr && is_set(aps->operation))
-	|| (iccp !=  nullptr && is_set(iccp->operation));
+	|| (aps !=  nullptr && aps->has_operation())
+	|| (iccp !=  nullptr && iccp->has_operation());
 }
 
 std::string RedundancyGroupManager::get_segment_path() const
@@ -1545,7 +1545,7 @@ EntityPath RedundancyGroupManager::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1637,7 +1637,7 @@ std::unique_ptr<Entity> RedundancyGroupManager::clone_ptr()
     return std::make_unique<RedundancyGroupManager>();
 }
 
-const Enum::Value IccpModeEnum::singleton {1, "singleton"};
+const Enum::YLeaf IccpModeEnum::singleton {1, "singleton"};
 
 
 }

@@ -43,7 +43,7 @@ EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -132,7 +132,7 @@ EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -246,7 +246,7 @@ EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Af::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -659,7 +659,7 @@ EntityPath L3Vpn::Vrfs::Vrf::Interface::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -748,7 +748,7 @@ EntityPath L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -862,7 +862,7 @@ EntityPath L3Vpn::Vrfs::Vrf::Af::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1266,8 +1266,8 @@ bool L3Vpn::has_data() const
 bool L3Vpn::has_operation() const
 {
     return is_set(operation)
-	|| (invalid_vrfs !=  nullptr && is_set(invalid_vrfs->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (invalid_vrfs !=  nullptr && invalid_vrfs->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string L3Vpn::get_segment_path() const
@@ -1284,7 +1284,7 @@ EntityPath L3Vpn::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1371,16 +1371,16 @@ std::unique_ptr<Entity> L3Vpn::clone_ptr()
     return std::make_unique<L3Vpn>();
 }
 
-const Enum::Value MplsVpnRtEnum::import {1, "import"};
-const Enum::Value MplsVpnRtEnum::export_ {2, "export"};
-const Enum::Value MplsVpnRtEnum::both {3, "both"};
+const Enum::YLeaf MplsVpnRtEnum::import {1, "import"};
+const Enum::YLeaf MplsVpnRtEnum::export_ {2, "export"};
+const Enum::YLeaf MplsVpnRtEnum::both {3, "both"};
 
-const Enum::Value MplsVpnAfiEnum::ipv4 {1, "ipv4"};
-const Enum::Value MplsVpnAfiEnum::ipv6 {2, "ipv6"};
+const Enum::YLeaf MplsVpnAfiEnum::ipv4 {1, "ipv4"};
+const Enum::YLeaf MplsVpnAfiEnum::ipv6 {2, "ipv6"};
 
-const Enum::Value MplsVpnSafiEnum::unicast {1, "unicast"};
-const Enum::Value MplsVpnSafiEnum::multicast {2, "multicast"};
-const Enum::Value MplsVpnSafiEnum::flowspec {133, "flowspec"};
+const Enum::YLeaf MplsVpnSafiEnum::unicast {1, "unicast"};
+const Enum::YLeaf MplsVpnSafiEnum::multicast {2, "multicast"};
+const Enum::YLeaf MplsVpnSafiEnum::flowspec {133, "flowspec"};
 
 
 }

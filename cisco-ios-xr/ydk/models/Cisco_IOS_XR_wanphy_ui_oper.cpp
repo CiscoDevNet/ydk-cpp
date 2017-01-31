@@ -175,7 +175,7 @@ EntityPath Wanphy::Controllers::Controller::Info::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -465,7 +465,7 @@ bool Wanphy::Controllers::Controller::has_operation() const
 {
     return is_set(operation)
 	|| is_set(controller_name.operation)
-	|| (info !=  nullptr && is_set(info->operation));
+	|| (info !=  nullptr && info->has_operation());
 }
 
 std::string Wanphy::Controllers::Controller::get_segment_path() const
@@ -679,7 +679,7 @@ bool Wanphy::has_data() const
 bool Wanphy::has_operation() const
 {
     return is_set(operation)
-	|| (controllers !=  nullptr && is_set(controllers->operation));
+	|| (controllers !=  nullptr && controllers->has_operation());
 }
 
 std::string Wanphy::get_segment_path() const
@@ -696,7 +696,7 @@ EntityPath Wanphy::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -760,11 +760,11 @@ std::unique_ptr<Entity> Wanphy::clone_ptr()
     return std::make_unique<Wanphy>();
 }
 
-const Enum::Value WanphyAlarmRepStatusEnum::disable {0, "disable"};
-const Enum::Value WanphyAlarmRepStatusEnum::enable {1, "enable"};
+const Enum::YLeaf WanphyAlarmRepStatusEnum::disable {0, "disable"};
+const Enum::YLeaf WanphyAlarmRepStatusEnum::enable {1, "enable"};
 
-const Enum::Value WanphyModeInfoEnum::lan {0, "lan"};
-const Enum::Value WanphyModeInfoEnum::wan {1, "wan"};
+const Enum::YLeaf WanphyModeInfoEnum::lan {0, "lan"};
+const Enum::YLeaf WanphyModeInfoEnum::wan {1, "wan"};
 
 
 }

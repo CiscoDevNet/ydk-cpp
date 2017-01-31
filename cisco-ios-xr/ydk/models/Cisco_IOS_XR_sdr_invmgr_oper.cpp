@@ -70,7 +70,7 @@ EntityPath SdrInventory::Racks::Rack::Slot::Card::Attributes::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -185,7 +185,7 @@ bool SdrInventory::Racks::Rack::Slot::Card::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation));
+	|| (attributes !=  nullptr && attributes->has_operation());
 }
 
 std::string SdrInventory::Racks::Rack::Slot::Card::get_segment_path() const
@@ -202,7 +202,7 @@ EntityPath SdrInventory::Racks::Rack::Slot::Card::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -315,7 +315,7 @@ EntityPath SdrInventory::Racks::Rack::Slot::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -631,7 +631,7 @@ bool SdrInventory::has_data() const
 bool SdrInventory::has_operation() const
 {
     return is_set(operation)
-	|| (racks !=  nullptr && is_set(racks->operation));
+	|| (racks !=  nullptr && racks->has_operation());
 }
 
 std::string SdrInventory::get_segment_path() const
@@ -648,7 +648,7 @@ EntityPath SdrInventory::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

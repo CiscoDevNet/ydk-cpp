@@ -35,10 +35,10 @@ Ipv6Identity::~Ipv6Identity()
 }
 
 
-const Enum::Value TransportServiceEnum::unknown {0, "unknown"};
-const Enum::Value TransportServiceEnum::telnet {1, "telnet"};
-const Enum::Value TransportServiceEnum::rlogin {2, "rlogin"};
-const Enum::Value TransportServiceEnum::ssh {3, "ssh"};
+const Enum::YLeaf TransportServiceEnum::unknown {0, "unknown"};
+const Enum::YLeaf TransportServiceEnum::telnet {1, "telnet"};
+const Enum::YLeaf TransportServiceEnum::rlogin {2, "rlogin"};
+const Enum::YLeaf TransportServiceEnum::ssh {3, "ssh"};
 
 
 }

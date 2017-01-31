@@ -64,7 +64,7 @@ EntityPath Interfaces::InterfaceXr::Interface::DampeningInformation::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -179,7 +179,7 @@ EntityPath Interfaces::InterfaceXr::Interface::MacAddress::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -259,7 +259,7 @@ EntityPath Interfaces::InterfaceXr::Interface::BurnedInAddress::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -342,7 +342,7 @@ EntityPath Interfaces::InterfaceXr::Interface::CarrierDelay::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -433,7 +433,7 @@ EntityPath Interfaces::InterfaceXr::Interface::ArpInformation::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -526,7 +526,7 @@ EntityPath Interfaces::InterfaceXr::Interface::IpInformation::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -650,7 +650,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -798,7 +798,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -886,7 +886,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -978,7 +978,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1082,7 +1082,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1180,7 +1180,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1294,7 +1294,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1407,7 +1407,7 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
 	|| is_set(payload_ethertype.operation)
 	|| is_set(source_mac_match.operation)
 	|| is_set(tags_popped.operation)
-	|| (local_traffic_stack !=  nullptr && is_set(local_traffic_stack->operation));
+	|| (local_traffic_stack !=  nullptr && local_traffic_stack->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::get_segment_path() const
@@ -1424,7 +1424,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1612,7 +1612,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1715,9 +1715,9 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
 	|| is_set(outer_tag.operation)
 	|| is_set(tag.operation)
 	|| is_set(vlan_encapsulation.operation)
-	|| (dot1ad_dot1q_stack !=  nullptr && is_set(dot1ad_dot1q_stack->operation))
-	|| (service_instance_details !=  nullptr && is_set(service_instance_details->operation))
-	|| (stack !=  nullptr && is_set(stack->operation));
+	|| (dot1ad_dot1q_stack !=  nullptr && dot1ad_dot1q_stack->has_operation())
+	|| (service_instance_details !=  nullptr && service_instance_details->has_operation())
+	|| (stack !=  nullptr && stack->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::get_segment_path() const
@@ -1734,7 +1734,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1899,7 +1899,7 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformat
 bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::has_operation() const
 {
     return is_set(operation)
-	|| (encapsulation_details !=  nullptr && is_set(encapsulation_details->operation));
+	|| (encapsulation_details !=  nullptr && encapsulation_details->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::get_segment_path() const
@@ -1916,7 +1916,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2017,7 +2017,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2124,7 +2124,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2250,9 +2250,9 @@ bool Interfaces::InterfaceXr::Interface::EncapsulationInformation::has_operation
 {
     return is_set(operation)
 	|| is_set(encapsulation_type.operation)
-	|| (dot1q_information !=  nullptr && is_set(dot1q_information->operation))
-	|| (frame_relay_information !=  nullptr && is_set(frame_relay_information->operation))
-	|| (ppp_information !=  nullptr && is_set(ppp_information->operation));
+	|| (dot1q_information !=  nullptr && dot1q_information->has_operation())
+	|| (frame_relay_information !=  nullptr && frame_relay_information->has_operation())
+	|| (ppp_information !=  nullptr && ppp_information->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_segment_path() const
@@ -2269,7 +2269,7 @@ EntityPath Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2433,7 +2433,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2599,7 +2599,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2805,7 +2805,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2971,7 +2971,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3163,8 +3163,8 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 	|| is_set(is_inter_card_bus_enabled.operation)
 	|| is_set(mac_address.operation)
 	|| is_set(wtr_timer_period.operation)
-	|| (side_a !=  nullptr && is_set(side_a->operation))
-	|| (side_b !=  nullptr && is_set(side_b->operation));
+	|| (side_a !=  nullptr && side_a->has_operation())
+	|| (side_b !=  nullptr && side_b->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::get_segment_path() const
@@ -3181,7 +3181,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3327,7 +3327,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3448,7 +3448,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3575,7 +3575,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3711,7 +3711,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3835,7 +3835,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3963,7 +3963,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4138,7 +4138,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4358,7 +4358,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4469,7 +4469,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4559,7 +4559,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4666,10 +4666,10 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::has_operation() const
 {
     return is_set(operation)
-	|| (ips_info !=  nullptr && is_set(ips_info->operation))
-	|| (rate_limit_info !=  nullptr && is_set(rate_limit_info->operation))
-	|| (srr_info !=  nullptr && is_set(srr_info->operation))
-	|| (topology_info !=  nullptr && is_set(topology_info->operation));
+	|| (ips_info !=  nullptr && ips_info->has_operation())
+	|| (rate_limit_info !=  nullptr && rate_limit_info->has_operation())
+	|| (srr_info !=  nullptr && srr_info->has_operation())
+	|| (topology_info !=  nullptr && topology_info->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::get_segment_path() const
@@ -4686,7 +4686,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4862,7 +4862,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4966,7 +4966,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5085,7 +5085,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5229,7 +5229,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5354,10 +5354,10 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 {
     return is_set(operation)
 	|| is_set(data_rate_interval.operation)
-	|| (side_a_data_rate !=  nullptr && is_set(side_a_data_rate->operation))
-	|| (side_a_errors !=  nullptr && is_set(side_a_errors->operation))
-	|| (side_b_data_rate !=  nullptr && is_set(side_b_data_rate->operation))
-	|| (side_b_errors !=  nullptr && is_set(side_b_errors->operation));
+	|| (side_a_data_rate !=  nullptr && side_a_data_rate->has_operation())
+	|| (side_a_errors !=  nullptr && side_a_errors->has_operation())
+	|| (side_b_data_rate !=  nullptr && side_b_data_rate->has_operation())
+	|| (side_b_errors !=  nullptr && side_b_errors->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::get_segment_path() const
@@ -5374,7 +5374,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5537,8 +5537,8 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformatio
 bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::has_operation() const
 {
     return is_set(operation)
-	|| (srp_information !=  nullptr && is_set(srp_information->operation))
-	|| (srp_statistics !=  nullptr && is_set(srp_statistics->operation));
+	|| (srp_information !=  nullptr && srp_information->has_operation())
+	|| (srp_statistics !=  nullptr && srp_statistics->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::get_segment_path() const
@@ -5555,7 +5555,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5691,7 +5691,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5826,7 +5826,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5998,7 +5998,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6151,7 +6151,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6238,7 +6238,7 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInforma
 	|| is_set(member_state.operation)
 	|| is_set(mux_state.operation)
 	|| is_set(mux_state_reason.operation)
-	|| (member_mux_state_reason_data !=  nullptr && is_set(member_mux_state_reason_data->operation));
+	|| (member_mux_state_reason_data !=  nullptr && member_mux_state_reason_data->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::get_segment_path() const
@@ -6255,7 +6255,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6378,7 +6378,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6487,10 +6487,10 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInforma
 	|| is_set(port_number.operation)
 	|| is_set(port_priority.operation)
 	|| is_set(underlying_link_id.operation)
-	|| (counters !=  nullptr && is_set(counters->operation))
-	|| (link_data !=  nullptr && is_set(link_data->operation))
-	|| (mac_address !=  nullptr && is_set(mac_address->operation))
-	|| (member_mux_data !=  nullptr && is_set(member_mux_data->operation));
+	|| (counters !=  nullptr && counters->has_operation())
+	|| (link_data !=  nullptr && link_data->has_operation())
+	|| (mac_address !=  nullptr && mac_address->has_operation())
+	|| (member_mux_data !=  nullptr && member_mux_data->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::get_segment_path() const
@@ -6507,7 +6507,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6726,7 +6726,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6827,7 +6827,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6907,7 +6907,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6993,7 +6993,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7089,7 +7089,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7201,8 +7201,8 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInfo
 	|| is_set(tunnel_mode.operation)
 	|| is_set(tunnel_tos.operation)
 	|| is_set(tunnel_ttl.operation)
-	|| (destination_ip_address !=  nullptr && is_set(destination_ip_address->operation))
-	|| (source_ip_address !=  nullptr && is_set(source_ip_address->operation));
+	|| (destination_ip_address !=  nullptr && destination_ip_address->has_operation())
+	|| (source_ip_address !=  nullptr && source_ip_address->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::get_segment_path() const
@@ -7219,7 +7219,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7396,7 +7396,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Pseudow
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7495,7 +7495,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7593,7 +7593,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7708,15 +7708,15 @@ bool Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::has_operation
 {
     return is_set(operation)
 	|| is_set(interface_type_info.operation)
-	|| (bundle_information !=  nullptr && is_set(bundle_information->operation))
-	|| (cem_information !=  nullptr && is_set(cem_information->operation))
-	|| (gcc_information !=  nullptr && is_set(gcc_information->operation))
-	|| (pseudowire_head_end_information !=  nullptr && is_set(pseudowire_head_end_information->operation))
-	|| (serial_information !=  nullptr && is_set(serial_information->operation))
-	|| (sonet_pos_information !=  nullptr && is_set(sonet_pos_information->operation))
-	|| (srp_information !=  nullptr && is_set(srp_information->operation))
-	|| (tunnel_gre_information !=  nullptr && is_set(tunnel_gre_information->operation))
-	|| (tunnel_information !=  nullptr && is_set(tunnel_information->operation));
+	|| (bundle_information !=  nullptr && bundle_information->has_operation())
+	|| (cem_information !=  nullptr && cem_information->has_operation())
+	|| (gcc_information !=  nullptr && gcc_information->has_operation())
+	|| (pseudowire_head_end_information !=  nullptr && pseudowire_head_end_information->has_operation())
+	|| (serial_information !=  nullptr && serial_information->has_operation())
+	|| (sonet_pos_information !=  nullptr && sonet_pos_information->has_operation())
+	|| (srp_information !=  nullptr && srp_information->has_operation())
+	|| (tunnel_gre_information !=  nullptr && tunnel_gre_information->has_operation())
+	|| (tunnel_information !=  nullptr && tunnel_information->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_segment_path() const
@@ -7733,7 +7733,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8056,7 +8056,7 @@ EntityPath Interfaces::InterfaceXr::Interface::DataRates::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8301,7 +8301,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8601,7 +8601,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8751,8 +8751,8 @@ bool Interfaces::InterfaceXr::Interface::InterfaceStatistics::has_operation() co
 {
     return is_set(operation)
 	|| is_set(stats_type.operation)
-	|| (basic_interface_stats !=  nullptr && is_set(basic_interface_stats->operation))
-	|| (full_interface_stats !=  nullptr && is_set(full_interface_stats->operation));
+	|| (basic_interface_stats !=  nullptr && basic_interface_stats->has_operation())
+	|| (full_interface_stats !=  nullptr && full_interface_stats->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_segment_path() const
@@ -8769,7 +8769,7 @@ EntityPath Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8910,7 +8910,7 @@ EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9021,7 +9021,7 @@ EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9117,7 +9117,7 @@ EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9217,7 +9217,7 @@ EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9336,7 +9336,7 @@ bool Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::has_operation() 
     return is_set(operation)
 	|| is_set(contents.operation)
 	|| is_set(stats_type.operation)
-	|| (stats_id !=  nullptr && is_set(stats_id->operation));
+	|| (stats_id !=  nullptr && stats_id->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_segment_path() const
@@ -9353,7 +9353,7 @@ EntityPath Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9513,7 +9513,7 @@ EntityPath Interfaces::InterfaceXr::Interface::NvOptical::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9731,18 +9731,18 @@ bool Interfaces::InterfaceXr::Interface::has_operation() const
 	|| is_set(state.operation)
 	|| is_set(state_transition_count.operation)
 	|| is_set(transport_mode.operation)
-	|| (arp_information !=  nullptr && is_set(arp_information->operation))
-	|| (burned_in_address !=  nullptr && is_set(burned_in_address->operation))
-	|| (carrier_delay !=  nullptr && is_set(carrier_delay->operation))
-	|| (dampening_information !=  nullptr && is_set(dampening_information->operation))
-	|| (data_rates !=  nullptr && is_set(data_rates->operation))
-	|| (encapsulation_information !=  nullptr && is_set(encapsulation_information->operation))
-	|| (interface_statistics !=  nullptr && is_set(interface_statistics->operation))
-	|| (interface_type_information !=  nullptr && is_set(interface_type_information->operation))
-	|| (ip_information !=  nullptr && is_set(ip_information->operation))
-	|| (l2_interface_statistics !=  nullptr && is_set(l2_interface_statistics->operation))
-	|| (mac_address !=  nullptr && is_set(mac_address->operation))
-	|| (nv_optical !=  nullptr && is_set(nv_optical->operation));
+	|| (arp_information !=  nullptr && arp_information->has_operation())
+	|| (burned_in_address !=  nullptr && burned_in_address->has_operation())
+	|| (carrier_delay !=  nullptr && carrier_delay->has_operation())
+	|| (dampening_information !=  nullptr && dampening_information->has_operation())
+	|| (data_rates !=  nullptr && data_rates->has_operation())
+	|| (encapsulation_information !=  nullptr && encapsulation_information->has_operation())
+	|| (interface_statistics !=  nullptr && interface_statistics->has_operation())
+	|| (interface_type_information !=  nullptr && interface_type_information->has_operation())
+	|| (ip_information !=  nullptr && ip_information->has_operation())
+	|| (l2_interface_statistics !=  nullptr && l2_interface_statistics->has_operation())
+	|| (mac_address !=  nullptr && mac_address->has_operation())
+	|| (nv_optical !=  nullptr && nv_optical->has_operation());
 }
 
 std::string Interfaces::InterfaceXr::Interface::get_segment_path() const
@@ -10579,7 +10579,7 @@ bool Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::has
     return is_set(operation)
 	|| is_set(interface_type_description.operation)
 	|| is_set(interface_type_name.operation)
-	|| (interface_counts !=  nullptr && is_set(interface_counts->operation));
+	|| (interface_counts !=  nullptr && interface_counts->has_operation());
 }
 
 std::string Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::get_segment_path() const
@@ -10700,7 +10700,7 @@ bool Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::has_operation() co
             return true;
     }
     return is_set(operation)
-	|| (interface_counts !=  nullptr && is_set(interface_counts->operation));
+	|| (interface_counts !=  nullptr && interface_counts->has_operation());
 }
 
 std::string Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_segment_path() const
@@ -10834,7 +10834,7 @@ bool Interfaces::NodeTypeSets::NodeTypeSet::has_operation() const
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(type_set_name.operation)
-	|| (interface_summary !=  nullptr && is_set(interface_summary->operation));
+	|| (interface_summary !=  nullptr && interface_summary->has_operation());
 }
 
 std::string Interfaces::NodeTypeSets::NodeTypeSet::get_segment_path() const
@@ -11560,7 +11560,7 @@ bool Interfaces::InventorySummary::InterfaceType::has_operation() const
     return is_set(operation)
 	|| is_set(interface_type_description.operation)
 	|| is_set(interface_type_name.operation)
-	|| (interface_counts !=  nullptr && is_set(interface_counts->operation));
+	|| (interface_counts !=  nullptr && interface_counts->has_operation());
 }
 
 std::string Interfaces::InventorySummary::InterfaceType::get_segment_path() const
@@ -11681,7 +11681,7 @@ bool Interfaces::InventorySummary::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (interface_counts !=  nullptr && is_set(interface_counts->operation));
+	|| (interface_counts !=  nullptr && interface_counts->has_operation());
 }
 
 std::string Interfaces::InventorySummary::get_segment_path() const
@@ -12243,7 +12243,7 @@ bool Interfaces::InterfaceSummary::InterfaceType::has_operation() const
     return is_set(operation)
 	|| is_set(interface_type_description.operation)
 	|| is_set(interface_type_name.operation)
-	|| (interface_counts !=  nullptr && is_set(interface_counts->operation));
+	|| (interface_counts !=  nullptr && interface_counts->has_operation());
 }
 
 std::string Interfaces::InterfaceSummary::InterfaceType::get_segment_path() const
@@ -12364,7 +12364,7 @@ bool Interfaces::InterfaceSummary::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (interface_counts !=  nullptr && is_set(interface_counts->operation));
+	|| (interface_counts !=  nullptr && interface_counts->has_operation());
 }
 
 std::string Interfaces::InterfaceSummary::get_segment_path() const
@@ -12516,12 +12516,12 @@ bool Interfaces::has_data() const
 bool Interfaces::has_operation() const
 {
     return is_set(operation)
-	|| (interface_briefs !=  nullptr && is_set(interface_briefs->operation))
-	|| (interface_summary !=  nullptr && is_set(interface_summary->operation))
-	|| (interface_xr !=  nullptr && is_set(interface_xr->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (inventory_summary !=  nullptr && is_set(inventory_summary->operation))
-	|| (node_type_sets !=  nullptr && is_set(node_type_sets->operation));
+	|| (interface_briefs !=  nullptr && interface_briefs->has_operation())
+	|| (interface_summary !=  nullptr && interface_summary->has_operation())
+	|| (interface_xr !=  nullptr && interface_xr->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (inventory_summary !=  nullptr && inventory_summary->has_operation())
+	|| (node_type_sets !=  nullptr && node_type_sets->has_operation());
 }
 
 std::string Interfaces::get_segment_path() const
@@ -12538,7 +12538,7 @@ EntityPath Interfaces::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -12717,704 +12717,704 @@ std::unique_ptr<Entity> Interfaces::clone_ptr()
     return std::make_unique<Interfaces>();
 }
 
-const Enum::Value ImCmdIntfTypeEnumEnum::srp {0, "srp"};
-const Enum::Value ImCmdIntfTypeEnumEnum::tunnel {1, "tunnel"};
-const Enum::Value ImCmdIntfTypeEnumEnum::bundle {2, "bundle"};
-const Enum::Value ImCmdIntfTypeEnumEnum::serial {3, "serial"};
-const Enum::Value ImCmdIntfTypeEnumEnum::sonet_pos {4, "sonet-pos"};
-const Enum::Value ImCmdIntfTypeEnumEnum::tunnel_gre {5, "tunnel-gre"};
-const Enum::Value ImCmdIntfTypeEnumEnum::pseudowire_head_end {6, "pseudowire-head-end"};
-const Enum::Value ImCmdIntfTypeEnumEnum::cem {7, "cem"};
-const Enum::Value ImCmdIntfTypeEnumEnum::gcc {8, "gcc"};
+const Enum::YLeaf ImCmdIntfTypeEnumEnum::srp {0, "srp"};
+const Enum::YLeaf ImCmdIntfTypeEnumEnum::tunnel {1, "tunnel"};
+const Enum::YLeaf ImCmdIntfTypeEnumEnum::bundle {2, "bundle"};
+const Enum::YLeaf ImCmdIntfTypeEnumEnum::serial {3, "serial"};
+const Enum::YLeaf ImCmdIntfTypeEnumEnum::sonet_pos {4, "sonet-pos"};
+const Enum::YLeaf ImCmdIntfTypeEnumEnum::tunnel_gre {5, "tunnel-gre"};
+const Enum::YLeaf ImCmdIntfTypeEnumEnum::pseudowire_head_end {6, "pseudowire-head-end"};
+const Enum::YLeaf ImCmdIntfTypeEnumEnum::cem {7, "cem"};
+const Enum::YLeaf ImCmdIntfTypeEnumEnum::gcc {8, "gcc"};
 
-const Enum::Value ImCmdStatsEnumEnum::full {1, "full"};
-const Enum::Value ImCmdStatsEnumEnum::basic {2, "basic"};
+const Enum::YLeaf ImCmdStatsEnumEnum::full {1, "full"};
+const Enum::YLeaf ImCmdStatsEnumEnum::basic {2, "basic"};
 
-const Enum::Value SrpMgmtFailureStateEtEnum::idle_failure_state {0, "idle-failure-state"};
-const Enum::Value SrpMgmtFailureStateEtEnum::wait_to_restore_failure_state {1, "wait-to-restore-failure-state"};
-const Enum::Value SrpMgmtFailureStateEtEnum::manual_switch_failure_state {2, "manual-switch-failure-state"};
-const Enum::Value SrpMgmtFailureStateEtEnum::signal_degrade_failure_state {3, "signal-degrade-failure-state"};
-const Enum::Value SrpMgmtFailureStateEtEnum::signal_fail_failure_state {4, "signal-fail-failure-state"};
-const Enum::Value SrpMgmtFailureStateEtEnum::forced_switch_failure_state {5, "forced-switch-failure-state"};
-const Enum::Value SrpMgmtFailureStateEtEnum::shutdown_failure_state {6, "shutdown-failure-state"};
-const Enum::Value SrpMgmtFailureStateEtEnum::invalid_failure_state {7, "invalid-failure-state"};
-const Enum::Value SrpMgmtFailureStateEtEnum::unknown_failure_state {8, "unknown-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEtEnum::idle_failure_state {0, "idle-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEtEnum::wait_to_restore_failure_state {1, "wait-to-restore-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEtEnum::manual_switch_failure_state {2, "manual-switch-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEtEnum::signal_degrade_failure_state {3, "signal-degrade-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEtEnum::signal_fail_failure_state {4, "signal-fail-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEtEnum::forced_switch_failure_state {5, "forced-switch-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEtEnum::shutdown_failure_state {6, "shutdown-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEtEnum::invalid_failure_state {7, "invalid-failure-state"};
+const Enum::YLeaf SrpMgmtFailureStateEtEnum::unknown_failure_state {8, "unknown-failure-state"};
 
-const Enum::Value GccDerStateEnum::in_service {0, "in-service"};
-const Enum::Value GccDerStateEnum::out_of_service {1, "out-of-service"};
-const Enum::Value GccDerStateEnum::maintainance {2, "maintainance"};
-const Enum::Value GccDerStateEnum::ais {3, "ais"};
+const Enum::YLeaf GccDerStateEnum::in_service {0, "in-service"};
+const Enum::YLeaf GccDerStateEnum::out_of_service {1, "out-of-service"};
+const Enum::YLeaf GccDerStateEnum::maintainance {2, "maintainance"};
+const Enum::YLeaf GccDerStateEnum::ais {3, "ais"};
 
-const Enum::Value EfpTagEtypeEnum::untagged {0, "untagged"};
-const Enum::Value EfpTagEtypeEnum::dot1q {33024, "dot1q"};
-const Enum::Value EfpTagEtypeEnum::dot1ad {34984, "dot1ad"};
+const Enum::YLeaf EfpTagEtypeEnum::untagged {0, "untagged"};
+const Enum::YLeaf EfpTagEtypeEnum::dot1q {33024, "dot1q"};
+const Enum::YLeaf EfpTagEtypeEnum::dot1ad {34984, "dot1ad"};
 
-const Enum::Value TunnelGreModeEnum::unknown {0, "unknown"};
-const Enum::Value TunnelGreModeEnum::gr_eo_ipv4 {1, "gr-eo-ipv4"};
-const Enum::Value TunnelGreModeEnum::gr_eo_ipv6 {2, "gr-eo-ipv6"};
-const Enum::Value TunnelGreModeEnum::mgr_eo_ipv4 {3, "mgr-eo-ipv4"};
-const Enum::Value TunnelGreModeEnum::mgr_eo_ipv6 {4, "mgr-eo-ipv6"};
-const Enum::Value TunnelGreModeEnum::ipv4 {5, "ipv4"};
-const Enum::Value TunnelGreModeEnum::ipv6 {6, "ipv6"};
+const Enum::YLeaf TunnelGreModeEnum::unknown {0, "unknown"};
+const Enum::YLeaf TunnelGreModeEnum::gr_eo_ipv4 {1, "gr-eo-ipv4"};
+const Enum::YLeaf TunnelGreModeEnum::gr_eo_ipv6 {2, "gr-eo-ipv6"};
+const Enum::YLeaf TunnelGreModeEnum::mgr_eo_ipv4 {3, "mgr-eo-ipv4"};
+const Enum::YLeaf TunnelGreModeEnum::mgr_eo_ipv6 {4, "mgr-eo-ipv6"};
+const Enum::YLeaf TunnelGreModeEnum::ipv4 {5, "ipv4"};
+const Enum::YLeaf TunnelGreModeEnum::ipv6 {6, "ipv6"};
 
-const Enum::Value GccSecStateEnum::normal {0, "normal"};
-const Enum::Value GccSecStateEnum::maintainance {1, "maintainance"};
-const Enum::Value GccSecStateEnum::ais {2, "ais"};
+const Enum::YLeaf GccSecStateEnum::normal {0, "normal"};
+const Enum::YLeaf GccSecStateEnum::maintainance {1, "maintainance"};
+const Enum::YLeaf GccSecStateEnum::ais {2, "ais"};
 
-const Enum::Value SrpMgmtIpsWrapStateEnum::idle_wrap_state {0, "idle-wrap-state"};
-const Enum::Value SrpMgmtIpsWrapStateEnum::wrapped_state {1, "wrapped-state"};
-const Enum::Value SrpMgmtIpsWrapStateEnum::locked_out_wrap_state {2, "locked-out-wrap-state"};
-const Enum::Value SrpMgmtIpsWrapStateEnum::unknown_wrap_state {3, "unknown-wrap-state"};
+const Enum::YLeaf SrpMgmtIpsWrapStateEnum::idle_wrap_state {0, "idle-wrap-state"};
+const Enum::YLeaf SrpMgmtIpsWrapStateEnum::wrapped_state {1, "wrapped-state"};
+const Enum::YLeaf SrpMgmtIpsWrapStateEnum::locked_out_wrap_state {2, "locked-out-wrap-state"};
+const Enum::YLeaf SrpMgmtIpsWrapStateEnum::unknown_wrap_state {3, "unknown-wrap-state"};
 
-const Enum::Value StatsCounterEnum::stats_counter_rate {0, "stats-counter-rate"};
-const Enum::Value StatsCounterEnum::stats_counter_uint32 {1, "stats-counter-uint32"};
-const Enum::Value StatsCounterEnum::stats_counter_uint64 {2, "stats-counter-uint64"};
-const Enum::Value StatsCounterEnum::stats_counter_generic {3, "stats-counter-generic"};
-const Enum::Value StatsCounterEnum::stats_counter_proto {4, "stats-counter-proto"};
-const Enum::Value StatsCounterEnum::stats_counter_srp {5, "stats-counter-srp"};
-const Enum::Value StatsCounterEnum::stats_counter_ipv4_prec {6, "stats-counter-ipv4-prec"};
-const Enum::Value StatsCounterEnum::stats_counter_ipv4_dscp {7, "stats-counter-ipv4-dscp"};
-const Enum::Value StatsCounterEnum::stats_counter_mpls_exp {8, "stats-counter-mpls-exp"};
-const Enum::Value StatsCounterEnum::stats_counter_ipv4_bgppa {9, "stats-counter-ipv4-bgppa"};
-const Enum::Value StatsCounterEnum::stats_counter_src_bgppa {10, "stats-counter-src-bgppa"};
-const Enum::Value StatsCounterEnum::stats_counter_basic {11, "stats-counter-basic"};
-const Enum::Value StatsCounterEnum::stats_counter_comp_generic {12, "stats-counter-comp-generic"};
-const Enum::Value StatsCounterEnum::stats_counter_comp_proto {13, "stats-counter-comp-proto"};
-const Enum::Value StatsCounterEnum::stats_counter_comp_basic {14, "stats-counter-comp-basic"};
-const Enum::Value StatsCounterEnum::stats_counter_accounting {15, "stats-counter-accounting"};
-const Enum::Value StatsCounterEnum::stats_counter_comp_accounting {16, "stats-counter-comp-accounting"};
-const Enum::Value StatsCounterEnum::stats_counter_flow {17, "stats-counter-flow"};
-const Enum::Value StatsCounterEnum::stats_counter_comp_flow {18, "stats-counter-comp-flow"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_rate {0, "stats-counter-rate"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_uint32 {1, "stats-counter-uint32"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_uint64 {2, "stats-counter-uint64"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_generic {3, "stats-counter-generic"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_proto {4, "stats-counter-proto"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_srp {5, "stats-counter-srp"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_ipv4_prec {6, "stats-counter-ipv4-prec"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_ipv4_dscp {7, "stats-counter-ipv4-dscp"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_mpls_exp {8, "stats-counter-mpls-exp"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_ipv4_bgppa {9, "stats-counter-ipv4-bgppa"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_src_bgppa {10, "stats-counter-src-bgppa"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_basic {11, "stats-counter-basic"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_comp_generic {12, "stats-counter-comp-generic"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_comp_proto {13, "stats-counter-comp-proto"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_comp_basic {14, "stats-counter-comp-basic"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_accounting {15, "stats-counter-accounting"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_comp_accounting {16, "stats-counter-comp-accounting"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_flow {17, "stats-counter-flow"};
+const Enum::YLeaf StatsCounterEnum::stats_counter_comp_flow {18, "stats-counter-comp-flow"};
 
-const Enum::Value SonetApsEtEnum::not_configured {0, "not-configured"};
-const Enum::Value SonetApsEtEnum::working_active {1, "working-active"};
-const Enum::Value SonetApsEtEnum::protect_active {2, "protect-active"};
-const Enum::Value SonetApsEtEnum::working_inactive {3, "working-inactive"};
-const Enum::Value SonetApsEtEnum::protect_inactive {4, "protect-inactive"};
+const Enum::YLeaf SonetApsEtEnum::not_configured {0, "not-configured"};
+const Enum::YLeaf SonetApsEtEnum::working_active {1, "working-active"};
+const Enum::YLeaf SonetApsEtEnum::protect_active {2, "protect-active"};
+const Enum::YLeaf SonetApsEtEnum::working_inactive {3, "working-inactive"};
+const Enum::YLeaf SonetApsEtEnum::protect_inactive {4, "protect-inactive"};
 
-const Enum::Value ImAttrDuplexEnum::im_attr_duplex_unknown {0, "im-attr-duplex-unknown"};
-const Enum::Value ImAttrDuplexEnum::im_attr_duplex_half {1, "im-attr-duplex-half"};
-const Enum::Value ImAttrDuplexEnum::im_attr_duplex_full {2, "im-attr-duplex-full"};
+const Enum::YLeaf ImAttrDuplexEnum::im_attr_duplex_unknown {0, "im-attr-duplex-unknown"};
+const Enum::YLeaf ImAttrDuplexEnum::im_attr_duplex_half {1, "im-attr-duplex-half"};
+const Enum::YLeaf ImAttrDuplexEnum::im_attr_duplex_full {2, "im-attr-duplex-full"};
 
-const Enum::Value SrpMgmtIpsPathIndEnum::short_path {0, "short-path"};
-const Enum::Value SrpMgmtIpsPathIndEnum::long_path {1, "long-path"};
-const Enum::Value SrpMgmtIpsPathIndEnum::unknown_path {2, "unknown-path"};
+const Enum::YLeaf SrpMgmtIpsPathIndEnum::short_path {0, "short-path"};
+const Enum::YLeaf SrpMgmtIpsPathIndEnum::long_path {1, "long-path"};
+const Enum::YLeaf SrpMgmtIpsPathIndEnum::unknown_path {2, "unknown-path"};
 
-const Enum::Value PppFsmStateEnum::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
-const Enum::Value PppFsmStateEnum::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
-const Enum::Value PppFsmStateEnum::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
-const Enum::Value PppFsmStateEnum::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
-const Enum::Value PppFsmStateEnum::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
-const Enum::Value PppFsmStateEnum::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
-const Enum::Value PppFsmStateEnum::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
-const Enum::Value PppFsmStateEnum::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
-const Enum::Value PppFsmStateEnum::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
-const Enum::Value PppFsmStateEnum::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
+const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
+const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
+const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
+const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
+const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
+const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
+const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
+const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
+const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
+const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
 
-const Enum::Value EfpTagPriorityEnum::priority0 {0, "priority0"};
-const Enum::Value EfpTagPriorityEnum::priority1 {1, "priority1"};
-const Enum::Value EfpTagPriorityEnum::priority2 {2, "priority2"};
-const Enum::Value EfpTagPriorityEnum::priority3 {3, "priority3"};
-const Enum::Value EfpTagPriorityEnum::priority4 {4, "priority4"};
-const Enum::Value EfpTagPriorityEnum::priority5 {5, "priority5"};
-const Enum::Value EfpTagPriorityEnum::priority6 {6, "priority6"};
-const Enum::Value EfpTagPriorityEnum::priority7 {7, "priority7"};
-const Enum::Value EfpTagPriorityEnum::priority_any {8, "priority-any"};
+const Enum::YLeaf EfpTagPriorityEnum::priority0 {0, "priority0"};
+const Enum::YLeaf EfpTagPriorityEnum::priority1 {1, "priority1"};
+const Enum::YLeaf EfpTagPriorityEnum::priority2 {2, "priority2"};
+const Enum::YLeaf EfpTagPriorityEnum::priority3 {3, "priority3"};
+const Enum::YLeaf EfpTagPriorityEnum::priority4 {4, "priority4"};
+const Enum::YLeaf EfpTagPriorityEnum::priority5 {5, "priority5"};
+const Enum::YLeaf EfpTagPriorityEnum::priority6 {6, "priority6"};
+const Enum::YLeaf EfpTagPriorityEnum::priority7 {7, "priority7"};
+const Enum::YLeaf EfpTagPriorityEnum::priority_any {8, "priority-any"};
 
-const Enum::Value ImCmdLoopbackEnumEnum::no_loopback {0, "no-loopback"};
-const Enum::Value ImCmdLoopbackEnumEnum::internal_loopback {1, "internal-loopback"};
-const Enum::Value ImCmdLoopbackEnumEnum::external_loopback {2, "external-loopback"};
-const Enum::Value ImCmdLoopbackEnumEnum::line_loopback {3, "line-loopback"};
+const Enum::YLeaf ImCmdLoopbackEnumEnum::no_loopback {0, "no-loopback"};
+const Enum::YLeaf ImCmdLoopbackEnumEnum::internal_loopback {1, "internal-loopback"};
+const Enum::YLeaf ImCmdLoopbackEnumEnum::external_loopback {2, "external-loopback"};
+const Enum::YLeaf ImCmdLoopbackEnumEnum::line_loopback {3, "line-loopback"};
 
-const Enum::Value ImCmdFrTypeEnumEnum::frame_relay_cisco {0, "frame-relay-cisco"};
-const Enum::Value ImCmdFrTypeEnumEnum::frame_relay_ietf {1, "frame-relay-ietf"};
+const Enum::YLeaf ImCmdFrTypeEnumEnum::frame_relay_cisco {0, "frame-relay-cisco"};
+const Enum::YLeaf ImCmdFrTypeEnumEnum::frame_relay_ietf {1, "frame-relay-ietf"};
 
-const Enum::Value ImCmdLmiTypeEnumEnum::lmi_type_auto {0, "lmi-type-auto"};
-const Enum::Value ImCmdLmiTypeEnumEnum::lmi_type_ansi {1, "lmi-type-ansi"};
-const Enum::Value ImCmdLmiTypeEnumEnum::lmi_type_ccitt {2, "lmi-type-ccitt"};
-const Enum::Value ImCmdLmiTypeEnumEnum::lmi_type_cisco {3, "lmi-type-cisco"};
+const Enum::YLeaf ImCmdLmiTypeEnumEnum::lmi_type_auto {0, "lmi-type-auto"};
+const Enum::YLeaf ImCmdLmiTypeEnumEnum::lmi_type_ansi {1, "lmi-type-ansi"};
+const Enum::YLeaf ImCmdLmiTypeEnumEnum::lmi_type_ccitt {2, "lmi-type-ccitt"};
+const Enum::YLeaf ImCmdLmiTypeEnumEnum::lmi_type_cisco {3, "lmi-type-cisco"};
 
-const Enum::Value SrpMgmtSrrFailureEnum::idle_srr_failure {0, "idle-srr-failure"};
-const Enum::Value SrpMgmtSrrFailureEnum::wait_to_restore_srr_failure {1, "wait-to-restore-srr-failure"};
-const Enum::Value SrpMgmtSrrFailureEnum::signal_fail_srr_failure {2, "signal-fail-srr-failure"};
-const Enum::Value SrpMgmtSrrFailureEnum::forced_switch_srr_failure {3, "forced-switch-srr-failure"};
-const Enum::Value SrpMgmtSrrFailureEnum::unknown_srr_failure {4, "unknown-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailureEnum::idle_srr_failure {0, "idle-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailureEnum::wait_to_restore_srr_failure {1, "wait-to-restore-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailureEnum::signal_fail_srr_failure {2, "signal-fail-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailureEnum::forced_switch_srr_failure {3, "forced-switch-srr-failure"};
+const Enum::YLeaf SrpMgmtSrrFailureEnum::unknown_srr_failure {4, "unknown-srr-failure"};
 
-const Enum::Value ImStateEnumEnum::im_state_not_ready {0, "im-state-not-ready"};
-const Enum::Value ImStateEnumEnum::im_state_admin_down {1, "im-state-admin-down"};
-const Enum::Value ImStateEnumEnum::im_state_down {2, "im-state-down"};
-const Enum::Value ImStateEnumEnum::im_state_up {3, "im-state-up"};
-const Enum::Value ImStateEnumEnum::im_state_shutdown {4, "im-state-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_err_disable {5, "im-state-err-disable"};
-const Enum::Value ImStateEnumEnum::im_state_down_immediate {6, "im-state-down-immediate"};
-const Enum::Value ImStateEnumEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
-const Enum::Value ImStateEnumEnum::im_state_down_graceful {8, "im-state-down-graceful"};
-const Enum::Value ImStateEnumEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
-const Enum::Value ImStateEnumEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
-const Enum::Value ImStateEnumEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
-const Enum::Value ImStateEnumEnum::im_state_reset {14, "im-state-reset"};
-const Enum::Value ImStateEnumEnum::im_state_operational {15, "im-state-operational"};
-const Enum::Value ImStateEnumEnum::im_state_not_operational {16, "im-state-not-operational"};
-const Enum::Value ImStateEnumEnum::im_state_unknown {17, "im-state-unknown"};
-const Enum::Value ImStateEnumEnum::im_state_last {18, "im-state-last"};
+const Enum::YLeaf ImStateEnumEnum::im_state_not_ready {0, "im-state-not-ready"};
+const Enum::YLeaf ImStateEnumEnum::im_state_admin_down {1, "im-state-admin-down"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down {2, "im-state-down"};
+const Enum::YLeaf ImStateEnumEnum::im_state_up {3, "im-state-up"};
+const Enum::YLeaf ImStateEnumEnum::im_state_shutdown {4, "im-state-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_err_disable {5, "im-state-err-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate {6, "im-state-down-immediate"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_graceful {8, "im-state-down-graceful"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
+const Enum::YLeaf ImStateEnumEnum::im_state_reset {14, "im-state-reset"};
+const Enum::YLeaf ImStateEnumEnum::im_state_operational {15, "im-state-operational"};
+const Enum::YLeaf ImStateEnumEnum::im_state_not_operational {16, "im-state-not-operational"};
+const Enum::YLeaf ImStateEnumEnum::im_state_unknown {17, "im-state-unknown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_last {18, "im-state-last"};
 
-const Enum::Value StatsTypeContentsEnum::stats_type_single {100, "stats-type-single"};
-const Enum::Value StatsTypeContentsEnum::stats_type_variable {101, "stats-type-variable"};
+const Enum::YLeaf StatsTypeContentsEnum::stats_type_single {100, "stats-type-single"};
+const Enum::YLeaf StatsTypeContentsEnum::stats_type_variable {101, "stats-type-variable"};
 
-const Enum::Value ImAttrFlowControlEnum::im_attr_flow_control_off {0, "im-attr-flow-control-off"};
-const Enum::Value ImAttrFlowControlEnum::im_attr_flow_control_on {1, "im-attr-flow-control-on"};
-const Enum::Value ImAttrFlowControlEnum::im_attr_flow_control_not_sup {2, "im-attr-flow-control-not-sup"};
-const Enum::Value ImAttrFlowControlEnum::im_attr_flow_control_priority {3, "im-attr-flow-control-priority"};
+const Enum::YLeaf ImAttrFlowControlEnum::im_attr_flow_control_off {0, "im-attr-flow-control-off"};
+const Enum::YLeaf ImAttrFlowControlEnum::im_attr_flow_control_on {1, "im-attr-flow-control-on"};
+const Enum::YLeaf ImAttrFlowControlEnum::im_attr_flow_control_not_sup {2, "im-attr-flow-control-not-sup"};
+const Enum::YLeaf ImAttrFlowControlEnum::im_attr_flow_control_priority {3, "im-attr-flow-control-priority"};
 
-const Enum::Value StatsIdEnum::stats_id_type_unknown {0, "stats-id-type-unknown"};
-const Enum::Value StatsIdEnum::stats_id_type_min {1, "stats-id-type-min"};
-const Enum::Value StatsIdEnum::stats_id_type_spare {2, "stats-id-type-spare"};
-const Enum::Value StatsIdEnum::stats_id_type_node {3, "stats-id-type-node"};
-const Enum::Value StatsIdEnum::stats_id_type_other {4, "stats-id-type-other"};
-const Enum::Value StatsIdEnum::stats_id_type_feature {5, "stats-id-type-feature"};
-const Enum::Value StatsIdEnum::stats_id_type_max {6, "stats-id-type-max"};
+const Enum::YLeaf StatsIdEnum::stats_id_type_unknown {0, "stats-id-type-unknown"};
+const Enum::YLeaf StatsIdEnum::stats_id_type_min {1, "stats-id-type-min"};
+const Enum::YLeaf StatsIdEnum::stats_id_type_spare {2, "stats-id-type-spare"};
+const Enum::YLeaf StatsIdEnum::stats_id_type_node {3, "stats-id-type-node"};
+const Enum::YLeaf StatsIdEnum::stats_id_type_other {4, "stats-id-type-other"};
+const Enum::YLeaf StatsIdEnum::stats_id_type_feature {5, "stats-id-type-feature"};
+const Enum::YLeaf StatsIdEnum::stats_id_type_max {6, "stats-id-type-max"};
 
-const Enum::Value TunlPfiAfIdEnum::tunl_pfi_af_id_none {0, "tunl-pfi-af-id-none"};
-const Enum::Value TunlPfiAfIdEnum::tunl_pfi_af_id_ipv4 {2, "tunl-pfi-af-id-ipv4"};
-const Enum::Value TunlPfiAfIdEnum::tunl_pfi_af_id_ipv6 {10, "tunl-pfi-af-id-ipv6"};
+const Enum::YLeaf TunlPfiAfIdEnum::tunl_pfi_af_id_none {0, "tunl-pfi-af-id-none"};
+const Enum::YLeaf TunlPfiAfIdEnum::tunl_pfi_af_id_ipv4 {2, "tunl-pfi-af-id-ipv4"};
+const Enum::YLeaf TunlPfiAfIdEnum::tunl_pfi_af_id_ipv6 {10, "tunl-pfi-af-id-ipv6"};
 
-const Enum::Value TunnelKaDfStateEnum::disable {0, "disable"};
-const Enum::Value TunnelKaDfStateEnum::enable {1, "enable"};
+const Enum::YLeaf TunnelKaDfStateEnum::disable {0, "disable"};
+const Enum::YLeaf TunnelKaDfStateEnum::enable {1, "enable"};
 
-const Enum::Value BmdMemberTypeEnumEnum::bmd_mbr_local {0, "bmd-mbr-local"};
-const Enum::Value BmdMemberTypeEnumEnum::bmd_mbr_foreign {1, "bmd-mbr-foreign"};
-const Enum::Value BmdMemberTypeEnumEnum::bmd_mbr_unknown {2, "bmd-mbr-unknown"};
+const Enum::YLeaf BmdMemberTypeEnumEnum::bmd_mbr_local {0, "bmd-mbr-local"};
+const Enum::YLeaf BmdMemberTypeEnumEnum::bmd_mbr_foreign {1, "bmd-mbr-foreign"};
+const Enum::YLeaf BmdMemberTypeEnumEnum::bmd_mbr_unknown {2, "bmd-mbr-unknown"};
 
-const Enum::Value TunnelKeyStateEnum::absent {0, "absent"};
-const Enum::Value TunnelKeyStateEnum::present {1, "present"};
+const Enum::YLeaf TunnelKeyStateEnum::absent {0, "absent"};
+const Enum::YLeaf TunnelKeyStateEnum::present {1, "present"};
 
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_unknown {0, "bm-mbr-state-reason-unknown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_unselectable_unknown {1, "bm-mbr-state-reason-unselectable-unknown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_link_down {2, "bm-mbr-state-reason-link-down"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_link_deleting {3, "bm-mbr-state-reason-link-deleting"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_creating {4, "bm-mbr-state-reason-creating"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_creating {5, "bm-mbr-state-reason-bundle-creating"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_deleting {6, "bm-mbr-state-reason-bundle-deleting"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_admin_down {7, "bm-mbr-state-reason-bundle-admin-down"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_replicating {8, "bm-mbr-state-reason-replicating"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bandwidth {9, "bm-mbr-state-reason-bandwidth"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_loop_back {10, "bm-mbr-state-reason-loop-back"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_activity_type {11, "bm-mbr-state-reason-activity-type"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_shutdown {12, "bm-mbr-state-reason-bundle-shutdown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_min_selected {13, "bm-mbr-state-reason-min-selected"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_max_selected {14, "bm-mbr-state-reason-max-selected"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_link_limit {15, "bm-mbr-state-reason-link-limit"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_active_limit {16, "bm-mbr-state-reason-active-limit"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_standby_unknown {17, "bm-mbr-state-reason-standby-unknown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_expired {18, "bm-mbr-state-reason-expired"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_defaulted {19, "bm-mbr-state-reason-defaulted"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_act_or_not_agg {20, "bm-mbr-state-reason-act-or-not-agg"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_agg {21, "bm-mbr-state-reason-partner-not-agg"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_lagid {22, "bm-mbr-state-reason-lagid"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_cfgd {23, "bm-mbr-state-reason-bundle-not-cfgd"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_ready {24, "bm-mbr-state-reason-bundle-not-ready"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_partner_ood {25, "bm-mbr-state-reason-partner-ood"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_in_sync {26, "bm-mbr-state-reason-partner-not-in-sync"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_foreign_partner_oos {27, "bm-mbr-state-reason-foreign-partner-oos"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_attach_unknown {28, "bm-mbr-state-reason-attach-unknown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_collecting {29, "bm-mbr-state-reason-partner-not-collecting"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_collect_unknown {30, "bm-mbr-state-reason-collect-unknown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_standby_foreign {31, "bm-mbr-state-reason-standby-foreign"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_starting {32, "bm-mbr-state-reason-bfd-starting"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_down {33, "bm-mbr-state-reason-bfd-down"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_nbr_unconfig {34, "bm-mbr-state-reason-bfd-nbr-unconfig"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp {35, "bm-mbr-state-reason-mlacp"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_pe_isolated {36, "bm-mbr-state-reason-pe-isolated"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_forced_switchover {37, "bm-mbr-state-reason-forced-switchover"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_errdis_unknown {38, "bm-mbr-state-reason-errdis-unknown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_mbr_state_info {39, "bm-mbr-state-reason-mlacp-no-mbr-state-info"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_active {40, "bm-mbr-state-reason-active"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_state_info {41, "bm-mbr-state-reason-mlacp-no-bdl-state-info"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_config_info {42, "bm-mbr-state-reason-mlacp-no-bdl-config-info"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_sync {43, "bm-mbr-state-reason-mlacp-no-bdl-sync"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_bdl_has_no_peer {44, "bm-mbr-state-reason-mlacp-bdl-has-no-peer"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_nak {45, "bm-mbr-state-reason-mlacp-nak"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_transport_unavailable {46, "bm-mbr-state-reason-mlacp-transport-unavailable"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_not_configured {47, "bm-mbr-state-reason-mlacp-not-configured"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_recovery_timer {48, "bm-mbr-state-reason-recovery-timer"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_standby {49, "bm-mbr-state-reason-mlacp-standby"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_maximized_out {50, "bm-mbr-state-reason-maximized-out"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_peer_selected {51, "bm-mbr-state-reason-mlacp-peer-selected"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_connect_timer_running {52, "bm-mbr-state-reason-mlacp-connect-timer-running"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_mlacp {53, "bm-mbr-state-reason-bundle-not-mlacp"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_no_lon {54, "bm-mbr-state-reason-no-lon"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_cumul_rel_bw_limit {55, "bm-mbr-state-reason-cumul-rel-bw-limit"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_no_mac {56, "bm-mbr-state-reason-no-mac"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_no_system_id {57, "bm-mbr-state-reason-no-system-id"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_link_shutdown {58, "bm-mbr-state-reason-link-shutdown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_activity_mlacp {59, "bm-mbr-state-reason-activity-mlacp"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_activity_iccp {60, "bm-mbr-state-reason-activity-iccp"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_icpe_mlacp {61, "bm-mbr-state-reason-bundle-icpe-mlacp"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_no_link_num {62, "bm-mbr-state-reason-no-link-num"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_standby_peer_higher_prio {63, "bm-mbr-state-reason-standby-peer-higher-prio"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_red_state_standby {64, "bm-mbr-state-reason-red-state-standby"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_other_red_state_standby {65, "bm-mbr-state-reason-other-red-state-standby"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_hold_ing {66, "bm-mbr-state-reason-hold-ing"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_error_disabled {67, "bm-mbr-state-reason-bundle-error-disabled"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_efd_disabled {68, "bm-mbr-state-reason-bundle-efd-disabled"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_singleton_pe_isolated {69, "bm-mbr-state-reason-singleton-pe-isolated"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_starting {70, "bm-mbr-state-reason-bfd-ipv6-starting"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_down {71, "bm-mbr-state-reason-bfd-ipv6-down"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_nbr_unconfig {72, "bm-mbr-state-reason-bfd-ipv6-nbr-unconfig"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_timer_running {73, "bm-mbr-state-reason-timer-running"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_count {74, "bm-mbr-state-reason-count"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_unknown {0, "bm-mbr-state-reason-unknown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_unselectable_unknown {1, "bm-mbr-state-reason-unselectable-unknown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_link_down {2, "bm-mbr-state-reason-link-down"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_link_deleting {3, "bm-mbr-state-reason-link-deleting"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_creating {4, "bm-mbr-state-reason-creating"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_creating {5, "bm-mbr-state-reason-bundle-creating"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_deleting {6, "bm-mbr-state-reason-bundle-deleting"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_admin_down {7, "bm-mbr-state-reason-bundle-admin-down"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_replicating {8, "bm-mbr-state-reason-replicating"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bandwidth {9, "bm-mbr-state-reason-bandwidth"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_loop_back {10, "bm-mbr-state-reason-loop-back"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_activity_type {11, "bm-mbr-state-reason-activity-type"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_shutdown {12, "bm-mbr-state-reason-bundle-shutdown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_min_selected {13, "bm-mbr-state-reason-min-selected"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_max_selected {14, "bm-mbr-state-reason-max-selected"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_link_limit {15, "bm-mbr-state-reason-link-limit"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_active_limit {16, "bm-mbr-state-reason-active-limit"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_standby_unknown {17, "bm-mbr-state-reason-standby-unknown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_expired {18, "bm-mbr-state-reason-expired"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_defaulted {19, "bm-mbr-state-reason-defaulted"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_act_or_not_agg {20, "bm-mbr-state-reason-act-or-not-agg"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_agg {21, "bm-mbr-state-reason-partner-not-agg"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_lagid {22, "bm-mbr-state-reason-lagid"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_cfgd {23, "bm-mbr-state-reason-bundle-not-cfgd"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_ready {24, "bm-mbr-state-reason-bundle-not-ready"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_partner_ood {25, "bm-mbr-state-reason-partner-ood"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_in_sync {26, "bm-mbr-state-reason-partner-not-in-sync"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_foreign_partner_oos {27, "bm-mbr-state-reason-foreign-partner-oos"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_attach_unknown {28, "bm-mbr-state-reason-attach-unknown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_collecting {29, "bm-mbr-state-reason-partner-not-collecting"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_collect_unknown {30, "bm-mbr-state-reason-collect-unknown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_standby_foreign {31, "bm-mbr-state-reason-standby-foreign"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_starting {32, "bm-mbr-state-reason-bfd-starting"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_down {33, "bm-mbr-state-reason-bfd-down"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_nbr_unconfig {34, "bm-mbr-state-reason-bfd-nbr-unconfig"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp {35, "bm-mbr-state-reason-mlacp"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_pe_isolated {36, "bm-mbr-state-reason-pe-isolated"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_forced_switchover {37, "bm-mbr-state-reason-forced-switchover"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_errdis_unknown {38, "bm-mbr-state-reason-errdis-unknown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_mbr_state_info {39, "bm-mbr-state-reason-mlacp-no-mbr-state-info"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_active {40, "bm-mbr-state-reason-active"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_state_info {41, "bm-mbr-state-reason-mlacp-no-bdl-state-info"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_config_info {42, "bm-mbr-state-reason-mlacp-no-bdl-config-info"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_sync {43, "bm-mbr-state-reason-mlacp-no-bdl-sync"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_bdl_has_no_peer {44, "bm-mbr-state-reason-mlacp-bdl-has-no-peer"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_nak {45, "bm-mbr-state-reason-mlacp-nak"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_transport_unavailable {46, "bm-mbr-state-reason-mlacp-transport-unavailable"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_not_configured {47, "bm-mbr-state-reason-mlacp-not-configured"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_recovery_timer {48, "bm-mbr-state-reason-recovery-timer"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_standby {49, "bm-mbr-state-reason-mlacp-standby"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_maximized_out {50, "bm-mbr-state-reason-maximized-out"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_peer_selected {51, "bm-mbr-state-reason-mlacp-peer-selected"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_connect_timer_running {52, "bm-mbr-state-reason-mlacp-connect-timer-running"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_mlacp {53, "bm-mbr-state-reason-bundle-not-mlacp"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_no_lon {54, "bm-mbr-state-reason-no-lon"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_cumul_rel_bw_limit {55, "bm-mbr-state-reason-cumul-rel-bw-limit"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_no_mac {56, "bm-mbr-state-reason-no-mac"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_no_system_id {57, "bm-mbr-state-reason-no-system-id"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_link_shutdown {58, "bm-mbr-state-reason-link-shutdown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_activity_mlacp {59, "bm-mbr-state-reason-activity-mlacp"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_activity_iccp {60, "bm-mbr-state-reason-activity-iccp"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_icpe_mlacp {61, "bm-mbr-state-reason-bundle-icpe-mlacp"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_no_link_num {62, "bm-mbr-state-reason-no-link-num"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_standby_peer_higher_prio {63, "bm-mbr-state-reason-standby-peer-higher-prio"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_red_state_standby {64, "bm-mbr-state-reason-red-state-standby"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_other_red_state_standby {65, "bm-mbr-state-reason-other-red-state-standby"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_hold_ing {66, "bm-mbr-state-reason-hold-ing"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_error_disabled {67, "bm-mbr-state-reason-bundle-error-disabled"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_efd_disabled {68, "bm-mbr-state-reason-bundle-efd-disabled"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_singleton_pe_isolated {69, "bm-mbr-state-reason-singleton-pe-isolated"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_starting {70, "bm-mbr-state-reason-bfd-ipv6-starting"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_down {71, "bm-mbr-state-reason-bfd-ipv6-down"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_nbr_unconfig {72, "bm-mbr-state-reason-bfd-ipv6-nbr-unconfig"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_timer_running {73, "bm-mbr-state-reason-timer-running"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_count {74, "bm-mbr-state-reason-count"};
 
-const Enum::Value BmSeverityEnum::ok {0, "ok"};
-const Enum::Value BmSeverityEnum::information {1, "information"};
-const Enum::Value BmSeverityEnum::misconfiguration {2, "misconfiguration"};
-const Enum::Value BmSeverityEnum::warning {3, "warning"};
-const Enum::Value BmSeverityEnum::error {5, "error"};
+const Enum::YLeaf BmSeverityEnum::ok {0, "ok"};
+const Enum::YLeaf BmSeverityEnum::information {1, "information"};
+const Enum::YLeaf BmSeverityEnum::misconfiguration {2, "misconfiguration"};
+const Enum::YLeaf BmSeverityEnum::warning {3, "warning"};
+const Enum::YLeaf BmSeverityEnum::error {5, "error"};
 
-const Enum::Value SrpMgmtIpsReqEnum::idle_ips_request {0, "idle-ips-request"};
-const Enum::Value SrpMgmtIpsReqEnum::wait_to_restore_ips_request {1, "wait-to-restore-ips-request"};
-const Enum::Value SrpMgmtIpsReqEnum::manual_switch_ips_request {2, "manual-switch-ips-request"};
-const Enum::Value SrpMgmtIpsReqEnum::signal_degrade_ips_request {3, "signal-degrade-ips-request"};
-const Enum::Value SrpMgmtIpsReqEnum::signal_fail_ips_request {4, "signal-fail-ips-request"};
-const Enum::Value SrpMgmtIpsReqEnum::forced_switch_ips_request {5, "forced-switch-ips-request"};
-const Enum::Value SrpMgmtIpsReqEnum::unknown_ips_request {6, "unknown-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReqEnum::idle_ips_request {0, "idle-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReqEnum::wait_to_restore_ips_request {1, "wait-to-restore-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReqEnum::manual_switch_ips_request {2, "manual-switch-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReqEnum::signal_degrade_ips_request {3, "signal-degrade-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReqEnum::signal_fail_ips_request {4, "signal-fail-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReqEnum::forced_switch_ips_request {5, "forced-switch-ips-request"};
+const Enum::YLeaf SrpMgmtIpsReqEnum::unknown_ips_request {6, "unknown-ips-request"};
 
-const Enum::Value SrpMgmtFailureEtEnum::hardware_missing_failure {0, "hardware-missing-failure"};
-const Enum::Value SrpMgmtFailureEtEnum::layer1_admin_state_failure {1, "layer1-admin-state-failure"};
-const Enum::Value SrpMgmtFailureEtEnum::layer1_error_failure {2, "layer1-error-failure"};
-const Enum::Value SrpMgmtFailureEtEnum::keepalive_missed_failure {3, "keepalive-missed-failure"};
-const Enum::Value SrpMgmtFailureEtEnum::link_quality_degraded_failure {4, "link-quality-degraded-failure"};
-const Enum::Value SrpMgmtFailureEtEnum::mate_problem_failure {5, "mate-problem-failure"};
-const Enum::Value SrpMgmtFailureEtEnum::side_mismatch_failure {6, "side-mismatch-failure"};
-const Enum::Value SrpMgmtFailureEtEnum::unknown_failure {7, "unknown-failure"};
+const Enum::YLeaf SrpMgmtFailureEtEnum::hardware_missing_failure {0, "hardware-missing-failure"};
+const Enum::YLeaf SrpMgmtFailureEtEnum::layer1_admin_state_failure {1, "layer1-admin-state-failure"};
+const Enum::YLeaf SrpMgmtFailureEtEnum::layer1_error_failure {2, "layer1-error-failure"};
+const Enum::YLeaf SrpMgmtFailureEtEnum::keepalive_missed_failure {3, "keepalive-missed-failure"};
+const Enum::YLeaf SrpMgmtFailureEtEnum::link_quality_degraded_failure {4, "link-quality-degraded-failure"};
+const Enum::YLeaf SrpMgmtFailureEtEnum::mate_problem_failure {5, "mate-problem-failure"};
+const Enum::YLeaf SrpMgmtFailureEtEnum::side_mismatch_failure {6, "side-mismatch-failure"};
+const Enum::YLeaf SrpMgmtFailureEtEnum::unknown_failure {7, "unknown-failure"};
 
-const Enum::Value ImAttrTransportModeEnum::im_attr_transport_mode_unknown {0, "im-attr-transport-mode-unknown"};
-const Enum::Value ImAttrTransportModeEnum::im_attr_transport_mode_lan {1, "im-attr-transport-mode-lan"};
-const Enum::Value ImAttrTransportModeEnum::im_attr_transport_mode_wan {2, "im-attr-transport-mode-wan"};
-const Enum::Value ImAttrTransportModeEnum::im_attr_transport_mode_otn_bt_opu1e {3, "im-attr-transport-mode-otn-bt-opu1e"};
-const Enum::Value ImAttrTransportModeEnum::im_attr_transport_mode_otn_bt_opu2e {4, "im-attr-transport-mode-otn-bt-opu2e"};
-const Enum::Value ImAttrTransportModeEnum::im_attr_transport_mode_otn_opu3 {5, "im-attr-transport-mode-otn-opu3"};
-const Enum::Value ImAttrTransportModeEnum::im_attr_transport_mode_otn_opu4 {6, "im-attr-transport-mode-otn-opu4"};
+const Enum::YLeaf ImAttrTransportModeEnum::im_attr_transport_mode_unknown {0, "im-attr-transport-mode-unknown"};
+const Enum::YLeaf ImAttrTransportModeEnum::im_attr_transport_mode_lan {1, "im-attr-transport-mode-lan"};
+const Enum::YLeaf ImAttrTransportModeEnum::im_attr_transport_mode_wan {2, "im-attr-transport-mode-wan"};
+const Enum::YLeaf ImAttrTransportModeEnum::im_attr_transport_mode_otn_bt_opu1e {3, "im-attr-transport-mode-otn-bt-opu1e"};
+const Enum::YLeaf ImAttrTransportModeEnum::im_attr_transport_mode_otn_bt_opu2e {4, "im-attr-transport-mode-otn-bt-opu2e"};
+const Enum::YLeaf ImAttrTransportModeEnum::im_attr_transport_mode_otn_opu3 {5, "im-attr-transport-mode-otn-opu3"};
+const Enum::YLeaf ImAttrTransportModeEnum::im_attr_transport_mode_otn_opu4 {6, "im-attr-transport-mode-otn-opu4"};
 
-const Enum::Value ImCmdEncapsEnumEnum::frame_relay {0, "frame-relay"};
-const Enum::Value ImCmdEncapsEnumEnum::vlan {1, "vlan"};
-const Enum::Value ImCmdEncapsEnumEnum::ppp {2, "ppp"};
+const Enum::YLeaf ImCmdEncapsEnumEnum::frame_relay {0, "frame-relay"};
+const Enum::YLeaf ImCmdEncapsEnumEnum::vlan {1, "vlan"};
+const Enum::YLeaf ImCmdEncapsEnumEnum::ppp {2, "ppp"};
 
-const Enum::Value BmMuxstateEnum::detached {1, "detached"};
-const Enum::Value BmMuxstateEnum::waiting {2, "waiting"};
-const Enum::Value BmMuxstateEnum::attached {3, "attached"};
-const Enum::Value BmMuxstateEnum::collecting {4, "collecting"};
-const Enum::Value BmMuxstateEnum::distributing {5, "distributing"};
-const Enum::Value BmMuxstateEnum::collecting_distributing {6, "collecting-distributing"};
+const Enum::YLeaf BmMuxstateEnum::detached {1, "detached"};
+const Enum::YLeaf BmMuxstateEnum::waiting {2, "waiting"};
+const Enum::YLeaf BmMuxstateEnum::attached {3, "attached"};
+const Enum::YLeaf BmMuxstateEnum::collecting {4, "collecting"};
+const Enum::YLeaf BmMuxstateEnum::distributing {5, "distributing"};
+const Enum::YLeaf BmMuxstateEnum::collecting_distributing {6, "collecting-distributing"};
 
-const Enum::Value NcpIdentEnum::cdpcp {1, "cdpcp"};
-const Enum::Value NcpIdentEnum::ipcp {2, "ipcp"};
-const Enum::Value NcpIdentEnum::ipcpiw {3, "ipcpiw"};
-const Enum::Value NcpIdentEnum::ipv6cp {4, "ipv6cp"};
-const Enum::Value NcpIdentEnum::mplscp {5, "mplscp"};
-const Enum::Value NcpIdentEnum::osicp {6, "osicp"};
+const Enum::YLeaf NcpIdentEnum::cdpcp {1, "cdpcp"};
+const Enum::YLeaf NcpIdentEnum::ipcp {2, "ipcp"};
+const Enum::YLeaf NcpIdentEnum::ipcpiw {3, "ipcpiw"};
+const Enum::YLeaf NcpIdentEnum::ipv6cp {4, "ipv6cp"};
+const Enum::YLeaf NcpIdentEnum::mplscp {5, "mplscp"};
+const Enum::YLeaf NcpIdentEnum::osicp {6, "osicp"};
 
-const Enum::Value BmdMemberStateEnum::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
-const Enum::Value BmdMemberStateEnum::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
-const Enum::Value BmdMemberStateEnum::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
-const Enum::Value BmdMemberStateEnum::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
-const Enum::Value BmdMemberStateEnum::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
-const Enum::Value BmdMemberStateEnum::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
+const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
+const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
+const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
+const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
+const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
+const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
 
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_count {19, "bm-mux-reason-count"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_count {19, "bm-mux-reason-count"};
 
-const Enum::Value ImAttrLinkEnum::im_attr_link_type_auto {0, "im-attr-link-type-auto"};
-const Enum::Value ImAttrLinkEnum::im_attr_link_type_force {1, "im-attr-link-type-force"};
+const Enum::YLeaf ImAttrLinkEnum::im_attr_link_type_auto {0, "im-attr-link-type-auto"};
+const Enum::YLeaf ImAttrLinkEnum::im_attr_link_type_force {1, "im-attr-link-type-force"};
 
-const Enum::Value VlanEncapsEnum::no_encapsulation {0, "no-encapsulation"};
-const Enum::Value VlanEncapsEnum::dot1q {1, "dot1q"};
-const Enum::Value VlanEncapsEnum::qinq {2, "qinq"};
-const Enum::Value VlanEncapsEnum::qin_any {3, "qin-any"};
-const Enum::Value VlanEncapsEnum::dot1q_native {4, "dot1q-native"};
-const Enum::Value VlanEncapsEnum::dot1ad {5, "dot1ad"};
-const Enum::Value VlanEncapsEnum::dot1ad_native {6, "dot1ad-native"};
-const Enum::Value VlanEncapsEnum::service_instance {7, "service-instance"};
-const Enum::Value VlanEncapsEnum::dot1ad_dot1q {8, "dot1ad-dot1q"};
-const Enum::Value VlanEncapsEnum::dot1ad_any {9, "dot1ad-any"};
+const Enum::YLeaf VlanEncapsEnum::no_encapsulation {0, "no-encapsulation"};
+const Enum::YLeaf VlanEncapsEnum::dot1q {1, "dot1q"};
+const Enum::YLeaf VlanEncapsEnum::qinq {2, "qinq"};
+const Enum::YLeaf VlanEncapsEnum::qin_any {3, "qin-any"};
+const Enum::YLeaf VlanEncapsEnum::dot1q_native {4, "dot1q-native"};
+const Enum::YLeaf VlanEncapsEnum::dot1ad {5, "dot1ad"};
+const Enum::YLeaf VlanEncapsEnum::dot1ad_native {6, "dot1ad-native"};
+const Enum::YLeaf VlanEncapsEnum::service_instance {7, "service-instance"};
+const Enum::YLeaf VlanEncapsEnum::dot1ad_dot1q {8, "dot1ad-dot1q"};
+const Enum::YLeaf VlanEncapsEnum::dot1ad_any {9, "dot1ad-any"};
 
-const Enum::Value EfpPayloadEtypeEnum::payload_ethertype_any {0, "payload-ethertype-any"};
-const Enum::Value EfpPayloadEtypeEnum::payload_ethertype_ip {1, "payload-ethertype-ip"};
-const Enum::Value EfpPayloadEtypeEnum::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
+const Enum::YLeaf EfpPayloadEtypeEnum::payload_ethertype_any {0, "payload-ethertype-any"};
+const Enum::YLeaf EfpPayloadEtypeEnum::payload_ethertype_ip {1, "payload-ethertype-ip"};
+const Enum::YLeaf EfpPayloadEtypeEnum::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
 
-const Enum::Value InterfaceTypeSetEnum::hardware_interfaces {0, "hardware-interfaces"};
+const Enum::YLeaf InterfaceTypeSetEnum::hardware_interfaces {0, "hardware-interfaces"};
 
-const Enum::Value BmStateReasonTargetEnum::member_reason {0, "member-reason"};
-const Enum::Value BmStateReasonTargetEnum::bundle_reason {1, "bundle-reason"};
+const Enum::YLeaf BmStateReasonTargetEnum::member_reason {0, "member-reason"};
+const Enum::YLeaf BmStateReasonTargetEnum::bundle_reason {1, "bundle-reason"};
 
-const Enum::Value ImAttrMediaEnum::im_attr_media_other {0, "im-attr-media-other"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_unknown {1, "im-attr-media-unknown"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_aui {2, "im-attr-media-aui"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10base5 {3, "im-attr-media-10base5"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_foirl {4, "im-attr-media-foirl"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10base2 {5, "im-attr-media-10base2"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10broad36 {6, "im-attr-media-10broad36"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10base {7, "im-attr-media-10base"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10base_thd {8, "im-attr-media-10base-thd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10base_tfd {9, "im-attr-media-10base-tfd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10base_fp {10, "im-attr-media-10base-fp"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10base_fb {11, "im-attr-media-10base-fb"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10base_fl {12, "im-attr-media-10base-fl"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10base_flhd {13, "im-attr-media-10base-flhd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10base_flfd {14, "im-attr-media-10base-flfd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_t4 {15, "im-attr-media-100base-t4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_tx {16, "im-attr-media-100base-tx"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_txhd {17, "im-attr-media-100base-txhd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_txfd {18, "im-attr-media-100base-txfd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_fx {19, "im-attr-media-100base-fx"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_fxhd {20, "im-attr-media-100base-fxhd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_fxfd {21, "im-attr-media-100base-fxfd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_ex {22, "im-attr-media-100base-ex"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_exhd {23, "im-attr-media-100base-exhd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_exfd {24, "im-attr-media-100base-exfd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_t2 {25, "im-attr-media-100base-t2"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_t2hd {26, "im-attr-media-100base-t2hd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_t2fd {27, "im-attr-media-100base-t2fd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_x {28, "im-attr-media-1000base-x"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_xhdx {29, "im-attr-media-1000base-xhdx"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_xfd {30, "im-attr-media-1000base-xfd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_lx {31, "im-attr-media-1000base-lx"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_lxhd {32, "im-attr-media-1000base-lxhd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_lxfdx {33, "im-attr-media-1000base-lxfdx"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_sx {34, "im-attr-media-1000base-sx"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_sxhd {35, "im-attr-media-1000base-sxhd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_sxfd {36, "im-attr-media-1000base-sxfd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_cx {37, "im-attr-media-1000base-cx"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_cxhdx {38, "im-attr-media-1000base-cxhdx"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_cxfd {39, "im-attr-media-1000base-cxfd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base {40, "im-attr-media-1000base"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_thd {41, "im-attr-media-1000base-thd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_tfd {42, "im-attr-media-1000base-tfd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_x {43, "im-attr-media-10gbase-x"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_lx4 {44, "im-attr-media-10gbase-lx4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_r {45, "im-attr-media-10gbase-r"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_er {46, "im-attr-media-10gbase-er"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_lr {47, "im-attr-media-10gbase-lr"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_sr {48, "im-attr-media-10gbase-sr"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_w {49, "im-attr-media-10gbase-w"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_ew {50, "im-attr-media-10gbase-ew"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_lw {51, "im-attr-media-10gbase-lw"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_sw {52, "im-attr-media-10gbase-sw"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_zr {53, "im-attr-media-10gbase-zr"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_802_9a {54, "im-attr-media-802-9a"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_rj45 {55, "im-attr-media-rj45"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_zx {56, "im-attr-media-1000base-zx"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_cwdm {57, "im-attr-media-1000base-cwdm"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_cwdm_1470 {58, "im-attr-media-1000base-cwdm-1470"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_cwdm_1490 {59, "im-attr-media-1000base-cwdm-1490"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_cwdm_1510 {60, "im-attr-media-1000base-cwdm-1510"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_cwdm_1530 {61, "im-attr-media-1000base-cwdm-1530"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_cwdm_1550 {62, "im-attr-media-1000base-cwdm-1550"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_cwdm_1570 {63, "im-attr-media-1000base-cwdm-1570"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_cwdm_1590 {64, "im-attr-media-1000base-cwdm-1590"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_cwdm_1610 {65, "im-attr-media-1000base-cwdm-1610"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm {66, "im-attr-media-10gbase-dwdm"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_lr4 {67, "im-attr-media-100gbase-lr4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm {68, "im-attr-media-1000base-dwdm"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1533 {69, "im-attr-media-1000base-dwdm-1533"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1537 {70, "im-attr-media-1000base-dwdm-1537"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1541 {71, "im-attr-media-1000base-dwdm-1541"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1545 {72, "im-attr-media-1000base-dwdm-1545"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1549 {73, "im-attr-media-1000base-dwdm-1549"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1553 {74, "im-attr-media-1000base-dwdm-1553"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1557 {75, "im-attr-media-1000base-dwdm-1557"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1561 {76, "im-attr-media-1000base-dwdm-1561"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_lr4 {77, "im-attr-media-40gbase-lr4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_er4 {78, "im-attr-media-40gbase-er4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_er4 {79, "im-attr-media-100gbase-er4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_ex {80, "im-attr-media-1000base-ex"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx10_d {81, "im-attr-media-1000base-bx10-d"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx10_u {82, "im-attr-media-1000base-bx10-u"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1561_42 {83, "im-attr-media-1000base-dwdm-1561-42"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1560_61 {84, "im-attr-media-1000base-dwdm-1560-61"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1559_79 {85, "im-attr-media-1000base-dwdm-1559-79"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1558_98 {86, "im-attr-media-1000base-dwdm-1558-98"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1558_17 {87, "im-attr-media-1000base-dwdm-1558-17"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1557_36 {88, "im-attr-media-1000base-dwdm-1557-36"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1556_55 {89, "im-attr-media-1000base-dwdm-1556-55"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1555_75 {90, "im-attr-media-1000base-dwdm-1555-75"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1554_94 {91, "im-attr-media-1000base-dwdm-1554-94"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1554_13 {92, "im-attr-media-1000base-dwdm-1554-13"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1553_33 {93, "im-attr-media-1000base-dwdm-1553-33"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1552_52 {94, "im-attr-media-1000base-dwdm-1552-52"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1551_72 {95, "im-attr-media-1000base-dwdm-1551-72"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1550_92 {96, "im-attr-media-1000base-dwdm-1550-92"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1550_12 {97, "im-attr-media-1000base-dwdm-1550-12"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1549_32 {98, "im-attr-media-1000base-dwdm-1549-32"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1548_51 {99, "im-attr-media-1000base-dwdm-1548-51"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1547_72 {100, "im-attr-media-1000base-dwdm-1547-72"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1546_92 {101, "im-attr-media-1000base-dwdm-1546-92"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1546_12 {102, "im-attr-media-1000base-dwdm-1546-12"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1545_32 {103, "im-attr-media-1000base-dwdm-1545-32"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1544_53 {104, "im-attr-media-1000base-dwdm-1544-53"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1543_73 {105, "im-attr-media-1000base-dwdm-1543-73"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1542_94 {106, "im-attr-media-1000base-dwdm-1542-94"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1542_14 {107, "im-attr-media-1000base-dwdm-1542-14"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1541_35 {108, "im-attr-media-1000base-dwdm-1541-35"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1540_56 {109, "im-attr-media-1000base-dwdm-1540-56"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1539_77 {110, "im-attr-media-1000base-dwdm-1539-77"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1538_98 {111, "im-attr-media-1000base-dwdm-1538-98"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1538_19 {112, "im-attr-media-1000base-dwdm-1538-19"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1537_40 {113, "im-attr-media-1000base-dwdm-1537-40"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1536_61 {114, "im-attr-media-1000base-dwdm-1536-61"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1535_82 {115, "im-attr-media-1000base-dwdm-1535-82"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1535_04 {116, "im-attr-media-1000base-dwdm-1535-04"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1534_25 {117, "im-attr-media-1000base-dwdm-1534-25"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1533_47 {118, "im-attr-media-1000base-dwdm-1533-47"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1532_68 {119, "im-attr-media-1000base-dwdm-1532-68"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1531_90 {120, "im-attr-media-1000base-dwdm-1531-90"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1531_12 {121, "im-attr-media-1000base-dwdm-1531-12"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_1530_33 {122, "im-attr-media-1000base-dwdm-1530-33"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dwdm_tunable {123, "im-attr-media-1000base-dwdm-tunable"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1561_42 {124, "im-attr-media-10gbase-dwdm-1561-42"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1560_61 {125, "im-attr-media-10gbase-dwdm-1560-61"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1559_79 {126, "im-attr-media-10gbase-dwdm-1559-79"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1558_98 {127, "im-attr-media-10gbase-dwdm-1558-98"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1558_17 {128, "im-attr-media-10gbase-dwdm-1558-17"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1557_36 {129, "im-attr-media-10gbase-dwdm-1557-36"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1556_55 {130, "im-attr-media-10gbase-dwdm-1556-55"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1555_75 {131, "im-attr-media-10gbase-dwdm-1555-75"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1554_94 {132, "im-attr-media-10gbase-dwdm-1554-94"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1554_13 {133, "im-attr-media-10gbase-dwdm-1554-13"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1553_33 {134, "im-attr-media-10gbase-dwdm-1553-33"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1552_52 {135, "im-attr-media-10gbase-dwdm-1552-52"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1551_72 {136, "im-attr-media-10gbase-dwdm-1551-72"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1550_92 {137, "im-attr-media-10gbase-dwdm-1550-92"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1550_12 {138, "im-attr-media-10gbase-dwdm-1550-12"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1549_32 {139, "im-attr-media-10gbase-dwdm-1549-32"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1548_51 {140, "im-attr-media-10gbase-dwdm-1548-51"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1547_72 {141, "im-attr-media-10gbase-dwdm-1547-72"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1546_92 {142, "im-attr-media-10gbase-dwdm-1546-92"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1546_12 {143, "im-attr-media-10gbase-dwdm-1546-12"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1545_32 {144, "im-attr-media-10gbase-dwdm-1545-32"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1544_53 {145, "im-attr-media-10gbase-dwdm-1544-53"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1543_73 {146, "im-attr-media-10gbase-dwdm-1543-73"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1542_94 {147, "im-attr-media-10gbase-dwdm-1542-94"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1542_14 {148, "im-attr-media-10gbase-dwdm-1542-14"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1541_35 {149, "im-attr-media-10gbase-dwdm-1541-35"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1540_56 {150, "im-attr-media-10gbase-dwdm-1540-56"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1539_77 {151, "im-attr-media-10gbase-dwdm-1539-77"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1538_98 {152, "im-attr-media-10gbase-dwdm-1538-98"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1538_19 {153, "im-attr-media-10gbase-dwdm-1538-19"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1537_40 {154, "im-attr-media-10gbase-dwdm-1537-40"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1536_61 {155, "im-attr-media-10gbase-dwdm-1536-61"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1535_82 {156, "im-attr-media-10gbase-dwdm-1535-82"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1535_04 {157, "im-attr-media-10gbase-dwdm-1535-04"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1534_25 {158, "im-attr-media-10gbase-dwdm-1534-25"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1533_47 {159, "im-attr-media-10gbase-dwdm-1533-47"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1532_68 {160, "im-attr-media-10gbase-dwdm-1532-68"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1531_90 {161, "im-attr-media-10gbase-dwdm-1531-90"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1531_12 {162, "im-attr-media-10gbase-dwdm-1531-12"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1530_33 {163, "im-attr-media-10gbase-dwdm-1530-33"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_dwdm_tunable {164, "im-attr-media-10gbase-dwdm-tunable"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1561_42 {165, "im-attr-media-40gbase-dwdm-1561-42"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1560_61 {166, "im-attr-media-40gbase-dwdm-1560-61"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1559_79 {167, "im-attr-media-40gbase-dwdm-1559-79"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1558_98 {168, "im-attr-media-40gbase-dwdm-1558-98"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1558_17 {169, "im-attr-media-40gbase-dwdm-1558-17"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1557_36 {170, "im-attr-media-40gbase-dwdm-1557-36"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1556_55 {171, "im-attr-media-40gbase-dwdm-1556-55"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1555_75 {172, "im-attr-media-40gbase-dwdm-1555-75"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1554_94 {173, "im-attr-media-40gbase-dwdm-1554-94"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1554_13 {174, "im-attr-media-40gbase-dwdm-1554-13"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1553_33 {175, "im-attr-media-40gbase-dwdm-1553-33"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1552_52 {176, "im-attr-media-40gbase-dwdm-1552-52"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1551_72 {177, "im-attr-media-40gbase-dwdm-1551-72"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1550_92 {178, "im-attr-media-40gbase-dwdm-1550-92"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1550_12 {179, "im-attr-media-40gbase-dwdm-1550-12"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1549_32 {180, "im-attr-media-40gbase-dwdm-1549-32"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1548_51 {181, "im-attr-media-40gbase-dwdm-1548-51"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1547_72 {182, "im-attr-media-40gbase-dwdm-1547-72"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1546_92 {183, "im-attr-media-40gbase-dwdm-1546-92"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1546_12 {184, "im-attr-media-40gbase-dwdm-1546-12"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1545_32 {185, "im-attr-media-40gbase-dwdm-1545-32"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1544_53 {186, "im-attr-media-40gbase-dwdm-1544-53"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1543_73 {187, "im-attr-media-40gbase-dwdm-1543-73"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1542_94 {188, "im-attr-media-40gbase-dwdm-1542-94"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1542_14 {189, "im-attr-media-40gbase-dwdm-1542-14"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1541_35 {190, "im-attr-media-40gbase-dwdm-1541-35"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1540_56 {191, "im-attr-media-40gbase-dwdm-1540-56"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1539_77 {192, "im-attr-media-40gbase-dwdm-1539-77"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1538_98 {193, "im-attr-media-40gbase-dwdm-1538-98"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1538_19 {194, "im-attr-media-40gbase-dwdm-1538-19"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1537_40 {195, "im-attr-media-40gbase-dwdm-1537-40"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1536_61 {196, "im-attr-media-40gbase-dwdm-1536-61"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1535_82 {197, "im-attr-media-40gbase-dwdm-1535-82"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1535_04 {198, "im-attr-media-40gbase-dwdm-1535-04"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1534_25 {199, "im-attr-media-40gbase-dwdm-1534-25"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1533_47 {200, "im-attr-media-40gbase-dwdm-1533-47"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1532_68 {201, "im-attr-media-40gbase-dwdm-1532-68"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1531_90 {202, "im-attr-media-40gbase-dwdm-1531-90"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1531_12 {203, "im-attr-media-40gbase-dwdm-1531-12"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1530_33 {204, "im-attr-media-40gbase-dwdm-1530-33"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_dwdm_tunable {205, "im-attr-media-40gbase-dwdm-tunable"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1561_42 {206, "im-attr-media-100gbase-dwdm-1561-42"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1560_61 {207, "im-attr-media-100gbase-dwdm-1560-61"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1559_79 {208, "im-attr-media-100gbase-dwdm-1559-79"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1558_98 {209, "im-attr-media-100gbase-dwdm-1558-98"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1558_17 {210, "im-attr-media-100gbase-dwdm-1558-17"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1557_36 {211, "im-attr-media-100gbase-dwdm-1557-36"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1556_55 {212, "im-attr-media-100gbase-dwdm-1556-55"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1555_75 {213, "im-attr-media-100gbase-dwdm-1555-75"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1554_94 {214, "im-attr-media-100gbase-dwdm-1554-94"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1554_13 {215, "im-attr-media-100gbase-dwdm-1554-13"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1553_33 {216, "im-attr-media-100gbase-dwdm-1553-33"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1552_52 {217, "im-attr-media-100gbase-dwdm-1552-52"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1551_72 {218, "im-attr-media-100gbase-dwdm-1551-72"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1550_92 {219, "im-attr-media-100gbase-dwdm-1550-92"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1550_12 {220, "im-attr-media-100gbase-dwdm-1550-12"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1549_32 {221, "im-attr-media-100gbase-dwdm-1549-32"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1548_51 {222, "im-attr-media-100gbase-dwdm-1548-51"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1547_72 {223, "im-attr-media-100gbase-dwdm-1547-72"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1546_92 {224, "im-attr-media-100gbase-dwdm-1546-92"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1546_12 {225, "im-attr-media-100gbase-dwdm-1546-12"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1545_32 {226, "im-attr-media-100gbase-dwdm-1545-32"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1544_53 {227, "im-attr-media-100gbase-dwdm-1544-53"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1543_73 {228, "im-attr-media-100gbase-dwdm-1543-73"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1542_94 {229, "im-attr-media-100gbase-dwdm-1542-94"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1542_14 {230, "im-attr-media-100gbase-dwdm-1542-14"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1541_35 {231, "im-attr-media-100gbase-dwdm-1541-35"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1540_56 {232, "im-attr-media-100gbase-dwdm-1540-56"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1539_77 {233, "im-attr-media-100gbase-dwdm-1539-77"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1538_98 {234, "im-attr-media-100gbase-dwdm-1538-98"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1538_19 {235, "im-attr-media-100gbase-dwdm-1538-19"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1537_40 {236, "im-attr-media-100gbase-dwdm-1537-40"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1536_61 {237, "im-attr-media-100gbase-dwdm-1536-61"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1535_82 {238, "im-attr-media-100gbase-dwdm-1535-82"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1535_04 {239, "im-attr-media-100gbase-dwdm-1535-04"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1534_25 {240, "im-attr-media-100gbase-dwdm-1534-25"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1533_47 {241, "im-attr-media-100gbase-dwdm-1533-47"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1532_68 {242, "im-attr-media-100gbase-dwdm-1532-68"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1531_90 {243, "im-attr-media-100gbase-dwdm-1531-90"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1531_12 {244, "im-attr-media-100gbase-dwdm-1531-12"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1530_33 {245, "im-attr-media-100gbase-dwdm-1530-33"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_dwdm_tunable {246, "im-attr-media-100gbase-dwdm-tunable"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_kr4 {247, "im-attr-media-40gbase-kr4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_cr4 {248, "im-attr-media-40gbase-cr4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_sr4 {249, "im-attr-media-40gbase-sr4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_fr {250, "im-attr-media-40gbase-fr"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cr10 {251, "im-attr-media-100gbase-cr10"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_sr10 {252, "im-attr-media-100gbase-sr10"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_csr4 {253, "im-attr-media-40gbase-csr4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_cwdm {254, "im-attr-media-10gbase-cwdm"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_cwdm_tunable {255, "im-attr-media-10gbase-cwdm-tunable"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1470 {256, "im-attr-media-10gbase-cwdm-1470"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1490 {257, "im-attr-media-10gbase-cwdm-1490"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1510 {258, "im-attr-media-10gbase-cwdm-1510"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1530 {259, "im-attr-media-10gbase-cwdm-1530"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1550 {260, "im-attr-media-10gbase-cwdm-1550"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1570 {261, "im-attr-media-10gbase-cwdm-1570"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1590 {262, "im-attr-media-10gbase-cwdm-1590"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1610 {263, "im-attr-media-10gbase-cwdm-1610"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_cwdm {264, "im-attr-media-40gbase-cwdm"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_cwdm_tunable {265, "im-attr-media-40gbase-cwdm-tunable"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1470 {266, "im-attr-media-40gbase-cwdm-1470"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1490 {267, "im-attr-media-40gbase-cwdm-1490"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1510 {268, "im-attr-media-40gbase-cwdm-1510"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1530 {269, "im-attr-media-40gbase-cwdm-1530"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1550 {270, "im-attr-media-40gbase-cwdm-1550"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1570 {271, "im-attr-media-40gbase-cwdm-1570"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1590 {272, "im-attr-media-40gbase-cwdm-1590"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1610 {273, "im-attr-media-40gbase-cwdm-1610"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cwdm {274, "im-attr-media-100gbase-cwdm"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cwdm_tunable {275, "im-attr-media-100gbase-cwdm-tunable"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1470 {276, "im-attr-media-100gbase-cwdm-1470"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1490 {277, "im-attr-media-100gbase-cwdm-1490"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1510 {278, "im-attr-media-100gbase-cwdm-1510"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1530 {279, "im-attr-media-100gbase-cwdm-1530"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1550 {280, "im-attr-media-100gbase-cwdm-1550"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1570 {281, "im-attr-media-100gbase-cwdm-1570"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1590 {282, "im-attr-media-100gbase-cwdm-1590"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1610 {283, "im-attr-media-100gbase-cwdm-1610"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_elpb {284, "im-attr-media-40gbase-elpb"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_elpb {285, "im-attr-media-100gbase-elpb"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_lr10 {286, "im-attr-media-100gbase-lr10"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase {287, "im-attr-media-40gbase"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_kp4 {288, "im-attr-media-100gbase-kp4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_kr4 {289, "im-attr-media-100gbase-kr4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_lrm {290, "im-attr-media-10gbase-lrm"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_cx4 {291, "im-attr-media-10gbase-cx4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase {292, "im-attr-media-10gbase"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_kx4 {293, "im-attr-media-10gbase-kx4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_kr {294, "im-attr-media-10gbase-kr"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_pr {295, "im-attr-media-10gbase-pr"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_lx {296, "im-attr-media-100base-lx"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100base_zx {297, "im-attr-media-100base-zx"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx_d {298, "im-attr-media-1000base-bx-d"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx_u {299, "im-attr-media-1000base-bx-u"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx20_d {300, "im-attr-media-1000base-bx20-d"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx20_u {301, "im-attr-media-1000base-bx20-u"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx40_d {302, "im-attr-media-1000base-bx40-d"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx40_da {303, "im-attr-media-1000base-bx40-da"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx40_u {304, "im-attr-media-1000base-bx40-u"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx80_d {305, "im-attr-media-1000base-bx80-d"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx80_u {306, "im-attr-media-1000base-bx80-u"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx120_d {307, "im-attr-media-1000base-bx120-d"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_bx120_u {308, "im-attr-media-1000base-bx120-u"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_bx_d {309, "im-attr-media-10gbase-bx-d"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_bx_u {310, "im-attr-media-10gbase-bx-u"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_bx10_d {311, "im-attr-media-10gbase-bx10-d"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_bx10_u {312, "im-attr-media-10gbase-bx10-u"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_bx20_d {313, "im-attr-media-10gbase-bx20-d"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_bx20_u {314, "im-attr-media-10gbase-bx20-u"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_bx40_d {315, "im-attr-media-10gbase-bx40-d"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_bx40_u {316, "im-attr-media-10gbase-bx40-u"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_bx80_d {317, "im-attr-media-10gbase-bx80-d"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_bx80_u {318, "im-attr-media-10gbase-bx80-u"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_bx120_d {319, "im-attr-media-10gbase-bx120-d"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_10gbase_bx120_u {320, "im-attr-media-10gbase-bx120-u"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_1000base_dr_lx {321, "im-attr-media-1000base-dr-lx"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_er4l {322, "im-attr-media-100gbase-er4l"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_sr4 {323, "im-attr-media-100gbase-sr4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_sr_bd {324, "im-attr-media-40gbase-sr-bd"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_25gbase_cr {325, "im-attr-media-25gbase-cr"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_25gbase_cr_s {326, "im-attr-media-25gbase-cr-s"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_25gbase_kr {327, "im-attr-media-25gbase-kr"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_25gbase_kr_s {328, "im-attr-media-25gbase-kr-s"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_25gbase_r {329, "im-attr-media-25gbase-r"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_25gbase_sr {330, "im-attr-media-25gbase-sr"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_25gbase_dwdm {331, "im-attr-media-25gbase-dwdm"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_25gbase_dwdm_tunable {332, "im-attr-media-25gbase-dwdm-tunable"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_25gbase_cwdm {333, "im-attr-media-25gbase-cwdm"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_25gbase_cwdm_tunable {334, "im-attr-media-25gbase-cwdm-tunable"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_psm4 {335, "im-attr-media-100gbase-psm4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_er10 {336, "im-attr-media-100gbase-er10"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_er10l {337, "im-attr-media-100gbase-er10l"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_acc {338, "im-attr-media-100gbase-acc"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_aoc {339, "im-attr-media-100gbase-aoc"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cwdm4 {340, "im-attr-media-100gbase-cwdm4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_40gbase_psm4 {341, "im-attr-media-40gbase-psm4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_cr4 {342, "im-attr-media-100gbase-cr4"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_act_loop {343, "im-attr-media-100gbase-act-loop"};
-const Enum::Value ImAttrMediaEnum::im_attr_media_100gbase_pas_loop {344, "im-attr-media-100gbase-pas-loop"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_other {0, "im-attr-media-other"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_unknown {1, "im-attr-media-unknown"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_aui {2, "im-attr-media-aui"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10base5 {3, "im-attr-media-10base5"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_foirl {4, "im-attr-media-foirl"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10base2 {5, "im-attr-media-10base2"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10broad36 {6, "im-attr-media-10broad36"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10base {7, "im-attr-media-10base"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10base_thd {8, "im-attr-media-10base-thd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10base_tfd {9, "im-attr-media-10base-tfd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10base_fp {10, "im-attr-media-10base-fp"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10base_fb {11, "im-attr-media-10base-fb"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10base_fl {12, "im-attr-media-10base-fl"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10base_flhd {13, "im-attr-media-10base-flhd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10base_flfd {14, "im-attr-media-10base-flfd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_t4 {15, "im-attr-media-100base-t4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_tx {16, "im-attr-media-100base-tx"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_txhd {17, "im-attr-media-100base-txhd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_txfd {18, "im-attr-media-100base-txfd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_fx {19, "im-attr-media-100base-fx"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_fxhd {20, "im-attr-media-100base-fxhd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_fxfd {21, "im-attr-media-100base-fxfd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_ex {22, "im-attr-media-100base-ex"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_exhd {23, "im-attr-media-100base-exhd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_exfd {24, "im-attr-media-100base-exfd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_t2 {25, "im-attr-media-100base-t2"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_t2hd {26, "im-attr-media-100base-t2hd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_t2fd {27, "im-attr-media-100base-t2fd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_x {28, "im-attr-media-1000base-x"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_xhdx {29, "im-attr-media-1000base-xhdx"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_xfd {30, "im-attr-media-1000base-xfd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_lx {31, "im-attr-media-1000base-lx"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_lxhd {32, "im-attr-media-1000base-lxhd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_lxfdx {33, "im-attr-media-1000base-lxfdx"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_sx {34, "im-attr-media-1000base-sx"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_sxhd {35, "im-attr-media-1000base-sxhd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_sxfd {36, "im-attr-media-1000base-sxfd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_cx {37, "im-attr-media-1000base-cx"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_cxhdx {38, "im-attr-media-1000base-cxhdx"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_cxfd {39, "im-attr-media-1000base-cxfd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base {40, "im-attr-media-1000base"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_thd {41, "im-attr-media-1000base-thd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_tfd {42, "im-attr-media-1000base-tfd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_x {43, "im-attr-media-10gbase-x"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_lx4 {44, "im-attr-media-10gbase-lx4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_r {45, "im-attr-media-10gbase-r"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_er {46, "im-attr-media-10gbase-er"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_lr {47, "im-attr-media-10gbase-lr"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_sr {48, "im-attr-media-10gbase-sr"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_w {49, "im-attr-media-10gbase-w"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_ew {50, "im-attr-media-10gbase-ew"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_lw {51, "im-attr-media-10gbase-lw"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_sw {52, "im-attr-media-10gbase-sw"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_zr {53, "im-attr-media-10gbase-zr"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_802_9a {54, "im-attr-media-802-9a"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_rj45 {55, "im-attr-media-rj45"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_zx {56, "im-attr-media-1000base-zx"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_cwdm {57, "im-attr-media-1000base-cwdm"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_cwdm_1470 {58, "im-attr-media-1000base-cwdm-1470"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_cwdm_1490 {59, "im-attr-media-1000base-cwdm-1490"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_cwdm_1510 {60, "im-attr-media-1000base-cwdm-1510"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_cwdm_1530 {61, "im-attr-media-1000base-cwdm-1530"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_cwdm_1550 {62, "im-attr-media-1000base-cwdm-1550"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_cwdm_1570 {63, "im-attr-media-1000base-cwdm-1570"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_cwdm_1590 {64, "im-attr-media-1000base-cwdm-1590"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_cwdm_1610 {65, "im-attr-media-1000base-cwdm-1610"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm {66, "im-attr-media-10gbase-dwdm"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_lr4 {67, "im-attr-media-100gbase-lr4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm {68, "im-attr-media-1000base-dwdm"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1533 {69, "im-attr-media-1000base-dwdm-1533"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1537 {70, "im-attr-media-1000base-dwdm-1537"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1541 {71, "im-attr-media-1000base-dwdm-1541"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1545 {72, "im-attr-media-1000base-dwdm-1545"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1549 {73, "im-attr-media-1000base-dwdm-1549"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1553 {74, "im-attr-media-1000base-dwdm-1553"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1557 {75, "im-attr-media-1000base-dwdm-1557"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1561 {76, "im-attr-media-1000base-dwdm-1561"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_lr4 {77, "im-attr-media-40gbase-lr4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_er4 {78, "im-attr-media-40gbase-er4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_er4 {79, "im-attr-media-100gbase-er4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_ex {80, "im-attr-media-1000base-ex"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx10_d {81, "im-attr-media-1000base-bx10-d"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx10_u {82, "im-attr-media-1000base-bx10-u"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1561_42 {83, "im-attr-media-1000base-dwdm-1561-42"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1560_61 {84, "im-attr-media-1000base-dwdm-1560-61"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1559_79 {85, "im-attr-media-1000base-dwdm-1559-79"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1558_98 {86, "im-attr-media-1000base-dwdm-1558-98"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1558_17 {87, "im-attr-media-1000base-dwdm-1558-17"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1557_36 {88, "im-attr-media-1000base-dwdm-1557-36"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1556_55 {89, "im-attr-media-1000base-dwdm-1556-55"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1555_75 {90, "im-attr-media-1000base-dwdm-1555-75"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1554_94 {91, "im-attr-media-1000base-dwdm-1554-94"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1554_13 {92, "im-attr-media-1000base-dwdm-1554-13"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1553_33 {93, "im-attr-media-1000base-dwdm-1553-33"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1552_52 {94, "im-attr-media-1000base-dwdm-1552-52"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1551_72 {95, "im-attr-media-1000base-dwdm-1551-72"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1550_92 {96, "im-attr-media-1000base-dwdm-1550-92"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1550_12 {97, "im-attr-media-1000base-dwdm-1550-12"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1549_32 {98, "im-attr-media-1000base-dwdm-1549-32"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1548_51 {99, "im-attr-media-1000base-dwdm-1548-51"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1547_72 {100, "im-attr-media-1000base-dwdm-1547-72"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1546_92 {101, "im-attr-media-1000base-dwdm-1546-92"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1546_12 {102, "im-attr-media-1000base-dwdm-1546-12"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1545_32 {103, "im-attr-media-1000base-dwdm-1545-32"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1544_53 {104, "im-attr-media-1000base-dwdm-1544-53"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1543_73 {105, "im-attr-media-1000base-dwdm-1543-73"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1542_94 {106, "im-attr-media-1000base-dwdm-1542-94"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1542_14 {107, "im-attr-media-1000base-dwdm-1542-14"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1541_35 {108, "im-attr-media-1000base-dwdm-1541-35"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1540_56 {109, "im-attr-media-1000base-dwdm-1540-56"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1539_77 {110, "im-attr-media-1000base-dwdm-1539-77"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1538_98 {111, "im-attr-media-1000base-dwdm-1538-98"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1538_19 {112, "im-attr-media-1000base-dwdm-1538-19"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1537_40 {113, "im-attr-media-1000base-dwdm-1537-40"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1536_61 {114, "im-attr-media-1000base-dwdm-1536-61"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1535_82 {115, "im-attr-media-1000base-dwdm-1535-82"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1535_04 {116, "im-attr-media-1000base-dwdm-1535-04"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1534_25 {117, "im-attr-media-1000base-dwdm-1534-25"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1533_47 {118, "im-attr-media-1000base-dwdm-1533-47"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1532_68 {119, "im-attr-media-1000base-dwdm-1532-68"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1531_90 {120, "im-attr-media-1000base-dwdm-1531-90"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1531_12 {121, "im-attr-media-1000base-dwdm-1531-12"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_1530_33 {122, "im-attr-media-1000base-dwdm-1530-33"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dwdm_tunable {123, "im-attr-media-1000base-dwdm-tunable"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1561_42 {124, "im-attr-media-10gbase-dwdm-1561-42"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1560_61 {125, "im-attr-media-10gbase-dwdm-1560-61"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1559_79 {126, "im-attr-media-10gbase-dwdm-1559-79"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1558_98 {127, "im-attr-media-10gbase-dwdm-1558-98"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1558_17 {128, "im-attr-media-10gbase-dwdm-1558-17"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1557_36 {129, "im-attr-media-10gbase-dwdm-1557-36"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1556_55 {130, "im-attr-media-10gbase-dwdm-1556-55"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1555_75 {131, "im-attr-media-10gbase-dwdm-1555-75"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1554_94 {132, "im-attr-media-10gbase-dwdm-1554-94"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1554_13 {133, "im-attr-media-10gbase-dwdm-1554-13"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1553_33 {134, "im-attr-media-10gbase-dwdm-1553-33"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1552_52 {135, "im-attr-media-10gbase-dwdm-1552-52"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1551_72 {136, "im-attr-media-10gbase-dwdm-1551-72"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1550_92 {137, "im-attr-media-10gbase-dwdm-1550-92"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1550_12 {138, "im-attr-media-10gbase-dwdm-1550-12"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1549_32 {139, "im-attr-media-10gbase-dwdm-1549-32"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1548_51 {140, "im-attr-media-10gbase-dwdm-1548-51"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1547_72 {141, "im-attr-media-10gbase-dwdm-1547-72"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1546_92 {142, "im-attr-media-10gbase-dwdm-1546-92"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1546_12 {143, "im-attr-media-10gbase-dwdm-1546-12"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1545_32 {144, "im-attr-media-10gbase-dwdm-1545-32"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1544_53 {145, "im-attr-media-10gbase-dwdm-1544-53"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1543_73 {146, "im-attr-media-10gbase-dwdm-1543-73"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1542_94 {147, "im-attr-media-10gbase-dwdm-1542-94"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1542_14 {148, "im-attr-media-10gbase-dwdm-1542-14"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1541_35 {149, "im-attr-media-10gbase-dwdm-1541-35"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1540_56 {150, "im-attr-media-10gbase-dwdm-1540-56"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1539_77 {151, "im-attr-media-10gbase-dwdm-1539-77"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1538_98 {152, "im-attr-media-10gbase-dwdm-1538-98"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1538_19 {153, "im-attr-media-10gbase-dwdm-1538-19"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1537_40 {154, "im-attr-media-10gbase-dwdm-1537-40"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1536_61 {155, "im-attr-media-10gbase-dwdm-1536-61"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1535_82 {156, "im-attr-media-10gbase-dwdm-1535-82"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1535_04 {157, "im-attr-media-10gbase-dwdm-1535-04"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1534_25 {158, "im-attr-media-10gbase-dwdm-1534-25"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1533_47 {159, "im-attr-media-10gbase-dwdm-1533-47"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1532_68 {160, "im-attr-media-10gbase-dwdm-1532-68"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1531_90 {161, "im-attr-media-10gbase-dwdm-1531-90"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1531_12 {162, "im-attr-media-10gbase-dwdm-1531-12"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_1530_33 {163, "im-attr-media-10gbase-dwdm-1530-33"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_dwdm_tunable {164, "im-attr-media-10gbase-dwdm-tunable"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1561_42 {165, "im-attr-media-40gbase-dwdm-1561-42"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1560_61 {166, "im-attr-media-40gbase-dwdm-1560-61"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1559_79 {167, "im-attr-media-40gbase-dwdm-1559-79"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1558_98 {168, "im-attr-media-40gbase-dwdm-1558-98"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1558_17 {169, "im-attr-media-40gbase-dwdm-1558-17"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1557_36 {170, "im-attr-media-40gbase-dwdm-1557-36"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1556_55 {171, "im-attr-media-40gbase-dwdm-1556-55"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1555_75 {172, "im-attr-media-40gbase-dwdm-1555-75"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1554_94 {173, "im-attr-media-40gbase-dwdm-1554-94"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1554_13 {174, "im-attr-media-40gbase-dwdm-1554-13"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1553_33 {175, "im-attr-media-40gbase-dwdm-1553-33"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1552_52 {176, "im-attr-media-40gbase-dwdm-1552-52"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1551_72 {177, "im-attr-media-40gbase-dwdm-1551-72"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1550_92 {178, "im-attr-media-40gbase-dwdm-1550-92"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1550_12 {179, "im-attr-media-40gbase-dwdm-1550-12"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1549_32 {180, "im-attr-media-40gbase-dwdm-1549-32"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1548_51 {181, "im-attr-media-40gbase-dwdm-1548-51"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1547_72 {182, "im-attr-media-40gbase-dwdm-1547-72"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1546_92 {183, "im-attr-media-40gbase-dwdm-1546-92"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1546_12 {184, "im-attr-media-40gbase-dwdm-1546-12"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1545_32 {185, "im-attr-media-40gbase-dwdm-1545-32"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1544_53 {186, "im-attr-media-40gbase-dwdm-1544-53"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1543_73 {187, "im-attr-media-40gbase-dwdm-1543-73"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1542_94 {188, "im-attr-media-40gbase-dwdm-1542-94"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1542_14 {189, "im-attr-media-40gbase-dwdm-1542-14"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1541_35 {190, "im-attr-media-40gbase-dwdm-1541-35"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1540_56 {191, "im-attr-media-40gbase-dwdm-1540-56"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1539_77 {192, "im-attr-media-40gbase-dwdm-1539-77"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1538_98 {193, "im-attr-media-40gbase-dwdm-1538-98"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1538_19 {194, "im-attr-media-40gbase-dwdm-1538-19"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1537_40 {195, "im-attr-media-40gbase-dwdm-1537-40"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1536_61 {196, "im-attr-media-40gbase-dwdm-1536-61"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1535_82 {197, "im-attr-media-40gbase-dwdm-1535-82"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1535_04 {198, "im-attr-media-40gbase-dwdm-1535-04"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1534_25 {199, "im-attr-media-40gbase-dwdm-1534-25"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1533_47 {200, "im-attr-media-40gbase-dwdm-1533-47"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1532_68 {201, "im-attr-media-40gbase-dwdm-1532-68"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1531_90 {202, "im-attr-media-40gbase-dwdm-1531-90"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1531_12 {203, "im-attr-media-40gbase-dwdm-1531-12"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_1530_33 {204, "im-attr-media-40gbase-dwdm-1530-33"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_dwdm_tunable {205, "im-attr-media-40gbase-dwdm-tunable"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1561_42 {206, "im-attr-media-100gbase-dwdm-1561-42"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1560_61 {207, "im-attr-media-100gbase-dwdm-1560-61"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1559_79 {208, "im-attr-media-100gbase-dwdm-1559-79"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1558_98 {209, "im-attr-media-100gbase-dwdm-1558-98"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1558_17 {210, "im-attr-media-100gbase-dwdm-1558-17"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1557_36 {211, "im-attr-media-100gbase-dwdm-1557-36"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1556_55 {212, "im-attr-media-100gbase-dwdm-1556-55"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1555_75 {213, "im-attr-media-100gbase-dwdm-1555-75"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1554_94 {214, "im-attr-media-100gbase-dwdm-1554-94"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1554_13 {215, "im-attr-media-100gbase-dwdm-1554-13"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1553_33 {216, "im-attr-media-100gbase-dwdm-1553-33"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1552_52 {217, "im-attr-media-100gbase-dwdm-1552-52"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1551_72 {218, "im-attr-media-100gbase-dwdm-1551-72"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1550_92 {219, "im-attr-media-100gbase-dwdm-1550-92"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1550_12 {220, "im-attr-media-100gbase-dwdm-1550-12"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1549_32 {221, "im-attr-media-100gbase-dwdm-1549-32"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1548_51 {222, "im-attr-media-100gbase-dwdm-1548-51"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1547_72 {223, "im-attr-media-100gbase-dwdm-1547-72"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1546_92 {224, "im-attr-media-100gbase-dwdm-1546-92"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1546_12 {225, "im-attr-media-100gbase-dwdm-1546-12"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1545_32 {226, "im-attr-media-100gbase-dwdm-1545-32"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1544_53 {227, "im-attr-media-100gbase-dwdm-1544-53"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1543_73 {228, "im-attr-media-100gbase-dwdm-1543-73"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1542_94 {229, "im-attr-media-100gbase-dwdm-1542-94"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1542_14 {230, "im-attr-media-100gbase-dwdm-1542-14"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1541_35 {231, "im-attr-media-100gbase-dwdm-1541-35"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1540_56 {232, "im-attr-media-100gbase-dwdm-1540-56"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1539_77 {233, "im-attr-media-100gbase-dwdm-1539-77"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1538_98 {234, "im-attr-media-100gbase-dwdm-1538-98"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1538_19 {235, "im-attr-media-100gbase-dwdm-1538-19"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1537_40 {236, "im-attr-media-100gbase-dwdm-1537-40"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1536_61 {237, "im-attr-media-100gbase-dwdm-1536-61"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1535_82 {238, "im-attr-media-100gbase-dwdm-1535-82"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1535_04 {239, "im-attr-media-100gbase-dwdm-1535-04"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1534_25 {240, "im-attr-media-100gbase-dwdm-1534-25"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1533_47 {241, "im-attr-media-100gbase-dwdm-1533-47"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1532_68 {242, "im-attr-media-100gbase-dwdm-1532-68"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1531_90 {243, "im-attr-media-100gbase-dwdm-1531-90"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1531_12 {244, "im-attr-media-100gbase-dwdm-1531-12"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_1530_33 {245, "im-attr-media-100gbase-dwdm-1530-33"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_dwdm_tunable {246, "im-attr-media-100gbase-dwdm-tunable"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_kr4 {247, "im-attr-media-40gbase-kr4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_cr4 {248, "im-attr-media-40gbase-cr4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_sr4 {249, "im-attr-media-40gbase-sr4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_fr {250, "im-attr-media-40gbase-fr"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cr10 {251, "im-attr-media-100gbase-cr10"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_sr10 {252, "im-attr-media-100gbase-sr10"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_csr4 {253, "im-attr-media-40gbase-csr4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_cwdm {254, "im-attr-media-10gbase-cwdm"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_cwdm_tunable {255, "im-attr-media-10gbase-cwdm-tunable"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1470 {256, "im-attr-media-10gbase-cwdm-1470"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1490 {257, "im-attr-media-10gbase-cwdm-1490"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1510 {258, "im-attr-media-10gbase-cwdm-1510"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1530 {259, "im-attr-media-10gbase-cwdm-1530"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1550 {260, "im-attr-media-10gbase-cwdm-1550"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1570 {261, "im-attr-media-10gbase-cwdm-1570"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1590 {262, "im-attr-media-10gbase-cwdm-1590"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_cwdm_1610 {263, "im-attr-media-10gbase-cwdm-1610"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_cwdm {264, "im-attr-media-40gbase-cwdm"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_cwdm_tunable {265, "im-attr-media-40gbase-cwdm-tunable"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1470 {266, "im-attr-media-40gbase-cwdm-1470"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1490 {267, "im-attr-media-40gbase-cwdm-1490"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1510 {268, "im-attr-media-40gbase-cwdm-1510"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1530 {269, "im-attr-media-40gbase-cwdm-1530"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1550 {270, "im-attr-media-40gbase-cwdm-1550"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1570 {271, "im-attr-media-40gbase-cwdm-1570"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1590 {272, "im-attr-media-40gbase-cwdm-1590"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_cwdm_1610 {273, "im-attr-media-40gbase-cwdm-1610"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cwdm {274, "im-attr-media-100gbase-cwdm"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cwdm_tunable {275, "im-attr-media-100gbase-cwdm-tunable"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1470 {276, "im-attr-media-100gbase-cwdm-1470"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1490 {277, "im-attr-media-100gbase-cwdm-1490"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1510 {278, "im-attr-media-100gbase-cwdm-1510"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1530 {279, "im-attr-media-100gbase-cwdm-1530"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1550 {280, "im-attr-media-100gbase-cwdm-1550"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1570 {281, "im-attr-media-100gbase-cwdm-1570"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1590 {282, "im-attr-media-100gbase-cwdm-1590"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cwdm_1610 {283, "im-attr-media-100gbase-cwdm-1610"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_elpb {284, "im-attr-media-40gbase-elpb"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_elpb {285, "im-attr-media-100gbase-elpb"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_lr10 {286, "im-attr-media-100gbase-lr10"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase {287, "im-attr-media-40gbase"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_kp4 {288, "im-attr-media-100gbase-kp4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_kr4 {289, "im-attr-media-100gbase-kr4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_lrm {290, "im-attr-media-10gbase-lrm"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_cx4 {291, "im-attr-media-10gbase-cx4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase {292, "im-attr-media-10gbase"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_kx4 {293, "im-attr-media-10gbase-kx4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_kr {294, "im-attr-media-10gbase-kr"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_pr {295, "im-attr-media-10gbase-pr"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_lx {296, "im-attr-media-100base-lx"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100base_zx {297, "im-attr-media-100base-zx"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx_d {298, "im-attr-media-1000base-bx-d"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx_u {299, "im-attr-media-1000base-bx-u"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx20_d {300, "im-attr-media-1000base-bx20-d"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx20_u {301, "im-attr-media-1000base-bx20-u"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx40_d {302, "im-attr-media-1000base-bx40-d"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx40_da {303, "im-attr-media-1000base-bx40-da"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx40_u {304, "im-attr-media-1000base-bx40-u"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx80_d {305, "im-attr-media-1000base-bx80-d"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx80_u {306, "im-attr-media-1000base-bx80-u"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx120_d {307, "im-attr-media-1000base-bx120-d"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_bx120_u {308, "im-attr-media-1000base-bx120-u"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_bx_d {309, "im-attr-media-10gbase-bx-d"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_bx_u {310, "im-attr-media-10gbase-bx-u"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_bx10_d {311, "im-attr-media-10gbase-bx10-d"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_bx10_u {312, "im-attr-media-10gbase-bx10-u"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_bx20_d {313, "im-attr-media-10gbase-bx20-d"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_bx20_u {314, "im-attr-media-10gbase-bx20-u"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_bx40_d {315, "im-attr-media-10gbase-bx40-d"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_bx40_u {316, "im-attr-media-10gbase-bx40-u"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_bx80_d {317, "im-attr-media-10gbase-bx80-d"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_bx80_u {318, "im-attr-media-10gbase-bx80-u"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_bx120_d {319, "im-attr-media-10gbase-bx120-d"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_10gbase_bx120_u {320, "im-attr-media-10gbase-bx120-u"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_1000base_dr_lx {321, "im-attr-media-1000base-dr-lx"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_er4l {322, "im-attr-media-100gbase-er4l"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_sr4 {323, "im-attr-media-100gbase-sr4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_sr_bd {324, "im-attr-media-40gbase-sr-bd"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_25gbase_cr {325, "im-attr-media-25gbase-cr"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_25gbase_cr_s {326, "im-attr-media-25gbase-cr-s"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_25gbase_kr {327, "im-attr-media-25gbase-kr"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_25gbase_kr_s {328, "im-attr-media-25gbase-kr-s"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_25gbase_r {329, "im-attr-media-25gbase-r"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_25gbase_sr {330, "im-attr-media-25gbase-sr"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_25gbase_dwdm {331, "im-attr-media-25gbase-dwdm"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_25gbase_dwdm_tunable {332, "im-attr-media-25gbase-dwdm-tunable"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_25gbase_cwdm {333, "im-attr-media-25gbase-cwdm"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_25gbase_cwdm_tunable {334, "im-attr-media-25gbase-cwdm-tunable"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_psm4 {335, "im-attr-media-100gbase-psm4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_er10 {336, "im-attr-media-100gbase-er10"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_er10l {337, "im-attr-media-100gbase-er10l"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_acc {338, "im-attr-media-100gbase-acc"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_aoc {339, "im-attr-media-100gbase-aoc"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cwdm4 {340, "im-attr-media-100gbase-cwdm4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_40gbase_psm4 {341, "im-attr-media-40gbase-psm4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_cr4 {342, "im-attr-media-100gbase-cr4"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_act_loop {343, "im-attr-media-100gbase-act-loop"};
+const Enum::YLeaf ImAttrMediaEnum::im_attr_media_100gbase_pas_loop {344, "im-attr-media-100gbase-pas-loop"};
 
-const Enum::Value SrpMgmtSrrNodeStateEnum::idle_srr_state {0, "idle-srr-state"};
-const Enum::Value SrpMgmtSrrNodeStateEnum::discovery_srr_state {1, "discovery-srr-state"};
-const Enum::Value SrpMgmtSrrNodeStateEnum::unknown_srr_state {2, "unknown-srr-state"};
+const Enum::YLeaf SrpMgmtSrrNodeStateEnum::idle_srr_state {0, "idle-srr-state"};
+const Enum::YLeaf SrpMgmtSrrNodeStateEnum::discovery_srr_state {1, "discovery-srr-state"};
+const Enum::YLeaf SrpMgmtSrrNodeStateEnum::unknown_srr_state {2, "unknown-srr-state"};
 
 
 }

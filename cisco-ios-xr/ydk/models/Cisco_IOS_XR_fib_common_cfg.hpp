@@ -24,8 +24,9 @@ class Fib : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value prefer_aib_routes; //type: int32
 
+
+        YLeaf prefer_aib_routes; //type: int32
 
     class PbtsForwardClassFallbacks : public Entity
     {
@@ -42,6 +43,7 @@ class Fib : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class PbtsForwardClassFallback : public Entity
         {
             public:
@@ -55,13 +57,12 @@ class Fib : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value forward_class_number; //type: one of uint32, enumeration
-                Value fallback_type; //type: FibPbtsFallbackEnum
-                ValueList fallback_class_number_array; //type: list of  uint32
 
 
-                class FibPbtsForwardClassEnum;
-                class FibPbtsFallbackEnum;
+                YLeaf forward_class_number; //type: one of uint32, enumeration
+                YLeaf fallback_type; //type: FibPbtsFallbackEnum
+                YLeafList fallback_class_number_array; //type: list of  uint32
+
 
 
         }; // Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback
@@ -82,16 +83,16 @@ class Fib : public Entity
 class FibPbtsFallbackEnum : public Enum
 {
     public:
-        static const Enum::Value list;
-        static const Enum::Value any;
-        static const Enum::Value drop;
+        static const Enum::YLeaf list;
+        static const Enum::YLeaf any;
+        static const Enum::YLeaf drop;
 
 };
 
 class FibPbtsForwardClassEnum : public Enum
 {
     public:
-        static const Enum::Value any;
+        static const Enum::YLeaf any;
 
 };
 

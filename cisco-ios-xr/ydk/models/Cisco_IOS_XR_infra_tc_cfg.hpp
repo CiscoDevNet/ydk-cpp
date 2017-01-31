@@ -24,8 +24,9 @@ class TrafficCollector : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable_traffic_collector; //type: empty
 
+
+        YLeaf enable_traffic_collector; //type: empty
 
     class ExternalInterfaces : public Entity
     {
@@ -42,6 +43,7 @@ class TrafficCollector : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ExternalInterface : public Entity
         {
             public:
@@ -55,9 +57,10 @@ class TrafficCollector : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value enable; //type: empty
 
+
+                YLeaf interface_name; //type: string
+                YLeaf enable; //type: empty
 
 
 
@@ -83,15 +86,13 @@ class TrafficCollector : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value history_size; //type: one of uint32, enumeration
-            Value collection_interval; //type: CollectIonIntervalEnum
-            Value enable_traffic_collector_statistics; //type: empty
-            Value history_timeout; //type: one of uint32, enumeration
 
 
-            class CollectIonIntervalEnum;
-            class HistorySizeEnum;
-            class HistoryTimeoutEnum;
+            YLeaf history_size; //type: one of uint32, enumeration
+            YLeaf collection_interval; //type: CollectIonIntervalEnum
+            YLeaf enable_traffic_collector_statistics; //type: empty
+            YLeaf history_timeout; //type: one of uint32, enumeration
+
 
 
     }; // TrafficCollector::Statistics
@@ -107,32 +108,32 @@ class TrafficCollector : public Entity
 class HistoryTimeoutEnum : public Enum
 {
     public:
-        static const Enum::Value max;
+        static const Enum::YLeaf max;
 
 };
 
 class HistorySizeEnum : public Enum
 {
     public:
-        static const Enum::Value max;
+        static const Enum::YLeaf max;
 
 };
 
 class CollectIonIntervalEnum : public Enum
 {
     public:
-        static const Enum::Value Y_1_minute;
-        static const Enum::Value Y_2_minutes;
-        static const Enum::Value Y_3_minutes;
-        static const Enum::Value Y_4_minutes;
-        static const Enum::Value Y_5_minutes;
-        static const Enum::Value Y_6_minutes;
-        static const Enum::Value Y_10_minutes;
-        static const Enum::Value Y_12_minutes;
-        static const Enum::Value Y_15_minutes;
-        static const Enum::Value Y_20_minutes;
-        static const Enum::Value Y_30_minutes;
-        static const Enum::Value Y_60_minutes;
+        static const Enum::YLeaf Y_1_minute;
+        static const Enum::YLeaf Y_2_minutes;
+        static const Enum::YLeaf Y_3_minutes;
+        static const Enum::YLeaf Y_4_minutes;
+        static const Enum::YLeaf Y_5_minutes;
+        static const Enum::YLeaf Y_6_minutes;
+        static const Enum::YLeaf Y_10_minutes;
+        static const Enum::YLeaf Y_12_minutes;
+        static const Enum::YLeaf Y_15_minutes;
+        static const Enum::YLeaf Y_20_minutes;
+        static const Enum::YLeaf Y_30_minutes;
+        static const Enum::YLeaf Y_60_minutes;
 
 };
 

@@ -24,11 +24,12 @@ class Watchdog : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value overload_notification; //type: empty
-        Value restart_deadlock_disable; //type: empty
-        Value restart_memoryhog_disable; //type: empty
-        Value overload_throttle_timeout; //type: uint32
 
+
+        YLeaf overload_notification; //type: empty
+        YLeaf restart_deadlock_disable; //type: empty
+        YLeaf restart_memoryhog_disable; //type: empty
+        YLeaf overload_throttle_timeout; //type: uint32
 
     class ThresholdMemory : public Entity
     {
@@ -43,10 +44,11 @@ class Watchdog : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value minor; //type: uint32
-            Value severe; //type: uint32
-            Value critical; //type: uint32
 
+
+            YLeaf minor; //type: uint32
+            YLeaf severe; //type: uint32
+            YLeaf critical; //type: uint32
 
 
 
@@ -72,8 +74,9 @@ class Watchd : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value timeout; //type: uint32
 
+
+        YLeaf timeout; //type: uint32
 
 
 

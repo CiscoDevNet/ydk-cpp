@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_common_acl_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_ipv6_acl_oper {
@@ -28,6 +27,7 @@ class Ipv6AclAndPrefixList : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class AccessListManager : public Entity
     {
         public:
@@ -41,6 +41,7 @@ class Ipv6AclAndPrefixList : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Prefixes : public Entity
@@ -58,6 +59,7 @@ class Ipv6AclAndPrefixList : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Prefix : public Entity
             {
                 public:
@@ -71,8 +73,9 @@ class Ipv6AclAndPrefixList : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value prefix_list_name; //type: string
 
+
+                    YLeaf prefix_list_name; //type: string
 
                 class PrefixListSequences : public Entity
                 {
@@ -89,6 +92,7 @@ class Ipv6AclAndPrefixList : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixListSequence : public Entity
                     {
                         public:
@@ -102,23 +106,21 @@ class Ipv6AclAndPrefixList : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value sequence_number; //type: uint32
-                            Value is_ace_type; //type: AclAce1Enum
-                            Value is_ace_sequence_number; //type: uint32
-                            Value is_packet_allow_or_deny; //type: AclActionEnum
-                            Value is_address_in_numbers; //type: string
-                            Value is_address_mask_length; //type: uint32
-                            Value is_length_operator; //type: AclPortOperatorEnum
-                            Value is_packet_minimum_length; //type: uint32
-                            Value is_packet_maximum_length; //type: uint32
-                            Value hits; //type: uint32
-                            Value is_comment_for_entry; //type: string
-                            Value acl_name; //type: string
 
 
-                            class AclAce1Enum;
-                            class AclPortOperatorEnum;
-                            class AclActionEnum;
+                            YLeaf sequence_number; //type: uint32
+                            YLeaf is_ace_type; //type: AclAce1Enum
+                            YLeaf is_ace_sequence_number; //type: uint32
+                            YLeaf is_packet_allow_or_deny; //type: AclActionEnum
+                            YLeaf is_address_in_numbers; //type: string
+                            YLeaf is_address_mask_length; //type: uint32
+                            YLeaf is_length_operator; //type: AclPortOperatorEnum
+                            YLeaf is_packet_minimum_length; //type: uint32
+                            YLeaf is_packet_maximum_length; //type: uint32
+                            YLeaf hits; //type: uint32
+                            YLeaf is_comment_for_entry; //type: string
+                            YLeaf acl_name; //type: string
+
 
 
                     }; // Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence
@@ -157,6 +159,7 @@ class Ipv6AclAndPrefixList : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Usage : public Entity
             {
                 public:
@@ -170,13 +173,13 @@ class Ipv6AclAndPrefixList : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value node_name; //type: string
-                    Value application_id; //type: AclUsageAppIdEnumEnum
-                    Value access_list_name; //type: string
-                    Value usage_details; //type: string
 
 
-                    class AclUsageAppIdEnumEnum;
+                    YLeaf node_name; //type: string
+                    YLeaf application_id; //type: AclUsageAppIdEnumEnum
+                    YLeaf access_list_name; //type: string
+                    YLeaf usage_details; //type: string
+
 
 
             }; // Ipv6AclAndPrefixList::AccessListManager::Usages::Usage
@@ -203,6 +206,7 @@ class Ipv6AclAndPrefixList : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Access : public Entity
             {
                 public:
@@ -216,8 +220,9 @@ class Ipv6AclAndPrefixList : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value access_list_name; //type: string
 
+
+                    YLeaf access_list_name; //type: string
 
                 class AccessListSequences : public Entity
                 {
@@ -234,6 +239,7 @@ class Ipv6AclAndPrefixList : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AccessListSequence : public Entity
                     {
                         public:
@@ -247,53 +253,54 @@ class Ipv6AclAndPrefixList : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value sequence_number; //type: uint32
-                            Value is_ace_type; //type: AclAce1Enum
-                            Value is_ace_sequence_number; //type: uint32
-                            Value is_packet_allow_or_deny; //type: AclActionEnum
-                            Value is_ipv6_protocol_type; //type: int32
-                            Value is_source_address_in_numbers; //type: string
-                            Value is_source_address_prefix_length; //type: uint32
-                            Value source_mask; //type: string
-                            Value is_destination_address_in_numbers; //type: string
-                            Value is_destination_address_prefix_length; //type: uint32
-                            Value destination_mask; //type: string
-                            Value is_source_operator; //type: AclPortOperatorEnum
-                            Value is_source_port1; //type: uint32
-                            Value is_source_port2; //type: uint32
-                            Value is_destination_operator; //type: AclPortOperatorEnum
-                            Value is_destination_port1; //type: uint32
-                            Value is_destination_port2; //type: uint32
-                            Value is_log_option; //type: AclLogEnum
-                            Value counter_name; //type: string
-                            Value is_tcp_bits_operator; //type: AclTcpflagsOperatorEnum
-                            Value is_tcp_bits; //type: uint32
-                            Value is_tcp_bits_mask; //type: uint32
-                            Value is_dscp_present; //type: int32
-                            Value is_dscp_valu; //type: uint32
-                            Value is_precedence_present; //type: int32
-                            Value is_precedence_value; //type: uint32
-                            Value is_header_matches; //type: uint32
-                            Value is_packet_length_operator; //type: AclPortOperatorEnum
-                            Value is_packet_length_start; //type: uint32
-                            Value is_packet_length_end; //type: uint32
-                            Value is_time_to_live_operator; //type: AclPortOperatorEnum
-                            Value is_time_to_live_start; //type: uint32
-                            Value is_time_to_live_end; //type: uint32
-                            Value no_stats; //type: int32
-                            Value hits; //type: uint64
-                            Value capture; //type: boolean
-                            Value is_icmp_message_off; //type: int32
-                            Value is_comment_for_entry; //type: string
-                            Value next_hop_type; //type: BagAclNhEnum
-                            Value is_flow_id; //type: uint32
-                            Value source_prefix_group; //type: string
-                            Value destination_prefix_group; //type: string
-                            Value source_port_group; //type: string
-                            Value destination_port_group; //type: string
-                            Value acl_name; //type: string
-                            Value sequence_str; //type: string
 
+
+                            YLeaf sequence_number; //type: uint32
+                            YLeaf is_ace_type; //type: AclAce1Enum
+                            YLeaf is_ace_sequence_number; //type: uint32
+                            YLeaf is_packet_allow_or_deny; //type: AclActionEnum
+                            YLeaf is_ipv6_protocol_type; //type: int32
+                            YLeaf is_source_address_in_numbers; //type: string
+                            YLeaf is_source_address_prefix_length; //type: uint32
+                            YLeaf source_mask; //type: string
+                            YLeaf is_destination_address_in_numbers; //type: string
+                            YLeaf is_destination_address_prefix_length; //type: uint32
+                            YLeaf destination_mask; //type: string
+                            YLeaf is_source_operator; //type: AclPortOperatorEnum
+                            YLeaf is_source_port1; //type: uint32
+                            YLeaf is_source_port2; //type: uint32
+                            YLeaf is_destination_operator; //type: AclPortOperatorEnum
+                            YLeaf is_destination_port1; //type: uint32
+                            YLeaf is_destination_port2; //type: uint32
+                            YLeaf is_log_option; //type: AclLogEnum
+                            YLeaf counter_name; //type: string
+                            YLeaf is_tcp_bits_operator; //type: AclTcpflagsOperatorEnum
+                            YLeaf is_tcp_bits; //type: uint32
+                            YLeaf is_tcp_bits_mask; //type: uint32
+                            YLeaf is_dscp_present; //type: int32
+                            YLeaf is_dscp_valu; //type: uint32
+                            YLeaf is_precedence_present; //type: int32
+                            YLeaf is_precedence_value; //type: uint32
+                            YLeaf is_header_matches; //type: uint32
+                            YLeaf is_packet_length_operator; //type: AclPortOperatorEnum
+                            YLeaf is_packet_length_start; //type: uint32
+                            YLeaf is_packet_length_end; //type: uint32
+                            YLeaf is_time_to_live_operator; //type: AclPortOperatorEnum
+                            YLeaf is_time_to_live_start; //type: uint32
+                            YLeaf is_time_to_live_end; //type: uint32
+                            YLeaf no_stats; //type: int32
+                            YLeaf hits; //type: uint64
+                            YLeaf capture; //type: boolean
+                            YLeaf is_icmp_message_off; //type: int32
+                            YLeaf is_comment_for_entry; //type: string
+                            YLeaf next_hop_type; //type: BagAclNhEnum
+                            YLeaf is_flow_id; //type: uint32
+                            YLeaf source_prefix_group; //type: string
+                            YLeaf destination_prefix_group; //type: string
+                            YLeaf source_port_group; //type: string
+                            YLeaf destination_port_group; //type: string
+                            YLeaf acl_name; //type: string
+                            YLeaf sequence_str; //type: string
 
                         class HwNextHopInfo : public Entity
                         {
@@ -308,13 +315,13 @@ class Ipv6AclAndPrefixList : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value type; //type: BagAclNhEnum
-                                Value next_hop; //type: string
-                                Value table_id; //type: uint32
-                                Value vrf_name; //type: string
 
 
-                                class BagAclNhEnum;
+                                YLeaf type; //type: BagAclNhEnum
+                                YLeaf next_hop; //type: string
+                                YLeaf table_id; //type: uint32
+                                YLeaf vrf_name; //type: string
+
 
 
                         }; // Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::HwNextHopInfo
@@ -333,16 +340,15 @@ class Ipv6AclAndPrefixList : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value next_hop; //type: string
-                                Value vrf_name; //type: string
-                                Value track_name; //type: string
-                                Value status; //type: BagAclNhStatusEnum
-                                Value at_status; //type: BagAclNhAtStatusEnum
-                                Value acl_nh_exist; //type: int32
 
 
-                                class BagAclNhAtStatusEnum;
-                                class BagAclNhStatusEnum;
+                                YLeaf next_hop; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf track_name; //type: string
+                                YLeaf status; //type: BagAclNhStatusEnum
+                                YLeaf at_status; //type: BagAclNhAtStatusEnum
+                                YLeaf acl_nh_exist; //type: int32
+
 
 
                         }; // Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo
@@ -350,15 +356,6 @@ class Ipv6AclAndPrefixList : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_ipv6_acl_oper::Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::HwNextHopInfo> hw_next_hop_info;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_ipv6_acl_oper::Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo> > next_hop_info;
-                            class AclAce1Enum;
-                            class AclPortOperatorEnum;
-                            class AclLogEnum;
-                            class AclActionEnum;
-                            class AclPortOperatorEnum;
-                            class AclPortOperatorEnum;
-                            class AclTcpflagsOperatorEnum;
-                            class AclPortOperatorEnum;
-                            class BagAclNhEnum;
 
 
                     }; // Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence
@@ -405,6 +402,7 @@ class Ipv6AclAndPrefixList : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Details : public Entity
         {
             public:
@@ -418,15 +416,16 @@ class Ipv6AclAndPrefixList : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value is_default_maximum_configurable_ac_ls; //type: uint32
-                Value is_default_maximum_configurable_ac_es; //type: uint32
-                Value is_current_configured_ac_ls; //type: uint32
-                Value is_current_configured_aces; //type: uint32
-                Value is_current_maximum_configurable_acls; //type: uint32
-                Value is_current_maximum_configurable_aces; //type: uint32
-                Value is_maximum_configurable_ac_ls; //type: uint32
-                Value is_maximum_configurable_ac_es; //type: uint32
 
+
+                YLeaf is_default_maximum_configurable_ac_ls; //type: uint32
+                YLeaf is_default_maximum_configurable_ac_es; //type: uint32
+                YLeaf is_current_configured_ac_ls; //type: uint32
+                YLeaf is_current_configured_aces; //type: uint32
+                YLeaf is_current_maximum_configurable_acls; //type: uint32
+                YLeaf is_current_maximum_configurable_aces; //type: uint32
+                YLeaf is_maximum_configurable_ac_ls; //type: uint32
+                YLeaf is_maximum_configurable_ac_es; //type: uint32
 
 
 
@@ -448,6 +447,7 @@ class Ipv6AclAndPrefixList : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Details : public Entity
             {
                 public:
@@ -461,15 +461,16 @@ class Ipv6AclAndPrefixList : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value is_default_maximum_configurable_ac_ls; //type: uint32
-                    Value is_default_maximum_configurable_ac_es; //type: uint32
-                    Value is_current_configured_ac_ls; //type: uint32
-                    Value is_current_configured_aces; //type: uint32
-                    Value is_current_maximum_configurable_acls; //type: uint32
-                    Value is_current_maximum_configurable_aces; //type: uint32
-                    Value is_maximum_configurable_ac_ls; //type: uint32
-                    Value is_maximum_configurable_ac_es; //type: uint32
 
+
+                    YLeaf is_default_maximum_configurable_ac_ls; //type: uint32
+                    YLeaf is_default_maximum_configurable_ac_es; //type: uint32
+                    YLeaf is_current_configured_ac_ls; //type: uint32
+                    YLeaf is_current_configured_aces; //type: uint32
+                    YLeaf is_current_maximum_configurable_acls; //type: uint32
+                    YLeaf is_current_maximum_configurable_aces; //type: uint32
+                    YLeaf is_maximum_configurable_ac_ls; //type: uint32
+                    YLeaf is_maximum_configurable_ac_es; //type: uint32
 
 
 
@@ -497,6 +498,7 @@ class Ipv6AclAndPrefixList : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class OorAccess : public Entity
             {
                 public:
@@ -510,16 +512,17 @@ class Ipv6AclAndPrefixList : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value access_list_name; //type: string
-                    Value is_default_maximum_configurable_ac_ls; //type: uint32
-                    Value is_default_maximum_configurable_ac_es; //type: uint32
-                    Value is_current_configured_ac_ls; //type: uint32
-                    Value is_current_configured_aces; //type: uint32
-                    Value is_current_maximum_configurable_acls; //type: uint32
-                    Value is_current_maximum_configurable_aces; //type: uint32
-                    Value is_maximum_configurable_ac_ls; //type: uint32
-                    Value is_maximum_configurable_ac_es; //type: uint32
 
+
+                    YLeaf access_list_name; //type: string
+                    YLeaf is_default_maximum_configurable_ac_ls; //type: uint32
+                    YLeaf is_default_maximum_configurable_ac_es; //type: uint32
+                    YLeaf is_current_configured_ac_ls; //type: uint32
+                    YLeaf is_current_configured_aces; //type: uint32
+                    YLeaf is_current_maximum_configurable_acls; //type: uint32
+                    YLeaf is_current_maximum_configurable_aces; //type: uint32
+                    YLeaf is_maximum_configurable_ac_ls; //type: uint32
+                    YLeaf is_maximum_configurable_ac_es; //type: uint32
 
 
 
@@ -547,6 +550,7 @@ class Ipv6AclAndPrefixList : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class OorPrefix : public Entity
             {
                 public:
@@ -560,16 +564,17 @@ class Ipv6AclAndPrefixList : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value prefix_list_name; //type: string
-                    Value is_default_maximum_configurable_ac_ls; //type: uint32
-                    Value is_default_maximum_configurable_ac_es; //type: uint32
-                    Value is_current_configured_ac_ls; //type: uint32
-                    Value is_current_configured_aces; //type: uint32
-                    Value is_current_maximum_configurable_acls; //type: uint32
-                    Value is_current_maximum_configurable_aces; //type: uint32
-                    Value is_maximum_configurable_ac_ls; //type: uint32
-                    Value is_maximum_configurable_ac_es; //type: uint32
 
+
+                    YLeaf prefix_list_name; //type: string
+                    YLeaf is_default_maximum_configurable_ac_ls; //type: uint32
+                    YLeaf is_default_maximum_configurable_ac_es; //type: uint32
+                    YLeaf is_current_configured_ac_ls; //type: uint32
+                    YLeaf is_current_configured_aces; //type: uint32
+                    YLeaf is_current_maximum_configurable_acls; //type: uint32
+                    YLeaf is_current_maximum_configurable_aces; //type: uint32
+                    YLeaf is_maximum_configurable_ac_ls; //type: uint32
+                    YLeaf is_maximum_configurable_ac_es; //type: uint32
 
 
 
@@ -597,6 +602,7 @@ class Ipv6AclAndPrefixList : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Details : public Entity
             {
                 public:
@@ -610,15 +616,16 @@ class Ipv6AclAndPrefixList : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value is_default_maximum_configurable_ac_ls; //type: uint32
-                    Value is_default_maximum_configurable_ac_es; //type: uint32
-                    Value is_current_configured_ac_ls; //type: uint32
-                    Value is_current_configured_aces; //type: uint32
-                    Value is_current_maximum_configurable_acls; //type: uint32
-                    Value is_current_maximum_configurable_aces; //type: uint32
-                    Value is_maximum_configurable_ac_ls; //type: uint32
-                    Value is_maximum_configurable_ac_es; //type: uint32
 
+
+                    YLeaf is_default_maximum_configurable_ac_ls; //type: uint32
+                    YLeaf is_default_maximum_configurable_ac_es; //type: uint32
+                    YLeaf is_current_configured_ac_ls; //type: uint32
+                    YLeaf is_current_configured_aces; //type: uint32
+                    YLeaf is_current_maximum_configurable_acls; //type: uint32
+                    YLeaf is_current_maximum_configurable_aces; //type: uint32
+                    YLeaf is_maximum_configurable_ac_ls; //type: uint32
+                    YLeaf is_maximum_configurable_ac_es; //type: uint32
 
 
 
@@ -651,85 +658,85 @@ class Ipv6AclAndPrefixList : public Entity
 class AclTcpflagsOperatorEnum : public Enum
 {
     public:
-        static const Enum::Value match_none;
-        static const Enum::Value match_all;
-        static const Enum::Value match_any_old;
-        static const Enum::Value match_any;
+        static const Enum::YLeaf match_none;
+        static const Enum::YLeaf match_all;
+        static const Enum::YLeaf match_any_old;
+        static const Enum::YLeaf match_any;
 
 };
 
 class AclPortOperatorEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value eq;
-        static const Enum::Value gt;
-        static const Enum::Value lt;
-        static const Enum::Value neq;
-        static const Enum::Value range;
-        static const Enum::Value onebyte;
-        static const Enum::Value twobytes;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf eq;
+        static const Enum::YLeaf gt;
+        static const Enum::YLeaf lt;
+        static const Enum::YLeaf neq;
+        static const Enum::YLeaf range;
+        static const Enum::YLeaf onebyte;
+        static const Enum::YLeaf twobytes;
 
 };
 
 class AclAce1Enum : public Enum
 {
     public:
-        static const Enum::Value normal;
-        static const Enum::Value remark;
-        static const Enum::Value abf;
+        static const Enum::YLeaf normal;
+        static const Enum::YLeaf remark;
+        static const Enum::YLeaf abf;
 
 };
 
 class BagAclNhAtStatusEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value up;
-        static const Enum::Value down;
-        static const Enum::Value not_present;
-        static const Enum::Value max;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf up;
+        static const Enum::YLeaf down;
+        static const Enum::YLeaf not_present;
+        static const Enum::YLeaf max;
 
 };
 
 class BagAclNhEnum : public Enum
 {
     public:
-        static const Enum::Value nexthop_none;
-        static const Enum::Value nexthop_default;
-        static const Enum::Value nexthop;
+        static const Enum::YLeaf nexthop_none;
+        static const Enum::YLeaf nexthop_default;
+        static const Enum::YLeaf nexthop;
 
 };
 
 class AclActionEnum : public Enum
 {
     public:
-        static const Enum::Value deny;
-        static const Enum::Value permit;
-        static const Enum::Value encrypt;
-        static const Enum::Value bypass;
-        static const Enum::Value fallthrough;
-        static const Enum::Value invalid;
+        static const Enum::YLeaf deny;
+        static const Enum::YLeaf permit;
+        static const Enum::YLeaf encrypt;
+        static const Enum::YLeaf bypass;
+        static const Enum::YLeaf fallthrough;
+        static const Enum::YLeaf invalid;
 
 };
 
 class BagAclNhStatusEnum : public Enum
 {
     public:
-        static const Enum::Value not_present;
-        static const Enum::Value unknown;
-        static const Enum::Value down;
-        static const Enum::Value up;
-        static const Enum::Value max;
+        static const Enum::YLeaf not_present;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf down;
+        static const Enum::YLeaf up;
+        static const Enum::YLeaf max;
 
 };
 
 class AclLogEnum : public Enum
 {
     public:
-        static const Enum::Value log_none;
-        static const Enum::Value log;
-        static const Enum::Value log_input;
+        static const Enum::YLeaf log_none;
+        static const Enum::YLeaf log;
+        static const Enum::YLeaf log_input;
 
 };
 

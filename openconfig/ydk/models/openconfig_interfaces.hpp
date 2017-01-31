@@ -7,11 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "openconfig_if_aggregate.hpp"
-#include "openconfig_if_ethernet.hpp"
-#include "openconfig_if_ip.hpp"
-#include "openconfig_vlan.hpp"
-#include "ydk_ietf/ietf_interfaces.hpp"
 
 namespace ydk {
 namespace openconfig_interfaces {
@@ -32,6 +27,7 @@ class Interfaces : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Interface : public Entity
     {
         public:
@@ -45,9 +41,10 @@ class Interfaces : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            //type: string (refers to openconfig_interfaces::Interfaces::Interface::Config::name)
-            Value name;
 
+
+            //type: string (refers to openconfig_interfaces::Interfaces::Interface::Config::name)
+            YLeaf name;
 
         class Config : public Entity
         {
@@ -62,12 +59,13 @@ class Interfaces : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: InterfaceTypeIdentity
-                Value mtu; //type: uint16
-                Value name; //type: string
-                Value description; //type: string
-                Value enabled; //type: boolean
 
+
+                YLeaf type; //type: InterfaceTypeIdentity
+                YLeaf mtu; //type: uint16
+                YLeaf name; //type: string
+                YLeaf description; //type: string
+                YLeaf enabled; //type: boolean
 
 
 
@@ -87,18 +85,19 @@ class Interfaces : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: InterfaceTypeIdentity
-                Value mtu; //type: uint16
-                Value name; //type: string
-                Value description; //type: string
-                Value enabled; //type: boolean
-                Value ifindex; //type: uint32
-                Value admin_status; //type: AdminStatusEnum
-                Value oper_status; //type: OperStatusEnum
-                Value last_change; //type: uint32
-                //type: leafref (refers to openconfig_platform::Components::Component::name)
-                Value hardware_port;
 
+
+                YLeaf type; //type: InterfaceTypeIdentity
+                YLeaf mtu; //type: uint16
+                YLeaf name; //type: string
+                YLeaf description; //type: string
+                YLeaf enabled; //type: boolean
+                YLeaf ifindex; //type: uint32
+                YLeaf admin_status; //type: AdminStatusEnum
+                YLeaf oper_status; //type: OperStatusEnum
+                YLeaf last_change; //type: uint32
+                //type: leafref (refers to openconfig_platform::Components::Component::name)
+                YLeaf hardware_port;
 
             class Counters : public Entity
             {
@@ -113,21 +112,22 @@ class Interfaces : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value in_octets; //type: uint64
-                    Value in_unicast_pkts; //type: uint64
-                    Value in_broadcast_pkts; //type: uint64
-                    Value in_multicast_pkts; //type: uint64
-                    Value in_discards; //type: uint64
-                    Value in_errors; //type: uint64
-                    Value in_unknown_protos; //type: uint32
-                    Value out_octets; //type: uint64
-                    Value out_unicast_pkts; //type: uint64
-                    Value out_broadcast_pkts; //type: uint64
-                    Value out_multicast_pkts; //type: uint64
-                    Value out_discards; //type: uint64
-                    Value out_errors; //type: uint64
-                    Value last_clear; //type: string
 
+
+                    YLeaf in_octets; //type: uint64
+                    YLeaf in_unicast_pkts; //type: uint64
+                    YLeaf in_broadcast_pkts; //type: uint64
+                    YLeaf in_multicast_pkts; //type: uint64
+                    YLeaf in_discards; //type: uint64
+                    YLeaf in_errors; //type: uint64
+                    YLeaf in_unknown_protos; //type: uint32
+                    YLeaf out_octets; //type: uint64
+                    YLeaf out_unicast_pkts; //type: uint64
+                    YLeaf out_broadcast_pkts; //type: uint64
+                    YLeaf out_multicast_pkts; //type: uint64
+                    YLeaf out_discards; //type: uint64
+                    YLeaf out_errors; //type: uint64
+                    YLeaf last_clear; //type: string
 
 
 
@@ -157,6 +157,7 @@ class Interfaces : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -170,9 +171,10 @@ class Interfaces : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value up; //type: uint32
-                    Value down; //type: uint32
 
+
+                    YLeaf up; //type: uint32
+                    YLeaf down; //type: uint32
 
 
 
@@ -192,9 +194,10 @@ class Interfaces : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value up; //type: uint32
-                    Value down; //type: uint32
 
+
+                    YLeaf up; //type: uint32
+                    YLeaf down; //type: uint32
 
 
 
@@ -223,6 +226,7 @@ class Interfaces : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Subinterface : public Entity
             {
                 public:
@@ -236,9 +240,10 @@ class Interfaces : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: uint32 (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Config::index_)
-                    Value index_;
 
+
+                    //type: uint32 (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Config::index_)
+                    YLeaf index_;
 
                 class Config : public Entity
                 {
@@ -253,13 +258,14 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value index_; //type: uint32
-                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
-                        Value unnumbered;
-                        Value name; //type: string
-                        Value description; //type: string
-                        Value enabled; //type: boolean
 
+
+                        YLeaf index_; //type: uint32
+                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
+                        YLeaf unnumbered;
+                        YLeaf name; //type: string
+                        YLeaf description; //type: string
+                        YLeaf enabled; //type: boolean
 
 
 
@@ -279,17 +285,18 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value index_; //type: uint32
-                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
-                        Value unnumbered;
-                        Value name; //type: string
-                        Value description; //type: string
-                        Value enabled; //type: boolean
-                        Value ifindex; //type: uint32
-                        Value admin_status; //type: AdminStatusEnum
-                        Value oper_status; //type: OperStatusEnum
-                        Value last_change; //type: uint32
 
+
+                        YLeaf index_; //type: uint32
+                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
+                        YLeaf unnumbered;
+                        YLeaf name; //type: string
+                        YLeaf description; //type: string
+                        YLeaf enabled; //type: boolean
+                        YLeaf ifindex; //type: uint32
+                        YLeaf admin_status; //type: AdminStatusEnum
+                        YLeaf oper_status; //type: OperStatusEnum
+                        YLeaf last_change; //type: uint32
 
                     class Counters : public Entity
                     {
@@ -304,21 +311,22 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value in_octets; //type: uint64
-                            Value in_unicast_pkts; //type: uint64
-                            Value in_broadcast_pkts; //type: uint64
-                            Value in_multicast_pkts; //type: uint64
-                            Value in_discards; //type: uint64
-                            Value in_errors; //type: uint64
-                            Value in_unknown_protos; //type: uint32
-                            Value out_octets; //type: uint64
-                            Value out_unicast_pkts; //type: uint64
-                            Value out_broadcast_pkts; //type: uint64
-                            Value out_multicast_pkts; //type: uint64
-                            Value out_discards; //type: uint64
-                            Value out_errors; //type: uint64
-                            Value last_clear; //type: string
 
+
+                            YLeaf in_octets; //type: uint64
+                            YLeaf in_unicast_pkts; //type: uint64
+                            YLeaf in_broadcast_pkts; //type: uint64
+                            YLeaf in_multicast_pkts; //type: uint64
+                            YLeaf in_discards; //type: uint64
+                            YLeaf in_errors; //type: uint64
+                            YLeaf in_unknown_protos; //type: uint32
+                            YLeaf out_octets; //type: uint64
+                            YLeaf out_unicast_pkts; //type: uint64
+                            YLeaf out_broadcast_pkts; //type: uint64
+                            YLeaf out_multicast_pkts; //type: uint64
+                            YLeaf out_discards; //type: uint64
+                            YLeaf out_errors; //type: uint64
+                            YLeaf last_clear; //type: string
 
 
 
@@ -348,6 +356,7 @@ class Interfaces : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -361,9 +370,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value global_vlan_id; //type: one of uint16, string
-                            Value vlan_id; //type: one of uint16, string
 
+
+                            YLeaf global_vlan_id; //type: one of uint16, string
+                            YLeaf vlan_id; //type: one of uint16, string
 
 
 
@@ -383,9 +393,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value global_vlan_id; //type: one of uint16, string
-                            Value vlan_id; //type: one of uint16, string
 
+
+                            YLeaf global_vlan_id; //type: one of uint16, string
+                            YLeaf vlan_id; //type: one of uint16, string
 
 
 
@@ -414,6 +425,7 @@ class Interfaces : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Address : public Entity
                     {
                         public:
@@ -427,9 +439,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: string (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Config::ip)
-                            Value ip;
 
+
+                            //type: string (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Config::ip)
+                            YLeaf ip;
 
                         class Config : public Entity
                         {
@@ -444,9 +457,10 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip; //type: string
-                                Value prefix_length; //type: uint8
 
+
+                                YLeaf ip; //type: string
+                                YLeaf prefix_length; //type: uint8
 
 
 
@@ -466,12 +480,12 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip; //type: string
-                                Value prefix_length; //type: uint8
-                                Value origin; //type: IpAddressOriginEnum
 
 
-                                class IpAddressOriginEnum;
+                                YLeaf ip; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf origin; //type: IpAddressOriginEnum
+
 
 
                         }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::State
@@ -492,6 +506,7 @@ class Interfaces : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class VrrpGroup : public Entity
                             {
                                 public:
@@ -505,9 +520,10 @@ class Interfaces : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    //type: uint8 (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::Config::virtual_router_id)
-                                    Value virtual_router_id;
 
+
+                                    //type: uint8 (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::Config::virtual_router_id)
+                                    YLeaf virtual_router_id;
 
                                 class Config : public Entity
                                 {
@@ -522,14 +538,15 @@ class Interfaces : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value virtual_router_id; //type: uint8
-                                        Value priority; //type: uint8
-                                        Value preempt; //type: boolean
-                                        Value preempt_delay; //type: uint16
-                                        Value accept_mode; //type: boolean
-                                        Value advertisement_interval; //type: uint16
-                                        ValueList virtual_address; //type: list of  string
 
+
+                                        YLeaf virtual_router_id; //type: uint8
+                                        YLeaf priority; //type: uint8
+                                        YLeaf preempt; //type: boolean
+                                        YLeaf preempt_delay; //type: uint16
+                                        YLeaf accept_mode; //type: boolean
+                                        YLeaf advertisement_interval; //type: uint16
+                                        YLeafList virtual_address; //type: list of  string
 
 
 
@@ -549,15 +566,16 @@ class Interfaces : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value virtual_router_id; //type: uint8
-                                        Value priority; //type: uint8
-                                        Value preempt; //type: boolean
-                                        Value preempt_delay; //type: uint16
-                                        Value accept_mode; //type: boolean
-                                        Value advertisement_interval; //type: uint16
-                                        Value current_priority; //type: uint8
-                                        ValueList virtual_address; //type: list of  string
 
+
+                                        YLeaf virtual_router_id; //type: uint8
+                                        YLeaf priority; //type: uint8
+                                        YLeaf preempt; //type: boolean
+                                        YLeaf preempt_delay; //type: uint16
+                                        YLeaf accept_mode; //type: boolean
+                                        YLeaf advertisement_interval; //type: uint16
+                                        YLeaf current_priority; //type: uint8
+                                        YLeafList virtual_address; //type: list of  string
 
 
 
@@ -579,6 +597,7 @@ class Interfaces : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Config : public Entity
                                     {
                                         public:
@@ -592,10 +611,11 @@ class Interfaces : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                                            Value track_interface;
-                                            Value priority_decrement; //type: uint8
 
+
+                                            //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                                            YLeaf track_interface;
+                                            YLeaf priority_decrement; //type: uint8
 
 
 
@@ -615,10 +635,11 @@ class Interfaces : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                                            Value track_interface;
-                                            Value priority_decrement; //type: uint8
 
+
+                                            //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                                            YLeaf track_interface;
+                                            YLeaf priority_decrement; //type: uint8
 
 
 
@@ -667,9 +688,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: string (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::Config::ip)
-                            Value ip;
 
+
+                            //type: string (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::Config::ip)
+                            YLeaf ip;
 
                         class Config : public Entity
                         {
@@ -684,9 +706,10 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip; //type: string
-                                Value link_layer_address; //type: string
 
+
+                                YLeaf ip; //type: string
+                                YLeaf link_layer_address; //type: string
 
 
 
@@ -706,12 +729,12 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip; //type: string
-                                Value link_layer_address; //type: string
-                                Value origin; //type: NeighborOriginEnum
 
 
-                                class NeighborOriginEnum;
+                                YLeaf ip; //type: string
+                                YLeaf link_layer_address; //type: string
+                                YLeaf origin; //type: NeighborOriginEnum
+
 
 
                         }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::State
@@ -737,9 +760,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enabled; //type: boolean
-                            Value mtu; //type: uint16
 
+
+                            YLeaf enabled; //type: boolean
+                            YLeaf mtu; //type: uint16
 
 
 
@@ -759,9 +783,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enabled; //type: boolean
-                            Value mtu; //type: uint16
 
+
+                            YLeaf enabled; //type: boolean
+                            YLeaf mtu; //type: uint16
 
 
 
@@ -792,6 +817,7 @@ class Interfaces : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Address : public Entity
                     {
                         public:
@@ -805,9 +831,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: string (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Config::ip)
-                            Value ip;
 
+
+                            //type: string (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Config::ip)
+                            YLeaf ip;
 
                         class Config : public Entity
                         {
@@ -822,9 +849,10 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip; //type: string
-                                Value prefix_length; //type: uint8
 
+
+                                YLeaf ip; //type: string
+                                YLeaf prefix_length; //type: uint8
 
 
 
@@ -844,13 +872,13 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip; //type: string
-                                Value prefix_length; //type: uint8
-                                Value origin; //type: IpAddressOriginEnum
-                                Value status; //type: StatusEnum
 
 
-                                class IpAddressOriginEnum;
+                                YLeaf ip; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf origin; //type: IpAddressOriginEnum
+                                YLeaf status; //type: StatusEnum
+
                                 class StatusEnum;
 
 
@@ -872,6 +900,7 @@ class Interfaces : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class VrrpGroup : public Entity
                             {
                                 public:
@@ -885,9 +914,10 @@ class Interfaces : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    //type: uint8 (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::Config::virtual_router_id)
-                                    Value virtual_router_id;
 
+
+                                    //type: uint8 (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::Config::virtual_router_id)
+                                    YLeaf virtual_router_id;
 
                                 class Config : public Entity
                                 {
@@ -902,15 +932,16 @@ class Interfaces : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value virtual_router_id; //type: uint8
-                                        Value priority; //type: uint8
-                                        Value preempt; //type: boolean
-                                        Value preempt_delay; //type: uint16
-                                        Value accept_mode; //type: boolean
-                                        Value advertisement_interval; //type: uint16
-                                        Value virtual_link_local; //type: string
-                                        ValueList virtual_address; //type: list of  string
 
+
+                                        YLeaf virtual_router_id; //type: uint8
+                                        YLeaf priority; //type: uint8
+                                        YLeaf preempt; //type: boolean
+                                        YLeaf preempt_delay; //type: uint16
+                                        YLeaf accept_mode; //type: boolean
+                                        YLeaf advertisement_interval; //type: uint16
+                                        YLeaf virtual_link_local; //type: string
+                                        YLeafList virtual_address; //type: list of  string
 
 
 
@@ -930,16 +961,17 @@ class Interfaces : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value virtual_router_id; //type: uint8
-                                        Value priority; //type: uint8
-                                        Value preempt; //type: boolean
-                                        Value preempt_delay; //type: uint16
-                                        Value accept_mode; //type: boolean
-                                        Value advertisement_interval; //type: uint16
-                                        Value current_priority; //type: uint8
-                                        Value virtual_link_local; //type: string
-                                        ValueList virtual_address; //type: list of  string
 
+
+                                        YLeaf virtual_router_id; //type: uint8
+                                        YLeaf priority; //type: uint8
+                                        YLeaf preempt; //type: boolean
+                                        YLeaf preempt_delay; //type: uint16
+                                        YLeaf accept_mode; //type: boolean
+                                        YLeaf advertisement_interval; //type: uint16
+                                        YLeaf current_priority; //type: uint8
+                                        YLeaf virtual_link_local; //type: string
+                                        YLeafList virtual_address; //type: list of  string
 
 
 
@@ -961,6 +993,7 @@ class Interfaces : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Config : public Entity
                                     {
                                         public:
@@ -974,10 +1007,11 @@ class Interfaces : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                                            Value track_interface;
-                                            Value priority_decrement; //type: uint8
 
+
+                                            //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                                            YLeaf track_interface;
+                                            YLeaf priority_decrement; //type: uint8
 
 
 
@@ -997,10 +1031,11 @@ class Interfaces : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                                            Value track_interface;
-                                            Value priority_decrement; //type: uint8
 
+
+                                            //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                                            YLeaf track_interface;
+                                            YLeaf priority_decrement; //type: uint8
 
 
 
@@ -1049,9 +1084,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: string (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::Config::ip)
-                            Value ip;
 
+
+                            //type: string (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::Config::ip)
+                            YLeaf ip;
 
                         class Config : public Entity
                         {
@@ -1066,9 +1102,10 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip; //type: string
-                                Value link_layer_address; //type: string
 
+
+                                YLeaf ip; //type: string
+                                YLeaf link_layer_address; //type: string
 
 
 
@@ -1088,15 +1125,15 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip; //type: string
-                                Value link_layer_address; //type: string
-                                Value origin; //type: NeighborOriginEnum
-                                Value is_router; //type: empty
-                                Value neighbor_state; //type: NeighborStateEnum
 
+
+                                YLeaf ip; //type: string
+                                YLeaf link_layer_address; //type: string
+                                YLeaf origin; //type: NeighborOriginEnum
+                                YLeaf is_router; //type: empty
+                                YLeaf neighbor_state; //type: NeighborStateEnum
 
                                 class NeighborStateEnum;
-                                class NeighborOriginEnum;
 
 
                         }; // Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State
@@ -1122,10 +1159,11 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enabled; //type: boolean
-                            Value mtu; //type: uint32
-                            Value dup_addr_detect_transmits; //type: uint32
 
+
+                            YLeaf enabled; //type: boolean
+                            YLeaf mtu; //type: uint32
+                            YLeaf dup_addr_detect_transmits; //type: uint32
 
 
 
@@ -1145,10 +1183,11 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enabled; //type: boolean
-                            Value mtu; //type: uint32
-                            Value dup_addr_detect_transmits; //type: uint32
 
+
+                            YLeaf enabled; //type: boolean
+                            YLeaf mtu; //type: uint32
+                            YLeaf dup_addr_detect_transmits; //type: uint32
 
 
 
@@ -1170,6 +1209,7 @@ class Interfaces : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1183,11 +1223,12 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value create_global_addresses; //type: boolean
-                                Value create_temporary_addresses; //type: boolean
-                                Value temporary_valid_lifetime; //type: uint32
-                                Value temporary_preferred_lifetime; //type: uint32
 
+
+                                YLeaf create_global_addresses; //type: boolean
+                                YLeaf create_temporary_addresses; //type: boolean
+                                YLeaf temporary_valid_lifetime; //type: uint32
+                                YLeaf temporary_preferred_lifetime; //type: uint32
 
 
 
@@ -1207,11 +1248,12 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value create_global_addresses; //type: boolean
-                                Value create_temporary_addresses; //type: boolean
-                                Value temporary_valid_lifetime; //type: uint32
-                                Value temporary_preferred_lifetime; //type: uint32
 
+
+                                YLeaf create_global_addresses; //type: boolean
+                                YLeaf create_temporary_addresses; //type: boolean
+                                YLeaf temporary_valid_lifetime; //type: uint32
+                                YLeaf temporary_preferred_lifetime; //type: uint32
 
 
 
@@ -1266,6 +1308,7 @@ class Interfaces : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -1279,14 +1322,15 @@ class Interfaces : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mac_address; //type: string
-                    Value auto_negotiate; //type: boolean
-                    Value duplex_mode; //type: DuplexModeEnum
-                    Value port_speed; //type: EthernetSpeedIdentity
-                    Value enable_flow_control; //type: boolean
-                    //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                    Value aggregate_id;
 
+
+                    YLeaf mac_address; //type: string
+                    YLeaf auto_negotiate; //type: boolean
+                    YLeaf duplex_mode; //type: DuplexModeEnum
+                    YLeaf port_speed; //type: EthernetSpeedIdentity
+                    YLeaf enable_flow_control; //type: boolean
+                    //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                    YLeaf aggregate_id;
 
                     class DuplexModeEnum;
 
@@ -1307,15 +1351,16 @@ class Interfaces : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mac_address; //type: string
-                    Value auto_negotiate; //type: boolean
-                    Value duplex_mode; //type: DuplexModeEnum
-                    Value port_speed; //type: EthernetSpeedIdentity
-                    Value enable_flow_control; //type: boolean
-                    Value hw_mac_address; //type: string
-                    //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                    Value aggregate_id;
 
+
+                    YLeaf mac_address; //type: string
+                    YLeaf auto_negotiate; //type: boolean
+                    YLeaf duplex_mode; //type: DuplexModeEnum
+                    YLeaf port_speed; //type: EthernetSpeedIdentity
+                    YLeaf enable_flow_control; //type: boolean
+                    YLeaf hw_mac_address; //type: string
+                    //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                    YLeaf aggregate_id;
 
                 class Counters : public Entity
                 {
@@ -1330,17 +1375,18 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value in_mac_control_frames; //type: uint64
-                        Value in_mac_pause_frames; //type: uint64
-                        Value in_oversize_frames; //type: uint64
-                        Value in_jabber_frames; //type: uint64
-                        Value in_fragment_frames; //type: uint64
-                        Value in_8021q_frames; //type: uint64
-                        Value in_crc_errors; //type: uint64
-                        Value out_mac_control_frames; //type: uint64
-                        Value out_mac_pause_frames; //type: uint64
-                        Value out_8021q_frames; //type: uint64
 
+
+                        YLeaf in_mac_control_frames; //type: uint64
+                        YLeaf in_mac_pause_frames; //type: uint64
+                        YLeaf in_oversize_frames; //type: uint64
+                        YLeaf in_jabber_frames; //type: uint64
+                        YLeaf in_fragment_frames; //type: uint64
+                        YLeaf in_8021q_frames; //type: uint64
+                        YLeaf in_crc_errors; //type: uint64
+                        YLeaf out_mac_control_frames; //type: uint64
+                        YLeaf out_mac_pause_frames; //type: uint64
+                        YLeaf out_8021q_frames; //type: uint64
 
 
 
@@ -1369,6 +1415,7 @@ class Interfaces : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -1382,13 +1429,13 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_mode; //type: VlanModeTypeEnum
-                        Value native_vlan; //type: one of uint16, string
-                        Value access_vlan; //type: one of uint16, string
-                        ValueList trunk_vlans; //type: list of  one of union, uint16, string
 
 
-                        class VlanModeTypeEnum;
+                        YLeaf interface_mode; //type: VlanModeTypeEnum
+                        YLeaf native_vlan; //type: one of uint16, string
+                        YLeaf access_vlan; //type: one of uint16, string
+                        YLeafList trunk_vlans; //type: list of  one of union, uint16, string
+
 
 
                 }; // Interfaces::Interface::Ethernet::Vlan::Config
@@ -1407,13 +1454,13 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_mode; //type: VlanModeTypeEnum
-                        Value native_vlan; //type: one of uint16, string
-                        Value access_vlan; //type: one of uint16, string
-                        ValueList trunk_vlans; //type: list of  one of union, uint16, string
 
 
-                        class VlanModeTypeEnum;
+                        YLeaf interface_mode; //type: VlanModeTypeEnum
+                        YLeaf native_vlan; //type: one of uint16, string
+                        YLeaf access_vlan; //type: one of uint16, string
+                        YLeafList trunk_vlans; //type: list of  one of union, uint16, string
+
 
 
                 }; // Interfaces::Interface::Ethernet::Vlan::State
@@ -1449,6 +1496,7 @@ class Interfaces : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -1462,11 +1510,11 @@ class Interfaces : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lag_type; //type: AggregationTypeEnum
-                    Value min_links; //type: uint16
 
 
-                    class AggregationTypeEnum;
+                    YLeaf lag_type; //type: AggregationTypeEnum
+                    YLeaf min_links; //type: uint16
+
 
 
             }; // Interfaces::Interface::Aggregation::Config
@@ -1485,13 +1533,13 @@ class Interfaces : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lag_type; //type: AggregationTypeEnum
-                    Value min_links; //type: uint16
+
+
+                    YLeaf lag_type; //type: AggregationTypeEnum
+                    YLeaf min_links; //type: uint16
                     //type: list of  leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                    ValueList members;
+                    YLeafList members;
 
-
-                    class AggregationTypeEnum;
 
 
             }; // Interfaces::Interface::Aggregation::State
@@ -1512,6 +1560,7 @@ class Interfaces : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -1525,14 +1574,13 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: LacpPeriodTypeEnum
-                        Value lacp_mode; //type: LacpActivityTypeEnum
-                        Value system_id_mac; //type: string
-                        Value system_priority; //type: uint16
 
 
-                        class LacpPeriodTypeEnum;
-                        class LacpActivityTypeEnum;
+                        YLeaf interval; //type: LacpPeriodTypeEnum
+                        YLeaf lacp_mode; //type: LacpActivityTypeEnum
+                        YLeaf system_id_mac; //type: string
+                        YLeaf system_priority; //type: uint16
+
 
 
                 }; // Interfaces::Interface::Aggregation::Lacp::Config
@@ -1551,14 +1599,13 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: LacpPeriodTypeEnum
-                        Value lacp_mode; //type: LacpActivityTypeEnum
-                        Value system_id_mac; //type: string
-                        Value system_priority; //type: uint16
 
 
-                        class LacpPeriodTypeEnum;
-                        class LacpActivityTypeEnum;
+                        YLeaf interval; //type: LacpPeriodTypeEnum
+                        YLeaf lacp_mode; //type: LacpActivityTypeEnum
+                        YLeaf system_id_mac; //type: string
+                        YLeaf system_priority; //type: uint16
+
 
 
                 }; // Interfaces::Interface::Aggregation::Lacp::State
@@ -1579,6 +1626,7 @@ class Interfaces : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Member : public Entity
                     {
                         public:
@@ -1592,9 +1640,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Aggregation::Lacp::Members::Member::State::interface)
-                            Value interface;
 
+
+                            //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Aggregation::Lacp::Members::Member::State::interface)
+                            YLeaf interface;
 
                         class State : public Entity
                         {
@@ -1609,19 +1658,20 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                                Value interface;
-                                Value activity; //type: LacpActivityTypeEnum
-                                Value timeout; //type: LacpTimeoutTypeEnum
-                                Value synchronization; //type: LacpSynchronizationTypeEnum
-                                Value aggregatable; //type: boolean
-                                Value collecting; //type: boolean
-                                Value distributing; //type: boolean
-                                Value system_id; //type: string
-                                Value oper_key; //type: uint16
-                                Value partner_id; //type: string
-                                Value partner_key; //type: uint16
 
+
+                                //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                                YLeaf interface;
+                                YLeaf activity; //type: LacpActivityTypeEnum
+                                YLeaf timeout; //type: LacpTimeoutTypeEnum
+                                YLeaf synchronization; //type: LacpSynchronizationTypeEnum
+                                YLeaf aggregatable; //type: boolean
+                                YLeaf collecting; //type: boolean
+                                YLeaf distributing; //type: boolean
+                                YLeaf system_id; //type: string
+                                YLeaf oper_key; //type: uint16
+                                YLeaf partner_id; //type: string
+                                YLeaf partner_key; //type: uint16
 
                             class Counters : public Entity
                             {
@@ -1636,13 +1686,14 @@ class Interfaces : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lacp_in_pkts; //type: uint64
-                                    Value lacp_out_pkts; //type: uint64
-                                    Value lacp_rx_errors; //type: uint64
-                                    Value lacp_tx_errors; //type: uint64
-                                    Value lacp_unknown_errors; //type: uint64
-                                    Value lacp_errors; //type: uint64
 
+
+                                    YLeaf lacp_in_pkts; //type: uint64
+                                    YLeaf lacp_out_pkts; //type: uint64
+                                    YLeaf lacp_rx_errors; //type: uint64
+                                    YLeaf lacp_tx_errors; //type: uint64
+                                    YLeaf lacp_unknown_errors; //type: uint64
+                                    YLeaf lacp_errors; //type: uint64
 
 
 
@@ -1650,9 +1701,6 @@ class Interfaces : public Entity
 
 
                                 std::unique_ptr<openconfig_interfaces::Interfaces::Interface::Aggregation::Lacp::Members::Member::State::Counters> counters;
-                                class LacpActivityTypeEnum;
-                                class LacpSynchronizationTypeEnum;
-                                class LacpTimeoutTypeEnum;
 
 
                         }; // Interfaces::Interface::Aggregation::Lacp::Members::Member::State
@@ -1693,6 +1741,7 @@ class Interfaces : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -1706,13 +1755,13 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_mode; //type: VlanModeTypeEnum
-                        Value native_vlan; //type: one of uint16, string
-                        Value access_vlan; //type: one of uint16, string
-                        ValueList trunk_vlans; //type: list of  one of union, uint16, string
 
 
-                        class VlanModeTypeEnum;
+                        YLeaf interface_mode; //type: VlanModeTypeEnum
+                        YLeaf native_vlan; //type: one of uint16, string
+                        YLeaf access_vlan; //type: one of uint16, string
+                        YLeafList trunk_vlans; //type: list of  one of union, uint16, string
+
 
 
                 }; // Interfaces::Interface::Aggregation::Vlan::Config
@@ -1731,13 +1780,13 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_mode; //type: VlanModeTypeEnum
-                        Value native_vlan; //type: one of uint16, string
-                        Value access_vlan; //type: one of uint16, string
-                        ValueList trunk_vlans; //type: list of  one of union, uint16, string
 
 
-                        class VlanModeTypeEnum;
+                        YLeaf interface_mode; //type: VlanModeTypeEnum
+                        YLeaf native_vlan; //type: one of uint16, string
+                        YLeaf access_vlan; //type: one of uint16, string
+                        YLeafList trunk_vlans; //type: list of  one of union, uint16, string
+
 
 
                 }; // Interfaces::Interface::Aggregation::Vlan::State
@@ -1774,6 +1823,7 @@ class Interfaces : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -1787,8 +1837,9 @@ class Interfaces : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value vlan; //type: one of uint16, string
 
+
+                    YLeaf vlan; //type: one of uint16, string
 
 
 
@@ -1808,8 +1859,9 @@ class Interfaces : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value vlan; //type: one of uint16, string
 
+
+                    YLeaf vlan; //type: one of uint16, string
 
 
 
@@ -1831,6 +1883,7 @@ class Interfaces : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Address : public Entity
                 {
                     public:
@@ -1844,9 +1897,10 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: string (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Config::ip)
-                        Value ip;
 
+
+                        //type: string (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Config::ip)
+                        YLeaf ip;
 
                     class Config : public Entity
                     {
@@ -1861,9 +1915,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ip; //type: string
-                            Value prefix_length; //type: uint8
 
+
+                            YLeaf ip; //type: string
+                            YLeaf prefix_length; //type: uint8
 
 
 
@@ -1883,12 +1938,12 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ip; //type: string
-                            Value prefix_length; //type: uint8
-                            Value origin; //type: IpAddressOriginEnum
 
 
-                            class IpAddressOriginEnum;
+                            YLeaf ip; //type: string
+                            YLeaf prefix_length; //type: uint8
+                            YLeaf origin; //type: IpAddressOriginEnum
+
 
 
                     }; // Interfaces::Interface::RoutedVlan::Ipv4::Address::State
@@ -1909,6 +1964,7 @@ class Interfaces : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class VrrpGroup : public Entity
                         {
                             public:
@@ -1922,9 +1978,10 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                //type: uint8 (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config::virtual_router_id)
-                                Value virtual_router_id;
 
+
+                                //type: uint8 (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config::virtual_router_id)
+                                YLeaf virtual_router_id;
 
                             class Config : public Entity
                             {
@@ -1939,14 +1996,15 @@ class Interfaces : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value virtual_router_id; //type: uint8
-                                    Value priority; //type: uint8
-                                    Value preempt; //type: boolean
-                                    Value preempt_delay; //type: uint16
-                                    Value accept_mode; //type: boolean
-                                    Value advertisement_interval; //type: uint16
-                                    ValueList virtual_address; //type: list of  string
 
+
+                                    YLeaf virtual_router_id; //type: uint8
+                                    YLeaf priority; //type: uint8
+                                    YLeaf preempt; //type: boolean
+                                    YLeaf preempt_delay; //type: uint16
+                                    YLeaf accept_mode; //type: boolean
+                                    YLeaf advertisement_interval; //type: uint16
+                                    YLeafList virtual_address; //type: list of  string
 
 
 
@@ -1966,15 +2024,16 @@ class Interfaces : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value virtual_router_id; //type: uint8
-                                    Value priority; //type: uint8
-                                    Value preempt; //type: boolean
-                                    Value preempt_delay; //type: uint16
-                                    Value accept_mode; //type: boolean
-                                    Value advertisement_interval; //type: uint16
-                                    Value current_priority; //type: uint8
-                                    ValueList virtual_address; //type: list of  string
 
+
+                                    YLeaf virtual_router_id; //type: uint8
+                                    YLeaf priority; //type: uint8
+                                    YLeaf preempt; //type: boolean
+                                    YLeaf preempt_delay; //type: uint16
+                                    YLeaf accept_mode; //type: boolean
+                                    YLeaf advertisement_interval; //type: uint16
+                                    YLeaf current_priority; //type: uint8
+                                    YLeafList virtual_address; //type: list of  string
 
 
 
@@ -1996,6 +2055,7 @@ class Interfaces : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Config : public Entity
                                 {
                                     public:
@@ -2009,10 +2069,11 @@ class Interfaces : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                                        Value track_interface;
-                                        Value priority_decrement; //type: uint8
 
+
+                                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                                        YLeaf track_interface;
+                                        YLeaf priority_decrement; //type: uint8
 
 
 
@@ -2032,10 +2093,11 @@ class Interfaces : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                                        Value track_interface;
-                                        Value priority_decrement; //type: uint8
 
+
+                                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                                        YLeaf track_interface;
+                                        YLeaf priority_decrement; //type: uint8
 
 
 
@@ -2084,9 +2146,10 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: string (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::Config::ip)
-                        Value ip;
 
+
+                        //type: string (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::Config::ip)
+                        YLeaf ip;
 
                     class Config : public Entity
                     {
@@ -2101,9 +2164,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ip; //type: string
-                            Value link_layer_address; //type: string
 
+
+                            YLeaf ip; //type: string
+                            YLeaf link_layer_address; //type: string
 
 
 
@@ -2123,12 +2187,12 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ip; //type: string
-                            Value link_layer_address; //type: string
-                            Value origin; //type: NeighborOriginEnum
 
 
-                            class NeighborOriginEnum;
+                            YLeaf ip; //type: string
+                            YLeaf link_layer_address; //type: string
+                            YLeaf origin; //type: NeighborOriginEnum
+
 
 
                     }; // Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::State
@@ -2154,9 +2218,10 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
-                        Value mtu; //type: uint16
 
+
+                        YLeaf enabled; //type: boolean
+                        YLeaf mtu; //type: uint16
 
 
 
@@ -2176,9 +2241,10 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
-                        Value mtu; //type: uint16
 
+
+                        YLeaf enabled; //type: boolean
+                        YLeaf mtu; //type: uint16
 
 
 
@@ -2209,6 +2275,7 @@ class Interfaces : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Address : public Entity
                 {
                     public:
@@ -2222,9 +2289,10 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: string (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Config::ip)
-                        Value ip;
 
+
+                        //type: string (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Config::ip)
+                        YLeaf ip;
 
                     class Config : public Entity
                     {
@@ -2239,9 +2307,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ip; //type: string
-                            Value prefix_length; //type: uint8
 
+
+                            YLeaf ip; //type: string
+                            YLeaf prefix_length; //type: uint8
 
 
 
@@ -2261,13 +2330,13 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ip; //type: string
-                            Value prefix_length; //type: uint8
-                            Value origin; //type: IpAddressOriginEnum
-                            Value status; //type: StatusEnum
 
 
-                            class IpAddressOriginEnum;
+                            YLeaf ip; //type: string
+                            YLeaf prefix_length; //type: uint8
+                            YLeaf origin; //type: IpAddressOriginEnum
+                            YLeaf status; //type: StatusEnum
+
                             class StatusEnum;
 
 
@@ -2289,6 +2358,7 @@ class Interfaces : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class VrrpGroup : public Entity
                         {
                             public:
@@ -2302,9 +2372,10 @@ class Interfaces : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                //type: uint8 (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config::virtual_router_id)
-                                Value virtual_router_id;
 
+
+                                //type: uint8 (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config::virtual_router_id)
+                                YLeaf virtual_router_id;
 
                             class Config : public Entity
                             {
@@ -2319,15 +2390,16 @@ class Interfaces : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value virtual_router_id; //type: uint8
-                                    Value priority; //type: uint8
-                                    Value preempt; //type: boolean
-                                    Value preempt_delay; //type: uint16
-                                    Value accept_mode; //type: boolean
-                                    Value advertisement_interval; //type: uint16
-                                    Value virtual_link_local; //type: string
-                                    ValueList virtual_address; //type: list of  string
 
+
+                                    YLeaf virtual_router_id; //type: uint8
+                                    YLeaf priority; //type: uint8
+                                    YLeaf preempt; //type: boolean
+                                    YLeaf preempt_delay; //type: uint16
+                                    YLeaf accept_mode; //type: boolean
+                                    YLeaf advertisement_interval; //type: uint16
+                                    YLeaf virtual_link_local; //type: string
+                                    YLeafList virtual_address; //type: list of  string
 
 
 
@@ -2347,16 +2419,17 @@ class Interfaces : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value virtual_router_id; //type: uint8
-                                    Value priority; //type: uint8
-                                    Value preempt; //type: boolean
-                                    Value preempt_delay; //type: uint16
-                                    Value accept_mode; //type: boolean
-                                    Value advertisement_interval; //type: uint16
-                                    Value current_priority; //type: uint8
-                                    Value virtual_link_local; //type: string
-                                    ValueList virtual_address; //type: list of  string
 
+
+                                    YLeaf virtual_router_id; //type: uint8
+                                    YLeaf priority; //type: uint8
+                                    YLeaf preempt; //type: boolean
+                                    YLeaf preempt_delay; //type: uint16
+                                    YLeaf accept_mode; //type: boolean
+                                    YLeaf advertisement_interval; //type: uint16
+                                    YLeaf current_priority; //type: uint8
+                                    YLeaf virtual_link_local; //type: string
+                                    YLeafList virtual_address; //type: list of  string
 
 
 
@@ -2378,6 +2451,7 @@ class Interfaces : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Config : public Entity
                                 {
                                     public:
@@ -2391,10 +2465,11 @@ class Interfaces : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                                        Value track_interface;
-                                        Value priority_decrement; //type: uint8
 
+
+                                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                                        YLeaf track_interface;
+                                        YLeaf priority_decrement; //type: uint8
 
 
 
@@ -2414,10 +2489,11 @@ class Interfaces : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                                        Value track_interface;
-                                        Value priority_decrement; //type: uint8
 
+
+                                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                                        YLeaf track_interface;
+                                        YLeaf priority_decrement; //type: uint8
 
 
 
@@ -2466,9 +2542,10 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: string (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::Config::ip)
-                        Value ip;
 
+
+                        //type: string (refers to openconfig_interfaces::Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::Config::ip)
+                        YLeaf ip;
 
                     class Config : public Entity
                     {
@@ -2483,9 +2560,10 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ip; //type: string
-                            Value link_layer_address; //type: string
 
+
+                            YLeaf ip; //type: string
+                            YLeaf link_layer_address; //type: string
 
 
 
@@ -2505,15 +2583,15 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ip; //type: string
-                            Value link_layer_address; //type: string
-                            Value origin; //type: NeighborOriginEnum
-                            Value is_router; //type: empty
-                            Value neighbor_state; //type: NeighborStateEnum
 
+
+                            YLeaf ip; //type: string
+                            YLeaf link_layer_address; //type: string
+                            YLeaf origin; //type: NeighborOriginEnum
+                            YLeaf is_router; //type: empty
+                            YLeaf neighbor_state; //type: NeighborStateEnum
 
                             class NeighborStateEnum;
-                            class NeighborOriginEnum;
 
 
                     }; // Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State
@@ -2539,10 +2617,11 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
-                        Value mtu; //type: uint32
-                        Value dup_addr_detect_transmits; //type: uint32
 
+
+                        YLeaf enabled; //type: boolean
+                        YLeaf mtu; //type: uint32
+                        YLeaf dup_addr_detect_transmits; //type: uint32
 
 
 
@@ -2562,10 +2641,11 @@ class Interfaces : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
-                        Value mtu; //type: uint32
-                        Value dup_addr_detect_transmits; //type: uint32
 
+
+                        YLeaf enabled; //type: boolean
+                        YLeaf mtu; //type: uint32
+                        YLeaf dup_addr_detect_transmits; //type: uint32
 
 
 
@@ -2587,6 +2667,7 @@ class Interfaces : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -2600,11 +2681,12 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value create_global_addresses; //type: boolean
-                            Value create_temporary_addresses; //type: boolean
-                            Value temporary_valid_lifetime; //type: uint32
-                            Value temporary_preferred_lifetime; //type: uint32
 
+
+                            YLeaf create_global_addresses; //type: boolean
+                            YLeaf create_temporary_addresses; //type: boolean
+                            YLeaf temporary_valid_lifetime; //type: uint32
+                            YLeaf temporary_preferred_lifetime; //type: uint32
 
 
 
@@ -2624,11 +2706,12 @@ class Interfaces : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value create_global_addresses; //type: boolean
-                            Value create_temporary_addresses; //type: boolean
-                            Value temporary_valid_lifetime; //type: uint32
-                            Value temporary_preferred_lifetime; //type: uint32
 
+
+                            YLeaf create_global_addresses; //type: boolean
+                            YLeaf create_temporary_addresses; //type: boolean
+                            YLeaf temporary_valid_lifetime; //type: uint32
+                            YLeaf temporary_preferred_lifetime; //type: uint32
 
 
 
@@ -2682,110 +2765,110 @@ class Interfaces : public Entity
 class Interfaces::Interface::State::AdminStatusEnum : public Enum
 {
     public:
-        static const Enum::Value UP;
-        static const Enum::Value DOWN;
-        static const Enum::Value TESTING;
+        static const Enum::YLeaf UP;
+        static const Enum::YLeaf DOWN;
+        static const Enum::YLeaf TESTING;
 
 };
 
 class Interfaces::Interface::State::OperStatusEnum : public Enum
 {
     public:
-        static const Enum::Value UP;
-        static const Enum::Value DOWN;
-        static const Enum::Value TESTING;
-        static const Enum::Value UNKNOWN;
-        static const Enum::Value DORMANT;
-        static const Enum::Value NOT_PRESENT;
-        static const Enum::Value LOWER_LAYER_DOWN;
+        static const Enum::YLeaf UP;
+        static const Enum::YLeaf DOWN;
+        static const Enum::YLeaf TESTING;
+        static const Enum::YLeaf UNKNOWN;
+        static const Enum::YLeaf DORMANT;
+        static const Enum::YLeaf NOT_PRESENT;
+        static const Enum::YLeaf LOWER_LAYER_DOWN;
 
 };
 
 class Interfaces::Interface::Subinterfaces::Subinterface::State::AdminStatusEnum : public Enum
 {
     public:
-        static const Enum::Value UP;
-        static const Enum::Value DOWN;
-        static const Enum::Value TESTING;
+        static const Enum::YLeaf UP;
+        static const Enum::YLeaf DOWN;
+        static const Enum::YLeaf TESTING;
 
 };
 
 class Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum : public Enum
 {
     public:
-        static const Enum::Value UP;
-        static const Enum::Value DOWN;
-        static const Enum::Value TESTING;
-        static const Enum::Value UNKNOWN;
-        static const Enum::Value DORMANT;
-        static const Enum::Value NOT_PRESENT;
-        static const Enum::Value LOWER_LAYER_DOWN;
+        static const Enum::YLeaf UP;
+        static const Enum::YLeaf DOWN;
+        static const Enum::YLeaf TESTING;
+        static const Enum::YLeaf UNKNOWN;
+        static const Enum::YLeaf DORMANT;
+        static const Enum::YLeaf NOT_PRESENT;
+        static const Enum::YLeaf LOWER_LAYER_DOWN;
 
 };
 
 class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum : public Enum
 {
     public:
-        static const Enum::Value PREFERRED;
-        static const Enum::Value DEPRECATED;
-        static const Enum::Value INVALID;
-        static const Enum::Value INACCESSIBLE;
-        static const Enum::Value UNKNOWN;
-        static const Enum::Value TENTATIVE;
-        static const Enum::Value DUPLICATE;
-        static const Enum::Value OPTIMISTIC;
+        static const Enum::YLeaf PREFERRED;
+        static const Enum::YLeaf DEPRECATED;
+        static const Enum::YLeaf INVALID;
+        static const Enum::YLeaf INACCESSIBLE;
+        static const Enum::YLeaf UNKNOWN;
+        static const Enum::YLeaf TENTATIVE;
+        static const Enum::YLeaf DUPLICATE;
+        static const Enum::YLeaf OPTIMISTIC;
 
 };
 
 class Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State::NeighborStateEnum : public Enum
 {
     public:
-        static const Enum::Value INCOMPLETE;
-        static const Enum::Value REACHABLE;
-        static const Enum::Value STALE;
-        static const Enum::Value DELAY;
-        static const Enum::Value PROBE;
+        static const Enum::YLeaf INCOMPLETE;
+        static const Enum::YLeaf REACHABLE;
+        static const Enum::YLeaf STALE;
+        static const Enum::YLeaf DELAY;
+        static const Enum::YLeaf PROBE;
 
 };
 
 class Interfaces::Interface::Ethernet::Config::DuplexModeEnum : public Enum
 {
     public:
-        static const Enum::Value FULL;
-        static const Enum::Value HALF;
+        static const Enum::YLeaf FULL;
+        static const Enum::YLeaf HALF;
 
 };
 
 class Interfaces::Interface::Ethernet::State::DuplexModeEnum : public Enum
 {
     public:
-        static const Enum::Value FULL;
-        static const Enum::Value HALF;
+        static const Enum::YLeaf FULL;
+        static const Enum::YLeaf HALF;
 
 };
 
 class Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum : public Enum
 {
     public:
-        static const Enum::Value PREFERRED;
-        static const Enum::Value DEPRECATED;
-        static const Enum::Value INVALID;
-        static const Enum::Value INACCESSIBLE;
-        static const Enum::Value UNKNOWN;
-        static const Enum::Value TENTATIVE;
-        static const Enum::Value DUPLICATE;
-        static const Enum::Value OPTIMISTIC;
+        static const Enum::YLeaf PREFERRED;
+        static const Enum::YLeaf DEPRECATED;
+        static const Enum::YLeaf INVALID;
+        static const Enum::YLeaf INACCESSIBLE;
+        static const Enum::YLeaf UNKNOWN;
+        static const Enum::YLeaf TENTATIVE;
+        static const Enum::YLeaf DUPLICATE;
+        static const Enum::YLeaf OPTIMISTIC;
 
 };
 
 class Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State::NeighborStateEnum : public Enum
 {
     public:
-        static const Enum::Value INCOMPLETE;
-        static const Enum::Value REACHABLE;
-        static const Enum::Value STALE;
-        static const Enum::Value DELAY;
-        static const Enum::Value PROBE;
+        static const Enum::YLeaf INCOMPLETE;
+        static const Enum::YLeaf REACHABLE;
+        static const Enum::YLeaf STALE;
+        static const Enum::YLeaf DELAY;
+        static const Enum::YLeaf PROBE;
 
 };
 

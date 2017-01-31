@@ -562,8 +562,8 @@ bool Grpc::has_data() const
 bool Grpc::has_operation() const
 {
     return is_set(operation)
-	|| (statistics !=  nullptr && is_set(statistics->operation))
-	|| (status !=  nullptr && is_set(status->operation));
+	|| (statistics !=  nullptr && statistics->has_operation())
+	|| (status !=  nullptr && status->has_operation());
 }
 
 std::string Grpc::get_segment_path() const
@@ -580,7 +580,7 @@ EntityPath Grpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

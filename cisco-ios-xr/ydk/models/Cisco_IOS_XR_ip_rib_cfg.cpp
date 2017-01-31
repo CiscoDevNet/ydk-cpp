@@ -116,7 +116,7 @@ bool Rib::Af::Ipv4::RedistributionHistory::has_operation() const
     return is_set(operation)
 	|| is_set(bcdl_client.operation)
 	|| is_set(protocol_client.operation)
-	|| (keep !=  nullptr && is_set(keep->operation));
+	|| (keep !=  nullptr && keep->has_operation());
 }
 
 std::string Rib::Af::Ipv4::RedistributionHistory::get_segment_path() const
@@ -231,7 +231,7 @@ bool Rib::Af::Ipv4::has_operation() const
 {
     return is_set(operation)
 	|| is_set(next_hop_dampening_disable.operation)
-	|| (redistribution_history !=  nullptr && is_set(redistribution_history->operation));
+	|| (redistribution_history !=  nullptr && redistribution_history->has_operation());
 }
 
 std::string Rib::Af::Ipv4::get_segment_path() const
@@ -424,7 +424,7 @@ bool Rib::Af::Ipv6::RedistributionHistory::has_operation() const
     return is_set(operation)
 	|| is_set(bcdl_client.operation)
 	|| is_set(protocol_client.operation)
-	|| (keep !=  nullptr && is_set(keep->operation));
+	|| (keep !=  nullptr && keep->has_operation());
 }
 
 std::string Rib::Af::Ipv6::RedistributionHistory::get_segment_path() const
@@ -539,7 +539,7 @@ bool Rib::Af::Ipv6::has_operation() const
 {
     return is_set(operation)
 	|| is_set(next_hop_dampening_disable.operation)
-	|| (redistribution_history !=  nullptr && is_set(redistribution_history->operation));
+	|| (redistribution_history !=  nullptr && redistribution_history->has_operation());
 }
 
 std::string Rib::Af::Ipv6::get_segment_path() const
@@ -650,8 +650,8 @@ bool Rib::Af::has_data() const
 bool Rib::Af::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string Rib::Af::get_segment_path() const
@@ -779,7 +779,7 @@ bool Rib::has_operation() const
 {
     return is_set(operation)
 	|| is_set(max_recursion_depth.operation)
-	|| (af !=  nullptr && is_set(af->operation));
+	|| (af !=  nullptr && af->has_operation());
 }
 
 std::string Rib::get_segment_path() const
@@ -796,7 +796,7 @@ EntityPath Rib::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

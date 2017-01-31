@@ -26,6 +26,7 @@ class MplsStatic : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Vrfs : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class MplsStatic : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class MplsStatic : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
             class Lsps : public Entity
             {
@@ -72,6 +75,7 @@ class MplsStatic : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Lsp : public Entity
                 {
                     public:
@@ -85,9 +89,10 @@ class MplsStatic : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lsp_name; //type: string
-                        Value lsp_name_xr; //type: string
 
+
+                        YLeaf lsp_name; //type: string
+                        YLeaf lsp_name_xr; //type: string
 
                     class Label : public Entity
                     {
@@ -102,11 +107,12 @@ class MplsStatic : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value label; //type: uint32
-                            Value label_mode; //type: MgmtMplsStaticLabelModeEnum
-                            Value label_status; //type: MgmtMplsStaticLabelStatusEnum
-                            Value vrf_name; //type: string
 
+
+                            YLeaf label; //type: uint32
+                            YLeaf label_mode; //type: MgmtMplsStaticLabelModeEnum
+                            YLeaf label_status; //type: MgmtMplsStaticLabelStatusEnum
+                            YLeaf vrf_name; //type: string
 
                         class Prefix : public Entity
                         {
@@ -121,8 +127,9 @@ class MplsStatic : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value prefix_length; //type: uint8
 
+
+                                YLeaf prefix_length; //type: uint8
 
                             class Prefix_ : public Entity
                             {
@@ -137,12 +144,12 @@ class MplsStatic : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value af_name; //type: MgmtStaticAddrEnum
-                                    Value ipv4_prefix; //type: string
-                                    Value ipv6_prefix; //type: string
 
 
-                                    class MgmtStaticAddrEnum;
+                                    YLeaf af_name; //type: MgmtStaticAddrEnum
+                                    YLeaf ipv4_prefix; //type: string
+                                    YLeaf ipv6_prefix; //type: string
+
 
 
                             }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_
@@ -167,17 +174,16 @@ class MplsStatic : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value path; //type: uint32
-                                Value type; //type: MgmtStaticPathEnum
-                                Value next_hop_label_type; //type: MgmtStaticNhLblEnum
-                                Value next_hop_label; //type: uint32
-                                Value next_hop_interface_name; //type: string
-                                Value next_hop_ipv4_address_set; //type: boolean
-                                Value next_hop_ipv4_address; //type: string
 
 
-                                class MgmtStaticNhLblEnum;
-                                class MgmtStaticPathEnum;
+                                YLeaf path; //type: uint32
+                                YLeaf type; //type: MgmtStaticPathEnum
+                                YLeaf next_hop_label_type; //type: MgmtStaticNhLblEnum
+                                YLeaf next_hop_label; //type: uint32
+                                YLeaf next_hop_interface_name; //type: string
+                                YLeaf next_hop_ipv4_address_set; //type: boolean
+                                YLeaf next_hop_ipv4_address; //type: string
+
 
 
                         }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo
@@ -185,8 +191,6 @@ class MplsStatic : public Entity
 
                             std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo> > path_info;
                             std::unique_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix> prefix;
-                            class MgmtMplsStaticLabelModeEnum;
-                            class MgmtMplsStaticLabelStatusEnum;
 
 
                     }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label
@@ -219,6 +223,7 @@ class MplsStatic : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LocalLabel : public Entity
                 {
                     public:
@@ -232,12 +237,13 @@ class MplsStatic : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value local_label_id; //type: uint32
-                        Value label; //type: uint32
-                        Value label_mode; //type: MgmtMplsStaticLabelModeEnum
-                        Value label_status; //type: MgmtMplsStaticLabelStatusEnum
-                        Value vrf_name; //type: string
 
+
+                        YLeaf local_label_id; //type: uint32
+                        YLeaf label; //type: uint32
+                        YLeaf label_mode; //type: MgmtMplsStaticLabelModeEnum
+                        YLeaf label_status; //type: MgmtMplsStaticLabelStatusEnum
+                        YLeaf vrf_name; //type: string
 
                     class Prefix : public Entity
                     {
@@ -252,8 +258,9 @@ class MplsStatic : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix_length; //type: uint8
 
+
+                            YLeaf prefix_length; //type: uint8
 
                         class Prefix_ : public Entity
                         {
@@ -268,12 +275,12 @@ class MplsStatic : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value af_name; //type: MgmtStaticAddrEnum
-                                Value ipv4_prefix; //type: string
-                                Value ipv6_prefix; //type: string
 
 
-                                class MgmtStaticAddrEnum;
+                                YLeaf af_name; //type: MgmtStaticAddrEnum
+                                YLeaf ipv4_prefix; //type: string
+                                YLeaf ipv6_prefix; //type: string
+
 
 
                         }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_
@@ -298,17 +305,16 @@ class MplsStatic : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value path; //type: uint32
-                            Value type; //type: MgmtStaticPathEnum
-                            Value next_hop_label_type; //type: MgmtStaticNhLblEnum
-                            Value next_hop_label; //type: uint32
-                            Value next_hop_interface_name; //type: string
-                            Value next_hop_ipv4_address_set; //type: boolean
-                            Value next_hop_ipv4_address; //type: string
 
 
-                            class MgmtStaticNhLblEnum;
-                            class MgmtStaticPathEnum;
+                            YLeaf path; //type: uint32
+                            YLeaf type; //type: MgmtStaticPathEnum
+                            YLeaf next_hop_label_type; //type: MgmtStaticNhLblEnum
+                            YLeaf next_hop_label; //type: uint32
+                            YLeaf next_hop_interface_name; //type: string
+                            YLeaf next_hop_ipv4_address_set; //type: boolean
+                            YLeaf next_hop_ipv4_address; //type: string
+
 
 
                     }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo
@@ -316,8 +322,6 @@ class MplsStatic : public Entity
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo> > path_info;
                         std::unique_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix> prefix;
-                        class MgmtMplsStaticLabelModeEnum;
-                        class MgmtMplsStaticLabelStatusEnum;
 
 
                 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel
@@ -355,18 +359,19 @@ class MplsStatic : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value label_count; //type: uint32
-            Value label_error_count; //type: uint32
-            Value label_discrepancy_count; //type: uint32
-            Value vrf_count; //type: uint32
-            Value active_vrf_count; //type: uint32
-            Value interface_count; //type: uint32
-            Value interface_foward_reference_count; //type: uint32
-            Value mpls_enabled_interface_count; //type: uint32
-            Value lsd_connected; //type: boolean
-            Value im_connected; //type: boolean
-            Value rsi_connected; //type: boolean
 
+
+            YLeaf label_count; //type: uint32
+            YLeaf label_error_count; //type: uint32
+            YLeaf label_discrepancy_count; //type: uint32
+            YLeaf vrf_count; //type: uint32
+            YLeaf active_vrf_count; //type: uint32
+            YLeaf interface_count; //type: uint32
+            YLeaf interface_foward_reference_count; //type: uint32
+            YLeaf mpls_enabled_interface_count; //type: uint32
+            YLeaf lsd_connected; //type: boolean
+            YLeaf im_connected; //type: boolean
+            YLeaf rsi_connected; //type: boolean
 
 
 
@@ -388,6 +393,7 @@ class MplsStatic : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LocalLabel : public Entity
         {
             public:
@@ -401,12 +407,13 @@ class MplsStatic : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value local_label_id; //type: uint32
-                Value label; //type: uint32
-                Value label_mode; //type: MgmtMplsStaticLabelModeEnum
-                Value label_status; //type: MgmtMplsStaticLabelStatusEnum
-                Value vrf_name; //type: string
 
+
+                YLeaf local_label_id; //type: uint32
+                YLeaf label; //type: uint32
+                YLeaf label_mode; //type: MgmtMplsStaticLabelModeEnum
+                YLeaf label_status; //type: MgmtMplsStaticLabelStatusEnum
+                YLeaf vrf_name; //type: string
 
             class Prefix : public Entity
             {
@@ -421,8 +428,9 @@ class MplsStatic : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value prefix_length; //type: uint8
 
+
+                    YLeaf prefix_length; //type: uint8
 
                 class Prefix_ : public Entity
                 {
@@ -437,12 +445,12 @@ class MplsStatic : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value af_name; //type: MgmtStaticAddrEnum
-                        Value ipv4_prefix; //type: string
-                        Value ipv6_prefix; //type: string
 
 
-                        class MgmtStaticAddrEnum;
+                        YLeaf af_name; //type: MgmtStaticAddrEnum
+                        YLeaf ipv4_prefix; //type: string
+                        YLeaf ipv6_prefix; //type: string
+
 
 
                 }; // MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_
@@ -467,17 +475,16 @@ class MplsStatic : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value path; //type: uint32
-                    Value type; //type: MgmtStaticPathEnum
-                    Value next_hop_label_type; //type: MgmtStaticNhLblEnum
-                    Value next_hop_label; //type: uint32
-                    Value next_hop_interface_name; //type: string
-                    Value next_hop_ipv4_address_set; //type: boolean
-                    Value next_hop_ipv4_address; //type: string
 
 
-                    class MgmtStaticNhLblEnum;
-                    class MgmtStaticPathEnum;
+                    YLeaf path; //type: uint32
+                    YLeaf type; //type: MgmtStaticPathEnum
+                    YLeaf next_hop_label_type; //type: MgmtStaticNhLblEnum
+                    YLeaf next_hop_label; //type: uint32
+                    YLeaf next_hop_interface_name; //type: string
+                    YLeaf next_hop_ipv4_address_set; //type: boolean
+                    YLeaf next_hop_ipv4_address; //type: string
+
 
 
             }; // MplsStatic::LocalLabels::LocalLabel::PathInfo
@@ -485,8 +492,6 @@ class MplsStatic : public Entity
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::PathInfo> > path_info;
                 std::unique_ptr<Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::Prefix> prefix;
-                class MgmtMplsStaticLabelModeEnum;
-                class MgmtMplsStaticLabelStatusEnum;
 
 
         }; // MplsStatic::LocalLabels::LocalLabel
@@ -509,54 +514,54 @@ class MplsStatic : public Entity
 class MgmtMplsStaticLabelStatusEnum : public Enum
 {
     public:
-        static const Enum::Value not_created;
-        static const Enum::Value vrf_down;
-        static const Enum::Value rewrite_vrf_down;
-        static const Enum::Value lsd_disconnected;
-        static const Enum::Value lsd_failed;
-        static const Enum::Value wait_for_lsd_reply;
-        static const Enum::Value label_created;
-        static const Enum::Value label_create_failed;
-        static const Enum::Value label_rewrite_failed;
-        static const Enum::Value rewrite_next_hop_interface_missing;
-        static const Enum::Value label_discrepancy;
-        static const Enum::Value rewrite_discrepancy;
-        static const Enum::Value label_status_unknown;
+        static const Enum::YLeaf not_created;
+        static const Enum::YLeaf vrf_down;
+        static const Enum::YLeaf rewrite_vrf_down;
+        static const Enum::YLeaf lsd_disconnected;
+        static const Enum::YLeaf lsd_failed;
+        static const Enum::YLeaf wait_for_lsd_reply;
+        static const Enum::YLeaf label_created;
+        static const Enum::YLeaf label_create_failed;
+        static const Enum::YLeaf label_rewrite_failed;
+        static const Enum::YLeaf rewrite_next_hop_interface_missing;
+        static const Enum::YLeaf label_discrepancy;
+        static const Enum::YLeaf rewrite_discrepancy;
+        static const Enum::YLeaf label_status_unknown;
 
 };
 
 class MgmtStaticPathEnum : public Enum
 {
     public:
-        static const Enum::Value cross_connect_path;
-        static const Enum::Value pop_lookup_path;
+        static const Enum::YLeaf cross_connect_path;
+        static const Enum::YLeaf pop_lookup_path;
 
 };
 
 class MgmtStaticNhLblEnum : public Enum
 {
     public:
-        static const Enum::Value out_label;
-        static const Enum::Value out_pop;
-        static const Enum::Value out_explicit_null;
+        static const Enum::YLeaf out_label;
+        static const Enum::YLeaf out_pop;
+        static const Enum::YLeaf out_explicit_null;
 
 };
 
 class MgmtStaticAddrEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 
 class MgmtMplsStaticLabelModeEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value per_prefix;
-        static const Enum::Value per_vrf;
-        static const Enum::Value cross_connect;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf per_prefix;
+        static const Enum::YLeaf per_vrf;
+        static const Enum::YLeaf cross_connect;
 
 };
 

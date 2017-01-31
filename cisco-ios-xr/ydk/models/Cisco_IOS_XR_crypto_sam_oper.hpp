@@ -26,6 +26,7 @@ class Sam : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class SystemInformation : public Entity
     {
         public:
@@ -39,10 +40,11 @@ class Sam : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value is_running; //type: boolean
-            Value prompt_interval; //type: uint32
-            Value is_default_response; //type: boolean
 
+
+            YLeaf is_running; //type: boolean
+            YLeaf prompt_interval; //type: uint32
+            YLeaf is_default_response; //type: boolean
 
 
 
@@ -64,6 +66,7 @@ class Sam : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LogContent : public Entity
         {
             public:
@@ -77,10 +80,11 @@ class Sam : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value number_of_lines; //type: int32
-                Value total_entries; //type: uint32
-                Value entries_shown; //type: uint32
 
+
+                YLeaf number_of_lines; //type: int32
+                YLeaf total_entries; //type: uint32
+                YLeaf entries_shown; //type: uint32
 
             class Logs : public Entity
             {
@@ -95,23 +99,20 @@ class Sam : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value time; //type: string
-                    Value code; //type: LogCodeEnum
-                    Value target_device; //type: string
-                    Value index_; //type: uint32
-                    Value error; //type: LogErrorEnum
-                    Value issuer; //type: CertificateIssuerEnum
-                    Value serial_no; //type: string
-                    Value sam_table_index; //type: uint32
-                    Value update_time; //type: string
-                    Value source_device; //type: string
-                    Value table; //type: LogTablesEnum
 
 
-                    class LogCodeEnum;
-                    class LogErrorEnum;
-                    class CertificateIssuerEnum;
-                    class LogTablesEnum;
+                    YLeaf time; //type: string
+                    YLeaf code; //type: LogCodeEnum
+                    YLeaf target_device; //type: string
+                    YLeaf index_; //type: uint32
+                    YLeaf error; //type: LogErrorEnum
+                    YLeaf issuer; //type: CertificateIssuerEnum
+                    YLeaf serial_no; //type: string
+                    YLeaf sam_table_index; //type: uint32
+                    YLeaf update_time; //type: string
+                    YLeaf source_device; //type: string
+                    YLeaf table; //type: LogTablesEnum
+
 
 
             }; // Sam::LogContents::LogContent::Logs
@@ -144,6 +145,7 @@ class Sam : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Device : public Entity
         {
             public:
@@ -157,8 +159,9 @@ class Sam : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value device_name; //type: string
 
+
+                YLeaf device_name; //type: string
 
             class Certificate : public Entity
             {
@@ -175,6 +178,7 @@ class Sam : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Brief : public Entity
                 {
                     public:
@@ -188,9 +192,10 @@ class Sam : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value location; //type: string
-                        Value certificate_index; //type: uint16
 
+
+                        YLeaf location; //type: string
+                        YLeaf certificate_index; //type: uint16
 
                     class CertificateFlags : public Entity
                     {
@@ -205,11 +210,12 @@ class Sam : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_trusted; //type: boolean
-                            Value is_revoked; //type: boolean
-                            Value is_expired; //type: boolean
-                            Value is_validated; //type: boolean
 
+
+                            YLeaf is_trusted; //type: boolean
+                            YLeaf is_revoked; //type: boolean
+                            YLeaf is_expired; //type: boolean
+                            YLeaf is_validated; //type: boolean
 
 
 
@@ -237,6 +243,7 @@ class Sam : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class CertificateIndex : public Entity
                     {
                         public:
@@ -250,8 +257,9 @@ class Sam : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value index_; //type: int32
 
+
+                            YLeaf index_; //type: int32
 
                         class Detail : public Entity
                         {
@@ -266,9 +274,10 @@ class Sam : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value location; //type: string
-                                Value certificate_index; //type: uint16
 
+
+                                YLeaf location; //type: string
+                                YLeaf certificate_index; //type: uint16
 
                             class CertificateFlags : public Entity
                             {
@@ -283,11 +292,12 @@ class Sam : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value is_trusted; //type: boolean
-                                    Value is_revoked; //type: boolean
-                                    Value is_expired; //type: boolean
-                                    Value is_validated; //type: boolean
 
+
+                                    YLeaf is_trusted; //type: boolean
+                                    YLeaf is_revoked; //type: boolean
+                                    YLeaf is_expired; //type: boolean
+                                    YLeaf is_validated; //type: boolean
 
 
 
@@ -346,6 +356,7 @@ class Sam : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Package : public Entity
         {
             public:
@@ -359,10 +370,11 @@ class Sam : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value package_name; //type: string
-                Value location; //type: string
-                Value certificate_index; //type: uint16
 
+
+                YLeaf package_name; //type: string
+                YLeaf location; //type: string
+                YLeaf certificate_index; //type: uint16
 
             class CertificateFlags : public Entity
             {
@@ -377,11 +389,12 @@ class Sam : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value is_trusted; //type: boolean
-                    Value is_revoked; //type: boolean
-                    Value is_expired; //type: boolean
-                    Value is_validated; //type: boolean
 
+
+                    YLeaf is_trusted; //type: boolean
+                    YLeaf is_revoked; //type: boolean
+                    YLeaf is_expired; //type: boolean
+                    YLeaf is_validated; //type: boolean
 
 
 
@@ -415,6 +428,7 @@ class Sam : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class CertificateRevocation : public Entity
         {
             public:
@@ -428,8 +442,9 @@ class Sam : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value crl_index; //type: int32
 
+
+                YLeaf crl_index; //type: int32
 
             class CertificateRevocationListDetail : public Entity
             {
@@ -444,9 +459,10 @@ class Sam : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value crl_index; //type: uint16
-                    Value updates; //type: string
 
+
+                    YLeaf crl_index; //type: uint16
+                    YLeaf updates; //type: string
 
                 class Issuer : public Entity
                 {
@@ -461,10 +477,11 @@ class Sam : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_name; //type: string
-                        Value organization; //type: string
-                        Value country; //type: string
 
+
+                        YLeaf common_name; //type: string
+                        YLeaf organization; //type: string
+                        YLeaf country; //type: string
 
 
 
@@ -502,9 +519,10 @@ class Sam : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value crl_index; //type: uint16
-            Value updates; //type: string
 
+
+            YLeaf crl_index; //type: uint16
+            YLeaf updates; //type: string
 
         class Issuer : public Entity
         {
@@ -519,10 +537,11 @@ class Sam : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value common_name; //type: string
-                Value organization; //type: string
-                Value country; //type: string
 
+
+                YLeaf common_name; //type: string
+                YLeaf organization; //type: string
+                YLeaf country; //type: string
 
 
 
@@ -549,54 +568,54 @@ class Sam : public Entity
 class LogErrorEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value log_message_error;
-        static const Enum::Value get_issuer_name_failed;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf log_message_error;
+        static const Enum::YLeaf get_issuer_name_failed;
 
 };
 
 class LogCodeEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value sam_server_restared_router_reboot;
-        static const Enum::Value sam_server_restared;
-        static const Enum::Value added_certificate_in_table;
-        static const Enum::Value copied_certificate_in_table;
-        static const Enum::Value certificate_flag_changed;
-        static const Enum::Value validated_certificate;
-        static const Enum::Value certificate_expired_detected;
-        static const Enum::Value certificate_revoked_detected;
-        static const Enum::Value ca_certificate_expired_detected;
-        static const Enum::Value ca_certificate_revoked_detected;
-        static const Enum::Value deleted_certificate_from_table;
-        static const Enum::Value crl_added_updated_in_table;
-        static const Enum::Value checked_memory_digest;
-        static const Enum::Value nvram_digest_mismatch_detected;
-        static const Enum::Value insecure_backup_file_detected;
-        static const Enum::Value error_restore_operation;
-        static const Enum::Value backup_file_on_nvram_deleted;
-        static const Enum::Value sam_log_file_recovered_from_system_database;
-        static const Enum::Value validated_elf;
-        static const Enum::Value namespace_deleted_recovered_by_sam;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf sam_server_restared_router_reboot;
+        static const Enum::YLeaf sam_server_restared;
+        static const Enum::YLeaf added_certificate_in_table;
+        static const Enum::YLeaf copied_certificate_in_table;
+        static const Enum::YLeaf certificate_flag_changed;
+        static const Enum::YLeaf validated_certificate;
+        static const Enum::YLeaf certificate_expired_detected;
+        static const Enum::YLeaf certificate_revoked_detected;
+        static const Enum::YLeaf ca_certificate_expired_detected;
+        static const Enum::YLeaf ca_certificate_revoked_detected;
+        static const Enum::YLeaf deleted_certificate_from_table;
+        static const Enum::YLeaf crl_added_updated_in_table;
+        static const Enum::YLeaf checked_memory_digest;
+        static const Enum::YLeaf nvram_digest_mismatch_detected;
+        static const Enum::YLeaf insecure_backup_file_detected;
+        static const Enum::YLeaf error_restore_operation;
+        static const Enum::YLeaf backup_file_on_nvram_deleted;
+        static const Enum::YLeaf sam_log_file_recovered_from_system_database;
+        static const Enum::YLeaf validated_elf;
+        static const Enum::YLeaf namespace_deleted_recovered_by_sam;
 
 };
 
 class CertificateIssuerEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value code_signing_server_certificate_authority;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf code_signing_server_certificate_authority;
 
 };
 
 class LogTablesEnum : public Enum
 {
     public:
-        static const Enum::Value unkown;
-        static const Enum::Value memory_digest_table;
-        static const Enum::Value system_database_digest;
-        static const Enum::Value sam_tables;
+        static const Enum::YLeaf unkown;
+        static const Enum::YLeaf memory_digest_table;
+        static const Enum::YLeaf system_database_digest;
+        static const Enum::YLeaf sam_tables;
 
 };
 

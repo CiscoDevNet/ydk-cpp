@@ -26,6 +26,7 @@ class Grpc : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Statistics : public Entity
     {
         public:
@@ -39,31 +40,32 @@ class Grpc : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value ct_show_cmd_txt_req_recv; //type: uint64
-            Value ct_show_cmd_txt_res_sent; //type: uint64
-            Value ct_get_config_req_recv; //type: uint64
-            Value ct_get_config_res_sent; //type: uint64
-            Value ct_cli_config_req_recv; //type: uint64
-            Value ct_cli_config_res_sent; //type: uint64
-            Value ct_merge_config_req_recv; //type: uint64
-            Value ct_merge_config_res_sent; //type: uint64
-            Value ct_commit_replace_req_recv; //type: uint64
-            Value ct_commit_replace_res_sent; //type: uint64
-            Value ct_delete_config_req_recv; //type: uint64
-            Value ct_delete_config_res_sent; //type: uint64
-            Value ct_replace_config_req_recv; //type: uint64
-            Value ct_replace_config_res_sent; //type: uint64
-            Value ct_get_oper_req_recv; //type: uint64
-            Value ct_get_oper_res_sent; //type: uint64
-            Value ct_get_current_session; //type: uint32
-            Value transport; //type: string
-            Value address_family; //type: string
-            Value tls; //type: string
-            Value trustpoint; //type: string
-            Value listening_port; //type: int32
-            Value max_req_per_user; //type: uint32
-            Value max_req_total; //type: uint32
 
+
+            YLeaf ct_show_cmd_txt_req_recv; //type: uint64
+            YLeaf ct_show_cmd_txt_res_sent; //type: uint64
+            YLeaf ct_get_config_req_recv; //type: uint64
+            YLeaf ct_get_config_res_sent; //type: uint64
+            YLeaf ct_cli_config_req_recv; //type: uint64
+            YLeaf ct_cli_config_res_sent; //type: uint64
+            YLeaf ct_merge_config_req_recv; //type: uint64
+            YLeaf ct_merge_config_res_sent; //type: uint64
+            YLeaf ct_commit_replace_req_recv; //type: uint64
+            YLeaf ct_commit_replace_res_sent; //type: uint64
+            YLeaf ct_delete_config_req_recv; //type: uint64
+            YLeaf ct_delete_config_res_sent; //type: uint64
+            YLeaf ct_replace_config_req_recv; //type: uint64
+            YLeaf ct_replace_config_res_sent; //type: uint64
+            YLeaf ct_get_oper_req_recv; //type: uint64
+            YLeaf ct_get_oper_res_sent; //type: uint64
+            YLeaf ct_get_current_session; //type: uint32
+            YLeaf transport; //type: string
+            YLeaf address_family; //type: string
+            YLeaf tls; //type: string
+            YLeaf trustpoint; //type: string
+            YLeaf listening_port; //type: int32
+            YLeaf max_req_per_user; //type: uint32
+            YLeaf max_req_total; //type: uint32
 
 
 
@@ -83,31 +85,32 @@ class Grpc : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value ct_show_cmd_txt_req_recv; //type: uint64
-            Value ct_show_cmd_txt_res_sent; //type: uint64
-            Value ct_get_config_req_recv; //type: uint64
-            Value ct_get_config_res_sent; //type: uint64
-            Value ct_cli_config_req_recv; //type: uint64
-            Value ct_cli_config_res_sent; //type: uint64
-            Value ct_merge_config_req_recv; //type: uint64
-            Value ct_merge_config_res_sent; //type: uint64
-            Value ct_commit_replace_req_recv; //type: uint64
-            Value ct_commit_replace_res_sent; //type: uint64
-            Value ct_delete_config_req_recv; //type: uint64
-            Value ct_delete_config_res_sent; //type: uint64
-            Value ct_replace_config_req_recv; //type: uint64
-            Value ct_replace_config_res_sent; //type: uint64
-            Value ct_get_oper_req_recv; //type: uint64
-            Value ct_get_oper_res_sent; //type: uint64
-            Value ct_get_current_session; //type: uint32
-            Value transport; //type: string
-            Value address_family; //type: string
-            Value tls; //type: string
-            Value trustpoint; //type: string
-            Value listening_port; //type: int32
-            Value max_req_per_user; //type: uint32
-            Value max_req_total; //type: uint32
 
+
+            YLeaf ct_show_cmd_txt_req_recv; //type: uint64
+            YLeaf ct_show_cmd_txt_res_sent; //type: uint64
+            YLeaf ct_get_config_req_recv; //type: uint64
+            YLeaf ct_get_config_res_sent; //type: uint64
+            YLeaf ct_cli_config_req_recv; //type: uint64
+            YLeaf ct_cli_config_res_sent; //type: uint64
+            YLeaf ct_merge_config_req_recv; //type: uint64
+            YLeaf ct_merge_config_res_sent; //type: uint64
+            YLeaf ct_commit_replace_req_recv; //type: uint64
+            YLeaf ct_commit_replace_res_sent; //type: uint64
+            YLeaf ct_delete_config_req_recv; //type: uint64
+            YLeaf ct_delete_config_res_sent; //type: uint64
+            YLeaf ct_replace_config_req_recv; //type: uint64
+            YLeaf ct_replace_config_res_sent; //type: uint64
+            YLeaf ct_get_oper_req_recv; //type: uint64
+            YLeaf ct_get_oper_res_sent; //type: uint64
+            YLeaf ct_get_current_session; //type: uint32
+            YLeaf transport; //type: string
+            YLeaf address_family; //type: string
+            YLeaf tls; //type: string
+            YLeaf trustpoint; //type: string
+            YLeaf listening_port; //type: int32
+            YLeaf max_req_per_user; //type: uint32
+            YLeaf max_req_total; //type: uint32
 
 
 

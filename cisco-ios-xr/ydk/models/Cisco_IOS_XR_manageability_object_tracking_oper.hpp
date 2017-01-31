@@ -26,6 +26,7 @@ class ObjectTracking : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class TrackTypeInterface : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class ObjectTracking : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TrackInfo : public Entity
         {
             public:
@@ -54,14 +56,15 @@ class ObjectTracking : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value tracke_name; //type: string
-                Value type; //type: TrackEnum
-                Value track_state; //type: boolean
-                Value state_change_counter; //type: uint32
-                Value seconds_last_change; //type: uint64
-                Value threshold_up; //type: uint32
-                Value threshold_down; //type: uint32
 
+
+                YLeaf tracke_name; //type: string
+                YLeaf type; //type: TrackEnum
+                YLeaf track_state; //type: boolean
+                YLeaf state_change_counter; //type: uint32
+                YLeaf seconds_last_change; //type: uint64
+                YLeaf threshold_up; //type: uint32
+                YLeaf threshold_down; //type: uint32
 
             class TrackTypeInfo : public Entity
             {
@@ -76,8 +79,9 @@ class ObjectTracking : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value discriminant; //type: TrackEnum
 
+
+                    YLeaf discriminant; //type: TrackEnum
 
                 class InterfaceTracks : public Entity
                 {
@@ -92,8 +96,9 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
 
 
@@ -113,11 +118,12 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value prefix; //type: uint32
-                        Value prefix_length; //type: uint32
-                        Value vrf; //type: string
-                        Value next_hop; //type: string
 
+
+                        YLeaf prefix; //type: uint32
+                        YLeaf prefix_length; //type: uint32
+                        YLeaf vrf; //type: string
+                        YLeaf next_hop; //type: string
 
 
 
@@ -137,10 +143,11 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipsla_op_id; //type: uint32
-                        Value rtt; //type: uint32
-                        Value return_code; //type: uint32
 
+
+                        YLeaf ipsla_op_id; //type: uint32
+                        YLeaf rtt; //type: uint32
+                        YLeaf return_code; //type: uint32
 
 
 
@@ -160,11 +167,12 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value destination_address; //type: uint32
-                        Value rate; //type: uint32
-                        Value debounce_count; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf destination_address; //type: uint32
+                        YLeaf rate; //type: uint32
+                        YLeaf debounce_count; //type: uint32
 
 
 
@@ -175,7 +183,6 @@ class ObjectTracking : public Entity
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks> interface_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks> ipsla_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks> route_tracks;
-                    class TrackEnum;
 
 
             }; // ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo
@@ -196,6 +203,7 @@ class ObjectTracking : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BoolTrackInfo : public Entity
                 {
                     public:
@@ -209,10 +217,11 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value object_name; //type: string
-                        Value track_state; //type: boolean
-                        Value with_not; //type: boolean
 
+
+                        YLeaf object_name; //type: string
+                        YLeaf track_state; //type: boolean
+                        YLeaf with_not; //type: boolean
 
 
 
@@ -240,6 +249,7 @@ class ObjectTracking : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ThresholdTrackInfo : public Entity
                 {
                     public:
@@ -253,10 +263,11 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value object_name; //type: string
-                        Value track_state; //type: boolean
-                        Value weight; //type: uint32
 
+
+                        YLeaf object_name; //type: string
+                        YLeaf track_state; //type: boolean
+                        YLeaf weight; //type: uint32
 
 
 
@@ -284,6 +295,7 @@ class ObjectTracking : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class InterfaceTrackingInfo : public Entity
                 {
                     public:
@@ -297,8 +309,9 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
 
 
@@ -324,9 +337,10 @@ class ObjectTracking : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value time_remaining; //type: uint32
-                    Value track_state; //type: boolean
 
+
+                    YLeaf time_remaining; //type: uint32
+                    YLeaf track_state; //type: boolean
 
 
 
@@ -338,7 +352,6 @@ class ObjectTracking : public Entity
                 std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks> threshold_tracks;
                 std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo> track_type_info;
                 std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces> tracking_interaces;
-                class TrackEnum;
 
 
         }; // ObjectTracking::TrackTypeInterface::TrackInfo
@@ -365,6 +378,7 @@ class ObjectTracking : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TrackBrief : public Entity
         {
             public:
@@ -378,8 +392,9 @@ class ObjectTracking : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value track_name; //type: string
 
+
+                YLeaf track_name; //type: string
 
             class TrackInfoBrief : public Entity
             {
@@ -394,10 +409,11 @@ class ObjectTracking : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value tracke_name; //type: string
-                    Value type; //type: TrackEnum
-                    Value track_state; //type: boolean
 
+
+                    YLeaf tracke_name; //type: string
+                    YLeaf type; //type: TrackEnum
+                    YLeaf track_state; //type: boolean
 
                 class TrackTypeInfo : public Entity
                 {
@@ -412,8 +428,9 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value discriminant; //type: TrackEnum
 
+
+                        YLeaf discriminant; //type: TrackEnum
 
                     class InterfaceTracks : public Entity
                     {
@@ -428,8 +445,9 @@ class ObjectTracking : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
 
 
 
@@ -449,11 +467,12 @@ class ObjectTracking : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix; //type: uint32
-                            Value prefix_length; //type: uint32
-                            Value vrf; //type: string
-                            Value next_hop; //type: string
 
+
+                            YLeaf prefix; //type: uint32
+                            YLeaf prefix_length; //type: uint32
+                            YLeaf vrf; //type: string
+                            YLeaf next_hop; //type: string
 
 
 
@@ -473,10 +492,11 @@ class ObjectTracking : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipsla_op_id; //type: uint32
-                            Value rtt; //type: uint32
-                            Value return_code; //type: uint32
 
+
+                            YLeaf ipsla_op_id; //type: uint32
+                            YLeaf rtt; //type: uint32
+                            YLeaf return_code; //type: uint32
 
 
 
@@ -496,11 +516,12 @@ class ObjectTracking : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value destination_address; //type: uint32
-                            Value rate; //type: uint32
-                            Value debounce_count; //type: uint32
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf destination_address; //type: uint32
+                            YLeaf rate; //type: uint32
+                            YLeaf debounce_count; //type: uint32
 
 
 
@@ -511,14 +532,12 @@ class ObjectTracking : public Entity
                         std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks> interface_tracks;
                         std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks> ipsla_tracks;
                         std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks> route_tracks;
-                        class TrackEnum;
 
 
                 }; // ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo
 
 
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo> track_type_info;
-                    class TrackEnum;
 
 
             }; // ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief
@@ -551,6 +570,7 @@ class ObjectTracking : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TrackInfo : public Entity
         {
             public:
@@ -564,14 +584,15 @@ class ObjectTracking : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value tracke_name; //type: string
-                Value type; //type: TrackEnum
-                Value track_state; //type: boolean
-                Value state_change_counter; //type: uint32
-                Value seconds_last_change; //type: uint64
-                Value threshold_up; //type: uint32
-                Value threshold_down; //type: uint32
 
+
+                YLeaf tracke_name; //type: string
+                YLeaf type; //type: TrackEnum
+                YLeaf track_state; //type: boolean
+                YLeaf state_change_counter; //type: uint32
+                YLeaf seconds_last_change; //type: uint64
+                YLeaf threshold_up; //type: uint32
+                YLeaf threshold_down; //type: uint32
 
             class TrackTypeInfo : public Entity
             {
@@ -586,8 +607,9 @@ class ObjectTracking : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value discriminant; //type: TrackEnum
 
+
+                    YLeaf discriminant; //type: TrackEnum
 
                 class InterfaceTracks : public Entity
                 {
@@ -602,8 +624,9 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
 
 
@@ -623,11 +646,12 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value prefix; //type: uint32
-                        Value prefix_length; //type: uint32
-                        Value vrf; //type: string
-                        Value next_hop; //type: string
 
+
+                        YLeaf prefix; //type: uint32
+                        YLeaf prefix_length; //type: uint32
+                        YLeaf vrf; //type: string
+                        YLeaf next_hop; //type: string
 
 
 
@@ -647,10 +671,11 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipsla_op_id; //type: uint32
-                        Value rtt; //type: uint32
-                        Value return_code; //type: uint32
 
+
+                        YLeaf ipsla_op_id; //type: uint32
+                        YLeaf rtt; //type: uint32
+                        YLeaf return_code; //type: uint32
 
 
 
@@ -670,11 +695,12 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value destination_address; //type: uint32
-                        Value rate; //type: uint32
-                        Value debounce_count; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf destination_address; //type: uint32
+                        YLeaf rate; //type: uint32
+                        YLeaf debounce_count; //type: uint32
 
 
 
@@ -685,7 +711,6 @@ class ObjectTracking : public Entity
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks> interface_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks> ipsla_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks> route_tracks;
-                    class TrackEnum;
 
 
             }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo
@@ -706,6 +731,7 @@ class ObjectTracking : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BoolTrackInfo : public Entity
                 {
                     public:
@@ -719,10 +745,11 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value object_name; //type: string
-                        Value track_state; //type: boolean
-                        Value with_not; //type: boolean
 
+
+                        YLeaf object_name; //type: string
+                        YLeaf track_state; //type: boolean
+                        YLeaf with_not; //type: boolean
 
 
 
@@ -750,6 +777,7 @@ class ObjectTracking : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ThresholdTrackInfo : public Entity
                 {
                     public:
@@ -763,10 +791,11 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value object_name; //type: string
-                        Value track_state; //type: boolean
-                        Value weight; //type: uint32
 
+
+                        YLeaf object_name; //type: string
+                        YLeaf track_state; //type: boolean
+                        YLeaf weight; //type: uint32
 
 
 
@@ -794,6 +823,7 @@ class ObjectTracking : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class InterfaceTrackingInfo : public Entity
                 {
                     public:
@@ -807,8 +837,9 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
 
 
@@ -834,9 +865,10 @@ class ObjectTracking : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value time_remaining; //type: uint32
-                    Value track_state; //type: boolean
 
+
+                    YLeaf time_remaining; //type: uint32
+                    YLeaf track_state; //type: boolean
 
 
 
@@ -848,7 +880,6 @@ class ObjectTracking : public Entity
                 std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks> threshold_tracks;
                 std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo> track_type_info;
                 std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces> tracking_interaces;
-                class TrackEnum;
 
 
         }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo
@@ -875,6 +906,7 @@ class ObjectTracking : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TrackInfoBrief : public Entity
         {
             public:
@@ -888,10 +920,11 @@ class ObjectTracking : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value tracke_name; //type: string
-                Value type; //type: TrackEnum
-                Value track_state; //type: boolean
 
+
+                YLeaf tracke_name; //type: string
+                YLeaf type; //type: TrackEnum
+                YLeaf track_state; //type: boolean
 
             class TrackTypeInfo : public Entity
             {
@@ -906,8 +939,9 @@ class ObjectTracking : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value discriminant; //type: TrackEnum
 
+
+                    YLeaf discriminant; //type: TrackEnum
 
                 class InterfaceTracks : public Entity
                 {
@@ -922,8 +956,9 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
 
 
@@ -943,11 +978,12 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value prefix; //type: uint32
-                        Value prefix_length; //type: uint32
-                        Value vrf; //type: string
-                        Value next_hop; //type: string
 
+
+                        YLeaf prefix; //type: uint32
+                        YLeaf prefix_length; //type: uint32
+                        YLeaf vrf; //type: string
+                        YLeaf next_hop; //type: string
 
 
 
@@ -967,10 +1003,11 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipsla_op_id; //type: uint32
-                        Value rtt; //type: uint32
-                        Value return_code; //type: uint32
 
+
+                        YLeaf ipsla_op_id; //type: uint32
+                        YLeaf rtt; //type: uint32
+                        YLeaf return_code; //type: uint32
 
 
 
@@ -990,11 +1027,12 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value destination_address; //type: uint32
-                        Value rate; //type: uint32
-                        Value debounce_count; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf destination_address; //type: uint32
+                        YLeaf rate; //type: uint32
+                        YLeaf debounce_count; //type: uint32
 
 
 
@@ -1005,14 +1043,12 @@ class ObjectTracking : public Entity
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks> interface_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks> ipsla_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks> route_tracks;
-                    class TrackEnum;
 
 
             }; // ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo
 
 
                 std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo> track_type_info;
-                class TrackEnum;
 
 
         }; // ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief
@@ -1039,6 +1075,7 @@ class ObjectTracking : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Track : public Entity
         {
             public:
@@ -1052,8 +1089,9 @@ class ObjectTracking : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value track_name; //type: string
 
+
+                YLeaf track_name; //type: string
 
             class TrackInfo : public Entity
             {
@@ -1068,14 +1106,15 @@ class ObjectTracking : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value tracke_name; //type: string
-                    Value type; //type: TrackEnum
-                    Value track_state; //type: boolean
-                    Value state_change_counter; //type: uint32
-                    Value seconds_last_change; //type: uint64
-                    Value threshold_up; //type: uint32
-                    Value threshold_down; //type: uint32
 
+
+                    YLeaf tracke_name; //type: string
+                    YLeaf type; //type: TrackEnum
+                    YLeaf track_state; //type: boolean
+                    YLeaf state_change_counter; //type: uint32
+                    YLeaf seconds_last_change; //type: uint64
+                    YLeaf threshold_up; //type: uint32
+                    YLeaf threshold_down; //type: uint32
 
                 class TrackTypeInfo : public Entity
                 {
@@ -1090,8 +1129,9 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value discriminant; //type: TrackEnum
 
+
+                        YLeaf discriminant; //type: TrackEnum
 
                     class InterfaceTracks : public Entity
                     {
@@ -1106,8 +1146,9 @@ class ObjectTracking : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
 
 
 
@@ -1127,11 +1168,12 @@ class ObjectTracking : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix; //type: uint32
-                            Value prefix_length; //type: uint32
-                            Value vrf; //type: string
-                            Value next_hop; //type: string
 
+
+                            YLeaf prefix; //type: uint32
+                            YLeaf prefix_length; //type: uint32
+                            YLeaf vrf; //type: string
+                            YLeaf next_hop; //type: string
 
 
 
@@ -1151,10 +1193,11 @@ class ObjectTracking : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipsla_op_id; //type: uint32
-                            Value rtt; //type: uint32
-                            Value return_code; //type: uint32
 
+
+                            YLeaf ipsla_op_id; //type: uint32
+                            YLeaf rtt; //type: uint32
+                            YLeaf return_code; //type: uint32
 
 
 
@@ -1174,11 +1217,12 @@ class ObjectTracking : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value destination_address; //type: uint32
-                            Value rate; //type: uint32
-                            Value debounce_count; //type: uint32
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf destination_address; //type: uint32
+                            YLeaf rate; //type: uint32
+                            YLeaf debounce_count; //type: uint32
 
 
 
@@ -1189,7 +1233,6 @@ class ObjectTracking : public Entity
                         std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks> interface_tracks;
                         std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks> ipsla_tracks;
                         std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks> route_tracks;
-                        class TrackEnum;
 
 
                 }; // ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo
@@ -1210,6 +1253,7 @@ class ObjectTracking : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BoolTrackInfo : public Entity
                     {
                         public:
@@ -1223,10 +1267,11 @@ class ObjectTracking : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value object_name; //type: string
-                            Value track_state; //type: boolean
-                            Value with_not; //type: boolean
 
+
+                            YLeaf object_name; //type: string
+                            YLeaf track_state; //type: boolean
+                            YLeaf with_not; //type: boolean
 
 
 
@@ -1254,6 +1299,7 @@ class ObjectTracking : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ThresholdTrackInfo : public Entity
                     {
                         public:
@@ -1267,10 +1313,11 @@ class ObjectTracking : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value object_name; //type: string
-                            Value track_state; //type: boolean
-                            Value weight; //type: uint32
 
+
+                            YLeaf object_name; //type: string
+                            YLeaf track_state; //type: boolean
+                            YLeaf weight; //type: uint32
 
 
 
@@ -1298,6 +1345,7 @@ class ObjectTracking : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class InterfaceTrackingInfo : public Entity
                     {
                         public:
@@ -1311,8 +1359,9 @@ class ObjectTracking : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
 
 
 
@@ -1338,9 +1387,10 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value time_remaining; //type: uint32
-                        Value track_state; //type: boolean
 
+
+                        YLeaf time_remaining; //type: uint32
+                        YLeaf track_state; //type: boolean
 
 
 
@@ -1352,7 +1402,6 @@ class ObjectTracking : public Entity
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks> threshold_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo> track_type_info;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces> tracking_interaces;
-                    class TrackEnum;
 
 
             }; // ObjectTracking::Tracks::Track::TrackInfo
@@ -1385,6 +1434,7 @@ class ObjectTracking : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TrackInfoBrief : public Entity
         {
             public:
@@ -1398,10 +1448,11 @@ class ObjectTracking : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value tracke_name; //type: string
-                Value type; //type: TrackEnum
-                Value track_state; //type: boolean
 
+
+                YLeaf tracke_name; //type: string
+                YLeaf type; //type: TrackEnum
+                YLeaf track_state; //type: boolean
 
             class TrackTypeInfo : public Entity
             {
@@ -1416,8 +1467,9 @@ class ObjectTracking : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value discriminant; //type: TrackEnum
 
+
+                    YLeaf discriminant; //type: TrackEnum
 
                 class InterfaceTracks : public Entity
                 {
@@ -1432,8 +1484,9 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
 
 
@@ -1453,11 +1506,12 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value prefix; //type: uint32
-                        Value prefix_length; //type: uint32
-                        Value vrf; //type: string
-                        Value next_hop; //type: string
 
+
+                        YLeaf prefix; //type: uint32
+                        YLeaf prefix_length; //type: uint32
+                        YLeaf vrf; //type: string
+                        YLeaf next_hop; //type: string
 
 
 
@@ -1477,10 +1531,11 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipsla_op_id; //type: uint32
-                        Value rtt; //type: uint32
-                        Value return_code; //type: uint32
 
+
+                        YLeaf ipsla_op_id; //type: uint32
+                        YLeaf rtt; //type: uint32
+                        YLeaf return_code; //type: uint32
 
 
 
@@ -1500,11 +1555,12 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value destination_address; //type: uint32
-                        Value rate; //type: uint32
-                        Value debounce_count; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf destination_address; //type: uint32
+                        YLeaf rate; //type: uint32
+                        YLeaf debounce_count; //type: uint32
 
 
 
@@ -1515,14 +1571,12 @@ class ObjectTracking : public Entity
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks> interface_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks> ipsla_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks> route_tracks;
-                    class TrackEnum;
 
 
             }; // ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo
 
 
                 std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo> track_type_info;
-                class TrackEnum;
 
 
         }; // ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief
@@ -1549,6 +1603,7 @@ class ObjectTracking : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TrackInfo : public Entity
         {
             public:
@@ -1562,14 +1617,15 @@ class ObjectTracking : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value tracke_name; //type: string
-                Value type; //type: TrackEnum
-                Value track_state; //type: boolean
-                Value state_change_counter; //type: uint32
-                Value seconds_last_change; //type: uint64
-                Value threshold_up; //type: uint32
-                Value threshold_down; //type: uint32
 
+
+                YLeaf tracke_name; //type: string
+                YLeaf type; //type: TrackEnum
+                YLeaf track_state; //type: boolean
+                YLeaf state_change_counter; //type: uint32
+                YLeaf seconds_last_change; //type: uint64
+                YLeaf threshold_up; //type: uint32
+                YLeaf threshold_down; //type: uint32
 
             class TrackTypeInfo : public Entity
             {
@@ -1584,8 +1640,9 @@ class ObjectTracking : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value discriminant; //type: TrackEnum
 
+
+                    YLeaf discriminant; //type: TrackEnum
 
                 class InterfaceTracks : public Entity
                 {
@@ -1600,8 +1657,9 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
 
 
@@ -1621,11 +1679,12 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value prefix; //type: uint32
-                        Value prefix_length; //type: uint32
-                        Value vrf; //type: string
-                        Value next_hop; //type: string
 
+
+                        YLeaf prefix; //type: uint32
+                        YLeaf prefix_length; //type: uint32
+                        YLeaf vrf; //type: string
+                        YLeaf next_hop; //type: string
 
 
 
@@ -1645,10 +1704,11 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipsla_op_id; //type: uint32
-                        Value rtt; //type: uint32
-                        Value return_code; //type: uint32
 
+
+                        YLeaf ipsla_op_id; //type: uint32
+                        YLeaf rtt; //type: uint32
+                        YLeaf return_code; //type: uint32
 
 
 
@@ -1668,11 +1728,12 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value destination_address; //type: uint32
-                        Value rate; //type: uint32
-                        Value debounce_count; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf destination_address; //type: uint32
+                        YLeaf rate; //type: uint32
+                        YLeaf debounce_count; //type: uint32
 
 
 
@@ -1683,7 +1744,6 @@ class ObjectTracking : public Entity
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks> interface_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks> ipsla_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks> route_tracks;
-                    class TrackEnum;
 
 
             }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo
@@ -1704,6 +1764,7 @@ class ObjectTracking : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BoolTrackInfo : public Entity
                 {
                     public:
@@ -1717,10 +1778,11 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value object_name; //type: string
-                        Value track_state; //type: boolean
-                        Value with_not; //type: boolean
 
+
+                        YLeaf object_name; //type: string
+                        YLeaf track_state; //type: boolean
+                        YLeaf with_not; //type: boolean
 
 
 
@@ -1748,6 +1810,7 @@ class ObjectTracking : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ThresholdTrackInfo : public Entity
                 {
                     public:
@@ -1761,10 +1824,11 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value object_name; //type: string
-                        Value track_state; //type: boolean
-                        Value weight; //type: uint32
 
+
+                        YLeaf object_name; //type: string
+                        YLeaf track_state; //type: boolean
+                        YLeaf weight; //type: uint32
 
 
 
@@ -1792,6 +1856,7 @@ class ObjectTracking : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class InterfaceTrackingInfo : public Entity
                 {
                     public:
@@ -1805,8 +1870,9 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
 
 
@@ -1832,9 +1898,10 @@ class ObjectTracking : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value time_remaining; //type: uint32
-                    Value track_state; //type: boolean
 
+
+                    YLeaf time_remaining; //type: uint32
+                    YLeaf track_state; //type: boolean
 
 
 
@@ -1846,7 +1913,6 @@ class ObjectTracking : public Entity
                 std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks> threshold_tracks;
                 std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo> track_type_info;
                 std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces> tracking_interaces;
-                class TrackEnum;
 
 
         }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo
@@ -1873,6 +1939,7 @@ class ObjectTracking : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TrackInfoBrief : public Entity
         {
             public:
@@ -1886,10 +1953,11 @@ class ObjectTracking : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value tracke_name; //type: string
-                Value type; //type: TrackEnum
-                Value track_state; //type: boolean
 
+
+                YLeaf tracke_name; //type: string
+                YLeaf type; //type: TrackEnum
+                YLeaf track_state; //type: boolean
 
             class TrackTypeInfo : public Entity
             {
@@ -1904,8 +1972,9 @@ class ObjectTracking : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value discriminant; //type: TrackEnum
 
+
+                    YLeaf discriminant; //type: TrackEnum
 
                 class InterfaceTracks : public Entity
                 {
@@ -1920,8 +1989,9 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
 
 
@@ -1941,11 +2011,12 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value prefix; //type: uint32
-                        Value prefix_length; //type: uint32
-                        Value vrf; //type: string
-                        Value next_hop; //type: string
 
+
+                        YLeaf prefix; //type: uint32
+                        YLeaf prefix_length; //type: uint32
+                        YLeaf vrf; //type: string
+                        YLeaf next_hop; //type: string
 
 
 
@@ -1965,10 +2036,11 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipsla_op_id; //type: uint32
-                        Value rtt; //type: uint32
-                        Value return_code; //type: uint32
 
+
+                        YLeaf ipsla_op_id; //type: uint32
+                        YLeaf rtt; //type: uint32
+                        YLeaf return_code; //type: uint32
 
 
 
@@ -1988,11 +2060,12 @@ class ObjectTracking : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value destination_address; //type: uint32
-                        Value rate; //type: uint32
-                        Value debounce_count; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf destination_address; //type: uint32
+                        YLeaf rate; //type: uint32
+                        YLeaf debounce_count; //type: uint32
 
 
 
@@ -2003,14 +2076,12 @@ class ObjectTracking : public Entity
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks> interface_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks> ipsla_tracks;
                     std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks> route_tracks;
-                    class TrackEnum;
 
 
             }; // ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo
 
 
                 std::unique_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo> track_type_info;
-                class TrackEnum;
 
 
         }; // ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief
@@ -2038,15 +2109,15 @@ class ObjectTracking : public Entity
 class TrackEnum : public Enum
 {
     public:
-        static const Enum::Value interface_type;
-        static const Enum::Value route_type;
-        static const Enum::Value bool_and_type;
-        static const Enum::Value bool_or_type;
-        static const Enum::Value ipsla_type;
-        static const Enum::Value undefined_type;
-        static const Enum::Value threshold_weight;
-        static const Enum::Value threshold_percentage;
-        static const Enum::Value bfd_type;
+        static const Enum::YLeaf interface_type;
+        static const Enum::YLeaf route_type;
+        static const Enum::YLeaf bool_and_type;
+        static const Enum::YLeaf bool_or_type;
+        static const Enum::YLeaf ipsla_type;
+        static const Enum::YLeaf undefined_type;
+        static const Enum::YLeaf threshold_weight;
+        static const Enum::YLeaf threshold_percentage;
+        static const Enum::YLeaf bfd_type;
 
 };
 

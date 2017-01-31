@@ -26,6 +26,7 @@ class Keychain : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Keies : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Keychain : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Key : public Entity
         {
             public:
@@ -54,9 +56,10 @@ class Keychain : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value key_name; //type: string
-                Value accept_tolerance; //type: int32
 
+
+                YLeaf key_name; //type: string
+                YLeaf accept_tolerance; //type: int32
 
             class Key_ : public Entity
             {
@@ -73,6 +76,7 @@ class Keychain : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class KeyId : public Entity
                 {
                     public:
@@ -86,10 +90,11 @@ class Keychain : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value key_string; //type: string
-                        Value key_id; //type: uint64
-                        Value cryptographic_algorithm; //type: CrytoAlgoEnum
 
+
+                        YLeaf key_string; //type: string
+                        YLeaf key_id; //type: uint64
+                        YLeaf cryptographic_algorithm; //type: CrytoAlgoEnum
 
                     class SendLifetime : public Entity
                     {
@@ -104,12 +109,13 @@ class Keychain : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start; //type: string
-                            Value end; //type: string
-                            Value duration; //type: int32
-                            Value is_always_valid; //type: boolean
-                            Value is_valid_now; //type: boolean
 
+
+                            YLeaf start; //type: string
+                            YLeaf end; //type: string
+                            YLeaf duration; //type: int32
+                            YLeaf is_always_valid; //type: boolean
+                            YLeaf is_valid_now; //type: boolean
 
 
 
@@ -129,12 +135,13 @@ class Keychain : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start; //type: string
-                            Value end; //type: string
-                            Value duration; //type: int32
-                            Value is_always_valid; //type: boolean
-                            Value is_valid_now; //type: boolean
 
+
+                            YLeaf start; //type: string
+                            YLeaf end; //type: string
+                            YLeaf duration; //type: int32
+                            YLeaf is_always_valid; //type: boolean
+                            YLeaf is_valid_now; //type: boolean
 
 
 
@@ -143,7 +150,6 @@ class Keychain : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_lib_keychain_oper::Keychain::Keies::Key::Key_::KeyId::AcceptLifetime> accept_lifetime;
                         std::unique_ptr<Cisco_IOS_XR_lib_keychain_oper::Keychain::Keies::Key::Key_::KeyId::SendLifetime> send_lifetime;
-                        class CrytoAlgoEnum;
 
 
                 }; // Keychain::Keies::Key::Key_::KeyId
@@ -176,12 +182,12 @@ class Keychain : public Entity
 class CrytoAlgoEnum : public Enum
 {
     public:
-        static const Enum::Value not_configured;
-        static const Enum::Value hmac_sha1_12;
-        static const Enum::Value md5;
-        static const Enum::Value sha1;
-        static const Enum::Value hmac_md5;
-        static const Enum::Value hmac_sha1_20;
+        static const Enum::YLeaf not_configured;
+        static const Enum::YLeaf hmac_sha1_12;
+        static const Enum::YLeaf md5;
+        static const Enum::YLeaf sha1;
+        static const Enum::YLeaf hmac_md5;
+        static const Enum::YLeaf hmac_sha1_20;
 
 };
 

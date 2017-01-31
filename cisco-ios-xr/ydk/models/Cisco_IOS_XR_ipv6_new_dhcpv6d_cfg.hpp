@@ -24,9 +24,10 @@ class Dhcpv6 : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable; //type: empty
-        Value allow_duid_change; //type: empty
 
+
+        YLeaf enable; //type: empty
+        YLeaf allow_duid_change; //type: empty
 
     class Database : public Entity
     {
@@ -41,12 +42,13 @@ class Dhcpv6 : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value proxy; //type: empty
-            Value server; //type: empty
-            Value relay; //type: empty
-            Value full_write_interval; //type: uint32
-            Value incremental_write_interval; //type: uint32
 
+
+            YLeaf proxy; //type: empty
+            YLeaf server; //type: empty
+            YLeaf relay; //type: empty
+            YLeaf full_write_interval; //type: uint32
+            YLeaf incremental_write_interval; //type: uint32
 
 
 
@@ -68,6 +70,7 @@ class Dhcpv6 : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Profile : public Entity
         {
             public:
@@ -81,8 +84,9 @@ class Dhcpv6 : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value profile_name; //type: string
 
+
+                YLeaf profile_name; //type: string
 
             class Relay : public Entity
             {
@@ -97,9 +101,10 @@ class Dhcpv6 : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enable; //type: empty
-                    Value iana_route_add; //type: empty
 
+
+                    YLeaf enable; //type: empty
+                    YLeaf iana_route_add; //type: empty
 
                 class HelperAddresses : public Entity
                 {
@@ -116,6 +121,7 @@ class Dhcpv6 : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class HelperAddress : public Entity
                     {
                         public:
@@ -129,9 +135,10 @@ class Dhcpv6 : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vrf_name; //type: string
-                            Value helper_address; //type: string
 
+
+                            YLeaf vrf_name; //type: string
+                            YLeaf helper_address; //type: string
 
 
 
@@ -163,10 +170,11 @@ class Dhcpv6 : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value link_address; //type: string
-                    Value src_intf_name; //type: string
-                    Value enable; //type: empty
 
+
+                    YLeaf link_address; //type: string
+                    YLeaf src_intf_name; //type: string
+                    YLeaf enable; //type: empty
 
                 class Interfaces : public Entity
                 {
@@ -183,6 +191,7 @@ class Dhcpv6 : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Interface : public Entity
                     {
                         public:
@@ -196,9 +205,10 @@ class Dhcpv6 : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value interface_id; //type: string
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf interface_id; //type: string
 
 
 
@@ -226,6 +236,7 @@ class Dhcpv6 : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Option : public Entity
                     {
                         public:
@@ -239,11 +250,12 @@ class Dhcpv6 : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value subscriber_id; //type: SubscriberIdEnum
-                            Value link_layer_addr; //type: LinkLayerAddrEnum
-                            Value remote_i_dreceived; //type: int32
-                            Value remote_id; //type: string
 
+
+                            YLeaf subscriber_id; //type: SubscriberIdEnum
+                            YLeaf link_layer_addr; //type: LinkLayerAddrEnum
+                            YLeaf remote_i_dreceived; //type: int32
+                            YLeaf remote_id; //type: string
 
                         class InterfaceId : public Entity
                         {
@@ -258,18 +270,16 @@ class Dhcpv6 : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value insert; //type: InsertEnum
 
 
-                                class InsertEnum;
+                                YLeaf insert; //type: InsertEnum
+
 
 
                         }; // Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId
 
 
                             std::unique_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId> interface_id;
-                            class LinkLayerAddrEnum;
-                            class SubscriberIdEnum;
 
 
                     }; // Dhcpv6::Profiles::Profile::Proxy::Relay::Option
@@ -296,6 +306,7 @@ class Dhcpv6 : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Vrf : public Entity
                     {
                         public:
@@ -309,8 +320,9 @@ class Dhcpv6 : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vrf_name; //type: string
 
+
+                            YLeaf vrf_name; //type: string
 
                         class HelperAddresses : public Entity
                         {
@@ -327,6 +339,7 @@ class Dhcpv6 : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class HelperAddress : public Entity
                             {
                                 public:
@@ -340,10 +353,11 @@ class Dhcpv6 : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value helper_address; //type: string
-                                    Value out_interface; //type: string
-                                    Value any_out_interface; //type: empty
 
+
+                                    YLeaf helper_address; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf any_out_interface; //type: empty
 
 
 
@@ -383,6 +397,7 @@ class Dhcpv6 : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Class_ : public Entity
                     {
                         public:
@@ -396,9 +411,10 @@ class Dhcpv6 : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value class_name; //type: string
-                            Value link_address; //type: string
 
+
+                            YLeaf class_name; //type: string
+                            YLeaf link_address; //type: string
 
                         class HelperAddresses : public Entity
                         {
@@ -415,6 +431,7 @@ class Dhcpv6 : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class HelperAddress : public Entity
                             {
                                 public:
@@ -428,9 +445,10 @@ class Dhcpv6 : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value vrf_name; //type: string
-                                    Value helper_address; //type: string
 
+
+                                    YLeaf vrf_name; //type: string
+                                    YLeaf helper_address; //type: string
 
 
 
@@ -470,6 +488,7 @@ class Dhcpv6 : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Mac : public Entity
                     {
                         public:
@@ -485,6 +504,7 @@ class Dhcpv6 : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Throttle : public Entity
                         {
                             public:
@@ -498,10 +518,11 @@ class Dhcpv6 : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value limit; //type: uint32
-                                Value request; //type: uint32
-                                Value block; //type: uint32
 
+
+                                YLeaf limit; //type: uint32
+                                YLeaf request; //type: uint32
+                                YLeaf block; //type: uint32
 
 
 
@@ -543,14 +564,15 @@ class Dhcpv6 : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value address_pool; //type: string
-                    Value aftr_name; //type: string
-                    Value domain_name; //type: string
-                    Value preference; //type: uint32
-                    Value rapid_commit; //type: empty
-                    Value enable; //type: empty
-                    Value prefix_pool; //type: string
 
+
+                    YLeaf address_pool; //type: string
+                    YLeaf aftr_name; //type: string
+                    YLeaf domain_name; //type: string
+                    YLeaf preference; //type: uint32
+                    YLeaf rapid_commit; //type: empty
+                    YLeaf enable; //type: empty
+                    YLeaf prefix_pool; //type: string
 
                 class Sessions : public Entity
                 {
@@ -565,6 +587,7 @@ class Dhcpv6 : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class Mac : public Entity
@@ -582,6 +605,7 @@ class Dhcpv6 : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Throttle : public Entity
                         {
                             public:
@@ -595,10 +619,11 @@ class Dhcpv6 : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value limit; //type: uint32
-                                Value request; //type: uint32
-                                Value block; //type: uint32
 
+
+                                YLeaf limit; //type: uint32
+                                YLeaf request; //type: uint32
+                                YLeaf block; //type: uint32
 
 
 
@@ -630,8 +655,9 @@ class Dhcpv6 : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        ValueList dns_server; //type: list of  string
 
+
+                        YLeafList dns_server; //type: list of  string
 
 
 
@@ -653,6 +679,7 @@ class Dhcpv6 : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Class_ : public Entity
                     {
                         public:
@@ -666,12 +693,13 @@ class Dhcpv6 : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value class_name; //type: string
-                            Value address_pool; //type: string
-                            Value domain_name; //type: string
-                            Value preference; //type: uint32
-                            Value prefix_pool; //type: string
 
+
+                            YLeaf class_name; //type: string
+                            YLeaf address_pool; //type: string
+                            YLeaf domain_name; //type: string
+                            YLeaf preference; //type: uint32
+                            YLeaf prefix_pool; //type: string
 
                         class DnsServers : public Entity
                         {
@@ -686,8 +714,9 @@ class Dhcpv6 : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                ValueList dns_server; //type: list of  string
 
+
+                                YLeafList dns_server; //type: list of  string
 
 
 
@@ -719,11 +748,12 @@ class Dhcpv6 : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value days; //type: uint32
-                        Value hours; //type: uint32
-                        Value minutes; //type: uint32
-                        Value infinite; //type: string
 
+
+                        YLeaf days; //type: uint32
+                        YLeaf hours; //type: uint32
+                        YLeaf minutes; //type: uint32
+                        YLeaf infinite; //type: string
 
 
 
@@ -745,6 +775,7 @@ class Dhcpv6 : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class VendorOptions : public Entity
                     {
                         public:
@@ -758,9 +789,10 @@ class Dhcpv6 : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value type; //type: string
-                            Value vendor_options; //type: string
 
+
+                            YLeaf type; //type: string
+                            YLeaf vendor_options; //type: string
 
 
 
@@ -812,6 +844,7 @@ class Dhcpv6 : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -825,8 +858,9 @@ class Dhcpv6 : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
 
+
+                YLeaf interface_name; //type: string
 
             class Pppoe : public Entity
             {
@@ -841,8 +875,9 @@ class Dhcpv6 : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value profile; //type: string
 
+
+                    YLeaf profile; //type: string
 
 
 
@@ -862,8 +897,9 @@ class Dhcpv6 : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value profile; //type: string
 
+
+                    YLeaf profile; //type: string
 
 
 
@@ -883,8 +919,9 @@ class Dhcpv6 : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value profile; //type: string
 
+
+                    YLeaf profile; //type: string
 
 
 
@@ -904,8 +941,9 @@ class Dhcpv6 : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value profile; //type: string
 
+
+                    YLeaf profile; //type: string
 
 
 
@@ -938,23 +976,23 @@ class Dhcpv6 : public Entity
 class InsertEnum : public Enum
 {
     public:
-        static const Enum::Value local;
-        static const Enum::Value received;
-        static const Enum::Value pppoe;
+        static const Enum::YLeaf local;
+        static const Enum::YLeaf received;
+        static const Enum::YLeaf pppoe;
 
 };
 
 class LinkLayerAddrEnum : public Enum
 {
     public:
-        static const Enum::Value set;
+        static const Enum::YLeaf set;
 
 };
 
 class SubscriberIdEnum : public Enum
 {
     public:
-        static const Enum::Value pppoe;
+        static const Enum::YLeaf pppoe;
 
 };
 

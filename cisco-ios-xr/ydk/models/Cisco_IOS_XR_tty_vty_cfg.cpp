@@ -249,7 +249,7 @@ bool Vty::has_data() const
 bool Vty::has_operation() const
 {
     return is_set(operation)
-	|| (vty_pools !=  nullptr && is_set(vty_pools->operation));
+	|| (vty_pools !=  nullptr && vty_pools->has_operation());
 }
 
 std::string Vty::get_segment_path() const
@@ -266,7 +266,7 @@ EntityPath Vty::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

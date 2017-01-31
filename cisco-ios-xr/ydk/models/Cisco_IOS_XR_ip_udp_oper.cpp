@@ -58,7 +58,7 @@ EntityPath Udp::Nodes::Node::Statistics::Ipv4Traffic::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -178,7 +178,7 @@ EntityPath Udp::Nodes::Node::Statistics::Ipv6Traffic::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -274,8 +274,8 @@ bool Udp::Nodes::Node::Statistics::has_data() const
 bool Udp::Nodes::Node::Statistics::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4_traffic !=  nullptr && is_set(ipv4_traffic->operation))
-	|| (ipv6_traffic !=  nullptr && is_set(ipv6_traffic->operation));
+	|| (ipv4_traffic !=  nullptr && ipv4_traffic->has_operation())
+	|| (ipv6_traffic !=  nullptr && ipv6_traffic->has_operation());
 }
 
 std::string Udp::Nodes::Node::Statistics::get_segment_path() const
@@ -292,7 +292,7 @@ EntityPath Udp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -403,7 +403,7 @@ bool Udp::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Udp::Nodes::Node::get_segment_path() const
@@ -617,7 +617,7 @@ bool Udp::has_data() const
 bool Udp::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Udp::get_segment_path() const
@@ -634,7 +634,7 @@ EntityPath Udp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -751,7 +751,7 @@ EntityPath UdpConnection::Nodes::Node::Statistics::Clients::Client::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -868,7 +868,7 @@ EntityPath UdpConnection::Nodes::Node::Statistics::Clients::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -996,7 +996,7 @@ EntityPath UdpConnection::Nodes::Node::Statistics::Summary::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1136,7 +1136,7 @@ EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1253,7 +1253,7 @@ EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1354,8 +1354,8 @@ bool UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::has_op
 	|| is_set(pcb_address.operation)
 	|| is_set(is_paw_socket.operation)
 	|| is_set(vrf_id.operation)
-	|| (receive !=  nullptr && is_set(receive->operation))
-	|| (send !=  nullptr && is_set(send->operation));
+	|| (receive !=  nullptr && receive->has_operation())
+	|| (send !=  nullptr && send->has_operation());
 }
 
 std::string UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::get_segment_path() const
@@ -1372,7 +1372,7 @@ EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1515,7 +1515,7 @@ EntityPath UdpConnection::Nodes::Node::Statistics::PcbStatistics::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1612,9 +1612,9 @@ bool UdpConnection::Nodes::Node::Statistics::has_data() const
 bool UdpConnection::Nodes::Node::Statistics::has_operation() const
 {
     return is_set(operation)
-	|| (clients !=  nullptr && is_set(clients->operation))
-	|| (pcb_statistics !=  nullptr && is_set(pcb_statistics->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (clients !=  nullptr && clients->has_operation())
+	|| (pcb_statistics !=  nullptr && pcb_statistics->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string UdpConnection::Nodes::Node::Statistics::get_segment_path() const
@@ -1631,7 +1631,7 @@ EntityPath UdpConnection::Nodes::Node::Statistics::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1781,7 +1781,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAdd
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1877,7 +1877,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1970,7 +1970,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2061,7 +2061,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2166,7 +2166,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2283,7 +2283,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2389,7 +2389,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2485,7 +2485,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2596,9 +2596,9 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPc
 	|| is_set(receive_remote_port.operation)
 	|| is_set(remote_length.operation)
 	|| is_set(ttl.operation)
-	|| (local_address !=  nullptr && is_set(local_address->operation))
-	|| (packet_type !=  nullptr && is_set(packet_type->operation))
-	|| (remote_address !=  nullptr && is_set(remote_address->operation));
+	|| (local_address !=  nullptr && local_address->has_operation())
+	|| (packet_type !=  nullptr && packet_type->has_operation())
+	|| (remote_address !=  nullptr && remote_address->has_operation());
 }
 
 std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::get_segment_path() const
@@ -2615,7 +2615,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2812,9 +2812,9 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPc
     return is_set(operation)
 	|| is_set(flow_types_info.operation)
 	|| is_set(ttl.operation)
-	|| (accept_mask !=  nullptr && is_set(accept_mask->operation))
-	|| (lpts_flags !=  nullptr && is_set(lpts_flags->operation))
-	|| (options !=  nullptr && is_set(options->operation));
+	|| (accept_mask !=  nullptr && accept_mask->has_operation())
+	|| (lpts_flags !=  nullptr && lpts_flags->has_operation())
+	|| (options !=  nullptr && options->has_operation());
 }
 
 std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::get_segment_path() const
@@ -2831,7 +2831,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3001,7 +3001,7 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::has_op
 {
     return is_set(operation)
 	|| is_set(af_name.operation)
-	|| (lpts_pcb !=  nullptr && is_set(lpts_pcb->operation));
+	|| (lpts_pcb !=  nullptr && lpts_pcb->has_operation());
 }
 
 std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::get_segment_path() const
@@ -3018,7 +3018,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3130,9 +3130,9 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::has_operation(
 	|| is_set(foreign_port.operation)
 	|| is_set(l4_protocol.operation)
 	|| is_set(local_port.operation)
-	|| (common !=  nullptr && is_set(common->operation))
-	|| (foreign_address !=  nullptr && is_set(foreign_address->operation))
-	|| (local_address !=  nullptr && is_set(local_address->operation));
+	|| (common !=  nullptr && common->has_operation())
+	|| (foreign_address !=  nullptr && foreign_address->has_operation())
+	|| (local_address !=  nullptr && local_address->has_operation());
 }
 
 std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::get_segment_path() const
@@ -3149,7 +3149,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3320,7 +3320,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3411,7 +3411,7 @@ bool UdpConnection::Nodes::Node::Lpts::Queries::Query::has_operation() const
 {
     return is_set(operation)
 	|| is_set(query_name.operation)
-	|| (pcbs !=  nullptr && is_set(pcbs->operation));
+	|| (pcbs !=  nullptr && pcbs->has_operation());
 }
 
 std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::get_segment_path() const
@@ -3428,7 +3428,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::Query::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3538,7 +3538,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::Queries::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3625,7 +3625,7 @@ bool UdpConnection::Nodes::Node::Lpts::has_data() const
 bool UdpConnection::Nodes::Node::Lpts::has_operation() const
 {
     return is_set(operation)
-	|| (queries !=  nullptr && is_set(queries->operation));
+	|| (queries !=  nullptr && queries->has_operation());
 }
 
 std::string UdpConnection::Nodes::Node::Lpts::get_segment_path() const
@@ -3642,7 +3642,7 @@ EntityPath UdpConnection::Nodes::Node::Lpts::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3746,7 +3746,7 @@ EntityPath UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3842,7 +3842,7 @@ EntityPath UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3948,8 +3948,8 @@ bool UdpConnection::Nodes::Node::PcbDetails::PcbDetail::has_operation() const
 	|| is_set(receive_queue.operation)
 	|| is_set(send_queue.operation)
 	|| is_set(vrf_id.operation)
-	|| (foreign_address !=  nullptr && is_set(foreign_address->operation))
-	|| (local_address !=  nullptr && is_set(local_address->operation));
+	|| (foreign_address !=  nullptr && foreign_address->has_operation())
+	|| (local_address !=  nullptr && local_address->has_operation());
 }
 
 std::string UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_segment_path() const
@@ -3966,7 +3966,7 @@ EntityPath UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4134,7 +4134,7 @@ EntityPath UdpConnection::Nodes::Node::PcbDetails::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4241,7 +4241,7 @@ EntityPath UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4337,7 +4337,7 @@ EntityPath UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4440,8 +4440,8 @@ bool UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::has_operation() const
 	|| is_set(receive_queue.operation)
 	|| is_set(send_queue.operation)
 	|| is_set(vrf_id.operation)
-	|| (foreign_address !=  nullptr && is_set(foreign_address->operation))
-	|| (local_address !=  nullptr && is_set(local_address->operation));
+	|| (foreign_address !=  nullptr && foreign_address->has_operation())
+	|| (local_address !=  nullptr && local_address->has_operation());
 }
 
 std::string UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::get_segment_path() const
@@ -4458,7 +4458,7 @@ EntityPath UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4621,7 +4621,7 @@ EntityPath UdpConnection::Nodes::Node::PcbBriefs::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4727,10 +4727,10 @@ bool UdpConnection::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (lpts !=  nullptr && is_set(lpts->operation))
-	|| (pcb_briefs !=  nullptr && is_set(pcb_briefs->operation))
-	|| (pcb_details !=  nullptr && is_set(pcb_details->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (lpts !=  nullptr && lpts->has_operation())
+	|| (pcb_briefs !=  nullptr && pcb_briefs->has_operation())
+	|| (pcb_details !=  nullptr && pcb_details->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string UdpConnection::Nodes::Node::get_segment_path() const
@@ -5013,7 +5013,7 @@ bool UdpConnection::has_data() const
 bool UdpConnection::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string UdpConnection::get_segment_path() const
@@ -5030,7 +5030,7 @@ EntityPath UdpConnection::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -5094,132 +5094,132 @@ std::unique_ptr<Entity> UdpConnection::clone_ptr()
     return std::make_unique<UdpConnection>();
 }
 
-const Enum::Value LptsPcbQueryEnum::all {0, "all"};
-const Enum::Value LptsPcbQueryEnum::static_policy {1, "static-policy"};
-const Enum::Value LptsPcbQueryEnum::interface {2, "interface"};
-const Enum::Value LptsPcbQueryEnum::packet {3, "packet"};
+const Enum::YLeaf LptsPcbQueryEnum::all {0, "all"};
+const Enum::YLeaf LptsPcbQueryEnum::static_policy {1, "static-policy"};
+const Enum::YLeaf LptsPcbQueryEnum::interface {2, "interface"};
+const Enum::YLeaf LptsPcbQueryEnum::packet {3, "packet"};
 
-const Enum::Value MessageTypeIcmpv6Enum::destination_unreachable {1, "destination-unreachable"};
-const Enum::Value MessageTypeIcmpv6Enum::packet_too_big {2, "packet-too-big"};
-const Enum::Value MessageTypeIcmpv6Enum::time_exceeded {3, "time-exceeded"};
-const Enum::Value MessageTypeIcmpv6Enum::parameter_problem {4, "parameter-problem"};
-const Enum::Value MessageTypeIcmpv6Enum::echo_request {128, "echo-request"};
-const Enum::Value MessageTypeIcmpv6Enum::echo_reply {129, "echo-reply"};
-const Enum::Value MessageTypeIcmpv6Enum::multicast_listener_query {130, "multicast-listener-query"};
-const Enum::Value MessageTypeIcmpv6Enum::multicast_listener_report {131, "multicast-listener-report"};
-const Enum::Value MessageTypeIcmpv6Enum::multicast_listener_done {132, "multicast-listener-done"};
-const Enum::Value MessageTypeIcmpv6Enum::router_solicitation {133, "router-solicitation"};
-const Enum::Value MessageTypeIcmpv6Enum::router_advertisement {134, "router-advertisement"};
-const Enum::Value MessageTypeIcmpv6Enum::neighbor_solicitation {135, "neighbor-solicitation"};
-const Enum::Value MessageTypeIcmpv6Enum::neighbor_advertisement {136, "neighbor-advertisement"};
-const Enum::Value MessageTypeIcmpv6Enum::redirect_message {137, "redirect-message"};
-const Enum::Value MessageTypeIcmpv6Enum::router_renumbering {138, "router-renumbering"};
-const Enum::Value MessageTypeIcmpv6Enum::node_information_query {139, "node-information-query"};
-const Enum::Value MessageTypeIcmpv6Enum::node_information_reply {140, "node-information-reply"};
-const Enum::Value MessageTypeIcmpv6Enum::inverse_neighbor_discovery_solicitaion {141, "inverse-neighbor-discovery-solicitaion"};
-const Enum::Value MessageTypeIcmpv6Enum::inverse_neighbor_discover_advertisement {142, "inverse-neighbor-discover-advertisement"};
-const Enum::Value MessageTypeIcmpv6Enum::v2_multicast_listener_report {143, "v2-multicast-listener-report"};
-const Enum::Value MessageTypeIcmpv6Enum::home_agent_address_discovery_request {144, "home-agent-address-discovery-request"};
-const Enum::Value MessageTypeIcmpv6Enum::home_agent_address_discovery_reply {145, "home-agent-address-discovery-reply"};
-const Enum::Value MessageTypeIcmpv6Enum::mobile_prefix_solicitation {146, "mobile-prefix-solicitation"};
-const Enum::Value MessageTypeIcmpv6Enum::mobile_prefix_advertisement {147, "mobile-prefix-advertisement"};
-const Enum::Value MessageTypeIcmpv6Enum::certification_path_solicitation_message {148, "certification-path-solicitation-message"};
-const Enum::Value MessageTypeIcmpv6Enum::certification_path_advertisement_message {149, "certification-path-advertisement-message"};
-const Enum::Value MessageTypeIcmpv6Enum::experimental_mobility_protocols {150, "experimental-mobility-protocols"};
-const Enum::Value MessageTypeIcmpv6Enum::multicast_router_advertisement {151, "multicast-router-advertisement"};
-const Enum::Value MessageTypeIcmpv6Enum::multicast_router_solicitation {152, "multicast-router-solicitation"};
-const Enum::Value MessageTypeIcmpv6Enum::multicast_router_termination {153, "multicast-router-termination"};
-const Enum::Value MessageTypeIcmpv6Enum::fmipv6_messages {154, "fmipv6-messages"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::destination_unreachable {1, "destination-unreachable"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::packet_too_big {2, "packet-too-big"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::time_exceeded {3, "time-exceeded"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::parameter_problem {4, "parameter-problem"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::echo_request {128, "echo-request"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::echo_reply {129, "echo-reply"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::multicast_listener_query {130, "multicast-listener-query"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::multicast_listener_report {131, "multicast-listener-report"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::multicast_listener_done {132, "multicast-listener-done"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::router_solicitation {133, "router-solicitation"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::router_advertisement {134, "router-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::neighbor_solicitation {135, "neighbor-solicitation"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::neighbor_advertisement {136, "neighbor-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::redirect_message {137, "redirect-message"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::router_renumbering {138, "router-renumbering"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::node_information_query {139, "node-information-query"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::node_information_reply {140, "node-information-reply"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::inverse_neighbor_discovery_solicitaion {141, "inverse-neighbor-discovery-solicitaion"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::inverse_neighbor_discover_advertisement {142, "inverse-neighbor-discover-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::v2_multicast_listener_report {143, "v2-multicast-listener-report"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::home_agent_address_discovery_request {144, "home-agent-address-discovery-request"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::home_agent_address_discovery_reply {145, "home-agent-address-discovery-reply"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::mobile_prefix_solicitation {146, "mobile-prefix-solicitation"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::mobile_prefix_advertisement {147, "mobile-prefix-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::certification_path_solicitation_message {148, "certification-path-solicitation-message"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::certification_path_advertisement_message {149, "certification-path-advertisement-message"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::experimental_mobility_protocols {150, "experimental-mobility-protocols"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::multicast_router_advertisement {151, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::multicast_router_solicitation {152, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::multicast_router_termination {153, "multicast-router-termination"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::fmipv6_messages {154, "fmipv6-messages"};
 
-const Enum::Value MessageTypeIcmpEnum::echo_reply {0, "echo-reply"};
-const Enum::Value MessageTypeIcmpEnum::destination_unreachable {3, "destination-unreachable"};
-const Enum::Value MessageTypeIcmpEnum::source_quench {4, "source-quench"};
-const Enum::Value MessageTypeIcmpEnum::redirect {5, "redirect"};
-const Enum::Value MessageTypeIcmpEnum::alternate_host_address {6, "alternate-host-address"};
-const Enum::Value MessageTypeIcmpEnum::echo {8, "echo"};
-const Enum::Value MessageTypeIcmpEnum::router_advertisement {9, "router-advertisement"};
-const Enum::Value MessageTypeIcmpEnum::router_selection {10, "router-selection"};
-const Enum::Value MessageTypeIcmpEnum::time_exceeded {11, "time-exceeded"};
-const Enum::Value MessageTypeIcmpEnum::parameter_problem {12, "parameter-problem"};
-const Enum::Value MessageTypeIcmpEnum::time_stamp {13, "time-stamp"};
-const Enum::Value MessageTypeIcmpEnum::time_stamp_reply {14, "time-stamp-reply"};
-const Enum::Value MessageTypeIcmpEnum::information_request {15, "information-request"};
-const Enum::Value MessageTypeIcmpEnum::information_reply {16, "information-reply"};
-const Enum::Value MessageTypeIcmpEnum::address_mask_request {17, "address-mask-request"};
-const Enum::Value MessageTypeIcmpEnum::address_mask_reply {18, "address-mask-reply"};
-const Enum::Value MessageTypeIcmpEnum::trace_route {30, "trace-route"};
-const Enum::Value MessageTypeIcmpEnum::datagram_conversion_error {31, "datagram-conversion-error"};
-const Enum::Value MessageTypeIcmpEnum::mobile_host_redirect {32, "mobile-host-redirect"};
-const Enum::Value MessageTypeIcmpEnum::where_are_you {33, "where-are-you"};
-const Enum::Value MessageTypeIcmpEnum::iam_here {34, "iam-here"};
-const Enum::Value MessageTypeIcmpEnum::mobile_registration_request {35, "mobile-registration-request"};
-const Enum::Value MessageTypeIcmpEnum::mobile_registration_reply {36, "mobile-registration-reply"};
-const Enum::Value MessageTypeIcmpEnum::domain_name_request {37, "domain-name-request"};
+const Enum::YLeaf MessageTypeIcmpEnum::echo_reply {0, "echo-reply"};
+const Enum::YLeaf MessageTypeIcmpEnum::destination_unreachable {3, "destination-unreachable"};
+const Enum::YLeaf MessageTypeIcmpEnum::source_quench {4, "source-quench"};
+const Enum::YLeaf MessageTypeIcmpEnum::redirect {5, "redirect"};
+const Enum::YLeaf MessageTypeIcmpEnum::alternate_host_address {6, "alternate-host-address"};
+const Enum::YLeaf MessageTypeIcmpEnum::echo {8, "echo"};
+const Enum::YLeaf MessageTypeIcmpEnum::router_advertisement {9, "router-advertisement"};
+const Enum::YLeaf MessageTypeIcmpEnum::router_selection {10, "router-selection"};
+const Enum::YLeaf MessageTypeIcmpEnum::time_exceeded {11, "time-exceeded"};
+const Enum::YLeaf MessageTypeIcmpEnum::parameter_problem {12, "parameter-problem"};
+const Enum::YLeaf MessageTypeIcmpEnum::time_stamp {13, "time-stamp"};
+const Enum::YLeaf MessageTypeIcmpEnum::time_stamp_reply {14, "time-stamp-reply"};
+const Enum::YLeaf MessageTypeIcmpEnum::information_request {15, "information-request"};
+const Enum::YLeaf MessageTypeIcmpEnum::information_reply {16, "information-reply"};
+const Enum::YLeaf MessageTypeIcmpEnum::address_mask_request {17, "address-mask-request"};
+const Enum::YLeaf MessageTypeIcmpEnum::address_mask_reply {18, "address-mask-reply"};
+const Enum::YLeaf MessageTypeIcmpEnum::trace_route {30, "trace-route"};
+const Enum::YLeaf MessageTypeIcmpEnum::datagram_conversion_error {31, "datagram-conversion-error"};
+const Enum::YLeaf MessageTypeIcmpEnum::mobile_host_redirect {32, "mobile-host-redirect"};
+const Enum::YLeaf MessageTypeIcmpEnum::where_are_you {33, "where-are-you"};
+const Enum::YLeaf MessageTypeIcmpEnum::iam_here {34, "iam-here"};
+const Enum::YLeaf MessageTypeIcmpEnum::mobile_registration_request {35, "mobile-registration-request"};
+const Enum::YLeaf MessageTypeIcmpEnum::mobile_registration_reply {36, "mobile-registration-reply"};
+const Enum::YLeaf MessageTypeIcmpEnum::domain_name_request {37, "domain-name-request"};
 
-const Enum::Value MessageTypeIgmpEnum::membership_query {17, "membership-query"};
-const Enum::Value MessageTypeIgmpEnum::v1_membership_report {18, "v1-membership-report"};
-const Enum::Value MessageTypeIgmpEnum::dvmrp {19, "dvmrp"};
-const Enum::Value MessageTypeIgmpEnum::pi_mv1 {20, "pi-mv1"};
-const Enum::Value MessageTypeIgmpEnum::cisco_trace_messages {21, "cisco-trace-messages"};
-const Enum::Value MessageTypeIgmpEnum::v2_membership_report {22, "v2-membership-report"};
-const Enum::Value MessageTypeIgmpEnum::v2_leave_group {23, "v2-leave-group"};
-const Enum::Value MessageTypeIgmpEnum::multicast_traceroute_response {30, "multicast-traceroute-response"};
-const Enum::Value MessageTypeIgmpEnum::multicast_traceroute {31, "multicast-traceroute"};
-const Enum::Value MessageTypeIgmpEnum::v3_membership_report {34, "v3-membership-report"};
-const Enum::Value MessageTypeIgmpEnum::multicast_router_advertisement {48, "multicast-router-advertisement"};
-const Enum::Value MessageTypeIgmpEnum::multicast_router_solicitation {49, "multicast-router-solicitation"};
-const Enum::Value MessageTypeIgmpEnum::multicast_router_termination {50, "multicast-router-termination"};
+const Enum::YLeaf MessageTypeIgmpEnum::membership_query {17, "membership-query"};
+const Enum::YLeaf MessageTypeIgmpEnum::v1_membership_report {18, "v1-membership-report"};
+const Enum::YLeaf MessageTypeIgmpEnum::dvmrp {19, "dvmrp"};
+const Enum::YLeaf MessageTypeIgmpEnum::pi_mv1 {20, "pi-mv1"};
+const Enum::YLeaf MessageTypeIgmpEnum::cisco_trace_messages {21, "cisco-trace-messages"};
+const Enum::YLeaf MessageTypeIgmpEnum::v2_membership_report {22, "v2-membership-report"};
+const Enum::YLeaf MessageTypeIgmpEnum::v2_leave_group {23, "v2-leave-group"};
+const Enum::YLeaf MessageTypeIgmpEnum::multicast_traceroute_response {30, "multicast-traceroute-response"};
+const Enum::YLeaf MessageTypeIgmpEnum::multicast_traceroute {31, "multicast-traceroute"};
+const Enum::YLeaf MessageTypeIgmpEnum::v3_membership_report {34, "v3-membership-report"};
+const Enum::YLeaf MessageTypeIgmpEnum::multicast_router_advertisement {48, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIgmpEnum::multicast_router_solicitation {49, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIgmpEnum::multicast_router_termination {50, "multicast-router-termination"};
 
-const Enum::Value PacketEnum::icmp {0, "icmp"};
-const Enum::Value PacketEnum::icm_pv6 {1, "icm-pv6"};
-const Enum::Value PacketEnum::igmp {2, "igmp"};
-const Enum::Value PacketEnum::unknown {3, "unknown"};
+const Enum::YLeaf PacketEnum::icmp {0, "icmp"};
+const Enum::YLeaf PacketEnum::icm_pv6 {1, "icm-pv6"};
+const Enum::YLeaf PacketEnum::igmp {2, "igmp"};
+const Enum::YLeaf PacketEnum::unknown {3, "unknown"};
 
-const Enum::Value AddrFamilyEnum::unspecified {0, "unspecified"};
-const Enum::Value AddrFamilyEnum::local {1, "local"};
-const Enum::Value AddrFamilyEnum::inet {2, "inet"};
-const Enum::Value AddrFamilyEnum::implink {3, "implink"};
-const Enum::Value AddrFamilyEnum::pup {4, "pup"};
-const Enum::Value AddrFamilyEnum::chaos {5, "chaos"};
-const Enum::Value AddrFamilyEnum::ns {6, "ns"};
-const Enum::Value AddrFamilyEnum::iso {7, "iso"};
-const Enum::Value AddrFamilyEnum::ecma {8, "ecma"};
-const Enum::Value AddrFamilyEnum::data_kit {9, "data-kit"};
-const Enum::Value AddrFamilyEnum::ccitt {10, "ccitt"};
-const Enum::Value AddrFamilyEnum::sna {11, "sna"};
-const Enum::Value AddrFamilyEnum::de_cnet {12, "de-cnet"};
-const Enum::Value AddrFamilyEnum::dli {13, "dli"};
-const Enum::Value AddrFamilyEnum::lat {14, "lat"};
-const Enum::Value AddrFamilyEnum::hylink {15, "hylink"};
-const Enum::Value AddrFamilyEnum::appletalk {16, "appletalk"};
-const Enum::Value AddrFamilyEnum::route {17, "route"};
-const Enum::Value AddrFamilyEnum::link {18, "link"};
-const Enum::Value AddrFamilyEnum::pseudo_xtp {19, "pseudo-xtp"};
-const Enum::Value AddrFamilyEnum::coip {20, "coip"};
-const Enum::Value AddrFamilyEnum::cnt {21, "cnt"};
-const Enum::Value AddrFamilyEnum::pseudo_rtip {22, "pseudo-rtip"};
-const Enum::Value AddrFamilyEnum::ipx {23, "ipx"};
-const Enum::Value AddrFamilyEnum::sip {24, "sip"};
-const Enum::Value AddrFamilyEnum::pseudo_pip {25, "pseudo-pip"};
-const Enum::Value AddrFamilyEnum::inet6 {26, "inet6"};
-const Enum::Value AddrFamilyEnum::snap {27, "snap"};
-const Enum::Value AddrFamilyEnum::clnl {28, "clnl"};
-const Enum::Value AddrFamilyEnum::chdlc {29, "chdlc"};
-const Enum::Value AddrFamilyEnum::ppp {30, "ppp"};
-const Enum::Value AddrFamilyEnum::host_cas {31, "host-cas"};
-const Enum::Value AddrFamilyEnum::dsp {32, "dsp"};
-const Enum::Value AddrFamilyEnum::sap {33, "sap"};
-const Enum::Value AddrFamilyEnum::atm {34, "atm"};
-const Enum::Value AddrFamilyEnum::fr {35, "fr"};
-const Enum::Value AddrFamilyEnum::mso {36, "mso"};
-const Enum::Value AddrFamilyEnum::dchan {37, "dchan"};
-const Enum::Value AddrFamilyEnum::cas {38, "cas"};
-const Enum::Value AddrFamilyEnum::nat {39, "nat"};
-const Enum::Value AddrFamilyEnum::ether {40, "ether"};
-const Enum::Value AddrFamilyEnum::srp {41, "srp"};
+const Enum::YLeaf AddrFamilyEnum::unspecified {0, "unspecified"};
+const Enum::YLeaf AddrFamilyEnum::local {1, "local"};
+const Enum::YLeaf AddrFamilyEnum::inet {2, "inet"};
+const Enum::YLeaf AddrFamilyEnum::implink {3, "implink"};
+const Enum::YLeaf AddrFamilyEnum::pup {4, "pup"};
+const Enum::YLeaf AddrFamilyEnum::chaos {5, "chaos"};
+const Enum::YLeaf AddrFamilyEnum::ns {6, "ns"};
+const Enum::YLeaf AddrFamilyEnum::iso {7, "iso"};
+const Enum::YLeaf AddrFamilyEnum::ecma {8, "ecma"};
+const Enum::YLeaf AddrFamilyEnum::data_kit {9, "data-kit"};
+const Enum::YLeaf AddrFamilyEnum::ccitt {10, "ccitt"};
+const Enum::YLeaf AddrFamilyEnum::sna {11, "sna"};
+const Enum::YLeaf AddrFamilyEnum::de_cnet {12, "de-cnet"};
+const Enum::YLeaf AddrFamilyEnum::dli {13, "dli"};
+const Enum::YLeaf AddrFamilyEnum::lat {14, "lat"};
+const Enum::YLeaf AddrFamilyEnum::hylink {15, "hylink"};
+const Enum::YLeaf AddrFamilyEnum::appletalk {16, "appletalk"};
+const Enum::YLeaf AddrFamilyEnum::route {17, "route"};
+const Enum::YLeaf AddrFamilyEnum::link {18, "link"};
+const Enum::YLeaf AddrFamilyEnum::pseudo_xtp {19, "pseudo-xtp"};
+const Enum::YLeaf AddrFamilyEnum::coip {20, "coip"};
+const Enum::YLeaf AddrFamilyEnum::cnt {21, "cnt"};
+const Enum::YLeaf AddrFamilyEnum::pseudo_rtip {22, "pseudo-rtip"};
+const Enum::YLeaf AddrFamilyEnum::ipx {23, "ipx"};
+const Enum::YLeaf AddrFamilyEnum::sip {24, "sip"};
+const Enum::YLeaf AddrFamilyEnum::pseudo_pip {25, "pseudo-pip"};
+const Enum::YLeaf AddrFamilyEnum::inet6 {26, "inet6"};
+const Enum::YLeaf AddrFamilyEnum::snap {27, "snap"};
+const Enum::YLeaf AddrFamilyEnum::clnl {28, "clnl"};
+const Enum::YLeaf AddrFamilyEnum::chdlc {29, "chdlc"};
+const Enum::YLeaf AddrFamilyEnum::ppp {30, "ppp"};
+const Enum::YLeaf AddrFamilyEnum::host_cas {31, "host-cas"};
+const Enum::YLeaf AddrFamilyEnum::dsp {32, "dsp"};
+const Enum::YLeaf AddrFamilyEnum::sap {33, "sap"};
+const Enum::YLeaf AddrFamilyEnum::atm {34, "atm"};
+const Enum::YLeaf AddrFamilyEnum::fr {35, "fr"};
+const Enum::YLeaf AddrFamilyEnum::mso {36, "mso"};
+const Enum::YLeaf AddrFamilyEnum::dchan {37, "dchan"};
+const Enum::YLeaf AddrFamilyEnum::cas {38, "cas"};
+const Enum::YLeaf AddrFamilyEnum::nat {39, "nat"};
+const Enum::YLeaf AddrFamilyEnum::ether {40, "ether"};
+const Enum::YLeaf AddrFamilyEnum::srp {41, "srp"};
 
-const Enum::Value UdpAddressFamilyEnum::ipv4 {2, "ipv4"};
-const Enum::Value UdpAddressFamilyEnum::ipv6 {10, "ipv6"};
+const Enum::YLeaf UdpAddressFamilyEnum::ipv4 {2, "ipv4"};
+const Enum::YLeaf UdpAddressFamilyEnum::ipv6 {10, "ipv6"};
 
 
 }

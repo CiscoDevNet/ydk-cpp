@@ -46,7 +46,7 @@ EntityPath Ipv4Dhcpd::Vrfs::Vrf::Profile::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -118,7 +118,7 @@ bool Ipv4Dhcpd::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (profile !=  nullptr && is_set(profile->operation));
+	|| (profile !=  nullptr && profile->has_operation());
 }
 
 std::string Ipv4Dhcpd::Vrfs::Vrf::get_segment_path() const
@@ -343,7 +343,7 @@ EntityPath Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -418,7 +418,7 @@ EntityPath Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -504,7 +504,7 @@ EntityPath Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAd
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -601,7 +601,7 @@ EntityPath Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAd
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -692,7 +692,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::has_operation(
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (helper_addresses !=  nullptr && is_set(helper_addresses->operation));
+	|| (helper_addresses !=  nullptr && helper_addresses->has_operation());
 }
 
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::get_segment_path() const
@@ -709,7 +709,7 @@ EntityPath Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -819,7 +819,7 @@ EntityPath Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -938,7 +938,7 @@ EntityPath Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1048,7 +1048,7 @@ EntityPath Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::BroadcastPolicy::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1129,10 +1129,10 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::has_data() const
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::has_operation() const
 {
     return is_set(operation)
-	|| (broadcast_policy !=  nullptr && is_set(broadcast_policy->operation))
-	|| (gi_addr_policy !=  nullptr && is_set(gi_addr_policy->operation))
-	|| (relay_information_option !=  nullptr && is_set(relay_information_option->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (broadcast_policy !=  nullptr && broadcast_policy->has_operation())
+	|| (gi_addr_policy !=  nullptr && gi_addr_policy->has_operation())
+	|| (relay_information_option !=  nullptr && relay_information_option->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::get_segment_path() const
@@ -1149,7 +1149,7 @@ EntityPath Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1314,8 +1314,8 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::has_operation() const
     return is_set(operation)
 	|| is_set(mode.operation)
 	|| is_set(enable.operation)
-	|| (relay !=  nullptr && is_set(relay->operation))
-	|| (server !=  nullptr && is_set(server->operation));
+	|| (relay !=  nullptr && relay->has_operation())
+	|| (server !=  nullptr && server->has_operation());
 }
 
 std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::get_segment_path() const
@@ -1332,7 +1332,7 @@ EntityPath Ipv4Dhcpd::Profiles::Profile::Modes::Mode::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1470,7 +1470,7 @@ EntityPath Ipv4Dhcpd::Profiles::Profile::Modes::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1561,7 +1561,7 @@ bool Ipv4Dhcpd::Profiles::Profile::has_operation() const
 {
     return is_set(operation)
 	|| is_set(profile_name.operation)
-	|| (modes !=  nullptr && is_set(modes->operation));
+	|| (modes !=  nullptr && modes->has_operation());
 }
 
 std::string Ipv4Dhcpd::Profiles::Profile::get_segment_path() const
@@ -1952,7 +1952,7 @@ EntityPath Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::DhcpCircuitId::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2104,7 +2104,7 @@ bool Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(profile.operation)
-	|| (dhcp_circuit_id !=  nullptr && is_set(dhcp_circuit_id->operation));
+	|| (dhcp_circuit_id !=  nullptr && dhcp_circuit_id->has_operation());
 }
 
 std::string Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::get_segment_path() const
@@ -2121,7 +2121,7 @@ EntityPath Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2224,7 +2224,7 @@ EntityPath Ipv4Dhcpd::Interfaces::Interface::BaseInterface::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2355,7 +2355,7 @@ EntityPath Ipv4Dhcpd::Interfaces::Interface::RelayInterface::RelayDhcpCircuitId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2503,7 +2503,7 @@ bool Ipv4Dhcpd::Interfaces::Interface::RelayInterface::has_data() const
 bool Ipv4Dhcpd::Interfaces::Interface::RelayInterface::has_operation() const
 {
     return is_set(operation)
-	|| (relay_dhcp_circuit_id !=  nullptr && is_set(relay_dhcp_circuit_id->operation));
+	|| (relay_dhcp_circuit_id !=  nullptr && relay_dhcp_circuit_id->has_operation());
 }
 
 std::string Ipv4Dhcpd::Interfaces::Interface::RelayInterface::get_segment_path() const
@@ -2520,7 +2520,7 @@ EntityPath Ipv4Dhcpd::Interfaces::Interface::RelayInterface::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2621,7 +2621,7 @@ EntityPath Ipv4Dhcpd::Interfaces::Interface::Profile::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2706,7 +2706,7 @@ EntityPath Ipv4Dhcpd::Interfaces::Interface::ServerInterface::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2789,7 +2789,7 @@ EntityPath Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::SnoopCircuitId::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2860,7 +2860,7 @@ bool Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::has_data() const
 bool Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::has_operation() const
 {
     return is_set(operation)
-	|| (snoop_circuit_id !=  nullptr && is_set(snoop_circuit_id->operation));
+	|| (snoop_circuit_id !=  nullptr && snoop_circuit_id->has_operation());
 }
 
 std::string Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::get_segment_path() const
@@ -2877,7 +2877,7 @@ EntityPath Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2990,12 +2990,12 @@ bool Ipv4Dhcpd::Interfaces::Interface::has_operation() const
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(none.operation)
-	|| (base_interface !=  nullptr && is_set(base_interface->operation))
-	|| (profile !=  nullptr && is_set(profile->operation))
-	|| (proxy_interface !=  nullptr && is_set(proxy_interface->operation))
-	|| (relay_interface !=  nullptr && is_set(relay_interface->operation))
-	|| (server_interface !=  nullptr && is_set(server_interface->operation))
-	|| (snoop_interface !=  nullptr && is_set(snoop_interface->operation));
+	|| (base_interface !=  nullptr && base_interface->has_operation())
+	|| (profile !=  nullptr && profile->has_operation())
+	|| (proxy_interface !=  nullptr && proxy_interface->has_operation())
+	|| (relay_interface !=  nullptr && relay_interface->has_operation())
+	|| (server_interface !=  nullptr && server_interface->has_operation())
+	|| (snoop_interface !=  nullptr && snoop_interface->has_operation());
 }
 
 std::string Ipv4Dhcpd::Interfaces::Interface::get_segment_path() const
@@ -3534,12 +3534,12 @@ bool Ipv4Dhcpd::has_operation() const
     return is_set(operation)
 	|| is_set(allow_client_id_change.operation)
 	|| is_set(enable.operation)
-	|| (database !=  nullptr && is_set(database->operation))
-	|| (duplicate_mac_allowed !=  nullptr && is_set(duplicate_mac_allowed->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (profiles !=  nullptr && is_set(profiles->operation))
-	|| (rate_limit !=  nullptr && is_set(rate_limit->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (database !=  nullptr && database->has_operation())
+	|| (duplicate_mac_allowed !=  nullptr && duplicate_mac_allowed->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (profiles !=  nullptr && profiles->has_operation())
+	|| (rate_limit !=  nullptr && rate_limit->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Ipv4Dhcpd::get_segment_path() const
@@ -3556,7 +3556,7 @@ EntityPath Ipv4Dhcpd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3745,40 +3745,40 @@ std::unique_ptr<Entity> Ipv4Dhcpd::clone_ptr()
     return std::make_unique<Ipv4Dhcpd>();
 }
 
-const Enum::Value Ipv4DhcpdFmtEnum::no_format {0, "no-format"};
-const Enum::Value Ipv4DhcpdFmtEnum::format {1, "format"};
+const Enum::YLeaf Ipv4DhcpdFmtEnum::no_format {0, "no-format"};
+const Enum::YLeaf Ipv4DhcpdFmtEnum::format {1, "format"};
 
-const Enum::Value Ipv4DhcpdFmtSpecifierEnum::physical_chassis {1, "physical-chassis"};
-const Enum::Value Ipv4DhcpdFmtSpecifierEnum::physical_slot {2, "physical-slot"};
-const Enum::Value Ipv4DhcpdFmtSpecifierEnum::physical_sub_slot {3, "physical-sub-slot"};
-const Enum::Value Ipv4DhcpdFmtSpecifierEnum::physical_port {4, "physical-port"};
-const Enum::Value Ipv4DhcpdFmtSpecifierEnum::physical_sub_port {5, "physical-sub-port"};
-const Enum::Value Ipv4DhcpdFmtSpecifierEnum::inner_vlan_id {6, "inner-vlan-id"};
-const Enum::Value Ipv4DhcpdFmtSpecifierEnum::outer_vlan_id {7, "outer-vlan-id"};
-const Enum::Value Ipv4DhcpdFmtSpecifierEnum::l2_interface {8, "l2-interface"};
+const Enum::YLeaf Ipv4DhcpdFmtSpecifierEnum::physical_chassis {1, "physical-chassis"};
+const Enum::YLeaf Ipv4DhcpdFmtSpecifierEnum::physical_slot {2, "physical-slot"};
+const Enum::YLeaf Ipv4DhcpdFmtSpecifierEnum::physical_sub_slot {3, "physical-sub-slot"};
+const Enum::YLeaf Ipv4DhcpdFmtSpecifierEnum::physical_port {4, "physical-port"};
+const Enum::YLeaf Ipv4DhcpdFmtSpecifierEnum::physical_sub_port {5, "physical-sub-port"};
+const Enum::YLeaf Ipv4DhcpdFmtSpecifierEnum::inner_vlan_id {6, "inner-vlan-id"};
+const Enum::YLeaf Ipv4DhcpdFmtSpecifierEnum::outer_vlan_id {7, "outer-vlan-id"};
+const Enum::YLeaf Ipv4DhcpdFmtSpecifierEnum::l2_interface {8, "l2-interface"};
 
-const Enum::Value Ipv4DhcpdRelayInfoOptionPolicyEnum::replace {0, "replace"};
-const Enum::Value Ipv4DhcpdRelayInfoOptionPolicyEnum::keep {1, "keep"};
-const Enum::Value Ipv4DhcpdRelayInfoOptionPolicyEnum::drop {2, "drop"};
-const Enum::Value Ipv4DhcpdRelayInfoOptionPolicyEnum::encapsulate {3, "encapsulate"};
+const Enum::YLeaf Ipv4DhcpdRelayInfoOptionPolicyEnum::replace {0, "replace"};
+const Enum::YLeaf Ipv4DhcpdRelayInfoOptionPolicyEnum::keep {1, "keep"};
+const Enum::YLeaf Ipv4DhcpdRelayInfoOptionPolicyEnum::drop {2, "drop"};
+const Enum::YLeaf Ipv4DhcpdRelayInfoOptionPolicyEnum::encapsulate {3, "encapsulate"};
 
-const Enum::Value Ipv4DhcpdBroadcastFlagPolicyEnum::ignore {0, "ignore"};
-const Enum::Value Ipv4DhcpdBroadcastFlagPolicyEnum::check {1, "check"};
-const Enum::Value Ipv4DhcpdBroadcastFlagPolicyEnum::unicast_always {2, "unicast-always"};
+const Enum::YLeaf Ipv4DhcpdBroadcastFlagPolicyEnum::ignore {0, "ignore"};
+const Enum::YLeaf Ipv4DhcpdBroadcastFlagPolicyEnum::check {1, "check"};
+const Enum::YLeaf Ipv4DhcpdBroadcastFlagPolicyEnum::unicast_always {2, "unicast-always"};
 
-const Enum::Value Ipv4DhcpdModeEnum::base {0, "base"};
-const Enum::Value Ipv4DhcpdModeEnum::relay {1, "relay"};
-const Enum::Value Ipv4DhcpdModeEnum::snoop {2, "snoop"};
-const Enum::Value Ipv4DhcpdModeEnum::server {3, "server"};
-const Enum::Value Ipv4DhcpdModeEnum::proxy {4, "proxy"};
-const Enum::Value Ipv4DhcpdModeEnum::base2 {5, "base2"};
+const Enum::YLeaf Ipv4DhcpdModeEnum::base {0, "base"};
+const Enum::YLeaf Ipv4DhcpdModeEnum::relay {1, "relay"};
+const Enum::YLeaf Ipv4DhcpdModeEnum::snoop {2, "snoop"};
+const Enum::YLeaf Ipv4DhcpdModeEnum::server {3, "server"};
+const Enum::YLeaf Ipv4DhcpdModeEnum::proxy {4, "proxy"};
+const Enum::YLeaf Ipv4DhcpdModeEnum::base2 {5, "base2"};
 
-const Enum::Value Ipv4DhcpdGiaddrPolicyEnum::keep {0, "keep"};
-const Enum::Value Ipv4DhcpdGiaddrPolicyEnum::replace {1, "replace"};
-const Enum::Value Ipv4DhcpdGiaddrPolicyEnum::drop {2, "drop"};
+const Enum::YLeaf Ipv4DhcpdGiaddrPolicyEnum::keep {0, "keep"};
+const Enum::YLeaf Ipv4DhcpdGiaddrPolicyEnum::replace {1, "replace"};
+const Enum::YLeaf Ipv4DhcpdGiaddrPolicyEnum::drop {2, "drop"};
 
-const Enum::Value Ipv4DhcpdRelayInfoOptionvpnModeEnum::rfc {0, "rfc"};
-const Enum::Value Ipv4DhcpdRelayInfoOptionvpnModeEnum::cisco {1, "cisco"};
+const Enum::YLeaf Ipv4DhcpdRelayInfoOptionvpnModeEnum::rfc {0, "rfc"};
+const Enum::YLeaf Ipv4DhcpdRelayInfoOptionvpnModeEnum::cisco {1, "cisco"};
 
 
 }

@@ -26,6 +26,7 @@ class HardwareModule : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class HardwareModule : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class HardwareModule : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Np : public Entity
             {
@@ -70,6 +73,7 @@ class HardwareModule : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Cpu : public Entity
@@ -87,6 +91,7 @@ class HardwareModule : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Indexes : public Entity
                     {
                         public:
@@ -102,6 +107,7 @@ class HardwareModule : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Index_ : public Entity
                         {
                             public:
@@ -115,15 +121,16 @@ class HardwareModule : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value index_; //type: int32
-                                Value cos_q_name; //type: string
-                                Value cos_q; //type: uint8
-                                Value rx_channel; //type: uint32
-                                Value flow_rate; //type: uint32
-                                Value burst; //type: uint32
-                                Value accepted; //type: uint32
-                                Value dropped; //type: uint32
 
+
+                                YLeaf index_; //type: int32
+                                YLeaf cos_q_name; //type: string
+                                YLeaf cos_q; //type: uint8
+                                YLeaf rx_channel; //type: uint32
+                                YLeaf flow_rate; //type: uint32
+                                YLeaf burst; //type: uint32
+                                YLeaf accepted; //type: uint32
+                                YLeaf dropped; //type: uint32
 
 
 
@@ -157,6 +164,7 @@ class HardwareModule : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Indxes : public Entity
                     {
                         public:
@@ -172,6 +180,7 @@ class HardwareModule : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Indx : public Entity
                         {
                             public:
@@ -185,20 +194,21 @@ class HardwareModule : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value index_; //type: int32
-                                Value total_captured; //type: uint32
-                                Value captured_pak; //type: string
-                                Value pkt_index; //type: uint8
-                                Value ifhandle; //type: uint32
-                                Value buffer_len; //type: uint32
-                                Value reason_hi; //type: uint32
-                                Value reason; //type: uint32
-                                Value years; //type: uint64
-                                Value hours; //type: uint64
-                                Value days; //type: uint64
-                                Value mins; //type: uint64
-                                Value secs; //type: uint64
 
+
+                                YLeaf index_; //type: int32
+                                YLeaf total_captured; //type: uint32
+                                YLeaf captured_pak; //type: string
+                                YLeaf pkt_index; //type: uint8
+                                YLeaf ifhandle; //type: uint32
+                                YLeaf buffer_len; //type: uint32
+                                YLeaf reason_hi; //type: uint32
+                                YLeaf reason; //type: uint32
+                                YLeaf years; //type: uint64
+                                YLeaf hours; //type: uint64
+                                YLeaf days; //type: uint64
+                                YLeaf mins; //type: uint64
+                                YLeaf secs; //type: uint64
 
 
 
@@ -226,6 +236,7 @@ class HardwareModule : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Idx : public Entity
                         {
                             public:
@@ -239,10 +250,11 @@ class HardwareModule : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value index_; //type: int32
-                                Value drop_reason; //type: string
-                                Value counters; //type: uint32
 
+
+                                YLeaf index_; //type: int32
+                                YLeaf drop_reason; //type: string
+                                YLeaf counters; //type: uint32
 
 
 
@@ -302,6 +314,7 @@ class Prm : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -317,6 +330,7 @@ class Prm : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -330,8 +344,9 @@ class Prm : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Server : public Entity
             {
@@ -346,6 +361,7 @@ class Prm : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Resource : public Entity
@@ -363,6 +379,7 @@ class Prm : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Indexes : public Entity
                     {
                         public:
@@ -378,6 +395,7 @@ class Prm : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Index_ : public Entity
                         {
                             public:
@@ -391,17 +409,18 @@ class Prm : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value index_; //type: int32
-                                Value resource_name; //type: string
-                                Value resource_type; //type: uint32
-                                Value total_num; //type: uint32
-                                Value free_num; //type: uint32
-                                Value first_available_index; //type: uint32
-                                Value start_index; //type: uint32
-                                Value availability_status; //type: boolean
-                                Value flags; //type: uint8
-                                Value inconsistent; //type: boolean
 
+
+                                YLeaf index_; //type: int32
+                                YLeaf resource_name; //type: string
+                                YLeaf resource_type; //type: uint32
+                                YLeaf total_num; //type: uint32
+                                YLeaf free_num; //type: uint32
+                                YLeaf first_available_index; //type: uint32
+                                YLeaf start_index; //type: uint32
+                                YLeaf availability_status; //type: boolean
+                                YLeaf flags; //type: uint8
+                                YLeaf inconsistent; //type: boolean
 
 
 

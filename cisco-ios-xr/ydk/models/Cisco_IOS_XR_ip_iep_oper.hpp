@@ -26,6 +26,7 @@ class ExplicitPaths : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Identifiers : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class ExplicitPaths : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Identifier : public Entity
         {
             public:
@@ -54,9 +56,10 @@ class ExplicitPaths : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value identifier_id; //type: int32
-                Value status; //type: IepStatusEnum
 
+
+                YLeaf identifier_id; //type: int32
+                YLeaf status; //type: IepStatusEnum
 
             class Address : public Entity
             {
@@ -71,23 +74,21 @@ class ExplicitPaths : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value index_; //type: uint32
-                    Value if_index; //type: uint32
-                    Value address_type; //type: IepAddressEnum
-                    Value hop_type; //type: IepHopEnum
-                    Value address; //type: string
-                    Value mpls_label; //type: uint32
 
 
-                    class IepAddressEnum;
-                    class IepHopEnum;
+                    YLeaf index_; //type: uint32
+                    YLeaf if_index; //type: uint32
+                    YLeaf address_type; //type: IepAddressEnum
+                    YLeaf hop_type; //type: IepHopEnum
+                    YLeaf address; //type: string
+                    YLeaf mpls_label; //type: uint32
+
 
 
             }; // ExplicitPaths::Identifiers::Identifier::Address
 
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Identifiers::Identifier::Address> > address;
-                class IepStatusEnum;
 
 
         }; // ExplicitPaths::Identifiers::Identifier
@@ -114,6 +115,7 @@ class ExplicitPaths : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Name : public Entity
         {
             public:
@@ -127,9 +129,10 @@ class ExplicitPaths : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value path_name; //type: string
-                Value status; //type: IepStatusEnum
 
+
+                YLeaf path_name; //type: string
+                YLeaf status; //type: IepStatusEnum
 
             class Address : public Entity
             {
@@ -144,23 +147,21 @@ class ExplicitPaths : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value index_; //type: uint32
-                    Value if_index; //type: uint32
-                    Value address_type; //type: IepAddressEnum
-                    Value hop_type; //type: IepHopEnum
-                    Value address; //type: string
-                    Value mpls_label; //type: uint32
 
 
-                    class IepAddressEnum;
-                    class IepHopEnum;
+                    YLeaf index_; //type: uint32
+                    YLeaf if_index; //type: uint32
+                    YLeaf address_type; //type: IepAddressEnum
+                    YLeaf hop_type; //type: IepHopEnum
+                    YLeaf address; //type: string
+                    YLeaf mpls_label; //type: uint32
+
 
 
             }; // ExplicitPaths::Names::Name::Address
 
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Names::Name::Address> > address;
-                class IepStatusEnum;
 
 
         }; // ExplicitPaths::Names::Name
@@ -182,25 +183,25 @@ class ExplicitPaths : public Entity
 class IepStatusEnum : public Enum
 {
     public:
-        static const Enum::Value enabled;
-        static const Enum::Value disabled;
+        static const Enum::YLeaf enabled;
+        static const Enum::YLeaf disabled;
 
 };
 
 class IepAddressEnum : public Enum
 {
     public:
-        static const Enum::Value next;
-        static const Enum::Value exclude;
-        static const Enum::Value exclude_srlg;
+        static const Enum::YLeaf next;
+        static const Enum::YLeaf exclude;
+        static const Enum::YLeaf exclude_srlg;
 
 };
 
 class IepHopEnum : public Enum
 {
     public:
-        static const Enum::Value strict;
-        static const Enum::Value loose;
+        static const Enum::YLeaf strict;
+        static const Enum::YLeaf loose;
 
 };
 

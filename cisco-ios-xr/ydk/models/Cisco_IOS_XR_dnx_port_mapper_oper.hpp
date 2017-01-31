@@ -26,6 +26,7 @@ class Oor : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Oor : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Oor : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class BundleInterfaceDetails : public Entity
             {
@@ -72,6 +75,7 @@ class Oor : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BundleInterfaceDetail : public Entity
                 {
                     public:
@@ -85,10 +89,11 @@ class Oor : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface; //type: int32
-                        Value interface_state; //type: string
-                        Value time_stamp; //type: string
 
+
+                        YLeaf interface; //type: int32
+                        YLeaf interface_state; //type: string
+                        YLeaf time_stamp; //type: string
 
                     class Member : public Entity
                     {
@@ -103,12 +108,13 @@ class Oor : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value interface_status; //type: string
-                            Value time_stamp; //type: string
-                            Value npu_id; //type: string
-                            Value hardware_resource; //type: string
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf interface_status; //type: string
+                            YLeaf time_stamp; //type: string
+                            YLeaf npu_id; //type: string
+                            YLeaf hardware_resource; //type: string
 
 
 
@@ -142,6 +148,7 @@ class Oor : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class InterfaceDetail : public Entity
                 {
                     public:
@@ -155,13 +162,14 @@ class Oor : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface; //type: int32
-                        Value interface_name; //type: string
-                        Value interface_status; //type: string
-                        Value time_stamp; //type: string
-                        Value npu_id; //type: string
-                        Value hardware_resource; //type: string
 
+
+                        YLeaf interface; //type: int32
+                        YLeaf interface_name; //type: string
+                        YLeaf interface_status; //type: string
+                        YLeaf time_stamp; //type: string
+                        YLeaf npu_id; //type: string
+                        YLeaf hardware_resource; //type: string
 
 
 
@@ -189,6 +197,7 @@ class Oor : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class InterfaceSummaryData : public Entity
                 {
                     public:
@@ -202,11 +211,12 @@ class Oor : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface; //type: int32
-                        Value interface_name; //type: string
-                        Value interface_status; //type: string
-                        Value hardware_resource; //type: string
 
+
+                        YLeaf interface; //type: int32
+                        YLeaf interface_name; //type: string
+                        YLeaf interface_status; //type: string
+                        YLeaf hardware_resource; //type: string
 
 
 
@@ -232,10 +242,11 @@ class Oor : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value red; //type: uint32
-                    Value green; //type: uint32
-                    Value yel_low; //type: uint32
 
+
+                    YLeaf red; //type: uint32
+                    YLeaf green; //type: uint32
+                    YLeaf yel_low; //type: uint32
 
 
 

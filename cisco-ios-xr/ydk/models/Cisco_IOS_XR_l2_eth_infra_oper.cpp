@@ -55,7 +55,7 @@ EntityPath MacAccounting::Interfaces::Interface::State::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -161,7 +161,7 @@ EntityPath MacAccounting::Interfaces::Interface::IngressStatistic::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -257,7 +257,7 @@ EntityPath MacAccounting::Interfaces::Interface::EgressStatistic::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -357,7 +357,7 @@ bool MacAccounting::Interfaces::Interface::has_operation() const
     }
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string MacAccounting::Interfaces::Interface::get_segment_path() const
@@ -623,7 +623,7 @@ bool MacAccounting::has_data() const
 bool MacAccounting::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string MacAccounting::get_segment_path() const
@@ -640,7 +640,7 @@ EntityPath MacAccounting::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -745,7 +745,7 @@ EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -837,7 +837,7 @@ bool Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::has_operation() cons
 	|| is_set(qin_q_count.operation)
 	|| is_set(total_count.operation)
 	|| is_set(untagged_count.operation)
-	|| (state_counters !=  nullptr && is_set(state_counters->operation));
+	|| (state_counters !=  nullptr && state_counters->has_operation());
 }
 
 std::string Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::get_segment_path() const
@@ -854,7 +854,7 @@ EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -983,7 +983,7 @@ EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1075,7 +1075,7 @@ bool Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::has_operation() cons
 	|| is_set(qin_q_count.operation)
 	|| is_set(total_count.operation)
 	|| is_set(untagged_count.operation)
-	|| (state_counters !=  nullptr && is_set(state_counters->operation));
+	|| (state_counters !=  nullptr && state_counters->has_operation());
 }
 
 std::string Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::get_segment_path() const
@@ -1092,7 +1092,7 @@ EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1231,8 +1231,8 @@ bool Vlan::Nodes::Node::Trunks::Trunk::has_operation() const
 	|| is_set(qinq_outer_ether_type.operation)
 	|| is_set(state.operation)
 	|| is_set(untagged_interface.operation)
-	|| (layer2_sub_interfaces !=  nullptr && is_set(layer2_sub_interfaces->operation))
-	|| (layer3_sub_interfaces !=  nullptr && is_set(layer3_sub_interfaces->operation));
+	|| (layer2_sub_interfaces !=  nullptr && layer2_sub_interfaces->has_operation())
+	|| (layer3_sub_interfaces !=  nullptr && layer3_sub_interfaces->has_operation());
 }
 
 std::string Vlan::Nodes::Node::Trunks::Trunk::get_segment_path() const
@@ -1249,7 +1249,7 @@ EntityPath Vlan::Nodes::Node::Trunks::Trunk::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1417,7 +1417,7 @@ EntityPath Vlan::Nodes::Node::Trunks::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1521,7 +1521,7 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1609,7 +1609,7 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Servi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1701,7 +1701,7 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Servi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1805,7 +1805,7 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Servi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1903,7 +1903,7 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Servi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2017,7 +2017,7 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Servi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2130,7 +2130,7 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInst
 	|| is_set(payload_ethertype.operation)
 	|| is_set(source_mac_match.operation)
 	|| is_set(tags_popped.operation)
-	|| (local_traffic_stack !=  nullptr && is_set(local_traffic_stack->operation));
+	|| (local_traffic_stack !=  nullptr && local_traffic_stack->has_operation());
 }
 
 std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::get_segment_path() const
@@ -2147,7 +2147,7 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Servi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2335,7 +2335,7 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1A
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2438,9 +2438,9 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::has_operati
 	|| is_set(outer_tag.operation)
 	|| is_set(tag.operation)
 	|| is_set(vlan_encapsulation.operation)
-	|| (dot1ad_dot1q_stack !=  nullptr && is_set(dot1ad_dot1q_stack->operation))
-	|| (service_instance_details !=  nullptr && is_set(service_instance_details->operation))
-	|| (stack !=  nullptr && is_set(stack->operation));
+	|| (dot1ad_dot1q_stack !=  nullptr && dot1ad_dot1q_stack->has_operation())
+	|| (service_instance_details !=  nullptr && service_instance_details->has_operation())
+	|| (stack !=  nullptr && stack->has_operation());
 }
 
 std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::get_segment_path() const
@@ -2457,7 +2457,7 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2644,7 +2644,7 @@ bool Vlan::Nodes::Node::Interfaces::Interface::has_operation() const
 	|| is_set(service.operation)
 	|| is_set(state.operation)
 	|| is_set(switched_mtu.operation)
-	|| (encapsulation_details !=  nullptr && is_set(encapsulation_details->operation));
+	|| (encapsulation_details !=  nullptr && encapsulation_details->has_operation());
 }
 
 std::string Vlan::Nodes::Node::Interfaces::Interface::get_segment_path() const
@@ -2661,7 +2661,7 @@ EntityPath Vlan::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2801,7 +2801,7 @@ EntityPath Vlan::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2905,7 +2905,7 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2993,7 +2993,7 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3085,7 +3085,7 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3189,7 +3189,7 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3287,7 +3287,7 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3401,7 +3401,7 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3514,7 +3514,7 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Ser
 	|| is_set(payload_ethertype.operation)
 	|| is_set(source_mac_match.operation)
 	|| is_set(tags_popped.operation)
-	|| (local_traffic_stack !=  nullptr && is_set(local_traffic_stack->operation));
+	|| (local_traffic_stack !=  nullptr && local_traffic_stack->has_operation());
 }
 
 std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::get_segment_path() const
@@ -3531,7 +3531,7 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3719,7 +3719,7 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3822,9 +3822,9 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::has
 	|| is_set(outer_tag.operation)
 	|| is_set(tag.operation)
 	|| is_set(vlan_encapsulation.operation)
-	|| (dot1ad_dot1q_stack !=  nullptr && is_set(dot1ad_dot1q_stack->operation))
-	|| (service_instance_details !=  nullptr && is_set(service_instance_details->operation))
-	|| (stack !=  nullptr && is_set(stack->operation));
+	|| (dot1ad_dot1q_stack !=  nullptr && dot1ad_dot1q_stack->has_operation())
+	|| (service_instance_details !=  nullptr && service_instance_details->has_operation())
+	|| (stack !=  nullptr && stack->has_operation());
 }
 
 std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::get_segment_path() const
@@ -3841,7 +3841,7 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetail
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4034,7 +4034,7 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::has_operation() const
 	|| is_set(service.operation)
 	|| is_set(state.operation)
 	|| is_set(switched_mtu.operation)
-	|| (encapsulation_details !=  nullptr && is_set(encapsulation_details->operation));
+	|| (encapsulation_details !=  nullptr && encapsulation_details->has_operation());
 }
 
 std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::get_segment_path() const
@@ -4051,7 +4051,7 @@ EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4201,7 +4201,7 @@ EntityPath Vlan::Nodes::Node::TagAllocations::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4302,9 +4302,9 @@ bool Vlan::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_id.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (tag_allocations !=  nullptr && is_set(tag_allocations->operation))
-	|| (trunks !=  nullptr && is_set(trunks->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (tag_allocations !=  nullptr && tag_allocations->has_operation())
+	|| (trunks !=  nullptr && trunks->has_operation());
 }
 
 std::string Vlan::Nodes::Node::get_segment_path() const
@@ -4564,7 +4564,7 @@ bool Vlan::has_data() const
 bool Vlan::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Vlan::get_segment_path() const
@@ -4581,7 +4581,7 @@ EntityPath Vlan::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -4683,7 +4683,7 @@ EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4778,7 +4778,7 @@ EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4891,7 +4891,7 @@ EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4982,7 +4982,7 @@ bool EthernetEncapsulation::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (unicast_mac_filters !=  nullptr && is_set(unicast_mac_filters->operation));
+	|| (unicast_mac_filters !=  nullptr && unicast_mac_filters->has_operation());
 }
 
 std::string EthernetEncapsulation::Nodes::Node::get_segment_path() const
@@ -5196,7 +5196,7 @@ bool EthernetEncapsulation::has_data() const
 bool EthernetEncapsulation::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string EthernetEncapsulation::get_segment_path() const
@@ -5213,7 +5213,7 @@ EntityPath EthernetEncapsulation::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -5277,69 +5277,69 @@ std::unique_ptr<Entity> EthernetEncapsulation::clone_ptr()
     return std::make_unique<EthernetEncapsulation>();
 }
 
-const Enum::Value VlanEncapsEnum::no_encapsulation {0, "no-encapsulation"};
-const Enum::Value VlanEncapsEnum::dot1q {1, "dot1q"};
-const Enum::Value VlanEncapsEnum::qinq {2, "qinq"};
-const Enum::Value VlanEncapsEnum::qin_any {3, "qin-any"};
-const Enum::Value VlanEncapsEnum::dot1q_native {4, "dot1q-native"};
-const Enum::Value VlanEncapsEnum::dot1ad {5, "dot1ad"};
-const Enum::Value VlanEncapsEnum::dot1ad_native {6, "dot1ad-native"};
-const Enum::Value VlanEncapsEnum::service_instance {7, "service-instance"};
-const Enum::Value VlanEncapsEnum::dot1ad_dot1q {8, "dot1ad-dot1q"};
-const Enum::Value VlanEncapsEnum::dot1ad_any {9, "dot1ad-any"};
+const Enum::YLeaf VlanEncapsEnum::no_encapsulation {0, "no-encapsulation"};
+const Enum::YLeaf VlanEncapsEnum::dot1q {1, "dot1q"};
+const Enum::YLeaf VlanEncapsEnum::qinq {2, "qinq"};
+const Enum::YLeaf VlanEncapsEnum::qin_any {3, "qin-any"};
+const Enum::YLeaf VlanEncapsEnum::dot1q_native {4, "dot1q-native"};
+const Enum::YLeaf VlanEncapsEnum::dot1ad {5, "dot1ad"};
+const Enum::YLeaf VlanEncapsEnum::dot1ad_native {6, "dot1ad-native"};
+const Enum::YLeaf VlanEncapsEnum::service_instance {7, "service-instance"};
+const Enum::YLeaf VlanEncapsEnum::dot1ad_dot1q {8, "dot1ad-dot1q"};
+const Enum::YLeaf VlanEncapsEnum::dot1ad_any {9, "dot1ad-any"};
 
-const Enum::Value EthCapsUcastMacModeEnum::reserved {0, "reserved"};
-const Enum::Value EthCapsUcastMacModeEnum::permit {1, "permit"};
+const Enum::YLeaf EthCapsUcastMacModeEnum::reserved {0, "reserved"};
+const Enum::YLeaf EthCapsUcastMacModeEnum::permit {1, "permit"};
 
-const Enum::Value ImStateEnumEnum::im_state_not_ready {0, "im-state-not-ready"};
-const Enum::Value ImStateEnumEnum::im_state_admin_down {1, "im-state-admin-down"};
-const Enum::Value ImStateEnumEnum::im_state_down {2, "im-state-down"};
-const Enum::Value ImStateEnumEnum::im_state_up {3, "im-state-up"};
-const Enum::Value ImStateEnumEnum::im_state_shutdown {4, "im-state-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_err_disable {5, "im-state-err-disable"};
-const Enum::Value ImStateEnumEnum::im_state_down_immediate {6, "im-state-down-immediate"};
-const Enum::Value ImStateEnumEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
-const Enum::Value ImStateEnumEnum::im_state_down_graceful {8, "im-state-down-graceful"};
-const Enum::Value ImStateEnumEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
-const Enum::Value ImStateEnumEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
-const Enum::Value ImStateEnumEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
-const Enum::Value ImStateEnumEnum::im_state_reset {14, "im-state-reset"};
-const Enum::Value ImStateEnumEnum::im_state_operational {15, "im-state-operational"};
-const Enum::Value ImStateEnumEnum::im_state_not_operational {16, "im-state-not-operational"};
-const Enum::Value ImStateEnumEnum::im_state_unknown {17, "im-state-unknown"};
-const Enum::Value ImStateEnumEnum::im_state_last {18, "im-state-last"};
+const Enum::YLeaf ImStateEnumEnum::im_state_not_ready {0, "im-state-not-ready"};
+const Enum::YLeaf ImStateEnumEnum::im_state_admin_down {1, "im-state-admin-down"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down {2, "im-state-down"};
+const Enum::YLeaf ImStateEnumEnum::im_state_up {3, "im-state-up"};
+const Enum::YLeaf ImStateEnumEnum::im_state_shutdown {4, "im-state-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_err_disable {5, "im-state-err-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate {6, "im-state-down-immediate"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_graceful {8, "im-state-down-graceful"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
+const Enum::YLeaf ImStateEnumEnum::im_state_reset {14, "im-state-reset"};
+const Enum::YLeaf ImStateEnumEnum::im_state_operational {15, "im-state-operational"};
+const Enum::YLeaf ImStateEnumEnum::im_state_not_operational {16, "im-state-not-operational"};
+const Enum::YLeaf ImStateEnumEnum::im_state_unknown {17, "im-state-unknown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_last {18, "im-state-last"};
 
-const Enum::Value EfpTagPriorityEnum::priority0 {0, "priority0"};
-const Enum::Value EfpTagPriorityEnum::priority1 {1, "priority1"};
-const Enum::Value EfpTagPriorityEnum::priority2 {2, "priority2"};
-const Enum::Value EfpTagPriorityEnum::priority3 {3, "priority3"};
-const Enum::Value EfpTagPriorityEnum::priority4 {4, "priority4"};
-const Enum::Value EfpTagPriorityEnum::priority5 {5, "priority5"};
-const Enum::Value EfpTagPriorityEnum::priority6 {6, "priority6"};
-const Enum::Value EfpTagPriorityEnum::priority7 {7, "priority7"};
-const Enum::Value EfpTagPriorityEnum::priority_any {8, "priority-any"};
+const Enum::YLeaf EfpTagPriorityEnum::priority0 {0, "priority0"};
+const Enum::YLeaf EfpTagPriorityEnum::priority1 {1, "priority1"};
+const Enum::YLeaf EfpTagPriorityEnum::priority2 {2, "priority2"};
+const Enum::YLeaf EfpTagPriorityEnum::priority3 {3, "priority3"};
+const Enum::YLeaf EfpTagPriorityEnum::priority4 {4, "priority4"};
+const Enum::YLeaf EfpTagPriorityEnum::priority5 {5, "priority5"};
+const Enum::YLeaf EfpTagPriorityEnum::priority6 {6, "priority6"};
+const Enum::YLeaf EfpTagPriorityEnum::priority7 {7, "priority7"};
+const Enum::YLeaf EfpTagPriorityEnum::priority_any {8, "priority-any"};
 
-const Enum::Value EfpTagEtypeEnum::untagged {0, "untagged"};
-const Enum::Value EfpTagEtypeEnum::dot1q {33024, "dot1q"};
-const Enum::Value EfpTagEtypeEnum::dot1ad {34984, "dot1ad"};
+const Enum::YLeaf EfpTagEtypeEnum::untagged {0, "untagged"};
+const Enum::YLeaf EfpTagEtypeEnum::dot1q {33024, "dot1q"};
+const Enum::YLeaf EfpTagEtypeEnum::dot1ad {34984, "dot1ad"};
 
-const Enum::Value VlanServiceEnum::vlan_service_l2 {1, "vlan-service-l2"};
-const Enum::Value VlanServiceEnum::vlan_service_l3 {2, "vlan-service-l3"};
+const Enum::YLeaf VlanServiceEnum::vlan_service_l2 {1, "vlan-service-l2"};
+const Enum::YLeaf VlanServiceEnum::vlan_service_l3 {2, "vlan-service-l3"};
 
-const Enum::Value EfpPayloadEtypeEnum::payload_ethertype_any {0, "payload-ethertype-any"};
-const Enum::Value EfpPayloadEtypeEnum::payload_ethertype_ip {1, "payload-ethertype-ip"};
-const Enum::Value EfpPayloadEtypeEnum::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
+const Enum::YLeaf EfpPayloadEtypeEnum::payload_ethertype_any {0, "payload-ethertype-any"};
+const Enum::YLeaf EfpPayloadEtypeEnum::payload_ethertype_ip {1, "payload-ethertype-ip"};
+const Enum::YLeaf EfpPayloadEtypeEnum::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
 
-const Enum::Value VlanQinqOuterEtypeEnum::ether_type8100 {33024, "ether-type8100"};
-const Enum::Value VlanQinqOuterEtypeEnum::ether_type9100 {37120, "ether-type9100"};
-const Enum::Value VlanQinqOuterEtypeEnum::ether_type9200 {37376, "ether-type9200"};
+const Enum::YLeaf VlanQinqOuterEtypeEnum::ether_type8100 {33024, "ether-type8100"};
+const Enum::YLeaf VlanQinqOuterEtypeEnum::ether_type9100 {37120, "ether-type9100"};
+const Enum::YLeaf VlanQinqOuterEtypeEnum::ether_type9200 {37376, "ether-type9200"};
 
-const Enum::Value EthFilteringEnum::no_filtering {0, "no-filtering"};
-const Enum::Value EthFilteringEnum::dot1q_filtering {1, "dot1q-filtering"};
-const Enum::Value EthFilteringEnum::dot1ad_filtering {2, "dot1ad-filtering"};
-const Enum::Value EthFilteringEnum::two_port_mac_relay_filtering {3, "two-port-mac-relay-filtering"};
+const Enum::YLeaf EthFilteringEnum::no_filtering {0, "no-filtering"};
+const Enum::YLeaf EthFilteringEnum::dot1q_filtering {1, "dot1q-filtering"};
+const Enum::YLeaf EthFilteringEnum::dot1ad_filtering {2, "dot1ad-filtering"};
+const Enum::YLeaf EthFilteringEnum::two_port_mac_relay_filtering {3, "two-port-mac-relay-filtering"};
 
 
 }

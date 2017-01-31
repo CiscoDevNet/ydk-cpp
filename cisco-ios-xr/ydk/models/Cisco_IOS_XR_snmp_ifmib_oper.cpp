@@ -8,8 +8,8 @@ namespace ydk {
 namespace Cisco_IOS_XR_snmp_ifmib_oper {
 
 
-const Enum::Value LinkUpDownStatusEnum::enabled {1, "enabled"};
-const Enum::Value LinkUpDownStatusEnum::disabled {2, "disabled"};
+const Enum::YLeaf LinkUpDownStatusEnum::enabled {1, "enabled"};
+const Enum::YLeaf LinkUpDownStatusEnum::disabled {2, "disabled"};
 
 
 }

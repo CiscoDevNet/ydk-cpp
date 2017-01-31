@@ -26,6 +26,7 @@ class Rcmd : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Ospf : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Rcmd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Instances : public Entity
@@ -56,6 +58,7 @@ class Rcmd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Instance : public Entity
             {
                 public:
@@ -69,8 +72,9 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value instance_name; //type: string
 
+
+                    YLeaf instance_name; //type: string
 
                 class IpfrrEventSummaries : public Entity
                 {
@@ -87,6 +91,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class IpfrrEventSummary : public Entity
                     {
                         public:
@@ -100,19 +105,20 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_id; //type: int32
-                            Value event_id_xr; //type: uint32
-                            Value trigger_time; //type: string
-                            Value trigger_spf_run; //type: uint32
-                            Value wait_time; //type: uint32
-                            Value start_time_offset; //type: string
-                            Value duration; //type: string
-                            Value completed_spf_run; //type: uint32
-                            Value total_routes; //type: uint32
-                            Value fully_protected_routes; //type: uint32
-                            Value partially_protected_routes; //type: uint32
-                            Value coverage; //type: string
 
+
+                            YLeaf event_id; //type: int32
+                            YLeaf event_id_xr; //type: uint32
+                            YLeaf trigger_time; //type: string
+                            YLeaf trigger_spf_run; //type: uint32
+                            YLeaf wait_time; //type: uint32
+                            YLeaf start_time_offset; //type: string
+                            YLeaf duration; //type: string
+                            YLeaf completed_spf_run; //type: uint32
+                            YLeaf total_routes; //type: uint32
+                            YLeaf fully_protected_routes; //type: uint32
+                            YLeaf partially_protected_routes; //type: uint32
+                            YLeaf coverage; //type: string
 
                         class IpfrrStatistic : public Entity
                         {
@@ -127,17 +133,17 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value priority; //type: RcmdPriorityLevelEnum
-                                Value total_routes; //type: uint32
-                                Value fully_protected_routes; //type: uint32
-                                Value partially_protected_routes; //type: uint32
-                                Value coverage; //type: string
-                                Value local_lfa_coverage; //type: string
-                                Value remote_lfa_coverage; //type: string
-                                Value below_threshold; //type: boolean
 
 
-                                class RcmdPriorityLevelEnum;
+                                YLeaf priority; //type: RcmdPriorityLevelEnum
+                                YLeaf total_routes; //type: uint32
+                                YLeaf fully_protected_routes; //type: uint32
+                                YLeaf partially_protected_routes; //type: uint32
+                                YLeaf coverage; //type: string
+                                YLeaf local_lfa_coverage; //type: string
+                                YLeaf remote_lfa_coverage; //type: string
+                                YLeaf below_threshold; //type: boolean
+
 
 
                         }; // Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic
@@ -156,12 +162,13 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value remote_node_id; //type: string
-                                Value interface_name; //type: string
-                                Value neighbour_address; //type: string
-                                Value path_count; //type: uint32
-                                Value in_use_time; //type: string
 
+
+                                YLeaf remote_node_id; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf neighbour_address; //type: string
+                                YLeaf path_count; //type: uint32
+                                YLeaf in_use_time; //type: string
 
                             class PrimaryPath : public Entity
                             {
@@ -176,9 +183,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
-                                    Value neighbour_address; //type: string
 
+
+                                    YLeaf interface_name; //type: string
+                                    YLeaf neighbour_address; //type: string
 
 
 
@@ -219,6 +227,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixEventStatistic : public Entity
                     {
                         public:
@@ -232,27 +241,25 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix_info; //type: string
-                            Value prefix; //type: string
-                            Value prefix_lenth; //type: uint32
-                            Value last_event_time; //type: string
-                            Value last_priority; //type: RcmdPriorityLevelEnum
-                            Value last_route_type; //type: RcmdShowRouteEnum
-                            Value last_change_type; //type: RcmdChangeEnum
-                            Value last_cost; //type: uint32
-                            Value critical_priority; //type: uint32
-                            Value high_priority; //type: uint32
-                            Value medium_priority; //type: uint32
-                            Value low_priority; //type: uint32
-                            Value add_count; //type: uint32
-                            Value modify_count; //type: uint32
-                            Value delete_count; //type: uint32
-                            Value threshold_exceed_count; //type: uint32
 
 
-                            class RcmdChangeEnum;
-                            class RcmdPriorityLevelEnum;
-                            class RcmdShowRouteEnum;
+                            YLeaf prefix_info; //type: string
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_lenth; //type: uint32
+                            YLeaf last_event_time; //type: string
+                            YLeaf last_priority; //type: RcmdPriorityLevelEnum
+                            YLeaf last_route_type; //type: RcmdShowRouteEnum
+                            YLeaf last_change_type; //type: RcmdChangeEnum
+                            YLeaf last_cost; //type: uint32
+                            YLeaf critical_priority; //type: uint32
+                            YLeaf high_priority; //type: uint32
+                            YLeaf medium_priority; //type: uint32
+                            YLeaf low_priority; //type: uint32
+                            YLeaf add_count; //type: uint32
+                            YLeaf modify_count; //type: uint32
+                            YLeaf delete_count; //type: uint32
+                            YLeaf threshold_exceed_count; //type: uint32
+
 
 
                     }; // Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic
@@ -279,6 +286,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SpfRunSummary : public Entity
                     {
                         public:
@@ -292,8 +300,9 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value spf_run_number; //type: int32
 
+
+                            YLeaf spf_run_number; //type: int32
 
                         class SpfSummary : public Entity
                         {
@@ -308,17 +317,18 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value state; //type: RcmdSpfStateEnum
-                                Value is_data_complete; //type: boolean
-                                Value threshold_exceeded; //type: boolean
-                                Value trigger_time; //type: string
-                                Value start_time; //type: string
-                                Value duration; //type: string
-                                Value total_dijkstra_runs; //type: uint16
-                                Value total_inter_area_and_external_batches; //type: uint16
-                                Value total_type12lsa_changes; //type: uint16
-                                Value total_type357lsa_changes; //type: uint16
 
+
+                                YLeaf state; //type: RcmdSpfStateEnum
+                                YLeaf is_data_complete; //type: boolean
+                                YLeaf threshold_exceeded; //type: boolean
+                                YLeaf trigger_time; //type: string
+                                YLeaf start_time; //type: string
+                                YLeaf duration; //type: string
+                                YLeaf total_dijkstra_runs; //type: uint16
+                                YLeaf total_inter_area_and_external_batches; //type: uint16
+                                YLeaf total_type12lsa_changes; //type: uint16
+                                YLeaf total_type357lsa_changes; //type: uint16
 
                             class PrioritySummary : public Entity
                             {
@@ -333,9 +343,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: RcmdPriorityLevelEnum
-                                    Value threshold_exceeded; //type: boolean
 
+
+                                    YLeaf level; //type: RcmdPriorityLevelEnum
+                                    YLeaf threshold_exceeded; //type: boolean
 
                                 class RouteStatistics : public Entity
                                 {
@@ -350,13 +361,14 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value adds; //type: uint32
-                                        Value deletes; //type: uint32
-                                        Value modifies; //type: uint32
-                                        Value reachables; //type: uint32
-                                        Value unreachables; //type: uint32
-                                        Value touches; //type: uint32
 
+
+                                        YLeaf adds; //type: uint32
+                                        YLeaf deletes; //type: uint32
+                                        YLeaf modifies; //type: uint32
+                                        YLeaf reachables; //type: uint32
+                                        YLeaf unreachables; //type: uint32
+                                        YLeaf touches; //type: uint32
 
 
 
@@ -376,11 +388,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_time; //type: string
-                                        Value maximum_time; //type: string
-                                        Value slowest_node_name; //type: string
-                                        Value fastest_node_name; //type: string
 
+
+                                        YLeaf minimum_time; //type: string
+                                        YLeaf maximum_time; //type: string
+                                        YLeaf slowest_node_name; //type: string
+                                        YLeaf fastest_node_name; //type: string
 
 
 
@@ -400,11 +413,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_time; //type: string
-                                        Value maximum_time; //type: string
-                                        Value slowest_node_name; //type: string
-                                        Value fastest_node_name; //type: string
 
+
+                                        YLeaf minimum_time; //type: string
+                                        YLeaf maximum_time; //type: string
+                                        YLeaf slowest_node_name; //type: string
+                                        YLeaf fastest_node_name; //type: string
 
 
 
@@ -424,11 +438,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value total_routes; //type: uint32
-                                        Value fully_protected_routes; //type: uint32
-                                        Value partially_protected_routes; //type: uint32
-                                        Value coverage; //type: string
 
+
+                                        YLeaf total_routes; //type: uint32
+                                        YLeaf fully_protected_routes; //type: uint32
+                                        YLeaf partially_protected_routes; //type: uint32
+                                        YLeaf coverage; //type: string
 
 
 
@@ -439,14 +454,12 @@ class Rcmd : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime> ip_convergence_time;
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics> route_statistics;
-                                    class RcmdPriorityLevelEnum;
 
 
                             }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary
 
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary> > priority_summary;
-                                class RcmdSpfStateEnum;
 
 
                         }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary
@@ -465,14 +478,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dijkstra_run_number; //type: uint32
-                                Value area_id; //type: string
-                                Value threshold_exceeded; //type: boolean
-                                Value trigger_time; //type: string
-                                Value start_time; //type: string
-                                Value wait_time; //type: uint32
-                                Value duration; //type: string
 
+
+                                YLeaf dijkstra_run_number; //type: uint32
+                                YLeaf area_id; //type: string
+                                YLeaf threshold_exceeded; //type: boolean
+                                YLeaf trigger_time; //type: string
+                                YLeaf start_time; //type: string
+                                YLeaf wait_time; //type: uint32
+                                YLeaf duration; //type: string
 
                             class TriggerLsa : public Entity
                             {
@@ -487,16 +501,15 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lsa_id; //type: string
-                                    Value sequence_number; //type: string
-                                    Value lsa_type; //type: RcmdLsaEnum
-                                    Value origin_router_id; //type: string
-                                    Value change_type; //type: RcmdLsChangeEnum
-                                    Value reception_time; //type: string
 
 
-                                    class RcmdLsChangeEnum;
-                                    class RcmdLsaEnum;
+                                    YLeaf lsa_id; //type: string
+                                    YLeaf sequence_number; //type: string
+                                    YLeaf lsa_type; //type: RcmdLsaEnum
+                                    YLeaf origin_router_id; //type: string
+                                    YLeaf change_type; //type: RcmdLsChangeEnum
+                                    YLeaf reception_time; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::TriggerLsa
@@ -517,6 +530,7 @@ class Rcmd : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PrioritySummary : public Entity
                                 {
                                     public:
@@ -530,9 +544,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: RcmdPriorityLevelEnum
-                                        Value threshold_exceeded; //type: boolean
 
+
+                                        YLeaf level; //type: RcmdPriorityLevelEnum
+                                        YLeaf threshold_exceeded; //type: boolean
 
                                     class RouteStatistics : public Entity
                                     {
@@ -547,13 +562,14 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value adds; //type: uint32
-                                            Value deletes; //type: uint32
-                                            Value modifies; //type: uint32
-                                            Value reachables; //type: uint32
-                                            Value unreachables; //type: uint32
-                                            Value touches; //type: uint32
 
+
+                                            YLeaf adds; //type: uint32
+                                            YLeaf deletes; //type: uint32
+                                            YLeaf modifies; //type: uint32
+                                            YLeaf reachables; //type: uint32
+                                            YLeaf unreachables; //type: uint32
+                                            YLeaf touches; //type: uint32
 
 
 
@@ -573,11 +589,12 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value minimum_time; //type: string
-                                            Value maximum_time; //type: string
-                                            Value slowest_node_name; //type: string
-                                            Value fastest_node_name; //type: string
 
+
+                                            YLeaf minimum_time; //type: string
+                                            YLeaf maximum_time; //type: string
+                                            YLeaf slowest_node_name; //type: string
+                                            YLeaf fastest_node_name; //type: string
 
 
 
@@ -597,11 +614,12 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value minimum_time; //type: string
-                                            Value maximum_time; //type: string
-                                            Value slowest_node_name; //type: string
-                                            Value fastest_node_name; //type: string
 
+
+                                            YLeaf minimum_time; //type: string
+                                            YLeaf maximum_time; //type: string
+                                            YLeaf slowest_node_name; //type: string
+                                            YLeaf fastest_node_name; //type: string
 
 
 
@@ -621,11 +639,12 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value total_routes; //type: uint32
-                                            Value fully_protected_routes; //type: uint32
-                                            Value partially_protected_routes; //type: uint32
-                                            Value coverage; //type: string
 
+
+                                            YLeaf total_routes; //type: uint32
+                                            YLeaf fully_protected_routes; //type: uint32
+                                            YLeaf partially_protected_routes; //type: uint32
+                                            YLeaf coverage; //type: string
 
 
 
@@ -636,7 +655,6 @@ class Rcmd : public Entity
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::RouteStatistics> route_statistics;
-                                        class RcmdPriorityLevelEnum;
 
 
                                 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary
@@ -657,6 +675,7 @@ class Rcmd : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class RouteOrigin : public Entity
                                     {
                                         public:
@@ -670,10 +689,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -693,10 +713,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -716,10 +737,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -739,10 +761,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -762,10 +785,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -785,10 +809,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -808,10 +833,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -831,10 +857,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -854,9 +881,10 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value node_name; //type: string
-                                            Value speed; //type: RcmdLinecardSpeedEnum
 
+
+                                            YLeaf node_name; //type: string
+                                            YLeaf speed; //type: RcmdLinecardSpeedEnum
 
                                         class FibComplete : public Entity
                                         {
@@ -871,10 +899,11 @@ class Rcmd : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value start_time; //type: string
-                                                Value end_time; //type: string
-                                                Value duration; //type: string
 
+
+                                                YLeaf start_time; //type: string
+                                                YLeaf end_time; //type: string
+                                                YLeaf duration; //type: string
 
 
 
@@ -882,7 +911,6 @@ class Rcmd : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete> fib_complete;
-                                            class RcmdLinecardSpeedEnum;
 
 
                                     }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp
@@ -901,9 +929,10 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value node_name; //type: string
-                                            Value speed; //type: RcmdLinecardSpeedEnum
 
+
+                                            YLeaf node_name; //type: string
+                                            YLeaf speed; //type: RcmdLinecardSpeedEnum
 
                                         class FibComplete : public Entity
                                         {
@@ -918,10 +947,11 @@ class Rcmd : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value start_time; //type: string
-                                                Value end_time; //type: string
-                                                Value duration; //type: string
 
+
+                                                YLeaf start_time; //type: string
+                                                YLeaf end_time; //type: string
+                                                YLeaf duration; //type: string
 
 
 
@@ -929,7 +959,6 @@ class Rcmd : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete> fib_complete;
-                                            class RcmdLinecardSpeedEnum;
 
 
                                     }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls
@@ -963,9 +992,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value net_mask; //type: uint8
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf net_mask; //type: uint8
 
 
 
@@ -985,9 +1015,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value net_mask; //type: uint8
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf net_mask; //type: uint8
 
 
 
@@ -1016,16 +1047,15 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lsa_id; //type: string
-                                    Value sequence_number; //type: string
-                                    Value lsa_type; //type: RcmdLsaEnum
-                                    Value origin_router_id; //type: string
-                                    Value change_type; //type: RcmdLsChangeEnum
-                                    Value reception_time; //type: string
 
 
-                                    class RcmdLsChangeEnum;
-                                    class RcmdLsaEnum;
+                                    YLeaf lsa_id; //type: string
+                                    YLeaf sequence_number; //type: string
+                                    YLeaf lsa_type; //type: RcmdLsaEnum
+                                    YLeaf origin_router_id; //type: string
+                                    YLeaf change_type; //type: RcmdLsChangeEnum
+                                    YLeaf reception_time; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::LsaProcessed
@@ -1054,6 +1084,7 @@ class Rcmd : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Priority : public Entity
                             {
                                 public:
@@ -1069,6 +1100,7 @@ class Rcmd : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PrioritySummary : public Entity
                                 {
                                     public:
@@ -1082,12 +1114,13 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: RcmdPriorityLevelEnum
-                                        Value threshold_exceeded; //type: boolean
-                                        Value type3ls_as; //type: uint32
-                                        Value type4ls_as; //type: uint32
-                                        Value type57ls_as; //type: uint32
 
+
+                                        YLeaf level; //type: RcmdPriorityLevelEnum
+                                        YLeaf threshold_exceeded; //type: boolean
+                                        YLeaf type3ls_as; //type: uint32
+                                        YLeaf type4ls_as; //type: uint32
+                                        YLeaf type57ls_as; //type: uint32
 
                                     class RouteStatistics : public Entity
                                     {
@@ -1102,13 +1135,14 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value adds; //type: uint32
-                                            Value deletes; //type: uint32
-                                            Value modifies; //type: uint32
-                                            Value reachables; //type: uint32
-                                            Value unreachables; //type: uint32
-                                            Value touches; //type: uint32
 
+
+                                            YLeaf adds; //type: uint32
+                                            YLeaf deletes; //type: uint32
+                                            YLeaf modifies; //type: uint32
+                                            YLeaf reachables; //type: uint32
+                                            YLeaf unreachables; //type: uint32
+                                            YLeaf touches; //type: uint32
 
 
 
@@ -1128,11 +1162,12 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value minimum_time; //type: string
-                                            Value maximum_time; //type: string
-                                            Value slowest_node_name; //type: string
-                                            Value fastest_node_name; //type: string
 
+
+                                            YLeaf minimum_time; //type: string
+                                            YLeaf maximum_time; //type: string
+                                            YLeaf slowest_node_name; //type: string
+                                            YLeaf fastest_node_name; //type: string
 
 
 
@@ -1152,11 +1187,12 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value minimum_time; //type: string
-                                            Value maximum_time; //type: string
-                                            Value slowest_node_name; //type: string
-                                            Value fastest_node_name; //type: string
 
+
+                                            YLeaf minimum_time; //type: string
+                                            YLeaf maximum_time; //type: string
+                                            YLeaf slowest_node_name; //type: string
+                                            YLeaf fastest_node_name; //type: string
 
 
 
@@ -1166,7 +1202,6 @@ class Rcmd : public Entity
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics> route_statistics;
-                                        class RcmdPriorityLevelEnum;
 
 
                                 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary
@@ -1187,6 +1222,7 @@ class Rcmd : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class RouteOrigin : public Entity
                                     {
                                         public:
@@ -1200,10 +1236,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -1223,10 +1260,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -1246,10 +1284,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -1269,10 +1308,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -1292,10 +1332,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -1315,10 +1356,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -1338,10 +1380,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -1361,10 +1404,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -1384,9 +1428,10 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value node_name; //type: string
-                                            Value speed; //type: RcmdLinecardSpeedEnum
 
+
+                                            YLeaf node_name; //type: string
+                                            YLeaf speed; //type: RcmdLinecardSpeedEnum
 
                                         class FibComplete : public Entity
                                         {
@@ -1401,10 +1446,11 @@ class Rcmd : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value start_time; //type: string
-                                                Value end_time; //type: string
-                                                Value duration; //type: string
 
+
+                                                YLeaf start_time; //type: string
+                                                YLeaf end_time; //type: string
+                                                YLeaf duration; //type: string
 
 
 
@@ -1412,7 +1458,6 @@ class Rcmd : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete> fib_complete;
-                                            class RcmdLinecardSpeedEnum;
 
 
                                     }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp
@@ -1431,9 +1476,10 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value node_name; //type: string
-                                            Value speed; //type: RcmdLinecardSpeedEnum
 
+
+                                            YLeaf node_name; //type: string
+                                            YLeaf speed; //type: RcmdLinecardSpeedEnum
 
                                         class FibComplete : public Entity
                                         {
@@ -1448,10 +1494,11 @@ class Rcmd : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value start_time; //type: string
-                                                Value end_time; //type: string
-                                                Value duration; //type: string
 
+
+                                                YLeaf start_time; //type: string
+                                                YLeaf end_time; //type: string
+                                                YLeaf duration; //type: string
 
 
 
@@ -1459,7 +1506,6 @@ class Rcmd : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete> fib_complete;
-                                            class RcmdLinecardSpeedEnum;
 
 
                                     }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls
@@ -1493,9 +1539,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value net_mask; //type: uint8
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf net_mask; //type: uint8
 
 
 
@@ -1515,9 +1562,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value net_mask; //type: uint8
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf net_mask; //type: uint8
 
 
 
@@ -1568,6 +1616,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class IpfrrEventOffline : public Entity
                     {
                         public:
@@ -1581,19 +1630,20 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_id; //type: int32
-                            Value event_id_xr; //type: uint32
-                            Value trigger_time; //type: string
-                            Value trigger_spf_run; //type: uint32
-                            Value wait_time; //type: uint32
-                            Value start_time_offset; //type: string
-                            Value duration; //type: string
-                            Value completed_spf_run; //type: uint32
-                            Value total_routes; //type: uint32
-                            Value fully_protected_routes; //type: uint32
-                            Value partially_protected_routes; //type: uint32
-                            Value coverage; //type: string
 
+
+                            YLeaf event_id; //type: int32
+                            YLeaf event_id_xr; //type: uint32
+                            YLeaf trigger_time; //type: string
+                            YLeaf trigger_spf_run; //type: uint32
+                            YLeaf wait_time; //type: uint32
+                            YLeaf start_time_offset; //type: string
+                            YLeaf duration; //type: string
+                            YLeaf completed_spf_run; //type: uint32
+                            YLeaf total_routes; //type: uint32
+                            YLeaf fully_protected_routes; //type: uint32
+                            YLeaf partially_protected_routes; //type: uint32
+                            YLeaf coverage; //type: string
 
                         class IpfrrStatistic : public Entity
                         {
@@ -1608,17 +1658,17 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value priority; //type: RcmdPriorityLevelEnum
-                                Value total_routes; //type: uint32
-                                Value fully_protected_routes; //type: uint32
-                                Value partially_protected_routes; //type: uint32
-                                Value coverage; //type: string
-                                Value local_lfa_coverage; //type: string
-                                Value remote_lfa_coverage; //type: string
-                                Value below_threshold; //type: boolean
 
 
-                                class RcmdPriorityLevelEnum;
+                                YLeaf priority; //type: RcmdPriorityLevelEnum
+                                YLeaf total_routes; //type: uint32
+                                YLeaf fully_protected_routes; //type: uint32
+                                YLeaf partially_protected_routes; //type: uint32
+                                YLeaf coverage; //type: string
+                                YLeaf local_lfa_coverage; //type: string
+                                YLeaf remote_lfa_coverage; //type: string
+                                YLeaf below_threshold; //type: boolean
+
 
 
                         }; // Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic
@@ -1637,12 +1687,13 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value remote_node_id; //type: string
-                                Value interface_name; //type: string
-                                Value neighbour_address; //type: string
-                                Value path_count; //type: uint32
-                                Value in_use_time; //type: string
 
+
+                                YLeaf remote_node_id; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf neighbour_address; //type: string
+                                YLeaf path_count; //type: uint32
+                                YLeaf in_use_time; //type: string
 
                             class PrimaryPath : public Entity
                             {
@@ -1657,9 +1708,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
-                                    Value neighbour_address; //type: string
 
+
+                                    YLeaf interface_name; //type: string
+                                    YLeaf neighbour_address; //type: string
 
 
 
@@ -1700,6 +1752,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SpfRunOffline : public Entity
                     {
                         public:
@@ -1713,8 +1766,9 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value spf_run_number; //type: int32
 
+
+                            YLeaf spf_run_number; //type: int32
 
                         class SpfSummary : public Entity
                         {
@@ -1729,17 +1783,18 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value state; //type: RcmdSpfStateEnum
-                                Value is_data_complete; //type: boolean
-                                Value threshold_exceeded; //type: boolean
-                                Value trigger_time; //type: string
-                                Value start_time; //type: string
-                                Value duration; //type: string
-                                Value total_dijkstra_runs; //type: uint16
-                                Value total_inter_area_and_external_batches; //type: uint16
-                                Value total_type12lsa_changes; //type: uint16
-                                Value total_type357lsa_changes; //type: uint16
 
+
+                                YLeaf state; //type: RcmdSpfStateEnum
+                                YLeaf is_data_complete; //type: boolean
+                                YLeaf threshold_exceeded; //type: boolean
+                                YLeaf trigger_time; //type: string
+                                YLeaf start_time; //type: string
+                                YLeaf duration; //type: string
+                                YLeaf total_dijkstra_runs; //type: uint16
+                                YLeaf total_inter_area_and_external_batches; //type: uint16
+                                YLeaf total_type12lsa_changes; //type: uint16
+                                YLeaf total_type357lsa_changes; //type: uint16
 
                             class PrioritySummary : public Entity
                             {
@@ -1754,9 +1809,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: RcmdPriorityLevelEnum
-                                    Value threshold_exceeded; //type: boolean
 
+
+                                    YLeaf level; //type: RcmdPriorityLevelEnum
+                                    YLeaf threshold_exceeded; //type: boolean
 
                                 class RouteStatistics : public Entity
                                 {
@@ -1771,13 +1827,14 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value adds; //type: uint32
-                                        Value deletes; //type: uint32
-                                        Value modifies; //type: uint32
-                                        Value reachables; //type: uint32
-                                        Value unreachables; //type: uint32
-                                        Value touches; //type: uint32
 
+
+                                        YLeaf adds; //type: uint32
+                                        YLeaf deletes; //type: uint32
+                                        YLeaf modifies; //type: uint32
+                                        YLeaf reachables; //type: uint32
+                                        YLeaf unreachables; //type: uint32
+                                        YLeaf touches; //type: uint32
 
 
 
@@ -1797,11 +1854,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_time; //type: string
-                                        Value maximum_time; //type: string
-                                        Value slowest_node_name; //type: string
-                                        Value fastest_node_name; //type: string
 
+
+                                        YLeaf minimum_time; //type: string
+                                        YLeaf maximum_time; //type: string
+                                        YLeaf slowest_node_name; //type: string
+                                        YLeaf fastest_node_name; //type: string
 
 
 
@@ -1821,11 +1879,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_time; //type: string
-                                        Value maximum_time; //type: string
-                                        Value slowest_node_name; //type: string
-                                        Value fastest_node_name; //type: string
 
+
+                                        YLeaf minimum_time; //type: string
+                                        YLeaf maximum_time; //type: string
+                                        YLeaf slowest_node_name; //type: string
+                                        YLeaf fastest_node_name; //type: string
 
 
 
@@ -1845,11 +1904,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value total_routes; //type: uint32
-                                        Value fully_protected_routes; //type: uint32
-                                        Value partially_protected_routes; //type: uint32
-                                        Value coverage; //type: string
 
+
+                                        YLeaf total_routes; //type: uint32
+                                        YLeaf fully_protected_routes; //type: uint32
+                                        YLeaf partially_protected_routes; //type: uint32
+                                        YLeaf coverage; //type: string
 
 
 
@@ -1860,14 +1920,12 @@ class Rcmd : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime> ip_convergence_time;
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics> route_statistics;
-                                    class RcmdPriorityLevelEnum;
 
 
                             }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary
 
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary> > priority_summary;
-                                class RcmdSpfStateEnum;
 
 
                         }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
@@ -1886,14 +1944,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dijkstra_run_number; //type: uint32
-                                Value area_id; //type: string
-                                Value threshold_exceeded; //type: boolean
-                                Value trigger_time; //type: string
-                                Value start_time; //type: string
-                                Value wait_time; //type: uint32
-                                Value duration; //type: string
 
+
+                                YLeaf dijkstra_run_number; //type: uint32
+                                YLeaf area_id; //type: string
+                                YLeaf threshold_exceeded; //type: boolean
+                                YLeaf trigger_time; //type: string
+                                YLeaf start_time; //type: string
+                                YLeaf wait_time; //type: uint32
+                                YLeaf duration; //type: string
 
                             class TriggerLsa : public Entity
                             {
@@ -1908,16 +1967,15 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lsa_id; //type: string
-                                    Value sequence_number; //type: string
-                                    Value lsa_type; //type: RcmdLsaEnum
-                                    Value origin_router_id; //type: string
-                                    Value change_type; //type: RcmdLsChangeEnum
-                                    Value reception_time; //type: string
 
 
-                                    class RcmdLsChangeEnum;
-                                    class RcmdLsaEnum;
+                                    YLeaf lsa_id; //type: string
+                                    YLeaf sequence_number; //type: string
+                                    YLeaf lsa_type; //type: RcmdLsaEnum
+                                    YLeaf origin_router_id; //type: string
+                                    YLeaf change_type; //type: RcmdLsChangeEnum
+                                    YLeaf reception_time; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::TriggerLsa
@@ -1938,6 +1996,7 @@ class Rcmd : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PrioritySummary : public Entity
                                 {
                                     public:
@@ -1951,9 +2010,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: RcmdPriorityLevelEnum
-                                        Value threshold_exceeded; //type: boolean
 
+
+                                        YLeaf level; //type: RcmdPriorityLevelEnum
+                                        YLeaf threshold_exceeded; //type: boolean
 
                                     class RouteStatistics : public Entity
                                     {
@@ -1968,13 +2028,14 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value adds; //type: uint32
-                                            Value deletes; //type: uint32
-                                            Value modifies; //type: uint32
-                                            Value reachables; //type: uint32
-                                            Value unreachables; //type: uint32
-                                            Value touches; //type: uint32
 
+
+                                            YLeaf adds; //type: uint32
+                                            YLeaf deletes; //type: uint32
+                                            YLeaf modifies; //type: uint32
+                                            YLeaf reachables; //type: uint32
+                                            YLeaf unreachables; //type: uint32
+                                            YLeaf touches; //type: uint32
 
 
 
@@ -1994,11 +2055,12 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value minimum_time; //type: string
-                                            Value maximum_time; //type: string
-                                            Value slowest_node_name; //type: string
-                                            Value fastest_node_name; //type: string
 
+
+                                            YLeaf minimum_time; //type: string
+                                            YLeaf maximum_time; //type: string
+                                            YLeaf slowest_node_name; //type: string
+                                            YLeaf fastest_node_name; //type: string
 
 
 
@@ -2018,11 +2080,12 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value minimum_time; //type: string
-                                            Value maximum_time; //type: string
-                                            Value slowest_node_name; //type: string
-                                            Value fastest_node_name; //type: string
 
+
+                                            YLeaf minimum_time; //type: string
+                                            YLeaf maximum_time; //type: string
+                                            YLeaf slowest_node_name; //type: string
+                                            YLeaf fastest_node_name; //type: string
 
 
 
@@ -2042,11 +2105,12 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value total_routes; //type: uint32
-                                            Value fully_protected_routes; //type: uint32
-                                            Value partially_protected_routes; //type: uint32
-                                            Value coverage; //type: string
 
+
+                                            YLeaf total_routes; //type: uint32
+                                            YLeaf fully_protected_routes; //type: uint32
+                                            YLeaf partially_protected_routes; //type: uint32
+                                            YLeaf coverage; //type: string
 
 
 
@@ -2057,7 +2121,6 @@ class Rcmd : public Entity
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::RouteStatistics> route_statistics;
-                                        class RcmdPriorityLevelEnum;
 
 
                                 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary
@@ -2078,6 +2141,7 @@ class Rcmd : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class RouteOrigin : public Entity
                                     {
                                         public:
@@ -2091,10 +2155,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2114,10 +2179,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2137,10 +2203,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2160,10 +2227,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2183,10 +2251,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2206,10 +2275,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2229,10 +2299,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2252,10 +2323,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2275,9 +2347,10 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value node_name; //type: string
-                                            Value speed; //type: RcmdLinecardSpeedEnum
 
+
+                                            YLeaf node_name; //type: string
+                                            YLeaf speed; //type: RcmdLinecardSpeedEnum
 
                                         class FibComplete : public Entity
                                         {
@@ -2292,10 +2365,11 @@ class Rcmd : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value start_time; //type: string
-                                                Value end_time; //type: string
-                                                Value duration; //type: string
 
+
+                                                YLeaf start_time; //type: string
+                                                YLeaf end_time; //type: string
+                                                YLeaf duration; //type: string
 
 
 
@@ -2303,7 +2377,6 @@ class Rcmd : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete> fib_complete;
-                                            class RcmdLinecardSpeedEnum;
 
 
                                     }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp
@@ -2322,9 +2395,10 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value node_name; //type: string
-                                            Value speed; //type: RcmdLinecardSpeedEnum
 
+
+                                            YLeaf node_name; //type: string
+                                            YLeaf speed; //type: RcmdLinecardSpeedEnum
 
                                         class FibComplete : public Entity
                                         {
@@ -2339,10 +2413,11 @@ class Rcmd : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value start_time; //type: string
-                                                Value end_time; //type: string
-                                                Value duration; //type: string
 
+
+                                                YLeaf start_time; //type: string
+                                                YLeaf end_time; //type: string
+                                                YLeaf duration; //type: string
 
 
 
@@ -2350,7 +2425,6 @@ class Rcmd : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete> fib_complete;
-                                            class RcmdLinecardSpeedEnum;
 
 
                                     }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls
@@ -2384,9 +2458,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value net_mask; //type: uint8
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf net_mask; //type: uint8
 
 
 
@@ -2406,9 +2481,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value net_mask; //type: uint8
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf net_mask; //type: uint8
 
 
 
@@ -2437,16 +2513,15 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lsa_id; //type: string
-                                    Value sequence_number; //type: string
-                                    Value lsa_type; //type: RcmdLsaEnum
-                                    Value origin_router_id; //type: string
-                                    Value change_type; //type: RcmdLsChangeEnum
-                                    Value reception_time; //type: string
 
 
-                                    class RcmdLsChangeEnum;
-                                    class RcmdLsaEnum;
+                                    YLeaf lsa_id; //type: string
+                                    YLeaf sequence_number; //type: string
+                                    YLeaf lsa_type; //type: RcmdLsaEnum
+                                    YLeaf origin_router_id; //type: string
+                                    YLeaf change_type; //type: RcmdLsChangeEnum
+                                    YLeaf reception_time; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::LsaProcessed
@@ -2475,6 +2550,7 @@ class Rcmd : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Priority : public Entity
                             {
                                 public:
@@ -2490,6 +2566,7 @@ class Rcmd : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PrioritySummary : public Entity
                                 {
                                     public:
@@ -2503,12 +2580,13 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: RcmdPriorityLevelEnum
-                                        Value threshold_exceeded; //type: boolean
-                                        Value type3ls_as; //type: uint32
-                                        Value type4ls_as; //type: uint32
-                                        Value type57ls_as; //type: uint32
 
+
+                                        YLeaf level; //type: RcmdPriorityLevelEnum
+                                        YLeaf threshold_exceeded; //type: boolean
+                                        YLeaf type3ls_as; //type: uint32
+                                        YLeaf type4ls_as; //type: uint32
+                                        YLeaf type57ls_as; //type: uint32
 
                                     class RouteStatistics : public Entity
                                     {
@@ -2523,13 +2601,14 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value adds; //type: uint32
-                                            Value deletes; //type: uint32
-                                            Value modifies; //type: uint32
-                                            Value reachables; //type: uint32
-                                            Value unreachables; //type: uint32
-                                            Value touches; //type: uint32
 
+
+                                            YLeaf adds; //type: uint32
+                                            YLeaf deletes; //type: uint32
+                                            YLeaf modifies; //type: uint32
+                                            YLeaf reachables; //type: uint32
+                                            YLeaf unreachables; //type: uint32
+                                            YLeaf touches; //type: uint32
 
 
 
@@ -2549,11 +2628,12 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value minimum_time; //type: string
-                                            Value maximum_time; //type: string
-                                            Value slowest_node_name; //type: string
-                                            Value fastest_node_name; //type: string
 
+
+                                            YLeaf minimum_time; //type: string
+                                            YLeaf maximum_time; //type: string
+                                            YLeaf slowest_node_name; //type: string
+                                            YLeaf fastest_node_name; //type: string
 
 
 
@@ -2573,11 +2653,12 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value minimum_time; //type: string
-                                            Value maximum_time; //type: string
-                                            Value slowest_node_name; //type: string
-                                            Value fastest_node_name; //type: string
 
+
+                                            YLeaf minimum_time; //type: string
+                                            YLeaf maximum_time; //type: string
+                                            YLeaf slowest_node_name; //type: string
+                                            YLeaf fastest_node_name; //type: string
 
 
 
@@ -2587,7 +2668,6 @@ class Rcmd : public Entity
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics> route_statistics;
-                                        class RcmdPriorityLevelEnum;
 
 
                                 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary
@@ -2608,6 +2688,7 @@ class Rcmd : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class RouteOrigin : public Entity
                                     {
                                         public:
@@ -2621,10 +2702,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2644,10 +2726,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2667,10 +2750,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2690,10 +2774,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2713,10 +2798,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2736,10 +2822,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2759,10 +2846,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2782,10 +2870,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -2805,9 +2894,10 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value node_name; //type: string
-                                            Value speed; //type: RcmdLinecardSpeedEnum
 
+
+                                            YLeaf node_name; //type: string
+                                            YLeaf speed; //type: RcmdLinecardSpeedEnum
 
                                         class FibComplete : public Entity
                                         {
@@ -2822,10 +2912,11 @@ class Rcmd : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value start_time; //type: string
-                                                Value end_time; //type: string
-                                                Value duration; //type: string
 
+
+                                                YLeaf start_time; //type: string
+                                                YLeaf end_time; //type: string
+                                                YLeaf duration; //type: string
 
 
 
@@ -2833,7 +2924,6 @@ class Rcmd : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete> fib_complete;
-                                            class RcmdLinecardSpeedEnum;
 
 
                                     }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp
@@ -2852,9 +2942,10 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value node_name; //type: string
-                                            Value speed; //type: RcmdLinecardSpeedEnum
 
+
+                                            YLeaf node_name; //type: string
+                                            YLeaf speed; //type: RcmdLinecardSpeedEnum
 
                                         class FibComplete : public Entity
                                         {
@@ -2869,10 +2960,11 @@ class Rcmd : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value start_time; //type: string
-                                                Value end_time; //type: string
-                                                Value duration; //type: string
 
+
+                                                YLeaf start_time; //type: string
+                                                YLeaf end_time; //type: string
+                                                YLeaf duration; //type: string
 
 
 
@@ -2880,7 +2972,6 @@ class Rcmd : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete> fib_complete;
-                                            class RcmdLinecardSpeedEnum;
 
 
                                     }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls
@@ -2914,9 +3005,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value net_mask; //type: uint8
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf net_mask; //type: uint8
 
 
 
@@ -2936,9 +3028,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value net_mask; //type: uint8
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf net_mask; //type: uint8
 
 
 
@@ -2989,6 +3082,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SummaryExternalEventSummary : public Entity
                     {
                         public:
@@ -3002,19 +3096,20 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_id; //type: int32
-                            Value prefix; //type: string
-                            Value prefix_lenth; //type: uint32
-                            Value spf_run_no; //type: uint32
-                            Value ipfrr_event_id; //type: uint32
-                            Value threshold_exceeded; //type: boolean
-                            Value priority; //type: RcmdPriorityLevelEnum
-                            Value change_type; //type: RcmdChangeEnum
-                            Value route_type; //type: RcmdShowRouteEnum
-                            Value route_path_change_type; //type: RcmdShowRoutePathChangeEnum
-                            Value cost; //type: uint32
-                            Value trigger_time; //type: string
 
+
+                            YLeaf event_id; //type: int32
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_lenth; //type: uint32
+                            YLeaf spf_run_no; //type: uint32
+                            YLeaf ipfrr_event_id; //type: uint32
+                            YLeaf threshold_exceeded; //type: boolean
+                            YLeaf priority; //type: RcmdPriorityLevelEnum
+                            YLeaf change_type; //type: RcmdChangeEnum
+                            YLeaf route_type; //type: RcmdShowRouteEnum
+                            YLeaf route_path_change_type; //type: RcmdShowRoutePathChangeEnum
+                            YLeaf cost; //type: uint32
+                            YLeaf trigger_time; //type: string
 
                         class IpConvergenceTime : public Entity
                         {
@@ -3029,11 +3124,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value minimum_time; //type: string
-                                Value maximum_time; //type: string
-                                Value slowest_node_name; //type: string
-                                Value fastest_node_name; //type: string
 
+
+                                YLeaf minimum_time; //type: string
+                                YLeaf maximum_time; //type: string
+                                YLeaf slowest_node_name; //type: string
+                                YLeaf fastest_node_name; //type: string
 
 
 
@@ -3053,11 +3149,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value minimum_time; //type: string
-                                Value maximum_time; //type: string
-                                Value slowest_node_name; //type: string
-                                Value fastest_node_name; //type: string
 
+
+                                YLeaf minimum_time; //type: string
+                                YLeaf maximum_time; //type: string
+                                YLeaf slowest_node_name; //type: string
+                                YLeaf fastest_node_name; //type: string
 
 
 
@@ -3077,11 +3174,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value neighbour_address; //type: string
-                                Value change_type; //type: RcmdChangeEnum
-                                Value path_metric; //type: uint32
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf neighbour_address; //type: string
+                                YLeaf change_type; //type: RcmdChangeEnum
+                                YLeaf path_metric; //type: uint32
 
                             class LfaPath : public Entity
                             {
@@ -3096,23 +3194,21 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lfa_type; //type: RcmdShowIpfrrLfaEnum
-                                    Value interface_name; //type: string
-                                    Value neighbour_address; //type: string
-                                    Value change_type; //type: RcmdChangeEnum
-                                    Value path_metric; //type: uint32
-                                    Value remote_node_id; //type: string
 
 
-                                    class RcmdChangeEnum;
-                                    class RcmdShowIpfrrLfaEnum;
+                                    YLeaf lfa_type; //type: RcmdShowIpfrrLfaEnum
+                                    YLeaf interface_name; //type: string
+                                    YLeaf neighbour_address; //type: string
+                                    YLeaf change_type; //type: RcmdChangeEnum
+                                    YLeaf path_metric; //type: uint32
+                                    YLeaf remote_node_id; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath
 
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath> > lfa_path;
-                                class RcmdChangeEnum;
 
 
                         }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path
@@ -3131,16 +3227,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsa_id; //type: string
-                                Value sequence_number; //type: string
-                                Value lsa_type; //type: RcmdLsaEnum
-                                Value origin_router_id; //type: string
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
-                                class RcmdLsaEnum;
+                                YLeaf lsa_id; //type: string
+                                YLeaf sequence_number; //type: string
+                                YLeaf lsa_type; //type: RcmdLsaEnum
+                                YLeaf origin_router_id; //type: string
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TriggerLsa
@@ -3159,15 +3254,16 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_origin; //type: string
-                                Value ri_bv4_enter; //type: string
-                                Value ri_bv4_exit; //type: string
-                                Value ri_bv4_redistribute; //type: string
-                                Value ldp_enter; //type: string
-                                Value ldp_exit; //type: string
-                                Value lsd_enter; //type: string
-                                Value lsd_exit; //type: string
 
+
+                                YLeaf route_origin; //type: string
+                                YLeaf ri_bv4_enter; //type: string
+                                YLeaf ri_bv4_exit; //type: string
+                                YLeaf ri_bv4_redistribute; //type: string
+                                YLeaf ldp_enter; //type: string
+                                YLeaf ldp_exit; //type: string
+                                YLeaf lsd_enter; //type: string
+                                YLeaf lsd_exit; //type: string
 
                             class LcIp : public Entity
                             {
@@ -3182,12 +3278,12 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value speed; //type: RcmdLinecardSpeedEnum
-                                    Value fib_complete; //type: string
 
 
-                                    class RcmdLinecardSpeedEnum;
+                                    YLeaf node_name; //type: string
+                                    YLeaf speed; //type: RcmdLinecardSpeedEnum
+                                    YLeaf fib_complete; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcIp
@@ -3206,12 +3302,12 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value speed; //type: RcmdLinecardSpeedEnum
-                                    Value fib_complete; //type: string
 
 
-                                    class RcmdLinecardSpeedEnum;
+                                    YLeaf node_name; //type: string
+                                    YLeaf speed; //type: RcmdLinecardSpeedEnum
+                                    YLeaf fib_complete; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcMpls
@@ -3237,16 +3333,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsa_id; //type: string
-                                Value sequence_number; //type: string
-                                Value lsa_type; //type: RcmdLsaEnum
-                                Value origin_router_id; //type: string
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
-                                class RcmdLsaEnum;
+                                YLeaf lsa_id; //type: string
+                                YLeaf sequence_number; //type: string
+                                YLeaf lsa_type; //type: RcmdLsaEnum
+                                YLeaf origin_router_id; //type: string
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::LsaProcessed
@@ -3258,10 +3353,6 @@ class Rcmd : public Entity
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path> > path;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine> > time_line;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TriggerLsa> > trigger_lsa;
-                            class RcmdChangeEnum;
-                            class RcmdPriorityLevelEnum;
-                            class RcmdShowRoutePathChangeEnum;
-                            class RcmdShowRouteEnum;
 
 
                     }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary
@@ -3288,6 +3379,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixEventSummary : public Entity
                     {
                         public:
@@ -3301,19 +3393,20 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_id; //type: int32
-                            Value prefix; //type: string
-                            Value prefix_lenth; //type: uint32
-                            Value spf_run_no; //type: uint32
-                            Value ipfrr_event_id; //type: uint32
-                            Value threshold_exceeded; //type: boolean
-                            Value priority; //type: RcmdPriorityLevelEnum
-                            Value change_type; //type: RcmdChangeEnum
-                            Value route_type; //type: RcmdShowRouteEnum
-                            Value route_path_change_type; //type: RcmdShowRoutePathChangeEnum
-                            Value cost; //type: uint32
-                            Value trigger_time; //type: string
 
+
+                            YLeaf event_id; //type: int32
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_lenth; //type: uint32
+                            YLeaf spf_run_no; //type: uint32
+                            YLeaf ipfrr_event_id; //type: uint32
+                            YLeaf threshold_exceeded; //type: boolean
+                            YLeaf priority; //type: RcmdPriorityLevelEnum
+                            YLeaf change_type; //type: RcmdChangeEnum
+                            YLeaf route_type; //type: RcmdShowRouteEnum
+                            YLeaf route_path_change_type; //type: RcmdShowRoutePathChangeEnum
+                            YLeaf cost; //type: uint32
+                            YLeaf trigger_time; //type: string
 
                         class IpConvergenceTime : public Entity
                         {
@@ -3328,11 +3421,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value minimum_time; //type: string
-                                Value maximum_time; //type: string
-                                Value slowest_node_name; //type: string
-                                Value fastest_node_name; //type: string
 
+
+                                YLeaf minimum_time; //type: string
+                                YLeaf maximum_time; //type: string
+                                YLeaf slowest_node_name; //type: string
+                                YLeaf fastest_node_name; //type: string
 
 
 
@@ -3352,11 +3446,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value minimum_time; //type: string
-                                Value maximum_time; //type: string
-                                Value slowest_node_name; //type: string
-                                Value fastest_node_name; //type: string
 
+
+                                YLeaf minimum_time; //type: string
+                                YLeaf maximum_time; //type: string
+                                YLeaf slowest_node_name; //type: string
+                                YLeaf fastest_node_name; //type: string
 
 
 
@@ -3376,11 +3471,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value neighbour_address; //type: string
-                                Value change_type; //type: RcmdChangeEnum
-                                Value path_metric; //type: uint32
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf neighbour_address; //type: string
+                                YLeaf change_type; //type: RcmdChangeEnum
+                                YLeaf path_metric; //type: uint32
 
                             class LfaPath : public Entity
                             {
@@ -3395,23 +3491,21 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lfa_type; //type: RcmdShowIpfrrLfaEnum
-                                    Value interface_name; //type: string
-                                    Value neighbour_address; //type: string
-                                    Value change_type; //type: RcmdChangeEnum
-                                    Value path_metric; //type: uint32
-                                    Value remote_node_id; //type: string
 
 
-                                    class RcmdChangeEnum;
-                                    class RcmdShowIpfrrLfaEnum;
+                                    YLeaf lfa_type; //type: RcmdShowIpfrrLfaEnum
+                                    YLeaf interface_name; //type: string
+                                    YLeaf neighbour_address; //type: string
+                                    YLeaf change_type; //type: RcmdChangeEnum
+                                    YLeaf path_metric; //type: uint32
+                                    YLeaf remote_node_id; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath
 
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath> > lfa_path;
-                                class RcmdChangeEnum;
 
 
                         }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path
@@ -3430,16 +3524,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsa_id; //type: string
-                                Value sequence_number; //type: string
-                                Value lsa_type; //type: RcmdLsaEnum
-                                Value origin_router_id; //type: string
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
-                                class RcmdLsaEnum;
+                                YLeaf lsa_id; //type: string
+                                YLeaf sequence_number; //type: string
+                                YLeaf lsa_type; //type: RcmdLsaEnum
+                                YLeaf origin_router_id; //type: string
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa
@@ -3458,15 +3551,16 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_origin; //type: string
-                                Value ri_bv4_enter; //type: string
-                                Value ri_bv4_exit; //type: string
-                                Value ri_bv4_redistribute; //type: string
-                                Value ldp_enter; //type: string
-                                Value ldp_exit; //type: string
-                                Value lsd_enter; //type: string
-                                Value lsd_exit; //type: string
 
+
+                                YLeaf route_origin; //type: string
+                                YLeaf ri_bv4_enter; //type: string
+                                YLeaf ri_bv4_exit; //type: string
+                                YLeaf ri_bv4_redistribute; //type: string
+                                YLeaf ldp_enter; //type: string
+                                YLeaf ldp_exit; //type: string
+                                YLeaf lsd_enter; //type: string
+                                YLeaf lsd_exit; //type: string
 
                             class LcIp : public Entity
                             {
@@ -3481,12 +3575,12 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value speed; //type: RcmdLinecardSpeedEnum
-                                    Value fib_complete; //type: string
 
 
-                                    class RcmdLinecardSpeedEnum;
+                                    YLeaf node_name; //type: string
+                                    YLeaf speed; //type: RcmdLinecardSpeedEnum
+                                    YLeaf fib_complete; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp
@@ -3505,12 +3599,12 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value speed; //type: RcmdLinecardSpeedEnum
-                                    Value fib_complete; //type: string
 
 
-                                    class RcmdLinecardSpeedEnum;
+                                    YLeaf node_name; //type: string
+                                    YLeaf speed; //type: RcmdLinecardSpeedEnum
+                                    YLeaf fib_complete; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls
@@ -3536,16 +3630,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsa_id; //type: string
-                                Value sequence_number; //type: string
-                                Value lsa_type; //type: RcmdLsaEnum
-                                Value origin_router_id; //type: string
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
-                                class RcmdLsaEnum;
+                                YLeaf lsa_id; //type: string
+                                YLeaf sequence_number; //type: string
+                                YLeaf lsa_type; //type: RcmdLsaEnum
+                                YLeaf origin_router_id; //type: string
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed
@@ -3557,10 +3650,6 @@ class Rcmd : public Entity
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path> > path;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine> > time_line;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa> > trigger_lsa;
-                            class RcmdChangeEnum;
-                            class RcmdPriorityLevelEnum;
-                            class RcmdShowRoutePathChangeEnum;
-                            class RcmdShowRouteEnum;
 
 
                     }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary
@@ -3587,6 +3676,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SummaryExternalEventOffline : public Entity
                     {
                         public:
@@ -3600,19 +3690,20 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_id; //type: int32
-                            Value prefix; //type: string
-                            Value prefix_lenth; //type: uint32
-                            Value spf_run_no; //type: uint32
-                            Value ipfrr_event_id; //type: uint32
-                            Value threshold_exceeded; //type: boolean
-                            Value priority; //type: RcmdPriorityLevelEnum
-                            Value change_type; //type: RcmdChangeEnum
-                            Value route_type; //type: RcmdShowRouteEnum
-                            Value route_path_change_type; //type: RcmdShowRoutePathChangeEnum
-                            Value cost; //type: uint32
-                            Value trigger_time; //type: string
 
+
+                            YLeaf event_id; //type: int32
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_lenth; //type: uint32
+                            YLeaf spf_run_no; //type: uint32
+                            YLeaf ipfrr_event_id; //type: uint32
+                            YLeaf threshold_exceeded; //type: boolean
+                            YLeaf priority; //type: RcmdPriorityLevelEnum
+                            YLeaf change_type; //type: RcmdChangeEnum
+                            YLeaf route_type; //type: RcmdShowRouteEnum
+                            YLeaf route_path_change_type; //type: RcmdShowRoutePathChangeEnum
+                            YLeaf cost; //type: uint32
+                            YLeaf trigger_time; //type: string
 
                         class IpConvergenceTime : public Entity
                         {
@@ -3627,11 +3718,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value minimum_time; //type: string
-                                Value maximum_time; //type: string
-                                Value slowest_node_name; //type: string
-                                Value fastest_node_name; //type: string
 
+
+                                YLeaf minimum_time; //type: string
+                                YLeaf maximum_time; //type: string
+                                YLeaf slowest_node_name; //type: string
+                                YLeaf fastest_node_name; //type: string
 
 
 
@@ -3651,11 +3743,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value minimum_time; //type: string
-                                Value maximum_time; //type: string
-                                Value slowest_node_name; //type: string
-                                Value fastest_node_name; //type: string
 
+
+                                YLeaf minimum_time; //type: string
+                                YLeaf maximum_time; //type: string
+                                YLeaf slowest_node_name; //type: string
+                                YLeaf fastest_node_name; //type: string
 
 
 
@@ -3675,11 +3768,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value neighbour_address; //type: string
-                                Value change_type; //type: RcmdChangeEnum
-                                Value path_metric; //type: uint32
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf neighbour_address; //type: string
+                                YLeaf change_type; //type: RcmdChangeEnum
+                                YLeaf path_metric; //type: uint32
 
                             class LfaPath : public Entity
                             {
@@ -3694,23 +3788,21 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lfa_type; //type: RcmdShowIpfrrLfaEnum
-                                    Value interface_name; //type: string
-                                    Value neighbour_address; //type: string
-                                    Value change_type; //type: RcmdChangeEnum
-                                    Value path_metric; //type: uint32
-                                    Value remote_node_id; //type: string
 
 
-                                    class RcmdChangeEnum;
-                                    class RcmdShowIpfrrLfaEnum;
+                                    YLeaf lfa_type; //type: RcmdShowIpfrrLfaEnum
+                                    YLeaf interface_name; //type: string
+                                    YLeaf neighbour_address; //type: string
+                                    YLeaf change_type; //type: RcmdChangeEnum
+                                    YLeaf path_metric; //type: uint32
+                                    YLeaf remote_node_id; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath
 
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath> > lfa_path;
-                                class RcmdChangeEnum;
 
 
                         }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path
@@ -3729,16 +3821,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsa_id; //type: string
-                                Value sequence_number; //type: string
-                                Value lsa_type; //type: RcmdLsaEnum
-                                Value origin_router_id; //type: string
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
-                                class RcmdLsaEnum;
+                                YLeaf lsa_id; //type: string
+                                YLeaf sequence_number; //type: string
+                                YLeaf lsa_type; //type: RcmdLsaEnum
+                                YLeaf origin_router_id; //type: string
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TriggerLsa
@@ -3757,15 +3848,16 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_origin; //type: string
-                                Value ri_bv4_enter; //type: string
-                                Value ri_bv4_exit; //type: string
-                                Value ri_bv4_redistribute; //type: string
-                                Value ldp_enter; //type: string
-                                Value ldp_exit; //type: string
-                                Value lsd_enter; //type: string
-                                Value lsd_exit; //type: string
 
+
+                                YLeaf route_origin; //type: string
+                                YLeaf ri_bv4_enter; //type: string
+                                YLeaf ri_bv4_exit; //type: string
+                                YLeaf ri_bv4_redistribute; //type: string
+                                YLeaf ldp_enter; //type: string
+                                YLeaf ldp_exit; //type: string
+                                YLeaf lsd_enter; //type: string
+                                YLeaf lsd_exit; //type: string
 
                             class LcIp : public Entity
                             {
@@ -3780,12 +3872,12 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value speed; //type: RcmdLinecardSpeedEnum
-                                    Value fib_complete; //type: string
 
 
-                                    class RcmdLinecardSpeedEnum;
+                                    YLeaf node_name; //type: string
+                                    YLeaf speed; //type: RcmdLinecardSpeedEnum
+                                    YLeaf fib_complete; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcIp
@@ -3804,12 +3896,12 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value speed; //type: RcmdLinecardSpeedEnum
-                                    Value fib_complete; //type: string
 
 
-                                    class RcmdLinecardSpeedEnum;
+                                    YLeaf node_name; //type: string
+                                    YLeaf speed; //type: RcmdLinecardSpeedEnum
+                                    YLeaf fib_complete; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcMpls
@@ -3835,16 +3927,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsa_id; //type: string
-                                Value sequence_number; //type: string
-                                Value lsa_type; //type: RcmdLsaEnum
-                                Value origin_router_id; //type: string
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
-                                class RcmdLsaEnum;
+                                YLeaf lsa_id; //type: string
+                                YLeaf sequence_number; //type: string
+                                YLeaf lsa_type; //type: RcmdLsaEnum
+                                YLeaf origin_router_id; //type: string
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::LsaProcessed
@@ -3856,10 +3947,6 @@ class Rcmd : public Entity
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path> > path;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine> > time_line;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TriggerLsa> > trigger_lsa;
-                            class RcmdChangeEnum;
-                            class RcmdPriorityLevelEnum;
-                            class RcmdShowRoutePathChangeEnum;
-                            class RcmdShowRouteEnum;
 
 
                     }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline
@@ -3886,6 +3973,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixEventOffline : public Entity
                     {
                         public:
@@ -3899,19 +3987,20 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_id; //type: int32
-                            Value prefix; //type: string
-                            Value prefix_lenth; //type: uint32
-                            Value spf_run_no; //type: uint32
-                            Value ipfrr_event_id; //type: uint32
-                            Value threshold_exceeded; //type: boolean
-                            Value priority; //type: RcmdPriorityLevelEnum
-                            Value change_type; //type: RcmdChangeEnum
-                            Value route_type; //type: RcmdShowRouteEnum
-                            Value route_path_change_type; //type: RcmdShowRoutePathChangeEnum
-                            Value cost; //type: uint32
-                            Value trigger_time; //type: string
 
+
+                            YLeaf event_id; //type: int32
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_lenth; //type: uint32
+                            YLeaf spf_run_no; //type: uint32
+                            YLeaf ipfrr_event_id; //type: uint32
+                            YLeaf threshold_exceeded; //type: boolean
+                            YLeaf priority; //type: RcmdPriorityLevelEnum
+                            YLeaf change_type; //type: RcmdChangeEnum
+                            YLeaf route_type; //type: RcmdShowRouteEnum
+                            YLeaf route_path_change_type; //type: RcmdShowRoutePathChangeEnum
+                            YLeaf cost; //type: uint32
+                            YLeaf trigger_time; //type: string
 
                         class IpConvergenceTime : public Entity
                         {
@@ -3926,11 +4015,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value minimum_time; //type: string
-                                Value maximum_time; //type: string
-                                Value slowest_node_name; //type: string
-                                Value fastest_node_name; //type: string
 
+
+                                YLeaf minimum_time; //type: string
+                                YLeaf maximum_time; //type: string
+                                YLeaf slowest_node_name; //type: string
+                                YLeaf fastest_node_name; //type: string
 
 
 
@@ -3950,11 +4040,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value minimum_time; //type: string
-                                Value maximum_time; //type: string
-                                Value slowest_node_name; //type: string
-                                Value fastest_node_name; //type: string
 
+
+                                YLeaf minimum_time; //type: string
+                                YLeaf maximum_time; //type: string
+                                YLeaf slowest_node_name; //type: string
+                                YLeaf fastest_node_name; //type: string
 
 
 
@@ -3974,11 +4065,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value neighbour_address; //type: string
-                                Value change_type; //type: RcmdChangeEnum
-                                Value path_metric; //type: uint32
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf neighbour_address; //type: string
+                                YLeaf change_type; //type: RcmdChangeEnum
+                                YLeaf path_metric; //type: uint32
 
                             class LfaPath : public Entity
                             {
@@ -3993,23 +4085,21 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lfa_type; //type: RcmdShowIpfrrLfaEnum
-                                    Value interface_name; //type: string
-                                    Value neighbour_address; //type: string
-                                    Value change_type; //type: RcmdChangeEnum
-                                    Value path_metric; //type: uint32
-                                    Value remote_node_id; //type: string
 
 
-                                    class RcmdChangeEnum;
-                                    class RcmdShowIpfrrLfaEnum;
+                                    YLeaf lfa_type; //type: RcmdShowIpfrrLfaEnum
+                                    YLeaf interface_name; //type: string
+                                    YLeaf neighbour_address; //type: string
+                                    YLeaf change_type; //type: RcmdChangeEnum
+                                    YLeaf path_metric; //type: uint32
+                                    YLeaf remote_node_id; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath
 
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath> > lfa_path;
-                                class RcmdChangeEnum;
 
 
                         }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path
@@ -4028,16 +4118,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsa_id; //type: string
-                                Value sequence_number; //type: string
-                                Value lsa_type; //type: RcmdLsaEnum
-                                Value origin_router_id; //type: string
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
-                                class RcmdLsaEnum;
+                                YLeaf lsa_id; //type: string
+                                YLeaf sequence_number; //type: string
+                                YLeaf lsa_type; //type: RcmdLsaEnum
+                                YLeaf origin_router_id; //type: string
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa
@@ -4056,15 +4145,16 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_origin; //type: string
-                                Value ri_bv4_enter; //type: string
-                                Value ri_bv4_exit; //type: string
-                                Value ri_bv4_redistribute; //type: string
-                                Value ldp_enter; //type: string
-                                Value ldp_exit; //type: string
-                                Value lsd_enter; //type: string
-                                Value lsd_exit; //type: string
 
+
+                                YLeaf route_origin; //type: string
+                                YLeaf ri_bv4_enter; //type: string
+                                YLeaf ri_bv4_exit; //type: string
+                                YLeaf ri_bv4_redistribute; //type: string
+                                YLeaf ldp_enter; //type: string
+                                YLeaf ldp_exit; //type: string
+                                YLeaf lsd_enter; //type: string
+                                YLeaf lsd_exit; //type: string
 
                             class LcIp : public Entity
                             {
@@ -4079,12 +4169,12 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value speed; //type: RcmdLinecardSpeedEnum
-                                    Value fib_complete; //type: string
 
 
-                                    class RcmdLinecardSpeedEnum;
+                                    YLeaf node_name; //type: string
+                                    YLeaf speed; //type: RcmdLinecardSpeedEnum
+                                    YLeaf fib_complete; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp
@@ -4103,12 +4193,12 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value speed; //type: RcmdLinecardSpeedEnum
-                                    Value fib_complete; //type: string
 
 
-                                    class RcmdLinecardSpeedEnum;
+                                    YLeaf node_name; //type: string
+                                    YLeaf speed; //type: RcmdLinecardSpeedEnum
+                                    YLeaf fib_complete; //type: string
+
 
 
                             }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls
@@ -4134,16 +4224,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsa_id; //type: string
-                                Value sequence_number; //type: string
-                                Value lsa_type; //type: RcmdLsaEnum
-                                Value origin_router_id; //type: string
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
-                                class RcmdLsaEnum;
+                                YLeaf lsa_id; //type: string
+                                YLeaf sequence_number; //type: string
+                                YLeaf lsa_type; //type: RcmdLsaEnum
+                                YLeaf origin_router_id; //type: string
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaProcessed
@@ -4155,10 +4244,6 @@ class Rcmd : public Entity
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path> > path;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine> > time_line;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa> > trigger_lsa;
-                            class RcmdChangeEnum;
-                            class RcmdPriorityLevelEnum;
-                            class RcmdShowRoutePathChangeEnum;
-                            class RcmdShowRouteEnum;
 
 
                     }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline
@@ -4183,23 +4268,24 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value inter_area_routes; //type: uint32
-                        Value inter_area_added; //type: uint32
-                        Value inter_area_modified; //type: uint32
-                        Value inter_area_deleted; //type: uint32
-                        Value inter_area_critical; //type: uint32
-                        Value inter_area_high; //type: uint32
-                        Value inter_area_medium; //type: uint32
-                        Value inter_area_low; //type: uint32
-                        Value external_routes; //type: uint32
-                        Value external_added; //type: uint32
-                        Value external_modified; //type: uint32
-                        Value external_deleted; //type: uint32
-                        Value external_critical; //type: uint32
-                        Value external_high; //type: uint32
-                        Value external_medium; //type: uint32
-                        Value external_low; //type: uint32
 
+
+                        YLeaf inter_area_routes; //type: uint32
+                        YLeaf inter_area_added; //type: uint32
+                        YLeaf inter_area_modified; //type: uint32
+                        YLeaf inter_area_deleted; //type: uint32
+                        YLeaf inter_area_critical; //type: uint32
+                        YLeaf inter_area_high; //type: uint32
+                        YLeaf inter_area_medium; //type: uint32
+                        YLeaf inter_area_low; //type: uint32
+                        YLeaf external_routes; //type: uint32
+                        YLeaf external_added; //type: uint32
+                        YLeaf external_modified; //type: uint32
+                        YLeaf external_deleted; //type: uint32
+                        YLeaf external_critical; //type: uint32
+                        YLeaf external_high; //type: uint32
+                        YLeaf external_medium; //type: uint32
+                        YLeaf external_low; //type: uint32
 
 
 
@@ -4248,6 +4334,7 @@ class Rcmd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Normal : public Entity
         {
             public:
@@ -4261,33 +4348,34 @@ class Rcmd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value host_name; //type: string
-                Value status; //type: RcmdBagEnableDisableEnum
-                Value max_events; //type: uint32
-                Value event_buffer_size; //type: uint32
-                Value monitoring_interval; //type: uint32
-                Value next_interval; //type: uint32
-                Value max_interface_count; //type: uint32
-                Value interface_count; //type: uint32
-                Value node_rp_count; //type: uint32
-                Value node_lc_count; //type: uint32
-                Value diag_node_count; //type: uint32
-                Value disabled_node_count; //type: uint32
-                Value in_active_node_count; //type: uint32
-                Value last_process_start_time; //type: string
-                Value last_process_duration; //type: string
-                Value last_process_state; //type: RcmdShowPrcsStateEnum
-                Value process_count; //type: uint32
-                Value spf_process_count; //type: uint32
-                Value reports_archive_path; //type: string
-                Value reports_archive_node; //type: string
-                Value last_archival_status; //type: string
-                Value last_archival_error; //type: string
-                Value last_archival_error_time; //type: string
-                Value archive_count; //type: uint32
-                Value diagnostics_archive_path; //type: string
-                Value diagnostics_archive_node; //type: string
 
+
+                YLeaf host_name; //type: string
+                YLeaf status; //type: RcmdBagEnableDisableEnum
+                YLeaf max_events; //type: uint32
+                YLeaf event_buffer_size; //type: uint32
+                YLeaf monitoring_interval; //type: uint32
+                YLeaf next_interval; //type: uint32
+                YLeaf max_interface_count; //type: uint32
+                YLeaf interface_count; //type: uint32
+                YLeaf node_rp_count; //type: uint32
+                YLeaf node_lc_count; //type: uint32
+                YLeaf diag_node_count; //type: uint32
+                YLeaf disabled_node_count; //type: uint32
+                YLeaf in_active_node_count; //type: uint32
+                YLeaf last_process_start_time; //type: string
+                YLeaf last_process_duration; //type: string
+                YLeaf last_process_state; //type: RcmdShowPrcsStateEnum
+                YLeaf process_count; //type: uint32
+                YLeaf spf_process_count; //type: uint32
+                YLeaf reports_archive_path; //type: string
+                YLeaf reports_archive_node; //type: string
+                YLeaf last_archival_status; //type: string
+                YLeaf last_archival_error; //type: string
+                YLeaf last_archival_error_time; //type: string
+                YLeaf archive_count; //type: uint32
+                YLeaf diagnostics_archive_path; //type: string
+                YLeaf diagnostics_archive_node; //type: string
 
             class ProtocolConfig : public Entity
             {
@@ -4302,8 +4390,9 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value protocol_name; //type: string
 
+
+                    YLeaf protocol_name; //type: string
 
                 class Priority : public Entity
                 {
@@ -4318,13 +4407,12 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value priority_name; //type: RcmdPriorityLevelEnum
-                        Value threshold; //type: uint32
-                        Value disable; //type: RcmdBoolYesNoEnum
 
 
-                        class RcmdBoolYesNoEnum;
-                        class RcmdPriorityLevelEnum;
+                        YLeaf priority_name; //type: RcmdPriorityLevelEnum
+                        YLeaf threshold; //type: uint32
+                        YLeaf disable; //type: RcmdBoolYesNoEnum
+
 
 
                 }; // Rcmd::Server::Normal::ProtocolConfig::Priority
@@ -4349,9 +4437,10 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value overload_suspend; //type: uint32
-                    Value memory_suspend; //type: uint32
 
+
+                    YLeaf overload_suspend; //type: uint32
+                    YLeaf memory_suspend; //type: uint32
 
                 class TraceInformation : public Entity
                 {
@@ -4366,11 +4455,12 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value trace_name; //type: string
-                        Value total_stats; //type: uint32
-                        Value last_run_stats; //type: uint32
-                        Value error_stats; //type: uint32
 
+
+                        YLeaf trace_name; //type: string
+                        YLeaf total_stats; //type: uint32
+                        YLeaf last_run_stats; //type: uint32
+                        YLeaf error_stats; //type: uint32
 
 
 
@@ -4385,8 +4475,6 @@ class Rcmd : public Entity
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Normal::ProtocolConfig> > protocol_config;
                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Normal::ServerDetail> > server_detail;
-                class RcmdShowPrcsStateEnum;
-                class RcmdBagEnableDisableEnum;
 
 
         }; // Rcmd::Server::Normal
@@ -4405,33 +4493,34 @@ class Rcmd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value host_name; //type: string
-                Value status; //type: RcmdBagEnableDisableEnum
-                Value max_events; //type: uint32
-                Value event_buffer_size; //type: uint32
-                Value monitoring_interval; //type: uint32
-                Value next_interval; //type: uint32
-                Value max_interface_count; //type: uint32
-                Value interface_count; //type: uint32
-                Value node_rp_count; //type: uint32
-                Value node_lc_count; //type: uint32
-                Value diag_node_count; //type: uint32
-                Value disabled_node_count; //type: uint32
-                Value in_active_node_count; //type: uint32
-                Value last_process_start_time; //type: string
-                Value last_process_duration; //type: string
-                Value last_process_state; //type: RcmdShowPrcsStateEnum
-                Value process_count; //type: uint32
-                Value spf_process_count; //type: uint32
-                Value reports_archive_path; //type: string
-                Value reports_archive_node; //type: string
-                Value last_archival_status; //type: string
-                Value last_archival_error; //type: string
-                Value last_archival_error_time; //type: string
-                Value archive_count; //type: uint32
-                Value diagnostics_archive_path; //type: string
-                Value diagnostics_archive_node; //type: string
 
+
+                YLeaf host_name; //type: string
+                YLeaf status; //type: RcmdBagEnableDisableEnum
+                YLeaf max_events; //type: uint32
+                YLeaf event_buffer_size; //type: uint32
+                YLeaf monitoring_interval; //type: uint32
+                YLeaf next_interval; //type: uint32
+                YLeaf max_interface_count; //type: uint32
+                YLeaf interface_count; //type: uint32
+                YLeaf node_rp_count; //type: uint32
+                YLeaf node_lc_count; //type: uint32
+                YLeaf diag_node_count; //type: uint32
+                YLeaf disabled_node_count; //type: uint32
+                YLeaf in_active_node_count; //type: uint32
+                YLeaf last_process_start_time; //type: string
+                YLeaf last_process_duration; //type: string
+                YLeaf last_process_state; //type: RcmdShowPrcsStateEnum
+                YLeaf process_count; //type: uint32
+                YLeaf spf_process_count; //type: uint32
+                YLeaf reports_archive_path; //type: string
+                YLeaf reports_archive_node; //type: string
+                YLeaf last_archival_status; //type: string
+                YLeaf last_archival_error; //type: string
+                YLeaf last_archival_error_time; //type: string
+                YLeaf archive_count; //type: uint32
+                YLeaf diagnostics_archive_path; //type: string
+                YLeaf diagnostics_archive_node; //type: string
 
             class ProtocolConfig : public Entity
             {
@@ -4446,8 +4535,9 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value protocol_name; //type: string
 
+
+                    YLeaf protocol_name; //type: string
 
                 class Priority : public Entity
                 {
@@ -4462,13 +4552,12 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value priority_name; //type: RcmdPriorityLevelEnum
-                        Value threshold; //type: uint32
-                        Value disable; //type: RcmdBoolYesNoEnum
 
 
-                        class RcmdBoolYesNoEnum;
-                        class RcmdPriorityLevelEnum;
+                        YLeaf priority_name; //type: RcmdPriorityLevelEnum
+                        YLeaf threshold; //type: uint32
+                        YLeaf disable; //type: RcmdBoolYesNoEnum
+
 
 
                 }; // Rcmd::Server::Detail::ProtocolConfig::Priority
@@ -4493,9 +4582,10 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value overload_suspend; //type: uint32
-                    Value memory_suspend; //type: uint32
 
+
+                    YLeaf overload_suspend; //type: uint32
+                    YLeaf memory_suspend; //type: uint32
 
                 class TraceInformation : public Entity
                 {
@@ -4510,11 +4600,12 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value trace_name; //type: string
-                        Value total_stats; //type: uint32
-                        Value last_run_stats; //type: uint32
-                        Value error_stats; //type: uint32
 
+
+                        YLeaf trace_name; //type: string
+                        YLeaf total_stats; //type: uint32
+                        YLeaf last_run_stats; //type: uint32
+                        YLeaf error_stats; //type: uint32
 
 
 
@@ -4529,8 +4620,6 @@ class Rcmd : public Entity
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Detail::ProtocolConfig> > protocol_config;
                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Detail::ServerDetail> > server_detail;
-                class RcmdShowPrcsStateEnum;
-                class RcmdBagEnableDisableEnum;
 
 
         }; // Rcmd::Server::Detail
@@ -4558,6 +4647,7 @@ class Rcmd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class NodeInformation : public Entity
         {
             public:
@@ -4571,24 +4661,21 @@ class Rcmd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_id; //type: uint32
-                Value node_name; //type: string
-                Value rack_id; //type: uint32
-                Value last_update_time; //type: string
-                Value fwd_referenced; //type: RcmdBoolYesNoEnum
-                Value node_type; //type: RcmdShowNodeEnum
-                Value software_state; //type: uint32
-                Value card_state; //type: uint32
-                Value node_state; //type: RcmdBoolYesNoEnum
-                Value status; //type: RcmdBagEnblDsblEnum
-                Value diag_mode; //type: uint32
-                Value redundancy_state; //type: uint32
 
 
-                class RcmdBoolYesNoEnum;
-                class RcmdBoolYesNoEnum;
-                class RcmdShowNodeEnum;
-                class RcmdBagEnblDsblEnum;
+                YLeaf node_id; //type: uint32
+                YLeaf node_name; //type: string
+                YLeaf rack_id; //type: uint32
+                YLeaf last_update_time; //type: string
+                YLeaf fwd_referenced; //type: RcmdBoolYesNoEnum
+                YLeaf node_type; //type: RcmdShowNodeEnum
+                YLeaf software_state; //type: uint32
+                YLeaf card_state; //type: uint32
+                YLeaf node_state; //type: RcmdBoolYesNoEnum
+                YLeaf status; //type: RcmdBagEnblDsblEnum
+                YLeaf diag_mode; //type: uint32
+                YLeaf redundancy_state; //type: uint32
+
 
 
         }; // Rcmd::Node::NodeInformation
@@ -4615,6 +4702,7 @@ class Rcmd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Instances : public Entity
         {
             public:
@@ -4630,6 +4718,7 @@ class Rcmd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Instance : public Entity
             {
                 public:
@@ -4643,8 +4732,9 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value instance_name; //type: string
 
+
+                    YLeaf instance_name; //type: string
 
                 class IpfrrEventSummaries : public Entity
                 {
@@ -4661,6 +4751,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class IpfrrEventSummary : public Entity
                     {
                         public:
@@ -4674,19 +4765,20 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_id; //type: int32
-                            Value event_id_xr; //type: uint32
-                            Value trigger_time; //type: string
-                            Value trigger_spf_run; //type: uint32
-                            Value wait_time; //type: uint32
-                            Value start_time_offset; //type: string
-                            Value duration; //type: string
-                            Value completed_spf_run; //type: uint32
-                            Value total_routes; //type: uint32
-                            Value fully_protected_routes; //type: uint32
-                            Value partially_protected_routes; //type: uint32
-                            Value coverage; //type: string
 
+
+                            YLeaf event_id; //type: int32
+                            YLeaf event_id_xr; //type: uint32
+                            YLeaf trigger_time; //type: string
+                            YLeaf trigger_spf_run; //type: uint32
+                            YLeaf wait_time; //type: uint32
+                            YLeaf start_time_offset; //type: string
+                            YLeaf duration; //type: string
+                            YLeaf completed_spf_run; //type: uint32
+                            YLeaf total_routes; //type: uint32
+                            YLeaf fully_protected_routes; //type: uint32
+                            YLeaf partially_protected_routes; //type: uint32
+                            YLeaf coverage; //type: string
 
                         class IpfrrStatistic : public Entity
                         {
@@ -4701,17 +4793,17 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value priority; //type: RcmdPriorityLevelEnum
-                                Value total_routes; //type: uint32
-                                Value fully_protected_routes; //type: uint32
-                                Value partially_protected_routes; //type: uint32
-                                Value coverage; //type: string
-                                Value local_lfa_coverage; //type: string
-                                Value remote_lfa_coverage; //type: string
-                                Value below_threshold; //type: boolean
 
 
-                                class RcmdPriorityLevelEnum;
+                                YLeaf priority; //type: RcmdPriorityLevelEnum
+                                YLeaf total_routes; //type: uint32
+                                YLeaf fully_protected_routes; //type: uint32
+                                YLeaf partially_protected_routes; //type: uint32
+                                YLeaf coverage; //type: string
+                                YLeaf local_lfa_coverage; //type: string
+                                YLeaf remote_lfa_coverage; //type: string
+                                YLeaf below_threshold; //type: boolean
+
 
 
                         }; // Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic
@@ -4730,12 +4822,13 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value remote_node_id; //type: string
-                                Value interface_name; //type: string
-                                Value neighbour_address; //type: string
-                                Value path_count; //type: uint32
-                                Value in_use_time; //type: string
 
+
+                                YLeaf remote_node_id; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf neighbour_address; //type: string
+                                YLeaf path_count; //type: uint32
+                                YLeaf in_use_time; //type: string
 
                             class PrimaryPath : public Entity
                             {
@@ -4750,9 +4843,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
-                                    Value neighbour_address; //type: string
 
+
+                                    YLeaf interface_name; //type: string
+                                    YLeaf neighbour_address; //type: string
 
 
 
@@ -4793,6 +4887,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixEventStatistic : public Entity
                     {
                         public:
@@ -4806,27 +4901,25 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix_info; //type: string
-                            Value prefix; //type: string
-                            Value prefix_lenth; //type: uint32
-                            Value last_event_time; //type: string
-                            Value last_priority; //type: RcmdPriorityLevelEnum
-                            Value last_route_type; //type: RcmdShowRouteEnum
-                            Value last_change_type; //type: RcmdChangeEnum
-                            Value last_cost; //type: uint32
-                            Value critical_priority; //type: uint32
-                            Value high_priority; //type: uint32
-                            Value medium_priority; //type: uint32
-                            Value low_priority; //type: uint32
-                            Value add_count; //type: uint32
-                            Value modify_count; //type: uint32
-                            Value delete_count; //type: uint32
-                            Value threshold_exceed_count; //type: uint32
 
 
-                            class RcmdChangeEnum;
-                            class RcmdPriorityLevelEnum;
-                            class RcmdShowRouteEnum;
+                            YLeaf prefix_info; //type: string
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_lenth; //type: uint32
+                            YLeaf last_event_time; //type: string
+                            YLeaf last_priority; //type: RcmdPriorityLevelEnum
+                            YLeaf last_route_type; //type: RcmdShowRouteEnum
+                            YLeaf last_change_type; //type: RcmdChangeEnum
+                            YLeaf last_cost; //type: uint32
+                            YLeaf critical_priority; //type: uint32
+                            YLeaf high_priority; //type: uint32
+                            YLeaf medium_priority; //type: uint32
+                            YLeaf low_priority; //type: uint32
+                            YLeaf add_count; //type: uint32
+                            YLeaf modify_count; //type: uint32
+                            YLeaf delete_count; //type: uint32
+                            YLeaf threshold_exceed_count; //type: uint32
+
 
 
                     }; // Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic
@@ -4853,6 +4946,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SpfRunSummary : public Entity
                     {
                         public:
@@ -4866,11 +4960,12 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value spf_run_number; //type: int32
-                            Value start_time; //type: string
-                            Value wait_time; //type: uint32
-                            Value reason; //type: string
 
+
+                            YLeaf spf_run_number; //type: int32
+                            YLeaf start_time; //type: string
+                            YLeaf wait_time; //type: uint32
+                            YLeaf reason; //type: string
 
                         class SpfSummary : public Entity
                         {
@@ -4885,16 +4980,17 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value topology; //type: uint32
-                                Value isis_level; //type: RcmdIsisLvlEnum
-                                Value type; //type: RcmdIsisSpfEnum
-                                Value threshold_exceeded; //type: boolean
-                                Value state; //type: RcmdSpfStateEnum
-                                Value is_data_complete; //type: boolean
-                                Value trigger_time; //type: string
-                                Value duration; //type: string
-                                Value total_lsp_changes; //type: uint16
 
+
+                                YLeaf topology; //type: uint32
+                                YLeaf isis_level; //type: RcmdIsisLvlEnum
+                                YLeaf type; //type: RcmdIsisSpfEnum
+                                YLeaf threshold_exceeded; //type: boolean
+                                YLeaf state; //type: RcmdSpfStateEnum
+                                YLeaf is_data_complete; //type: boolean
+                                YLeaf trigger_time; //type: string
+                                YLeaf duration; //type: string
+                                YLeaf total_lsp_changes; //type: uint16
 
                             class PrioritySummary : public Entity
                             {
@@ -4909,9 +5005,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: RcmdPriorityLevelEnum
-                                    Value threshold_exceeded; //type: boolean
 
+
+                                    YLeaf level; //type: RcmdPriorityLevelEnum
+                                    YLeaf threshold_exceeded; //type: boolean
 
                                 class RouteStatistics : public Entity
                                 {
@@ -4926,13 +5023,14 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value adds; //type: uint32
-                                        Value deletes; //type: uint32
-                                        Value modifies; //type: uint32
-                                        Value reachables; //type: uint32
-                                        Value unreachables; //type: uint32
-                                        Value touches; //type: uint32
 
+
+                                        YLeaf adds; //type: uint32
+                                        YLeaf deletes; //type: uint32
+                                        YLeaf modifies; //type: uint32
+                                        YLeaf reachables; //type: uint32
+                                        YLeaf unreachables; //type: uint32
+                                        YLeaf touches; //type: uint32
 
 
 
@@ -4952,11 +5050,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_time; //type: string
-                                        Value maximum_time; //type: string
-                                        Value slowest_node_name; //type: string
-                                        Value fastest_node_name; //type: string
 
+
+                                        YLeaf minimum_time; //type: string
+                                        YLeaf maximum_time; //type: string
+                                        YLeaf slowest_node_name; //type: string
+                                        YLeaf fastest_node_name; //type: string
 
 
 
@@ -4976,11 +5075,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_time; //type: string
-                                        Value maximum_time; //type: string
-                                        Value slowest_node_name; //type: string
-                                        Value fastest_node_name; //type: string
 
+
+                                        YLeaf minimum_time; //type: string
+                                        YLeaf maximum_time; //type: string
+                                        YLeaf slowest_node_name; //type: string
+                                        YLeaf fastest_node_name; //type: string
 
 
 
@@ -5000,11 +5100,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value total_routes; //type: uint32
-                                        Value fully_protected_routes; //type: uint32
-                                        Value partially_protected_routes; //type: uint32
-                                        Value coverage; //type: string
 
+
+                                        YLeaf total_routes; //type: uint32
+                                        YLeaf fully_protected_routes; //type: uint32
+                                        YLeaf partially_protected_routes; //type: uint32
+                                        YLeaf coverage; //type: string
 
 
 
@@ -5015,16 +5116,12 @@ class Rcmd : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime> ip_convergence_time;
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics> route_statistics;
-                                    class RcmdPriorityLevelEnum;
 
 
                             }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary
 
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary> > priority_summary;
-                                class RcmdIsisLvlEnum;
-                                class RcmdSpfStateEnum;
-                                class RcmdIsisSpfEnum;
 
 
                         }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary
@@ -5043,13 +5140,14 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value adds; //type: uint32
-                                Value deletes; //type: uint32
-                                Value modifies; //type: uint32
-                                Value reachables; //type: uint32
-                                Value unreachables; //type: uint32
-                                Value touches; //type: uint32
 
+
+                                YLeaf adds; //type: uint32
+                                YLeaf deletes; //type: uint32
+                                YLeaf modifies; //type: uint32
+                                YLeaf reachables; //type: uint32
+                                YLeaf unreachables; //type: uint32
+                                YLeaf touches; //type: uint32
 
 
 
@@ -5069,13 +5167,13 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsp_id; //type: string
-                                Value sequence_number; //type: uint32
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
+                                YLeaf lsp_id; //type: string
+                                YLeaf sequence_number; //type: uint32
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::TriggerLsp
@@ -5096,6 +5194,7 @@ class Rcmd : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PrioritySummary : public Entity
                             {
                                 public:
@@ -5109,9 +5208,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: RcmdPriorityLevelEnum
-                                    Value threshold_exceeded; //type: boolean
 
+
+                                    YLeaf level; //type: RcmdPriorityLevelEnum
+                                    YLeaf threshold_exceeded; //type: boolean
 
                                 class RouteStatistics : public Entity
                                 {
@@ -5126,13 +5226,14 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value adds; //type: uint32
-                                        Value deletes; //type: uint32
-                                        Value modifies; //type: uint32
-                                        Value reachables; //type: uint32
-                                        Value unreachables; //type: uint32
-                                        Value touches; //type: uint32
 
+
+                                        YLeaf adds; //type: uint32
+                                        YLeaf deletes; //type: uint32
+                                        YLeaf modifies; //type: uint32
+                                        YLeaf reachables; //type: uint32
+                                        YLeaf unreachables; //type: uint32
+                                        YLeaf touches; //type: uint32
 
 
 
@@ -5152,11 +5253,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_time; //type: string
-                                        Value maximum_time; //type: string
-                                        Value slowest_node_name; //type: string
-                                        Value fastest_node_name; //type: string
 
+
+                                        YLeaf minimum_time; //type: string
+                                        YLeaf maximum_time; //type: string
+                                        YLeaf slowest_node_name; //type: string
+                                        YLeaf fastest_node_name; //type: string
 
 
 
@@ -5176,11 +5278,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_time; //type: string
-                                        Value maximum_time; //type: string
-                                        Value slowest_node_name; //type: string
-                                        Value fastest_node_name; //type: string
 
+
+                                        YLeaf minimum_time; //type: string
+                                        YLeaf maximum_time; //type: string
+                                        YLeaf slowest_node_name; //type: string
+                                        YLeaf fastest_node_name; //type: string
 
 
 
@@ -5200,11 +5303,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value total_routes; //type: uint32
-                                        Value fully_protected_routes; //type: uint32
-                                        Value partially_protected_routes; //type: uint32
-                                        Value coverage; //type: string
 
+
+                                        YLeaf total_routes; //type: uint32
+                                        YLeaf fully_protected_routes; //type: uint32
+                                        YLeaf partially_protected_routes; //type: uint32
+                                        YLeaf coverage; //type: string
 
 
 
@@ -5215,7 +5319,6 @@ class Rcmd : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::RouteStatistics> route_statistics;
-                                    class RcmdPriorityLevelEnum;
 
 
                             }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary
@@ -5236,6 +5339,7 @@ class Rcmd : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class RouteOrigin : public Entity
                                 {
                                     public:
@@ -5249,10 +5353,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -5272,10 +5377,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -5295,10 +5401,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -5318,10 +5425,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -5341,10 +5449,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -5364,10 +5473,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -5387,10 +5497,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -5410,10 +5521,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -5433,9 +5545,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value node_name; //type: string
-                                        Value speed; //type: RcmdLinecardSpeedEnum
 
+
+                                        YLeaf node_name; //type: string
+                                        YLeaf speed; //type: RcmdLinecardSpeedEnum
 
                                     class FibComplete : public Entity
                                     {
@@ -5450,10 +5563,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -5461,7 +5575,6 @@ class Rcmd : public Entity
 
 
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp::FibComplete> fib_complete;
-                                        class RcmdLinecardSpeedEnum;
 
 
                                 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp
@@ -5480,9 +5593,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value node_name; //type: string
-                                        Value speed; //type: RcmdLinecardSpeedEnum
 
+
+                                        YLeaf node_name; //type: string
+                                        YLeaf speed; //type: RcmdLinecardSpeedEnum
 
                                     class FibComplete : public Entity
                                     {
@@ -5497,10 +5611,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -5508,7 +5623,6 @@ class Rcmd : public Entity
 
 
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls::FibComplete> fib_complete;
-                                        class RcmdLinecardSpeedEnum;
 
 
                                 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls
@@ -5542,9 +5656,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value net_mask; //type: uint8
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf net_mask; //type: uint8
 
 
 
@@ -5564,9 +5679,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value net_mask; //type: uint8
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf net_mask; //type: uint8
 
 
 
@@ -5595,13 +5711,13 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsp_id; //type: string
-                                Value sequence_number; //type: uint32
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
+                                YLeaf lsp_id; //type: string
+                                YLeaf sequence_number; //type: uint32
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspProcessed
@@ -5620,16 +5736,16 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value serial_number_xr; //type: uint32
-                                Value lsp_id; //type: string
-                                Value sequence_number; //type: uint32
-                                Value reception_time; //type: string
-                                Value isis_level; //type: RcmdIsisLvlEnum
-                                Value spf_run_number; //type: uint32
-                                Value reason; //type: string
 
 
-                                class RcmdIsisLvlEnum;
+                                YLeaf serial_number_xr; //type: uint32
+                                YLeaf lsp_id; //type: string
+                                YLeaf sequence_number; //type: uint32
+                                YLeaf reception_time; //type: string
+                                YLeaf isis_level; //type: RcmdIsisLvlEnum
+                                YLeaf spf_run_number; //type: uint32
+                                YLeaf reason; //type: string
+
 
 
                         }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspRegenerated
@@ -5667,6 +5783,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class IpfrrEventOffline : public Entity
                     {
                         public:
@@ -5680,19 +5797,20 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_id; //type: int32
-                            Value event_id_xr; //type: uint32
-                            Value trigger_time; //type: string
-                            Value trigger_spf_run; //type: uint32
-                            Value wait_time; //type: uint32
-                            Value start_time_offset; //type: string
-                            Value duration; //type: string
-                            Value completed_spf_run; //type: uint32
-                            Value total_routes; //type: uint32
-                            Value fully_protected_routes; //type: uint32
-                            Value partially_protected_routes; //type: uint32
-                            Value coverage; //type: string
 
+
+                            YLeaf event_id; //type: int32
+                            YLeaf event_id_xr; //type: uint32
+                            YLeaf trigger_time; //type: string
+                            YLeaf trigger_spf_run; //type: uint32
+                            YLeaf wait_time; //type: uint32
+                            YLeaf start_time_offset; //type: string
+                            YLeaf duration; //type: string
+                            YLeaf completed_spf_run; //type: uint32
+                            YLeaf total_routes; //type: uint32
+                            YLeaf fully_protected_routes; //type: uint32
+                            YLeaf partially_protected_routes; //type: uint32
+                            YLeaf coverage; //type: string
 
                         class IpfrrStatistic : public Entity
                         {
@@ -5707,17 +5825,17 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value priority; //type: RcmdPriorityLevelEnum
-                                Value total_routes; //type: uint32
-                                Value fully_protected_routes; //type: uint32
-                                Value partially_protected_routes; //type: uint32
-                                Value coverage; //type: string
-                                Value local_lfa_coverage; //type: string
-                                Value remote_lfa_coverage; //type: string
-                                Value below_threshold; //type: boolean
 
 
-                                class RcmdPriorityLevelEnum;
+                                YLeaf priority; //type: RcmdPriorityLevelEnum
+                                YLeaf total_routes; //type: uint32
+                                YLeaf fully_protected_routes; //type: uint32
+                                YLeaf partially_protected_routes; //type: uint32
+                                YLeaf coverage; //type: string
+                                YLeaf local_lfa_coverage; //type: string
+                                YLeaf remote_lfa_coverage; //type: string
+                                YLeaf below_threshold; //type: boolean
+
 
 
                         }; // Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic
@@ -5736,12 +5854,13 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value remote_node_id; //type: string
-                                Value interface_name; //type: string
-                                Value neighbour_address; //type: string
-                                Value path_count; //type: uint32
-                                Value in_use_time; //type: string
 
+
+                                YLeaf remote_node_id; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf neighbour_address; //type: string
+                                YLeaf path_count; //type: uint32
+                                YLeaf in_use_time; //type: string
 
                             class PrimaryPath : public Entity
                             {
@@ -5756,9 +5875,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
-                                    Value neighbour_address; //type: string
 
+
+                                    YLeaf interface_name; //type: string
+                                    YLeaf neighbour_address; //type: string
 
 
 
@@ -5799,6 +5919,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SpfRunOffline : public Entity
                     {
                         public:
@@ -5812,11 +5933,12 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value spf_run_number; //type: int32
-                            Value start_time; //type: string
-                            Value wait_time; //type: uint32
-                            Value reason; //type: string
 
+
+                            YLeaf spf_run_number; //type: int32
+                            YLeaf start_time; //type: string
+                            YLeaf wait_time; //type: uint32
+                            YLeaf reason; //type: string
 
                         class SpfSummary : public Entity
                         {
@@ -5831,16 +5953,17 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value topology; //type: uint32
-                                Value isis_level; //type: RcmdIsisLvlEnum
-                                Value type; //type: RcmdIsisSpfEnum
-                                Value threshold_exceeded; //type: boolean
-                                Value state; //type: RcmdSpfStateEnum
-                                Value is_data_complete; //type: boolean
-                                Value trigger_time; //type: string
-                                Value duration; //type: string
-                                Value total_lsp_changes; //type: uint16
 
+
+                                YLeaf topology; //type: uint32
+                                YLeaf isis_level; //type: RcmdIsisLvlEnum
+                                YLeaf type; //type: RcmdIsisSpfEnum
+                                YLeaf threshold_exceeded; //type: boolean
+                                YLeaf state; //type: RcmdSpfStateEnum
+                                YLeaf is_data_complete; //type: boolean
+                                YLeaf trigger_time; //type: string
+                                YLeaf duration; //type: string
+                                YLeaf total_lsp_changes; //type: uint16
 
                             class PrioritySummary : public Entity
                             {
@@ -5855,9 +5978,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: RcmdPriorityLevelEnum
-                                    Value threshold_exceeded; //type: boolean
 
+
+                                    YLeaf level; //type: RcmdPriorityLevelEnum
+                                    YLeaf threshold_exceeded; //type: boolean
 
                                 class RouteStatistics : public Entity
                                 {
@@ -5872,13 +5996,14 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value adds; //type: uint32
-                                        Value deletes; //type: uint32
-                                        Value modifies; //type: uint32
-                                        Value reachables; //type: uint32
-                                        Value unreachables; //type: uint32
-                                        Value touches; //type: uint32
 
+
+                                        YLeaf adds; //type: uint32
+                                        YLeaf deletes; //type: uint32
+                                        YLeaf modifies; //type: uint32
+                                        YLeaf reachables; //type: uint32
+                                        YLeaf unreachables; //type: uint32
+                                        YLeaf touches; //type: uint32
 
 
 
@@ -5898,11 +6023,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_time; //type: string
-                                        Value maximum_time; //type: string
-                                        Value slowest_node_name; //type: string
-                                        Value fastest_node_name; //type: string
 
+
+                                        YLeaf minimum_time; //type: string
+                                        YLeaf maximum_time; //type: string
+                                        YLeaf slowest_node_name; //type: string
+                                        YLeaf fastest_node_name; //type: string
 
 
 
@@ -5922,11 +6048,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_time; //type: string
-                                        Value maximum_time; //type: string
-                                        Value slowest_node_name; //type: string
-                                        Value fastest_node_name; //type: string
 
+
+                                        YLeaf minimum_time; //type: string
+                                        YLeaf maximum_time; //type: string
+                                        YLeaf slowest_node_name; //type: string
+                                        YLeaf fastest_node_name; //type: string
 
 
 
@@ -5946,11 +6073,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value total_routes; //type: uint32
-                                        Value fully_protected_routes; //type: uint32
-                                        Value partially_protected_routes; //type: uint32
-                                        Value coverage; //type: string
 
+
+                                        YLeaf total_routes; //type: uint32
+                                        YLeaf fully_protected_routes; //type: uint32
+                                        YLeaf partially_protected_routes; //type: uint32
+                                        YLeaf coverage; //type: string
 
 
 
@@ -5961,16 +6089,12 @@ class Rcmd : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime> ip_convergence_time;
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics> route_statistics;
-                                    class RcmdPriorityLevelEnum;
 
 
                             }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary
 
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary> > priority_summary;
-                                class RcmdIsisLvlEnum;
-                                class RcmdSpfStateEnum;
-                                class RcmdIsisSpfEnum;
 
 
                         }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
@@ -5989,13 +6113,14 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value adds; //type: uint32
-                                Value deletes; //type: uint32
-                                Value modifies; //type: uint32
-                                Value reachables; //type: uint32
-                                Value unreachables; //type: uint32
-                                Value touches; //type: uint32
 
+
+                                YLeaf adds; //type: uint32
+                                YLeaf deletes; //type: uint32
+                                YLeaf modifies; //type: uint32
+                                YLeaf reachables; //type: uint32
+                                YLeaf unreachables; //type: uint32
+                                YLeaf touches; //type: uint32
 
 
 
@@ -6015,13 +6140,13 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsp_id; //type: string
-                                Value sequence_number; //type: uint32
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
+                                YLeaf lsp_id; //type: string
+                                YLeaf sequence_number; //type: uint32
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::TriggerLsp
@@ -6042,6 +6167,7 @@ class Rcmd : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PrioritySummary : public Entity
                             {
                                 public:
@@ -6055,9 +6181,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: RcmdPriorityLevelEnum
-                                    Value threshold_exceeded; //type: boolean
 
+
+                                    YLeaf level; //type: RcmdPriorityLevelEnum
+                                    YLeaf threshold_exceeded; //type: boolean
 
                                 class RouteStatistics : public Entity
                                 {
@@ -6072,13 +6199,14 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value adds; //type: uint32
-                                        Value deletes; //type: uint32
-                                        Value modifies; //type: uint32
-                                        Value reachables; //type: uint32
-                                        Value unreachables; //type: uint32
-                                        Value touches; //type: uint32
 
+
+                                        YLeaf adds; //type: uint32
+                                        YLeaf deletes; //type: uint32
+                                        YLeaf modifies; //type: uint32
+                                        YLeaf reachables; //type: uint32
+                                        YLeaf unreachables; //type: uint32
+                                        YLeaf touches; //type: uint32
 
 
 
@@ -6098,11 +6226,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_time; //type: string
-                                        Value maximum_time; //type: string
-                                        Value slowest_node_name; //type: string
-                                        Value fastest_node_name; //type: string
 
+
+                                        YLeaf minimum_time; //type: string
+                                        YLeaf maximum_time; //type: string
+                                        YLeaf slowest_node_name; //type: string
+                                        YLeaf fastest_node_name; //type: string
 
 
 
@@ -6122,11 +6251,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value minimum_time; //type: string
-                                        Value maximum_time; //type: string
-                                        Value slowest_node_name; //type: string
-                                        Value fastest_node_name; //type: string
 
+
+                                        YLeaf minimum_time; //type: string
+                                        YLeaf maximum_time; //type: string
+                                        YLeaf slowest_node_name; //type: string
+                                        YLeaf fastest_node_name; //type: string
 
 
 
@@ -6146,11 +6276,12 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value total_routes; //type: uint32
-                                        Value fully_protected_routes; //type: uint32
-                                        Value partially_protected_routes; //type: uint32
-                                        Value coverage; //type: string
 
+
+                                        YLeaf total_routes; //type: uint32
+                                        YLeaf fully_protected_routes; //type: uint32
+                                        YLeaf partially_protected_routes; //type: uint32
+                                        YLeaf coverage; //type: string
 
 
 
@@ -6161,7 +6292,6 @@ class Rcmd : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
                                     std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::RouteStatistics> route_statistics;
-                                    class RcmdPriorityLevelEnum;
 
 
                             }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary
@@ -6182,6 +6312,7 @@ class Rcmd : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class RouteOrigin : public Entity
                                 {
                                     public:
@@ -6195,10 +6326,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -6218,10 +6350,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -6241,10 +6374,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -6264,10 +6398,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -6287,10 +6422,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -6310,10 +6446,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -6333,10 +6470,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -6356,10 +6494,11 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_time; //type: string
-                                        Value end_time; //type: string
-                                        Value duration; //type: string
 
+
+                                        YLeaf start_time; //type: string
+                                        YLeaf end_time; //type: string
+                                        YLeaf duration; //type: string
 
 
 
@@ -6379,9 +6518,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value node_name; //type: string
-                                        Value speed; //type: RcmdLinecardSpeedEnum
 
+
+                                        YLeaf node_name; //type: string
+                                        YLeaf speed; //type: RcmdLinecardSpeedEnum
 
                                     class FibComplete : public Entity
                                     {
@@ -6396,10 +6536,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -6407,7 +6548,6 @@ class Rcmd : public Entity
 
 
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp::FibComplete> fib_complete;
-                                        class RcmdLinecardSpeedEnum;
 
 
                                 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp
@@ -6426,9 +6566,10 @@ class Rcmd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value node_name; //type: string
-                                        Value speed; //type: RcmdLinecardSpeedEnum
 
+
+                                        YLeaf node_name; //type: string
+                                        YLeaf speed; //type: RcmdLinecardSpeedEnum
 
                                     class FibComplete : public Entity
                                     {
@@ -6443,10 +6584,11 @@ class Rcmd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value start_time; //type: string
-                                            Value end_time; //type: string
-                                            Value duration; //type: string
 
+
+                                            YLeaf start_time; //type: string
+                                            YLeaf end_time; //type: string
+                                            YLeaf duration; //type: string
 
 
 
@@ -6454,7 +6596,6 @@ class Rcmd : public Entity
 
 
                                         std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls::FibComplete> fib_complete;
-                                        class RcmdLinecardSpeedEnum;
 
 
                                 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls
@@ -6488,9 +6629,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value net_mask; //type: uint8
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf net_mask; //type: uint8
 
 
 
@@ -6510,9 +6652,10 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value net_mask; //type: uint8
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf net_mask; //type: uint8
 
 
 
@@ -6541,13 +6684,13 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsp_id; //type: string
-                                Value sequence_number; //type: uint32
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
+                                YLeaf lsp_id; //type: string
+                                YLeaf sequence_number; //type: uint32
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspProcessed
@@ -6566,16 +6709,16 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value serial_number_xr; //type: uint32
-                                Value lsp_id; //type: string
-                                Value sequence_number; //type: uint32
-                                Value reception_time; //type: string
-                                Value isis_level; //type: RcmdIsisLvlEnum
-                                Value spf_run_number; //type: uint32
-                                Value reason; //type: string
 
 
-                                class RcmdIsisLvlEnum;
+                                YLeaf serial_number_xr; //type: uint32
+                                YLeaf lsp_id; //type: string
+                                YLeaf sequence_number; //type: uint32
+                                YLeaf reception_time; //type: string
+                                YLeaf isis_level; //type: RcmdIsisLvlEnum
+                                YLeaf spf_run_number; //type: uint32
+                                YLeaf reason; //type: string
+
 
 
                         }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspRegenerated
@@ -6613,6 +6756,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixEventSummary : public Entity
                     {
                         public:
@@ -6626,19 +6770,20 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_id; //type: int32
-                            Value prefix; //type: string
-                            Value prefix_lenth; //type: uint32
-                            Value spf_run_no; //type: uint32
-                            Value ipfrr_event_id; //type: uint32
-                            Value threshold_exceeded; //type: boolean
-                            Value priority; //type: RcmdPriorityLevelEnum
-                            Value change_type; //type: RcmdChangeEnum
-                            Value route_type; //type: RcmdShowRouteEnum
-                            Value route_path_change_type; //type: RcmdShowRoutePathChangeEnum
-                            Value cost; //type: uint32
-                            Value trigger_time; //type: string
 
+
+                            YLeaf event_id; //type: int32
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_lenth; //type: uint32
+                            YLeaf spf_run_no; //type: uint32
+                            YLeaf ipfrr_event_id; //type: uint32
+                            YLeaf threshold_exceeded; //type: boolean
+                            YLeaf priority; //type: RcmdPriorityLevelEnum
+                            YLeaf change_type; //type: RcmdChangeEnum
+                            YLeaf route_type; //type: RcmdShowRouteEnum
+                            YLeaf route_path_change_type; //type: RcmdShowRoutePathChangeEnum
+                            YLeaf cost; //type: uint32
+                            YLeaf trigger_time; //type: string
 
                         class IpConvergenceTime : public Entity
                         {
@@ -6653,11 +6798,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value minimum_time; //type: string
-                                Value maximum_time; //type: string
-                                Value slowest_node_name; //type: string
-                                Value fastest_node_name; //type: string
 
+
+                                YLeaf minimum_time; //type: string
+                                YLeaf maximum_time; //type: string
+                                YLeaf slowest_node_name; //type: string
+                                YLeaf fastest_node_name; //type: string
 
 
 
@@ -6677,11 +6823,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value minimum_time; //type: string
-                                Value maximum_time; //type: string
-                                Value slowest_node_name; //type: string
-                                Value fastest_node_name; //type: string
 
+
+                                YLeaf minimum_time; //type: string
+                                YLeaf maximum_time; //type: string
+                                YLeaf slowest_node_name; //type: string
+                                YLeaf fastest_node_name; //type: string
 
 
 
@@ -6701,11 +6848,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value neighbour_address; //type: string
-                                Value change_type; //type: RcmdChangeEnum
-                                Value path_metric; //type: uint32
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf neighbour_address; //type: string
+                                YLeaf change_type; //type: RcmdChangeEnum
+                                YLeaf path_metric; //type: uint32
 
                             class LfaPath : public Entity
                             {
@@ -6720,23 +6868,21 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lfa_type; //type: RcmdShowIpfrrLfaEnum
-                                    Value interface_name; //type: string
-                                    Value neighbour_address; //type: string
-                                    Value change_type; //type: RcmdChangeEnum
-                                    Value path_metric; //type: uint32
-                                    Value remote_node_id; //type: string
 
 
-                                    class RcmdChangeEnum;
-                                    class RcmdShowIpfrrLfaEnum;
+                                    YLeaf lfa_type; //type: RcmdShowIpfrrLfaEnum
+                                    YLeaf interface_name; //type: string
+                                    YLeaf neighbour_address; //type: string
+                                    YLeaf change_type; //type: RcmdChangeEnum
+                                    YLeaf path_metric; //type: uint32
+                                    YLeaf remote_node_id; //type: string
+
 
 
                             }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath
 
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath> > lfa_path;
-                                class RcmdChangeEnum;
 
 
                         }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path
@@ -6755,16 +6901,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsa_id; //type: string
-                                Value sequence_number; //type: string
-                                Value lsa_type; //type: RcmdLsaEnum
-                                Value origin_router_id; //type: string
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
-                                class RcmdLsaEnum;
+                                YLeaf lsa_id; //type: string
+                                YLeaf sequence_number; //type: string
+                                YLeaf lsa_type; //type: RcmdLsaEnum
+                                YLeaf origin_router_id; //type: string
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa
@@ -6783,15 +6928,16 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_origin; //type: string
-                                Value ri_bv4_enter; //type: string
-                                Value ri_bv4_exit; //type: string
-                                Value ri_bv4_redistribute; //type: string
-                                Value ldp_enter; //type: string
-                                Value ldp_exit; //type: string
-                                Value lsd_enter; //type: string
-                                Value lsd_exit; //type: string
 
+
+                                YLeaf route_origin; //type: string
+                                YLeaf ri_bv4_enter; //type: string
+                                YLeaf ri_bv4_exit; //type: string
+                                YLeaf ri_bv4_redistribute; //type: string
+                                YLeaf ldp_enter; //type: string
+                                YLeaf ldp_exit; //type: string
+                                YLeaf lsd_enter; //type: string
+                                YLeaf lsd_exit; //type: string
 
                             class LcIp : public Entity
                             {
@@ -6806,12 +6952,12 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value speed; //type: RcmdLinecardSpeedEnum
-                                    Value fib_complete; //type: string
 
 
-                                    class RcmdLinecardSpeedEnum;
+                                    YLeaf node_name; //type: string
+                                    YLeaf speed; //type: RcmdLinecardSpeedEnum
+                                    YLeaf fib_complete; //type: string
+
 
 
                             }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp
@@ -6830,12 +6976,12 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value speed; //type: RcmdLinecardSpeedEnum
-                                    Value fib_complete; //type: string
 
 
-                                    class RcmdLinecardSpeedEnum;
+                                    YLeaf node_name; //type: string
+                                    YLeaf speed; //type: RcmdLinecardSpeedEnum
+                                    YLeaf fib_complete; //type: string
+
 
 
                             }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls
@@ -6861,16 +7007,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsa_id; //type: string
-                                Value sequence_number; //type: string
-                                Value lsa_type; //type: RcmdLsaEnum
-                                Value origin_router_id; //type: string
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
-                                class RcmdLsaEnum;
+                                YLeaf lsa_id; //type: string
+                                YLeaf sequence_number; //type: string
+                                YLeaf lsa_type; //type: RcmdLsaEnum
+                                YLeaf origin_router_id; //type: string
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed
@@ -6882,10 +7027,6 @@ class Rcmd : public Entity
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path> > path;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine> > time_line;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa> > trigger_lsa;
-                            class RcmdChangeEnum;
-                            class RcmdPriorityLevelEnum;
-                            class RcmdShowRoutePathChangeEnum;
-                            class RcmdShowRouteEnum;
 
 
                     }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary
@@ -6912,6 +7053,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixEventOffline : public Entity
                     {
                         public:
@@ -6925,19 +7067,20 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value event_id; //type: int32
-                            Value prefix; //type: string
-                            Value prefix_lenth; //type: uint32
-                            Value spf_run_no; //type: uint32
-                            Value ipfrr_event_id; //type: uint32
-                            Value threshold_exceeded; //type: boolean
-                            Value priority; //type: RcmdPriorityLevelEnum
-                            Value change_type; //type: RcmdChangeEnum
-                            Value route_type; //type: RcmdShowRouteEnum
-                            Value route_path_change_type; //type: RcmdShowRoutePathChangeEnum
-                            Value cost; //type: uint32
-                            Value trigger_time; //type: string
 
+
+                            YLeaf event_id; //type: int32
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_lenth; //type: uint32
+                            YLeaf spf_run_no; //type: uint32
+                            YLeaf ipfrr_event_id; //type: uint32
+                            YLeaf threshold_exceeded; //type: boolean
+                            YLeaf priority; //type: RcmdPriorityLevelEnum
+                            YLeaf change_type; //type: RcmdChangeEnum
+                            YLeaf route_type; //type: RcmdShowRouteEnum
+                            YLeaf route_path_change_type; //type: RcmdShowRoutePathChangeEnum
+                            YLeaf cost; //type: uint32
+                            YLeaf trigger_time; //type: string
 
                         class IpConvergenceTime : public Entity
                         {
@@ -6952,11 +7095,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value minimum_time; //type: string
-                                Value maximum_time; //type: string
-                                Value slowest_node_name; //type: string
-                                Value fastest_node_name; //type: string
 
+
+                                YLeaf minimum_time; //type: string
+                                YLeaf maximum_time; //type: string
+                                YLeaf slowest_node_name; //type: string
+                                YLeaf fastest_node_name; //type: string
 
 
 
@@ -6976,11 +7120,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value minimum_time; //type: string
-                                Value maximum_time; //type: string
-                                Value slowest_node_name; //type: string
-                                Value fastest_node_name; //type: string
 
+
+                                YLeaf minimum_time; //type: string
+                                YLeaf maximum_time; //type: string
+                                YLeaf slowest_node_name; //type: string
+                                YLeaf fastest_node_name; //type: string
 
 
 
@@ -7000,11 +7145,12 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value neighbour_address; //type: string
-                                Value change_type; //type: RcmdChangeEnum
-                                Value path_metric; //type: uint32
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf neighbour_address; //type: string
+                                YLeaf change_type; //type: RcmdChangeEnum
+                                YLeaf path_metric; //type: uint32
 
                             class LfaPath : public Entity
                             {
@@ -7019,23 +7165,21 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value lfa_type; //type: RcmdShowIpfrrLfaEnum
-                                    Value interface_name; //type: string
-                                    Value neighbour_address; //type: string
-                                    Value change_type; //type: RcmdChangeEnum
-                                    Value path_metric; //type: uint32
-                                    Value remote_node_id; //type: string
 
 
-                                    class RcmdChangeEnum;
-                                    class RcmdShowIpfrrLfaEnum;
+                                    YLeaf lfa_type; //type: RcmdShowIpfrrLfaEnum
+                                    YLeaf interface_name; //type: string
+                                    YLeaf neighbour_address; //type: string
+                                    YLeaf change_type; //type: RcmdChangeEnum
+                                    YLeaf path_metric; //type: uint32
+                                    YLeaf remote_node_id; //type: string
+
 
 
                             }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath
 
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath> > lfa_path;
-                                class RcmdChangeEnum;
 
 
                         }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path
@@ -7054,16 +7198,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsa_id; //type: string
-                                Value sequence_number; //type: string
-                                Value lsa_type; //type: RcmdLsaEnum
-                                Value origin_router_id; //type: string
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
-                                class RcmdLsaEnum;
+                                YLeaf lsa_id; //type: string
+                                YLeaf sequence_number; //type: string
+                                YLeaf lsa_type; //type: RcmdLsaEnum
+                                YLeaf origin_router_id; //type: string
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa
@@ -7082,15 +7225,16 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_origin; //type: string
-                                Value ri_bv4_enter; //type: string
-                                Value ri_bv4_exit; //type: string
-                                Value ri_bv4_redistribute; //type: string
-                                Value ldp_enter; //type: string
-                                Value ldp_exit; //type: string
-                                Value lsd_enter; //type: string
-                                Value lsd_exit; //type: string
 
+
+                                YLeaf route_origin; //type: string
+                                YLeaf ri_bv4_enter; //type: string
+                                YLeaf ri_bv4_exit; //type: string
+                                YLeaf ri_bv4_redistribute; //type: string
+                                YLeaf ldp_enter; //type: string
+                                YLeaf ldp_exit; //type: string
+                                YLeaf lsd_enter; //type: string
+                                YLeaf lsd_exit; //type: string
 
                             class LcIp : public Entity
                             {
@@ -7105,12 +7249,12 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value speed; //type: RcmdLinecardSpeedEnum
-                                    Value fib_complete; //type: string
 
 
-                                    class RcmdLinecardSpeedEnum;
+                                    YLeaf node_name; //type: string
+                                    YLeaf speed; //type: RcmdLinecardSpeedEnum
+                                    YLeaf fib_complete; //type: string
+
 
 
                             }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp
@@ -7129,12 +7273,12 @@ class Rcmd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value speed; //type: RcmdLinecardSpeedEnum
-                                    Value fib_complete; //type: string
 
 
-                                    class RcmdLinecardSpeedEnum;
+                                    YLeaf node_name; //type: string
+                                    YLeaf speed; //type: RcmdLinecardSpeedEnum
+                                    YLeaf fib_complete; //type: string
+
 
 
                             }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls
@@ -7160,16 +7304,15 @@ class Rcmd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsa_id; //type: string
-                                Value sequence_number; //type: string
-                                Value lsa_type; //type: RcmdLsaEnum
-                                Value origin_router_id; //type: string
-                                Value change_type; //type: RcmdLsChangeEnum
-                                Value reception_time; //type: string
 
 
-                                class RcmdLsChangeEnum;
-                                class RcmdLsaEnum;
+                                YLeaf lsa_id; //type: string
+                                YLeaf sequence_number; //type: string
+                                YLeaf lsa_type; //type: RcmdLsaEnum
+                                YLeaf origin_router_id; //type: string
+                                YLeaf change_type; //type: RcmdLsChangeEnum
+                                YLeaf reception_time; //type: string
+
 
 
                         }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaProcessed
@@ -7181,10 +7324,6 @@ class Rcmd : public Entity
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path> > path;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine> > time_line;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa> > trigger_lsa;
-                            class RcmdChangeEnum;
-                            class RcmdPriorityLevelEnum;
-                            class RcmdShowRoutePathChangeEnum;
-                            class RcmdShowRouteEnum;
 
 
                     }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline
@@ -7211,6 +7350,7 @@ class Rcmd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class LspRegenerated : public Entity
                     {
                         public:
@@ -7224,17 +7364,17 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value serial_number; //type: int32
-                            Value serial_number_xr; //type: uint32
-                            Value lsp_id; //type: string
-                            Value sequence_number; //type: uint32
-                            Value reception_time; //type: string
-                            Value isis_level; //type: RcmdIsisLvlEnum
-                            Value spf_run_number; //type: uint32
-                            Value reason; //type: string
 
 
-                            class RcmdIsisLvlEnum;
+                            YLeaf serial_number; //type: int32
+                            YLeaf serial_number_xr; //type: uint32
+                            YLeaf lsp_id; //type: string
+                            YLeaf sequence_number; //type: uint32
+                            YLeaf reception_time; //type: string
+                            YLeaf isis_level; //type: RcmdIsisLvlEnum
+                            YLeaf spf_run_number; //type: uint32
+                            YLeaf reason; //type: string
+
 
 
                     }; // Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated
@@ -7286,6 +7426,7 @@ class Rcmd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class MemoryInfo : public Entity
         {
             public:
@@ -7299,16 +7440,16 @@ class Rcmd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value structure_name; //type: string
-                Value size; //type: uint32
-                Value current_count; //type: uint32
-                Value alloc_fails; //type: uint32
-                Value alloc_count; //type: uint32
-                Value freed_count; //type: uint32
-                Value memory_type; //type: RcmdShowMemEnum
 
 
-                class RcmdShowMemEnum;
+                YLeaf structure_name; //type: string
+                YLeaf size; //type: uint32
+                YLeaf current_count; //type: uint32
+                YLeaf alloc_fails; //type: uint32
+                YLeaf alloc_count; //type: uint32
+                YLeaf freed_count; //type: uint32
+                YLeaf memory_type; //type: RcmdShowMemEnum
+
 
 
         }; // Rcmd::Memory::MemoryInfo
@@ -7327,11 +7468,12 @@ class Rcmd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value size; //type: uint32
-                Value total; //type: uint32
-                Value success; //type: uint32
-                Value failure; //type: uint32
 
+
+                YLeaf size; //type: uint32
+                YLeaf total; //type: uint32
+                YLeaf success; //type: uint32
+                YLeaf failure; //type: uint32
 
 
 
@@ -7351,11 +7493,12 @@ class Rcmd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value size; //type: uint32
-                Value total; //type: uint32
-                Value success; //type: uint32
-                Value failure; //type: uint32
 
+
+                YLeaf size; //type: uint32
+                YLeaf total; //type: uint32
+                YLeaf success; //type: uint32
+                YLeaf failure; //type: uint32
 
 
 
@@ -7385,6 +7528,7 @@ class Rcmd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Sessions : public Entity
         {
             public:
@@ -7400,6 +7544,7 @@ class Rcmd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Session : public Entity
             {
                 public:
@@ -7413,18 +7558,17 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value event_id; //type: int32
-                    Value event_id_xr; //type: uint32
-                    Value event_type; //type: RcmdLdpEventEnum
-                    Value event_time; //type: string
-                    Value lsr_id; //type: string
-                    Value interface_name; //type: string
-                    Value address; //type: string
-                    Value state; //type: RcmdShowLdpNeighbourStatusEnum
 
 
-                    class RcmdLdpEventEnum;
-                    class RcmdShowLdpNeighbourStatusEnum;
+                    YLeaf event_id; //type: int32
+                    YLeaf event_id_xr; //type: uint32
+                    YLeaf event_type; //type: RcmdLdpEventEnum
+                    YLeaf event_time; //type: string
+                    YLeaf lsr_id; //type: string
+                    YLeaf interface_name; //type: string
+                    YLeaf address; //type: string
+                    YLeaf state; //type: RcmdShowLdpNeighbourStatusEnum
+
 
 
             }; // Rcmd::Ldp::Sessions::Session
@@ -7451,6 +7595,7 @@ class Rcmd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RemoteLfa : public Entity
             {
                 public:
@@ -7464,14 +7609,15 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value event_id; //type: int32
-                    Value event_id_xr; //type: uint32
-                    Value end_of_calculation_time; //type: string
-                    Value igp_protocol; //type: RcmdProtocolIdEnum
-                    Value process_name; //type: string
-                    Value ipfrr_event_id; //type: uint32
-                    Value below_threshold; //type: boolean
 
+
+                    YLeaf event_id; //type: int32
+                    YLeaf event_id_xr; //type: uint32
+                    YLeaf end_of_calculation_time; //type: string
+                    YLeaf igp_protocol; //type: RcmdProtocolIdEnum
+                    YLeaf process_name; //type: string
+                    YLeaf ipfrr_event_id; //type: uint32
+                    YLeaf below_threshold; //type: boolean
 
                 class SessionStatistic : public Entity
                 {
@@ -7486,16 +7632,16 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_state; //type: RcmdShowLdpSessionStateEnum
-                        Value session_count; //type: uint32
-                        Value route_count; //type: uint32
-                        Value path_count; //type: uint32
-                        Value remote_label_count; //type: uint32
-                        Value protected_route_count; //type: uint32
-                        Value protected_path_count; //type: uint32
 
 
-                        class RcmdShowLdpSessionStateEnum;
+                        YLeaf session_state; //type: RcmdShowLdpSessionStateEnum
+                        YLeaf session_count; //type: uint32
+                        YLeaf route_count; //type: uint32
+                        YLeaf path_count; //type: uint32
+                        YLeaf remote_label_count; //type: uint32
+                        YLeaf protected_route_count; //type: uint32
+                        YLeaf protected_path_count; //type: uint32
+
 
 
                 }; // Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic
@@ -7514,19 +7660,19 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value remote_node_id; //type: string
-                        Value lsr_id; //type: string
-                        Value transport_address; //type: string
-                        Value in_use_time; //type: string
-                        Value session_state; //type: RcmdShowLdpSessionStateEnum
-                        Value route_count; //type: uint32
-                        Value path_count; //type: uint32
-                        Value remote_label_count; //type: uint32
-                        Value protected_route_count; //type: uint32
-                        Value protected_path_count; //type: uint32
 
 
-                        class RcmdShowLdpSessionStateEnum;
+                        YLeaf remote_node_id; //type: string
+                        YLeaf lsr_id; //type: string
+                        YLeaf transport_address; //type: string
+                        YLeaf in_use_time; //type: string
+                        YLeaf session_state; //type: RcmdShowLdpSessionStateEnum
+                        YLeaf route_count; //type: uint32
+                        YLeaf path_count; //type: uint32
+                        YLeaf remote_label_count; //type: uint32
+                        YLeaf protected_route_count; //type: uint32
+                        YLeaf protected_path_count; //type: uint32
+
 
 
                 }; // Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode
@@ -7545,13 +7691,13 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value log_time; //type: string
-                        Value label_coverage_state; //type: RcmdShowLdpConvStateEnum
-                        Value route_count; //type: uint32
-                        Value remote_label_count; //type: uint32
 
 
-                        class RcmdShowLdpConvStateEnum;
+                        YLeaf log_time; //type: string
+                        YLeaf label_coverage_state; //type: RcmdShowLdpConvStateEnum
+                        YLeaf route_count; //type: uint32
+                        YLeaf remote_label_count; //type: uint32
+
 
 
                 }; // Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs
@@ -7560,7 +7706,6 @@ class Rcmd : public Entity
                     std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs> > logs;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode> > remote_node;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic> > session_statistic;
-                    class RcmdProtocolIdEnum;
 
 
             }; // Rcmd::Ldp::RemoteLfaS::RemoteLfa
@@ -7587,6 +7732,7 @@ class Rcmd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RemoteLfaSummary : public Entity
             {
                 public:
@@ -7600,14 +7746,15 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value event_id; //type: int32
-                    Value event_id_xr; //type: uint32
-                    Value end_of_calculation_time; //type: string
-                    Value igp_protocol; //type: RcmdProtocolIdEnum
-                    Value process_name; //type: string
-                    Value ipfrr_event_id; //type: uint32
-                    Value below_threshold; //type: boolean
 
+
+                    YLeaf event_id; //type: int32
+                    YLeaf event_id_xr; //type: uint32
+                    YLeaf end_of_calculation_time; //type: string
+                    YLeaf igp_protocol; //type: RcmdProtocolIdEnum
+                    YLeaf process_name; //type: string
+                    YLeaf ipfrr_event_id; //type: uint32
+                    YLeaf below_threshold; //type: boolean
 
                 class SessionStatistic : public Entity
                 {
@@ -7622,16 +7769,16 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_state; //type: RcmdShowLdpSessionStateEnum
-                        Value session_count; //type: uint32
-                        Value route_count; //type: uint32
-                        Value path_count; //type: uint32
-                        Value remote_label_count; //type: uint32
-                        Value protected_route_count; //type: uint32
-                        Value protected_path_count; //type: uint32
 
 
-                        class RcmdShowLdpSessionStateEnum;
+                        YLeaf session_state; //type: RcmdShowLdpSessionStateEnum
+                        YLeaf session_count; //type: uint32
+                        YLeaf route_count; //type: uint32
+                        YLeaf path_count; //type: uint32
+                        YLeaf remote_label_count; //type: uint32
+                        YLeaf protected_route_count; //type: uint32
+                        YLeaf protected_path_count; //type: uint32
+
 
 
                 }; // Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic
@@ -7650,19 +7797,19 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value remote_node_id; //type: string
-                        Value lsr_id; //type: string
-                        Value transport_address; //type: string
-                        Value in_use_time; //type: string
-                        Value session_state; //type: RcmdShowLdpSessionStateEnum
-                        Value route_count; //type: uint32
-                        Value path_count; //type: uint32
-                        Value remote_label_count; //type: uint32
-                        Value protected_route_count; //type: uint32
-                        Value protected_path_count; //type: uint32
 
 
-                        class RcmdShowLdpSessionStateEnum;
+                        YLeaf remote_node_id; //type: string
+                        YLeaf lsr_id; //type: string
+                        YLeaf transport_address; //type: string
+                        YLeaf in_use_time; //type: string
+                        YLeaf session_state; //type: RcmdShowLdpSessionStateEnum
+                        YLeaf route_count; //type: uint32
+                        YLeaf path_count; //type: uint32
+                        YLeaf remote_label_count; //type: uint32
+                        YLeaf protected_route_count; //type: uint32
+                        YLeaf protected_path_count; //type: uint32
+
 
 
                 }; // Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode
@@ -7681,13 +7828,13 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value log_time; //type: string
-                        Value label_coverage_state; //type: RcmdShowLdpConvStateEnum
-                        Value route_count; //type: uint32
-                        Value remote_label_count; //type: uint32
 
 
-                        class RcmdShowLdpConvStateEnum;
+                        YLeaf log_time; //type: string
+                        YLeaf label_coverage_state; //type: RcmdShowLdpConvStateEnum
+                        YLeaf route_count; //type: uint32
+                        YLeaf remote_label_count; //type: uint32
+
 
 
                 }; // Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs
@@ -7696,7 +7843,6 @@ class Rcmd : public Entity
                     std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs> > logs;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode> > remote_node;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic> > session_statistic;
-                    class RcmdProtocolIdEnum;
 
 
             }; // Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary
@@ -7731,6 +7877,7 @@ class Rcmd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Events : public Entity
         {
             public:
@@ -7746,6 +7893,7 @@ class Rcmd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Event : public Entity
             {
                 public:
@@ -7759,17 +7907,16 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value event_no; //type: int32
-                    Value sequence_no; //type: uint32
-                    Value interface_name; //type: string
-                    Value component; //type: RcmdShowCompIdEnum
-                    Value event_type; //type: RcmdShowIntfEventEnum
-                    Value event_time; //type: string
-                    Value primary_address; //type: string
 
 
-                    class RcmdShowCompIdEnum;
-                    class RcmdShowIntfEventEnum;
+                    YLeaf event_no; //type: int32
+                    YLeaf sequence_no; //type: uint32
+                    YLeaf interface_name; //type: string
+                    YLeaf component; //type: RcmdShowCompIdEnum
+                    YLeaf event_type; //type: RcmdShowIntfEventEnum
+                    YLeaf event_time; //type: string
+                    YLeaf primary_address; //type: string
+
 
 
             }; // Rcmd::Intf::Events::Event
@@ -7802,6 +7949,7 @@ class Rcmd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Isis : public Entity
         {
             public:
@@ -7817,6 +7965,7 @@ class Rcmd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Process_ : public Entity
             {
                 public:
@@ -7830,9 +7979,10 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value protocol_id; //type: RcmdProtocolIdEnum
-                    Value process_name; //type: string
 
+
+                    YLeaf protocol_id; //type: RcmdProtocolIdEnum
+                    YLeaf process_name; //type: string
 
                 class InstanceName : public Entity
                 {
@@ -7847,17 +7997,18 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value last_update_time; //type: string
-                        Value total_spf_nos; //type: uint32
-                        Value route_change_spf_nos; //type: uint32
-                        Value no_route_change_spf_nos; //type: uint32
-                        Value not_interested_spf_nos; //type: uint32
-                        Value lsp_regeneration_count; //type: uint32
-                        Value lsp_regeneration_serial; //type: uint32
-                        Value arch_spf_event; //type: uint32
-                        Value arch_lsp_regeneration; //type: uint32
 
+
+                        YLeaf name; //type: string
+                        YLeaf last_update_time; //type: string
+                        YLeaf total_spf_nos; //type: uint32
+                        YLeaf route_change_spf_nos; //type: uint32
+                        YLeaf no_route_change_spf_nos; //type: uint32
+                        YLeaf not_interested_spf_nos; //type: uint32
+                        YLeaf lsp_regeneration_count; //type: uint32
+                        YLeaf lsp_regeneration_serial; //type: uint32
+                        YLeaf arch_spf_event; //type: uint32
+                        YLeaf arch_lsp_regeneration; //type: uint32
 
                     class Instance : public Entity
                     {
@@ -7872,24 +8023,22 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value instance_id; //type: uint32
-                            Value instance_state; //type: RcmdShowInstStateEnum
-                            Value instance_deleted; //type: RcmdBoolYesNoEnum
-                            Value fwd_referenced; //type: RcmdBoolYesNoEnum
-                            Value last_update_time; //type: string
-                            Value node_id; //type: uint32
-                            Value spf_offset; //type: uint32
-                            Value total_spf_nos; //type: uint32
-                            Value arch_spf_run; //type: uint32
-                            Value route_change_spf_nos; //type: uint32
-                            Value no_route_change_spf_nos; //type: uint32
-                            Value not_interested_spf_nos; //type: uint32
-                            Value total_spt_nos; //type: uint32
 
 
-                            class RcmdBoolYesNoEnum;
-                            class RcmdBoolYesNoEnum;
-                            class RcmdShowInstStateEnum;
+                            YLeaf instance_id; //type: uint32
+                            YLeaf instance_state; //type: RcmdShowInstStateEnum
+                            YLeaf instance_deleted; //type: RcmdBoolYesNoEnum
+                            YLeaf fwd_referenced; //type: RcmdBoolYesNoEnum
+                            YLeaf last_update_time; //type: string
+                            YLeaf node_id; //type: uint32
+                            YLeaf spf_offset; //type: uint32
+                            YLeaf total_spf_nos; //type: uint32
+                            YLeaf arch_spf_run; //type: uint32
+                            YLeaf route_change_spf_nos; //type: uint32
+                            YLeaf no_route_change_spf_nos; //type: uint32
+                            YLeaf not_interested_spf_nos; //type: uint32
+                            YLeaf total_spt_nos; //type: uint32
+
 
 
                     }; // Rcmd::Process::Isis::Process_::InstanceName::Instance
@@ -7902,7 +8051,6 @@ class Rcmd : public Entity
 
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Isis::Process_::InstanceName> > instance_name;
-                    class RcmdProtocolIdEnum;
 
 
             }; // Rcmd::Process::Isis::Process_
@@ -7929,6 +8077,7 @@ class Rcmd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Process_ : public Entity
             {
                 public:
@@ -7942,9 +8091,10 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value protocol_id; //type: RcmdProtocolIdEnum
-                    Value process_name; //type: string
 
+
+                    YLeaf protocol_id; //type: RcmdProtocolIdEnum
+                    YLeaf process_name; //type: string
 
                 class InstanceName : public Entity
                 {
@@ -7959,17 +8109,18 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value last_update_time; //type: string
-                        Value total_spf_nos; //type: uint32
-                        Value route_change_spf_nos; //type: uint32
-                        Value no_route_change_spf_nos; //type: uint32
-                        Value not_interested_spf_nos; //type: uint32
-                        Value lsp_regeneration_count; //type: uint32
-                        Value lsp_regeneration_serial; //type: uint32
-                        Value arch_spf_event; //type: uint32
-                        Value arch_lsp_regeneration; //type: uint32
 
+
+                        YLeaf name; //type: string
+                        YLeaf last_update_time; //type: string
+                        YLeaf total_spf_nos; //type: uint32
+                        YLeaf route_change_spf_nos; //type: uint32
+                        YLeaf no_route_change_spf_nos; //type: uint32
+                        YLeaf not_interested_spf_nos; //type: uint32
+                        YLeaf lsp_regeneration_count; //type: uint32
+                        YLeaf lsp_regeneration_serial; //type: uint32
+                        YLeaf arch_spf_event; //type: uint32
+                        YLeaf arch_lsp_regeneration; //type: uint32
 
                     class Instance : public Entity
                     {
@@ -7984,24 +8135,22 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value instance_id; //type: uint32
-                            Value instance_state; //type: RcmdShowInstStateEnum
-                            Value instance_deleted; //type: RcmdBoolYesNoEnum
-                            Value fwd_referenced; //type: RcmdBoolYesNoEnum
-                            Value last_update_time; //type: string
-                            Value node_id; //type: uint32
-                            Value spf_offset; //type: uint32
-                            Value total_spf_nos; //type: uint32
-                            Value arch_spf_run; //type: uint32
-                            Value route_change_spf_nos; //type: uint32
-                            Value no_route_change_spf_nos; //type: uint32
-                            Value not_interested_spf_nos; //type: uint32
-                            Value total_spt_nos; //type: uint32
 
 
-                            class RcmdBoolYesNoEnum;
-                            class RcmdBoolYesNoEnum;
-                            class RcmdShowInstStateEnum;
+                            YLeaf instance_id; //type: uint32
+                            YLeaf instance_state; //type: RcmdShowInstStateEnum
+                            YLeaf instance_deleted; //type: RcmdBoolYesNoEnum
+                            YLeaf fwd_referenced; //type: RcmdBoolYesNoEnum
+                            YLeaf last_update_time; //type: string
+                            YLeaf node_id; //type: uint32
+                            YLeaf spf_offset; //type: uint32
+                            YLeaf total_spf_nos; //type: uint32
+                            YLeaf arch_spf_run; //type: uint32
+                            YLeaf route_change_spf_nos; //type: uint32
+                            YLeaf no_route_change_spf_nos; //type: uint32
+                            YLeaf not_interested_spf_nos; //type: uint32
+                            YLeaf total_spt_nos; //type: uint32
+
 
 
                     }; // Rcmd::Process::Ospf::Process_::InstanceName::Instance
@@ -8014,7 +8163,6 @@ class Rcmd : public Entity
 
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ospf::Process_::InstanceName> > instance_name;
-                    class RcmdProtocolIdEnum;
 
 
             }; // Rcmd::Process::Ospf::Process_
@@ -8041,6 +8189,7 @@ class Rcmd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Process_ : public Entity
             {
                 public:
@@ -8054,9 +8203,10 @@ class Rcmd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value protocol_id; //type: RcmdProtocolIdEnum
-                    Value process_name; //type: string
 
+
+                    YLeaf protocol_id; //type: RcmdProtocolIdEnum
+                    YLeaf process_name; //type: string
 
                 class InstanceName : public Entity
                 {
@@ -8071,17 +8221,18 @@ class Rcmd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value last_update_time; //type: string
-                        Value total_spf_nos; //type: uint32
-                        Value route_change_spf_nos; //type: uint32
-                        Value no_route_change_spf_nos; //type: uint32
-                        Value not_interested_spf_nos; //type: uint32
-                        Value lsp_regeneration_count; //type: uint32
-                        Value lsp_regeneration_serial; //type: uint32
-                        Value arch_spf_event; //type: uint32
-                        Value arch_lsp_regeneration; //type: uint32
 
+
+                        YLeaf name; //type: string
+                        YLeaf last_update_time; //type: string
+                        YLeaf total_spf_nos; //type: uint32
+                        YLeaf route_change_spf_nos; //type: uint32
+                        YLeaf no_route_change_spf_nos; //type: uint32
+                        YLeaf not_interested_spf_nos; //type: uint32
+                        YLeaf lsp_regeneration_count; //type: uint32
+                        YLeaf lsp_regeneration_serial; //type: uint32
+                        YLeaf arch_spf_event; //type: uint32
+                        YLeaf arch_lsp_regeneration; //type: uint32
 
                     class Instance : public Entity
                     {
@@ -8096,24 +8247,22 @@ class Rcmd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value instance_id; //type: uint32
-                            Value instance_state; //type: RcmdShowInstStateEnum
-                            Value instance_deleted; //type: RcmdBoolYesNoEnum
-                            Value fwd_referenced; //type: RcmdBoolYesNoEnum
-                            Value last_update_time; //type: string
-                            Value node_id; //type: uint32
-                            Value spf_offset; //type: uint32
-                            Value total_spf_nos; //type: uint32
-                            Value arch_spf_run; //type: uint32
-                            Value route_change_spf_nos; //type: uint32
-                            Value no_route_change_spf_nos; //type: uint32
-                            Value not_interested_spf_nos; //type: uint32
-                            Value total_spt_nos; //type: uint32
 
 
-                            class RcmdBoolYesNoEnum;
-                            class RcmdBoolYesNoEnum;
-                            class RcmdShowInstStateEnum;
+                            YLeaf instance_id; //type: uint32
+                            YLeaf instance_state; //type: RcmdShowInstStateEnum
+                            YLeaf instance_deleted; //type: RcmdBoolYesNoEnum
+                            YLeaf fwd_referenced; //type: RcmdBoolYesNoEnum
+                            YLeaf last_update_time; //type: string
+                            YLeaf node_id; //type: uint32
+                            YLeaf spf_offset; //type: uint32
+                            YLeaf total_spf_nos; //type: uint32
+                            YLeaf arch_spf_run; //type: uint32
+                            YLeaf route_change_spf_nos; //type: uint32
+                            YLeaf no_route_change_spf_nos; //type: uint32
+                            YLeaf not_interested_spf_nos; //type: uint32
+                            YLeaf total_spt_nos; //type: uint32
+
 
 
                     }; // Rcmd::Process::Ldp::Process_::InstanceName::Instance
@@ -8126,7 +8275,6 @@ class Rcmd : public Entity
 
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ldp::Process_::InstanceName> > instance_name;
-                    class RcmdProtocolIdEnum;
 
 
             }; // Rcmd::Process::Ldp::Process_
@@ -8162,261 +8310,261 @@ class Rcmd : public Entity
 class RcmdBagEnblDsblEnum : public Enum
 {
     public:
-        static const Enum::Value dsbl;
-        static const Enum::Value enbl;
+        static const Enum::YLeaf dsbl;
+        static const Enum::YLeaf enbl;
 
 };
 
 class RcmdBoolYesNoEnum : public Enum
 {
     public:
-        static const Enum::Value no;
-        static const Enum::Value yes;
+        static const Enum::YLeaf no;
+        static const Enum::YLeaf yes;
 
 };
 
 class RcmdPriorityLevelEnum : public Enum
 {
     public:
-        static const Enum::Value critical;
-        static const Enum::Value high;
-        static const Enum::Value medium;
-        static const Enum::Value low;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf high;
+        static const Enum::YLeaf medium;
+        static const Enum::YLeaf low;
 
 };
 
 class RcmdSpfStateEnum : public Enum
 {
     public:
-        static const Enum::Value complete;
-        static const Enum::Value in_complete;
-        static const Enum::Value collecting;
-        static const Enum::Value no_route_change;
+        static const Enum::YLeaf complete;
+        static const Enum::YLeaf in_complete;
+        static const Enum::YLeaf collecting;
+        static const Enum::YLeaf no_route_change;
 
 };
 
 class RcmdShowIpfrrLfaEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value local;
-        static const Enum::Value remote;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf local;
+        static const Enum::YLeaf remote;
 
 };
 
 class RcmdShowPrcsStateEnum : public Enum
 {
     public:
-        static const Enum::Value success;
-        static const Enum::Value cpu;
-        static const Enum::Value memory;
+        static const Enum::YLeaf success;
+        static const Enum::YLeaf cpu;
+        static const Enum::YLeaf memory;
 
 };
 
 class RcmdShowCompIdEnum : public Enum
 {
     public:
-        static const Enum::Value ospf;
-        static const Enum::Value isis;
-        static const Enum::Value un_known;
+        static const Enum::YLeaf ospf;
+        static const Enum::YLeaf isis;
+        static const Enum::YLeaf un_known;
 
 };
 
 class RcmdShowLdpSessionStateEnum : public Enum
 {
     public:
-        static const Enum::Value gr_down;
-        static const Enum::Value gr_converging;
-        static const Enum::Value establishing;
-        static const Enum::Value converging;
-        static const Enum::Value converged;
-        static const Enum::Value retrying;
-        static const Enum::Value total;
+        static const Enum::YLeaf gr_down;
+        static const Enum::YLeaf gr_converging;
+        static const Enum::YLeaf establishing;
+        static const Enum::YLeaf converging;
+        static const Enum::YLeaf converged;
+        static const Enum::YLeaf retrying;
+        static const Enum::YLeaf total;
 
 };
 
 class RcmdProtocolIdEnum : public Enum
 {
     public:
-        static const Enum::Value ospf;
-        static const Enum::Value isis;
-        static const Enum::Value na;
+        static const Enum::YLeaf ospf;
+        static const Enum::YLeaf isis;
+        static const Enum::YLeaf na;
 
 };
 
 class RcmdShowLdpConvStateEnum : public Enum
 {
     public:
-        static const Enum::Value not_full;
-        static const Enum::Value fully_covered;
-        static const Enum::Value coverage_above_threshold;
-        static const Enum::Value coverage_below_threshold;
-        static const Enum::Value coverage_flapping;
+        static const Enum::YLeaf not_full;
+        static const Enum::YLeaf fully_covered;
+        static const Enum::YLeaf coverage_above_threshold;
+        static const Enum::YLeaf coverage_below_threshold;
+        static const Enum::YLeaf coverage_flapping;
 
 };
 
 class RcmdLinecardSpeedEnum : public Enum
 {
     public:
-        static const Enum::Value other;
-        static const Enum::Value fastest;
-        static const Enum::Value slowest;
+        static const Enum::YLeaf other;
+        static const Enum::YLeaf fastest;
+        static const Enum::YLeaf slowest;
 
 };
 
 class RcmdShowNodeEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value lc;
-        static const Enum::Value rp;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf lc;
+        static const Enum::YLeaf rp;
 
 };
 
 class RcmdShowLdpNeighbourStatusEnum : public Enum
 {
     public:
-        static const Enum::Value down;
-        static const Enum::Value up;
+        static const Enum::YLeaf down;
+        static const Enum::YLeaf up;
 
 };
 
 class RcmdIsisSpfEnum : public Enum
 {
     public:
-        static const Enum::Value full;
-        static const Enum::Value incremental;
-        static const Enum::Value next_hop;
-        static const Enum::Value partial_route;
+        static const Enum::YLeaf full;
+        static const Enum::YLeaf incremental;
+        static const Enum::YLeaf next_hop;
+        static const Enum::YLeaf partial_route;
 
 };
 
 class RcmdShowRoutePathChangeEnum : public Enum
 {
     public:
-        static const Enum::Value primary;
-        static const Enum::Value backup;
+        static const Enum::YLeaf primary;
+        static const Enum::YLeaf backup;
 
 };
 
 class RcmdIsisLvlEnum : public Enum
 {
     public:
-        static const Enum::Value l1;
-        static const Enum::Value l2;
+        static const Enum::YLeaf l1;
+        static const Enum::YLeaf l2;
 
 };
 
 class RcmdChangeEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value add;
-        static const Enum::Value delete_;
-        static const Enum::Value modify;
-        static const Enum::Value no_change;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf add;
+        static const Enum::YLeaf delete_;
+        static const Enum::YLeaf modify;
+        static const Enum::YLeaf no_change;
 
 };
 
 class RcmdShowRouteEnum : public Enum
 {
     public:
-        static const Enum::Value ospf;
-        static const Enum::Value intra;
-        static const Enum::Value inter;
-        static const Enum::Value ext_1;
-        static const Enum::Value ext_2;
-        static const Enum::Value nssa_1;
-        static const Enum::Value nssa_2;
-        static const Enum::Value isis;
-        static const Enum::Value l1_summary;
-        static const Enum::Value l1;
-        static const Enum::Value l2_summary;
-        static const Enum::Value l2;
-        static const Enum::Value inter_area_summary;
-        static const Enum::Value inter_area;
-        static const Enum::Value default_attached;
+        static const Enum::YLeaf ospf;
+        static const Enum::YLeaf intra;
+        static const Enum::YLeaf inter;
+        static const Enum::YLeaf ext_1;
+        static const Enum::YLeaf ext_2;
+        static const Enum::YLeaf nssa_1;
+        static const Enum::YLeaf nssa_2;
+        static const Enum::YLeaf isis;
+        static const Enum::YLeaf l1_summary;
+        static const Enum::YLeaf l1;
+        static const Enum::YLeaf l2_summary;
+        static const Enum::YLeaf l2;
+        static const Enum::YLeaf inter_area_summary;
+        static const Enum::YLeaf inter_area;
+        static const Enum::YLeaf default_attached;
 
 };
 
 class RcmdLdpEventEnum : public Enum
 {
     public:
-        static const Enum::Value neighbor;
-        static const Enum::Value adjacency;
+        static const Enum::YLeaf neighbor;
+        static const Enum::YLeaf adjacency;
 
 };
 
 class RcmdLsaEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value router;
-        static const Enum::Value network;
-        static const Enum::Value summary;
-        static const Enum::Value asbr;
-        static const Enum::Value external;
-        static const Enum::Value multicast;
-        static const Enum::Value nssa;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf router;
+        static const Enum::YLeaf network;
+        static const Enum::YLeaf summary;
+        static const Enum::YLeaf asbr;
+        static const Enum::YLeaf external;
+        static const Enum::YLeaf multicast;
+        static const Enum::YLeaf nssa;
 
 };
 
 class RcmdShowMemEnum : public Enum
 {
     public:
-        static const Enum::Value standard;
-        static const Enum::Value chunk;
-        static const Enum::Value edm;
-        static const Enum::Value string;
-        static const Enum::Value static_;
-        static const Enum::Value unknown;
+        static const Enum::YLeaf standard;
+        static const Enum::YLeaf chunk;
+        static const Enum::YLeaf edm;
+        static const Enum::YLeaf string;
+        static const Enum::YLeaf static_;
+        static const Enum::YLeaf unknown;
 
 };
 
 class RcmdBagEnableDisableEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value enable;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf enable;
 
 };
 
 class RcmdShowInstStateEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value active;
-        static const Enum::Value in_active;
-        static const Enum::Value na;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf active;
+        static const Enum::YLeaf in_active;
+        static const Enum::YLeaf na;
 
 };
 
 class RcmdLsChangeEnum : public Enum
 {
     public:
-        static const Enum::Value new_;
-        static const Enum::Value delete_;
-        static const Enum::Value modify;
-        static const Enum::Value noop;
+        static const Enum::YLeaf new_;
+        static const Enum::YLeaf delete_;
+        static const Enum::YLeaf modify;
+        static const Enum::YLeaf noop;
 
 };
 
 class RcmdShowIntfEventEnum : public Enum
 {
     public:
-        static const Enum::Value create;
-        static const Enum::Value delete_;
-        static const Enum::Value link_up;
-        static const Enum::Value link_down;
-        static const Enum::Value primary_address;
-        static const Enum::Value secondary_address;
-        static const Enum::Value ipv6_link_local_address;
-        static const Enum::Value ipv6_global_address;
-        static const Enum::Value mtu;
-        static const Enum::Value band_width;
-        static const Enum::Value ldp_sync;
-        static const Enum::Value forward_reference;
-        static const Enum::Value ldp_no_sync;
+        static const Enum::YLeaf create;
+        static const Enum::YLeaf delete_;
+        static const Enum::YLeaf link_up;
+        static const Enum::YLeaf link_down;
+        static const Enum::YLeaf primary_address;
+        static const Enum::YLeaf secondary_address;
+        static const Enum::YLeaf ipv6_link_local_address;
+        static const Enum::YLeaf ipv6_global_address;
+        static const Enum::YLeaf mtu;
+        static const Enum::YLeaf band_width;
+        static const Enum::YLeaf ldp_sync;
+        static const Enum::YLeaf forward_reference;
+        static const Enum::YLeaf ldp_no_sync;
 
 };
 

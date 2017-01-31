@@ -24,8 +24,9 @@ class MplsTe : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable_traffic_engineering; //type: empty
 
+
+        YLeaf enable_traffic_engineering; //type: empty
 
     class DiffServTrafficEngineering : public Entity
     {
@@ -40,9 +41,10 @@ class MplsTe : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value bandwidth_constraint_model; //type: BandwidthConstraintEnum
-            Value mode_ietf; //type: IetfModeEnum
 
+
+            YLeaf bandwidth_constraint_model; //type: BandwidthConstraintEnum
+            YLeaf mode_ietf; //type: IetfModeEnum
 
         class Classes : public Entity
         {
@@ -59,6 +61,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Class_ : public Entity
             {
                 public:
@@ -72,11 +75,12 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value class_number; //type: uint32
-                    Value class_type; //type: uint32
-                    Value class_priority; //type: uint32
-                    Value unused; //type: boolean
 
+
+                    YLeaf class_number; //type: uint32
+                    YLeaf class_type; //type: uint32
+                    YLeaf class_priority; //type: uint32
+                    YLeaf unused; //type: boolean
 
 
 
@@ -90,8 +94,6 @@ class MplsTe : public Entity
 
 
             std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::DiffServTrafficEngineering::Classes> classes;
-            class BandwidthConstraintEnum;
-            class IetfModeEnum;
 
 
     }; // MplsTe::DiffServTrafficEngineering
@@ -110,8 +112,9 @@ class MplsTe : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value enable; //type: empty
 
+
+            YLeaf enable; //type: empty
 
         class Tunnels : public Entity
         {
@@ -128,6 +131,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Tunnel : public Entity
             {
                 public:
@@ -141,10 +145,11 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value tunnel_name; //type: string
-                    Value tunnel_type; //type: MplsTeConfigTunnelEnum
-                    Value enable; //type: empty
 
+
+                    YLeaf tunnel_name; //type: string
+                    YLeaf tunnel_type; //type: MplsTeConfigTunnelEnum
+                    YLeaf enable; //type: empty
 
                 class TunnelAttributes : public Entity
                 {
@@ -159,14 +164,15 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value shutdown; //type: empty
-                        Value forward_class; //type: uint32
-                        Value destination; //type: string
-                        Value record_route; //type: empty
-                        Value path_selection_metric; //type: MplsTePathSelectionMetricEnum
-                        Value soft_preemption; //type: empty
-                        Value load_share; //type: uint32
 
+
+                        YLeaf shutdown; //type: empty
+                        YLeaf forward_class; //type: uint32
+                        YLeaf destination; //type: string
+                        YLeaf record_route; //type: empty
+                        YLeaf path_selection_metric; //type: MplsTePathSelectionMetricEnum
+                        YLeaf soft_preemption; //type: empty
+                        YLeaf load_share; //type: uint32
 
                     class PathSetups : public Entity
                     {
@@ -183,6 +189,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PathSetup : public Entity
                         {
                             public:
@@ -196,10 +203,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value path_setup_name; //type: string
-                                Value preference; //type: int32
-                                Value enable; //type: empty
 
+
+                                YLeaf path_setup_name; //type: string
+                                YLeaf preference; //type: int32
+                                YLeaf enable; //type: empty
 
                             class PathComputation : public Entity
                             {
@@ -214,12 +222,12 @@ class MplsTe : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value path_computation_method; //type: MplsTePathComputationMethodEnum
-                                    Value explicit_path_name; //type: string
-                                    Value path_computation_server; //type: string
 
 
-                                    class MplsTePathComputationMethodEnum;
+                                    YLeaf path_computation_method; //type: MplsTePathComputationMethodEnum
+                                    YLeaf explicit_path_name; //type: string
+                                    YLeaf path_computation_server; //type: string
+
 
 
                             }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::PathComputation
@@ -250,10 +258,11 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value tiebreaker; //type: MplsTePathSelectionTiebreakerEnum
-                            Value path_selection_hop_limit; //type: uint32
-                            Value path_selection_cost_limit; //type: uint32
 
+
+                            YLeaf tiebreaker; //type: MplsTePathSelectionTiebreakerEnum
+                            YLeaf path_selection_hop_limit; //type: uint32
+                            YLeaf path_selection_cost_limit; //type: uint32
 
                         class Invalidation : public Entity
                         {
@@ -268,18 +277,17 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value path_invalidation_timeout; //type: uint32
-                                Value path_invalidation_action; //type: PathInvalidationActionEnum
 
 
-                                class PathInvalidationActionEnum;
+                                YLeaf path_invalidation_timeout; //type: uint32
+                                YLeaf path_invalidation_action; //type: PathInvalidationActionEnum
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Invalidation
 
 
                             std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Invalidation> invalidation; // presence node
-                            class MplsTePathSelectionTiebreakerEnum;
 
 
                     }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection
@@ -298,12 +306,13 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value underflow_enable; //type: boolean
-                            Value enabled; //type: boolean
-                            Value application_frequency; //type: uint32
-                            Value overflow_enable; //type: boolean
-                            Value collection_only; //type: empty
 
+
+                            YLeaf underflow_enable; //type: boolean
+                            YLeaf enabled; //type: boolean
+                            YLeaf application_frequency; //type: uint32
+                            YLeaf overflow_enable; //type: boolean
+                            YLeaf collection_only; //type: empty
 
                         class Underflow : public Entity
                         {
@@ -318,10 +327,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value underflow_threshold_percent; //type: uint32
-                                Value underflow_threshold_value; //type: uint32
-                                Value underflow_threshold_limit; //type: uint32
 
+
+                                YLeaf underflow_threshold_percent; //type: uint32
+                                YLeaf underflow_threshold_value; //type: uint32
+                                YLeaf underflow_threshold_limit; //type: uint32
 
 
 
@@ -341,10 +351,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value overflow_threshold_percent; //type: uint32
-                                Value overflow_threshold_value; //type: uint32
-                                Value overflow_threshold_limit; //type: uint32
 
+
+                                YLeaf overflow_threshold_percent; //type: uint32
+                                YLeaf overflow_threshold_value; //type: uint32
+                                YLeaf overflow_threshold_limit; //type: uint32
 
 
 
@@ -364,9 +375,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bandwidth_min_limit; //type: uint32
-                                Value bandwidth_max_limit; //type: uint32
 
+
+                                YLeaf bandwidth_min_limit; //type: uint32
+                                YLeaf bandwidth_max_limit; //type: uint32
 
 
 
@@ -386,9 +398,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value adjustment_threshold_percent; //type: uint32
-                                Value adjustment_threshold_value; //type: uint32
 
+
+                                YLeaf adjustment_threshold_percent; //type: uint32
+                                YLeaf adjustment_threshold_value; //type: uint32
 
 
 
@@ -417,9 +430,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value setup_priority; //type: uint32
-                            Value hold_priority; //type: uint32
 
+
+                            YLeaf setup_priority; //type: uint32
+                            YLeaf hold_priority; //type: uint32
 
 
 
@@ -439,18 +453,19 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value lsp_switch_over_change_message; //type: empty
-                            Value all; //type: empty
-                            Value record_route_messsage; //type: empty
-                            Value bfd_state_message; //type: empty
-                            Value bandwidth_change_message; //type: empty
-                            Value reoptimize_attempts_message; //type: empty
-                            Value reroute_messsage; //type: empty
-                            Value state_message; //type: empty
-                            Value insufficient_bw_message; //type: empty
-                            Value reoptimized_message; //type: empty
-                            Value pcalc_failure_message; //type: empty
 
+
+                            YLeaf lsp_switch_over_change_message; //type: empty
+                            YLeaf all; //type: empty
+                            YLeaf record_route_messsage; //type: empty
+                            YLeaf bfd_state_message; //type: empty
+                            YLeaf bandwidth_change_message; //type: empty
+                            YLeaf reoptimize_attempts_message; //type: empty
+                            YLeaf reroute_messsage; //type: empty
+                            YLeaf state_message; //type: empty
+                            YLeaf insufficient_bw_message; //type: empty
+                            YLeaf reoptimized_message; //type: empty
+                            YLeaf pcalc_failure_message; //type: empty
 
 
 
@@ -470,12 +485,12 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value dste_type; //type: MplsTeBandwidthDsteEnum
-                            Value class_or_pool_type; //type: uint32
-                            Value bandwidth; //type: uint32
 
 
-                            class MplsTeBandwidthDsteEnum;
+                            YLeaf dste_type; //type: MplsTeBandwidthDsteEnum
+                            YLeaf class_or_pool_type; //type: uint32
+                            YLeaf bandwidth; //type: uint32
+
 
 
                     }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth
@@ -494,8 +509,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination; //type: empty
 
+
+                            YLeaf destination; //type: empty
 
                         class Metric : public Entity
                         {
@@ -510,13 +526,13 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value metric_type; //type: MplsTeAutorouteMetricEnum
-                                Value absolute_metric; //type: uint32
-                                Value relative_metric; //type: int32
-                                Value constant_metric; //type: uint32
 
 
-                                class MplsTeAutorouteMetricEnum;
+                                YLeaf metric_type; //type: MplsTeAutorouteMetricEnum
+                                YLeaf absolute_metric; //type: uint32
+                                YLeaf relative_metric; //type: int32
+                                YLeaf constant_metric; //type: uint32
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Metric
@@ -535,9 +551,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: empty
-                                Value include_ipv6; //type: empty
 
+
+                                YLeaf enable; //type: empty
+                                YLeaf include_ipv6; //type: empty
 
                             class Metric : public Entity
                             {
@@ -552,13 +569,13 @@ class MplsTe : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value metric_type; //type: MplsTeAutorouteMetricEnum
-                                    Value absolute_metric; //type: uint32
-                                    Value relative_metric; //type: int32
-                                    Value constant_metric; //type: uint32
 
 
-                                    class MplsTeAutorouteMetricEnum;
+                                    YLeaf metric_type; //type: MplsTeAutorouteMetricEnum
+                                    YLeaf absolute_metric; //type: uint32
+                                    YLeaf relative_metric; //type: int32
+                                    YLeaf constant_metric; //type: uint32
+
 
 
                             }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::Metric
@@ -585,6 +602,7 @@ class MplsTe : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Destination : public Entity
                             {
                                 public:
@@ -598,8 +616,9 @@ class MplsTe : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value destination_address; //type: string
 
+
+                                    YLeaf destination_address; //type: string
 
 
 
@@ -635,6 +654,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NewStyleAffinityAffinityType : public Entity
                         {
                             public:
@@ -648,10 +668,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
@@ -670,11 +690,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
@@ -693,12 +713,12 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
@@ -717,13 +737,13 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
@@ -742,14 +762,14 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
@@ -768,15 +788,15 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
@@ -795,16 +815,16 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
@@ -823,17 +843,17 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
@@ -852,18 +872,18 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
@@ -882,19 +902,19 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
-                                Value affinity9; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+                                YLeaf affinity9; //type: string
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
@@ -913,20 +933,20 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
-                                Value affinity9; //type: string
-                                Value affinity10; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+                                YLeaf affinity9; //type: string
+                                YLeaf affinity10; //type: string
+
 
 
                         }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
@@ -961,9 +981,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bandwidth_protection; //type: uint32
-                            Value node_protection; //type: uint32
 
+
+                            YLeaf bandwidth_protection; //type: uint32
+                            YLeaf node_protection; //type: uint32
 
 
 
@@ -979,7 +1000,6 @@ class MplsTe : public Entity
                         std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups> path_setups;
                         std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority> priority; // presence node
                         std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection> tunnel_path_selection;
-                        class MplsTePathSelectionMetricEnum;
 
 
                 }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes
@@ -998,11 +1018,11 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value tunnel_id_type; //type: MplsTeTunnelIdEnum
-                        Value tunnel_id; //type: uint32
 
 
-                        class MplsTeTunnelIdEnum;
+                        YLeaf tunnel_id_type; //type: MplsTeTunnelIdEnum
+                        YLeaf tunnel_id; //type: uint32
+
 
 
                 }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId
@@ -1010,7 +1030,6 @@ class MplsTe : public Entity
 
                     std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes> tunnel_attributes;
                     std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId> tunnel_id; // presence node
-                    class MplsTeConfigTunnelEnum;
 
 
             }; // MplsTe::NamedTunnels::Tunnels::Tunnel
@@ -1043,6 +1062,7 @@ class MplsTe : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Timers : public Entity
         {
             public:
@@ -1056,6 +1076,7 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class PathOptionTimers : public Entity
@@ -1073,6 +1094,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Holddown : public Entity
                 {
                     public:
@@ -1086,9 +1108,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
 
+
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
 
 
 
@@ -1122,6 +1145,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Controller : public Entity
             {
                 public:
@@ -1135,9 +1159,10 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value controller_name; //type: string
-                    Value enable; //type: empty
 
+
+                    YLeaf controller_name; //type: string
+                    YLeaf enable; //type: empty
 
                 class Announce : public Entity
                 {
@@ -1152,8 +1177,9 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value srl_gs; //type: empty
 
+
+                        YLeaf srl_gs; //type: empty
 
 
 
@@ -1173,8 +1199,9 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value discovered_srlg_change_logging; //type: empty
 
+
+                        YLeaf discovered_srlg_change_logging; //type: empty
 
 
 
@@ -1194,12 +1221,13 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value tunnel_id; //type: uint32
-                        Value enable; //type: empty
-                        Value destination; //type: string
-                        Value record_route; //type: empty
-                        Value signalled_name; //type: string
 
+
+                        YLeaf tunnel_id; //type: uint32
+                        YLeaf enable; //type: empty
+                        YLeaf destination; //type: string
+                        YLeaf record_route; //type: empty
+                        YLeaf signalled_name; //type: string
 
                     class PathOptions : public Entity
                     {
@@ -1216,6 +1244,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PathOption : public Entity
                         {
                             public:
@@ -1229,22 +1258,19 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value preference_level; //type: uint32
-                                Value path_type; //type: MplsTePathOptionEnum
-                                Value path_id; //type: uint32
-                                Value path_name; //type: string
-                                Value xro_type; //type: empty
-                                Value xro_attribute_set_name; //type: string
-                                Value lockdown; //type: MplsTePathOptionPropertyEnum
-                                Value verbatim; //type: MplsTePathOptionPropertyEnum
-                                Value signaled_label; //type: MplsTeSignaledLabelEnum
-                                Value dwdm_channel; //type: uint32
 
 
-                                class MplsTePathOptionPropertyEnum;
-                                class MplsTePathOptionEnum;
-                                class MplsTeSignaledLabelEnum;
-                                class MplsTePathOptionPropertyEnum;
+                                YLeaf preference_level; //type: uint32
+                                YLeaf path_type; //type: MplsTePathOptionEnum
+                                YLeaf path_id; //type: uint32
+                                YLeaf path_name; //type: string
+                                YLeaf xro_type; //type: empty
+                                YLeaf xro_attribute_set_name; //type: string
+                                YLeaf lockdown; //type: MplsTePathOptionPropertyEnum
+                                YLeaf verbatim; //type: MplsTePathOptionPropertyEnum
+                                YLeaf signaled_label; //type: MplsTeSignaledLabelEnum
+                                YLeaf dwdm_channel; //type: uint32
+
 
 
                         }; // MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption
@@ -1269,8 +1295,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value srlg; //type: empty
 
+
+                            YLeaf srlg; //type: empty
 
 
 
@@ -1290,8 +1317,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value state_message; //type: empty
 
+
+                            YLeaf state_message; //type: empty
 
 
 
@@ -1311,9 +1339,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value setup_priority; //type: uint32
-                            Value hold_priority; //type: uint32
 
+
+                            YLeaf setup_priority; //type: uint32
+                            YLeaf hold_priority; //type: uint32
 
 
 
@@ -1363,33 +1392,34 @@ class MplsTe : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value log_nsr_status; //type: empty
-            Value log_issu_status; //type: empty
-            Value reoptimize_link_up; //type: empty
-            Value reoptimize_delay_cleanup_timer; //type: uint32
-            Value disable_reoptimize_affinity_failure; //type: empty
-            Value maximum_tunnels; //type: uint32
-            Value link_holddown_timer; //type: uint32
-            Value fault_oam; //type: empty
-            Value enable_unequal_load_balancing; //type: empty
-            Value log_tail; //type: empty
-            Value reoptimize_delay_after_frr_timer; //type: uint32
-            Value auto_bandwidth_collect_frequency; //type: uint32
-            Value reopt_delay_path_protect_switchover_timer; //type: uint32
-            Value log_all; //type: empty
-            Value loose_path_retry_period; //type: uint32
-            Value reoptimize_load_balancing; //type: empty
-            Value log_head; //type: empty
-            Value path_selection_ignore_overload; //type: empty
-            Value graceful_preemption_on_bandwidth_reduction; //type: empty
-            Value advertise_explicit_nulls; //type: empty
-            Value reoptimize_delay_install_timer; //type: uint32
-            Value reoptimize_delay_after_affinity_failure_timer; //type: uint32
-            Value log_frr_protection; //type: MplsTeLogFrrProtectionEnum
-            Value reoptimize_timer_frequency; //type: uint32
-            Value log_mid; //type: empty
-            Value log_preemption; //type: empty
 
+
+            YLeaf log_nsr_status; //type: empty
+            YLeaf log_issu_status; //type: empty
+            YLeaf reoptimize_link_up; //type: empty
+            YLeaf reoptimize_delay_cleanup_timer; //type: uint32
+            YLeaf disable_reoptimize_affinity_failure; //type: empty
+            YLeaf maximum_tunnels; //type: uint32
+            YLeaf link_holddown_timer; //type: uint32
+            YLeaf fault_oam; //type: empty
+            YLeaf enable_unequal_load_balancing; //type: empty
+            YLeaf log_tail; //type: empty
+            YLeaf reoptimize_delay_after_frr_timer; //type: uint32
+            YLeaf auto_bandwidth_collect_frequency; //type: uint32
+            YLeaf reopt_delay_path_protect_switchover_timer; //type: uint32
+            YLeaf log_all; //type: empty
+            YLeaf loose_path_retry_period; //type: uint32
+            YLeaf reoptimize_load_balancing; //type: empty
+            YLeaf log_head; //type: empty
+            YLeaf path_selection_ignore_overload; //type: empty
+            YLeaf graceful_preemption_on_bandwidth_reduction; //type: empty
+            YLeaf advertise_explicit_nulls; //type: empty
+            YLeaf reoptimize_delay_install_timer; //type: uint32
+            YLeaf reoptimize_delay_after_affinity_failure_timer; //type: uint32
+            YLeaf log_frr_protection; //type: MplsTeLogFrrProtectionEnum
+            YLeaf reoptimize_timer_frequency; //type: uint32
+            YLeaf log_mid; //type: empty
+            YLeaf log_preemption; //type: empty
 
         class AutoTunnel : public Entity
         {
@@ -1404,6 +1434,7 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class Pcc : public Entity
@@ -1421,6 +1452,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TunnelRange : public Entity
                 {
                     public:
@@ -1434,9 +1466,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value min_tunnel_id; //type: uint32
-                        Value max_tunnel_id; //type: uint32
 
+
+                        YLeaf min_tunnel_id; //type: uint32
+                        YLeaf max_tunnel_id; //type: uint32
 
 
 
@@ -1464,6 +1497,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TunnelRange : public Entity
                 {
                     public:
@@ -1477,9 +1511,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value min_tunnel_id; //type: uint32
-                        Value max_tunnel_id; //type: uint32
 
+
+                        YLeaf min_tunnel_id; //type: uint32
+                        YLeaf max_tunnel_id; //type: uint32
 
 
 
@@ -1505,8 +1540,9 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value affinity_ignore; //type: empty
 
+
+                    YLeaf affinity_ignore; //type: empty
 
                 class Timers : public Entity
                 {
@@ -1523,6 +1559,7 @@ class MplsTe : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Removal : public Entity
                     {
                         public:
@@ -1536,8 +1573,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value unused; //type: uint32
 
+
+                            YLeaf unused; //type: uint32
 
 
 
@@ -1563,9 +1601,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value min_tunnel_id; //type: uint32
-                        Value max_tunnel_id; //type: uint32
 
+
+                        YLeaf min_tunnel_id; //type: uint32
+                        YLeaf max_tunnel_id; //type: uint32
 
 
 
@@ -1594,6 +1633,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class MeshGroups : public Entity
                 {
                     public:
@@ -1609,6 +1649,7 @@ class MplsTe : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class MeshGroup : public Entity
                     {
                         public:
@@ -1622,13 +1663,14 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value mesh_group_id; //type: uint32
-                            Value destination_list; //type: string
-                            Value disable; //type: empty
-                            Value attribute_set; //type: string
-                            Value create; //type: empty
-                            Value one_hop; //type: empty
 
+
+                            YLeaf mesh_group_id; //type: uint32
+                            YLeaf destination_list; //type: string
+                            YLeaf disable; //type: empty
+                            YLeaf attribute_set; //type: string
+                            YLeaf create; //type: empty
+                            YLeaf one_hop; //type: empty
 
 
 
@@ -1656,6 +1698,7 @@ class MplsTe : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Removal : public Entity
                     {
                         public:
@@ -1669,8 +1712,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value unused; //type: uint32
 
+
+                            YLeaf unused; //type: uint32
 
 
 
@@ -1696,9 +1740,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value min_tunnel_id; //type: uint32
-                        Value max_tunnel_id; //type: uint32
 
+
+                        YLeaf min_tunnel_id; //type: uint32
+                        YLeaf max_tunnel_id; //type: uint32
 
 
 
@@ -1728,6 +1773,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TunnelRange : public Entity
                 {
                     public:
@@ -1741,9 +1787,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value min_tunnel_id; //type: uint32
-                        Value max_tunnel_id; //type: uint32
 
+
+                        YLeaf min_tunnel_id; //type: uint32
+                        YLeaf max_tunnel_id; //type: uint32
 
 
 
@@ -1781,6 +1828,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class OorRedState : public Entity
             {
                 public:
@@ -1794,12 +1842,13 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value oor_node_protection_disable; //type: empty
-                    Value oor_available_bandwidth_percentage; //type: uint32
-                    Value oor_accept_lsp_min_bandwidth; //type: int32
-                    Value oor_accept_reopt_lsp; //type: empty
-                    Value oor_metric_te_penalty; //type: int32
 
+
+                    YLeaf oor_node_protection_disable; //type: empty
+                    YLeaf oor_available_bandwidth_percentage; //type: uint32
+                    YLeaf oor_accept_lsp_min_bandwidth; //type: int32
+                    YLeaf oor_accept_reopt_lsp; //type: empty
+                    YLeaf oor_metric_te_penalty; //type: int32
 
 
 
@@ -1819,12 +1868,13 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value oor_node_protection_disable; //type: empty
-                    Value oor_available_bandwidth_percentage; //type: uint32
-                    Value oor_accept_lsp_min_bandwidth; //type: int32
-                    Value oor_accept_reopt_lsp; //type: empty
-                    Value oor_metric_te_penalty; //type: int32
 
+
+                    YLeaf oor_node_protection_disable; //type: empty
+                    YLeaf oor_available_bandwidth_percentage; //type: uint32
+                    YLeaf oor_accept_lsp_min_bandwidth; //type: int32
+                    YLeaf oor_accept_reopt_lsp; //type: empty
+                    YLeaf oor_metric_te_penalty; //type: int32
 
 
 
@@ -1844,13 +1894,14 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value oor_recovery_duration; //type: uint32
-                    Value oor_node_protection_disable; //type: empty
-                    Value oor_available_bandwidth_percentage; //type: uint32
-                    Value oor_accept_lsp_min_bandwidth; //type: int32
-                    Value oor_accept_reopt_lsp; //type: empty
-                    Value oor_metric_te_penalty; //type: int32
 
+
+                    YLeaf oor_recovery_duration; //type: uint32
+                    YLeaf oor_node_protection_disable; //type: empty
+                    YLeaf oor_available_bandwidth_percentage; //type: uint32
+                    YLeaf oor_accept_lsp_min_bandwidth; //type: int32
+                    YLeaf oor_accept_reopt_lsp; //type: empty
+                    YLeaf oor_metric_te_penalty; //type: int32
 
 
 
@@ -1880,6 +1931,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class SecondaryRouterId : public Entity
             {
                 public:
@@ -1893,8 +1945,9 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value secondary_router_id_value; //type: string
 
+
+                    YLeaf secondary_router_id_value; //type: string
 
 
 
@@ -1920,9 +1973,10 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value default_admin_weight; //type: int32
-                Value enable; //type: empty
 
+
+                YLeaf default_admin_weight; //type: int32
+                YLeaf enable; //type: empty
 
             class Names : public Entity
             {
@@ -1939,6 +1993,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Name : public Entity
                 {
                     public:
@@ -1952,9 +2007,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value srlg_name; //type: string
-                        Value admin_weight; //type: int32
 
+
+                        YLeaf srlg_name; //type: string
+                        YLeaf admin_weight; //type: int32
 
                     class StaticSrlgMembers : public Entity
                     {
@@ -1971,6 +2027,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class StaticSrlgMember : public Entity
                         {
                             public:
@@ -1984,9 +2041,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value from_address; //type: string
-                                Value to_address; //type: string
 
+
+                                YLeaf from_address; //type: string
+                                YLeaf to_address; //type: string
 
 
 
@@ -2026,6 +2084,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Value_ : public Entity
                 {
                     public:
@@ -2039,9 +2098,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value srlg_number; //type: uint32
-                        Value admin_weight; //type: int32
 
+
+                        YLeaf srlg_number; //type: uint32
+                        YLeaf admin_weight; //type: int32
 
                     class Ipv4AddressMaps : public Entity
                     {
@@ -2058,6 +2118,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Ipv4AddressMap : public Entity
                         {
                             public:
@@ -2071,9 +2132,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value outgoing_ipv4_address; //type: string
-                                Value remote_ipv4_address; //type: string
 
+
+                                YLeaf outgoing_ipv4_address; //type: string
+                                YLeaf remote_ipv4_address; //type: string
 
 
 
@@ -2120,6 +2182,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Queue : public Entity
             {
                 public:
@@ -2133,11 +2196,11 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value role; //type: RoutePriorityRoleEnum
-                    Value value_; //type: uint32
 
 
-                    class RoutePriorityRoleEnum;
+                    YLeaf role; //type: RoutePriorityRoleEnum
+                    YLeaf value_; //type: uint32
+
 
 
             }; // MplsTe::GlobalAttributes::Queues::Queue
@@ -2162,8 +2225,9 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value midpoint_lsp_stats_collection_disable; //type: empty
 
+
+                YLeaf midpoint_lsp_stats_collection_disable; //type: empty
 
 
 
@@ -2185,6 +2249,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class PathOptionAttributes : public Entity
             {
                 public:
@@ -2200,6 +2265,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PathOptionAttribute : public Entity
                 {
                     public:
@@ -2213,9 +2279,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value attribute_set_name; //type: string
-                        Value enable; //type: empty
 
+
+                        YLeaf attribute_set_name; //type: string
+                        YLeaf enable; //type: empty
 
                     class BfdReversePath : public Entity
                     {
@@ -2230,11 +2297,11 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bfd_reverse_path_type; //type: BfdReversePathEnum
-                            Value binding_label; //type: uint32
 
 
-                            class BfdReversePathEnum;
+                            YLeaf bfd_reverse_path_type; //type: BfdReversePathEnum
+                            YLeaf binding_label; //type: uint32
+
 
 
                     }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::BfdReversePath
@@ -2253,10 +2320,11 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value path_selection_exclude_list; //type: string
-                            Value enable; //type: empty
-                            Value path_selection_cost_limit; //type: uint32
 
+
+                            YLeaf path_selection_exclude_list; //type: string
+                            YLeaf enable; //type: empty
+                            YLeaf path_selection_cost_limit; //type: uint32
 
                         class Invalidation : public Entity
                         {
@@ -2271,11 +2339,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value path_invalidation_timeout; //type: uint32
-                                Value path_invalidation_action; //type: PathInvalidationActionEnum
 
 
-                                class PathInvalidationActionEnum;
+                                YLeaf path_invalidation_timeout; //type: uint32
+                                YLeaf path_invalidation_action; //type: PathInvalidationActionEnum
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::Invalidation
@@ -2300,8 +2368,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
 
+
+                            YLeaf enable; //type: empty
 
                         class Bidirectional : public Entity
                         {
@@ -2316,9 +2385,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bd_source_address; //type: string
-                                Value bd_group_id; //type: uint32
 
+
+                                YLeaf bd_source_address; //type: string
+                                YLeaf bd_group_id; //type: uint32
 
 
 
@@ -2338,10 +2408,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dp_source_address; //type: string
-                                Value dp_type; //type: uint32
-                                Value dp_group_id; //type: uint32
 
+
+                                YLeaf dp_source_address; //type: string
+                                YLeaf dp_type; //type: uint32
+                                YLeaf dp_group_id; //type: uint32
 
 
 
@@ -2368,9 +2439,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value affinity; //type: string
-                            Value mask; //type: string
 
+
+                            YLeaf affinity; //type: string
+                            YLeaf mask; //type: string
 
 
 
@@ -2390,12 +2462,12 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value dste_type; //type: MplsTeBandwidthDsteEnum
-                            Value class_or_pool_type; //type: uint32
-                            Value bandwidth; //type: uint32
 
 
-                            class MplsTeBandwidthDsteEnum;
+                            YLeaf dste_type; //type: MplsTeBandwidthDsteEnum
+                            YLeaf class_or_pool_type; //type: uint32
+                            YLeaf bandwidth; //type: uint32
+
 
 
                     }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Bandwidth
@@ -2416,6 +2488,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NewStyleAffinityAffinityType : public Entity
                         {
                             public:
@@ -2429,10 +2502,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
@@ -2451,11 +2524,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
@@ -2474,12 +2547,12 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
@@ -2498,13 +2571,13 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
@@ -2523,14 +2596,14 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
@@ -2549,15 +2622,15 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
@@ -2576,16 +2649,16 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
@@ -2604,17 +2677,17 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
@@ -2633,18 +2706,18 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
@@ -2663,19 +2736,19 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
-                                Value affinity9; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+                                YLeaf affinity9; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
@@ -2694,20 +2767,20 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
-                                Value affinity9; //type: string
-                                Value affinity10; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+                                YLeaf affinity9; //type: string
+                                YLeaf affinity10; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
@@ -2761,6 +2834,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class P2MpteAttribute : public Entity
                 {
                     public:
@@ -2774,11 +2848,12 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value attribute_set_name; //type: string
-                        Value interface_bandwidth; //type: uint32
-                        Value enable; //type: empty
-                        Value record_route; //type: empty
 
+
+                        YLeaf attribute_set_name; //type: string
+                        YLeaf interface_bandwidth; //type: uint32
+                        YLeaf enable; //type: empty
+                        YLeaf record_route; //type: empty
 
                     class Priority : public Entity
                     {
@@ -2793,9 +2868,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value setup_priority; //type: uint32
-                            Value hold_priority; //type: uint32
 
+
+                            YLeaf setup_priority; //type: uint32
+                            YLeaf hold_priority; //type: uint32
 
 
 
@@ -2815,9 +2891,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value affinity; //type: string
-                            Value mask; //type: string
 
+
+                            YLeaf affinity; //type: string
+                            YLeaf mask; //type: string
 
 
 
@@ -2837,12 +2914,12 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value dste_type; //type: MplsTeBandwidthDsteEnum
-                            Value class_or_pool_type; //type: uint32
-                            Value bandwidth; //type: uint32
 
 
-                            class MplsTeBandwidthDsteEnum;
+                            YLeaf dste_type; //type: MplsTeBandwidthDsteEnum
+                            YLeaf class_or_pool_type; //type: uint32
+                            YLeaf bandwidth; //type: uint32
+
 
 
                     }; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth
@@ -2861,8 +2938,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
 
+
+                            YLeaf enable; //type: empty
 
 
 
@@ -2884,6 +2962,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NewStyleAffinityAffinityType : public Entity
                         {
                             public:
@@ -2897,10 +2976,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
@@ -2919,11 +2998,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
@@ -2942,12 +3021,12 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
@@ -2966,13 +3045,13 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
@@ -2991,14 +3070,14 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
@@ -3017,15 +3096,15 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
@@ -3044,16 +3123,16 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
@@ -3072,17 +3151,17 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
@@ -3101,18 +3180,18 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
@@ -3131,19 +3210,19 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
-                                Value affinity9; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+                                YLeaf affinity9; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
@@ -3162,20 +3241,20 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
-                                Value affinity9; //type: string
-                                Value affinity10; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+                                YLeaf affinity9; //type: string
+                                YLeaf affinity10; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
@@ -3210,9 +3289,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bandwidth_protection; //type: uint32
-                            Value node_protection; //type: uint32
 
+
+                            YLeaf bandwidth_protection; //type: uint32
+                            YLeaf node_protection; //type: uint32
 
 
 
@@ -3232,16 +3312,17 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value insufficient_bw_message; //type: empty
-                            Value reoptimized_message; //type: empty
-                            Value bandwidth_change_message; //type: empty
-                            Value all; //type: empty
-                            Value pcalc_failure_message; //type: empty
-                            Value state_message; //type: empty
-                            Value reoptimize_attempts_message; //type: empty
-                            Value sub_lsp_state_message; //type: empty
-                            Value reroute_messsage; //type: empty
 
+
+                            YLeaf insufficient_bw_message; //type: empty
+                            YLeaf reoptimized_message; //type: empty
+                            YLeaf bandwidth_change_message; //type: empty
+                            YLeaf all; //type: empty
+                            YLeaf pcalc_failure_message; //type: empty
+                            YLeaf state_message; //type: empty
+                            YLeaf reoptimize_attempts_message; //type: empty
+                            YLeaf sub_lsp_state_message; //type: empty
+                            YLeaf reroute_messsage; //type: empty
 
 
 
@@ -3281,6 +3362,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class P2PTeAttribute : public Entity
                 {
                     public:
@@ -3294,9 +3376,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value attribute_set_name; //type: string
-                        Value enable; //type: empty
 
+
+                        YLeaf attribute_set_name; //type: string
+                        YLeaf enable; //type: empty
 
                     class PathSelection : public Entity
                     {
@@ -3311,10 +3394,11 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value path_selection_metric; //type: MplsTePathSelectionMetricEnum
-                            Value path_selection_segment_routing_adjacency_protection; //type: MplsTePathSelectionSegmentRoutingAdjacencyProtectionEnum
-                            Value enable; //type: empty
 
+
+                            YLeaf path_selection_metric; //type: MplsTePathSelectionMetricEnum
+                            YLeaf path_selection_segment_routing_adjacency_protection; //type: MplsTePathSelectionSegmentRoutingAdjacencyProtectionEnum
+                            YLeaf enable; //type: empty
 
                         class SegmentRoutingPrepend : public Entity
                         {
@@ -3329,8 +3413,9 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: empty
 
+
+                                YLeaf enable; //type: empty
 
                             class Indexes : public Entity
                             {
@@ -3347,6 +3432,7 @@ class MplsTe : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Index_ : public Entity
                                 {
                                     public:
@@ -3360,12 +3446,12 @@ class MplsTe : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value index_number; //type: uint32
-                                        Value prepend_type; //type: SrPrependEnum
-                                        Value mpls_label; //type: int32
 
 
-                                        class SrPrependEnum;
+                                        YLeaf index_number; //type: uint32
+                                        YLeaf prepend_type; //type: SrPrependEnum
+                                        YLeaf mpls_label; //type: int32
+
 
 
                                 }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index_
@@ -3396,11 +3482,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value invalidation_timer; //type: uint32
-                                Value invalidation_timer_expire_type; //type: MplsTePathSelectionInvalidationTimerExpireEnum
 
 
-                                class MplsTePathSelectionInvalidationTimerExpireEnum;
+                                YLeaf invalidation_timer; //type: uint32
+                                YLeaf invalidation_timer_expire_type; //type: MplsTePathSelectionInvalidationTimerExpireEnum
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation
@@ -3408,8 +3494,6 @@ class MplsTe : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation> invalidation;
                             std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend> segment_routing_prepend;
-                            class MplsTePathSelectionMetricEnum;
-                            class MplsTePathSelectionSegmentRoutingAdjacencyProtectionEnum;
 
 
                     }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection
@@ -3428,8 +3512,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
 
+
+                            YLeaf enable; //type: empty
 
                         class Bidirectional : public Entity
                         {
@@ -3444,9 +3529,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bd_source_address; //type: string
-                                Value bd_group_id; //type: uint32
 
+
+                                YLeaf bd_source_address; //type: string
+                                YLeaf bd_group_id; //type: uint32
 
 
 
@@ -3466,10 +3552,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dp_source_address; //type: string
-                                Value dp_type; //type: uint32
-                                Value dp_group_id; //type: uint32
 
+
+                                YLeaf dp_source_address; //type: string
+                                YLeaf dp_type; //type: uint32
+                                YLeaf dp_group_id; //type: uint32
 
 
 
@@ -3496,9 +3583,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value affinity; //type: string
-                            Value mask; //type: string
 
+
+                            YLeaf affinity; //type: string
+                            YLeaf mask; //type: string
 
 
 
@@ -3518,18 +3606,19 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value lsp_switch_over_change_message; //type: empty
-                            Value all; //type: empty
-                            Value record_route_messsage; //type: empty
-                            Value bfd_state_message; //type: empty
-                            Value bandwidth_change_message; //type: empty
-                            Value reoptimize_attempts_message; //type: empty
-                            Value reroute_messsage; //type: empty
-                            Value state_message; //type: empty
-                            Value insufficient_bw_message; //type: empty
-                            Value reoptimized_message; //type: empty
-                            Value pcalc_failure_message; //type: empty
 
+
+                            YLeaf lsp_switch_over_change_message; //type: empty
+                            YLeaf all; //type: empty
+                            YLeaf record_route_messsage; //type: empty
+                            YLeaf bfd_state_message; //type: empty
+                            YLeaf bandwidth_change_message; //type: empty
+                            YLeaf reoptimize_attempts_message; //type: empty
+                            YLeaf reroute_messsage; //type: empty
+                            YLeaf state_message; //type: empty
+                            YLeaf insufficient_bw_message; //type: empty
+                            YLeaf reoptimized_message; //type: empty
+                            YLeaf pcalc_failure_message; //type: empty
 
 
 
@@ -3551,6 +3640,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NewStyleAffinityAffinityType : public Entity
                         {
                             public:
@@ -3564,10 +3654,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
@@ -3586,11 +3676,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
@@ -3609,12 +3699,12 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
@@ -3633,13 +3723,13 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
@@ -3658,14 +3748,14 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
@@ -3684,15 +3774,15 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
@@ -3711,16 +3801,16 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
@@ -3739,17 +3829,17 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
@@ -3768,18 +3858,18 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
@@ -3798,19 +3888,19 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
-                                Value affinity9; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+                                YLeaf affinity9; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
@@ -3829,20 +3919,20 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
-                                Value affinity9; //type: string
-                                Value affinity10; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+                                YLeaf affinity9; //type: string
+                                YLeaf affinity10; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
@@ -3895,6 +3985,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AutoBackupAttribute : public Entity
                 {
                     public:
@@ -3908,10 +3999,11 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value attribute_set_name; //type: string
-                        Value enable; //type: empty
-                        Value record_route; //type: empty
 
+
+                        YLeaf attribute_set_name; //type: string
+                        YLeaf enable; //type: empty
+                        YLeaf record_route; //type: empty
 
                     class SignalledName : public Entity
                     {
@@ -3926,14 +4018,13 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value name; //type: string
-                            Value source_type; //type: MplsTeSigNameOptionEnum
-                            Value protected_interface_type; //type: MplsTeSigNameOptionEnum
-                            Value mp_address; //type: boolean
 
 
-                            class MplsTeSigNameOptionEnum;
-                            class MplsTeSigNameOptionEnum;
+                            YLeaf name; //type: string
+                            YLeaf source_type; //type: MplsTeSigNameOptionEnum
+                            YLeaf protected_interface_type; //type: MplsTeSigNameOptionEnum
+                            YLeaf mp_address; //type: boolean
+
 
 
                     }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::SignalledName
@@ -3952,11 +4043,12 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bandwidth_change_message; //type: empty
-                            Value reoptimize_attempts_message; //type: empty
-                            Value state_message; //type: empty
-                            Value reoptimized_message; //type: empty
 
+
+                            YLeaf bandwidth_change_message; //type: empty
+                            YLeaf reoptimize_attempts_message; //type: empty
+                            YLeaf state_message; //type: empty
+                            YLeaf reoptimized_message; //type: empty
 
 
 
@@ -3976,9 +4068,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value setup_priority; //type: uint32
-                            Value hold_priority; //type: uint32
 
+
+                            YLeaf setup_priority; //type: uint32
+                            YLeaf hold_priority; //type: uint32
 
 
 
@@ -3998,9 +4091,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value affinity; //type: string
-                            Value mask; //type: string
 
+
+                            YLeaf affinity; //type: string
+                            YLeaf mask; //type: string
 
 
 
@@ -4020,8 +4114,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
 
+
+                            YLeaf enable; //type: empty
 
 
 
@@ -4041,8 +4136,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList policy_class; //type: list of  uint32
 
+
+                            YLeafList policy_class; //type: list of  uint32
 
 
 
@@ -4064,6 +4160,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NewStyleAffinityAffinityType : public Entity
                         {
                             public:
@@ -4077,10 +4174,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
@@ -4099,11 +4196,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
@@ -4122,12 +4219,12 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
@@ -4146,13 +4243,13 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
@@ -4171,14 +4268,14 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
@@ -4197,15 +4294,15 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
@@ -4224,16 +4321,16 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
@@ -4252,17 +4349,17 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
@@ -4281,18 +4378,18 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
@@ -4311,19 +4408,19 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
-                                Value affinity9; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+                                YLeaf affinity9; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
@@ -4342,20 +4439,20 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
-                                Value affinity9; //type: string
-                                Value affinity10; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+                                YLeaf affinity9; //type: string
+                                YLeaf affinity10; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
@@ -4410,6 +4507,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class OtnPpAttribute : public Entity
                 {
                     public:
@@ -4423,12 +4521,13 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value attribute_set_name; //type: string
-                        Value aps_protection_mode; //type: MplsTeOtnApsProtectionModeEnum
-                        Value aps_restoration_style; //type: MplsTeOtnApsRestorationStyleEnum
-                        Value aps_protection_type; //type: MplsTeOtnApsProtectionEnum
-                        Value enable; //type: empty
 
+
+                        YLeaf attribute_set_name; //type: string
+                        YLeaf aps_protection_mode; //type: MplsTeOtnApsProtectionModeEnum
+                        YLeaf aps_restoration_style; //type: MplsTeOtnApsRestorationStyleEnum
+                        YLeaf aps_protection_type; //type: MplsTeOtnApsProtectionEnum
+                        YLeaf enable; //type: empty
 
                     class RevertScheduleNames : public Entity
                     {
@@ -4445,6 +4544,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class RevertScheduleName : public Entity
                         {
                             public:
@@ -4458,11 +4558,12 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value schedule_name; //type: string
-                                Value revert_schedule_max_tries; //type: uint32
-                                Value sch_name_enable; //type: empty
-                                Value revert_schedule_frequency; //type: uint32
 
+
+                                YLeaf schedule_name; //type: string
+                                YLeaf revert_schedule_max_tries; //type: uint32
+                                YLeaf sch_name_enable; //type: empty
+                                YLeaf revert_schedule_frequency; //type: uint32
 
                             class ScheduleDuration : public Entity
                             {
@@ -4477,9 +4578,10 @@ class MplsTe : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value hour; //type: uint32
-                                    Value minutes; //type: uint32
 
+
+                                    YLeaf hour; //type: uint32
+                                    YLeaf minutes; //type: uint32
 
 
 
@@ -4499,12 +4601,13 @@ class MplsTe : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value hour; //type: uint32
-                                    Value minutes; //type: uint32
-                                    Value month; //type: uint32
-                                    Value day; //type: uint32
-                                    Value year; //type: uint32
 
+
+                                    YLeaf hour; //type: uint32
+                                    YLeaf minutes; //type: uint32
+                                    YLeaf month; //type: uint32
+                                    YLeaf day; //type: uint32
+                                    YLeaf year; //type: uint32
 
 
 
@@ -4537,11 +4640,11 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value connection_mode; //type: MplsTeOtnSncModeEnum
-                            Value connection_monitoring_mode; //type: uint32
 
 
-                            class MplsTeOtnSncModeEnum;
+                            YLeaf connection_mode; //type: MplsTeOtnSncModeEnum
+                            YLeaf connection_monitoring_mode; //type: uint32
+
 
 
                     }; // MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::SubNetworkConnectionMode
@@ -4560,9 +4663,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value aps_wait_to_restore; //type: uint32
-                            Value aps_hold_off; //type: uint32
 
+
+                            YLeaf aps_wait_to_restore; //type: uint32
+                            YLeaf aps_hold_off; //type: uint32
 
 
 
@@ -4582,8 +4686,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
 
+
+                            YLeaf enable; //type: empty
 
 
 
@@ -4594,9 +4699,6 @@ class MplsTe : public Entity
                         std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::RevertScheduleNames> revert_schedule_names;
                         std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::SubNetworkConnectionMode> sub_network_connection_mode;
                         std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::Timers> timers;
-                        class MplsTeOtnApsProtectionModeEnum;
-                        class MplsTeOtnApsProtectionEnum;
-                        class MplsTeOtnApsRestorationStyleEnum;
 
 
                 }; // MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute
@@ -4623,6 +4725,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AutoMeshAttribute : public Entity
                 {
                     public:
@@ -4636,16 +4739,17 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value attribute_set_name; //type: string
-                        Value autoroute_announce; //type: empty
-                        Value interface_bandwidth; //type: uint32
-                        Value forward_class; //type: uint32
-                        Value enable; //type: empty
-                        Value record_route; //type: empty
-                        Value collection_only; //type: empty
-                        Value soft_preemption; //type: empty
-                        Value load_share; //type: uint32
 
+
+                        YLeaf attribute_set_name; //type: string
+                        YLeaf autoroute_announce; //type: empty
+                        YLeaf interface_bandwidth; //type: uint32
+                        YLeaf forward_class; //type: uint32
+                        YLeaf enable; //type: empty
+                        YLeaf record_route; //type: empty
+                        YLeaf collection_only; //type: empty
+                        YLeaf soft_preemption; //type: empty
+                        YLeaf load_share; //type: uint32
 
                     class AutoMeshLogging : public Entity
                     {
@@ -4660,14 +4764,15 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bandwidth_change_message; //type: empty
-                            Value reoptimize_attempts_message; //type: empty
-                            Value reroute_messsage; //type: empty
-                            Value state_message; //type: empty
-                            Value insufficient_bw_message; //type: empty
-                            Value reoptimized_message; //type: empty
-                            Value pcalc_failure_message; //type: empty
 
+
+                            YLeaf bandwidth_change_message; //type: empty
+                            YLeaf reoptimize_attempts_message; //type: empty
+                            YLeaf reroute_messsage; //type: empty
+                            YLeaf state_message; //type: empty
+                            YLeaf insufficient_bw_message; //type: empty
+                            YLeaf reoptimized_message; //type: empty
+                            YLeaf pcalc_failure_message; //type: empty
 
 
 
@@ -4687,9 +4792,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value setup_priority; //type: uint32
-                            Value hold_priority; //type: uint32
 
+
+                            YLeaf setup_priority; //type: uint32
+                            YLeaf hold_priority; //type: uint32
 
 
 
@@ -4709,9 +4815,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value affinity; //type: string
-                            Value mask; //type: string
 
+
+                            YLeaf affinity; //type: string
+                            YLeaf mask; //type: string
 
 
 
@@ -4731,12 +4838,12 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value dste_type; //type: MplsTeBandwidthDsteEnum
-                            Value class_or_pool_type; //type: uint32
-                            Value bandwidth; //type: uint32
 
 
-                            class MplsTeBandwidthDsteEnum;
+                            YLeaf dste_type; //type: MplsTeBandwidthDsteEnum
+                            YLeaf class_or_pool_type; //type: uint32
+                            YLeaf bandwidth; //type: uint32
+
 
 
                     }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::Bandwidth
@@ -4755,8 +4862,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
 
+
+                            YLeaf enable; //type: empty
 
 
 
@@ -4776,8 +4884,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList policy_class; //type: list of  uint32
 
+
+                            YLeafList policy_class; //type: list of  uint32
 
 
 
@@ -4799,6 +4908,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NewStyleAffinityAffinityType : public Entity
                         {
                             public:
@@ -4812,10 +4922,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
@@ -4834,11 +4944,11 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
@@ -4857,12 +4967,12 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
@@ -4881,13 +4991,13 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
@@ -4906,14 +5016,14 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
@@ -4932,15 +5042,15 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
@@ -4959,16 +5069,16 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
@@ -4987,17 +5097,17 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
@@ -5016,18 +5126,18 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
@@ -5046,19 +5156,19 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
-                                Value affinity9; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+                                YLeaf affinity9; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
@@ -5077,20 +5187,20 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value affinity_type; //type: MplsTeTunnelAffinityEnum
-                                Value affinity1; //type: string
-                                Value affinity2; //type: string
-                                Value affinity3; //type: string
-                                Value affinity4; //type: string
-                                Value affinity5; //type: string
-                                Value affinity6; //type: string
-                                Value affinity7; //type: string
-                                Value affinity8; //type: string
-                                Value affinity9; //type: string
-                                Value affinity10; //type: string
 
 
-                                class MplsTeTunnelAffinityEnum;
+                                YLeaf affinity_type; //type: MplsTeTunnelAffinityEnum
+                                YLeaf affinity1; //type: string
+                                YLeaf affinity2; //type: string
+                                YLeaf affinity3; //type: string
+                                YLeaf affinity4; //type: string
+                                YLeaf affinity5; //type: string
+                                YLeaf affinity6; //type: string
+                                YLeaf affinity7; //type: string
+                                YLeaf affinity8; //type: string
+                                YLeaf affinity9; //type: string
+                                YLeaf affinity10; //type: string
+
 
 
                         }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
@@ -5125,9 +5235,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bandwidth_protection; //type: uint32
-                            Value node_protection; //type: uint32
 
+
+                            YLeaf bandwidth_protection; //type: uint32
+                            YLeaf node_protection; //type: uint32
 
 
 
@@ -5168,6 +5279,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class XroAttribute : public Entity
                 {
                     public:
@@ -5181,9 +5293,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value attribute_set_name; //type: string
-                        Value enable; //type: empty
 
+
+                        YLeaf attribute_set_name; //type: string
+                        YLeaf enable; //type: empty
 
                     class PathDiversity : public Entity
                     {
@@ -5198,6 +5311,7 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
+
 
 
                         class Srlgs : public Entity
@@ -5215,6 +5329,7 @@ class MplsTe : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Srlg : public Entity
                             {
                                 public:
@@ -5228,11 +5343,11 @@ class MplsTe : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value srlg; //type: uint32
-                                    Value conformance; //type: MplsTePathDiversityConformanceEnum
 
 
-                                    class MplsTePathDiversityConformanceEnum;
+                                    YLeaf srlg; //type: uint32
+                                    YLeaf conformance; //type: MplsTePathDiversityConformanceEnum
+
 
 
                             }; // MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity::Srlgs::Srlg
@@ -5259,6 +5374,7 @@ class MplsTe : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Fecs : public Entity
                             {
                                 public:
@@ -5274,6 +5390,7 @@ class MplsTe : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Fec : public Entity
                                 {
                                     public:
@@ -5287,15 +5404,15 @@ class MplsTe : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value source; //type: string
-                                        Value destination; //type: string
-                                        Value tunnel_id; //type: uint32
-                                        Value extended_tunnel_id; //type: string
-                                        Value lsp_id; //type: uint32
-                                        Value conformance; //type: MplsTePathDiversityConformanceEnum
 
 
-                                        class MplsTePathDiversityConformanceEnum;
+                                        YLeaf source; //type: string
+                                        YLeaf destination; //type: string
+                                        YLeaf tunnel_id; //type: uint32
+                                        YLeaf extended_tunnel_id; //type: string
+                                        YLeaf lsp_id; //type: uint32
+                                        YLeaf conformance; //type: MplsTePathDiversityConformanceEnum
+
 
 
                                 }; // MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity::Lsp::Fecs::Fec
@@ -5333,8 +5450,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
 
+
+                            YLeaf enable; //type: empty
 
 
 
@@ -5381,6 +5499,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Tail : public Entity
             {
                 public:
@@ -5394,9 +5513,10 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value multiplier; //type: uint32
-                    Value minimum_interval; //type: uint32
 
+
+                    YLeaf multiplier; //type: uint32
+                    YLeaf minimum_interval; //type: uint32
 
 
 
@@ -5416,11 +5536,11 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value reopt_timeout; //type: uint32
-                    Value down_action; //type: MplsTeBfdSessionDownActionEnum
 
 
-                    class MplsTeBfdSessionDownActionEnum;
+                    YLeaf reopt_timeout; //type: uint32
+                    YLeaf down_action; //type: MplsTeBfdSessionDownActionEnum
+
 
 
             }; // MplsTe::GlobalAttributes::BfdOverLsp::Head
@@ -5446,19 +5566,20 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value request_timeout; //type: uint32
-                Value reoptimize_period; //type: uint32
-                Value address; //type: string
-                Value deadtimer; //type: uint32
-                Value keepalive; //type: uint32
-                Value keepalive_tolerance; //type: uint32
-                Value peer_source_addr; //type: string
-                Value speaker_entity_id; //type: string
-                Value segment_routing; //type: empty
-                Value password; //type: string
-                Value keychain; //type: string
-                Value precedence; //type: uint32
 
+
+                YLeaf request_timeout; //type: uint32
+                YLeaf reoptimize_period; //type: uint32
+                YLeaf address; //type: string
+                YLeaf deadtimer; //type: uint32
+                YLeaf keepalive; //type: uint32
+                YLeaf keepalive_tolerance; //type: uint32
+                YLeaf peer_source_addr; //type: string
+                YLeaf speaker_entity_id; //type: string
+                YLeaf segment_routing; //type: empty
+                YLeaf password; //type: string
+                YLeaf keychain; //type: string
+                YLeaf precedence; //type: uint32
 
             class PceStateful : public Entity
             {
@@ -5473,13 +5594,14 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value fast_repair; //type: empty
-                    Value instantiation; //type: empty
-                    Value cisco_extension; //type: empty
-                    Value delegation; //type: empty
-                    Value report; //type: empty
-                    Value enable; //type: empty
 
+
+                    YLeaf fast_repair; //type: empty
+                    YLeaf instantiation; //type: empty
+                    YLeaf cisco_extension; //type: empty
+                    YLeaf delegation; //type: empty
+                    YLeaf report; //type: empty
+                    YLeaf enable; //type: empty
 
                 class StatefulTimers : public Entity
                 {
@@ -5494,9 +5616,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value redelegation_timeout; //type: uint32
-                        Value state_timeout; //type: uint32
 
+
+                        YLeaf redelegation_timeout; //type: uint32
+                        YLeaf state_timeout; //type: uint32
 
 
 
@@ -5526,6 +5649,7 @@ class MplsTe : public Entity
 
 
 
+
             }; // MplsTe::GlobalAttributes::PceAttributes::Timer
 
 
@@ -5544,6 +5668,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Peer : public Entity
                 {
                     public:
@@ -5557,12 +5682,13 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value pce_peer_address; //type: string
-                        Value enable; //type: empty
-                        Value password; //type: string
-                        Value keychain; //type: string
-                        Value precedence; //type: uint32
 
+
+                        YLeaf pce_peer_address; //type: string
+                        YLeaf enable; //type: empty
+                        YLeaf password; //type: string
+                        YLeaf keychain; //type: string
+                        YLeaf precedence; //type: uint32
 
 
 
@@ -5590,6 +5716,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Events : public Entity
                 {
                     public:
@@ -5603,8 +5730,9 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value peer_status; //type: empty
 
+
+                        YLeaf peer_status; //type: empty
 
 
 
@@ -5639,10 +5767,11 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value timeout; //type: uint32
-                Value frr_rewrite; //type: empty
-                Value enable; //type: boolean
 
+
+                YLeaf timeout; //type: uint32
+                YLeaf frr_rewrite; //type: empty
+                YLeaf enable; //type: boolean
 
 
 
@@ -5664,6 +5793,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Timers : public Entity
             {
                 public:
@@ -5677,9 +5807,10 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value hold_backup; //type: uint32
-                    Value promotion; //type: uint32
 
+
+                    YLeaf hold_backup; //type: uint32
+                    YLeaf promotion; //type: uint32
 
 
 
@@ -5705,11 +5836,12 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value cost_limit; //type: uint32
-                Value tiebreaker; //type: MplsTePathSelectionTiebreakerEnum
-                Value metric; //type: MplsTePathSelectionMetricEnum
-                Value loose_domain_match; //type: boolean
 
+
+                YLeaf cost_limit; //type: uint32
+                YLeaf tiebreaker; //type: MplsTePathSelectionTiebreakerEnum
+                YLeaf metric; //type: MplsTePathSelectionMetricEnum
+                YLeaf loose_domain_match; //type: boolean
 
             class LooseMetrics : public Entity
             {
@@ -5726,6 +5858,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LooseMetric : public Entity
                 {
                     public:
@@ -5739,11 +5872,11 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value class_type; //type: uint32
-                        Value metric_type; //type: MplsTePathSelectionMetricEnum
 
 
-                        class MplsTePathSelectionMetricEnum;
+                        YLeaf class_type; //type: uint32
+                        YLeaf metric_type; //type: MplsTePathSelectionMetricEnum
+
 
 
                 }; // MplsTe::GlobalAttributes::PathSelection::LooseMetrics::LooseMetric
@@ -5768,11 +5901,11 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value path_invalidation_timeout; //type: uint32
-                    Value path_invalidation_action; //type: PathInvalidationActionEnum
 
 
-                    class PathInvalidationActionEnum;
+                    YLeaf path_invalidation_timeout; //type: uint32
+                    YLeaf path_invalidation_action; //type: PathInvalidationActionEnum
+
 
 
             }; // MplsTe::GlobalAttributes::PathSelection::Invalidation
@@ -5791,10 +5924,11 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value head; //type: boolean
-                    Value mid; //type: boolean
-                    Value tail; //type: boolean
 
+
+                    YLeaf head; //type: boolean
+                    YLeaf mid; //type: boolean
+                    YLeaf tail; //type: boolean
 
 
 
@@ -5816,6 +5950,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LooseAffinity : public Entity
                 {
                     public:
@@ -5829,10 +5964,11 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value class_type; //type: uint32
-                        Value affinity; //type: string
-                        Value mask; //type: string
 
+
+                        YLeaf class_type; //type: uint32
+                        YLeaf affinity; //type: string
+                        YLeaf mask; //type: string
 
 
 
@@ -5849,8 +5985,6 @@ class MplsTe : public Entity
                 std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::PathSelection::Invalidation> invalidation;
                 std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::PathSelection::LooseAffinities> loose_affinities;
                 std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::PathSelection::LooseMetrics> loose_metrics;
-                class MplsTePathSelectionMetricEnum;
-                class MplsTePathSelectionTiebreakerEnum;
 
 
         }; // MplsTe::GlobalAttributes::PathSelection
@@ -5871,6 +6005,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class AffinityMapping : public Entity
             {
                 public:
@@ -5884,12 +6019,12 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value affinity_name; //type: string
-                    Value value_type; //type: MplsTeAffinityValueEnum
-                    Value value_; //type: string
 
 
-                    class MplsTeAffinityValueEnum;
+                    YLeaf affinity_name; //type: string
+                    YLeaf value_type; //type: MplsTeAffinityValueEnum
+                    YLeaf value_; //type: string
+
 
 
             }; // MplsTe::GlobalAttributes::AffinityMappings::AffinityMapping
@@ -5914,7 +6049,6 @@ class MplsTe : public Entity
             std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::SecondaryRouterIds> secondary_router_ids;
             std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::SoftPreemption> soft_preemption;
             std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::Srlg> srlg;
-            class MplsTeLogFrrProtectionEnum;
 
 
     }; // MplsTe::GlobalAttributes
@@ -5933,9 +6067,10 @@ class MplsTe : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value global_id; //type: uint32
-            Value node_id; //type: string
 
+
+            YLeaf global_id; //type: uint32
+            YLeaf node_id; //type: string
 
         class Fault : public Entity
         {
@@ -5950,9 +6085,10 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value wait_to_restore_interval; //type: uint32
-                Value refresh_interval; //type: uint32
 
+
+                YLeaf wait_to_restore_interval; //type: uint32
+                YLeaf refresh_interval; //type: uint32
 
             class ProtectionTrigger : public Entity
             {
@@ -5967,8 +6103,9 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ais; //type: empty
 
+
+                    YLeaf ais; //type: empty
 
                 class Ldi : public Entity
                 {
@@ -5983,8 +6120,9 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value disable; //type: empty
 
+
+                        YLeaf disable; //type: empty
 
 
 
@@ -6004,8 +6142,9 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value disable; //type: empty
 
+
+                        YLeaf disable; //type: empty
 
 
 
@@ -6038,9 +6177,10 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value soak_time; //type: uint32
-                Value enable_alarm; //type: empty
 
+
+                YLeaf soak_time; //type: uint32
+                YLeaf enable_alarm; //type: empty
 
             class SuppressEvent : public Entity
             {
@@ -6055,8 +6195,9 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value disable; //type: empty
 
+
+                    YLeaf disable; //type: empty
 
 
 
@@ -6082,9 +6223,10 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value detection_multiplier_standby; //type: uint32
-                Value detection_multiplier; //type: uint32
 
+
+                YLeaf detection_multiplier_standby; //type: uint32
+                YLeaf detection_multiplier; //type: uint32
 
             class MinIntervalStandby : public Entity
             {
@@ -6099,9 +6241,10 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval_standby_ms; //type: uint32
-                    Value interval_standby_us; //type: uint32
 
+
+                    YLeaf interval_standby_ms; //type: uint32
+                    YLeaf interval_standby_us; //type: uint32
 
 
 
@@ -6121,9 +6264,10 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval_ms; //type: uint32
-                    Value interval_us; //type: uint32
 
+
+                    YLeaf interval_ms; //type: uint32
+                    YLeaf interval_us; //type: uint32
 
 
 
@@ -6152,6 +6296,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Midpoint : public Entity
             {
                 public:
@@ -6165,11 +6310,12 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value midpoint_name; //type: string
-                    Value tunnel_name; //type: string
-                    Value lsp_protect; //type: empty
-                    Value lsp_id; //type: uint32
 
+
+                    YLeaf midpoint_name; //type: string
+                    YLeaf tunnel_name; //type: string
+                    YLeaf lsp_protect; //type: empty
+                    YLeaf lsp_id; //type: uint32
 
                 class Source : public Entity
                 {
@@ -6184,10 +6330,11 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value node_id; //type: string
-                        Value tunnel_id; //type: uint32
-                        Value global_id; //type: uint32
 
+
+                        YLeaf node_id; //type: string
+                        YLeaf tunnel_id; //type: uint32
+                        YLeaf global_id; //type: uint32
 
 
 
@@ -6207,10 +6354,11 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value node_id; //type: string
-                        Value tunnel_id; //type: uint32
-                        Value global_id; //type: uint32
 
+
+                        YLeaf node_id; //type: string
+                        YLeaf tunnel_id; //type: uint32
+                        YLeaf global_id; //type: uint32
 
 
 
@@ -6230,8 +6378,9 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value forward_bandwidth; //type: uint32
 
+
+                        YLeaf forward_bandwidth; //type: uint32
 
                     class ForwardIoMap : public Entity
                     {
@@ -6246,10 +6395,11 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value in_label; //type: uint32
-                            Value out_label; //type: uint32
-                            Value out_link; //type: uint32
 
+
+                            YLeaf in_label; //type: uint32
+                            YLeaf out_label; //type: uint32
+                            YLeaf out_link; //type: uint32
 
 
 
@@ -6275,8 +6425,9 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value reverse_bandwidth; //type: uint32
 
+
+                        YLeaf reverse_bandwidth; //type: uint32
 
                     class ReverseIoMap : public Entity
                     {
@@ -6291,10 +6442,11 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value in_label; //type: uint32
-                            Value out_label; //type: uint32
-                            Value out_link; //type: uint32
 
+
+                            YLeaf in_label; //type: uint32
+                            YLeaf out_label; //type: uint32
+                            YLeaf out_link; //type: uint32
 
 
 
@@ -6346,6 +6498,7 @@ class MplsTe : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -6359,8 +6512,9 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
 
+
+                YLeaf interface_name; //type: string
 
             class TransportProfileLink : public Entity
             {
@@ -6375,6 +6529,7 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Links : public Entity
@@ -6392,6 +6547,7 @@ class MplsTe : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Link : public Entity
                     {
                         public:
@@ -6405,12 +6561,12 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value link_id; //type: uint32
-                            Value next_hop_type; //type: LinkNextHopEnum
-                            Value next_hop_address; //type: string
 
 
-                            class LinkNextHopEnum;
+                            YLeaf link_id; //type: uint32
+                            YLeaf next_hop_type; //type: LinkNextHopEnum
+                            YLeaf next_hop_address; //type: string
+
 
 
                     }; // MplsTe::Interfaces::Interface::TransportProfileLink::Links::Link
@@ -6441,12 +6597,13 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bfd; //type: empty
-                    Value fault_oam_lockout; //type: empty
-                    Value attribute_flags; //type: string
-                    Value enable; //type: empty
-                    Value admin_weight; //type: int32
 
+
+                    YLeaf bfd; //type: empty
+                    YLeaf fault_oam_lockout; //type: empty
+                    YLeaf attribute_flags; //type: string
+                    YLeaf enable; //type: empty
+                    YLeaf admin_weight; //type: int32
 
                 class Switchings : public Entity
                 {
@@ -6463,6 +6620,7 @@ class MplsTe : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Switching : public Entity
                     {
                         public:
@@ -6476,14 +6634,12 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value switching_id; //type: one of uint32, enumeration
-                            Value encoding; //type: MplsTeSwitchingEncodingEnum
-                            Value capability; //type: MplsTeSwitchingCapEnum
 
 
-                            class MplsTeSwitchingIndexEnum;
-                            class MplsTeSwitchingCapEnum;
-                            class MplsTeSwitchingEncodingEnum;
+                            YLeaf switching_id; //type: one of uint32, enumeration
+                            YLeaf encoding; //type: MplsTeSwitchingEncodingEnum
+                            YLeaf capability; //type: MplsTeSwitchingCapEnum
+
 
 
                     }; // MplsTe::Interfaces::Interface::Lcac::Switchings::Switching
@@ -6508,12 +6664,12 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value igp_type; //type: MplsLcacFloodingIgpEnum
-                        Value process_name; //type: string
-                        Value area_id; //type: int32
 
 
-                        class MplsLcacFloodingIgpEnum;
+                        YLeaf igp_type; //type: MplsLcacFloodingIgpEnum
+                        YLeaf process_name; //type: string
+                        YLeaf area_id; //type: int32
+
 
 
                 }; // MplsTe::Interfaces::Interface::Lcac::FloodArea
@@ -6532,8 +6688,9 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        ValueList attribute_name; //type: list of  string
 
+
+                        YLeafList attribute_name; //type: list of  string
 
 
 
@@ -6555,6 +6712,7 @@ class MplsTe : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AttributeName : public Entity
                     {
                         public:
@@ -6568,9 +6726,10 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value affinity_index; //type: uint32
-                            ValueList value_; //type: list of  string
 
+
+                            YLeaf affinity_index; //type: uint32
+                            YLeafList value_; //type: list of  string
 
 
 
@@ -6598,6 +6757,7 @@ class MplsTe : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Srlg : public Entity
                     {
                         public:
@@ -6611,8 +6771,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value srlg_number; //type: uint32
 
+
+                            YLeaf srlg_number; //type: uint32
 
 
 
@@ -6638,8 +6799,9 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        ValueList up_threshold; //type: list of  uint32
 
+
+                        YLeafList up_threshold; //type: list of  uint32
 
 
 
@@ -6659,8 +6821,9 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        ValueList down_threshold; //type: list of  uint32
 
+
+                        YLeafList down_threshold; //type: list of  uint32
 
 
 
@@ -6694,6 +6857,7 @@ class MplsTe : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BackupTunnels : public Entity
                 {
                     public:
@@ -6709,6 +6873,7 @@ class MplsTe : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BackupTunnel : public Entity
                     {
                         public:
@@ -6722,8 +6887,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value tunnel_name; //type: string
 
+
+                            YLeaf tunnel_name; //type: string
 
 
 
@@ -6751,6 +6917,7 @@ class MplsTe : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Backup : public Entity
                     {
                         public:
@@ -6764,10 +6931,11 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
-                            Value attribute_set; //type: string
-                            Value next_hop_only; //type: empty
 
+
+                            YLeaf enable; //type: empty
+                            YLeaf attribute_set; //type: string
+                            YLeaf next_hop_only; //type: empty
 
                         class Exclude : public Entity
                         {
@@ -6782,10 +6950,10 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value srlg_mode; //type: MplsTesrlgExcludeEnum
 
 
-                                class MplsTesrlgExcludeEnum;
+                                YLeaf srlg_mode; //type: MplsTesrlgExcludeEnum
+
 
 
                         }; // MplsTe::Interfaces::Interface::GlobalAttributes::AutoTunnel::Backup::Exclude
@@ -6818,6 +6986,7 @@ class MplsTe : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BackupPath : public Entity
                     {
                         public:
@@ -6831,8 +7000,9 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value tunnel_number; //type: uint32
 
+
+                            YLeaf tunnel_number; //type: uint32
 
 
 
@@ -6880,9 +7050,10 @@ class MplsTe : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value path_selection_metric; //type: MplsTePathSelectionMetricEnum
-            Value enable_gmpls_nni; //type: empty
 
+
+            YLeaf path_selection_metric; //type: MplsTePathSelectionMetricEnum
+            YLeaf enable_gmpls_nni; //type: empty
 
         class TopologyInstances : public Entity
         {
@@ -6899,6 +7070,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TopologyInstance : public Entity
             {
                 public:
@@ -6912,10 +7084,11 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ospf_area_type; //type: OspfAreaModeEnum
-                    Value igp_instance_name; //type: string
-                    Value igp_type; //type: MplsTeIgpProtocolEnum
 
+
+                    YLeaf ospf_area_type; //type: OspfAreaModeEnum
+                    YLeaf igp_instance_name; //type: string
+                    YLeaf igp_type; //type: MplsTeIgpProtocolEnum
 
                 class OspfInt : public Entity
                 {
@@ -6930,8 +7103,9 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value igp_area; //type: int32
 
+
+                        YLeaf igp_area; //type: int32
 
                     class Controllers : public Entity
                     {
@@ -6948,6 +7122,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Controller : public Entity
                         {
                             public:
@@ -6961,11 +7136,12 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value controller_name; //type: string
-                                Value admin_weight; //type: uint32
-                                Value enable; //type: empty
-                                Value delay; //type: uint32
 
+
+                                YLeaf controller_name; //type: string
+                                YLeaf admin_weight; //type: uint32
+                                YLeaf enable; //type: empty
+                                YLeaf delay; //type: uint32
 
                             class TtiMode : public Entity
                             {
@@ -6980,11 +7156,11 @@ class MplsTe : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value tti_mode_type; //type: GmplsttiModeEnum
-                                    Value tcmid; //type: uint32
 
 
-                                    class GmplsttiModeEnum;
+                                    YLeaf tti_mode_type; //type: GmplsttiModeEnum
+                                    YLeaf tcmid; //type: uint32
+
 
 
                             }; // MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers::Controller::TtiMode
@@ -7021,8 +7197,9 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
 
+
+                        YLeaf address; //type: string
 
                     class Controllers : public Entity
                     {
@@ -7039,6 +7216,7 @@ class MplsTe : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Controller : public Entity
                         {
                             public:
@@ -7052,11 +7230,12 @@ class MplsTe : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value controller_name; //type: string
-                                Value admin_weight; //type: uint32
-                                Value enable; //type: empty
-                                Value delay; //type: uint32
 
+
+                                YLeaf controller_name; //type: string
+                                YLeaf admin_weight; //type: uint32
+                                YLeaf enable; //type: empty
+                                YLeaf delay; //type: uint32
 
                             class TtiMode : public Entity
                             {
@@ -7071,11 +7250,11 @@ class MplsTe : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value tti_mode_type; //type: GmplsttiModeEnum
-                                    Value tcmid; //type: uint32
 
 
-                                    class GmplsttiModeEnum;
+                                    YLeaf tti_mode_type; //type: GmplsttiModeEnum
+                                    YLeaf tcmid; //type: uint32
+
 
 
                             }; // MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers::Controller::TtiMode
@@ -7101,8 +7280,6 @@ class MplsTe : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt> > ospf_int;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr> > ospfip_addr;
-                    class MplsTeIgpProtocolEnum;
-                    class OspfAreaModeEnum;
 
 
             }; // MplsTe::GmplsNni::TopologyInstances::TopologyInstance
@@ -7129,6 +7306,7 @@ class MplsTe : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TunnelHead : public Entity
             {
                 public:
@@ -7142,19 +7320,20 @@ class MplsTe : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value tunnel_id; //type: uint32
-                    Value enable; //type: empty
-                    Value restore_lsp_shutdown; //type: empty
-                    Value destination; //type: string
-                    Value current_lsp_shutdown; //type: empty
-                    Value path_selection_metric; //type: MplsTePathSelectionMetricEnum
-                    Value payload; //type: OtnPayloadEnum
-                    Value standby_lsp_shutdown; //type: empty
-                    Value shutdown; //type: empty
-                    Value path_protection_attribute_set_profile; //type: string
-                    Value record_route; //type: empty
-                    Value signalled_name; //type: string
 
+
+                    YLeaf tunnel_id; //type: uint32
+                    YLeaf enable; //type: empty
+                    YLeaf restore_lsp_shutdown; //type: empty
+                    YLeaf destination; //type: string
+                    YLeaf current_lsp_shutdown; //type: empty
+                    YLeaf path_selection_metric; //type: MplsTePathSelectionMetricEnum
+                    YLeaf payload; //type: OtnPayloadEnum
+                    YLeaf standby_lsp_shutdown; //type: empty
+                    YLeaf shutdown; //type: empty
+                    YLeaf path_protection_attribute_set_profile; //type: string
+                    YLeaf record_route; //type: empty
+                    YLeaf signalled_name; //type: string
 
                 class SignalledBandwidth : public Entity
                 {
@@ -7169,13 +7348,12 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value signalled_bandwidth_type; //type: OtnSignaledBandwidthEnum
-                        Value bitrate; //type: int32
-                        Value od_uflex_framing_type; //type: OtnSignaledBandwidthFlexFramingEnum
 
 
-                        class OtnSignaledBandwidthFlexFramingEnum;
-                        class OtnSignaledBandwidthEnum;
+                        YLeaf signalled_bandwidth_type; //type: OtnSignaledBandwidthEnum
+                        YLeaf bitrate; //type: int32
+                        YLeaf od_uflex_framing_type; //type: OtnSignaledBandwidthFlexFramingEnum
+
 
 
                 }; // MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth
@@ -7194,10 +7372,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lockout; //type: OtnProtectionSwitchLockoutEnum
 
 
-                        class OtnProtectionSwitchLockoutEnum;
+                        YLeaf lockout; //type: OtnProtectionSwitchLockoutEnum
+
 
 
                 }; // MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching
@@ -7216,14 +7394,15 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value active_lsp_message; //type: empty
-                        Value homepath_state_message; //type: empty
-                        Value signalling_state_message; //type: empty
-                        Value path_change_message; //type: empty
-                        Value static_cross_connect_message; //type: empty
-                        Value tunnel_state_message; //type: empty
-                        Value insufficient_bw_message; //type: empty
 
+
+                        YLeaf active_lsp_message; //type: empty
+                        YLeaf homepath_state_message; //type: empty
+                        YLeaf signalling_state_message; //type: empty
+                        YLeaf path_change_message; //type: empty
+                        YLeaf static_cross_connect_message; //type: empty
+                        YLeaf tunnel_state_message; //type: empty
+                        YLeaf insufficient_bw_message; //type: empty
 
 
 
@@ -7245,6 +7424,7 @@ class MplsTe : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PathOption : public Entity
                     {
                         public:
@@ -7258,19 +7438,18 @@ class MplsTe : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value preference_level; //type: uint32
-                            Value path_type; //type: MplsTePathOptionEnum
-                            Value path_id; //type: uint32
-                            Value path_name; //type: string
-                            Value protected_by_preference_level; //type: uint32
-                            Value restore_by_preference_level; //type: uint32
-                            Value xro_type; //type: empty
-                            Value xro_attribute_set_name; //type: string
-                            Value lockdown; //type: MplsTePathOptionPropertyEnum
 
 
-                            class MplsTePathOptionPropertyEnum;
-                            class MplsTePathOptionEnum;
+                            YLeaf preference_level; //type: uint32
+                            YLeaf path_type; //type: MplsTePathOptionEnum
+                            YLeaf path_id; //type: uint32
+                            YLeaf path_name; //type: string
+                            YLeaf protected_by_preference_level; //type: uint32
+                            YLeaf restore_by_preference_level; //type: uint32
+                            YLeaf xro_type; //type: empty
+                            YLeaf xro_attribute_set_name; //type: string
+                            YLeaf lockdown; //type: MplsTePathOptionPropertyEnum
+
 
 
                     }; // MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption
@@ -7295,9 +7474,10 @@ class MplsTe : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ingress_controller_name; //type: string
-                        Value egress_controller_if_index; //type: int32
 
+
+                        YLeaf ingress_controller_name; //type: string
+                        YLeaf egress_controller_if_index; //type: int32
 
 
 
@@ -7309,8 +7489,6 @@ class MplsTe : public Entity
                     std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching> protection_switching;
                     std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth> signalled_bandwidth;
                     std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni> static_uni;
-                    class MplsTePathSelectionMetricEnum;
-                    class OtnPayloadEnum;
 
 
             }; // MplsTe::GmplsNni::TunnelHeads::TunnelHead
@@ -7324,7 +7502,6 @@ class MplsTe : public Entity
 
             std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances> topology_instances;
             std::unique_ptr<Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads> tunnel_heads;
-            class MplsTePathSelectionMetricEnum;
 
 
     }; // MplsTe::GmplsNni
@@ -7343,10 +7520,11 @@ class MplsTe : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value bandwidth_hold_timer; //type: uint32
-            Value delay_preempt_bundle_capacity_timer; //type: uint32
-            Value periodic_flooding_timer; //type: uint32
 
+
+            YLeaf bandwidth_hold_timer; //type: uint32
+            YLeaf delay_preempt_bundle_capacity_timer; //type: uint32
+            YLeaf periodic_flooding_timer; //type: uint32
 
         class Bfd : public Entity
         {
@@ -7361,9 +7539,10 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interval; //type: uint32
-                Value detection_multiplier; //type: uint32
 
+
+                YLeaf interval; //type: uint32
+                YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -7383,9 +7562,10 @@ class MplsTe : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value up_stream; //type: uint32
-                Value down_stream; //type: uint32
 
+
+                YLeaf up_stream; //type: uint32
+                YLeaf down_stream; //type: uint32
 
 
 
@@ -7415,428 +7595,428 @@ class MplsTe : public Entity
 class MplsTeBackupBandwidthClassEnum : public Enum
 {
     public:
-        static const Enum::Value class0;
-        static const Enum::Value class1;
-        static const Enum::Value any_class;
+        static const Enum::YLeaf class0;
+        static const Enum::YLeaf class1;
+        static const Enum::YLeaf any_class;
 
 };
 
 class SrPrependEnum : public Enum
 {
     public:
-        static const Enum::Value none_type;
-        static const Enum::Value next_label;
-        static const Enum::Value bgp_n_hop;
+        static const Enum::YLeaf none_type;
+        static const Enum::YLeaf next_label;
+        static const Enum::YLeaf bgp_n_hop;
 
 };
 
 class MplsTePathComputationMethodEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value dynamic;
-        static const Enum::Value pce;
-        static const Enum::Value explicit_;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf dynamic;
+        static const Enum::YLeaf pce;
+        static const Enum::YLeaf explicit_;
 
 };
 
 class MplsTeSwitchingCapEnum : public Enum
 {
     public:
-        static const Enum::Value psc1;
-        static const Enum::Value lsc;
-        static const Enum::Value fsc;
+        static const Enum::YLeaf psc1;
+        static const Enum::YLeaf lsc;
+        static const Enum::YLeaf fsc;
 
 };
 
 class MplsTeBfdSessionDownActionEnum : public Enum
 {
     public:
-        static const Enum::Value re_setup;
+        static const Enum::YLeaf re_setup;
 
 };
 
 class RoutePriorityRoleEnum : public Enum
 {
     public:
-        static const Enum::Value route_priority_role_head_back_up;
-        static const Enum::Value route_priority_role_head_primary;
-        static const Enum::Value route_priority_role_middle;
+        static const Enum::YLeaf route_priority_role_head_back_up;
+        static const Enum::YLeaf route_priority_role_head_primary;
+        static const Enum::YLeaf route_priority_role_middle;
 
 };
 
 class MplsTebfdSessionEnum : public Enum
 {
     public:
-        static const Enum::Value regular_bfd;
-        static const Enum::Value sbfd;
-        static const Enum::Value redundant_sbfd;
+        static const Enum::YLeaf regular_bfd;
+        static const Enum::YLeaf sbfd;
+        static const Enum::YLeaf redundant_sbfd;
 
 };
 
 class MplsTeLogFrrProtectionEnum : public Enum
 {
     public:
-        static const Enum::Value frr_active_primary;
-        static const Enum::Value backup;
-        static const Enum::Value frr_ready_primary;
-        static const Enum::Value primary;
-        static const Enum::Value all;
+        static const Enum::YLeaf frr_active_primary;
+        static const Enum::YLeaf backup;
+        static const Enum::YLeaf frr_ready_primary;
+        static const Enum::YLeaf primary;
+        static const Enum::YLeaf all;
 
 };
 
 class MplsTeTunnelAffinityEnum : public Enum
 {
     public:
-        static const Enum::Value include;
-        static const Enum::Value include_strict;
-        static const Enum::Value exclude;
-        static const Enum::Value exclude_all;
-        static const Enum::Value ignore;
+        static const Enum::YLeaf include;
+        static const Enum::YLeaf include_strict;
+        static const Enum::YLeaf exclude;
+        static const Enum::YLeaf exclude_all;
+        static const Enum::YLeaf ignore;
 
 };
 
 class IetfModeEnum : public Enum
 {
     public:
-        static const Enum::Value standard;
+        static const Enum::YLeaf standard;
 
 };
 
 class MplsTePathOptionPropertyEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value lockdown;
-        static const Enum::Value verbatim;
-        static const Enum::Value pce;
-        static const Enum::Value segment_routing;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf lockdown;
+        static const Enum::YLeaf verbatim;
+        static const Enum::YLeaf pce;
+        static const Enum::YLeaf segment_routing;
 
 };
 
 class GmplsttiModeEnum : public Enum
 {
     public:
-        static const Enum::Value sm;
-        static const Enum::Value pm;
-        static const Enum::Value tcm;
+        static const Enum::YLeaf sm;
+        static const Enum::YLeaf pm;
+        static const Enum::YLeaf tcm;
 
 };
 
 class MplsTePathSelectionInvalidationTimerExpireEnum : public Enum
 {
     public:
-        static const Enum::Value tunnel_action_tear;
-        static const Enum::Value tunnel_action_drop;
+        static const Enum::YLeaf tunnel_action_tear;
+        static const Enum::YLeaf tunnel_action_drop;
 
 };
 
 class MplsTeOtnApsProtectionEnum : public Enum
 {
     public:
-        static const Enum::Value Y_1plus1_unidir_no_aps;
-        static const Enum::Value Y_1plus1_unidir_aps;
-        static const Enum::Value Y_1plus1_bdir_aps;
+        static const Enum::YLeaf Y_1plus1_unidir_no_aps;
+        static const Enum::YLeaf Y_1plus1_unidir_aps;
+        static const Enum::YLeaf Y_1plus1_bdir_aps;
 
 };
 
 class MplsTeSwitchingEncodingEnum : public Enum
 {
     public:
-        static const Enum::Value packet;
-        static const Enum::Value ethernet;
-        static const Enum::Value sondet_sdh;
+        static const Enum::YLeaf packet;
+        static const Enum::YLeaf ethernet;
+        static const Enum::YLeaf sondet_sdh;
 
 };
 
 class MplsTeSigNameOptionEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value address;
-        static const Enum::Value name;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf address;
+        static const Enum::YLeaf name;
 
 };
 
 class OtnProtectionSwitchLockoutEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value working;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf working;
 
 };
 
 class MplsTeTunnelIdEnum : public Enum
 {
     public:
-        static const Enum::Value auto_;
-        static const Enum::Value explicit_;
+        static const Enum::YLeaf auto_;
+        static const Enum::YLeaf explicit_;
 
 };
 
 class MplsTeAffinityValueEnum : public Enum
 {
     public:
-        static const Enum::Value hex_value;
-        static const Enum::Value bit_position;
+        static const Enum::YLeaf hex_value;
+        static const Enum::YLeaf bit_position;
 
 };
 
 class MplsTeOtnSncModeEnum : public Enum
 {
     public:
-        static const Enum::Value snc_n;
-        static const Enum::Value snc_i;
-        static const Enum::Value snc_s;
+        static const Enum::YLeaf snc_n;
+        static const Enum::YLeaf snc_i;
+        static const Enum::YLeaf snc_s;
 
 };
 
 class OtnPayloadEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value bmp;
-        static const Enum::Value gfp_f;
-        static const Enum::Value gmp;
-        static const Enum::Value gfp_f_ext;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf bmp;
+        static const Enum::YLeaf gfp_f;
+        static const Enum::YLeaf gmp;
+        static const Enum::YLeaf gfp_f_ext;
 
 };
 
 class OspfAreaModeEnum : public Enum
 {
     public:
-        static const Enum::Value ospf_int;
-        static const Enum::Value ospfip_addr;
+        static const Enum::YLeaf ospf_int;
+        static const Enum::YLeaf ospfip_addr;
 
 };
 
 class MplsTeIgpProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value isis;
-        static const Enum::Value ospf;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf isis;
+        static const Enum::YLeaf ospf;
 
 };
 
 class MplsTePathSelectionTiebreakerEnum : public Enum
 {
     public:
-        static const Enum::Value min_fill;
-        static const Enum::Value max_fill;
-        static const Enum::Value random;
+        static const Enum::YLeaf min_fill;
+        static const Enum::YLeaf max_fill;
+        static const Enum::YLeaf random;
 
 };
 
 class MplsTePathOptionEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value dynamic;
-        static const Enum::Value explicit_name;
-        static const Enum::Value explicit_number;
-        static const Enum::Value no_ero;
-        static const Enum::Value sr;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf dynamic;
+        static const Enum::YLeaf explicit_name;
+        static const Enum::YLeaf explicit_number;
+        static const Enum::YLeaf no_ero;
+        static const Enum::YLeaf sr;
 
 };
 
 class PathInvalidationActionEnum : public Enum
 {
     public:
-        static const Enum::Value tear;
-        static const Enum::Value drop;
+        static const Enum::YLeaf tear;
+        static const Enum::YLeaf drop;
 
 };
 
 class OtnSignaledBandwidthEnum : public Enum
 {
     public:
-        static const Enum::Value odu1;
-        static const Enum::Value odu2;
-        static const Enum::Value odu3;
-        static const Enum::Value odu4;
-        static const Enum::Value odu0;
-        static const Enum::Value odu2e;
-        static const Enum::Value od_uflex_cbr;
-        static const Enum::Value od_uflex_gfp_resize;
-        static const Enum::Value od_uflex_gfp_not_resize;
-        static const Enum::Value odu1e;
-        static const Enum::Value odu1f;
-        static const Enum::Value odu2f;
-        static const Enum::Value odu3e1;
-        static const Enum::Value odu3e2;
+        static const Enum::YLeaf odu1;
+        static const Enum::YLeaf odu2;
+        static const Enum::YLeaf odu3;
+        static const Enum::YLeaf odu4;
+        static const Enum::YLeaf odu0;
+        static const Enum::YLeaf odu2e;
+        static const Enum::YLeaf od_uflex_cbr;
+        static const Enum::YLeaf od_uflex_gfp_resize;
+        static const Enum::YLeaf od_uflex_gfp_not_resize;
+        static const Enum::YLeaf odu1e;
+        static const Enum::YLeaf odu1f;
+        static const Enum::YLeaf odu2f;
+        static const Enum::YLeaf odu3e1;
+        static const Enum::YLeaf odu3e2;
 
 };
 
 class MplsTeAutorouteMetricEnum : public Enum
 {
     public:
-        static const Enum::Value relative;
-        static const Enum::Value absolute;
-        static const Enum::Value constant;
+        static const Enum::YLeaf relative;
+        static const Enum::YLeaf absolute;
+        static const Enum::YLeaf constant;
 
 };
 
 class BindingSegmentIdEnum : public Enum
 {
     public:
-        static const Enum::Value any_label;
-        static const Enum::Value specified_label;
+        static const Enum::YLeaf any_label;
+        static const Enum::YLeaf specified_label;
 
 };
 
 class MplsTesrlgExcludeEnum : public Enum
 {
     public:
-        static const Enum::Value mandatory;
-        static const Enum::Value preferred;
-        static const Enum::Value weighted;
+        static const Enum::YLeaf mandatory;
+        static const Enum::YLeaf preferred;
+        static const Enum::YLeaf weighted;
 
 };
 
 class MplsTeSignaledLabelEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value dwdm;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf dwdm;
 
 };
 
 class BandwidthConstraintEnum : public Enum
 {
     public:
-        static const Enum::Value bandwidth_constraint_maximum_allocation_model;
+        static const Enum::YLeaf bandwidth_constraint_maximum_allocation_model;
 
 };
 
 class MplsTeSwitchingEncodeEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value packet;
-        static const Enum::Value ethernet;
-        static const Enum::Value sondet_sdh;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf packet;
+        static const Enum::YLeaf ethernet;
+        static const Enum::YLeaf sondet_sdh;
 
 };
 
 class MplsTePathSelectionMetricEnum : public Enum
 {
     public:
-        static const Enum::Value igp;
-        static const Enum::Value te;
-        static const Enum::Value delay;
+        static const Enum::YLeaf igp;
+        static const Enum::YLeaf te;
+        static const Enum::YLeaf delay;
 
 };
 
 class MplsTePathOptionProtectionEnum : public Enum
 {
     public:
-        static const Enum::Value active;
-        static const Enum::Value protecting;
+        static const Enum::YLeaf active;
+        static const Enum::YLeaf protecting;
 
 };
 
 class OtnSignaledBandwidthFlexFramingEnum : public Enum
 {
     public:
-        static const Enum::Value cbr;
-        static const Enum::Value framed_gfp_fixed;
-        static const Enum::Value framed_gfp_resize;
+        static const Enum::YLeaf cbr;
+        static const Enum::YLeaf framed_gfp_fixed;
+        static const Enum::YLeaf framed_gfp_resize;
 
 };
 
 class MplsTeBandwidthLimitEnum : public Enum
 {
     public:
-        static const Enum::Value unlimited;
-        static const Enum::Value limited;
+        static const Enum::YLeaf unlimited;
+        static const Enum::YLeaf limited;
 
 };
 
 class MplsTePathSelectionSegmentRoutingAdjacencyProtectionEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value adj_unprotected;
-        static const Enum::Value adj_protected;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf adj_unprotected;
+        static const Enum::YLeaf adj_protected;
 
 };
 
 class LinkNextHopEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value ipv4_address;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf ipv4_address;
 
 };
 
 class MplsLcacFloodingIgpEnum : public Enum
 {
     public:
-        static const Enum::Value ospf;
+        static const Enum::YLeaf ospf;
 
 };
 
 class BfdReversePathEnum : public Enum
 {
     public:
-        static const Enum::Value bfd_reverse_path_binding_label;
+        static const Enum::YLeaf bfd_reverse_path_binding_label;
 
 };
 
 class MplsTeOtnApsRestorationStyleEnum : public Enum
 {
     public:
-        static const Enum::Value keep_failed_lsp;
-        static const Enum::Value delete_failed_lsp;
+        static const Enum::YLeaf keep_failed_lsp;
+        static const Enum::YLeaf delete_failed_lsp;
 
 };
 
 class MplsTeBandwidthDsteEnum : public Enum
 {
     public:
-        static const Enum::Value standard_dste;
-        static const Enum::Value pre_standard_dste;
+        static const Enum::YLeaf standard_dste;
+        static const Enum::YLeaf pre_standard_dste;
 
 };
 
 class MplsTePathDiversityConformanceEnum : public Enum
 {
     public:
-        static const Enum::Value strict;
-        static const Enum::Value best_effort;
+        static const Enum::YLeaf strict;
+        static const Enum::YLeaf best_effort;
 
 };
 
 class MplsTeBackupBandwidthPoolEnum : public Enum
 {
     public:
-        static const Enum::Value any_pool;
-        static const Enum::Value global_pool;
-        static const Enum::Value sub_pool;
+        static const Enum::YLeaf any_pool;
+        static const Enum::YLeaf global_pool;
+        static const Enum::YLeaf sub_pool;
 
 };
 
 class MplsTeOtnApsProtectionModeEnum : public Enum
 {
     public:
-        static const Enum::Value revertive;
-        static const Enum::Value non_revertive;
+        static const Enum::YLeaf revertive;
+        static const Enum::YLeaf non_revertive;
 
 };
 
 class MplsTeSwitchingIndexEnum : public Enum
 {
     public:
-        static const Enum::Value link;
+        static const Enum::YLeaf link;
 
 };
 
 class MplsTeConfigTunnelEnum : public Enum
 {
     public:
-        static const Enum::Value p2p;
-        static const Enum::Value p2mp;
+        static const Enum::YLeaf p2p;
+        static const Enum::YLeaf p2mp;
 
 };
 

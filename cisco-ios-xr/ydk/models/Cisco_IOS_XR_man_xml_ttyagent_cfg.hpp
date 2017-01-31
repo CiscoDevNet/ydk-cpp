@@ -26,6 +26,7 @@ class XrXml : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Agent : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class XrXml : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Default_ : public Entity
         {
             public:
@@ -54,12 +56,13 @@ class XrXml : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value ipv6_enable; //type: boolean
-                Value ipv4_disable; //type: boolean
-                Value iteration_size; //type: uint32
-                Value enable; //type: empty
-                Value streaming_size; //type: uint32
 
+
+                YLeaf ipv6_enable; //type: boolean
+                YLeaf ipv4_disable; //type: boolean
+                YLeaf iteration_size; //type: uint32
+                YLeaf enable; //type: empty
+                YLeaf streaming_size; //type: uint32
 
             class Session : public Entity
             {
@@ -74,8 +77,9 @@ class XrXml : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value timeout; //type: uint32
 
+
+                    YLeaf timeout; //type: uint32
 
 
 
@@ -95,9 +99,10 @@ class XrXml : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value process_rate; //type: uint32
-                    Value memory; //type: uint32
 
+
+                    YLeaf process_rate; //type: uint32
+                    YLeaf memory; //type: uint32
 
 
 
@@ -119,6 +124,7 @@ class XrXml : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Vrf : public Entity
                 {
                     public:
@@ -132,12 +138,13 @@ class XrXml : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value vrf_name; //type: string
-                        Value ipv6_access_list; //type: string
-                        Value ipv4_access_list; //type: string
-                        Value access_list; //type: string
-                        Value shutdown; //type: empty
 
+
+                        YLeaf vrf_name; //type: string
+                        YLeaf ipv6_access_list; //type: string
+                        YLeaf ipv4_access_list; //type: string
+                        YLeaf access_list; //type: string
+                        YLeaf shutdown; //type: empty
 
 
 
@@ -171,10 +178,11 @@ class XrXml : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value iteration_size; //type: uint32
-                Value enable; //type: empty
-                Value streaming_size; //type: uint32
 
+
+                YLeaf iteration_size; //type: uint32
+                YLeaf enable; //type: empty
+                YLeaf streaming_size; //type: uint32
 
             class Session : public Entity
             {
@@ -189,8 +197,9 @@ class XrXml : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value timeout; //type: uint32
 
+
+                    YLeaf timeout; //type: uint32
 
 
 
@@ -210,9 +219,10 @@ class XrXml : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value process_rate; //type: uint32
-                    Value memory; //type: uint32
 
+
+                    YLeaf process_rate; //type: uint32
+                    YLeaf memory; //type: uint32
 
 
 
@@ -239,10 +249,11 @@ class XrXml : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value iteration_size; //type: uint32
-                Value enable; //type: empty
-                Value streaming_size; //type: uint32
 
+
+                YLeaf iteration_size; //type: uint32
+                YLeaf enable; //type: empty
+                YLeaf streaming_size; //type: uint32
 
             class Session : public Entity
             {
@@ -257,8 +268,9 @@ class XrXml : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value timeout; //type: uint32
 
+
+                    YLeaf timeout; //type: uint32
 
 
 
@@ -278,9 +290,10 @@ class XrXml : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value process_rate; //type: uint32
-                    Value memory; //type: uint32
 
+
+                    YLeaf process_rate; //type: uint32
+                    YLeaf memory; //type: uint32
 
 
 
@@ -302,6 +315,7 @@ class XrXml : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Vrf : public Entity
                 {
                     public:
@@ -315,12 +329,13 @@ class XrXml : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value vrf_name; //type: string
-                        Value ipv6_access_list; //type: string
-                        Value ipv4_access_list; //type: string
-                        Value access_list; //type: string
-                        Value shutdown; //type: empty
 
+
+                        YLeaf vrf_name; //type: string
+                        YLeaf ipv6_access_list; //type: string
+                        YLeaf ipv4_access_list; //type: string
+                        YLeaf access_list; //type: string
+                        YLeaf shutdown; //type: empty
 
 
 
@@ -370,6 +385,7 @@ class Netconf : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Agent : public Entity
     {
         public:
@@ -385,6 +401,7 @@ class Netconf : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Tty : public Entity
         {
             public:
@@ -398,8 +415,9 @@ class Netconf : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
             class Throttle : public Entity
             {
@@ -414,10 +432,11 @@ class Netconf : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value memory; //type: uint32
-                    Value offload_memory; //type: uint32
-                    Value process_rate; //type: uint32
 
+
+                    YLeaf memory; //type: uint32
+                    YLeaf offload_memory; //type: uint32
+                    YLeaf process_rate; //type: uint32
 
 
 
@@ -437,8 +456,9 @@ class Netconf : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value timeout; //type: uint32
 
+
+                    YLeaf timeout; //type: uint32
 
 
 

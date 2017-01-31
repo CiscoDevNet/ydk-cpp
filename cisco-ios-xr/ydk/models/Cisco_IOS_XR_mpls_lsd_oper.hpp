@@ -26,6 +26,7 @@ class MplsLsdNodes : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class MplsLsdNode : public Entity
     {
         public:
@@ -39,8 +40,9 @@ class MplsLsdNodes : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value node_name; //type: string
 
+
+            YLeaf node_name; //type: string
 
         class Clients : public Entity
         {
@@ -57,6 +59,7 @@ class MplsLsdNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Client : public Entity
             {
                 public:
@@ -70,10 +73,11 @@ class MplsLsdNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value client_name; //type: string
-                    Value client_index; //type: uint32
-                    Value node_id; //type: string
 
+
+                    YLeaf client_name; //type: string
+                    YLeaf client_index; //type: uint32
+                    YLeaf node_id; //type: string
 
                 class ClientUnion : public Entity
                 {
@@ -88,8 +92,9 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lsd_client_type; //type: MgmtLsdClientEnum
 
+
+                        YLeaf lsd_client_type; //type: MgmtLsdClientEnum
 
                     class Application : public Entity
                     {
@@ -104,13 +109,13 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_instance; //type: string
-                            Value application_role_primary; //type: int32
 
 
-                            class MgmtLsdAppEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_instance; //type: string
+                            YLeaf application_role_primary; //type: int32
+
 
 
                     }; // MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application
@@ -129,9 +134,10 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value client_conn_index; //type: int32
-                            Value parent_client_conn_index; //type: int32
 
+
+                            YLeaf client_conn_index; //type: int32
+                            YLeaf parent_client_conn_index; //type: int32
 
 
 
@@ -140,7 +146,6 @@ class MplsLsdNodes : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application> application;
                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent> bcdl_agent;
-                        class MgmtLsdClientEnum;
 
 
                 }; // MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion
@@ -171,10 +176,11 @@ class MplsLsdNodes : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name_xr; //type: string
-                Value total_labels; //type: uint32
-                Value rsi_connected; //type: int32
 
+
+                YLeaf vrf_name_xr; //type: string
+                YLeaf total_labels; //type: uint32
+                YLeaf rsi_connected; //type: int32
 
             class OwnerCount : public Entity
             {
@@ -189,14 +195,14 @@ class MplsLsdNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value application_type; //type: MgmtLsdAppEnum
-                    Value application_name; //type: string
-                    Value application_role_primary; //type: int32
-                    Value application_instance; //type: string
-                    Value number_of_labels; //type: uint32
 
 
-                    class MgmtLsdAppEnum;
+                    YLeaf application_type; //type: MgmtLsdAppEnum
+                    YLeaf application_name; //type: string
+                    YLeaf application_role_primary; //type: int32
+                    YLeaf application_instance; //type: string
+                    YLeaf number_of_labels; //type: uint32
+
 
 
             }; // MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount
@@ -223,6 +229,7 @@ class MplsLsdNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Label : public Entity
             {
                 public:
@@ -236,13 +243,14 @@ class MplsLsdNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value label_id; //type: int32
-                    Value label; //type: uint32
-                    Value rewrite_is_bound; //type: int32
-                    Value rewrite_owners; //type: uint32
-                    Value rs_iconnected; //type: int32
-                    Value vrf_name; //type: string
 
+
+                    YLeaf label_id; //type: int32
+                    YLeaf label; //type: uint32
+                    YLeaf rewrite_is_bound; //type: int32
+                    YLeaf rewrite_owners; //type: uint32
+                    YLeaf rs_iconnected; //type: int32
+                    YLeaf vrf_name; //type: string
 
                 class LabelContext : public Entity
                 {
@@ -257,8 +265,9 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value application_data; //type: string
 
+
+                        YLeaf application_data; //type: string
 
                     class Key : public Entity
                     {
@@ -273,8 +282,9 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value label_context_type; //type: MgmtLsdLblCtxEnum
 
+
+                            YLeaf label_context_type; //type: MgmtLsdLblCtxEnum
 
                         class Ipv4Data : public Entity
                         {
@@ -289,12 +299,13 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
-                                Value security_id; //type: uint32
-                                Value vrf_name; //type: string
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf security_id; //type: uint32
+                                YLeaf vrf_name; //type: string
 
 
 
@@ -314,12 +325,13 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
-                                Value security_id; //type: uint32
-                                Value vrf_name; //type: string
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf security_id; //type: uint32
+                                YLeaf vrf_name; //type: string
 
 
 
@@ -339,14 +351,15 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value tunnel_source; //type: string
-                                Value tunnel_dest; //type: string
-                                Value tunnel_id; //type: uint32
-                                Value tunnel_id_extension; //type: uint32
-                                Value tunnel_lsp_id; //type: uint32
-                                Value is_srte; //type: int32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf tunnel_source; //type: string
+                                YLeaf tunnel_dest; //type: string
+                                YLeaf tunnel_id; //type: uint32
+                                YLeaf tunnel_id_extension; //type: uint32
+                                YLeaf tunnel_lsp_id; //type: uint32
+                                YLeaf is_srte; //type: int32
 
 
 
@@ -366,10 +379,11 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
-                                Value route_distinguisher; //type: uint64
 
+
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -389,10 +403,11 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
-                                Value route_distinguisher; //type: uint64
 
+
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -412,9 +427,10 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value security_id; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf security_id; //type: uint32
 
 
 
@@ -434,10 +450,11 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value ipv4_next_hop; //type: string
-                                Value security_id; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf ipv4_next_hop; //type: string
+                                YLeaf security_id; //type: uint32
 
 
 
@@ -457,10 +474,11 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value ipv6_next_hop; //type: string
-                                Value security_id; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf ipv6_next_hop; //type: string
+                                YLeaf security_id; //type: uint32
 
 
 
@@ -480,11 +498,12 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value prefix; //type: string
-                                Value pseudowire_id; //type: uint64
-                                Value remote_l2_router_id; //type: uint32
-                                Value subinterface; //type: string
 
+
+                                YLeaf prefix; //type: string
+                                YLeaf pseudowire_id; //type: uint64
+                                YLeaf remote_l2_router_id; //type: uint32
+                                YLeaf subinterface; //type: string
 
 
 
@@ -504,12 +523,13 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value service; //type: uint8
-                                Value vpn_id; //type: uint16
-                                Value edge_id; //type: uint16
-                                Value offset; //type: uint32
-                                Value size; //type: uint32
 
+
+                                YLeaf service; //type: uint8
+                                YLeaf vpn_id; //type: uint16
+                                YLeaf edge_id; //type: uint16
+                                YLeaf offset; //type: uint32
+                                YLeaf size; //type: uint32
 
 
 
@@ -529,9 +549,10 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value parent_interface; //type: string
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf parent_interface; //type: string
 
 
 
@@ -551,14 +572,15 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value tunnel_source; //type: string
-                                Value p2mp_id; //type: uint32
-                                Value tunnel_id; //type: uint32
-                                Value tunnel_id_extension; //type: uint32
-                                Value tunnel_lsp_id; //type: uint32
-                                Value previous_hop; //type: string
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf tunnel_source; //type: string
+                                YLeaf p2mp_id; //type: uint32
+                                YLeaf tunnel_id; //type: uint32
+                                YLeaf tunnel_id_extension; //type: uint32
+                                YLeaf tunnel_lsp_id; //type: uint32
+                                YLeaf previous_hop; //type: string
 
 
 
@@ -578,12 +600,13 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value type; //type: uint16
-                                Value lsm_id; //type: uint32
-                                Value peer_lsrid; //type: string
-                                Value peer_label_space_id; //type: uint16
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf type; //type: uint16
+                                YLeaf lsm_id; //type: uint32
+                                YLeaf peer_lsrid; //type: string
+                                YLeaf peer_label_space_id; //type: uint16
 
 
 
@@ -603,8 +626,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value pwhe_intf; //type: string
 
+
+                                YLeaf pwhe_intf; //type: string
 
 
 
@@ -624,14 +648,15 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value source_global_id; //type: uint32
-                                Value source_node_id; //type: string
-                                Value dest_global_id; //type: uint32
-                                Value dest_node_id; //type: string
-                                Value source_tunnel_id; //type: uint16
-                                Value dest_tunnel_id; //type: uint16
-                                Value lsp_id; //type: uint16
 
+
+                                YLeaf source_global_id; //type: uint32
+                                YLeaf source_node_id; //type: string
+                                YLeaf dest_global_id; //type: uint32
+                                YLeaf dest_node_id; //type: string
+                                YLeaf source_tunnel_id; //type: uint16
+                                YLeaf dest_tunnel_id; //type: uint16
+                                YLeaf lsp_id; //type: uint16
 
 
 
@@ -651,8 +676,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value gre_interface; //type: string
 
+
+                                YLeaf gre_interface; //type: string
 
 
 
@@ -672,8 +698,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value greipv6_interface; //type: string
 
+
+                                YLeaf greipv6_interface; //type: string
 
 
 
@@ -693,10 +720,11 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value evpn_id; //type: uint32
-                                Value evpn_tag; //type: uint32
-                                Value ethernet_segment; //type: string
 
+
+                                YLeaf evpn_id; //type: uint32
+                                YLeaf evpn_tag; //type: uint32
+                                YLeaf ethernet_segment; //type: string
 
 
 
@@ -716,9 +744,10 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value blb_intf; //type: string
-                                Value prefix; //type: string
 
+
+                                YLeaf blb_intf; //type: string
+                                YLeaf prefix; //type: string
 
 
 
@@ -738,9 +767,10 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value blb_intf; //type: string
-                                Value prefix; //type: string
 
+
+                                YLeaf blb_intf; //type: string
+                                YLeaf prefix; //type: string
 
 
 
@@ -760,10 +790,11 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value vrf_id; //type: uint32
-                                Value head; //type: int32
-                                Value v6; //type: int32
 
+
+                                YLeaf vrf_id; //type: uint32
+                                YLeaf head; //type: int32
+                                YLeaf v6; //type: int32
 
 
 
@@ -783,13 +814,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value vrf_id; //type: uint32
-                                Value source; //type: string
-                                Value head; //type: int32
-                                Value v6; //type: int32
-                                Value hli; //type: uint32
-                                Value seg; //type: int32
 
+
+                                YLeaf vrf_id; //type: uint32
+                                YLeaf source; //type: string
+                                YLeaf head; //type: int32
+                                YLeaf v6; //type: int32
+                                YLeaf hli; //type: uint32
+                                YLeaf seg; //type: int32
 
 
 
@@ -809,9 +841,10 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value next_hop_set_id; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf next_hop_set_id; //type: uint32
 
 
 
@@ -831,9 +864,10 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value segment_id; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf segment_id; //type: uint32
 
 
 
@@ -853,11 +887,12 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value index_; //type: uint32
-                                Value type; //type: uint32
-                                Value intf; //type: string
-                                Value addr; //type: string
 
+
+                                YLeaf index_; //type: uint32
+                                YLeaf type; //type: uint32
+                                YLeaf intf; //type: string
+                                YLeaf addr; //type: string
 
 
 
@@ -877,11 +912,12 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value index_; //type: uint32
-                                Value type; //type: uint32
-                                Value intf; //type: string
-                                Value addr; //type: string
 
+
+                                YLeaf index_; //type: uint32
+                                YLeaf type; //type: uint32
+                                YLeaf intf; //type: string
+                                YLeaf addr; //type: string
 
 
 
@@ -901,10 +937,11 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value start_label; //type: uint32
-                                Value offset; //type: uint32
-                                Value size; //type: uint32
 
+
+                                YLeaf start_label; //type: uint32
+                                YLeaf offset; //type: uint32
+                                YLeaf size; //type: uint32
 
 
 
@@ -924,11 +961,11 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value te_identifier; //type: uint32
-                                Value te_type; //type: MgmtLsdTeBindingEnum
 
 
-                                class MgmtLsdTeBindingEnum;
+                                YLeaf te_identifier; //type: uint32
+                                YLeaf te_type; //type: MgmtLsdTeBindingEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TeBinding
@@ -962,7 +999,6 @@ class MplsLsdNodes : public Entity
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData> tev4p2mp_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData> tp_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData> vrf_l3vpn_data;
-                            class MgmtLsdLblCtxEnum;
 
 
                     }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key
@@ -987,15 +1023,14 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value application_name; //type: string
-                        Value application_type; //type: MgmtLsdAppEnum
-                        Value application_role_primary; //type: int32
-                        Value application_instance; //type: string
-                        Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                        class MgmtLsdAppEnum;
-                        class MgmtLsdAppRsrcStateEnum;
+                        YLeaf application_name; //type: string
+                        YLeaf application_type; //type: MgmtLsdAppEnum
+                        YLeaf application_role_primary; //type: int32
+                        YLeaf application_instance; //type: string
+                        YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner
@@ -1029,6 +1064,7 @@ class MplsLsdNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TunnelMidpoints : public Entity
             {
                 public:
@@ -1044,6 +1080,7 @@ class MplsLsdNodes : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TunnelMidpoint : public Entity
                 {
                     public:
@@ -1057,11 +1094,12 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value label; //type: int32
-                        Value tunnel_interface; //type: string
-                        Value input_label; //type: uint32
-                        Value entry_frr_state; //type: MgmtLsdFrrStateEnum
 
+
+                        YLeaf label; //type: int32
+                        YLeaf tunnel_interface; //type: string
+                        YLeaf input_label; //type: uint32
+                        YLeaf entry_frr_state; //type: MgmtLsdFrrStateEnum
 
                     class FrrEntryId : public Entity
                     {
@@ -1076,8 +1114,9 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value role; //type: MgmtLsdLspRoleEnum
 
+
+                            YLeaf role; //type: MgmtLsdLspRoleEnum
 
                         class Head : public Entity
                         {
@@ -1092,9 +1131,10 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value destination_prefix; //type: string
-                                Value destination_prefix_length; //type: uint8
 
+
+                                YLeaf destination_prefix; //type: string
+                                YLeaf destination_prefix_length; //type: uint8
 
 
 
@@ -1114,10 +1154,11 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value source_address; //type: string
-                                Value lspid; //type: uint32
-                                Value tunnel_id; //type: uint32
 
+
+                                YLeaf source_address; //type: string
+                                YLeaf lspid; //type: uint32
+                                YLeaf tunnel_id; //type: uint32
 
 
 
@@ -1126,7 +1167,6 @@ class MplsLsdNodes : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Head> head;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Midpoint> midpoint;
-                            class MgmtLsdLspRoleEnum;
 
 
                     }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId
@@ -1145,12 +1185,13 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value out_interface; //type: string
-                            Value out_label; //type: uint32
-                            Value ipv4_next_hop; //type: string
-                            Value frr_interface; //type: string
-                            Value frr_label; //type: uint32
 
+
+                            YLeaf out_interface; //type: string
+                            YLeaf out_label; //type: uint32
+                            YLeaf ipv4_next_hop; //type: string
+                            YLeaf frr_interface; //type: string
+                            YLeaf frr_label; //type: uint32
 
 
 
@@ -1159,7 +1200,6 @@ class MplsLsdNodes : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId> frr_entry_id;
                         std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath> > out_path;
-                        class MgmtLsdFrrStateEnum;
 
 
                 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint
@@ -1186,6 +1226,7 @@ class MplsLsdNodes : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TunnelHead : public Entity
                 {
                     public:
@@ -1199,11 +1240,12 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value tunnel_interface; //type: string
-                        Value input_label; //type: uint32
-                        Value entry_frr_state; //type: MgmtLsdFrrStateEnum
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf tunnel_interface; //type: string
+                        YLeaf input_label; //type: uint32
+                        YLeaf entry_frr_state; //type: MgmtLsdFrrStateEnum
 
                     class FrrEntryId : public Entity
                     {
@@ -1218,8 +1260,9 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value role; //type: MgmtLsdLspRoleEnum
 
+
+                            YLeaf role; //type: MgmtLsdLspRoleEnum
 
                         class Head : public Entity
                         {
@@ -1234,9 +1277,10 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value destination_prefix; //type: string
-                                Value destination_prefix_length; //type: uint8
 
+
+                                YLeaf destination_prefix; //type: string
+                                YLeaf destination_prefix_length; //type: uint8
 
 
 
@@ -1256,10 +1300,11 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value source_address; //type: string
-                                Value lspid; //type: uint32
-                                Value tunnel_id; //type: uint32
 
+
+                                YLeaf source_address; //type: string
+                                YLeaf lspid; //type: uint32
+                                YLeaf tunnel_id; //type: uint32
 
 
 
@@ -1268,7 +1313,6 @@ class MplsLsdNodes : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Head> head;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Midpoint> midpoint;
-                            class MgmtLsdLspRoleEnum;
 
 
                     }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId
@@ -1287,12 +1331,13 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value out_interface; //type: string
-                            Value out_label; //type: uint32
-                            Value ipv4_next_hop; //type: string
-                            Value frr_interface; //type: string
-                            Value frr_label; //type: uint32
 
+
+                            YLeaf out_interface; //type: string
+                            YLeaf out_label; //type: uint32
+                            YLeaf ipv4_next_hop; //type: string
+                            YLeaf frr_interface; //type: string
+                            YLeaf frr_label; //type: uint32
 
 
 
@@ -1301,7 +1346,6 @@ class MplsLsdNodes : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId> frr_entry_id;
                         std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath> > out_path;
-                        class MgmtLsdFrrStateEnum;
 
 
                 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead
@@ -1326,11 +1370,12 @@ class MplsLsdNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value active; //type: uint32
-                    Value ready; //type: uint32
-                    Value partial; //type: uint32
-                    Value igp; //type: uint32
 
+
+                    YLeaf active; //type: uint32
+                    YLeaf ready; //type: uint32
+                    YLeaf partial; //type: uint32
+                    YLeaf igp; //type: uint32
 
 
 
@@ -1352,6 +1397,7 @@ class MplsLsdNodes : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SummaryProtectedInterface : public Entity
                 {
                     public:
@@ -1365,12 +1411,13 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value active; //type: uint32
-                        Value ready; //type: uint32
-                        Value partial; //type: uint32
-                        Value igp; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf active; //type: uint32
+                        YLeaf ready; //type: uint32
+                        YLeaf partial; //type: uint32
+                        YLeaf igp; //type: uint32
 
 
 
@@ -1396,11 +1443,12 @@ class MplsLsdNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value active; //type: uint32
-                    Value ready; //type: uint32
-                    Value partial; //type: uint32
-                    Value igp; //type: uint32
 
+
+                    YLeaf active; //type: uint32
+                    YLeaf ready; //type: uint32
+                    YLeaf partial; //type: uint32
+                    YLeaf igp; //type: uint32
 
 
 
@@ -1420,11 +1468,12 @@ class MplsLsdNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value active; //type: uint32
-                    Value ready; //type: uint32
-                    Value partial; //type: uint32
-                    Value igp; //type: uint32
 
+
+                    YLeaf active; //type: uint32
+                    YLeaf ready; //type: uint32
+                    YLeaf partial; //type: uint32
+                    YLeaf igp; //type: uint32
 
 
 
@@ -1457,6 +1506,7 @@ class MplsLsdNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RewritePws : public Entity
             {
                 public:
@@ -1472,6 +1522,7 @@ class MplsLsdNodes : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class RewritePw : public Entity
                 {
                     public:
@@ -1485,15 +1536,16 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value pw_list_id; //type: int32
-                        Value rewrite_version; //type: uint64
-                        Value bcdl_priority; //type: uint8
-                        Value lsd_queue; //type: uint8
-                        Value rw_install_time; //type: uint64
-                        Value rw_install_age; //type: uint64
-                        Value rw_updated; //type: int32
-                        Value priority_updated; //type: int32
 
+
+                        YLeaf pw_list_id; //type: int32
+                        YLeaf rewrite_version; //type: uint64
+                        YLeaf bcdl_priority; //type: uint8
+                        YLeaf lsd_queue; //type: uint8
+                        YLeaf rw_install_time; //type: uint64
+                        YLeaf rw_install_age; //type: uint64
+                        YLeaf rw_updated; //type: int32
+                        YLeaf priority_updated; //type: int32
 
                     class FpiKey : public Entity
                     {
@@ -1510,6 +1562,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Fpi : public Entity
                         {
                             public:
@@ -1523,8 +1576,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                                YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                             class LabelData : public Entity
                             {
@@ -1539,10 +1593,11 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label; //type: uint32
-                                    Value security_id; //type: uint32
-                                    Value elc; //type: int32
 
+
+                                    YLeaf label; //type: uint32
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf elc; //type: int32
 
 
 
@@ -1562,9 +1617,10 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value tunnel_interface; //type: string
-                                    Value local_label; //type: uint32
 
+
+                                    YLeaf tunnel_interface; //type: string
+                                    YLeaf local_label; //type: uint32
 
 
 
@@ -1584,11 +1640,12 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -1608,12 +1665,13 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value router_flags; //type: uint32
-                                    Value prefix_len; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf router_flags; //type: uint32
+                                    YLeaf prefix_len; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -1633,8 +1691,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pwhe_list_id; //type: uint16
 
+
+                                    YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -1654,8 +1713,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value dmtc_ext_ifh; //type: string
 
+
+                                    YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -1668,7 +1728,6 @@ class MplsLsdNodes : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::LabelData> label_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::PwListData> pw_list_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData> te_data;
-                                class MgmtLsdFpiEnum;
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi
@@ -1687,15 +1746,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value application_name; //type: string
-                                Value application_type; //type: MgmtLsdAppEnum
-                                Value application_role_primary; //type: int32
-                                Value application_instance; //type: string
-                                Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                                class MgmtLsdAppEnum;
-                                class MgmtLsdAppRsrcStateEnum;
+                                YLeaf application_name; //type: string
+                                YLeaf application_type; //type: MgmtLsdAppEnum
+                                YLeaf application_role_primary; //type: int32
+                                YLeaf application_instance; //type: string
+                                YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner
@@ -1723,6 +1781,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class RewriteId_ : public Entity
                         {
                             public:
@@ -1736,8 +1795,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rewrite_id_type; //type: MgmtLsdRwIdEnum
 
+
+                                YLeaf rewrite_id_type; //type: MgmtLsdRwIdEnum
 
                             class LabelContext : public Entity
                             {
@@ -1752,8 +1812,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label_context_type; //type: MgmtLsdLblCtxEnum
 
+
+                                    YLeaf label_context_type; //type: MgmtLsdLblCtxEnum
 
                                 class Ipv4Data : public Entity
                                 {
@@ -1768,12 +1829,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value security_id; //type: uint32
-                                        Value vrf_name; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf security_id; //type: uint32
+                                        YLeaf vrf_name; //type: string
 
 
 
@@ -1793,12 +1855,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value security_id; //type: uint32
-                                        Value vrf_name; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf security_id; //type: uint32
+                                        YLeaf vrf_name; //type: string
 
 
 
@@ -1818,14 +1881,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value tunnel_source; //type: string
-                                        Value tunnel_dest; //type: string
-                                        Value tunnel_id; //type: uint32
-                                        Value tunnel_id_extension; //type: uint32
-                                        Value tunnel_lsp_id; //type: uint32
-                                        Value is_srte; //type: int32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf tunnel_source; //type: string
+                                        YLeaf tunnel_dest; //type: string
+                                        YLeaf tunnel_id; //type: uint32
+                                        YLeaf tunnel_id_extension; //type: uint32
+                                        YLeaf tunnel_lsp_id; //type: uint32
+                                        YLeaf is_srte; //type: int32
 
 
 
@@ -1845,10 +1909,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value route_distinguisher; //type: uint64
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -1868,10 +1933,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value route_distinguisher; //type: uint64
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -1891,9 +1957,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value security_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf security_id; //type: uint32
 
 
 
@@ -1913,10 +1980,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value ipv4_next_hop; //type: string
-                                        Value security_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf security_id; //type: uint32
 
 
 
@@ -1936,10 +2004,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value ipv6_next_hop; //type: string
-                                        Value security_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf ipv6_next_hop; //type: string
+                                        YLeaf security_id; //type: uint32
 
 
 
@@ -1959,11 +2028,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value pseudowire_id; //type: uint64
-                                        Value remote_l2_router_id; //type: uint32
-                                        Value subinterface; //type: string
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf pseudowire_id; //type: uint64
+                                        YLeaf remote_l2_router_id; //type: uint32
+                                        YLeaf subinterface; //type: string
 
 
 
@@ -1983,12 +2053,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value service; //type: uint8
-                                        Value vpn_id; //type: uint16
-                                        Value edge_id; //type: uint16
-                                        Value offset; //type: uint32
-                                        Value size; //type: uint32
 
+
+                                        YLeaf service; //type: uint8
+                                        YLeaf vpn_id; //type: uint16
+                                        YLeaf edge_id; //type: uint16
+                                        YLeaf offset; //type: uint32
+                                        YLeaf size; //type: uint32
 
 
 
@@ -2008,9 +2079,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value parent_interface; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf parent_interface; //type: string
 
 
 
@@ -2030,14 +2102,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value tunnel_source; //type: string
-                                        Value p2mp_id; //type: uint32
-                                        Value tunnel_id; //type: uint32
-                                        Value tunnel_id_extension; //type: uint32
-                                        Value tunnel_lsp_id; //type: uint32
-                                        Value previous_hop; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf tunnel_source; //type: string
+                                        YLeaf p2mp_id; //type: uint32
+                                        YLeaf tunnel_id; //type: uint32
+                                        YLeaf tunnel_id_extension; //type: uint32
+                                        YLeaf tunnel_lsp_id; //type: uint32
+                                        YLeaf previous_hop; //type: string
 
 
 
@@ -2057,12 +2130,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value type; //type: uint16
-                                        Value lsm_id; //type: uint32
-                                        Value peer_lsrid; //type: string
-                                        Value peer_label_space_id; //type: uint16
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf type; //type: uint16
+                                        YLeaf lsm_id; //type: uint32
+                                        YLeaf peer_lsrid; //type: string
+                                        YLeaf peer_label_space_id; //type: uint16
 
 
 
@@ -2082,8 +2156,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value pwhe_intf; //type: string
 
+
+                                        YLeaf pwhe_intf; //type: string
 
 
 
@@ -2103,14 +2178,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value source_global_id; //type: uint32
-                                        Value source_node_id; //type: string
-                                        Value dest_global_id; //type: uint32
-                                        Value dest_node_id; //type: string
-                                        Value source_tunnel_id; //type: uint16
-                                        Value dest_tunnel_id; //type: uint16
-                                        Value lsp_id; //type: uint16
 
+
+                                        YLeaf source_global_id; //type: uint32
+                                        YLeaf source_node_id; //type: string
+                                        YLeaf dest_global_id; //type: uint32
+                                        YLeaf dest_node_id; //type: string
+                                        YLeaf source_tunnel_id; //type: uint16
+                                        YLeaf dest_tunnel_id; //type: uint16
+                                        YLeaf lsp_id; //type: uint16
 
 
 
@@ -2130,8 +2206,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value gre_interface; //type: string
 
+
+                                        YLeaf gre_interface; //type: string
 
 
 
@@ -2151,8 +2228,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value greipv6_interface; //type: string
 
+
+                                        YLeaf greipv6_interface; //type: string
 
 
 
@@ -2172,10 +2250,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value evpn_id; //type: uint32
-                                        Value evpn_tag; //type: uint32
-                                        Value ethernet_segment; //type: string
 
+
+                                        YLeaf evpn_id; //type: uint32
+                                        YLeaf evpn_tag; //type: uint32
+                                        YLeaf ethernet_segment; //type: string
 
 
 
@@ -2195,9 +2274,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value blb_intf; //type: string
-                                        Value prefix; //type: string
 
+
+                                        YLeaf blb_intf; //type: string
+                                        YLeaf prefix; //type: string
 
 
 
@@ -2217,9 +2297,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value blb_intf; //type: string
-                                        Value prefix; //type: string
 
+
+                                        YLeaf blb_intf; //type: string
+                                        YLeaf prefix; //type: string
 
 
 
@@ -2239,10 +2320,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value vrf_id; //type: uint32
-                                        Value head; //type: int32
-                                        Value v6; //type: int32
 
+
+                                        YLeaf vrf_id; //type: uint32
+                                        YLeaf head; //type: int32
+                                        YLeaf v6; //type: int32
 
 
 
@@ -2262,13 +2344,14 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value vrf_id; //type: uint32
-                                        Value source; //type: string
-                                        Value head; //type: int32
-                                        Value v6; //type: int32
-                                        Value hli; //type: uint32
-                                        Value seg; //type: int32
 
+
+                                        YLeaf vrf_id; //type: uint32
+                                        YLeaf source; //type: string
+                                        YLeaf head; //type: int32
+                                        YLeaf v6; //type: int32
+                                        YLeaf hli; //type: uint32
+                                        YLeaf seg; //type: int32
 
 
 
@@ -2288,9 +2371,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value next_hop_set_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf next_hop_set_id; //type: uint32
 
 
 
@@ -2310,9 +2394,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value segment_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf segment_id; //type: uint32
 
 
 
@@ -2332,11 +2417,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value index_; //type: uint32
-                                        Value type; //type: uint32
-                                        Value intf; //type: string
-                                        Value addr; //type: string
 
+
+                                        YLeaf index_; //type: uint32
+                                        YLeaf type; //type: uint32
+                                        YLeaf intf; //type: string
+                                        YLeaf addr; //type: string
 
 
 
@@ -2356,11 +2442,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value index_; //type: uint32
-                                        Value type; //type: uint32
-                                        Value intf; //type: string
-                                        Value addr; //type: string
 
+
+                                        YLeaf index_; //type: uint32
+                                        YLeaf type; //type: uint32
+                                        YLeaf intf; //type: string
+                                        YLeaf addr; //type: string
 
 
 
@@ -2380,10 +2467,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_label; //type: uint32
-                                        Value offset; //type: uint32
-                                        Value size; //type: uint32
 
+
+                                        YLeaf start_label; //type: uint32
+                                        YLeaf offset; //type: uint32
+                                        YLeaf size; //type: uint32
 
 
 
@@ -2403,11 +2491,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value te_identifier; //type: uint32
-                                        Value te_type; //type: MgmtLsdTeBindingEnum
 
 
-                                        class MgmtLsdTeBindingEnum;
+                                        YLeaf te_identifier; //type: uint32
+                                        YLeaf te_type; //type: MgmtLsdTeBindingEnum
+
 
 
                                 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding
@@ -2441,7 +2529,6 @@ class MplsLsdNodes : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-                                    class MgmtLsdLblCtxEnum;
 
 
                             }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext
@@ -2460,8 +2547,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    ValueList label_data; //type: list of  uint32
 
+
+                                    YLeafList label_data; //type: list of  uint32
 
 
 
@@ -2470,7 +2558,6 @@ class MplsLsdNodes : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext> label_context;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
-                                class MgmtLsdRwIdEnum;
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
@@ -2497,6 +2584,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Fpi : public Entity
                         {
                             public:
@@ -2510,8 +2598,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                                YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                             class LabelData : public Entity
                             {
@@ -2526,10 +2615,11 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label; //type: uint32
-                                    Value security_id; //type: uint32
-                                    Value elc; //type: int32
 
+
+                                    YLeaf label; //type: uint32
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf elc; //type: int32
 
 
 
@@ -2549,9 +2639,10 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value tunnel_interface; //type: string
-                                    Value local_label; //type: uint32
 
+
+                                    YLeaf tunnel_interface; //type: string
+                                    YLeaf local_label; //type: uint32
 
 
 
@@ -2571,11 +2662,12 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -2595,12 +2687,13 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value router_flags; //type: uint32
-                                    Value prefix_len; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf router_flags; //type: uint32
+                                    YLeaf prefix_len; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -2620,8 +2713,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pwhe_list_id; //type: uint16
 
+
+                                    YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -2641,8 +2735,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value dmtc_ext_ifh; //type: string
 
+
+                                    YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -2655,7 +2750,6 @@ class MplsLsdNodes : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData> label_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData> pw_list_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData> te_data;
-                                class MgmtLsdFpiEnum;
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi
@@ -2674,15 +2768,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value application_name; //type: string
-                                Value application_type; //type: MgmtLsdAppEnum
-                                Value application_role_primary; //type: int32
-                                Value application_instance; //type: string
-                                Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                                class MgmtLsdAppEnum;
-                                class MgmtLsdAppRsrcStateEnum;
+                                YLeaf application_name; //type: string
+                                YLeaf application_type; //type: MgmtLsdAppEnum
+                                YLeaf application_role_primary; //type: int32
+                                YLeaf application_instance; //type: string
+                                YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner
@@ -2708,9 +2801,10 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value v4_rpf_neighbor; //type: string
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf v4_rpf_neighbor; //type: string
 
 
 
@@ -2730,9 +2824,10 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value v6_rpf_neighbor; //type: string
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf v6_rpf_neighbor; //type: string
 
 
 
@@ -2754,6 +2849,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class ApplicationResource : public Entity
                         {
                             public:
@@ -2767,15 +2863,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value application_name; //type: string
-                                Value application_type; //type: MgmtLsdAppEnum
-                                Value application_role_primary; //type: int32
-                                Value application_instance; //type: string
-                                Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                                class MgmtLsdAppEnum;
-                                class MgmtLsdAppRsrcStateEnum;
+                                YLeaf application_name; //type: string
+                                YLeaf application_type; //type: MgmtLsdAppEnum
+                                YLeaf application_role_primary; //type: int32
+                                YLeaf application_instance; //type: string
+                                YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource
@@ -2796,6 +2891,7 @@ class MplsLsdNodes : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Moi : public Entity
                             {
                                 public:
@@ -2809,8 +2905,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value moi_type; //type: MgmtLsdMoiEnum
 
+
+                                    YLeaf moi_type; //type: MgmtLsdMoiEnum
 
                                 class PopAndLookupIpv4 : public Entity
                                 {
@@ -2825,10 +2922,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -2848,11 +2946,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_label; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_label; //type: uint32
 
 
 
@@ -2872,10 +2971,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -2895,21 +2995,22 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_interface_parent; //type: string
-                                        Value ipv4_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value load_metric; //type: uint32
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value tunnel_id; //type: uint16
-                                        Value next_hop_id; //type: uint32
-                                        Value local_label; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_interface_parent; //type: string
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf load_metric; //type: uint32
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf tunnel_id; //type: uint16
+                                        YLeaf next_hop_id; //type: uint32
+                                        YLeaf local_label; //type: uint32
 
 
 
@@ -2929,17 +3030,18 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value ipv6_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value next_hop_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf ipv6_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf next_hop_id; //type: uint32
 
 
 
@@ -2959,22 +3061,23 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value ipv4_next_hop; //type: string
-                                        Value backup_interface; //type: string
-                                        Value backup_ipv4_next_hop; //type: string
-                                        Value merge_point_label; //type: uint32
-                                        Value backup_local_label; //type: uint32
-                                        Value tunnel_interface; //type: string
-                                        Value tunnel_weight; //type: uint32
-                                        Value data_out_parent_interface; //type: string
-                                        Value tunnel_class; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf backup_interface; //type: string
+                                        YLeaf backup_ipv4_next_hop; //type: string
+                                        YLeaf merge_point_label; //type: uint32
+                                        YLeaf backup_local_label; //type: uint32
+                                        YLeaf tunnel_interface; //type: string
+                                        YLeaf tunnel_weight; //type: uint32
+                                        YLeaf data_out_parent_interface; //type: string
+                                        YLeaf tunnel_class; //type: uint32
 
 
 
@@ -2994,17 +3097,18 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value cross_connect_id; //type: uint32
-                                        Value pseuodo_wire_connect_id; //type: uint32
-                                        Value ipv4_next_hop; //type: string
-                                        Value bridge_id; //type: uint32
-                                        Value split_horizon_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf cross_connect_id; //type: uint32
+                                        YLeaf pseuodo_wire_connect_id; //type: uint32
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf bridge_id; //type: uint32
+                                        YLeaf split_horizon_id; //type: uint32
 
 
 
@@ -3024,11 +3128,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value out_interface; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -3048,18 +3153,19 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value ipv4_next_hop; //type: string
-                                        Value control_word; //type: int32
-                                        Value imposition; //type: int32
-                                        Value vctype; //type: uint8
-                                        Value pw_list_id; //type: uint16
-                                        Value pwhe_interface; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf control_word; //type: int32
+                                        YLeaf imposition; //type: int32
+                                        YLeaf vctype; //type: uint8
+                                        YLeaf pw_list_id; //type: uint16
+                                        YLeaf pwhe_interface; //type: string
 
 
 
@@ -3079,12 +3185,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value l3_interface; //type: string
-                                        Value l2_interface; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf l3_interface; //type: string
+                                        YLeaf l2_interface; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -3104,8 +3211,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value owner_application_type; //type: MgmtLsdAppEnum
 
+
+                                        YLeaf owner_application_type; //type: MgmtLsdAppEnum
 
                                     class Nexthop : public Entity
                                     {
@@ -3120,21 +3228,22 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value table_id; //type: uint32
-                                            Value table_name; //type: string
-                                            Value path_flags_decode; //type: string
-                                            Value out_interface; //type: string
-                                            Value out_interface_parent; //type: string
-                                            Value ipv4_next_hop; //type: string
-                                            Value path_id; //type: uint8
-                                            Value backup_path_id; //type: uint8
-                                            Value load_metric; //type: uint32
-                                            Value out_label; //type: uint32
-                                            Value out_label_name; //type: string
-                                            Value tunnel_id; //type: uint16
-                                            Value next_hop_id; //type: uint32
-                                            Value local_label; //type: uint32
 
+
+                                            YLeaf table_id; //type: uint32
+                                            YLeaf table_name; //type: string
+                                            YLeaf path_flags_decode; //type: string
+                                            YLeaf out_interface; //type: string
+                                            YLeaf out_interface_parent; //type: string
+                                            YLeaf ipv4_next_hop; //type: string
+                                            YLeaf path_id; //type: uint8
+                                            YLeaf backup_path_id; //type: uint8
+                                            YLeaf load_metric; //type: uint32
+                                            YLeaf out_label; //type: uint32
+                                            YLeaf out_label_name; //type: string
+                                            YLeaf tunnel_id; //type: uint16
+                                            YLeaf next_hop_id; //type: uint32
+                                            YLeaf local_label; //type: uint32
 
 
 
@@ -3154,10 +3263,11 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value num_nexthops; //type: uint8
-                                            Value num_lbls; //type: uint8
-                                            ValueList nexthop; //type: list of  string
 
+
+                                            YLeaf num_nexthops; //type: uint8
+                                            YLeaf num_lbls; //type: uint8
+                                            YLeafList nexthop; //type: list of  string
 
                                         class Label : public Entity
                                         {
@@ -3172,9 +3282,10 @@ class MplsLsdNodes : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value outgoing_label; //type: uint32
-                                                Value outgoing_label_str; //type: string
 
+
+                                                YLeaf outgoing_label; //type: uint32
+                                                YLeaf outgoing_label_str; //type: string
 
 
 
@@ -3189,7 +3300,6 @@ class MplsLsdNodes : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
                                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
-                                        class MgmtLsdAppEnum;
 
 
                                 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data
@@ -3210,6 +3320,7 @@ class MplsLsdNodes : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Nexthop : public Entity
                                     {
                                         public:
@@ -3223,17 +3334,18 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value table_id; //type: uint32
-                                            Value table_name; //type: string
-                                            Value path_flags_decode; //type: string
-                                            Value out_interface; //type: string
-                                            Value out_label; //type: uint32
-                                            Value out_label_name; //type: string
-                                            Value ipv6_next_hop; //type: string
-                                            Value path_id; //type: uint8
-                                            Value backup_path_id; //type: uint8
-                                            Value next_hop_id; //type: uint32
 
+
+                                            YLeaf table_id; //type: uint32
+                                            YLeaf table_name; //type: string
+                                            YLeaf path_flags_decode; //type: string
+                                            YLeaf out_interface; //type: string
+                                            YLeaf out_label; //type: uint32
+                                            YLeaf out_label_name; //type: string
+                                            YLeaf ipv6_next_hop; //type: string
+                                            YLeaf path_id; //type: uint8
+                                            YLeaf backup_path_id; //type: uint8
+                                            YLeaf next_hop_id; //type: uint32
 
 
 
@@ -3253,10 +3365,11 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value num_nexthops; //type: uint8
-                                            Value num_lbls; //type: uint8
-                                            ValueList nexthop; //type: list of  string
 
+
+                                            YLeaf num_nexthops; //type: uint8
+                                            YLeaf num_lbls; //type: uint8
+                                            YLeafList nexthop; //type: list of  string
 
                                         class Label : public Entity
                                         {
@@ -3271,9 +3384,10 @@ class MplsLsdNodes : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value outgoing_label; //type: uint32
-                                                Value outgoing_label_str; //type: string
 
+
+                                                YLeaf outgoing_label; //type: uint32
+                                                YLeaf outgoing_label_str; //type: string
 
 
 
@@ -3306,14 +3420,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value tunnel_local_label; //type: uint32
-                                        Value tunnel_local_label_str; //type: string
-                                        Value tunnel_fwd_class; //type: uint8
-                                        Value tunnel_load_metric; //type: uint32
-                                        Value flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf tunnel_local_label; //type: uint32
+                                        YLeaf tunnel_local_label_str; //type: string
+                                        YLeaf tunnel_fwd_class; //type: uint8
+                                        YLeaf tunnel_load_metric; //type: uint32
+                                        YLeaf flags_decode; //type: string
 
 
 
@@ -3333,8 +3448,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value dmtc_ext_ifh; //type: string
 
+
+                                        YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -3355,7 +3471,6 @@ class MplsLsdNodes : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData> te_head_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data> tev4_data;
-                                    class MgmtLsdMoiEnum;
 
 
                             }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi
@@ -3406,6 +3521,7 @@ class MplsLsdNodes : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class RewriteIpv4 : public Entity
                 {
                     public:
@@ -3419,18 +3535,19 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rsi_table_name; //type: string
-                        Value rsi_table_id; //type: string
-                        Value prefix; //type: string
-                        Value prefix_length; //type: int32
-                        Value rewrite_version; //type: uint64
-                        Value bcdl_priority; //type: uint8
-                        Value lsd_queue; //type: uint8
-                        Value rw_install_time; //type: uint64
-                        Value rw_install_age; //type: uint64
-                        Value rw_updated; //type: int32
-                        Value priority_updated; //type: int32
 
+
+                        YLeaf rsi_table_name; //type: string
+                        YLeaf rsi_table_id; //type: string
+                        YLeaf prefix; //type: string
+                        YLeaf prefix_length; //type: int32
+                        YLeaf rewrite_version; //type: uint64
+                        YLeaf bcdl_priority; //type: uint8
+                        YLeaf lsd_queue; //type: uint8
+                        YLeaf rw_install_time; //type: uint64
+                        YLeaf rw_install_age; //type: uint64
+                        YLeaf rw_updated; //type: int32
+                        YLeaf priority_updated; //type: int32
 
                     class FpiKey : public Entity
                     {
@@ -3447,6 +3564,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Fpi : public Entity
                         {
                             public:
@@ -3460,8 +3578,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                                YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                             class LabelData : public Entity
                             {
@@ -3476,10 +3595,11 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label; //type: uint32
-                                    Value security_id; //type: uint32
-                                    Value elc; //type: int32
 
+
+                                    YLeaf label; //type: uint32
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf elc; //type: int32
 
 
 
@@ -3499,9 +3619,10 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value tunnel_interface; //type: string
-                                    Value local_label; //type: uint32
 
+
+                                    YLeaf tunnel_interface; //type: string
+                                    YLeaf local_label; //type: uint32
 
 
 
@@ -3521,11 +3642,12 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -3545,12 +3667,13 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value router_flags; //type: uint32
-                                    Value prefix_len; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf router_flags; //type: uint32
+                                    YLeaf prefix_len; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -3570,8 +3693,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pwhe_list_id; //type: uint16
 
+
+                                    YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -3591,8 +3715,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value dmtc_ext_ifh; //type: string
 
+
+                                    YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -3605,7 +3730,6 @@ class MplsLsdNodes : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData> label_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData> pw_list_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData> te_data;
-                                class MgmtLsdFpiEnum;
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
@@ -3624,15 +3748,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value application_name; //type: string
-                                Value application_type; //type: MgmtLsdAppEnum
-                                Value application_role_primary; //type: int32
-                                Value application_instance; //type: string
-                                Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                                class MgmtLsdAppEnum;
-                                class MgmtLsdAppRsrcStateEnum;
+                                YLeaf application_name; //type: string
+                                YLeaf application_type; //type: MgmtLsdAppEnum
+                                YLeaf application_role_primary; //type: int32
+                                YLeaf application_instance; //type: string
+                                YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner
@@ -3660,6 +3783,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class RewriteId_ : public Entity
                         {
                             public:
@@ -3673,8 +3797,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rewrite_id_type; //type: MgmtLsdRwIdEnum
 
+
+                                YLeaf rewrite_id_type; //type: MgmtLsdRwIdEnum
 
                             class LabelContext : public Entity
                             {
@@ -3689,8 +3814,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label_context_type; //type: MgmtLsdLblCtxEnum
 
+
+                                    YLeaf label_context_type; //type: MgmtLsdLblCtxEnum
 
                                 class Ipv4Data : public Entity
                                 {
@@ -3705,12 +3831,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value security_id; //type: uint32
-                                        Value vrf_name; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf security_id; //type: uint32
+                                        YLeaf vrf_name; //type: string
 
 
 
@@ -3730,12 +3857,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value security_id; //type: uint32
-                                        Value vrf_name; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf security_id; //type: uint32
+                                        YLeaf vrf_name; //type: string
 
 
 
@@ -3755,14 +3883,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value tunnel_source; //type: string
-                                        Value tunnel_dest; //type: string
-                                        Value tunnel_id; //type: uint32
-                                        Value tunnel_id_extension; //type: uint32
-                                        Value tunnel_lsp_id; //type: uint32
-                                        Value is_srte; //type: int32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf tunnel_source; //type: string
+                                        YLeaf tunnel_dest; //type: string
+                                        YLeaf tunnel_id; //type: uint32
+                                        YLeaf tunnel_id_extension; //type: uint32
+                                        YLeaf tunnel_lsp_id; //type: uint32
+                                        YLeaf is_srte; //type: int32
 
 
 
@@ -3782,10 +3911,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value route_distinguisher; //type: uint64
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -3805,10 +3935,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value route_distinguisher; //type: uint64
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -3828,9 +3959,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value security_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf security_id; //type: uint32
 
 
 
@@ -3850,10 +3982,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value ipv4_next_hop; //type: string
-                                        Value security_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf security_id; //type: uint32
 
 
 
@@ -3873,10 +4006,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value ipv6_next_hop; //type: string
-                                        Value security_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf ipv6_next_hop; //type: string
+                                        YLeaf security_id; //type: uint32
 
 
 
@@ -3896,11 +4030,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value pseudowire_id; //type: uint64
-                                        Value remote_l2_router_id; //type: uint32
-                                        Value subinterface; //type: string
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf pseudowire_id; //type: uint64
+                                        YLeaf remote_l2_router_id; //type: uint32
+                                        YLeaf subinterface; //type: string
 
 
 
@@ -3920,12 +4055,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value service; //type: uint8
-                                        Value vpn_id; //type: uint16
-                                        Value edge_id; //type: uint16
-                                        Value offset; //type: uint32
-                                        Value size; //type: uint32
 
+
+                                        YLeaf service; //type: uint8
+                                        YLeaf vpn_id; //type: uint16
+                                        YLeaf edge_id; //type: uint16
+                                        YLeaf offset; //type: uint32
+                                        YLeaf size; //type: uint32
 
 
 
@@ -3945,9 +4081,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value parent_interface; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf parent_interface; //type: string
 
 
 
@@ -3967,14 +4104,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value tunnel_source; //type: string
-                                        Value p2mp_id; //type: uint32
-                                        Value tunnel_id; //type: uint32
-                                        Value tunnel_id_extension; //type: uint32
-                                        Value tunnel_lsp_id; //type: uint32
-                                        Value previous_hop; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf tunnel_source; //type: string
+                                        YLeaf p2mp_id; //type: uint32
+                                        YLeaf tunnel_id; //type: uint32
+                                        YLeaf tunnel_id_extension; //type: uint32
+                                        YLeaf tunnel_lsp_id; //type: uint32
+                                        YLeaf previous_hop; //type: string
 
 
 
@@ -3994,12 +4132,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value type; //type: uint16
-                                        Value lsm_id; //type: uint32
-                                        Value peer_lsrid; //type: string
-                                        Value peer_label_space_id; //type: uint16
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf type; //type: uint16
+                                        YLeaf lsm_id; //type: uint32
+                                        YLeaf peer_lsrid; //type: string
+                                        YLeaf peer_label_space_id; //type: uint16
 
 
 
@@ -4019,8 +4158,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value pwhe_intf; //type: string
 
+
+                                        YLeaf pwhe_intf; //type: string
 
 
 
@@ -4040,14 +4180,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value source_global_id; //type: uint32
-                                        Value source_node_id; //type: string
-                                        Value dest_global_id; //type: uint32
-                                        Value dest_node_id; //type: string
-                                        Value source_tunnel_id; //type: uint16
-                                        Value dest_tunnel_id; //type: uint16
-                                        Value lsp_id; //type: uint16
 
+
+                                        YLeaf source_global_id; //type: uint32
+                                        YLeaf source_node_id; //type: string
+                                        YLeaf dest_global_id; //type: uint32
+                                        YLeaf dest_node_id; //type: string
+                                        YLeaf source_tunnel_id; //type: uint16
+                                        YLeaf dest_tunnel_id; //type: uint16
+                                        YLeaf lsp_id; //type: uint16
 
 
 
@@ -4067,8 +4208,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value gre_interface; //type: string
 
+
+                                        YLeaf gre_interface; //type: string
 
 
 
@@ -4088,8 +4230,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value greipv6_interface; //type: string
 
+
+                                        YLeaf greipv6_interface; //type: string
 
 
 
@@ -4109,10 +4252,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value evpn_id; //type: uint32
-                                        Value evpn_tag; //type: uint32
-                                        Value ethernet_segment; //type: string
 
+
+                                        YLeaf evpn_id; //type: uint32
+                                        YLeaf evpn_tag; //type: uint32
+                                        YLeaf ethernet_segment; //type: string
 
 
 
@@ -4132,9 +4276,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value blb_intf; //type: string
-                                        Value prefix; //type: string
 
+
+                                        YLeaf blb_intf; //type: string
+                                        YLeaf prefix; //type: string
 
 
 
@@ -4154,9 +4299,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value blb_intf; //type: string
-                                        Value prefix; //type: string
 
+
+                                        YLeaf blb_intf; //type: string
+                                        YLeaf prefix; //type: string
 
 
 
@@ -4176,10 +4322,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value vrf_id; //type: uint32
-                                        Value head; //type: int32
-                                        Value v6; //type: int32
 
+
+                                        YLeaf vrf_id; //type: uint32
+                                        YLeaf head; //type: int32
+                                        YLeaf v6; //type: int32
 
 
 
@@ -4199,13 +4346,14 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value vrf_id; //type: uint32
-                                        Value source; //type: string
-                                        Value head; //type: int32
-                                        Value v6; //type: int32
-                                        Value hli; //type: uint32
-                                        Value seg; //type: int32
 
+
+                                        YLeaf vrf_id; //type: uint32
+                                        YLeaf source; //type: string
+                                        YLeaf head; //type: int32
+                                        YLeaf v6; //type: int32
+                                        YLeaf hli; //type: uint32
+                                        YLeaf seg; //type: int32
 
 
 
@@ -4225,9 +4373,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value next_hop_set_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf next_hop_set_id; //type: uint32
 
 
 
@@ -4247,9 +4396,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value segment_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf segment_id; //type: uint32
 
 
 
@@ -4269,11 +4419,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value index_; //type: uint32
-                                        Value type; //type: uint32
-                                        Value intf; //type: string
-                                        Value addr; //type: string
 
+
+                                        YLeaf index_; //type: uint32
+                                        YLeaf type; //type: uint32
+                                        YLeaf intf; //type: string
+                                        YLeaf addr; //type: string
 
 
 
@@ -4293,11 +4444,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value index_; //type: uint32
-                                        Value type; //type: uint32
-                                        Value intf; //type: string
-                                        Value addr; //type: string
 
+
+                                        YLeaf index_; //type: uint32
+                                        YLeaf type; //type: uint32
+                                        YLeaf intf; //type: string
+                                        YLeaf addr; //type: string
 
 
 
@@ -4317,10 +4469,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_label; //type: uint32
-                                        Value offset; //type: uint32
-                                        Value size; //type: uint32
 
+
+                                        YLeaf start_label; //type: uint32
+                                        YLeaf offset; //type: uint32
+                                        YLeaf size; //type: uint32
 
 
 
@@ -4340,11 +4493,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value te_identifier; //type: uint32
-                                        Value te_type; //type: MgmtLsdTeBindingEnum
 
 
-                                        class MgmtLsdTeBindingEnum;
+                                        YLeaf te_identifier; //type: uint32
+                                        YLeaf te_type; //type: MgmtLsdTeBindingEnum
+
 
 
                                 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding
@@ -4378,7 +4531,6 @@ class MplsLsdNodes : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-                                    class MgmtLsdLblCtxEnum;
 
 
                             }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext
@@ -4397,8 +4549,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    ValueList label_data; //type: list of  uint32
 
+
+                                    YLeafList label_data; //type: list of  uint32
 
 
 
@@ -4407,7 +4560,6 @@ class MplsLsdNodes : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext> label_context;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
-                                class MgmtLsdRwIdEnum;
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_
@@ -4434,6 +4586,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Fpi : public Entity
                         {
                             public:
@@ -4447,8 +4600,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                                YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                             class LabelData : public Entity
                             {
@@ -4463,10 +4617,11 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label; //type: uint32
-                                    Value security_id; //type: uint32
-                                    Value elc; //type: int32
 
+
+                                    YLeaf label; //type: uint32
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf elc; //type: int32
 
 
 
@@ -4486,9 +4641,10 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value tunnel_interface; //type: string
-                                    Value local_label; //type: uint32
 
+
+                                    YLeaf tunnel_interface; //type: string
+                                    YLeaf local_label; //type: uint32
 
 
 
@@ -4508,11 +4664,12 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -4532,12 +4689,13 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value router_flags; //type: uint32
-                                    Value prefix_len; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf router_flags; //type: uint32
+                                    YLeaf prefix_len; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -4557,8 +4715,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pwhe_list_id; //type: uint16
 
+
+                                    YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -4578,8 +4737,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value dmtc_ext_ifh; //type: string
 
+
+                                    YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -4592,7 +4752,6 @@ class MplsLsdNodes : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::LabelData> label_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::PwListData> pw_list_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::TeData> te_data;
-                                class MgmtLsdFpiEnum;
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi
@@ -4611,15 +4770,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value application_name; //type: string
-                                Value application_type; //type: MgmtLsdAppEnum
-                                Value application_role_primary; //type: int32
-                                Value application_instance; //type: string
-                                Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                                class MgmtLsdAppEnum;
-                                class MgmtLsdAppRsrcStateEnum;
+                                YLeaf application_name; //type: string
+                                YLeaf application_type; //type: MgmtLsdAppEnum
+                                YLeaf application_role_primary; //type: int32
+                                YLeaf application_instance; //type: string
+                                YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::ApplicationOwner
@@ -4645,9 +4803,10 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value v4_rpf_neighbor; //type: string
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf v4_rpf_neighbor; //type: string
 
 
 
@@ -4667,9 +4826,10 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value v6_rpf_neighbor; //type: string
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf v6_rpf_neighbor; //type: string
 
 
 
@@ -4691,6 +4851,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class ApplicationResource : public Entity
                         {
                             public:
@@ -4704,15 +4865,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value application_name; //type: string
-                                Value application_type; //type: MgmtLsdAppEnum
-                                Value application_role_primary; //type: int32
-                                Value application_instance; //type: string
-                                Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                                class MgmtLsdAppEnum;
-                                class MgmtLsdAppRsrcStateEnum;
+                                YLeaf application_name; //type: string
+                                YLeaf application_type; //type: MgmtLsdAppEnum
+                                YLeaf application_role_primary; //type: int32
+                                YLeaf application_instance; //type: string
+                                YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::ApplicationResource
@@ -4733,6 +4893,7 @@ class MplsLsdNodes : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Moi : public Entity
                             {
                                 public:
@@ -4746,8 +4907,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value moi_type; //type: MgmtLsdMoiEnum
 
+
+                                    YLeaf moi_type; //type: MgmtLsdMoiEnum
 
                                 class PopAndLookupIpv4 : public Entity
                                 {
@@ -4762,10 +4924,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -4785,11 +4948,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_label; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_label; //type: uint32
 
 
 
@@ -4809,10 +4973,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -4832,21 +4997,22 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_interface_parent; //type: string
-                                        Value ipv4_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value load_metric; //type: uint32
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value tunnel_id; //type: uint16
-                                        Value next_hop_id; //type: uint32
-                                        Value local_label; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_interface_parent; //type: string
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf load_metric; //type: uint32
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf tunnel_id; //type: uint16
+                                        YLeaf next_hop_id; //type: uint32
+                                        YLeaf local_label; //type: uint32
 
 
 
@@ -4866,17 +5032,18 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value ipv6_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value next_hop_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf ipv6_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf next_hop_id; //type: uint32
 
 
 
@@ -4896,22 +5063,23 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value ipv4_next_hop; //type: string
-                                        Value backup_interface; //type: string
-                                        Value backup_ipv4_next_hop; //type: string
-                                        Value merge_point_label; //type: uint32
-                                        Value backup_local_label; //type: uint32
-                                        Value tunnel_interface; //type: string
-                                        Value tunnel_weight; //type: uint32
-                                        Value data_out_parent_interface; //type: string
-                                        Value tunnel_class; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf backup_interface; //type: string
+                                        YLeaf backup_ipv4_next_hop; //type: string
+                                        YLeaf merge_point_label; //type: uint32
+                                        YLeaf backup_local_label; //type: uint32
+                                        YLeaf tunnel_interface; //type: string
+                                        YLeaf tunnel_weight; //type: uint32
+                                        YLeaf data_out_parent_interface; //type: string
+                                        YLeaf tunnel_class; //type: uint32
 
 
 
@@ -4931,17 +5099,18 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value cross_connect_id; //type: uint32
-                                        Value pseuodo_wire_connect_id; //type: uint32
-                                        Value ipv4_next_hop; //type: string
-                                        Value bridge_id; //type: uint32
-                                        Value split_horizon_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf cross_connect_id; //type: uint32
+                                        YLeaf pseuodo_wire_connect_id; //type: uint32
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf bridge_id; //type: uint32
+                                        YLeaf split_horizon_id; //type: uint32
 
 
 
@@ -4961,11 +5130,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value out_interface; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -4985,18 +5155,19 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value ipv4_next_hop; //type: string
-                                        Value control_word; //type: int32
-                                        Value imposition; //type: int32
-                                        Value vctype; //type: uint8
-                                        Value pw_list_id; //type: uint16
-                                        Value pwhe_interface; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf control_word; //type: int32
+                                        YLeaf imposition; //type: int32
+                                        YLeaf vctype; //type: uint8
+                                        YLeaf pw_list_id; //type: uint16
+                                        YLeaf pwhe_interface; //type: string
 
 
 
@@ -5016,12 +5187,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value l3_interface; //type: string
-                                        Value l2_interface; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf l3_interface; //type: string
+                                        YLeaf l2_interface; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -5041,8 +5213,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value owner_application_type; //type: MgmtLsdAppEnum
 
+
+                                        YLeaf owner_application_type; //type: MgmtLsdAppEnum
 
                                     class Nexthop : public Entity
                                     {
@@ -5057,21 +5230,22 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value table_id; //type: uint32
-                                            Value table_name; //type: string
-                                            Value path_flags_decode; //type: string
-                                            Value out_interface; //type: string
-                                            Value out_interface_parent; //type: string
-                                            Value ipv4_next_hop; //type: string
-                                            Value path_id; //type: uint8
-                                            Value backup_path_id; //type: uint8
-                                            Value load_metric; //type: uint32
-                                            Value out_label; //type: uint32
-                                            Value out_label_name; //type: string
-                                            Value tunnel_id; //type: uint16
-                                            Value next_hop_id; //type: uint32
-                                            Value local_label; //type: uint32
 
+
+                                            YLeaf table_id; //type: uint32
+                                            YLeaf table_name; //type: string
+                                            YLeaf path_flags_decode; //type: string
+                                            YLeaf out_interface; //type: string
+                                            YLeaf out_interface_parent; //type: string
+                                            YLeaf ipv4_next_hop; //type: string
+                                            YLeaf path_id; //type: uint8
+                                            YLeaf backup_path_id; //type: uint8
+                                            YLeaf load_metric; //type: uint32
+                                            YLeaf out_label; //type: uint32
+                                            YLeaf out_label_name; //type: string
+                                            YLeaf tunnel_id; //type: uint16
+                                            YLeaf next_hop_id; //type: uint32
+                                            YLeaf local_label; //type: uint32
 
 
 
@@ -5091,10 +5265,11 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value num_nexthops; //type: uint8
-                                            Value num_lbls; //type: uint8
-                                            ValueList nexthop; //type: list of  string
 
+
+                                            YLeaf num_nexthops; //type: uint8
+                                            YLeaf num_lbls; //type: uint8
+                                            YLeafList nexthop; //type: list of  string
 
                                         class Label : public Entity
                                         {
@@ -5109,9 +5284,10 @@ class MplsLsdNodes : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value outgoing_label; //type: uint32
-                                                Value outgoing_label_str; //type: string
 
+
+                                                YLeaf outgoing_label; //type: uint32
+                                                YLeaf outgoing_label_str; //type: string
 
 
 
@@ -5126,7 +5302,6 @@ class MplsLsdNodes : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
                                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
-                                        class MgmtLsdAppEnum;
 
 
                                 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data
@@ -5147,6 +5322,7 @@ class MplsLsdNodes : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Nexthop : public Entity
                                     {
                                         public:
@@ -5160,17 +5336,18 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value table_id; //type: uint32
-                                            Value table_name; //type: string
-                                            Value path_flags_decode; //type: string
-                                            Value out_interface; //type: string
-                                            Value out_label; //type: uint32
-                                            Value out_label_name; //type: string
-                                            Value ipv6_next_hop; //type: string
-                                            Value path_id; //type: uint8
-                                            Value backup_path_id; //type: uint8
-                                            Value next_hop_id; //type: uint32
 
+
+                                            YLeaf table_id; //type: uint32
+                                            YLeaf table_name; //type: string
+                                            YLeaf path_flags_decode; //type: string
+                                            YLeaf out_interface; //type: string
+                                            YLeaf out_label; //type: uint32
+                                            YLeaf out_label_name; //type: string
+                                            YLeaf ipv6_next_hop; //type: string
+                                            YLeaf path_id; //type: uint8
+                                            YLeaf backup_path_id; //type: uint8
+                                            YLeaf next_hop_id; //type: uint32
 
 
 
@@ -5190,10 +5367,11 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value num_nexthops; //type: uint8
-                                            Value num_lbls; //type: uint8
-                                            ValueList nexthop; //type: list of  string
 
+
+                                            YLeaf num_nexthops; //type: uint8
+                                            YLeaf num_lbls; //type: uint8
+                                            YLeafList nexthop; //type: list of  string
 
                                         class Label : public Entity
                                         {
@@ -5208,9 +5386,10 @@ class MplsLsdNodes : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value outgoing_label; //type: uint32
-                                                Value outgoing_label_str; //type: string
 
+
+                                                YLeaf outgoing_label; //type: uint32
+                                                YLeaf outgoing_label_str; //type: string
 
 
 
@@ -5243,14 +5422,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value tunnel_local_label; //type: uint32
-                                        Value tunnel_local_label_str; //type: string
-                                        Value tunnel_fwd_class; //type: uint8
-                                        Value tunnel_load_metric; //type: uint32
-                                        Value flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf tunnel_local_label; //type: uint32
+                                        YLeaf tunnel_local_label_str; //type: string
+                                        YLeaf tunnel_fwd_class; //type: uint8
+                                        YLeaf tunnel_load_metric; //type: uint32
+                                        YLeaf flags_decode; //type: string
 
 
 
@@ -5270,8 +5450,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value dmtc_ext_ifh; //type: string
 
+
+                                        YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -5292,7 +5473,6 @@ class MplsLsdNodes : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData> te_head_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data> tev4_data;
-                                    class MgmtLsdMoiEnum;
 
 
                             }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi
@@ -5343,6 +5523,7 @@ class MplsLsdNodes : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class RewriteTe : public Entity
                 {
                     public:
@@ -5356,15 +5537,16 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value rewrite_version; //type: uint64
-                        Value bcdl_priority; //type: uint8
-                        Value lsd_queue; //type: uint8
-                        Value rw_install_time; //type: uint64
-                        Value rw_install_age; //type: uint64
-                        Value rw_updated; //type: int32
-                        Value priority_updated; //type: int32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf rewrite_version; //type: uint64
+                        YLeaf bcdl_priority; //type: uint8
+                        YLeaf lsd_queue; //type: uint8
+                        YLeaf rw_install_time; //type: uint64
+                        YLeaf rw_install_age; //type: uint64
+                        YLeaf rw_updated; //type: int32
+                        YLeaf priority_updated; //type: int32
 
                     class FpiKey : public Entity
                     {
@@ -5381,6 +5563,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Fpi : public Entity
                         {
                             public:
@@ -5394,8 +5577,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                                YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                             class LabelData : public Entity
                             {
@@ -5410,10 +5594,11 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label; //type: uint32
-                                    Value security_id; //type: uint32
-                                    Value elc; //type: int32
 
+
+                                    YLeaf label; //type: uint32
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf elc; //type: int32
 
 
 
@@ -5433,9 +5618,10 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value tunnel_interface; //type: string
-                                    Value local_label; //type: uint32
 
+
+                                    YLeaf tunnel_interface; //type: string
+                                    YLeaf local_label; //type: uint32
 
 
 
@@ -5455,11 +5641,12 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -5479,12 +5666,13 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value router_flags; //type: uint32
-                                    Value prefix_len; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf router_flags; //type: uint32
+                                    YLeaf prefix_len; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -5504,8 +5692,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pwhe_list_id; //type: uint16
 
+
+                                    YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -5525,8 +5714,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value dmtc_ext_ifh; //type: string
 
+
+                                    YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -5539,7 +5729,6 @@ class MplsLsdNodes : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::LabelData> label_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::PwListData> pw_list_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::TeData> te_data;
-                                class MgmtLsdFpiEnum;
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi
@@ -5558,15 +5747,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value application_name; //type: string
-                                Value application_type; //type: MgmtLsdAppEnum
-                                Value application_role_primary; //type: int32
-                                Value application_instance; //type: string
-                                Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                                class MgmtLsdAppEnum;
-                                class MgmtLsdAppRsrcStateEnum;
+                                YLeaf application_name; //type: string
+                                YLeaf application_type; //type: MgmtLsdAppEnum
+                                YLeaf application_role_primary; //type: int32
+                                YLeaf application_instance; //type: string
+                                YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::ApplicationOwner
@@ -5594,6 +5782,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class RewriteId_ : public Entity
                         {
                             public:
@@ -5607,8 +5796,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rewrite_id_type; //type: MgmtLsdRwIdEnum
 
+
+                                YLeaf rewrite_id_type; //type: MgmtLsdRwIdEnum
 
                             class LabelContext : public Entity
                             {
@@ -5623,8 +5813,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label_context_type; //type: MgmtLsdLblCtxEnum
 
+
+                                    YLeaf label_context_type; //type: MgmtLsdLblCtxEnum
 
                                 class Ipv4Data : public Entity
                                 {
@@ -5639,12 +5830,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value security_id; //type: uint32
-                                        Value vrf_name; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf security_id; //type: uint32
+                                        YLeaf vrf_name; //type: string
 
 
 
@@ -5664,12 +5856,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value security_id; //type: uint32
-                                        Value vrf_name; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf security_id; //type: uint32
+                                        YLeaf vrf_name; //type: string
 
 
 
@@ -5689,14 +5882,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value tunnel_source; //type: string
-                                        Value tunnel_dest; //type: string
-                                        Value tunnel_id; //type: uint32
-                                        Value tunnel_id_extension; //type: uint32
-                                        Value tunnel_lsp_id; //type: uint32
-                                        Value is_srte; //type: int32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf tunnel_source; //type: string
+                                        YLeaf tunnel_dest; //type: string
+                                        YLeaf tunnel_id; //type: uint32
+                                        YLeaf tunnel_id_extension; //type: uint32
+                                        YLeaf tunnel_lsp_id; //type: uint32
+                                        YLeaf is_srte; //type: int32
 
 
 
@@ -5716,10 +5910,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value route_distinguisher; //type: uint64
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -5739,10 +5934,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value route_distinguisher; //type: uint64
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -5762,9 +5958,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value security_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf security_id; //type: uint32
 
 
 
@@ -5784,10 +5981,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value ipv4_next_hop; //type: string
-                                        Value security_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf security_id; //type: uint32
 
 
 
@@ -5807,10 +6005,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value ipv6_next_hop; //type: string
-                                        Value security_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf ipv6_next_hop; //type: string
+                                        YLeaf security_id; //type: uint32
 
 
 
@@ -5830,11 +6029,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value pseudowire_id; //type: uint64
-                                        Value remote_l2_router_id; //type: uint32
-                                        Value subinterface; //type: string
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf pseudowire_id; //type: uint64
+                                        YLeaf remote_l2_router_id; //type: uint32
+                                        YLeaf subinterface; //type: string
 
 
 
@@ -5854,12 +6054,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value service; //type: uint8
-                                        Value vpn_id; //type: uint16
-                                        Value edge_id; //type: uint16
-                                        Value offset; //type: uint32
-                                        Value size; //type: uint32
 
+
+                                        YLeaf service; //type: uint8
+                                        YLeaf vpn_id; //type: uint16
+                                        YLeaf edge_id; //type: uint16
+                                        YLeaf offset; //type: uint32
+                                        YLeaf size; //type: uint32
 
 
 
@@ -5879,9 +6080,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value parent_interface; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf parent_interface; //type: string
 
 
 
@@ -5901,14 +6103,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value tunnel_source; //type: string
-                                        Value p2mp_id; //type: uint32
-                                        Value tunnel_id; //type: uint32
-                                        Value tunnel_id_extension; //type: uint32
-                                        Value tunnel_lsp_id; //type: uint32
-                                        Value previous_hop; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf tunnel_source; //type: string
+                                        YLeaf p2mp_id; //type: uint32
+                                        YLeaf tunnel_id; //type: uint32
+                                        YLeaf tunnel_id_extension; //type: uint32
+                                        YLeaf tunnel_lsp_id; //type: uint32
+                                        YLeaf previous_hop; //type: string
 
 
 
@@ -5928,12 +6131,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value type; //type: uint16
-                                        Value lsm_id; //type: uint32
-                                        Value peer_lsrid; //type: string
-                                        Value peer_label_space_id; //type: uint16
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf type; //type: uint16
+                                        YLeaf lsm_id; //type: uint32
+                                        YLeaf peer_lsrid; //type: string
+                                        YLeaf peer_label_space_id; //type: uint16
 
 
 
@@ -5953,8 +6157,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value pwhe_intf; //type: string
 
+
+                                        YLeaf pwhe_intf; //type: string
 
 
 
@@ -5974,14 +6179,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value source_global_id; //type: uint32
-                                        Value source_node_id; //type: string
-                                        Value dest_global_id; //type: uint32
-                                        Value dest_node_id; //type: string
-                                        Value source_tunnel_id; //type: uint16
-                                        Value dest_tunnel_id; //type: uint16
-                                        Value lsp_id; //type: uint16
 
+
+                                        YLeaf source_global_id; //type: uint32
+                                        YLeaf source_node_id; //type: string
+                                        YLeaf dest_global_id; //type: uint32
+                                        YLeaf dest_node_id; //type: string
+                                        YLeaf source_tunnel_id; //type: uint16
+                                        YLeaf dest_tunnel_id; //type: uint16
+                                        YLeaf lsp_id; //type: uint16
 
 
 
@@ -6001,8 +6207,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value gre_interface; //type: string
 
+
+                                        YLeaf gre_interface; //type: string
 
 
 
@@ -6022,8 +6229,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value greipv6_interface; //type: string
 
+
+                                        YLeaf greipv6_interface; //type: string
 
 
 
@@ -6043,10 +6251,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value evpn_id; //type: uint32
-                                        Value evpn_tag; //type: uint32
-                                        Value ethernet_segment; //type: string
 
+
+                                        YLeaf evpn_id; //type: uint32
+                                        YLeaf evpn_tag; //type: uint32
+                                        YLeaf ethernet_segment; //type: string
 
 
 
@@ -6066,9 +6275,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value blb_intf; //type: string
-                                        Value prefix; //type: string
 
+
+                                        YLeaf blb_intf; //type: string
+                                        YLeaf prefix; //type: string
 
 
 
@@ -6088,9 +6298,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value blb_intf; //type: string
-                                        Value prefix; //type: string
 
+
+                                        YLeaf blb_intf; //type: string
+                                        YLeaf prefix; //type: string
 
 
 
@@ -6110,10 +6321,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value vrf_id; //type: uint32
-                                        Value head; //type: int32
-                                        Value v6; //type: int32
 
+
+                                        YLeaf vrf_id; //type: uint32
+                                        YLeaf head; //type: int32
+                                        YLeaf v6; //type: int32
 
 
 
@@ -6133,13 +6345,14 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value vrf_id; //type: uint32
-                                        Value source; //type: string
-                                        Value head; //type: int32
-                                        Value v6; //type: int32
-                                        Value hli; //type: uint32
-                                        Value seg; //type: int32
 
+
+                                        YLeaf vrf_id; //type: uint32
+                                        YLeaf source; //type: string
+                                        YLeaf head; //type: int32
+                                        YLeaf v6; //type: int32
+                                        YLeaf hli; //type: uint32
+                                        YLeaf seg; //type: int32
 
 
 
@@ -6159,9 +6372,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value next_hop_set_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf next_hop_set_id; //type: uint32
 
 
 
@@ -6181,9 +6395,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value segment_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf segment_id; //type: uint32
 
 
 
@@ -6203,11 +6418,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value index_; //type: uint32
-                                        Value type; //type: uint32
-                                        Value intf; //type: string
-                                        Value addr; //type: string
 
+
+                                        YLeaf index_; //type: uint32
+                                        YLeaf type; //type: uint32
+                                        YLeaf intf; //type: string
+                                        YLeaf addr; //type: string
 
 
 
@@ -6227,11 +6443,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value index_; //type: uint32
-                                        Value type; //type: uint32
-                                        Value intf; //type: string
-                                        Value addr; //type: string
 
+
+                                        YLeaf index_; //type: uint32
+                                        YLeaf type; //type: uint32
+                                        YLeaf intf; //type: string
+                                        YLeaf addr; //type: string
 
 
 
@@ -6251,10 +6468,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_label; //type: uint32
-                                        Value offset; //type: uint32
-                                        Value size; //type: uint32
 
+
+                                        YLeaf start_label; //type: uint32
+                                        YLeaf offset; //type: uint32
+                                        YLeaf size; //type: uint32
 
 
 
@@ -6274,11 +6492,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value te_identifier; //type: uint32
-                                        Value te_type; //type: MgmtLsdTeBindingEnum
 
 
-                                        class MgmtLsdTeBindingEnum;
+                                        YLeaf te_identifier; //type: uint32
+                                        YLeaf te_type; //type: MgmtLsdTeBindingEnum
+
 
 
                                 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::TeBinding
@@ -6312,7 +6530,6 @@ class MplsLsdNodes : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-                                    class MgmtLsdLblCtxEnum;
 
 
                             }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext
@@ -6331,8 +6548,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    ValueList label_data; //type: list of  uint32
 
+
+                                    YLeafList label_data; //type: list of  uint32
 
 
 
@@ -6341,7 +6559,6 @@ class MplsLsdNodes : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext> label_context;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
-                                class MgmtLsdRwIdEnum;
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_
@@ -6368,6 +6585,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Fpi : public Entity
                         {
                             public:
@@ -6381,8 +6599,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                                YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                             class LabelData : public Entity
                             {
@@ -6397,10 +6616,11 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label; //type: uint32
-                                    Value security_id; //type: uint32
-                                    Value elc; //type: int32
 
+
+                                    YLeaf label; //type: uint32
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf elc; //type: int32
 
 
 
@@ -6420,9 +6640,10 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value tunnel_interface; //type: string
-                                    Value local_label; //type: uint32
 
+
+                                    YLeaf tunnel_interface; //type: string
+                                    YLeaf local_label; //type: uint32
 
 
 
@@ -6442,11 +6663,12 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -6466,12 +6688,13 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value router_flags; //type: uint32
-                                    Value prefix_len; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf router_flags; //type: uint32
+                                    YLeaf prefix_len; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -6491,8 +6714,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pwhe_list_id; //type: uint16
 
+
+                                    YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -6512,8 +6736,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value dmtc_ext_ifh; //type: string
 
+
+                                    YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -6526,7 +6751,6 @@ class MplsLsdNodes : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::LabelData> label_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::PwListData> pw_list_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::TeData> te_data;
-                                class MgmtLsdFpiEnum;
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi
@@ -6545,15 +6769,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value application_name; //type: string
-                                Value application_type; //type: MgmtLsdAppEnum
-                                Value application_role_primary; //type: int32
-                                Value application_instance; //type: string
-                                Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                                class MgmtLsdAppEnum;
-                                class MgmtLsdAppRsrcStateEnum;
+                                YLeaf application_name; //type: string
+                                YLeaf application_type; //type: MgmtLsdAppEnum
+                                YLeaf application_role_primary; //type: int32
+                                YLeaf application_instance; //type: string
+                                YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::ApplicationOwner
@@ -6579,9 +6802,10 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value v4_rpf_neighbor; //type: string
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf v4_rpf_neighbor; //type: string
 
 
 
@@ -6601,9 +6825,10 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value v6_rpf_neighbor; //type: string
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf v6_rpf_neighbor; //type: string
 
 
 
@@ -6625,6 +6850,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class ApplicationResource : public Entity
                         {
                             public:
@@ -6638,15 +6864,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value application_name; //type: string
-                                Value application_type; //type: MgmtLsdAppEnum
-                                Value application_role_primary; //type: int32
-                                Value application_instance; //type: string
-                                Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                                class MgmtLsdAppEnum;
-                                class MgmtLsdAppRsrcStateEnum;
+                                YLeaf application_name; //type: string
+                                YLeaf application_type; //type: MgmtLsdAppEnum
+                                YLeaf application_role_primary; //type: int32
+                                YLeaf application_instance; //type: string
+                                YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::ApplicationResource
@@ -6667,6 +6892,7 @@ class MplsLsdNodes : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Moi : public Entity
                             {
                                 public:
@@ -6680,8 +6906,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value moi_type; //type: MgmtLsdMoiEnum
 
+
+                                    YLeaf moi_type; //type: MgmtLsdMoiEnum
 
                                 class PopAndLookupIpv4 : public Entity
                                 {
@@ -6696,10 +6923,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -6719,11 +6947,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_label; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_label; //type: uint32
 
 
 
@@ -6743,10 +6972,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -6766,21 +6996,22 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_interface_parent; //type: string
-                                        Value ipv4_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value load_metric; //type: uint32
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value tunnel_id; //type: uint16
-                                        Value next_hop_id; //type: uint32
-                                        Value local_label; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_interface_parent; //type: string
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf load_metric; //type: uint32
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf tunnel_id; //type: uint16
+                                        YLeaf next_hop_id; //type: uint32
+                                        YLeaf local_label; //type: uint32
 
 
 
@@ -6800,17 +7031,18 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value ipv6_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value next_hop_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf ipv6_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf next_hop_id; //type: uint32
 
 
 
@@ -6830,22 +7062,23 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value ipv4_next_hop; //type: string
-                                        Value backup_interface; //type: string
-                                        Value backup_ipv4_next_hop; //type: string
-                                        Value merge_point_label; //type: uint32
-                                        Value backup_local_label; //type: uint32
-                                        Value tunnel_interface; //type: string
-                                        Value tunnel_weight; //type: uint32
-                                        Value data_out_parent_interface; //type: string
-                                        Value tunnel_class; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf backup_interface; //type: string
+                                        YLeaf backup_ipv4_next_hop; //type: string
+                                        YLeaf merge_point_label; //type: uint32
+                                        YLeaf backup_local_label; //type: uint32
+                                        YLeaf tunnel_interface; //type: string
+                                        YLeaf tunnel_weight; //type: uint32
+                                        YLeaf data_out_parent_interface; //type: string
+                                        YLeaf tunnel_class; //type: uint32
 
 
 
@@ -6865,17 +7098,18 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value cross_connect_id; //type: uint32
-                                        Value pseuodo_wire_connect_id; //type: uint32
-                                        Value ipv4_next_hop; //type: string
-                                        Value bridge_id; //type: uint32
-                                        Value split_horizon_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf cross_connect_id; //type: uint32
+                                        YLeaf pseuodo_wire_connect_id; //type: uint32
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf bridge_id; //type: uint32
+                                        YLeaf split_horizon_id; //type: uint32
 
 
 
@@ -6895,11 +7129,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value out_interface; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -6919,18 +7154,19 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value ipv4_next_hop; //type: string
-                                        Value control_word; //type: int32
-                                        Value imposition; //type: int32
-                                        Value vctype; //type: uint8
-                                        Value pw_list_id; //type: uint16
-                                        Value pwhe_interface; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf control_word; //type: int32
+                                        YLeaf imposition; //type: int32
+                                        YLeaf vctype; //type: uint8
+                                        YLeaf pw_list_id; //type: uint16
+                                        YLeaf pwhe_interface; //type: string
 
 
 
@@ -6950,12 +7186,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value l3_interface; //type: string
-                                        Value l2_interface; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf l3_interface; //type: string
+                                        YLeaf l2_interface; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -6975,8 +7212,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value owner_application_type; //type: MgmtLsdAppEnum
 
+
+                                        YLeaf owner_application_type; //type: MgmtLsdAppEnum
 
                                     class Nexthop : public Entity
                                     {
@@ -6991,21 +7229,22 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value table_id; //type: uint32
-                                            Value table_name; //type: string
-                                            Value path_flags_decode; //type: string
-                                            Value out_interface; //type: string
-                                            Value out_interface_parent; //type: string
-                                            Value ipv4_next_hop; //type: string
-                                            Value path_id; //type: uint8
-                                            Value backup_path_id; //type: uint8
-                                            Value load_metric; //type: uint32
-                                            Value out_label; //type: uint32
-                                            Value out_label_name; //type: string
-                                            Value tunnel_id; //type: uint16
-                                            Value next_hop_id; //type: uint32
-                                            Value local_label; //type: uint32
 
+
+                                            YLeaf table_id; //type: uint32
+                                            YLeaf table_name; //type: string
+                                            YLeaf path_flags_decode; //type: string
+                                            YLeaf out_interface; //type: string
+                                            YLeaf out_interface_parent; //type: string
+                                            YLeaf ipv4_next_hop; //type: string
+                                            YLeaf path_id; //type: uint8
+                                            YLeaf backup_path_id; //type: uint8
+                                            YLeaf load_metric; //type: uint32
+                                            YLeaf out_label; //type: uint32
+                                            YLeaf out_label_name; //type: string
+                                            YLeaf tunnel_id; //type: uint16
+                                            YLeaf next_hop_id; //type: uint32
+                                            YLeaf local_label; //type: uint32
 
 
 
@@ -7025,10 +7264,11 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value num_nexthops; //type: uint8
-                                            Value num_lbls; //type: uint8
-                                            ValueList nexthop; //type: list of  string
 
+
+                                            YLeaf num_nexthops; //type: uint8
+                                            YLeaf num_lbls; //type: uint8
+                                            YLeafList nexthop; //type: list of  string
 
                                         class Label : public Entity
                                         {
@@ -7043,9 +7283,10 @@ class MplsLsdNodes : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value outgoing_label; //type: uint32
-                                                Value outgoing_label_str; //type: string
 
+
+                                                YLeaf outgoing_label; //type: uint32
+                                                YLeaf outgoing_label_str; //type: string
 
 
 
@@ -7060,7 +7301,6 @@ class MplsLsdNodes : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
                                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
-                                        class MgmtLsdAppEnum;
 
 
                                 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data
@@ -7081,6 +7321,7 @@ class MplsLsdNodes : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Nexthop : public Entity
                                     {
                                         public:
@@ -7094,17 +7335,18 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value table_id; //type: uint32
-                                            Value table_name; //type: string
-                                            Value path_flags_decode; //type: string
-                                            Value out_interface; //type: string
-                                            Value out_label; //type: uint32
-                                            Value out_label_name; //type: string
-                                            Value ipv6_next_hop; //type: string
-                                            Value path_id; //type: uint8
-                                            Value backup_path_id; //type: uint8
-                                            Value next_hop_id; //type: uint32
 
+
+                                            YLeaf table_id; //type: uint32
+                                            YLeaf table_name; //type: string
+                                            YLeaf path_flags_decode; //type: string
+                                            YLeaf out_interface; //type: string
+                                            YLeaf out_label; //type: uint32
+                                            YLeaf out_label_name; //type: string
+                                            YLeaf ipv6_next_hop; //type: string
+                                            YLeaf path_id; //type: uint8
+                                            YLeaf backup_path_id; //type: uint8
+                                            YLeaf next_hop_id; //type: uint32
 
 
 
@@ -7124,10 +7366,11 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value num_nexthops; //type: uint8
-                                            Value num_lbls; //type: uint8
-                                            ValueList nexthop; //type: list of  string
 
+
+                                            YLeaf num_nexthops; //type: uint8
+                                            YLeaf num_lbls; //type: uint8
+                                            YLeafList nexthop; //type: list of  string
 
                                         class Label : public Entity
                                         {
@@ -7142,9 +7385,10 @@ class MplsLsdNodes : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value outgoing_label; //type: uint32
-                                                Value outgoing_label_str; //type: string
 
+
+                                                YLeaf outgoing_label; //type: uint32
+                                                YLeaf outgoing_label_str; //type: string
 
 
 
@@ -7177,14 +7421,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value tunnel_local_label; //type: uint32
-                                        Value tunnel_local_label_str; //type: string
-                                        Value tunnel_fwd_class; //type: uint8
-                                        Value tunnel_load_metric; //type: uint32
-                                        Value flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf tunnel_local_label; //type: uint32
+                                        YLeaf tunnel_local_label_str; //type: string
+                                        YLeaf tunnel_fwd_class; //type: uint8
+                                        YLeaf tunnel_load_metric; //type: uint32
+                                        YLeaf flags_decode; //type: string
 
 
 
@@ -7204,8 +7449,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value dmtc_ext_ifh; //type: string
 
+
+                                        YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -7226,7 +7472,6 @@ class MplsLsdNodes : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::TeHeadData> te_head_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Tev4Data> tev4_data;
-                                    class MgmtLsdMoiEnum;
 
 
                             }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi
@@ -7277,6 +7522,7 @@ class MplsLsdNodes : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class RewriteLabel : public Entity
                 {
                     public:
@@ -7290,15 +7536,16 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value label_id; //type: int32
-                        Value rewrite_version; //type: uint64
-                        Value bcdl_priority; //type: uint8
-                        Value lsd_queue; //type: uint8
-                        Value rw_install_time; //type: uint64
-                        Value rw_install_age; //type: uint64
-                        Value rw_updated; //type: int32
-                        Value priority_updated; //type: int32
 
+
+                        YLeaf label_id; //type: int32
+                        YLeaf rewrite_version; //type: uint64
+                        YLeaf bcdl_priority; //type: uint8
+                        YLeaf lsd_queue; //type: uint8
+                        YLeaf rw_install_time; //type: uint64
+                        YLeaf rw_install_age; //type: uint64
+                        YLeaf rw_updated; //type: int32
+                        YLeaf priority_updated; //type: int32
 
                     class FpiKey : public Entity
                     {
@@ -7315,6 +7562,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Fpi : public Entity
                         {
                             public:
@@ -7328,8 +7576,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                                YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                             class LabelData : public Entity
                             {
@@ -7344,10 +7593,11 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label; //type: uint32
-                                    Value security_id; //type: uint32
-                                    Value elc; //type: int32
 
+
+                                    YLeaf label; //type: uint32
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf elc; //type: int32
 
 
 
@@ -7367,9 +7617,10 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value tunnel_interface; //type: string
-                                    Value local_label; //type: uint32
 
+
+                                    YLeaf tunnel_interface; //type: string
+                                    YLeaf local_label; //type: uint32
 
 
 
@@ -7389,11 +7640,12 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -7413,12 +7665,13 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value router_flags; //type: uint32
-                                    Value prefix_len; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf router_flags; //type: uint32
+                                    YLeaf prefix_len; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -7438,8 +7691,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pwhe_list_id; //type: uint16
 
+
+                                    YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -7459,8 +7713,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value dmtc_ext_ifh; //type: string
 
+
+                                    YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -7473,7 +7728,6 @@ class MplsLsdNodes : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::LabelData> label_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::PwListData> pw_list_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::TeData> te_data;
-                                class MgmtLsdFpiEnum;
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi
@@ -7492,15 +7746,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value application_name; //type: string
-                                Value application_type; //type: MgmtLsdAppEnum
-                                Value application_role_primary; //type: int32
-                                Value application_instance; //type: string
-                                Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                                class MgmtLsdAppEnum;
-                                class MgmtLsdAppRsrcStateEnum;
+                                YLeaf application_name; //type: string
+                                YLeaf application_type; //type: MgmtLsdAppEnum
+                                YLeaf application_role_primary; //type: int32
+                                YLeaf application_instance; //type: string
+                                YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOwner
@@ -7528,6 +7781,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class RewriteId_ : public Entity
                         {
                             public:
@@ -7541,8 +7795,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rewrite_id_type; //type: MgmtLsdRwIdEnum
 
+
+                                YLeaf rewrite_id_type; //type: MgmtLsdRwIdEnum
 
                             class LabelContext : public Entity
                             {
@@ -7557,8 +7812,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label_context_type; //type: MgmtLsdLblCtxEnum
 
+
+                                    YLeaf label_context_type; //type: MgmtLsdLblCtxEnum
 
                                 class Ipv4Data : public Entity
                                 {
@@ -7573,12 +7829,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value security_id; //type: uint32
-                                        Value vrf_name; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf security_id; //type: uint32
+                                        YLeaf vrf_name; //type: string
 
 
 
@@ -7598,12 +7855,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value security_id; //type: uint32
-                                        Value vrf_name; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf security_id; //type: uint32
+                                        YLeaf vrf_name; //type: string
 
 
 
@@ -7623,14 +7881,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value tunnel_source; //type: string
-                                        Value tunnel_dest; //type: string
-                                        Value tunnel_id; //type: uint32
-                                        Value tunnel_id_extension; //type: uint32
-                                        Value tunnel_lsp_id; //type: uint32
-                                        Value is_srte; //type: int32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf tunnel_source; //type: string
+                                        YLeaf tunnel_dest; //type: string
+                                        YLeaf tunnel_id; //type: uint32
+                                        YLeaf tunnel_id_extension; //type: uint32
+                                        YLeaf tunnel_lsp_id; //type: uint32
+                                        YLeaf is_srte; //type: int32
 
 
 
@@ -7650,10 +7909,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value route_distinguisher; //type: uint64
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -7673,10 +7933,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value route_distinguisher; //type: uint64
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -7696,9 +7957,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value security_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf security_id; //type: uint32
 
 
 
@@ -7718,10 +7980,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value ipv4_next_hop; //type: string
-                                        Value security_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf security_id; //type: uint32
 
 
 
@@ -7741,10 +8004,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value ipv6_next_hop; //type: string
-                                        Value security_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf ipv6_next_hop; //type: string
+                                        YLeaf security_id; //type: uint32
 
 
 
@@ -7764,11 +8028,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value pseudowire_id; //type: uint64
-                                        Value remote_l2_router_id; //type: uint32
-                                        Value subinterface; //type: string
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf pseudowire_id; //type: uint64
+                                        YLeaf remote_l2_router_id; //type: uint32
+                                        YLeaf subinterface; //type: string
 
 
 
@@ -7788,12 +8053,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value service; //type: uint8
-                                        Value vpn_id; //type: uint16
-                                        Value edge_id; //type: uint16
-                                        Value offset; //type: uint32
-                                        Value size; //type: uint32
 
+
+                                        YLeaf service; //type: uint8
+                                        YLeaf vpn_id; //type: uint16
+                                        YLeaf edge_id; //type: uint16
+                                        YLeaf offset; //type: uint32
+                                        YLeaf size; //type: uint32
 
 
 
@@ -7813,9 +8079,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value parent_interface; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf parent_interface; //type: string
 
 
 
@@ -7835,14 +8102,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value tunnel_source; //type: string
-                                        Value p2mp_id; //type: uint32
-                                        Value tunnel_id; //type: uint32
-                                        Value tunnel_id_extension; //type: uint32
-                                        Value tunnel_lsp_id; //type: uint32
-                                        Value previous_hop; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf tunnel_source; //type: string
+                                        YLeaf p2mp_id; //type: uint32
+                                        YLeaf tunnel_id; //type: uint32
+                                        YLeaf tunnel_id_extension; //type: uint32
+                                        YLeaf tunnel_lsp_id; //type: uint32
+                                        YLeaf previous_hop; //type: string
 
 
 
@@ -7862,12 +8130,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value type; //type: uint16
-                                        Value lsm_id; //type: uint32
-                                        Value peer_lsrid; //type: string
-                                        Value peer_label_space_id; //type: uint16
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf type; //type: uint16
+                                        YLeaf lsm_id; //type: uint32
+                                        YLeaf peer_lsrid; //type: string
+                                        YLeaf peer_label_space_id; //type: uint16
 
 
 
@@ -7887,8 +8156,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value pwhe_intf; //type: string
 
+
+                                        YLeaf pwhe_intf; //type: string
 
 
 
@@ -7908,14 +8178,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value source_global_id; //type: uint32
-                                        Value source_node_id; //type: string
-                                        Value dest_global_id; //type: uint32
-                                        Value dest_node_id; //type: string
-                                        Value source_tunnel_id; //type: uint16
-                                        Value dest_tunnel_id; //type: uint16
-                                        Value lsp_id; //type: uint16
 
+
+                                        YLeaf source_global_id; //type: uint32
+                                        YLeaf source_node_id; //type: string
+                                        YLeaf dest_global_id; //type: uint32
+                                        YLeaf dest_node_id; //type: string
+                                        YLeaf source_tunnel_id; //type: uint16
+                                        YLeaf dest_tunnel_id; //type: uint16
+                                        YLeaf lsp_id; //type: uint16
 
 
 
@@ -7935,8 +8206,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value gre_interface; //type: string
 
+
+                                        YLeaf gre_interface; //type: string
 
 
 
@@ -7956,8 +8228,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value greipv6_interface; //type: string
 
+
+                                        YLeaf greipv6_interface; //type: string
 
 
 
@@ -7977,10 +8250,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value evpn_id; //type: uint32
-                                        Value evpn_tag; //type: uint32
-                                        Value ethernet_segment; //type: string
 
+
+                                        YLeaf evpn_id; //type: uint32
+                                        YLeaf evpn_tag; //type: uint32
+                                        YLeaf ethernet_segment; //type: string
 
 
 
@@ -8000,9 +8274,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value blb_intf; //type: string
-                                        Value prefix; //type: string
 
+
+                                        YLeaf blb_intf; //type: string
+                                        YLeaf prefix; //type: string
 
 
 
@@ -8022,9 +8297,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value blb_intf; //type: string
-                                        Value prefix; //type: string
 
+
+                                        YLeaf blb_intf; //type: string
+                                        YLeaf prefix; //type: string
 
 
 
@@ -8044,10 +8320,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value vrf_id; //type: uint32
-                                        Value head; //type: int32
-                                        Value v6; //type: int32
 
+
+                                        YLeaf vrf_id; //type: uint32
+                                        YLeaf head; //type: int32
+                                        YLeaf v6; //type: int32
 
 
 
@@ -8067,13 +8344,14 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value vrf_id; //type: uint32
-                                        Value source; //type: string
-                                        Value head; //type: int32
-                                        Value v6; //type: int32
-                                        Value hli; //type: uint32
-                                        Value seg; //type: int32
 
+
+                                        YLeaf vrf_id; //type: uint32
+                                        YLeaf source; //type: string
+                                        YLeaf head; //type: int32
+                                        YLeaf v6; //type: int32
+                                        YLeaf hli; //type: uint32
+                                        YLeaf seg; //type: int32
 
 
 
@@ -8093,9 +8371,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value next_hop_set_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf next_hop_set_id; //type: uint32
 
 
 
@@ -8115,9 +8394,10 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value segment_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf segment_id; //type: uint32
 
 
 
@@ -8137,11 +8417,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value index_; //type: uint32
-                                        Value type; //type: uint32
-                                        Value intf; //type: string
-                                        Value addr; //type: string
 
+
+                                        YLeaf index_; //type: uint32
+                                        YLeaf type; //type: uint32
+                                        YLeaf intf; //type: string
+                                        YLeaf addr; //type: string
 
 
 
@@ -8161,11 +8442,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value index_; //type: uint32
-                                        Value type; //type: uint32
-                                        Value intf; //type: string
-                                        Value addr; //type: string
 
+
+                                        YLeaf index_; //type: uint32
+                                        YLeaf type; //type: uint32
+                                        YLeaf intf; //type: string
+                                        YLeaf addr; //type: string
 
 
 
@@ -8185,10 +8467,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_label; //type: uint32
-                                        Value offset; //type: uint32
-                                        Value size; //type: uint32
 
+
+                                        YLeaf start_label; //type: uint32
+                                        YLeaf offset; //type: uint32
+                                        YLeaf size; //type: uint32
 
 
 
@@ -8208,11 +8491,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value te_identifier; //type: uint32
-                                        Value te_type; //type: MgmtLsdTeBindingEnum
 
 
-                                        class MgmtLsdTeBindingEnum;
+                                        YLeaf te_identifier; //type: uint32
+                                        YLeaf te_type; //type: MgmtLsdTeBindingEnum
+
 
 
                                 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TeBinding
@@ -8246,7 +8529,6 @@ class MplsLsdNodes : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-                                    class MgmtLsdLblCtxEnum;
 
 
                             }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext
@@ -8265,8 +8547,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    ValueList label_data; //type: list of  uint32
 
+
+                                    YLeafList label_data; //type: list of  uint32
 
 
 
@@ -8275,7 +8558,6 @@ class MplsLsdNodes : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext> label_context;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
-                                class MgmtLsdRwIdEnum;
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_
@@ -8302,6 +8584,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Fpi : public Entity
                         {
                             public:
@@ -8315,8 +8598,9 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                                YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                             class LabelData : public Entity
                             {
@@ -8331,10 +8615,11 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label; //type: uint32
-                                    Value security_id; //type: uint32
-                                    Value elc; //type: int32
 
+
+                                    YLeaf label; //type: uint32
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf elc; //type: int32
 
 
 
@@ -8354,9 +8639,10 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value tunnel_interface; //type: string
-                                    Value local_label; //type: uint32
 
+
+                                    YLeaf tunnel_interface; //type: string
+                                    YLeaf local_label; //type: uint32
 
 
 
@@ -8376,11 +8662,12 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -8400,12 +8687,13 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value router_flags; //type: uint32
-                                    Value prefix_len; //type: uint8
-                                    Value version; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf router_flags; //type: uint32
+                                    YLeaf prefix_len; //type: uint8
+                                    YLeaf version; //type: uint32
 
 
 
@@ -8425,8 +8713,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pwhe_list_id; //type: uint16
 
+
+                                    YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -8446,8 +8735,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value dmtc_ext_ifh; //type: string
 
+
+                                    YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -8460,7 +8750,6 @@ class MplsLsdNodes : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::LabelData> label_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::PwListData> pw_list_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::TeData> te_data;
-                                class MgmtLsdFpiEnum;
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi
@@ -8479,15 +8768,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value application_name; //type: string
-                                Value application_type; //type: MgmtLsdAppEnum
-                                Value application_role_primary; //type: int32
-                                Value application_instance; //type: string
-                                Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                                class MgmtLsdAppEnum;
-                                class MgmtLsdAppRsrcStateEnum;
+                                YLeaf application_name; //type: string
+                                YLeaf application_type; //type: MgmtLsdAppEnum
+                                YLeaf application_role_primary; //type: int32
+                                YLeaf application_instance; //type: string
+                                YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::ApplicationOwner
@@ -8513,9 +8801,10 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value v4_rpf_neighbor; //type: string
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf v4_rpf_neighbor; //type: string
 
 
 
@@ -8535,9 +8824,10 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value v6_rpf_neighbor; //type: string
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf v6_rpf_neighbor; //type: string
 
 
 
@@ -8559,6 +8849,7 @@ class MplsLsdNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class ApplicationResource : public Entity
                         {
                             public:
@@ -8572,15 +8863,14 @@ class MplsLsdNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value application_name; //type: string
-                                Value application_type; //type: MgmtLsdAppEnum
-                                Value application_role_primary; //type: int32
-                                Value application_instance; //type: string
-                                Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                                class MgmtLsdAppEnum;
-                                class MgmtLsdAppRsrcStateEnum;
+                                YLeaf application_name; //type: string
+                                YLeaf application_type; //type: MgmtLsdAppEnum
+                                YLeaf application_role_primary; //type: int32
+                                YLeaf application_instance; //type: string
+                                YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                         }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::ApplicationResource
@@ -8601,6 +8891,7 @@ class MplsLsdNodes : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Moi : public Entity
                             {
                                 public:
@@ -8614,8 +8905,9 @@ class MplsLsdNodes : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value moi_type; //type: MgmtLsdMoiEnum
 
+
+                                    YLeaf moi_type; //type: MgmtLsdMoiEnum
 
                                 class PopAndLookupIpv4 : public Entity
                                 {
@@ -8630,10 +8922,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -8653,11 +8946,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_label; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_label; //type: uint32
 
 
 
@@ -8677,10 +8971,11 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -8700,21 +8995,22 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_interface_parent; //type: string
-                                        Value ipv4_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value load_metric; //type: uint32
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value tunnel_id; //type: uint16
-                                        Value next_hop_id; //type: uint32
-                                        Value local_label; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_interface_parent; //type: string
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf load_metric; //type: uint32
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf tunnel_id; //type: uint16
+                                        YLeaf next_hop_id; //type: uint32
+                                        YLeaf local_label; //type: uint32
 
 
 
@@ -8734,17 +9030,18 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value ipv6_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value next_hop_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf ipv6_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf next_hop_id; //type: uint32
 
 
 
@@ -8764,22 +9061,23 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value ipv4_next_hop; //type: string
-                                        Value backup_interface; //type: string
-                                        Value backup_ipv4_next_hop; //type: string
-                                        Value merge_point_label; //type: uint32
-                                        Value backup_local_label; //type: uint32
-                                        Value tunnel_interface; //type: string
-                                        Value tunnel_weight; //type: uint32
-                                        Value data_out_parent_interface; //type: string
-                                        Value tunnel_class; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf backup_interface; //type: string
+                                        YLeaf backup_ipv4_next_hop; //type: string
+                                        YLeaf merge_point_label; //type: uint32
+                                        YLeaf backup_local_label; //type: uint32
+                                        YLeaf tunnel_interface; //type: string
+                                        YLeaf tunnel_weight; //type: uint32
+                                        YLeaf data_out_parent_interface; //type: string
+                                        YLeaf tunnel_class; //type: uint32
 
 
 
@@ -8799,17 +9097,18 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value cross_connect_id; //type: uint32
-                                        Value pseuodo_wire_connect_id; //type: uint32
-                                        Value ipv4_next_hop; //type: string
-                                        Value bridge_id; //type: uint32
-                                        Value split_horizon_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf cross_connect_id; //type: uint32
+                                        YLeaf pseuodo_wire_connect_id; //type: uint32
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf bridge_id; //type: uint32
+                                        YLeaf split_horizon_id; //type: uint32
 
 
 
@@ -8829,11 +9128,12 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value out_interface; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -8853,18 +9153,19 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value ipv4_next_hop; //type: string
-                                        Value control_word; //type: int32
-                                        Value imposition; //type: int32
-                                        Value vctype; //type: uint8
-                                        Value pw_list_id; //type: uint16
-                                        Value pwhe_interface; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf control_word; //type: int32
+                                        YLeaf imposition; //type: int32
+                                        YLeaf vctype; //type: uint8
+                                        YLeaf pw_list_id; //type: uint16
+                                        YLeaf pwhe_interface; //type: string
 
 
 
@@ -8884,12 +9185,13 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value l3_interface; //type: string
-                                        Value l2_interface; //type: string
-                                        Value path_flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf l3_interface; //type: string
+                                        YLeaf l2_interface; //type: string
+                                        YLeaf path_flags_decode; //type: string
 
 
 
@@ -8909,8 +9211,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value owner_application_type; //type: MgmtLsdAppEnum
 
+
+                                        YLeaf owner_application_type; //type: MgmtLsdAppEnum
 
                                     class Nexthop : public Entity
                                     {
@@ -8925,21 +9228,22 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value table_id; //type: uint32
-                                            Value table_name; //type: string
-                                            Value path_flags_decode; //type: string
-                                            Value out_interface; //type: string
-                                            Value out_interface_parent; //type: string
-                                            Value ipv4_next_hop; //type: string
-                                            Value path_id; //type: uint8
-                                            Value backup_path_id; //type: uint8
-                                            Value load_metric; //type: uint32
-                                            Value out_label; //type: uint32
-                                            Value out_label_name; //type: string
-                                            Value tunnel_id; //type: uint16
-                                            Value next_hop_id; //type: uint32
-                                            Value local_label; //type: uint32
 
+
+                                            YLeaf table_id; //type: uint32
+                                            YLeaf table_name; //type: string
+                                            YLeaf path_flags_decode; //type: string
+                                            YLeaf out_interface; //type: string
+                                            YLeaf out_interface_parent; //type: string
+                                            YLeaf ipv4_next_hop; //type: string
+                                            YLeaf path_id; //type: uint8
+                                            YLeaf backup_path_id; //type: uint8
+                                            YLeaf load_metric; //type: uint32
+                                            YLeaf out_label; //type: uint32
+                                            YLeaf out_label_name; //type: string
+                                            YLeaf tunnel_id; //type: uint16
+                                            YLeaf next_hop_id; //type: uint32
+                                            YLeaf local_label; //type: uint32
 
 
 
@@ -8959,10 +9263,11 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value num_nexthops; //type: uint8
-                                            Value num_lbls; //type: uint8
-                                            ValueList nexthop; //type: list of  string
 
+
+                                            YLeaf num_nexthops; //type: uint8
+                                            YLeaf num_lbls; //type: uint8
+                                            YLeafList nexthop; //type: list of  string
 
                                         class Label : public Entity
                                         {
@@ -8977,9 +9282,10 @@ class MplsLsdNodes : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value outgoing_label; //type: uint32
-                                                Value outgoing_label_str; //type: string
 
+
+                                                YLeaf outgoing_label; //type: uint32
+                                                YLeaf outgoing_label_str; //type: string
 
 
 
@@ -8994,7 +9300,6 @@ class MplsLsdNodes : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
                                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
-                                        class MgmtLsdAppEnum;
 
 
                                 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data
@@ -9015,6 +9320,7 @@ class MplsLsdNodes : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Nexthop : public Entity
                                     {
                                         public:
@@ -9028,17 +9334,18 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value table_id; //type: uint32
-                                            Value table_name; //type: string
-                                            Value path_flags_decode; //type: string
-                                            Value out_interface; //type: string
-                                            Value out_label; //type: uint32
-                                            Value out_label_name; //type: string
-                                            Value ipv6_next_hop; //type: string
-                                            Value path_id; //type: uint8
-                                            Value backup_path_id; //type: uint8
-                                            Value next_hop_id; //type: uint32
 
+
+                                            YLeaf table_id; //type: uint32
+                                            YLeaf table_name; //type: string
+                                            YLeaf path_flags_decode; //type: string
+                                            YLeaf out_interface; //type: string
+                                            YLeaf out_label; //type: uint32
+                                            YLeaf out_label_name; //type: string
+                                            YLeaf ipv6_next_hop; //type: string
+                                            YLeaf path_id; //type: uint8
+                                            YLeaf backup_path_id; //type: uint8
+                                            YLeaf next_hop_id; //type: uint32
 
 
 
@@ -9058,10 +9365,11 @@ class MplsLsdNodes : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value num_nexthops; //type: uint8
-                                            Value num_lbls; //type: uint8
-                                            ValueList nexthop; //type: list of  string
 
+
+                                            YLeaf num_nexthops; //type: uint8
+                                            YLeaf num_lbls; //type: uint8
+                                            YLeafList nexthop; //type: list of  string
 
                                         class Label : public Entity
                                         {
@@ -9076,9 +9384,10 @@ class MplsLsdNodes : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value outgoing_label; //type: uint32
-                                                Value outgoing_label_str; //type: string
 
+
+                                                YLeaf outgoing_label; //type: uint32
+                                                YLeaf outgoing_label_str; //type: string
 
 
 
@@ -9111,14 +9420,15 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value tunnel_local_label; //type: uint32
-                                        Value tunnel_local_label_str; //type: string
-                                        Value tunnel_fwd_class; //type: uint8
-                                        Value tunnel_load_metric; //type: uint32
-                                        Value flags_decode; //type: string
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf tunnel_local_label; //type: uint32
+                                        YLeaf tunnel_local_label_str; //type: string
+                                        YLeaf tunnel_fwd_class; //type: uint8
+                                        YLeaf tunnel_load_metric; //type: uint32
+                                        YLeaf flags_decode; //type: string
 
 
 
@@ -9138,8 +9448,9 @@ class MplsLsdNodes : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value dmtc_ext_ifh; //type: string
 
+
+                                        YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -9160,7 +9471,6 @@ class MplsLsdNodes : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData> te_head_data;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Tev4Data> tev4_data;
-                                    class MgmtLsdMoiEnum;
 
 
                             }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi
@@ -9218,26 +9528,27 @@ class MplsLsdNodes : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value num_label_fpi; //type: uint32
-                Value num_tefpi; //type: uint32
-                Value num_ipv4fpi; //type: uint32
-                Value num_ipv6fpi; //type: uint32
-                Value num_pw_list_tefpi; //type: uint32
-                Value num_dmtctefpi; //type: uint32
-                Value num_rewrite; //type: uint32
-                Value total_forward_update; //type: uint32
-                Value total_forwad_update_message; //type: uint32
-                Value total_paths; //type: uint32
-                Value total_t_ev4_paths; //type: uint32
-                Value total_te_head_paths; //type: uint32
-                Value total_pw_paths; //type: uint32
-                Value total_ip_sub_paths; //type: uint32
-                Value total_ipv4rpf_neighbors; //type: uint32
-                Value total_ipv6rpf_neighbors; //type: uint32
-                Value num_rewrite_rpf_neighbors; //type: uint32
-                Value total_dmtc_intf; //type: uint32
-                Value vrf_name_xr; //type: string
 
+
+                YLeaf num_label_fpi; //type: uint32
+                YLeaf num_tefpi; //type: uint32
+                YLeaf num_ipv4fpi; //type: uint32
+                YLeaf num_ipv6fpi; //type: uint32
+                YLeaf num_pw_list_tefpi; //type: uint32
+                YLeaf num_dmtctefpi; //type: uint32
+                YLeaf num_rewrite; //type: uint32
+                YLeaf total_forward_update; //type: uint32
+                YLeaf total_forwad_update_message; //type: uint32
+                YLeaf total_paths; //type: uint32
+                YLeaf total_t_ev4_paths; //type: uint32
+                YLeaf total_te_head_paths; //type: uint32
+                YLeaf total_pw_paths; //type: uint32
+                YLeaf total_ip_sub_paths; //type: uint32
+                YLeaf total_ipv4rpf_neighbors; //type: uint32
+                YLeaf total_ipv6rpf_neighbors; //type: uint32
+                YLeaf num_rewrite_rpf_neighbors; //type: uint32
+                YLeaf total_dmtc_intf; //type: uint32
+                YLeaf vrf_name_xr; //type: string
 
             class Ipv4Paths : public Entity
             {
@@ -9252,12 +9563,13 @@ class MplsLsdNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_paths; //type: uint32
-                    Value total_backup_paths; //type: uint32
-                    Value total_remote_backup_paths; //type: uint32
-                    Value total_protected_paths; //type: uint32
-                    Value total_pop_lkup_paths; //type: uint32
 
+
+                    YLeaf total_paths; //type: uint32
+                    YLeaf total_backup_paths; //type: uint32
+                    YLeaf total_remote_backup_paths; //type: uint32
+                    YLeaf total_protected_paths; //type: uint32
+                    YLeaf total_pop_lkup_paths; //type: uint32
 
 
 
@@ -9277,12 +9589,13 @@ class MplsLsdNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_paths; //type: uint32
-                    Value total_backup_paths; //type: uint32
-                    Value total_remote_backup_paths; //type: uint32
-                    Value total_protected_paths; //type: uint32
-                    Value total_pop_lkup_paths; //type: uint32
 
+
+                    YLeaf total_paths; //type: uint32
+                    YLeaf total_backup_paths; //type: uint32
+                    YLeaf total_remote_backup_paths; //type: uint32
+                    YLeaf total_protected_paths; //type: uint32
+                    YLeaf total_pop_lkup_paths; //type: uint32
 
 
 
@@ -9311,6 +9624,7 @@ class MplsLsdNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Application : public Entity
             {
                 public:
@@ -9324,23 +9638,24 @@ class MplsLsdNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value application_name; //type: string
-                    Value application_name_xr; //type: string
-                    Value application_type; //type: MgmtLsdAppEnum
-                    Value application_role_primary; //type: int32
-                    Value application_instance; //type: string
-                    Value app_reg_time; //type: uint64
-                    Value app_disconnect_time; //type: uint64
-                    Value app_flow_controlled; //type: int32
-                    Value flow_ctrl_time; //type: uint64
-                    Value flow_ctrl_clr_time; //type: uint64
-                    Value go_act_ts; //type: uint64
-                    Value application_state; //type: MgmtLsdAppStateEnum
-                    Value recovery_time_remaining_seconds; //type: uint32
-                    Value recovery_time_elapsed_seconds; //type: uint32
-                    Value recovery_time_register_seconds; //type: uint32
-                    Value node_id; //type: string
 
+
+                    YLeaf application_name; //type: string
+                    YLeaf application_name_xr; //type: string
+                    YLeaf application_type; //type: MgmtLsdAppEnum
+                    YLeaf application_role_primary; //type: int32
+                    YLeaf application_instance; //type: string
+                    YLeaf app_reg_time; //type: uint64
+                    YLeaf app_disconnect_time; //type: uint64
+                    YLeaf app_flow_controlled; //type: int32
+                    YLeaf flow_ctrl_time; //type: uint64
+                    YLeaf flow_ctrl_clr_time; //type: uint64
+                    YLeaf go_act_ts; //type: uint64
+                    YLeaf application_state; //type: MgmtLsdAppStateEnum
+                    YLeaf recovery_time_remaining_seconds; //type: uint32
+                    YLeaf recovery_time_elapsed_seconds; //type: uint32
+                    YLeaf recovery_time_register_seconds; //type: uint32
+                    YLeaf node_id; //type: string
 
                 class ApplicationStatistics : public Entity
                 {
@@ -9355,12 +9670,13 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_enable; //type: uint32
-                        Value interface_enable_pending; //type: uint32
-                        Value connect_count; //type: uint32
-                        ValueList label_context_count; //type: list of  uint32
-                        ValueList label_context_pending_count; //type: list of  uint32
 
+
+                        YLeaf interface_enable; //type: uint32
+                        YLeaf interface_enable_pending; //type: uint32
+                        YLeaf connect_count; //type: uint32
+                        YLeafList label_context_count; //type: list of  uint32
+                        YLeafList label_context_pending_count; //type: list of  uint32
 
                     class Connected : public Entity
                     {
@@ -9375,11 +9691,12 @@ class MplsLsdNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rt_set_msg_count; //type: uint32
-                            Value operation_msg_count; //type: uint32
-                            Value oor_label_count; //type: uint32
-                            Value error_msg_count; //type: uint32
 
+
+                            YLeaf rt_set_msg_count; //type: uint32
+                            YLeaf operation_msg_count; //type: uint32
+                            YLeaf oor_label_count; //type: uint32
+                            YLeaf error_msg_count; //type: uint32
 
 
 
@@ -9393,8 +9710,6 @@ class MplsLsdNodes : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistics> application_statistics;
-                    class MgmtLsdAppStateEnum;
-                    class MgmtLsdAppEnum;
 
 
             }; // MplsLsdNodes::MplsLsdNode::Applications::Application
@@ -9421,6 +9736,7 @@ class MplsLsdNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class LabelSummaryVrf : public Entity
             {
                 public:
@@ -9434,11 +9750,12 @@ class MplsLsdNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value vrf_name; //type: string
-                    Value vrf_name_xr; //type: string
-                    Value total_labels; //type: uint32
-                    Value rsi_connected; //type: int32
 
+
+                    YLeaf vrf_name; //type: string
+                    YLeaf vrf_name_xr; //type: string
+                    YLeaf total_labels; //type: uint32
+                    YLeaf rsi_connected; //type: int32
 
                 class OwnerCount : public Entity
                 {
@@ -9453,14 +9770,14 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value application_type; //type: MgmtLsdAppEnum
-                        Value application_name; //type: string
-                        Value application_role_primary; //type: int32
-                        Value application_instance; //type: string
-                        Value number_of_labels; //type: uint32
 
 
-                        class MgmtLsdAppEnum;
+                        YLeaf application_type; //type: MgmtLsdAppEnum
+                        YLeaf application_name; //type: string
+                        YLeaf application_role_primary; //type: int32
+                        YLeaf application_instance; //type: string
+                        YLeaf number_of_labels; //type: uint32
+
 
 
                 }; // MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount
@@ -9491,11 +9808,12 @@ class MplsLsdNodes : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value min_dynamic_label_value; //type: uint32
-                Value max_dynamic_label_value; //type: uint32
-                Value min_static_label_value; //type: uint32
-                Value max_static_label_value; //type: uint32
 
+
+                YLeaf min_dynamic_label_value; //type: uint32
+                YLeaf max_dynamic_label_value; //type: uint32
+                YLeaf min_static_label_value; //type: uint32
+                YLeaf max_static_label_value; //type: uint32
 
 
 
@@ -9517,6 +9835,7 @@ class MplsLsdNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RewriteSummaryVrf : public Entity
             {
                 public:
@@ -9530,27 +9849,28 @@ class MplsLsdNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value vrf_name; //type: string
-                    Value num_label_fpi; //type: uint32
-                    Value num_tefpi; //type: uint32
-                    Value num_ipv4fpi; //type: uint32
-                    Value num_ipv6fpi; //type: uint32
-                    Value num_pw_list_tefpi; //type: uint32
-                    Value num_dmtctefpi; //type: uint32
-                    Value num_rewrite; //type: uint32
-                    Value total_forward_update; //type: uint32
-                    Value total_forwad_update_message; //type: uint32
-                    Value total_paths; //type: uint32
-                    Value total_t_ev4_paths; //type: uint32
-                    Value total_te_head_paths; //type: uint32
-                    Value total_pw_paths; //type: uint32
-                    Value total_ip_sub_paths; //type: uint32
-                    Value total_ipv4rpf_neighbors; //type: uint32
-                    Value total_ipv6rpf_neighbors; //type: uint32
-                    Value num_rewrite_rpf_neighbors; //type: uint32
-                    Value total_dmtc_intf; //type: uint32
-                    Value vrf_name_xr; //type: string
 
+
+                    YLeaf vrf_name; //type: string
+                    YLeaf num_label_fpi; //type: uint32
+                    YLeaf num_tefpi; //type: uint32
+                    YLeaf num_ipv4fpi; //type: uint32
+                    YLeaf num_ipv6fpi; //type: uint32
+                    YLeaf num_pw_list_tefpi; //type: uint32
+                    YLeaf num_dmtctefpi; //type: uint32
+                    YLeaf num_rewrite; //type: uint32
+                    YLeaf total_forward_update; //type: uint32
+                    YLeaf total_forwad_update_message; //type: uint32
+                    YLeaf total_paths; //type: uint32
+                    YLeaf total_t_ev4_paths; //type: uint32
+                    YLeaf total_te_head_paths; //type: uint32
+                    YLeaf total_pw_paths; //type: uint32
+                    YLeaf total_ip_sub_paths; //type: uint32
+                    YLeaf total_ipv4rpf_neighbors; //type: uint32
+                    YLeaf total_ipv6rpf_neighbors; //type: uint32
+                    YLeaf num_rewrite_rpf_neighbors; //type: uint32
+                    YLeaf total_dmtc_intf; //type: uint32
+                    YLeaf vrf_name_xr; //type: string
 
                 class Ipv4Paths : public Entity
                 {
@@ -9565,12 +9885,13 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value total_paths; //type: uint32
-                        Value total_backup_paths; //type: uint32
-                        Value total_remote_backup_paths; //type: uint32
-                        Value total_protected_paths; //type: uint32
-                        Value total_pop_lkup_paths; //type: uint32
 
+
+                        YLeaf total_paths; //type: uint32
+                        YLeaf total_backup_paths; //type: uint32
+                        YLeaf total_remote_backup_paths; //type: uint32
+                        YLeaf total_protected_paths; //type: uint32
+                        YLeaf total_pop_lkup_paths; //type: uint32
 
 
 
@@ -9590,12 +9911,13 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value total_paths; //type: uint32
-                        Value total_backup_paths; //type: uint32
-                        Value total_remote_backup_paths; //type: uint32
-                        Value total_protected_paths; //type: uint32
-                        Value total_pop_lkup_paths; //type: uint32
 
+
+                        YLeaf total_paths; //type: uint32
+                        YLeaf total_backup_paths; //type: uint32
+                        YLeaf total_remote_backup_paths; //type: uint32
+                        YLeaf total_protected_paths; //type: uint32
+                        YLeaf total_pop_lkup_paths; //type: uint32
 
 
 
@@ -9630,6 +9952,7 @@ class MplsLsdNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -9643,10 +9966,11 @@ class MplsLsdNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value interface; //type: string
-                    Value interface_state; //type: MgmtLsdIntfStateEnum
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf interface; //type: string
+                    YLeaf interface_state; //type: MgmtLsdIntfStateEnum
 
                 class ApplicationOwner : public Entity
                 {
@@ -9661,22 +9985,20 @@ class MplsLsdNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value application_name; //type: string
-                        Value application_type; //type: MgmtLsdAppEnum
-                        Value application_role_primary; //type: int32
-                        Value application_instance; //type: string
-                        Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                        class MgmtLsdAppEnum;
-                        class MgmtLsdAppRsrcStateEnum;
+                        YLeaf application_name; //type: string
+                        YLeaf application_type; //type: MgmtLsdAppEnum
+                        YLeaf application_role_primary; //type: int32
+                        YLeaf application_instance; //type: string
+                        YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                 }; // MplsLsdNodes::MplsLsdNode::Interfaces::Interface::ApplicationOwner
 
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Interfaces::Interface::ApplicationOwner> > application_owner;
-                    class MgmtLsdIntfStateEnum;
 
 
             }; // MplsLsdNodes::MplsLsdNode::Interfaces::Interface
@@ -9725,6 +10047,7 @@ class MplsLsd : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Clients : public Entity
     {
         public:
@@ -9740,6 +10063,7 @@ class MplsLsd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Client : public Entity
         {
             public:
@@ -9753,10 +10077,11 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value client_name; //type: string
-                Value client_index; //type: uint32
-                Value node_id; //type: string
 
+
+                YLeaf client_name; //type: string
+                YLeaf client_index; //type: uint32
+                YLeaf node_id; //type: string
 
             class ClientUnion : public Entity
             {
@@ -9771,8 +10096,9 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lsd_client_type; //type: MgmtLsdClientEnum
 
+
+                    YLeaf lsd_client_type; //type: MgmtLsdClientEnum
 
                 class Application : public Entity
                 {
@@ -9787,13 +10113,13 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value application_name; //type: string
-                        Value application_type; //type: MgmtLsdAppEnum
-                        Value application_instance; //type: string
-                        Value application_role_primary; //type: int32
 
 
-                        class MgmtLsdAppEnum;
+                        YLeaf application_name; //type: string
+                        YLeaf application_type; //type: MgmtLsdAppEnum
+                        YLeaf application_instance; //type: string
+                        YLeaf application_role_primary; //type: int32
+
 
 
                 }; // MplsLsd::Clients::Client::ClientUnion::Application
@@ -9812,9 +10138,10 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value client_conn_index; //type: int32
-                        Value parent_client_conn_index; //type: int32
 
+
+                        YLeaf client_conn_index; //type: int32
+                        YLeaf parent_client_conn_index; //type: int32
 
 
 
@@ -9823,7 +10150,6 @@ class MplsLsd : public Entity
 
                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Clients::Client::ClientUnion::Application> application;
                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Clients::Client::ClientUnion::BcdlAgent> bcdl_agent;
-                    class MgmtLsdClientEnum;
 
 
             }; // MplsLsd::Clients::Client::ClientUnion
@@ -9854,10 +10180,11 @@ class MplsLsd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value vrf_name_xr; //type: string
-            Value total_labels; //type: uint32
-            Value rsi_connected; //type: int32
 
+
+            YLeaf vrf_name_xr; //type: string
+            YLeaf total_labels; //type: uint32
+            YLeaf rsi_connected; //type: int32
 
         class OwnerCount : public Entity
         {
@@ -9872,14 +10199,14 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value application_type; //type: MgmtLsdAppEnum
-                Value application_name; //type: string
-                Value application_role_primary; //type: int32
-                Value application_instance; //type: string
-                Value number_of_labels; //type: uint32
 
 
-                class MgmtLsdAppEnum;
+                YLeaf application_type; //type: MgmtLsdAppEnum
+                YLeaf application_name; //type: string
+                YLeaf application_role_primary; //type: int32
+                YLeaf application_instance; //type: string
+                YLeaf number_of_labels; //type: uint32
+
 
 
         }; // MplsLsd::LabelSummary::OwnerCount
@@ -9906,6 +10233,7 @@ class MplsLsd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Label : public Entity
         {
             public:
@@ -9919,13 +10247,14 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value label_id; //type: int32
-                Value label; //type: uint32
-                Value rewrite_is_bound; //type: int32
-                Value rewrite_owners; //type: uint32
-                Value rs_iconnected; //type: int32
-                Value vrf_name; //type: string
 
+
+                YLeaf label_id; //type: int32
+                YLeaf label; //type: uint32
+                YLeaf rewrite_is_bound; //type: int32
+                YLeaf rewrite_owners; //type: uint32
+                YLeaf rs_iconnected; //type: int32
+                YLeaf vrf_name; //type: string
 
             class LabelContext : public Entity
             {
@@ -9940,8 +10269,9 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value application_data; //type: string
 
+
+                    YLeaf application_data; //type: string
 
                 class Key : public Entity
                 {
@@ -9956,8 +10286,9 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value label_context_type; //type: MgmtLsdLblCtxEnum
 
+
+                        YLeaf label_context_type; //type: MgmtLsdLblCtxEnum
 
                     class Ipv4Data : public Entity
                     {
@@ -9972,12 +10303,13 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value prefix; //type: string
-                            Value prefix_length; //type: uint8
-                            Value security_id; //type: uint32
-                            Value vrf_name; //type: string
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_length; //type: uint8
+                            YLeaf security_id; //type: uint32
+                            YLeaf vrf_name; //type: string
 
 
 
@@ -9997,12 +10329,13 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value prefix; //type: string
-                            Value prefix_length; //type: uint8
-                            Value security_id; //type: uint32
-                            Value vrf_name; //type: string
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_length; //type: uint8
+                            YLeaf security_id; //type: uint32
+                            YLeaf vrf_name; //type: string
 
 
 
@@ -10022,14 +10355,15 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value tunnel_source; //type: string
-                            Value tunnel_dest; //type: string
-                            Value tunnel_id; //type: uint32
-                            Value tunnel_id_extension; //type: uint32
-                            Value tunnel_lsp_id; //type: uint32
-                            Value is_srte; //type: int32
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf tunnel_source; //type: string
+                            YLeaf tunnel_dest; //type: string
+                            YLeaf tunnel_id; //type: uint32
+                            YLeaf tunnel_id_extension; //type: uint32
+                            YLeaf tunnel_lsp_id; //type: uint32
+                            YLeaf is_srte; //type: int32
 
 
 
@@ -10049,10 +10383,11 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix; //type: string
-                            Value prefix_length; //type: uint8
-                            Value route_distinguisher; //type: uint64
 
+
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_length; //type: uint8
+                            YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -10072,10 +10407,11 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix; //type: string
-                            Value prefix_length; //type: uint8
-                            Value route_distinguisher; //type: uint64
 
+
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_length; //type: uint8
+                            YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -10095,9 +10431,10 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value security_id; //type: uint32
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf security_id; //type: uint32
 
 
 
@@ -10117,10 +10454,11 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value ipv4_next_hop; //type: string
-                            Value security_id; //type: uint32
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf ipv4_next_hop; //type: string
+                            YLeaf security_id; //type: uint32
 
 
 
@@ -10140,10 +10478,11 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value ipv6_next_hop; //type: string
-                            Value security_id; //type: uint32
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf ipv6_next_hop; //type: string
+                            YLeaf security_id; //type: uint32
 
 
 
@@ -10163,11 +10502,12 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix; //type: string
-                            Value pseudowire_id; //type: uint64
-                            Value remote_l2_router_id; //type: uint32
-                            Value subinterface; //type: string
 
+
+                            YLeaf prefix; //type: string
+                            YLeaf pseudowire_id; //type: uint64
+                            YLeaf remote_l2_router_id; //type: uint32
+                            YLeaf subinterface; //type: string
 
 
 
@@ -10187,12 +10527,13 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value service; //type: uint8
-                            Value vpn_id; //type: uint16
-                            Value edge_id; //type: uint16
-                            Value offset; //type: uint32
-                            Value size; //type: uint32
 
+
+                            YLeaf service; //type: uint8
+                            YLeaf vpn_id; //type: uint16
+                            YLeaf edge_id; //type: uint16
+                            YLeaf offset; //type: uint32
+                            YLeaf size; //type: uint32
 
 
 
@@ -10212,9 +10553,10 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value parent_interface; //type: string
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf parent_interface; //type: string
 
 
 
@@ -10234,14 +10576,15 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value tunnel_source; //type: string
-                            Value p2mp_id; //type: uint32
-                            Value tunnel_id; //type: uint32
-                            Value tunnel_id_extension; //type: uint32
-                            Value tunnel_lsp_id; //type: uint32
-                            Value previous_hop; //type: string
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf tunnel_source; //type: string
+                            YLeaf p2mp_id; //type: uint32
+                            YLeaf tunnel_id; //type: uint32
+                            YLeaf tunnel_id_extension; //type: uint32
+                            YLeaf tunnel_lsp_id; //type: uint32
+                            YLeaf previous_hop; //type: string
 
 
 
@@ -10261,12 +10604,13 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value type; //type: uint16
-                            Value lsm_id; //type: uint32
-                            Value peer_lsrid; //type: string
-                            Value peer_label_space_id; //type: uint16
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf type; //type: uint16
+                            YLeaf lsm_id; //type: uint32
+                            YLeaf peer_lsrid; //type: string
+                            YLeaf peer_label_space_id; //type: uint16
 
 
 
@@ -10286,8 +10630,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value pwhe_intf; //type: string
 
+
+                            YLeaf pwhe_intf; //type: string
 
 
 
@@ -10307,14 +10652,15 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source_global_id; //type: uint32
-                            Value source_node_id; //type: string
-                            Value dest_global_id; //type: uint32
-                            Value dest_node_id; //type: string
-                            Value source_tunnel_id; //type: uint16
-                            Value dest_tunnel_id; //type: uint16
-                            Value lsp_id; //type: uint16
 
+
+                            YLeaf source_global_id; //type: uint32
+                            YLeaf source_node_id; //type: string
+                            YLeaf dest_global_id; //type: uint32
+                            YLeaf dest_node_id; //type: string
+                            YLeaf source_tunnel_id; //type: uint16
+                            YLeaf dest_tunnel_id; //type: uint16
+                            YLeaf lsp_id; //type: uint16
 
 
 
@@ -10334,8 +10680,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value gre_interface; //type: string
 
+
+                            YLeaf gre_interface; //type: string
 
 
 
@@ -10355,8 +10702,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value greipv6_interface; //type: string
 
+
+                            YLeaf greipv6_interface; //type: string
 
 
 
@@ -10376,10 +10724,11 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value evpn_id; //type: uint32
-                            Value evpn_tag; //type: uint32
-                            Value ethernet_segment; //type: string
 
+
+                            YLeaf evpn_id; //type: uint32
+                            YLeaf evpn_tag; //type: uint32
+                            YLeaf ethernet_segment; //type: string
 
 
 
@@ -10399,9 +10748,10 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value blb_intf; //type: string
-                            Value prefix; //type: string
 
+
+                            YLeaf blb_intf; //type: string
+                            YLeaf prefix; //type: string
 
 
 
@@ -10421,9 +10771,10 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value blb_intf; //type: string
-                            Value prefix; //type: string
 
+
+                            YLeaf blb_intf; //type: string
+                            YLeaf prefix; //type: string
 
 
 
@@ -10443,10 +10794,11 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vrf_id; //type: uint32
-                            Value head; //type: int32
-                            Value v6; //type: int32
 
+
+                            YLeaf vrf_id; //type: uint32
+                            YLeaf head; //type: int32
+                            YLeaf v6; //type: int32
 
 
 
@@ -10466,13 +10818,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vrf_id; //type: uint32
-                            Value source; //type: string
-                            Value head; //type: int32
-                            Value v6; //type: int32
-                            Value hli; //type: uint32
-                            Value seg; //type: int32
 
+
+                            YLeaf vrf_id; //type: uint32
+                            YLeaf source; //type: string
+                            YLeaf head; //type: int32
+                            YLeaf v6; //type: int32
+                            YLeaf hli; //type: uint32
+                            YLeaf seg; //type: int32
 
 
 
@@ -10492,9 +10845,10 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value next_hop_set_id; //type: uint32
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf next_hop_set_id; //type: uint32
 
 
 
@@ -10514,9 +10868,10 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value table_id; //type: uint32
-                            Value segment_id; //type: uint32
 
+
+                            YLeaf table_id; //type: uint32
+                            YLeaf segment_id; //type: uint32
 
 
 
@@ -10536,11 +10891,12 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value index_; //type: uint32
-                            Value type; //type: uint32
-                            Value intf; //type: string
-                            Value addr; //type: string
 
+
+                            YLeaf index_; //type: uint32
+                            YLeaf type; //type: uint32
+                            YLeaf intf; //type: string
+                            YLeaf addr; //type: string
 
 
 
@@ -10560,11 +10916,12 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value index_; //type: uint32
-                            Value type; //type: uint32
-                            Value intf; //type: string
-                            Value addr; //type: string
 
+
+                            YLeaf index_; //type: uint32
+                            YLeaf type; //type: uint32
+                            YLeaf intf; //type: string
+                            YLeaf addr; //type: string
 
 
 
@@ -10584,10 +10941,11 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start_label; //type: uint32
-                            Value offset; //type: uint32
-                            Value size; //type: uint32
 
+
+                            YLeaf start_label; //type: uint32
+                            YLeaf offset; //type: uint32
+                            YLeaf size; //type: uint32
 
 
 
@@ -10607,11 +10965,11 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value te_identifier; //type: uint32
-                            Value te_type; //type: MgmtLsdTeBindingEnum
 
 
-                            class MgmtLsdTeBindingEnum;
+                            YLeaf te_identifier; //type: uint32
+                            YLeaf te_type; //type: MgmtLsdTeBindingEnum
+
 
 
                     }; // MplsLsd::Labels::Label::LabelContext::Key::TeBinding
@@ -10645,7 +11003,6 @@ class MplsLsd : public Entity
                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::Tev4P2MpData> tev4p2mp_data;
                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::TpData> tp_data;
                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Labels::Label::LabelContext::Key::VrfL3VpnData> vrf_l3vpn_data;
-                        class MgmtLsdLblCtxEnum;
 
 
                 }; // MplsLsd::Labels::Label::LabelContext::Key
@@ -10670,15 +11027,14 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value application_name; //type: string
-                    Value application_type; //type: MgmtLsdAppEnum
-                    Value application_role_primary; //type: int32
-                    Value application_instance; //type: string
-                    Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                    class MgmtLsdAppEnum;
-                    class MgmtLsdAppRsrcStateEnum;
+                    YLeaf application_name; //type: string
+                    YLeaf application_type; //type: MgmtLsdAppEnum
+                    YLeaf application_role_primary; //type: int32
+                    YLeaf application_instance; //type: string
+                    YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
             }; // MplsLsd::Labels::Label::ApplicationOwner
@@ -10712,6 +11068,7 @@ class MplsLsd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TunnelMidpoints : public Entity
         {
             public:
@@ -10727,6 +11084,7 @@ class MplsLsd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TunnelMidpoint : public Entity
             {
                 public:
@@ -10740,11 +11098,12 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value label; //type: int32
-                    Value tunnel_interface; //type: string
-                    Value input_label; //type: uint32
-                    Value entry_frr_state; //type: MgmtLsdFrrStateEnum
 
+
+                    YLeaf label; //type: int32
+                    YLeaf tunnel_interface; //type: string
+                    YLeaf input_label; //type: uint32
+                    YLeaf entry_frr_state; //type: MgmtLsdFrrStateEnum
 
                 class FrrEntryId : public Entity
                 {
@@ -10759,8 +11118,9 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value role; //type: MgmtLsdLspRoleEnum
 
+
+                        YLeaf role; //type: MgmtLsdLspRoleEnum
 
                     class Head : public Entity
                     {
@@ -10775,9 +11135,10 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination_prefix; //type: string
-                            Value destination_prefix_length; //type: uint8
 
+
+                            YLeaf destination_prefix; //type: string
+                            YLeaf destination_prefix_length; //type: uint8
 
 
 
@@ -10797,10 +11158,11 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source_address; //type: string
-                            Value lspid; //type: uint32
-                            Value tunnel_id; //type: uint32
 
+
+                            YLeaf source_address; //type: string
+                            YLeaf lspid; //type: uint32
+                            YLeaf tunnel_id; //type: uint32
 
 
 
@@ -10809,7 +11171,6 @@ class MplsLsd : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Head> head;
                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Midpoint> midpoint;
-                        class MgmtLsdLspRoleEnum;
 
 
                 }; // MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId
@@ -10828,12 +11189,13 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value out_interface; //type: string
-                        Value out_label; //type: uint32
-                        Value ipv4_next_hop; //type: string
-                        Value frr_interface; //type: string
-                        Value frr_label; //type: uint32
 
+
+                        YLeaf out_interface; //type: string
+                        YLeaf out_label; //type: uint32
+                        YLeaf ipv4_next_hop; //type: string
+                        YLeaf frr_interface; //type: string
+                        YLeaf frr_label; //type: uint32
 
 
 
@@ -10842,7 +11204,6 @@ class MplsLsd : public Entity
 
                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId> frr_entry_id;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath> > out_path;
-                    class MgmtLsdFrrStateEnum;
 
 
             }; // MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint
@@ -10869,6 +11230,7 @@ class MplsLsd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TunnelHead : public Entity
             {
                 public:
@@ -10882,11 +11244,12 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value tunnel_interface; //type: string
-                    Value input_label; //type: uint32
-                    Value entry_frr_state; //type: MgmtLsdFrrStateEnum
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf tunnel_interface; //type: string
+                    YLeaf input_label; //type: uint32
+                    YLeaf entry_frr_state; //type: MgmtLsdFrrStateEnum
 
                 class FrrEntryId : public Entity
                 {
@@ -10901,8 +11264,9 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value role; //type: MgmtLsdLspRoleEnum
 
+
+                        YLeaf role; //type: MgmtLsdLspRoleEnum
 
                     class Head : public Entity
                     {
@@ -10917,9 +11281,10 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination_prefix; //type: string
-                            Value destination_prefix_length; //type: uint8
 
+
+                            YLeaf destination_prefix; //type: string
+                            YLeaf destination_prefix_length; //type: uint8
 
 
 
@@ -10939,10 +11304,11 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source_address; //type: string
-                            Value lspid; //type: uint32
-                            Value tunnel_id; //type: uint32
 
+
+                            YLeaf source_address; //type: string
+                            YLeaf lspid; //type: uint32
+                            YLeaf tunnel_id; //type: uint32
 
 
 
@@ -10951,7 +11317,6 @@ class MplsLsd : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Head> head;
                         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Midpoint> midpoint;
-                        class MgmtLsdLspRoleEnum;
 
 
                 }; // MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId
@@ -10970,12 +11335,13 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value out_interface; //type: string
-                        Value out_label; //type: uint32
-                        Value ipv4_next_hop; //type: string
-                        Value frr_interface; //type: string
-                        Value frr_label; //type: uint32
 
+
+                        YLeaf out_interface; //type: string
+                        YLeaf out_label; //type: uint32
+                        YLeaf ipv4_next_hop; //type: string
+                        YLeaf frr_interface; //type: string
+                        YLeaf frr_label; //type: uint32
 
 
 
@@ -10984,7 +11350,6 @@ class MplsLsd : public Entity
 
                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId> frr_entry_id;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::OutPath> > out_path;
-                    class MgmtLsdFrrStateEnum;
 
 
             }; // MplsLsd::FrrDatabase::TunnelHeads::TunnelHead
@@ -11009,11 +11374,12 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value active; //type: uint32
-                Value ready; //type: uint32
-                Value partial; //type: uint32
-                Value igp; //type: uint32
 
+
+                YLeaf active; //type: uint32
+                YLeaf ready; //type: uint32
+                YLeaf partial; //type: uint32
+                YLeaf igp; //type: uint32
 
 
 
@@ -11035,6 +11401,7 @@ class MplsLsd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class SummaryProtectedInterface : public Entity
             {
                 public:
@@ -11048,12 +11415,13 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value active; //type: uint32
-                    Value ready; //type: uint32
-                    Value partial; //type: uint32
-                    Value igp; //type: uint32
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf active; //type: uint32
+                    YLeaf ready; //type: uint32
+                    YLeaf partial; //type: uint32
+                    YLeaf igp; //type: uint32
 
 
 
@@ -11079,11 +11447,12 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value active; //type: uint32
-                Value ready; //type: uint32
-                Value partial; //type: uint32
-                Value igp; //type: uint32
 
+
+                YLeaf active; //type: uint32
+                YLeaf ready; //type: uint32
+                YLeaf partial; //type: uint32
+                YLeaf igp; //type: uint32
 
 
 
@@ -11103,11 +11472,12 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value active; //type: uint32
-                Value ready; //type: uint32
-                Value partial; //type: uint32
-                Value igp; //type: uint32
 
+
+                YLeaf active; //type: uint32
+                YLeaf ready; //type: uint32
+                YLeaf partial; //type: uint32
+                YLeaf igp; //type: uint32
 
 
 
@@ -11140,6 +11510,7 @@ class MplsLsd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RewritePws : public Entity
         {
             public:
@@ -11155,6 +11526,7 @@ class MplsLsd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RewritePw : public Entity
             {
                 public:
@@ -11168,15 +11540,16 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value pw_list_id; //type: int32
-                    Value rewrite_version; //type: uint64
-                    Value bcdl_priority; //type: uint8
-                    Value lsd_queue; //type: uint8
-                    Value rw_install_time; //type: uint64
-                    Value rw_install_age; //type: uint64
-                    Value rw_updated; //type: int32
-                    Value priority_updated; //type: int32
 
+
+                    YLeaf pw_list_id; //type: int32
+                    YLeaf rewrite_version; //type: uint64
+                    YLeaf bcdl_priority; //type: uint8
+                    YLeaf lsd_queue; //type: uint8
+                    YLeaf rw_install_time; //type: uint64
+                    YLeaf rw_install_age; //type: uint64
+                    YLeaf rw_updated; //type: int32
+                    YLeaf priority_updated; //type: int32
 
                 class FpiKey : public Entity
                 {
@@ -11193,6 +11566,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Fpi : public Entity
                     {
                         public:
@@ -11206,8 +11580,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                            YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                         class LabelData : public Entity
                         {
@@ -11222,10 +11597,11 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label; //type: uint32
-                                Value security_id; //type: uint32
-                                Value elc; //type: int32
 
+
+                                YLeaf label; //type: uint32
+                                YLeaf security_id; //type: uint32
+                                YLeaf elc; //type: int32
 
 
 
@@ -11245,9 +11621,10 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tunnel_interface; //type: string
-                                Value local_label; //type: uint32
 
+
+                                YLeaf tunnel_interface; //type: string
+                                YLeaf local_label; //type: uint32
 
 
 
@@ -11267,11 +11644,12 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -11291,12 +11669,13 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value router_flags; //type: uint32
-                                Value prefix_len; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf router_flags; //type: uint32
+                                YLeaf prefix_len; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -11316,8 +11695,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value pwhe_list_id; //type: uint16
 
+
+                                YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -11337,8 +11717,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dmtc_ext_ifh; //type: string
 
+
+                                YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -11351,7 +11732,6 @@ class MplsLsd : public Entity
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::LabelData> label_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::PwListData> pw_list_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData> te_data;
-                            class MgmtLsdFpiEnum;
 
 
                     }; // MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi
@@ -11370,15 +11750,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_role_primary; //type: int32
-                            Value application_instance; //type: string
-                            Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                            class MgmtLsdAppEnum;
-                            class MgmtLsdAppRsrcStateEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_role_primary; //type: int32
+                            YLeaf application_instance; //type: string
+                            YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                     }; // MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner
@@ -11406,6 +11785,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class RewriteId_ : public Entity
                     {
                         public:
@@ -11419,8 +11799,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rewrite_id_type; //type: MgmtLsdRwIdEnum
 
+
+                            YLeaf rewrite_id_type; //type: MgmtLsdRwIdEnum
 
                         class LabelContext : public Entity
                         {
@@ -11435,8 +11816,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label_context_type; //type: MgmtLsdLblCtxEnum
 
+
+                                YLeaf label_context_type; //type: MgmtLsdLblCtxEnum
 
                             class Ipv4Data : public Entity
                             {
@@ -11451,12 +11833,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value security_id; //type: uint32
-                                    Value vrf_name; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf vrf_name; //type: string
 
 
 
@@ -11476,12 +11859,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value security_id; //type: uint32
-                                    Value vrf_name; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf vrf_name; //type: string
 
 
 
@@ -11501,14 +11885,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value tunnel_source; //type: string
-                                    Value tunnel_dest; //type: string
-                                    Value tunnel_id; //type: uint32
-                                    Value tunnel_id_extension; //type: uint32
-                                    Value tunnel_lsp_id; //type: uint32
-                                    Value is_srte; //type: int32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf tunnel_source; //type: string
+                                    YLeaf tunnel_dest; //type: string
+                                    YLeaf tunnel_id; //type: uint32
+                                    YLeaf tunnel_id_extension; //type: uint32
+                                    YLeaf tunnel_lsp_id; //type: uint32
+                                    YLeaf is_srte; //type: int32
 
 
 
@@ -11528,10 +11913,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value route_distinguisher; //type: uint64
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -11551,10 +11937,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value route_distinguisher; //type: uint64
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -11574,9 +11961,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value security_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf security_id; //type: uint32
 
 
 
@@ -11596,10 +11984,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value ipv4_next_hop; //type: string
-                                    Value security_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf security_id; //type: uint32
 
 
 
@@ -11619,10 +12008,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value ipv6_next_hop; //type: string
-                                    Value security_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf ipv6_next_hop; //type: string
+                                    YLeaf security_id; //type: uint32
 
 
 
@@ -11642,11 +12032,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value pseudowire_id; //type: uint64
-                                    Value remote_l2_router_id; //type: uint32
-                                    Value subinterface; //type: string
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf pseudowire_id; //type: uint64
+                                    YLeaf remote_l2_router_id; //type: uint32
+                                    YLeaf subinterface; //type: string
 
 
 
@@ -11666,12 +12057,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value service; //type: uint8
-                                    Value vpn_id; //type: uint16
-                                    Value edge_id; //type: uint16
-                                    Value offset; //type: uint32
-                                    Value size; //type: uint32
 
+
+                                    YLeaf service; //type: uint8
+                                    YLeaf vpn_id; //type: uint16
+                                    YLeaf edge_id; //type: uint16
+                                    YLeaf offset; //type: uint32
+                                    YLeaf size; //type: uint32
 
 
 
@@ -11691,9 +12083,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value parent_interface; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf parent_interface; //type: string
 
 
 
@@ -11713,14 +12106,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value tunnel_source; //type: string
-                                    Value p2mp_id; //type: uint32
-                                    Value tunnel_id; //type: uint32
-                                    Value tunnel_id_extension; //type: uint32
-                                    Value tunnel_lsp_id; //type: uint32
-                                    Value previous_hop; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf tunnel_source; //type: string
+                                    YLeaf p2mp_id; //type: uint32
+                                    YLeaf tunnel_id; //type: uint32
+                                    YLeaf tunnel_id_extension; //type: uint32
+                                    YLeaf tunnel_lsp_id; //type: uint32
+                                    YLeaf previous_hop; //type: string
 
 
 
@@ -11740,12 +12134,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value type; //type: uint16
-                                    Value lsm_id; //type: uint32
-                                    Value peer_lsrid; //type: string
-                                    Value peer_label_space_id; //type: uint16
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf type; //type: uint16
+                                    YLeaf lsm_id; //type: uint32
+                                    YLeaf peer_lsrid; //type: string
+                                    YLeaf peer_label_space_id; //type: uint16
 
 
 
@@ -11765,8 +12160,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pwhe_intf; //type: string
 
+
+                                    YLeaf pwhe_intf; //type: string
 
 
 
@@ -11786,14 +12182,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value source_global_id; //type: uint32
-                                    Value source_node_id; //type: string
-                                    Value dest_global_id; //type: uint32
-                                    Value dest_node_id; //type: string
-                                    Value source_tunnel_id; //type: uint16
-                                    Value dest_tunnel_id; //type: uint16
-                                    Value lsp_id; //type: uint16
 
+
+                                    YLeaf source_global_id; //type: uint32
+                                    YLeaf source_node_id; //type: string
+                                    YLeaf dest_global_id; //type: uint32
+                                    YLeaf dest_node_id; //type: string
+                                    YLeaf source_tunnel_id; //type: uint16
+                                    YLeaf dest_tunnel_id; //type: uint16
+                                    YLeaf lsp_id; //type: uint16
 
 
 
@@ -11813,8 +12210,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value gre_interface; //type: string
 
+
+                                    YLeaf gre_interface; //type: string
 
 
 
@@ -11834,8 +12232,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value greipv6_interface; //type: string
 
+
+                                    YLeaf greipv6_interface; //type: string
 
 
 
@@ -11855,10 +12254,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value evpn_id; //type: uint32
-                                    Value evpn_tag; //type: uint32
-                                    Value ethernet_segment; //type: string
 
+
+                                    YLeaf evpn_id; //type: uint32
+                                    YLeaf evpn_tag; //type: uint32
+                                    YLeaf ethernet_segment; //type: string
 
 
 
@@ -11878,9 +12278,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value blb_intf; //type: string
-                                    Value prefix; //type: string
 
+
+                                    YLeaf blb_intf; //type: string
+                                    YLeaf prefix; //type: string
 
 
 
@@ -11900,9 +12301,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value blb_intf; //type: string
-                                    Value prefix; //type: string
 
+
+                                    YLeaf blb_intf; //type: string
+                                    YLeaf prefix; //type: string
 
 
 
@@ -11922,10 +12324,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value vrf_id; //type: uint32
-                                    Value head; //type: int32
-                                    Value v6; //type: int32
 
+
+                                    YLeaf vrf_id; //type: uint32
+                                    YLeaf head; //type: int32
+                                    YLeaf v6; //type: int32
 
 
 
@@ -11945,13 +12348,14 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value vrf_id; //type: uint32
-                                    Value source; //type: string
-                                    Value head; //type: int32
-                                    Value v6; //type: int32
-                                    Value hli; //type: uint32
-                                    Value seg; //type: int32
 
+
+                                    YLeaf vrf_id; //type: uint32
+                                    YLeaf source; //type: string
+                                    YLeaf head; //type: int32
+                                    YLeaf v6; //type: int32
+                                    YLeaf hli; //type: uint32
+                                    YLeaf seg; //type: int32
 
 
 
@@ -11971,9 +12375,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value next_hop_set_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf next_hop_set_id; //type: uint32
 
 
 
@@ -11993,9 +12398,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value segment_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf segment_id; //type: uint32
 
 
 
@@ -12015,11 +12421,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value index_; //type: uint32
-                                    Value type; //type: uint32
-                                    Value intf; //type: string
-                                    Value addr; //type: string
 
+
+                                    YLeaf index_; //type: uint32
+                                    YLeaf type; //type: uint32
+                                    YLeaf intf; //type: string
+                                    YLeaf addr; //type: string
 
 
 
@@ -12039,11 +12446,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value index_; //type: uint32
-                                    Value type; //type: uint32
-                                    Value intf; //type: string
-                                    Value addr; //type: string
 
+
+                                    YLeaf index_; //type: uint32
+                                    YLeaf type; //type: uint32
+                                    YLeaf intf; //type: string
+                                    YLeaf addr; //type: string
 
 
 
@@ -12063,10 +12471,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value start_label; //type: uint32
-                                    Value offset; //type: uint32
-                                    Value size; //type: uint32
 
+
+                                    YLeaf start_label; //type: uint32
+                                    YLeaf offset; //type: uint32
+                                    YLeaf size; //type: uint32
 
 
 
@@ -12086,11 +12495,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value te_identifier; //type: uint32
-                                    Value te_type; //type: MgmtLsdTeBindingEnum
 
 
-                                    class MgmtLsdTeBindingEnum;
+                                    YLeaf te_identifier; //type: uint32
+                                    YLeaf te_type; //type: MgmtLsdTeBindingEnum
+
 
 
                             }; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding
@@ -12124,7 +12533,6 @@ class MplsLsd : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-                                class MgmtLsdLblCtxEnum;
 
 
                         }; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext
@@ -12143,8 +12551,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                ValueList label_data; //type: list of  uint32
 
+
+                                YLeafList label_data; //type: list of  uint32
 
 
 
@@ -12153,7 +12562,6 @@ class MplsLsd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext> label_context;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
-                            class MgmtLsdRwIdEnum;
 
 
                     }; // MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
@@ -12180,6 +12588,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Fpi : public Entity
                     {
                         public:
@@ -12193,8 +12602,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                            YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                         class LabelData : public Entity
                         {
@@ -12209,10 +12619,11 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label; //type: uint32
-                                Value security_id; //type: uint32
-                                Value elc; //type: int32
 
+
+                                YLeaf label; //type: uint32
+                                YLeaf security_id; //type: uint32
+                                YLeaf elc; //type: int32
 
 
 
@@ -12232,9 +12643,10 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tunnel_interface; //type: string
-                                Value local_label; //type: uint32
 
+
+                                YLeaf tunnel_interface; //type: string
+                                YLeaf local_label; //type: uint32
 
 
 
@@ -12254,11 +12666,12 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -12278,12 +12691,13 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value router_flags; //type: uint32
-                                Value prefix_len; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf router_flags; //type: uint32
+                                YLeaf prefix_len; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -12303,8 +12717,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value pwhe_list_id; //type: uint16
 
+
+                                YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -12324,8 +12739,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dmtc_ext_ifh; //type: string
 
+
+                                YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -12338,7 +12754,6 @@ class MplsLsd : public Entity
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData> label_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData> pw_list_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData> te_data;
-                            class MgmtLsdFpiEnum;
 
 
                     }; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi
@@ -12357,15 +12772,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_role_primary; //type: int32
-                            Value application_instance; //type: string
-                            Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                            class MgmtLsdAppEnum;
-                            class MgmtLsdAppRsrcStateEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_role_primary; //type: int32
+                            YLeaf application_instance; //type: string
+                            YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                     }; // MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner
@@ -12391,9 +12805,10 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value table_id; //type: uint32
-                        Value v4_rpf_neighbor; //type: string
 
+
+                        YLeaf table_id; //type: uint32
+                        YLeaf v4_rpf_neighbor; //type: string
 
 
 
@@ -12413,9 +12828,10 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value table_id; //type: uint32
-                        Value v6_rpf_neighbor; //type: string
 
+
+                        YLeaf table_id; //type: uint32
+                        YLeaf v6_rpf_neighbor; //type: string
 
 
 
@@ -12437,6 +12853,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ApplicationResource : public Entity
                     {
                         public:
@@ -12450,15 +12867,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_role_primary; //type: int32
-                            Value application_instance; //type: string
-                            Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                            class MgmtLsdAppEnum;
-                            class MgmtLsdAppRsrcStateEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_role_primary; //type: int32
+                            YLeaf application_instance; //type: string
+                            YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                     }; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource
@@ -12479,6 +12895,7 @@ class MplsLsd : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Moi : public Entity
                         {
                             public:
@@ -12492,8 +12909,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value moi_type; //type: MgmtLsdMoiEnum
 
+
+                                YLeaf moi_type; //type: MgmtLsdMoiEnum
 
                             class PopAndLookupIpv4 : public Entity
                             {
@@ -12508,10 +12926,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -12531,11 +12950,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_label; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_label; //type: uint32
 
 
 
@@ -12555,10 +12975,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -12578,21 +12999,22 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_interface_parent; //type: string
-                                    Value ipv4_next_hop; //type: string
-                                    Value path_id; //type: uint8
-                                    Value backup_path_id; //type: uint8
-                                    Value load_metric; //type: uint32
-                                    Value out_label; //type: uint32
-                                    Value out_label_name; //type: string
-                                    Value tunnel_id; //type: uint16
-                                    Value next_hop_id; //type: uint32
-                                    Value local_label; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_interface_parent; //type: string
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf path_id; //type: uint8
+                                    YLeaf backup_path_id; //type: uint8
+                                    YLeaf load_metric; //type: uint32
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf out_label_name; //type: string
+                                    YLeaf tunnel_id; //type: uint16
+                                    YLeaf next_hop_id; //type: uint32
+                                    YLeaf local_label; //type: uint32
 
 
 
@@ -12612,17 +13034,18 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value out_label_name; //type: string
-                                    Value ipv6_next_hop; //type: string
-                                    Value path_id; //type: uint8
-                                    Value backup_path_id; //type: uint8
-                                    Value next_hop_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf out_label_name; //type: string
+                                    YLeaf ipv6_next_hop; //type: string
+                                    YLeaf path_id; //type: uint8
+                                    YLeaf backup_path_id; //type: uint8
+                                    YLeaf next_hop_id; //type: uint32
 
 
 
@@ -12642,22 +13065,23 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value out_label_name; //type: string
-                                    Value ipv4_next_hop; //type: string
-                                    Value backup_interface; //type: string
-                                    Value backup_ipv4_next_hop; //type: string
-                                    Value merge_point_label; //type: uint32
-                                    Value backup_local_label; //type: uint32
-                                    Value tunnel_interface; //type: string
-                                    Value tunnel_weight; //type: uint32
-                                    Value data_out_parent_interface; //type: string
-                                    Value tunnel_class; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf out_label_name; //type: string
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf backup_interface; //type: string
+                                    YLeaf backup_ipv4_next_hop; //type: string
+                                    YLeaf merge_point_label; //type: uint32
+                                    YLeaf backup_local_label; //type: uint32
+                                    YLeaf tunnel_interface; //type: string
+                                    YLeaf tunnel_weight; //type: uint32
+                                    YLeaf data_out_parent_interface; //type: string
+                                    YLeaf tunnel_class; //type: uint32
 
 
 
@@ -12677,17 +13101,18 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value cross_connect_id; //type: uint32
-                                    Value pseuodo_wire_connect_id; //type: uint32
-                                    Value ipv4_next_hop; //type: string
-                                    Value bridge_id; //type: uint32
-                                    Value split_horizon_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf cross_connect_id; //type: uint32
+                                    YLeaf pseuodo_wire_connect_id; //type: uint32
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf bridge_id; //type: uint32
+                                    YLeaf split_horizon_id; //type: uint32
 
 
 
@@ -12707,11 +13132,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value out_interface; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -12731,18 +13157,19 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value ipv4_next_hop; //type: string
-                                    Value control_word; //type: int32
-                                    Value imposition; //type: int32
-                                    Value vctype; //type: uint8
-                                    Value pw_list_id; //type: uint16
-                                    Value pwhe_interface; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf control_word; //type: int32
+                                    YLeaf imposition; //type: int32
+                                    YLeaf vctype; //type: uint8
+                                    YLeaf pw_list_id; //type: uint16
+                                    YLeaf pwhe_interface; //type: string
 
 
 
@@ -12762,12 +13189,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value l3_interface; //type: string
-                                    Value l2_interface; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf l3_interface; //type: string
+                                    YLeaf l2_interface; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -12787,8 +13215,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value owner_application_type; //type: MgmtLsdAppEnum
 
+
+                                    YLeaf owner_application_type; //type: MgmtLsdAppEnum
 
                                 class Nexthop : public Entity
                                 {
@@ -12803,21 +13232,22 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_interface_parent; //type: string
-                                        Value ipv4_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value load_metric; //type: uint32
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value tunnel_id; //type: uint16
-                                        Value next_hop_id; //type: uint32
-                                        Value local_label; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_interface_parent; //type: string
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf load_metric; //type: uint32
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf tunnel_id; //type: uint16
+                                        YLeaf next_hop_id; //type: uint32
+                                        YLeaf local_label; //type: uint32
 
 
 
@@ -12837,10 +13267,11 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_nexthops; //type: uint8
-                                        Value num_lbls; //type: uint8
-                                        ValueList nexthop; //type: list of  string
 
+
+                                        YLeaf num_nexthops; //type: uint8
+                                        YLeaf num_lbls; //type: uint8
+                                        YLeafList nexthop; //type: list of  string
 
                                     class Label : public Entity
                                     {
@@ -12855,9 +13286,10 @@ class MplsLsd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value outgoing_label; //type: uint32
-                                            Value outgoing_label_str; //type: string
 
+
+                                            YLeaf outgoing_label; //type: uint32
+                                            YLeaf outgoing_label_str; //type: string
 
 
 
@@ -12872,7 +13304,6 @@ class MplsLsd : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
-                                    class MgmtLsdAppEnum;
 
 
                             }; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data
@@ -12893,6 +13324,7 @@ class MplsLsd : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Nexthop : public Entity
                                 {
                                     public:
@@ -12906,17 +13338,18 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value ipv6_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value next_hop_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf ipv6_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf next_hop_id; //type: uint32
 
 
 
@@ -12936,10 +13369,11 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_nexthops; //type: uint8
-                                        Value num_lbls; //type: uint8
-                                        ValueList nexthop; //type: list of  string
 
+
+                                        YLeaf num_nexthops; //type: uint8
+                                        YLeaf num_lbls; //type: uint8
+                                        YLeafList nexthop; //type: list of  string
 
                                     class Label : public Entity
                                     {
@@ -12954,9 +13388,10 @@ class MplsLsd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value outgoing_label; //type: uint32
-                                            Value outgoing_label_str; //type: string
 
+
+                                            YLeaf outgoing_label; //type: uint32
+                                            YLeaf outgoing_label_str; //type: string
 
 
 
@@ -12989,14 +13424,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value tunnel_local_label; //type: uint32
-                                    Value tunnel_local_label_str; //type: string
-                                    Value tunnel_fwd_class; //type: uint8
-                                    Value tunnel_load_metric; //type: uint32
-                                    Value flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf tunnel_local_label; //type: uint32
+                                    YLeaf tunnel_local_label_str; //type: string
+                                    YLeaf tunnel_fwd_class; //type: uint8
+                                    YLeaf tunnel_load_metric; //type: uint32
+                                    YLeaf flags_decode; //type: string
 
 
 
@@ -13016,8 +13452,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value dmtc_ext_ifh; //type: string
 
+
+                                    YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -13038,7 +13475,6 @@ class MplsLsd : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData> te_head_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data> tev4_data;
-                                class MgmtLsdMoiEnum;
 
 
                         }; // MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi
@@ -13089,6 +13525,7 @@ class MplsLsd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RewriteIpv4 : public Entity
             {
                 public:
@@ -13102,18 +13539,19 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value rsi_table_name; //type: string
-                    Value rsi_table_id; //type: string
-                    Value prefix; //type: string
-                    Value prefix_length; //type: int32
-                    Value rewrite_version; //type: uint64
-                    Value bcdl_priority; //type: uint8
-                    Value lsd_queue; //type: uint8
-                    Value rw_install_time; //type: uint64
-                    Value rw_install_age; //type: uint64
-                    Value rw_updated; //type: int32
-                    Value priority_updated; //type: int32
 
+
+                    YLeaf rsi_table_name; //type: string
+                    YLeaf rsi_table_id; //type: string
+                    YLeaf prefix; //type: string
+                    YLeaf prefix_length; //type: int32
+                    YLeaf rewrite_version; //type: uint64
+                    YLeaf bcdl_priority; //type: uint8
+                    YLeaf lsd_queue; //type: uint8
+                    YLeaf rw_install_time; //type: uint64
+                    YLeaf rw_install_age; //type: uint64
+                    YLeaf rw_updated; //type: int32
+                    YLeaf priority_updated; //type: int32
 
                 class FpiKey : public Entity
                 {
@@ -13130,6 +13568,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Fpi : public Entity
                     {
                         public:
@@ -13143,8 +13582,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                            YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                         class LabelData : public Entity
                         {
@@ -13159,10 +13599,11 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label; //type: uint32
-                                Value security_id; //type: uint32
-                                Value elc; //type: int32
 
+
+                                YLeaf label; //type: uint32
+                                YLeaf security_id; //type: uint32
+                                YLeaf elc; //type: int32
 
 
 
@@ -13182,9 +13623,10 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tunnel_interface; //type: string
-                                Value local_label; //type: uint32
 
+
+                                YLeaf tunnel_interface; //type: string
+                                YLeaf local_label; //type: uint32
 
 
 
@@ -13204,11 +13646,12 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -13228,12 +13671,13 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value router_flags; //type: uint32
-                                Value prefix_len; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf router_flags; //type: uint32
+                                YLeaf prefix_len; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -13253,8 +13697,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value pwhe_list_id; //type: uint16
 
+
+                                YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -13274,8 +13719,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dmtc_ext_ifh; //type: string
 
+
+                                YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -13288,7 +13734,6 @@ class MplsLsd : public Entity
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData> label_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData> pw_list_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData> te_data;
-                            class MgmtLsdFpiEnum;
 
 
                     }; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
@@ -13307,15 +13752,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_role_primary; //type: int32
-                            Value application_instance; //type: string
-                            Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                            class MgmtLsdAppEnum;
-                            class MgmtLsdAppRsrcStateEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_role_primary; //type: int32
+                            YLeaf application_instance; //type: string
+                            YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                     }; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner
@@ -13343,6 +13787,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class RewriteId_ : public Entity
                     {
                         public:
@@ -13356,8 +13801,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rewrite_id_type; //type: MgmtLsdRwIdEnum
 
+
+                            YLeaf rewrite_id_type; //type: MgmtLsdRwIdEnum
 
                         class LabelContext : public Entity
                         {
@@ -13372,8 +13818,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label_context_type; //type: MgmtLsdLblCtxEnum
 
+
+                                YLeaf label_context_type; //type: MgmtLsdLblCtxEnum
 
                             class Ipv4Data : public Entity
                             {
@@ -13388,12 +13835,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value security_id; //type: uint32
-                                    Value vrf_name; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf vrf_name; //type: string
 
 
 
@@ -13413,12 +13861,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value security_id; //type: uint32
-                                    Value vrf_name; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf vrf_name; //type: string
 
 
 
@@ -13438,14 +13887,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value tunnel_source; //type: string
-                                    Value tunnel_dest; //type: string
-                                    Value tunnel_id; //type: uint32
-                                    Value tunnel_id_extension; //type: uint32
-                                    Value tunnel_lsp_id; //type: uint32
-                                    Value is_srte; //type: int32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf tunnel_source; //type: string
+                                    YLeaf tunnel_dest; //type: string
+                                    YLeaf tunnel_id; //type: uint32
+                                    YLeaf tunnel_id_extension; //type: uint32
+                                    YLeaf tunnel_lsp_id; //type: uint32
+                                    YLeaf is_srte; //type: int32
 
 
 
@@ -13465,10 +13915,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value route_distinguisher; //type: uint64
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -13488,10 +13939,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value route_distinguisher; //type: uint64
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -13511,9 +13963,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value security_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf security_id; //type: uint32
 
 
 
@@ -13533,10 +13986,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value ipv4_next_hop; //type: string
-                                    Value security_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf security_id; //type: uint32
 
 
 
@@ -13556,10 +14010,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value ipv6_next_hop; //type: string
-                                    Value security_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf ipv6_next_hop; //type: string
+                                    YLeaf security_id; //type: uint32
 
 
 
@@ -13579,11 +14034,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value pseudowire_id; //type: uint64
-                                    Value remote_l2_router_id; //type: uint32
-                                    Value subinterface; //type: string
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf pseudowire_id; //type: uint64
+                                    YLeaf remote_l2_router_id; //type: uint32
+                                    YLeaf subinterface; //type: string
 
 
 
@@ -13603,12 +14059,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value service; //type: uint8
-                                    Value vpn_id; //type: uint16
-                                    Value edge_id; //type: uint16
-                                    Value offset; //type: uint32
-                                    Value size; //type: uint32
 
+
+                                    YLeaf service; //type: uint8
+                                    YLeaf vpn_id; //type: uint16
+                                    YLeaf edge_id; //type: uint16
+                                    YLeaf offset; //type: uint32
+                                    YLeaf size; //type: uint32
 
 
 
@@ -13628,9 +14085,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value parent_interface; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf parent_interface; //type: string
 
 
 
@@ -13650,14 +14108,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value tunnel_source; //type: string
-                                    Value p2mp_id; //type: uint32
-                                    Value tunnel_id; //type: uint32
-                                    Value tunnel_id_extension; //type: uint32
-                                    Value tunnel_lsp_id; //type: uint32
-                                    Value previous_hop; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf tunnel_source; //type: string
+                                    YLeaf p2mp_id; //type: uint32
+                                    YLeaf tunnel_id; //type: uint32
+                                    YLeaf tunnel_id_extension; //type: uint32
+                                    YLeaf tunnel_lsp_id; //type: uint32
+                                    YLeaf previous_hop; //type: string
 
 
 
@@ -13677,12 +14136,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value type; //type: uint16
-                                    Value lsm_id; //type: uint32
-                                    Value peer_lsrid; //type: string
-                                    Value peer_label_space_id; //type: uint16
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf type; //type: uint16
+                                    YLeaf lsm_id; //type: uint32
+                                    YLeaf peer_lsrid; //type: string
+                                    YLeaf peer_label_space_id; //type: uint16
 
 
 
@@ -13702,8 +14162,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pwhe_intf; //type: string
 
+
+                                    YLeaf pwhe_intf; //type: string
 
 
 
@@ -13723,14 +14184,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value source_global_id; //type: uint32
-                                    Value source_node_id; //type: string
-                                    Value dest_global_id; //type: uint32
-                                    Value dest_node_id; //type: string
-                                    Value source_tunnel_id; //type: uint16
-                                    Value dest_tunnel_id; //type: uint16
-                                    Value lsp_id; //type: uint16
 
+
+                                    YLeaf source_global_id; //type: uint32
+                                    YLeaf source_node_id; //type: string
+                                    YLeaf dest_global_id; //type: uint32
+                                    YLeaf dest_node_id; //type: string
+                                    YLeaf source_tunnel_id; //type: uint16
+                                    YLeaf dest_tunnel_id; //type: uint16
+                                    YLeaf lsp_id; //type: uint16
 
 
 
@@ -13750,8 +14212,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value gre_interface; //type: string
 
+
+                                    YLeaf gre_interface; //type: string
 
 
 
@@ -13771,8 +14234,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value greipv6_interface; //type: string
 
+
+                                    YLeaf greipv6_interface; //type: string
 
 
 
@@ -13792,10 +14256,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value evpn_id; //type: uint32
-                                    Value evpn_tag; //type: uint32
-                                    Value ethernet_segment; //type: string
 
+
+                                    YLeaf evpn_id; //type: uint32
+                                    YLeaf evpn_tag; //type: uint32
+                                    YLeaf ethernet_segment; //type: string
 
 
 
@@ -13815,9 +14280,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value blb_intf; //type: string
-                                    Value prefix; //type: string
 
+
+                                    YLeaf blb_intf; //type: string
+                                    YLeaf prefix; //type: string
 
 
 
@@ -13837,9 +14303,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value blb_intf; //type: string
-                                    Value prefix; //type: string
 
+
+                                    YLeaf blb_intf; //type: string
+                                    YLeaf prefix; //type: string
 
 
 
@@ -13859,10 +14326,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value vrf_id; //type: uint32
-                                    Value head; //type: int32
-                                    Value v6; //type: int32
 
+
+                                    YLeaf vrf_id; //type: uint32
+                                    YLeaf head; //type: int32
+                                    YLeaf v6; //type: int32
 
 
 
@@ -13882,13 +14350,14 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value vrf_id; //type: uint32
-                                    Value source; //type: string
-                                    Value head; //type: int32
-                                    Value v6; //type: int32
-                                    Value hli; //type: uint32
-                                    Value seg; //type: int32
 
+
+                                    YLeaf vrf_id; //type: uint32
+                                    YLeaf source; //type: string
+                                    YLeaf head; //type: int32
+                                    YLeaf v6; //type: int32
+                                    YLeaf hli; //type: uint32
+                                    YLeaf seg; //type: int32
 
 
 
@@ -13908,9 +14377,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value next_hop_set_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf next_hop_set_id; //type: uint32
 
 
 
@@ -13930,9 +14400,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value segment_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf segment_id; //type: uint32
 
 
 
@@ -13952,11 +14423,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value index_; //type: uint32
-                                    Value type; //type: uint32
-                                    Value intf; //type: string
-                                    Value addr; //type: string
 
+
+                                    YLeaf index_; //type: uint32
+                                    YLeaf type; //type: uint32
+                                    YLeaf intf; //type: string
+                                    YLeaf addr; //type: string
 
 
 
@@ -13976,11 +14448,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value index_; //type: uint32
-                                    Value type; //type: uint32
-                                    Value intf; //type: string
-                                    Value addr; //type: string
 
+
+                                    YLeaf index_; //type: uint32
+                                    YLeaf type; //type: uint32
+                                    YLeaf intf; //type: string
+                                    YLeaf addr; //type: string
 
 
 
@@ -14000,10 +14473,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value start_label; //type: uint32
-                                    Value offset; //type: uint32
-                                    Value size; //type: uint32
 
+
+                                    YLeaf start_label; //type: uint32
+                                    YLeaf offset; //type: uint32
+                                    YLeaf size; //type: uint32
 
 
 
@@ -14023,11 +14497,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value te_identifier; //type: uint32
-                                    Value te_type; //type: MgmtLsdTeBindingEnum
 
 
-                                    class MgmtLsdTeBindingEnum;
+                                    YLeaf te_identifier; //type: uint32
+                                    YLeaf te_type; //type: MgmtLsdTeBindingEnum
+
 
 
                             }; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TeBinding
@@ -14061,7 +14535,6 @@ class MplsLsd : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-                                class MgmtLsdLblCtxEnum;
 
 
                         }; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext
@@ -14080,8 +14553,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                ValueList label_data; //type: list of  uint32
 
+
+                                YLeafList label_data; //type: list of  uint32
 
 
 
@@ -14090,7 +14564,6 @@ class MplsLsd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext> label_context;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
-                            class MgmtLsdRwIdEnum;
 
 
                     }; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_
@@ -14117,6 +14590,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Fpi : public Entity
                     {
                         public:
@@ -14130,8 +14604,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                            YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                         class LabelData : public Entity
                         {
@@ -14146,10 +14621,11 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label; //type: uint32
-                                Value security_id; //type: uint32
-                                Value elc; //type: int32
 
+
+                                YLeaf label; //type: uint32
+                                YLeaf security_id; //type: uint32
+                                YLeaf elc; //type: int32
 
 
 
@@ -14169,9 +14645,10 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tunnel_interface; //type: string
-                                Value local_label; //type: uint32
 
+
+                                YLeaf tunnel_interface; //type: string
+                                YLeaf local_label; //type: uint32
 
 
 
@@ -14191,11 +14668,12 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -14215,12 +14693,13 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value router_flags; //type: uint32
-                                Value prefix_len; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf router_flags; //type: uint32
+                                YLeaf prefix_len; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -14240,8 +14719,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value pwhe_list_id; //type: uint16
 
+
+                                YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -14261,8 +14741,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dmtc_ext_ifh; //type: string
 
+
+                                YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -14275,7 +14756,6 @@ class MplsLsd : public Entity
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::LabelData> label_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::PwListData> pw_list_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::TeData> te_data;
-                            class MgmtLsdFpiEnum;
 
 
                     }; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi
@@ -14294,15 +14774,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_role_primary; //type: int32
-                            Value application_instance; //type: string
-                            Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                            class MgmtLsdAppEnum;
-                            class MgmtLsdAppRsrcStateEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_role_primary; //type: int32
+                            YLeaf application_instance; //type: string
+                            YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                     }; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::ApplicationOwner
@@ -14328,9 +14807,10 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value table_id; //type: uint32
-                        Value v4_rpf_neighbor; //type: string
 
+
+                        YLeaf table_id; //type: uint32
+                        YLeaf v4_rpf_neighbor; //type: string
 
 
 
@@ -14350,9 +14830,10 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value table_id; //type: uint32
-                        Value v6_rpf_neighbor; //type: string
 
+
+                        YLeaf table_id; //type: uint32
+                        YLeaf v6_rpf_neighbor; //type: string
 
 
 
@@ -14374,6 +14855,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ApplicationResource : public Entity
                     {
                         public:
@@ -14387,15 +14869,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_role_primary; //type: int32
-                            Value application_instance; //type: string
-                            Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                            class MgmtLsdAppEnum;
-                            class MgmtLsdAppRsrcStateEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_role_primary; //type: int32
+                            YLeaf application_instance; //type: string
+                            YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                     }; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::ApplicationResource
@@ -14416,6 +14897,7 @@ class MplsLsd : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Moi : public Entity
                         {
                             public:
@@ -14429,8 +14911,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value moi_type; //type: MgmtLsdMoiEnum
 
+
+                                YLeaf moi_type; //type: MgmtLsdMoiEnum
 
                             class PopAndLookupIpv4 : public Entity
                             {
@@ -14445,10 +14928,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -14468,11 +14952,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_label; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_label; //type: uint32
 
 
 
@@ -14492,10 +14977,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -14515,21 +15001,22 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_interface_parent; //type: string
-                                    Value ipv4_next_hop; //type: string
-                                    Value path_id; //type: uint8
-                                    Value backup_path_id; //type: uint8
-                                    Value load_metric; //type: uint32
-                                    Value out_label; //type: uint32
-                                    Value out_label_name; //type: string
-                                    Value tunnel_id; //type: uint16
-                                    Value next_hop_id; //type: uint32
-                                    Value local_label; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_interface_parent; //type: string
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf path_id; //type: uint8
+                                    YLeaf backup_path_id; //type: uint8
+                                    YLeaf load_metric; //type: uint32
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf out_label_name; //type: string
+                                    YLeaf tunnel_id; //type: uint16
+                                    YLeaf next_hop_id; //type: uint32
+                                    YLeaf local_label; //type: uint32
 
 
 
@@ -14549,17 +15036,18 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value out_label_name; //type: string
-                                    Value ipv6_next_hop; //type: string
-                                    Value path_id; //type: uint8
-                                    Value backup_path_id; //type: uint8
-                                    Value next_hop_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf out_label_name; //type: string
+                                    YLeaf ipv6_next_hop; //type: string
+                                    YLeaf path_id; //type: uint8
+                                    YLeaf backup_path_id; //type: uint8
+                                    YLeaf next_hop_id; //type: uint32
 
 
 
@@ -14579,22 +15067,23 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value out_label_name; //type: string
-                                    Value ipv4_next_hop; //type: string
-                                    Value backup_interface; //type: string
-                                    Value backup_ipv4_next_hop; //type: string
-                                    Value merge_point_label; //type: uint32
-                                    Value backup_local_label; //type: uint32
-                                    Value tunnel_interface; //type: string
-                                    Value tunnel_weight; //type: uint32
-                                    Value data_out_parent_interface; //type: string
-                                    Value tunnel_class; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf out_label_name; //type: string
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf backup_interface; //type: string
+                                    YLeaf backup_ipv4_next_hop; //type: string
+                                    YLeaf merge_point_label; //type: uint32
+                                    YLeaf backup_local_label; //type: uint32
+                                    YLeaf tunnel_interface; //type: string
+                                    YLeaf tunnel_weight; //type: uint32
+                                    YLeaf data_out_parent_interface; //type: string
+                                    YLeaf tunnel_class; //type: uint32
 
 
 
@@ -14614,17 +15103,18 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value cross_connect_id; //type: uint32
-                                    Value pseuodo_wire_connect_id; //type: uint32
-                                    Value ipv4_next_hop; //type: string
-                                    Value bridge_id; //type: uint32
-                                    Value split_horizon_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf cross_connect_id; //type: uint32
+                                    YLeaf pseuodo_wire_connect_id; //type: uint32
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf bridge_id; //type: uint32
+                                    YLeaf split_horizon_id; //type: uint32
 
 
 
@@ -14644,11 +15134,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value out_interface; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -14668,18 +15159,19 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value ipv4_next_hop; //type: string
-                                    Value control_word; //type: int32
-                                    Value imposition; //type: int32
-                                    Value vctype; //type: uint8
-                                    Value pw_list_id; //type: uint16
-                                    Value pwhe_interface; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf control_word; //type: int32
+                                    YLeaf imposition; //type: int32
+                                    YLeaf vctype; //type: uint8
+                                    YLeaf pw_list_id; //type: uint16
+                                    YLeaf pwhe_interface; //type: string
 
 
 
@@ -14699,12 +15191,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value l3_interface; //type: string
-                                    Value l2_interface; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf l3_interface; //type: string
+                                    YLeaf l2_interface; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -14724,8 +15217,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value owner_application_type; //type: MgmtLsdAppEnum
 
+
+                                    YLeaf owner_application_type; //type: MgmtLsdAppEnum
 
                                 class Nexthop : public Entity
                                 {
@@ -14740,21 +15234,22 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_interface_parent; //type: string
-                                        Value ipv4_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value load_metric; //type: uint32
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value tunnel_id; //type: uint16
-                                        Value next_hop_id; //type: uint32
-                                        Value local_label; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_interface_parent; //type: string
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf load_metric; //type: uint32
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf tunnel_id; //type: uint16
+                                        YLeaf next_hop_id; //type: uint32
+                                        YLeaf local_label; //type: uint32
 
 
 
@@ -14774,10 +15269,11 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_nexthops; //type: uint8
-                                        Value num_lbls; //type: uint8
-                                        ValueList nexthop; //type: list of  string
 
+
+                                        YLeaf num_nexthops; //type: uint8
+                                        YLeaf num_lbls; //type: uint8
+                                        YLeafList nexthop; //type: list of  string
 
                                     class Label : public Entity
                                     {
@@ -14792,9 +15288,10 @@ class MplsLsd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value outgoing_label; //type: uint32
-                                            Value outgoing_label_str; //type: string
 
+
+                                            YLeaf outgoing_label; //type: uint32
+                                            YLeaf outgoing_label_str; //type: string
 
 
 
@@ -14809,7 +15306,6 @@ class MplsLsd : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
-                                    class MgmtLsdAppEnum;
 
 
                             }; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data
@@ -14830,6 +15326,7 @@ class MplsLsd : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Nexthop : public Entity
                                 {
                                     public:
@@ -14843,17 +15340,18 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value ipv6_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value next_hop_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf ipv6_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf next_hop_id; //type: uint32
 
 
 
@@ -14873,10 +15371,11 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_nexthops; //type: uint8
-                                        Value num_lbls; //type: uint8
-                                        ValueList nexthop; //type: list of  string
 
+
+                                        YLeaf num_nexthops; //type: uint8
+                                        YLeaf num_lbls; //type: uint8
+                                        YLeafList nexthop; //type: list of  string
 
                                     class Label : public Entity
                                     {
@@ -14891,9 +15390,10 @@ class MplsLsd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value outgoing_label; //type: uint32
-                                            Value outgoing_label_str; //type: string
 
+
+                                            YLeaf outgoing_label; //type: uint32
+                                            YLeaf outgoing_label_str; //type: string
 
 
 
@@ -14926,14 +15426,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value tunnel_local_label; //type: uint32
-                                    Value tunnel_local_label_str; //type: string
-                                    Value tunnel_fwd_class; //type: uint8
-                                    Value tunnel_load_metric; //type: uint32
-                                    Value flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf tunnel_local_label; //type: uint32
+                                    YLeaf tunnel_local_label_str; //type: string
+                                    YLeaf tunnel_fwd_class; //type: uint8
+                                    YLeaf tunnel_load_metric; //type: uint32
+                                    YLeaf flags_decode; //type: string
 
 
 
@@ -14953,8 +15454,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value dmtc_ext_ifh; //type: string
 
+
+                                    YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -14975,7 +15477,6 @@ class MplsLsd : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData> te_head_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data> tev4_data;
-                                class MgmtLsdMoiEnum;
 
 
                         }; // MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi
@@ -15026,6 +15527,7 @@ class MplsLsd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RewriteTe : public Entity
             {
                 public:
@@ -15039,15 +15541,16 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value rewrite_version; //type: uint64
-                    Value bcdl_priority; //type: uint8
-                    Value lsd_queue; //type: uint8
-                    Value rw_install_time; //type: uint64
-                    Value rw_install_age; //type: uint64
-                    Value rw_updated; //type: int32
-                    Value priority_updated; //type: int32
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf rewrite_version; //type: uint64
+                    YLeaf bcdl_priority; //type: uint8
+                    YLeaf lsd_queue; //type: uint8
+                    YLeaf rw_install_time; //type: uint64
+                    YLeaf rw_install_age; //type: uint64
+                    YLeaf rw_updated; //type: int32
+                    YLeaf priority_updated; //type: int32
 
                 class FpiKey : public Entity
                 {
@@ -15064,6 +15567,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Fpi : public Entity
                     {
                         public:
@@ -15077,8 +15581,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                            YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                         class LabelData : public Entity
                         {
@@ -15093,10 +15598,11 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label; //type: uint32
-                                Value security_id; //type: uint32
-                                Value elc; //type: int32
 
+
+                                YLeaf label; //type: uint32
+                                YLeaf security_id; //type: uint32
+                                YLeaf elc; //type: int32
 
 
 
@@ -15116,9 +15622,10 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tunnel_interface; //type: string
-                                Value local_label; //type: uint32
 
+
+                                YLeaf tunnel_interface; //type: string
+                                YLeaf local_label; //type: uint32
 
 
 
@@ -15138,11 +15645,12 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -15162,12 +15670,13 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value router_flags; //type: uint32
-                                Value prefix_len; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf router_flags; //type: uint32
+                                YLeaf prefix_len; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -15187,8 +15696,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value pwhe_list_id; //type: uint16
 
+
+                                YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -15208,8 +15718,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dmtc_ext_ifh; //type: string
 
+
+                                YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -15222,7 +15733,6 @@ class MplsLsd : public Entity
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::LabelData> label_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::PwListData> pw_list_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::TeData> te_data;
-                            class MgmtLsdFpiEnum;
 
 
                     }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi
@@ -15241,15 +15751,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_role_primary; //type: int32
-                            Value application_instance; //type: string
-                            Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                            class MgmtLsdAppEnum;
-                            class MgmtLsdAppRsrcStateEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_role_primary; //type: int32
+                            YLeaf application_instance; //type: string
+                            YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                     }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::ApplicationOwner
@@ -15277,6 +15786,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class RewriteId_ : public Entity
                     {
                         public:
@@ -15290,8 +15800,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rewrite_id_type; //type: MgmtLsdRwIdEnum
 
+
+                            YLeaf rewrite_id_type; //type: MgmtLsdRwIdEnum
 
                         class LabelContext : public Entity
                         {
@@ -15306,8 +15817,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label_context_type; //type: MgmtLsdLblCtxEnum
 
+
+                                YLeaf label_context_type; //type: MgmtLsdLblCtxEnum
 
                             class Ipv4Data : public Entity
                             {
@@ -15322,12 +15834,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value security_id; //type: uint32
-                                    Value vrf_name; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf vrf_name; //type: string
 
 
 
@@ -15347,12 +15860,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value security_id; //type: uint32
-                                    Value vrf_name; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf vrf_name; //type: string
 
 
 
@@ -15372,14 +15886,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value tunnel_source; //type: string
-                                    Value tunnel_dest; //type: string
-                                    Value tunnel_id; //type: uint32
-                                    Value tunnel_id_extension; //type: uint32
-                                    Value tunnel_lsp_id; //type: uint32
-                                    Value is_srte; //type: int32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf tunnel_source; //type: string
+                                    YLeaf tunnel_dest; //type: string
+                                    YLeaf tunnel_id; //type: uint32
+                                    YLeaf tunnel_id_extension; //type: uint32
+                                    YLeaf tunnel_lsp_id; //type: uint32
+                                    YLeaf is_srte; //type: int32
 
 
 
@@ -15399,10 +15914,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value route_distinguisher; //type: uint64
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -15422,10 +15938,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value route_distinguisher; //type: uint64
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -15445,9 +15962,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value security_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf security_id; //type: uint32
 
 
 
@@ -15467,10 +15985,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value ipv4_next_hop; //type: string
-                                    Value security_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf security_id; //type: uint32
 
 
 
@@ -15490,10 +16009,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value ipv6_next_hop; //type: string
-                                    Value security_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf ipv6_next_hop; //type: string
+                                    YLeaf security_id; //type: uint32
 
 
 
@@ -15513,11 +16033,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value pseudowire_id; //type: uint64
-                                    Value remote_l2_router_id; //type: uint32
-                                    Value subinterface; //type: string
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf pseudowire_id; //type: uint64
+                                    YLeaf remote_l2_router_id; //type: uint32
+                                    YLeaf subinterface; //type: string
 
 
 
@@ -15537,12 +16058,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value service; //type: uint8
-                                    Value vpn_id; //type: uint16
-                                    Value edge_id; //type: uint16
-                                    Value offset; //type: uint32
-                                    Value size; //type: uint32
 
+
+                                    YLeaf service; //type: uint8
+                                    YLeaf vpn_id; //type: uint16
+                                    YLeaf edge_id; //type: uint16
+                                    YLeaf offset; //type: uint32
+                                    YLeaf size; //type: uint32
 
 
 
@@ -15562,9 +16084,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value parent_interface; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf parent_interface; //type: string
 
 
 
@@ -15584,14 +16107,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value tunnel_source; //type: string
-                                    Value p2mp_id; //type: uint32
-                                    Value tunnel_id; //type: uint32
-                                    Value tunnel_id_extension; //type: uint32
-                                    Value tunnel_lsp_id; //type: uint32
-                                    Value previous_hop; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf tunnel_source; //type: string
+                                    YLeaf p2mp_id; //type: uint32
+                                    YLeaf tunnel_id; //type: uint32
+                                    YLeaf tunnel_id_extension; //type: uint32
+                                    YLeaf tunnel_lsp_id; //type: uint32
+                                    YLeaf previous_hop; //type: string
 
 
 
@@ -15611,12 +16135,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value type; //type: uint16
-                                    Value lsm_id; //type: uint32
-                                    Value peer_lsrid; //type: string
-                                    Value peer_label_space_id; //type: uint16
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf type; //type: uint16
+                                    YLeaf lsm_id; //type: uint32
+                                    YLeaf peer_lsrid; //type: string
+                                    YLeaf peer_label_space_id; //type: uint16
 
 
 
@@ -15636,8 +16161,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pwhe_intf; //type: string
 
+
+                                    YLeaf pwhe_intf; //type: string
 
 
 
@@ -15657,14 +16183,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value source_global_id; //type: uint32
-                                    Value source_node_id; //type: string
-                                    Value dest_global_id; //type: uint32
-                                    Value dest_node_id; //type: string
-                                    Value source_tunnel_id; //type: uint16
-                                    Value dest_tunnel_id; //type: uint16
-                                    Value lsp_id; //type: uint16
 
+
+                                    YLeaf source_global_id; //type: uint32
+                                    YLeaf source_node_id; //type: string
+                                    YLeaf dest_global_id; //type: uint32
+                                    YLeaf dest_node_id; //type: string
+                                    YLeaf source_tunnel_id; //type: uint16
+                                    YLeaf dest_tunnel_id; //type: uint16
+                                    YLeaf lsp_id; //type: uint16
 
 
 
@@ -15684,8 +16211,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value gre_interface; //type: string
 
+
+                                    YLeaf gre_interface; //type: string
 
 
 
@@ -15705,8 +16233,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value greipv6_interface; //type: string
 
+
+                                    YLeaf greipv6_interface; //type: string
 
 
 
@@ -15726,10 +16255,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value evpn_id; //type: uint32
-                                    Value evpn_tag; //type: uint32
-                                    Value ethernet_segment; //type: string
 
+
+                                    YLeaf evpn_id; //type: uint32
+                                    YLeaf evpn_tag; //type: uint32
+                                    YLeaf ethernet_segment; //type: string
 
 
 
@@ -15749,9 +16279,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value blb_intf; //type: string
-                                    Value prefix; //type: string
 
+
+                                    YLeaf blb_intf; //type: string
+                                    YLeaf prefix; //type: string
 
 
 
@@ -15771,9 +16302,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value blb_intf; //type: string
-                                    Value prefix; //type: string
 
+
+                                    YLeaf blb_intf; //type: string
+                                    YLeaf prefix; //type: string
 
 
 
@@ -15793,10 +16325,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value vrf_id; //type: uint32
-                                    Value head; //type: int32
-                                    Value v6; //type: int32
 
+
+                                    YLeaf vrf_id; //type: uint32
+                                    YLeaf head; //type: int32
+                                    YLeaf v6; //type: int32
 
 
 
@@ -15816,13 +16349,14 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value vrf_id; //type: uint32
-                                    Value source; //type: string
-                                    Value head; //type: int32
-                                    Value v6; //type: int32
-                                    Value hli; //type: uint32
-                                    Value seg; //type: int32
 
+
+                                    YLeaf vrf_id; //type: uint32
+                                    YLeaf source; //type: string
+                                    YLeaf head; //type: int32
+                                    YLeaf v6; //type: int32
+                                    YLeaf hli; //type: uint32
+                                    YLeaf seg; //type: int32
 
 
 
@@ -15842,9 +16376,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value next_hop_set_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf next_hop_set_id; //type: uint32
 
 
 
@@ -15864,9 +16399,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value segment_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf segment_id; //type: uint32
 
 
 
@@ -15886,11 +16422,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value index_; //type: uint32
-                                    Value type; //type: uint32
-                                    Value intf; //type: string
-                                    Value addr; //type: string
 
+
+                                    YLeaf index_; //type: uint32
+                                    YLeaf type; //type: uint32
+                                    YLeaf intf; //type: string
+                                    YLeaf addr; //type: string
 
 
 
@@ -15910,11 +16447,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value index_; //type: uint32
-                                    Value type; //type: uint32
-                                    Value intf; //type: string
-                                    Value addr; //type: string
 
+
+                                    YLeaf index_; //type: uint32
+                                    YLeaf type; //type: uint32
+                                    YLeaf intf; //type: string
+                                    YLeaf addr; //type: string
 
 
 
@@ -15934,10 +16472,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value start_label; //type: uint32
-                                    Value offset; //type: uint32
-                                    Value size; //type: uint32
 
+
+                                    YLeaf start_label; //type: uint32
+                                    YLeaf offset; //type: uint32
+                                    YLeaf size; //type: uint32
 
 
 
@@ -15957,11 +16496,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value te_identifier; //type: uint32
-                                    Value te_type; //type: MgmtLsdTeBindingEnum
 
 
-                                    class MgmtLsdTeBindingEnum;
+                                    YLeaf te_identifier; //type: uint32
+                                    YLeaf te_type; //type: MgmtLsdTeBindingEnum
+
 
 
                             }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::TeBinding
@@ -15995,7 +16534,6 @@ class MplsLsd : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-                                class MgmtLsdLblCtxEnum;
 
 
                         }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext
@@ -16014,8 +16552,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                ValueList label_data; //type: list of  uint32
 
+
+                                YLeafList label_data; //type: list of  uint32
 
 
 
@@ -16024,7 +16563,6 @@ class MplsLsd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext> label_context;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
-                            class MgmtLsdRwIdEnum;
 
 
                     }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_
@@ -16051,6 +16589,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Fpi : public Entity
                     {
                         public:
@@ -16064,8 +16603,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                            YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                         class LabelData : public Entity
                         {
@@ -16080,10 +16620,11 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label; //type: uint32
-                                Value security_id; //type: uint32
-                                Value elc; //type: int32
 
+
+                                YLeaf label; //type: uint32
+                                YLeaf security_id; //type: uint32
+                                YLeaf elc; //type: int32
 
 
 
@@ -16103,9 +16644,10 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tunnel_interface; //type: string
-                                Value local_label; //type: uint32
 
+
+                                YLeaf tunnel_interface; //type: string
+                                YLeaf local_label; //type: uint32
 
 
 
@@ -16125,11 +16667,12 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -16149,12 +16692,13 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value router_flags; //type: uint32
-                                Value prefix_len; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf router_flags; //type: uint32
+                                YLeaf prefix_len; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -16174,8 +16718,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value pwhe_list_id; //type: uint16
 
+
+                                YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -16195,8 +16740,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dmtc_ext_ifh; //type: string
 
+
+                                YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -16209,7 +16755,6 @@ class MplsLsd : public Entity
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::LabelData> label_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::PwListData> pw_list_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::TeData> te_data;
-                            class MgmtLsdFpiEnum;
 
 
                     }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi
@@ -16228,15 +16773,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_role_primary; //type: int32
-                            Value application_instance; //type: string
-                            Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                            class MgmtLsdAppEnum;
-                            class MgmtLsdAppRsrcStateEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_role_primary; //type: int32
+                            YLeaf application_instance; //type: string
+                            YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                     }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::ApplicationOwner
@@ -16262,9 +16806,10 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value table_id; //type: uint32
-                        Value v4_rpf_neighbor; //type: string
 
+
+                        YLeaf table_id; //type: uint32
+                        YLeaf v4_rpf_neighbor; //type: string
 
 
 
@@ -16284,9 +16829,10 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value table_id; //type: uint32
-                        Value v6_rpf_neighbor; //type: string
 
+
+                        YLeaf table_id; //type: uint32
+                        YLeaf v6_rpf_neighbor; //type: string
 
 
 
@@ -16308,6 +16854,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ApplicationResource : public Entity
                     {
                         public:
@@ -16321,15 +16868,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_role_primary; //type: int32
-                            Value application_instance; //type: string
-                            Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                            class MgmtLsdAppEnum;
-                            class MgmtLsdAppRsrcStateEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_role_primary; //type: int32
+                            YLeaf application_instance; //type: string
+                            YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                     }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::ApplicationResource
@@ -16350,6 +16896,7 @@ class MplsLsd : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Moi : public Entity
                         {
                             public:
@@ -16363,8 +16910,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value moi_type; //type: MgmtLsdMoiEnum
 
+
+                                YLeaf moi_type; //type: MgmtLsdMoiEnum
 
                             class PopAndLookupIpv4 : public Entity
                             {
@@ -16379,10 +16927,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -16402,11 +16951,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_label; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_label; //type: uint32
 
 
 
@@ -16426,10 +16976,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -16449,21 +17000,22 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_interface_parent; //type: string
-                                    Value ipv4_next_hop; //type: string
-                                    Value path_id; //type: uint8
-                                    Value backup_path_id; //type: uint8
-                                    Value load_metric; //type: uint32
-                                    Value out_label; //type: uint32
-                                    Value out_label_name; //type: string
-                                    Value tunnel_id; //type: uint16
-                                    Value next_hop_id; //type: uint32
-                                    Value local_label; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_interface_parent; //type: string
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf path_id; //type: uint8
+                                    YLeaf backup_path_id; //type: uint8
+                                    YLeaf load_metric; //type: uint32
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf out_label_name; //type: string
+                                    YLeaf tunnel_id; //type: uint16
+                                    YLeaf next_hop_id; //type: uint32
+                                    YLeaf local_label; //type: uint32
 
 
 
@@ -16483,17 +17035,18 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value out_label_name; //type: string
-                                    Value ipv6_next_hop; //type: string
-                                    Value path_id; //type: uint8
-                                    Value backup_path_id; //type: uint8
-                                    Value next_hop_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf out_label_name; //type: string
+                                    YLeaf ipv6_next_hop; //type: string
+                                    YLeaf path_id; //type: uint8
+                                    YLeaf backup_path_id; //type: uint8
+                                    YLeaf next_hop_id; //type: uint32
 
 
 
@@ -16513,22 +17066,23 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value out_label_name; //type: string
-                                    Value ipv4_next_hop; //type: string
-                                    Value backup_interface; //type: string
-                                    Value backup_ipv4_next_hop; //type: string
-                                    Value merge_point_label; //type: uint32
-                                    Value backup_local_label; //type: uint32
-                                    Value tunnel_interface; //type: string
-                                    Value tunnel_weight; //type: uint32
-                                    Value data_out_parent_interface; //type: string
-                                    Value tunnel_class; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf out_label_name; //type: string
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf backup_interface; //type: string
+                                    YLeaf backup_ipv4_next_hop; //type: string
+                                    YLeaf merge_point_label; //type: uint32
+                                    YLeaf backup_local_label; //type: uint32
+                                    YLeaf tunnel_interface; //type: string
+                                    YLeaf tunnel_weight; //type: uint32
+                                    YLeaf data_out_parent_interface; //type: string
+                                    YLeaf tunnel_class; //type: uint32
 
 
 
@@ -16548,17 +17102,18 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value cross_connect_id; //type: uint32
-                                    Value pseuodo_wire_connect_id; //type: uint32
-                                    Value ipv4_next_hop; //type: string
-                                    Value bridge_id; //type: uint32
-                                    Value split_horizon_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf cross_connect_id; //type: uint32
+                                    YLeaf pseuodo_wire_connect_id; //type: uint32
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf bridge_id; //type: uint32
+                                    YLeaf split_horizon_id; //type: uint32
 
 
 
@@ -16578,11 +17133,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value out_interface; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -16602,18 +17158,19 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value ipv4_next_hop; //type: string
-                                    Value control_word; //type: int32
-                                    Value imposition; //type: int32
-                                    Value vctype; //type: uint8
-                                    Value pw_list_id; //type: uint16
-                                    Value pwhe_interface; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf control_word; //type: int32
+                                    YLeaf imposition; //type: int32
+                                    YLeaf vctype; //type: uint8
+                                    YLeaf pw_list_id; //type: uint16
+                                    YLeaf pwhe_interface; //type: string
 
 
 
@@ -16633,12 +17190,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value l3_interface; //type: string
-                                    Value l2_interface; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf l3_interface; //type: string
+                                    YLeaf l2_interface; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -16658,8 +17216,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value owner_application_type; //type: MgmtLsdAppEnum
 
+
+                                    YLeaf owner_application_type; //type: MgmtLsdAppEnum
 
                                 class Nexthop : public Entity
                                 {
@@ -16674,21 +17233,22 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_interface_parent; //type: string
-                                        Value ipv4_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value load_metric; //type: uint32
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value tunnel_id; //type: uint16
-                                        Value next_hop_id; //type: uint32
-                                        Value local_label; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_interface_parent; //type: string
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf load_metric; //type: uint32
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf tunnel_id; //type: uint16
+                                        YLeaf next_hop_id; //type: uint32
+                                        YLeaf local_label; //type: uint32
 
 
 
@@ -16708,10 +17268,11 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_nexthops; //type: uint8
-                                        Value num_lbls; //type: uint8
-                                        ValueList nexthop; //type: list of  string
 
+
+                                        YLeaf num_nexthops; //type: uint8
+                                        YLeaf num_lbls; //type: uint8
+                                        YLeafList nexthop; //type: list of  string
 
                                     class Label : public Entity
                                     {
@@ -16726,9 +17287,10 @@ class MplsLsd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value outgoing_label; //type: uint32
-                                            Value outgoing_label_str; //type: string
 
+
+                                            YLeaf outgoing_label; //type: uint32
+                                            YLeaf outgoing_label_str; //type: string
 
 
 
@@ -16743,7 +17305,6 @@ class MplsLsd : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
-                                    class MgmtLsdAppEnum;
 
 
                             }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data
@@ -16764,6 +17325,7 @@ class MplsLsd : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Nexthop : public Entity
                                 {
                                     public:
@@ -16777,17 +17339,18 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value ipv6_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value next_hop_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf ipv6_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf next_hop_id; //type: uint32
 
 
 
@@ -16807,10 +17370,11 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_nexthops; //type: uint8
-                                        Value num_lbls; //type: uint8
-                                        ValueList nexthop; //type: list of  string
 
+
+                                        YLeaf num_nexthops; //type: uint8
+                                        YLeaf num_lbls; //type: uint8
+                                        YLeafList nexthop; //type: list of  string
 
                                     class Label : public Entity
                                     {
@@ -16825,9 +17389,10 @@ class MplsLsd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value outgoing_label; //type: uint32
-                                            Value outgoing_label_str; //type: string
 
+
+                                            YLeaf outgoing_label; //type: uint32
+                                            YLeaf outgoing_label_str; //type: string
 
 
 
@@ -16860,14 +17425,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value tunnel_local_label; //type: uint32
-                                    Value tunnel_local_label_str; //type: string
-                                    Value tunnel_fwd_class; //type: uint8
-                                    Value tunnel_load_metric; //type: uint32
-                                    Value flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf tunnel_local_label; //type: uint32
+                                    YLeaf tunnel_local_label_str; //type: string
+                                    YLeaf tunnel_fwd_class; //type: uint8
+                                    YLeaf tunnel_load_metric; //type: uint32
+                                    YLeaf flags_decode; //type: string
 
 
 
@@ -16887,8 +17453,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value dmtc_ext_ifh; //type: string
 
+
+                                    YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -16909,7 +17476,6 @@ class MplsLsd : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::TeHeadData> te_head_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Tev4Data> tev4_data;
-                                class MgmtLsdMoiEnum;
 
 
                         }; // MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi
@@ -16960,6 +17526,7 @@ class MplsLsd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RewriteLabel : public Entity
             {
                 public:
@@ -16973,15 +17540,16 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value label_id; //type: int32
-                    Value rewrite_version; //type: uint64
-                    Value bcdl_priority; //type: uint8
-                    Value lsd_queue; //type: uint8
-                    Value rw_install_time; //type: uint64
-                    Value rw_install_age; //type: uint64
-                    Value rw_updated; //type: int32
-                    Value priority_updated; //type: int32
 
+
+                    YLeaf label_id; //type: int32
+                    YLeaf rewrite_version; //type: uint64
+                    YLeaf bcdl_priority; //type: uint8
+                    YLeaf lsd_queue; //type: uint8
+                    YLeaf rw_install_time; //type: uint64
+                    YLeaf rw_install_age; //type: uint64
+                    YLeaf rw_updated; //type: int32
+                    YLeaf priority_updated; //type: int32
 
                 class FpiKey : public Entity
                 {
@@ -16998,6 +17566,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Fpi : public Entity
                     {
                         public:
@@ -17011,8 +17580,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                            YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                         class LabelData : public Entity
                         {
@@ -17027,10 +17597,11 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label; //type: uint32
-                                Value security_id; //type: uint32
-                                Value elc; //type: int32
 
+
+                                YLeaf label; //type: uint32
+                                YLeaf security_id; //type: uint32
+                                YLeaf elc; //type: int32
 
 
 
@@ -17050,9 +17621,10 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tunnel_interface; //type: string
-                                Value local_label; //type: uint32
 
+
+                                YLeaf tunnel_interface; //type: string
+                                YLeaf local_label; //type: uint32
 
 
 
@@ -17072,11 +17644,12 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -17096,12 +17669,13 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value router_flags; //type: uint32
-                                Value prefix_len; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf router_flags; //type: uint32
+                                YLeaf prefix_len; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -17121,8 +17695,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value pwhe_list_id; //type: uint16
 
+
+                                YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -17142,8 +17717,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dmtc_ext_ifh; //type: string
 
+
+                                YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -17156,7 +17732,6 @@ class MplsLsd : public Entity
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::LabelData> label_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::PwListData> pw_list_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::TeData> te_data;
-                            class MgmtLsdFpiEnum;
 
 
                     }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi
@@ -17175,15 +17750,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_role_primary; //type: int32
-                            Value application_instance; //type: string
-                            Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                            class MgmtLsdAppEnum;
-                            class MgmtLsdAppRsrcStateEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_role_primary; //type: int32
+                            YLeaf application_instance; //type: string
+                            YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                     }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOwner
@@ -17211,6 +17785,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class RewriteId_ : public Entity
                     {
                         public:
@@ -17224,8 +17799,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rewrite_id_type; //type: MgmtLsdRwIdEnum
 
+
+                            YLeaf rewrite_id_type; //type: MgmtLsdRwIdEnum
 
                         class LabelContext : public Entity
                         {
@@ -17240,8 +17816,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label_context_type; //type: MgmtLsdLblCtxEnum
 
+
+                                YLeaf label_context_type; //type: MgmtLsdLblCtxEnum
 
                             class Ipv4Data : public Entity
                             {
@@ -17256,12 +17833,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value security_id; //type: uint32
-                                    Value vrf_name; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf vrf_name; //type: string
 
 
 
@@ -17281,12 +17859,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value security_id; //type: uint32
-                                    Value vrf_name; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf security_id; //type: uint32
+                                    YLeaf vrf_name; //type: string
 
 
 
@@ -17306,14 +17885,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value tunnel_source; //type: string
-                                    Value tunnel_dest; //type: string
-                                    Value tunnel_id; //type: uint32
-                                    Value tunnel_id_extension; //type: uint32
-                                    Value tunnel_lsp_id; //type: uint32
-                                    Value is_srte; //type: int32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf tunnel_source; //type: string
+                                    YLeaf tunnel_dest; //type: string
+                                    YLeaf tunnel_id; //type: uint32
+                                    YLeaf tunnel_id_extension; //type: uint32
+                                    YLeaf tunnel_lsp_id; //type: uint32
+                                    YLeaf is_srte; //type: int32
 
 
 
@@ -17333,10 +17913,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value route_distinguisher; //type: uint64
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -17356,10 +17937,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: uint8
-                                    Value route_distinguisher; //type: uint64
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: uint8
+                                    YLeaf route_distinguisher; //type: uint64
 
 
 
@@ -17379,9 +17961,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value security_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf security_id; //type: uint32
 
 
 
@@ -17401,10 +17984,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value ipv4_next_hop; //type: string
-                                    Value security_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf security_id; //type: uint32
 
 
 
@@ -17424,10 +18008,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value ipv6_next_hop; //type: string
-                                    Value security_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf ipv6_next_hop; //type: string
+                                    YLeaf security_id; //type: uint32
 
 
 
@@ -17447,11 +18032,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value pseudowire_id; //type: uint64
-                                    Value remote_l2_router_id; //type: uint32
-                                    Value subinterface; //type: string
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf pseudowire_id; //type: uint64
+                                    YLeaf remote_l2_router_id; //type: uint32
+                                    YLeaf subinterface; //type: string
 
 
 
@@ -17471,12 +18057,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value service; //type: uint8
-                                    Value vpn_id; //type: uint16
-                                    Value edge_id; //type: uint16
-                                    Value offset; //type: uint32
-                                    Value size; //type: uint32
 
+
+                                    YLeaf service; //type: uint8
+                                    YLeaf vpn_id; //type: uint16
+                                    YLeaf edge_id; //type: uint16
+                                    YLeaf offset; //type: uint32
+                                    YLeaf size; //type: uint32
 
 
 
@@ -17496,9 +18083,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value parent_interface; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf parent_interface; //type: string
 
 
 
@@ -17518,14 +18106,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value tunnel_source; //type: string
-                                    Value p2mp_id; //type: uint32
-                                    Value tunnel_id; //type: uint32
-                                    Value tunnel_id_extension; //type: uint32
-                                    Value tunnel_lsp_id; //type: uint32
-                                    Value previous_hop; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf tunnel_source; //type: string
+                                    YLeaf p2mp_id; //type: uint32
+                                    YLeaf tunnel_id; //type: uint32
+                                    YLeaf tunnel_id_extension; //type: uint32
+                                    YLeaf tunnel_lsp_id; //type: uint32
+                                    YLeaf previous_hop; //type: string
 
 
 
@@ -17545,12 +18134,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value type; //type: uint16
-                                    Value lsm_id; //type: uint32
-                                    Value peer_lsrid; //type: string
-                                    Value peer_label_space_id; //type: uint16
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf type; //type: uint16
+                                    YLeaf lsm_id; //type: uint32
+                                    YLeaf peer_lsrid; //type: string
+                                    YLeaf peer_label_space_id; //type: uint16
 
 
 
@@ -17570,8 +18160,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pwhe_intf; //type: string
 
+
+                                    YLeaf pwhe_intf; //type: string
 
 
 
@@ -17591,14 +18182,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value source_global_id; //type: uint32
-                                    Value source_node_id; //type: string
-                                    Value dest_global_id; //type: uint32
-                                    Value dest_node_id; //type: string
-                                    Value source_tunnel_id; //type: uint16
-                                    Value dest_tunnel_id; //type: uint16
-                                    Value lsp_id; //type: uint16
 
+
+                                    YLeaf source_global_id; //type: uint32
+                                    YLeaf source_node_id; //type: string
+                                    YLeaf dest_global_id; //type: uint32
+                                    YLeaf dest_node_id; //type: string
+                                    YLeaf source_tunnel_id; //type: uint16
+                                    YLeaf dest_tunnel_id; //type: uint16
+                                    YLeaf lsp_id; //type: uint16
 
 
 
@@ -17618,8 +18210,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value gre_interface; //type: string
 
+
+                                    YLeaf gre_interface; //type: string
 
 
 
@@ -17639,8 +18232,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value greipv6_interface; //type: string
 
+
+                                    YLeaf greipv6_interface; //type: string
 
 
 
@@ -17660,10 +18254,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value evpn_id; //type: uint32
-                                    Value evpn_tag; //type: uint32
-                                    Value ethernet_segment; //type: string
 
+
+                                    YLeaf evpn_id; //type: uint32
+                                    YLeaf evpn_tag; //type: uint32
+                                    YLeaf ethernet_segment; //type: string
 
 
 
@@ -17683,9 +18278,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value blb_intf; //type: string
-                                    Value prefix; //type: string
 
+
+                                    YLeaf blb_intf; //type: string
+                                    YLeaf prefix; //type: string
 
 
 
@@ -17705,9 +18301,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value blb_intf; //type: string
-                                    Value prefix; //type: string
 
+
+                                    YLeaf blb_intf; //type: string
+                                    YLeaf prefix; //type: string
 
 
 
@@ -17727,10 +18324,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value vrf_id; //type: uint32
-                                    Value head; //type: int32
-                                    Value v6; //type: int32
 
+
+                                    YLeaf vrf_id; //type: uint32
+                                    YLeaf head; //type: int32
+                                    YLeaf v6; //type: int32
 
 
 
@@ -17750,13 +18348,14 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value vrf_id; //type: uint32
-                                    Value source; //type: string
-                                    Value head; //type: int32
-                                    Value v6; //type: int32
-                                    Value hli; //type: uint32
-                                    Value seg; //type: int32
 
+
+                                    YLeaf vrf_id; //type: uint32
+                                    YLeaf source; //type: string
+                                    YLeaf head; //type: int32
+                                    YLeaf v6; //type: int32
+                                    YLeaf hli; //type: uint32
+                                    YLeaf seg; //type: int32
 
 
 
@@ -17776,9 +18375,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value next_hop_set_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf next_hop_set_id; //type: uint32
 
 
 
@@ -17798,9 +18398,10 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value segment_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf segment_id; //type: uint32
 
 
 
@@ -17820,11 +18421,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value index_; //type: uint32
-                                    Value type; //type: uint32
-                                    Value intf; //type: string
-                                    Value addr; //type: string
 
+
+                                    YLeaf index_; //type: uint32
+                                    YLeaf type; //type: uint32
+                                    YLeaf intf; //type: string
+                                    YLeaf addr; //type: string
 
 
 
@@ -17844,11 +18446,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value index_; //type: uint32
-                                    Value type; //type: uint32
-                                    Value intf; //type: string
-                                    Value addr; //type: string
 
+
+                                    YLeaf index_; //type: uint32
+                                    YLeaf type; //type: uint32
+                                    YLeaf intf; //type: string
+                                    YLeaf addr; //type: string
 
 
 
@@ -17868,10 +18471,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value start_label; //type: uint32
-                                    Value offset; //type: uint32
-                                    Value size; //type: uint32
 
+
+                                    YLeaf start_label; //type: uint32
+                                    YLeaf offset; //type: uint32
+                                    YLeaf size; //type: uint32
 
 
 
@@ -17891,11 +18495,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value te_identifier; //type: uint32
-                                    Value te_type; //type: MgmtLsdTeBindingEnum
 
 
-                                    class MgmtLsdTeBindingEnum;
+                                    YLeaf te_identifier; //type: uint32
+                                    YLeaf te_type; //type: MgmtLsdTeBindingEnum
+
 
 
                             }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TeBinding
@@ -17929,7 +18533,6 @@ class MplsLsd : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4P2MpData> tev4p2mp_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TpData> tp_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3VpnData> vrf_l3vpn_data;
-                                class MgmtLsdLblCtxEnum;
 
 
                         }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext
@@ -17948,8 +18551,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                ValueList label_data; //type: list of  uint32
 
+
+                                YLeafList label_data; //type: list of  uint32
 
 
 
@@ -17958,7 +18562,6 @@ class MplsLsd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext> label_context;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite> local_label_rewrite;
-                            class MgmtLsdRwIdEnum;
 
 
                     }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_
@@ -17985,6 +18588,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Fpi : public Entity
                     {
                         public:
@@ -17998,8 +18602,9 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value fpi_type; //type: MgmtLsdFpiEnum
 
+
+                            YLeaf fpi_type; //type: MgmtLsdFpiEnum
 
                         class LabelData : public Entity
                         {
@@ -18014,10 +18619,11 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label; //type: uint32
-                                Value security_id; //type: uint32
-                                Value elc; //type: int32
 
+
+                                YLeaf label; //type: uint32
+                                YLeaf security_id; //type: uint32
+                                YLeaf elc; //type: int32
 
 
 
@@ -18037,9 +18643,10 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tunnel_interface; //type: string
-                                Value local_label; //type: uint32
 
+
+                                YLeaf tunnel_interface; //type: string
+                                YLeaf local_label; //type: uint32
 
 
 
@@ -18059,11 +18666,12 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -18083,12 +18691,13 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value table_id; //type: uint32
-                                Value prefix; //type: string
-                                Value router_flags; //type: uint32
-                                Value prefix_len; //type: uint8
-                                Value version; //type: uint32
 
+
+                                YLeaf table_id; //type: uint32
+                                YLeaf prefix; //type: string
+                                YLeaf router_flags; //type: uint32
+                                YLeaf prefix_len; //type: uint8
+                                YLeaf version; //type: uint32
 
 
 
@@ -18108,8 +18717,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value pwhe_list_id; //type: uint16
 
+
+                                YLeaf pwhe_list_id; //type: uint16
 
 
 
@@ -18129,8 +18739,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dmtc_ext_ifh; //type: string
 
+
+                                YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -18143,7 +18754,6 @@ class MplsLsd : public Entity
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::LabelData> label_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::PwListData> pw_list_data;
                             std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::TeData> te_data;
-                            class MgmtLsdFpiEnum;
 
 
                     }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi
@@ -18162,15 +18772,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_role_primary; //type: int32
-                            Value application_instance; //type: string
-                            Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                            class MgmtLsdAppEnum;
-                            class MgmtLsdAppRsrcStateEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_role_primary; //type: int32
+                            YLeaf application_instance; //type: string
+                            YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                     }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::ApplicationOwner
@@ -18196,9 +18805,10 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value table_id; //type: uint32
-                        Value v4_rpf_neighbor; //type: string
 
+
+                        YLeaf table_id; //type: uint32
+                        YLeaf v4_rpf_neighbor; //type: string
 
 
 
@@ -18218,9 +18828,10 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value table_id; //type: uint32
-                        Value v6_rpf_neighbor; //type: string
 
+
+                        YLeaf table_id; //type: uint32
+                        YLeaf v6_rpf_neighbor; //type: string
 
 
 
@@ -18242,6 +18853,7 @@ class MplsLsd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ApplicationResource : public Entity
                     {
                         public:
@@ -18255,15 +18867,14 @@ class MplsLsd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value application_name; //type: string
-                            Value application_type; //type: MgmtLsdAppEnum
-                            Value application_role_primary; //type: int32
-                            Value application_instance; //type: string
-                            Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                            class MgmtLsdAppEnum;
-                            class MgmtLsdAppRsrcStateEnum;
+                            YLeaf application_name; //type: string
+                            YLeaf application_type; //type: MgmtLsdAppEnum
+                            YLeaf application_role_primary; //type: int32
+                            YLeaf application_instance; //type: string
+                            YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
                     }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::ApplicationResource
@@ -18284,6 +18895,7 @@ class MplsLsd : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Moi : public Entity
                         {
                             public:
@@ -18297,8 +18909,9 @@ class MplsLsd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value moi_type; //type: MgmtLsdMoiEnum
 
+
+                                YLeaf moi_type; //type: MgmtLsdMoiEnum
 
                             class PopAndLookupIpv4 : public Entity
                             {
@@ -18313,10 +18926,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -18336,11 +18950,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_label; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_label; //type: uint32
 
 
 
@@ -18360,10 +18975,11 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -18383,21 +18999,22 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_interface_parent; //type: string
-                                    Value ipv4_next_hop; //type: string
-                                    Value path_id; //type: uint8
-                                    Value backup_path_id; //type: uint8
-                                    Value load_metric; //type: uint32
-                                    Value out_label; //type: uint32
-                                    Value out_label_name; //type: string
-                                    Value tunnel_id; //type: uint16
-                                    Value next_hop_id; //type: uint32
-                                    Value local_label; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_interface_parent; //type: string
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf path_id; //type: uint8
+                                    YLeaf backup_path_id; //type: uint8
+                                    YLeaf load_metric; //type: uint32
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf out_label_name; //type: string
+                                    YLeaf tunnel_id; //type: uint16
+                                    YLeaf next_hop_id; //type: uint32
+                                    YLeaf local_label; //type: uint32
 
 
 
@@ -18417,17 +19034,18 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value out_label_name; //type: string
-                                    Value ipv6_next_hop; //type: string
-                                    Value path_id; //type: uint8
-                                    Value backup_path_id; //type: uint8
-                                    Value next_hop_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf out_label_name; //type: string
+                                    YLeaf ipv6_next_hop; //type: string
+                                    YLeaf path_id; //type: uint8
+                                    YLeaf backup_path_id; //type: uint8
+                                    YLeaf next_hop_id; //type: uint32
 
 
 
@@ -18447,22 +19065,23 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value out_label_name; //type: string
-                                    Value ipv4_next_hop; //type: string
-                                    Value backup_interface; //type: string
-                                    Value backup_ipv4_next_hop; //type: string
-                                    Value merge_point_label; //type: uint32
-                                    Value backup_local_label; //type: uint32
-                                    Value tunnel_interface; //type: string
-                                    Value tunnel_weight; //type: uint32
-                                    Value data_out_parent_interface; //type: string
-                                    Value tunnel_class; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf out_label_name; //type: string
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf backup_interface; //type: string
+                                    YLeaf backup_ipv4_next_hop; //type: string
+                                    YLeaf merge_point_label; //type: uint32
+                                    YLeaf backup_local_label; //type: uint32
+                                    YLeaf tunnel_interface; //type: string
+                                    YLeaf tunnel_weight; //type: uint32
+                                    YLeaf data_out_parent_interface; //type: string
+                                    YLeaf tunnel_class; //type: uint32
 
 
 
@@ -18482,17 +19101,18 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value cross_connect_id; //type: uint32
-                                    Value pseuodo_wire_connect_id; //type: uint32
-                                    Value ipv4_next_hop; //type: string
-                                    Value bridge_id; //type: uint32
-                                    Value split_horizon_id; //type: uint32
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf cross_connect_id; //type: uint32
+                                    YLeaf pseuodo_wire_connect_id; //type: uint32
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf bridge_id; //type: uint32
+                                    YLeaf split_horizon_id; //type: uint32
 
 
 
@@ -18512,11 +19132,12 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value out_interface; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -18536,18 +19157,19 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value path_flags_decode; //type: string
-                                    Value out_interface; //type: string
-                                    Value out_label; //type: uint32
-                                    Value ipv4_next_hop; //type: string
-                                    Value control_word; //type: int32
-                                    Value imposition; //type: int32
-                                    Value vctype; //type: uint8
-                                    Value pw_list_id; //type: uint16
-                                    Value pwhe_interface; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf path_flags_decode; //type: string
+                                    YLeaf out_interface; //type: string
+                                    YLeaf out_label; //type: uint32
+                                    YLeaf ipv4_next_hop; //type: string
+                                    YLeaf control_word; //type: int32
+                                    YLeaf imposition; //type: int32
+                                    YLeaf vctype; //type: uint8
+                                    YLeaf pw_list_id; //type: uint16
+                                    YLeaf pwhe_interface; //type: string
 
 
 
@@ -18567,12 +19189,13 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value l3_interface; //type: string
-                                    Value l2_interface; //type: string
-                                    Value path_flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf l3_interface; //type: string
+                                    YLeaf l2_interface; //type: string
+                                    YLeaf path_flags_decode; //type: string
 
 
 
@@ -18592,8 +19215,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value owner_application_type; //type: MgmtLsdAppEnum
 
+
+                                    YLeaf owner_application_type; //type: MgmtLsdAppEnum
 
                                 class Nexthop : public Entity
                                 {
@@ -18608,21 +19232,22 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_interface_parent; //type: string
-                                        Value ipv4_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value load_metric; //type: uint32
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value tunnel_id; //type: uint16
-                                        Value next_hop_id; //type: uint32
-                                        Value local_label; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_interface_parent; //type: string
+                                        YLeaf ipv4_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf load_metric; //type: uint32
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf tunnel_id; //type: uint16
+                                        YLeaf next_hop_id; //type: uint32
+                                        YLeaf local_label; //type: uint32
 
 
 
@@ -18642,10 +19267,11 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_nexthops; //type: uint8
-                                        Value num_lbls; //type: uint8
-                                        ValueList nexthop; //type: list of  string
 
+
+                                        YLeaf num_nexthops; //type: uint8
+                                        YLeaf num_lbls; //type: uint8
+                                        YLeafList nexthop; //type: list of  string
 
                                     class Label : public Entity
                                     {
@@ -18660,9 +19286,10 @@ class MplsLsd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value outgoing_label; //type: uint32
-                                            Value outgoing_label_str; //type: string
 
+
+                                            YLeaf outgoing_label; //type: uint32
+                                            YLeaf outgoing_label_str; //type: string
 
 
 
@@ -18677,7 +19304,6 @@ class MplsLsd : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::InnerStack> inner_stack;
                                     std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::Nexthop> nexthop;
-                                    class MgmtLsdAppEnum;
 
 
                             }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data
@@ -18698,6 +19324,7 @@ class MplsLsd : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Nexthop : public Entity
                                 {
                                     public:
@@ -18711,17 +19338,18 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_id; //type: uint32
-                                        Value table_name; //type: string
-                                        Value path_flags_decode; //type: string
-                                        Value out_interface; //type: string
-                                        Value out_label; //type: uint32
-                                        Value out_label_name; //type: string
-                                        Value ipv6_next_hop; //type: string
-                                        Value path_id; //type: uint8
-                                        Value backup_path_id; //type: uint8
-                                        Value next_hop_id; //type: uint32
 
+
+                                        YLeaf table_id; //type: uint32
+                                        YLeaf table_name; //type: string
+                                        YLeaf path_flags_decode; //type: string
+                                        YLeaf out_interface; //type: string
+                                        YLeaf out_label; //type: uint32
+                                        YLeaf out_label_name; //type: string
+                                        YLeaf ipv6_next_hop; //type: string
+                                        YLeaf path_id; //type: uint8
+                                        YLeaf backup_path_id; //type: uint8
+                                        YLeaf next_hop_id; //type: uint32
 
 
 
@@ -18741,10 +19369,11 @@ class MplsLsd : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_nexthops; //type: uint8
-                                        Value num_lbls; //type: uint8
-                                        ValueList nexthop; //type: list of  string
 
+
+                                        YLeaf num_nexthops; //type: uint8
+                                        YLeaf num_lbls; //type: uint8
+                                        YLeafList nexthop; //type: list of  string
 
                                     class Label : public Entity
                                     {
@@ -18759,9 +19388,10 @@ class MplsLsd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value outgoing_label; //type: uint32
-                                            Value outgoing_label_str; //type: string
 
+
+                                            YLeaf outgoing_label; //type: uint32
+                                            YLeaf outgoing_label_str; //type: string
 
 
 
@@ -18794,14 +19424,15 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value table_id; //type: uint32
-                                    Value table_name; //type: string
-                                    Value tunnel_local_label; //type: uint32
-                                    Value tunnel_local_label_str; //type: string
-                                    Value tunnel_fwd_class; //type: uint8
-                                    Value tunnel_load_metric; //type: uint32
-                                    Value flags_decode; //type: string
 
+
+                                    YLeaf table_id; //type: uint32
+                                    YLeaf table_name; //type: string
+                                    YLeaf tunnel_local_label; //type: uint32
+                                    YLeaf tunnel_local_label_str; //type: string
+                                    YLeaf tunnel_fwd_class; //type: uint8
+                                    YLeaf tunnel_load_metric; //type: uint32
+                                    YLeaf flags_decode; //type: string
 
 
 
@@ -18821,8 +19452,9 @@ class MplsLsd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value dmtc_ext_ifh; //type: string
 
+
+                                    YLeaf dmtc_ext_ifh; //type: string
 
 
 
@@ -18843,7 +19475,6 @@ class MplsLsd : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data> stackv6_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::TeHeadData> te_head_data;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Tev4Data> tev4_data;
-                                class MgmtLsdMoiEnum;
 
 
                         }; // MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi
@@ -18901,26 +19532,27 @@ class MplsLsd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value num_label_fpi; //type: uint32
-            Value num_tefpi; //type: uint32
-            Value num_ipv4fpi; //type: uint32
-            Value num_ipv6fpi; //type: uint32
-            Value num_pw_list_tefpi; //type: uint32
-            Value num_dmtctefpi; //type: uint32
-            Value num_rewrite; //type: uint32
-            Value total_forward_update; //type: uint32
-            Value total_forwad_update_message; //type: uint32
-            Value total_paths; //type: uint32
-            Value total_t_ev4_paths; //type: uint32
-            Value total_te_head_paths; //type: uint32
-            Value total_pw_paths; //type: uint32
-            Value total_ip_sub_paths; //type: uint32
-            Value total_ipv4rpf_neighbors; //type: uint32
-            Value total_ipv6rpf_neighbors; //type: uint32
-            Value num_rewrite_rpf_neighbors; //type: uint32
-            Value total_dmtc_intf; //type: uint32
-            Value vrf_name_xr; //type: string
 
+
+            YLeaf num_label_fpi; //type: uint32
+            YLeaf num_tefpi; //type: uint32
+            YLeaf num_ipv4fpi; //type: uint32
+            YLeaf num_ipv6fpi; //type: uint32
+            YLeaf num_pw_list_tefpi; //type: uint32
+            YLeaf num_dmtctefpi; //type: uint32
+            YLeaf num_rewrite; //type: uint32
+            YLeaf total_forward_update; //type: uint32
+            YLeaf total_forwad_update_message; //type: uint32
+            YLeaf total_paths; //type: uint32
+            YLeaf total_t_ev4_paths; //type: uint32
+            YLeaf total_te_head_paths; //type: uint32
+            YLeaf total_pw_paths; //type: uint32
+            YLeaf total_ip_sub_paths; //type: uint32
+            YLeaf total_ipv4rpf_neighbors; //type: uint32
+            YLeaf total_ipv6rpf_neighbors; //type: uint32
+            YLeaf num_rewrite_rpf_neighbors; //type: uint32
+            YLeaf total_dmtc_intf; //type: uint32
+            YLeaf vrf_name_xr; //type: string
 
         class Ipv4Paths : public Entity
         {
@@ -18935,12 +19567,13 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value total_paths; //type: uint32
-                Value total_backup_paths; //type: uint32
-                Value total_remote_backup_paths; //type: uint32
-                Value total_protected_paths; //type: uint32
-                Value total_pop_lkup_paths; //type: uint32
 
+
+                YLeaf total_paths; //type: uint32
+                YLeaf total_backup_paths; //type: uint32
+                YLeaf total_remote_backup_paths; //type: uint32
+                YLeaf total_protected_paths; //type: uint32
+                YLeaf total_pop_lkup_paths; //type: uint32
 
 
 
@@ -18960,12 +19593,13 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value total_paths; //type: uint32
-                Value total_backup_paths; //type: uint32
-                Value total_remote_backup_paths; //type: uint32
-                Value total_protected_paths; //type: uint32
-                Value total_pop_lkup_paths; //type: uint32
 
+
+                YLeaf total_paths; //type: uint32
+                YLeaf total_backup_paths; //type: uint32
+                YLeaf total_remote_backup_paths; //type: uint32
+                YLeaf total_protected_paths; //type: uint32
+                YLeaf total_pop_lkup_paths; //type: uint32
 
 
 
@@ -18994,6 +19628,7 @@ class MplsLsd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Application : public Entity
         {
             public:
@@ -19007,23 +19642,24 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value application_name; //type: string
-                Value application_name_xr; //type: string
-                Value application_type; //type: MgmtLsdAppEnum
-                Value application_role_primary; //type: int32
-                Value application_instance; //type: string
-                Value app_reg_time; //type: uint64
-                Value app_disconnect_time; //type: uint64
-                Value app_flow_controlled; //type: int32
-                Value flow_ctrl_time; //type: uint64
-                Value flow_ctrl_clr_time; //type: uint64
-                Value go_act_ts; //type: uint64
-                Value application_state; //type: MgmtLsdAppStateEnum
-                Value recovery_time_remaining_seconds; //type: uint32
-                Value recovery_time_elapsed_seconds; //type: uint32
-                Value recovery_time_register_seconds; //type: uint32
-                Value node_id; //type: string
 
+
+                YLeaf application_name; //type: string
+                YLeaf application_name_xr; //type: string
+                YLeaf application_type; //type: MgmtLsdAppEnum
+                YLeaf application_role_primary; //type: int32
+                YLeaf application_instance; //type: string
+                YLeaf app_reg_time; //type: uint64
+                YLeaf app_disconnect_time; //type: uint64
+                YLeaf app_flow_controlled; //type: int32
+                YLeaf flow_ctrl_time; //type: uint64
+                YLeaf flow_ctrl_clr_time; //type: uint64
+                YLeaf go_act_ts; //type: uint64
+                YLeaf application_state; //type: MgmtLsdAppStateEnum
+                YLeaf recovery_time_remaining_seconds; //type: uint32
+                YLeaf recovery_time_elapsed_seconds; //type: uint32
+                YLeaf recovery_time_register_seconds; //type: uint32
+                YLeaf node_id; //type: string
 
             class ApplicationStatistics : public Entity
             {
@@ -19038,12 +19674,13 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_enable; //type: uint32
-                    Value interface_enable_pending; //type: uint32
-                    Value connect_count; //type: uint32
-                    ValueList label_context_count; //type: list of  uint32
-                    ValueList label_context_pending_count; //type: list of  uint32
 
+
+                    YLeaf interface_enable; //type: uint32
+                    YLeaf interface_enable_pending; //type: uint32
+                    YLeaf connect_count; //type: uint32
+                    YLeafList label_context_count; //type: list of  uint32
+                    YLeafList label_context_pending_count; //type: list of  uint32
 
                 class Connected : public Entity
                 {
@@ -19058,11 +19695,12 @@ class MplsLsd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rt_set_msg_count; //type: uint32
-                        Value operation_msg_count; //type: uint32
-                        Value oor_label_count; //type: uint32
-                        Value error_msg_count; //type: uint32
 
+
+                        YLeaf rt_set_msg_count; //type: uint32
+                        YLeaf operation_msg_count; //type: uint32
+                        YLeaf oor_label_count; //type: uint32
+                        YLeaf error_msg_count; //type: uint32
 
 
 
@@ -19076,8 +19714,6 @@ class MplsLsd : public Entity
 
 
                 std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Applications::Application::ApplicationStatistics> application_statistics;
-                class MgmtLsdAppStateEnum;
-                class MgmtLsdAppEnum;
 
 
         }; // MplsLsd::Applications::Application
@@ -19104,6 +19740,7 @@ class MplsLsd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LabelSummaryVrf : public Entity
         {
             public:
@@ -19117,11 +19754,12 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value vrf_name_xr; //type: string
-                Value total_labels; //type: uint32
-                Value rsi_connected; //type: int32
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf vrf_name_xr; //type: string
+                YLeaf total_labels; //type: uint32
+                YLeaf rsi_connected; //type: int32
 
             class OwnerCount : public Entity
             {
@@ -19136,14 +19774,14 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value application_type; //type: MgmtLsdAppEnum
-                    Value application_name; //type: string
-                    Value application_role_primary; //type: int32
-                    Value application_instance; //type: string
-                    Value number_of_labels; //type: uint32
 
 
-                    class MgmtLsdAppEnum;
+                    YLeaf application_type; //type: MgmtLsdAppEnum
+                    YLeaf application_name; //type: string
+                    YLeaf application_role_primary; //type: int32
+                    YLeaf application_instance; //type: string
+                    YLeaf number_of_labels; //type: uint32
+
 
 
             }; // MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount
@@ -19174,11 +19812,12 @@ class MplsLsd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value min_dynamic_label_value; //type: uint32
-            Value max_dynamic_label_value; //type: uint32
-            Value min_static_label_value; //type: uint32
-            Value max_static_label_value; //type: uint32
 
+
+            YLeaf min_dynamic_label_value; //type: uint32
+            YLeaf max_dynamic_label_value; //type: uint32
+            YLeaf min_static_label_value; //type: uint32
+            YLeaf max_static_label_value; //type: uint32
 
 
 
@@ -19200,6 +19839,7 @@ class MplsLsd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RewriteSummaryVrf : public Entity
         {
             public:
@@ -19213,27 +19853,28 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value num_label_fpi; //type: uint32
-                Value num_tefpi; //type: uint32
-                Value num_ipv4fpi; //type: uint32
-                Value num_ipv6fpi; //type: uint32
-                Value num_pw_list_tefpi; //type: uint32
-                Value num_dmtctefpi; //type: uint32
-                Value num_rewrite; //type: uint32
-                Value total_forward_update; //type: uint32
-                Value total_forwad_update_message; //type: uint32
-                Value total_paths; //type: uint32
-                Value total_t_ev4_paths; //type: uint32
-                Value total_te_head_paths; //type: uint32
-                Value total_pw_paths; //type: uint32
-                Value total_ip_sub_paths; //type: uint32
-                Value total_ipv4rpf_neighbors; //type: uint32
-                Value total_ipv6rpf_neighbors; //type: uint32
-                Value num_rewrite_rpf_neighbors; //type: uint32
-                Value total_dmtc_intf; //type: uint32
-                Value vrf_name_xr; //type: string
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf num_label_fpi; //type: uint32
+                YLeaf num_tefpi; //type: uint32
+                YLeaf num_ipv4fpi; //type: uint32
+                YLeaf num_ipv6fpi; //type: uint32
+                YLeaf num_pw_list_tefpi; //type: uint32
+                YLeaf num_dmtctefpi; //type: uint32
+                YLeaf num_rewrite; //type: uint32
+                YLeaf total_forward_update; //type: uint32
+                YLeaf total_forwad_update_message; //type: uint32
+                YLeaf total_paths; //type: uint32
+                YLeaf total_t_ev4_paths; //type: uint32
+                YLeaf total_te_head_paths; //type: uint32
+                YLeaf total_pw_paths; //type: uint32
+                YLeaf total_ip_sub_paths; //type: uint32
+                YLeaf total_ipv4rpf_neighbors; //type: uint32
+                YLeaf total_ipv6rpf_neighbors; //type: uint32
+                YLeaf num_rewrite_rpf_neighbors; //type: uint32
+                YLeaf total_dmtc_intf; //type: uint32
+                YLeaf vrf_name_xr; //type: string
 
             class Ipv4Paths : public Entity
             {
@@ -19248,12 +19889,13 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_paths; //type: uint32
-                    Value total_backup_paths; //type: uint32
-                    Value total_remote_backup_paths; //type: uint32
-                    Value total_protected_paths; //type: uint32
-                    Value total_pop_lkup_paths; //type: uint32
 
+
+                    YLeaf total_paths; //type: uint32
+                    YLeaf total_backup_paths; //type: uint32
+                    YLeaf total_remote_backup_paths; //type: uint32
+                    YLeaf total_protected_paths; //type: uint32
+                    YLeaf total_pop_lkup_paths; //type: uint32
 
 
 
@@ -19273,12 +19915,13 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_paths; //type: uint32
-                    Value total_backup_paths; //type: uint32
-                    Value total_remote_backup_paths; //type: uint32
-                    Value total_protected_paths; //type: uint32
-                    Value total_pop_lkup_paths; //type: uint32
 
+
+                    YLeaf total_paths; //type: uint32
+                    YLeaf total_backup_paths; //type: uint32
+                    YLeaf total_remote_backup_paths; //type: uint32
+                    YLeaf total_protected_paths; //type: uint32
+                    YLeaf total_pop_lkup_paths; //type: uint32
 
 
 
@@ -19313,6 +19956,7 @@ class MplsLsd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -19326,10 +19970,11 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value interface; //type: string
-                Value interface_state; //type: MgmtLsdIntfStateEnum
 
+
+                YLeaf interface_name; //type: string
+                YLeaf interface; //type: string
+                YLeaf interface_state; //type: MgmtLsdIntfStateEnum
 
             class ApplicationOwner : public Entity
             {
@@ -19344,22 +19989,20 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value application_name; //type: string
-                    Value application_type; //type: MgmtLsdAppEnum
-                    Value application_role_primary; //type: int32
-                    Value application_instance; //type: string
-                    Value resource_state; //type: MgmtLsdAppRsrcStateEnum
 
 
-                    class MgmtLsdAppEnum;
-                    class MgmtLsdAppRsrcStateEnum;
+                    YLeaf application_name; //type: string
+                    YLeaf application_type; //type: MgmtLsdAppEnum
+                    YLeaf application_role_primary; //type: int32
+                    YLeaf application_instance; //type: string
+                    YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+
 
 
             }; // MplsLsd::Interfaces::Interface::ApplicationOwner
 
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsd::Interfaces::Interface::ApplicationOwner> > application_owner;
-                class MgmtLsdIntfStateEnum;
 
 
         }; // MplsLsd::Interfaces::Interface
@@ -19390,169 +20033,169 @@ class MplsLsd : public Entity
 class MgmtLsdClientEnum : public Enum
 {
     public:
-        static const Enum::Value mgmt_lsd_client_type_app;
-        static const Enum::Value mgmt_lsd_client_type_ba;
+        static const Enum::YLeaf mgmt_lsd_client_type_app;
+        static const Enum::YLeaf mgmt_lsd_client_type_ba;
 
 };
 
 class MgmtLsdFrrStateEnum : public Enum
 {
     public:
-        static const Enum::Value mgmt_lsd_frr_state_partial;
-        static const Enum::Value mgmt_lsd_frr_state_active;
-        static const Enum::Value mgmt_lsd_frr_state_ready;
-        static const Enum::Value mgmt_lsd_frr_state_complete;
-        static const Enum::Value mgmt_lsd_frr_state_any;
-        static const Enum::Value mgmt_lsd_frr_state_igp;
+        static const Enum::YLeaf mgmt_lsd_frr_state_partial;
+        static const Enum::YLeaf mgmt_lsd_frr_state_active;
+        static const Enum::YLeaf mgmt_lsd_frr_state_ready;
+        static const Enum::YLeaf mgmt_lsd_frr_state_complete;
+        static const Enum::YLeaf mgmt_lsd_frr_state_any;
+        static const Enum::YLeaf mgmt_lsd_frr_state_igp;
 
 };
 
 class MgmtLsdMoiEnum : public Enum
 {
     public:
-        static const Enum::Value mgmt_lsd_moi_type_pop_and_lkup_ipv4;
-        static const Enum::Value mgmt_lsd_moi_type_ipv4;
-        static const Enum::Value mgmt_lsd_moi_type_ipv6;
-        static const Enum::Value mgmt_lsd_moi_type_tev4;
-        static const Enum::Value mgmt_lsd_moi_type_pw;
-        static const Enum::Value mgmt_lsd_moi_type_pop_and_lkup_ipv6;
-        static const Enum::Value mgmt_lsd_moi_type_ip_sub;
-        static const Enum::Value mgmt_lsd_moi_type_pwhe;
-        static const Enum::Value mgmt_lsd_moi_type_pw_list;
-        static const Enum::Value mgmt_lsd_moi_type_ipv4_stack;
-        static const Enum::Value mgmt_lsd_moi_type_pop_and_lkup_tp;
-        static const Enum::Value mgmt_lsd_moi_type_ipv6_stack;
-        static const Enum::Value mgmt_lsd_moi_type_te_head;
-        static const Enum::Value mgmt_lsd_moi_type_dmtc_ext_intf;
+        static const Enum::YLeaf mgmt_lsd_moi_type_pop_and_lkup_ipv4;
+        static const Enum::YLeaf mgmt_lsd_moi_type_ipv4;
+        static const Enum::YLeaf mgmt_lsd_moi_type_ipv6;
+        static const Enum::YLeaf mgmt_lsd_moi_type_tev4;
+        static const Enum::YLeaf mgmt_lsd_moi_type_pw;
+        static const Enum::YLeaf mgmt_lsd_moi_type_pop_and_lkup_ipv6;
+        static const Enum::YLeaf mgmt_lsd_moi_type_ip_sub;
+        static const Enum::YLeaf mgmt_lsd_moi_type_pwhe;
+        static const Enum::YLeaf mgmt_lsd_moi_type_pw_list;
+        static const Enum::YLeaf mgmt_lsd_moi_type_ipv4_stack;
+        static const Enum::YLeaf mgmt_lsd_moi_type_pop_and_lkup_tp;
+        static const Enum::YLeaf mgmt_lsd_moi_type_ipv6_stack;
+        static const Enum::YLeaf mgmt_lsd_moi_type_te_head;
+        static const Enum::YLeaf mgmt_lsd_moi_type_dmtc_ext_intf;
 
 };
 
 class MgmtLsdFpiEnum : public Enum
 {
     public:
-        static const Enum::Value mgmt_lsd_fpi_type_label;
-        static const Enum::Value mgmt_lsd_fpi_type_te;
-        static const Enum::Value mgmt_lsd_fpi_type_ipv4;
-        static const Enum::Value mgmt_lsd_fpi_type_ipv6;
-        static const Enum::Value mgmt_lsd_fpi_type_pw_list;
-        static const Enum::Value mgmt_lsd_fpi_type_te_v2;
-        static const Enum::Value mgmt_lsd_fpi_type_dmtc_ext_intf;
+        static const Enum::YLeaf mgmt_lsd_fpi_type_label;
+        static const Enum::YLeaf mgmt_lsd_fpi_type_te;
+        static const Enum::YLeaf mgmt_lsd_fpi_type_ipv4;
+        static const Enum::YLeaf mgmt_lsd_fpi_type_ipv6;
+        static const Enum::YLeaf mgmt_lsd_fpi_type_pw_list;
+        static const Enum::YLeaf mgmt_lsd_fpi_type_te_v2;
+        static const Enum::YLeaf mgmt_lsd_fpi_type_dmtc_ext_intf;
 
 };
 
 class MgmtLsdLblCtxEnum : public Enum
 {
     public:
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_none;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_ipv4;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_ipv6;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_tev4;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_l3vpn_ipv4;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_l3vpn_ipv6;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_l3vpn_vrf;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_l3vpn_cev4;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_l3vpn_cev6;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_pw;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_lbl_blk;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_ip_sub;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_tev4_p2mp;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_mldpv4;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_pwhe;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_tp;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_gre;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_evpn;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_blb_ipv4;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_blb_ipv6;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_pim_i_pmsi;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_pim_s_pmsi;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_l3vpn_nh_set;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_sr_pfx_seg;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_sr_adj_seg_ipv4;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_sr_adj_seg_ipv6;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_lbl_blk_srgb;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_te_binding;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_gre_ipv6;
-        static const Enum::Value mgmt_lsd_lbl_ctx_type_any;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_none;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_ipv4;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_ipv6;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_tev4;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_ipv4;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_ipv6;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_vrf;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_cev4;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_cev6;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_pw;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_lbl_blk;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_ip_sub;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_tev4_p2mp;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_mldpv4;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_pwhe;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_tp;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_gre;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_evpn;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_blb_ipv4;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_blb_ipv6;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_pim_i_pmsi;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_pim_s_pmsi;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_nh_set;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_sr_pfx_seg;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_sr_adj_seg_ipv4;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_sr_adj_seg_ipv6;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_lbl_blk_srgb;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_te_binding;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_gre_ipv6;
+        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_any;
 
 };
 
 class MgmtLsdLspRoleEnum : public Enum
 {
     public:
-        static const Enum::Value mgmt_lsd_lsp_role_head;
-        static const Enum::Value mgmt_lsd_lsp_role_mid;
+        static const Enum::YLeaf mgmt_lsd_lsp_role_head;
+        static const Enum::YLeaf mgmt_lsd_lsp_role_mid;
 
 };
 
 class MgmtLsdAppRsrcStateEnum : public Enum
 {
     public:
-        static const Enum::Value mgmt_lsd_app_rsrc_state_active;
-        static const Enum::Value mgmt_lsd_app_rsrc_state_pnd;
-        static const Enum::Value mgmt_lsd_app_rsrc_state_pnd_svr;
+        static const Enum::YLeaf mgmt_lsd_app_rsrc_state_active;
+        static const Enum::YLeaf mgmt_lsd_app_rsrc_state_pnd;
+        static const Enum::YLeaf mgmt_lsd_app_rsrc_state_pnd_svr;
 
 };
 
 class MgmtLsdRwIdEnum : public Enum
 {
     public:
-        static const Enum::Value mgmt_lsd_rw_id_type_none;
-        static const Enum::Value mgmt_lsd_rw_id_type_lbl_ctx;
-        static const Enum::Value mgmt_lsd_rw_id_type_loc_lbl;
+        static const Enum::YLeaf mgmt_lsd_rw_id_type_none;
+        static const Enum::YLeaf mgmt_lsd_rw_id_type_lbl_ctx;
+        static const Enum::YLeaf mgmt_lsd_rw_id_type_loc_lbl;
 
 };
 
 class MgmtLsdAppEnum : public Enum
 {
     public:
-        static const Enum::Value mgmt_lsd_app_type_none;
-        static const Enum::Value mgmt_lsd_app_type_int;
-        static const Enum::Value mgmt_lsd_app_type_test;
-        static const Enum::Value mgmt_lsd_app_type_static;
-        static const Enum::Value mgmt_lsd_app_type_ldp;
-        static const Enum::Value mgmt_lsd_app_type_te;
-        static const Enum::Value mgmt_lsd_app_type_te_int;
-        static const Enum::Value mgmt_lsd_app_type_bgp_ipv4;
-        static const Enum::Value mgmt_lsd_app_type_bgp_vpn_ipv4;
-        static const Enum::Value mgmt_lsd_app_type_l2vpn;
-        static const Enum::Value mgmt_lsd_app_type_bgp_spkr;
-        static const Enum::Value mgmt_lsd_app_type_bfd;
-        static const Enum::Value mgmt_lsd_app_type_pim;
-        static const Enum::Value mgmt_lsd_app_type_v2_lsd;
-        static const Enum::Value mgmt_lsd_app_type_pim6;
-        static const Enum::Value mgmt_lsd_app_type_isis;
-        static const Enum::Value mgmt_lsd_app_type_ospf;
-        static const Enum::Value mgmt_lsd_app_type_cgn;
-        static const Enum::Value mgmt_lsd_app_type_dmtc;
-        static const Enum::Value mgmt_lsd_app_type_any;
+        static const Enum::YLeaf mgmt_lsd_app_type_none;
+        static const Enum::YLeaf mgmt_lsd_app_type_int;
+        static const Enum::YLeaf mgmt_lsd_app_type_test;
+        static const Enum::YLeaf mgmt_lsd_app_type_static;
+        static const Enum::YLeaf mgmt_lsd_app_type_ldp;
+        static const Enum::YLeaf mgmt_lsd_app_type_te;
+        static const Enum::YLeaf mgmt_lsd_app_type_te_int;
+        static const Enum::YLeaf mgmt_lsd_app_type_bgp_ipv4;
+        static const Enum::YLeaf mgmt_lsd_app_type_bgp_vpn_ipv4;
+        static const Enum::YLeaf mgmt_lsd_app_type_l2vpn;
+        static const Enum::YLeaf mgmt_lsd_app_type_bgp_spkr;
+        static const Enum::YLeaf mgmt_lsd_app_type_bfd;
+        static const Enum::YLeaf mgmt_lsd_app_type_pim;
+        static const Enum::YLeaf mgmt_lsd_app_type_v2_lsd;
+        static const Enum::YLeaf mgmt_lsd_app_type_pim6;
+        static const Enum::YLeaf mgmt_lsd_app_type_isis;
+        static const Enum::YLeaf mgmt_lsd_app_type_ospf;
+        static const Enum::YLeaf mgmt_lsd_app_type_cgn;
+        static const Enum::YLeaf mgmt_lsd_app_type_dmtc;
+        static const Enum::YLeaf mgmt_lsd_app_type_any;
 
 };
 
 class MgmtLsdTeBindingEnum : public Enum
 {
     public:
-        static const Enum::Value mgmt_lsd_ident_p2p_tun_id;
-        static const Enum::Value mgmt_lsd_ident_p2p_grp_id;
-        static const Enum::Value mgmt_lsd_ident_p2mp_tun_id;
-        static const Enum::Value mgmt_lsd_ident_p2mp_grp_id;
+        static const Enum::YLeaf mgmt_lsd_ident_p2p_tun_id;
+        static const Enum::YLeaf mgmt_lsd_ident_p2p_grp_id;
+        static const Enum::YLeaf mgmt_lsd_ident_p2mp_tun_id;
+        static const Enum::YLeaf mgmt_lsd_ident_p2mp_grp_id;
 
 };
 
 class MgmtLsdAppStateEnum : public Enum
 {
     public:
-        static const Enum::Value mgmt_lsd_app_state_active;
-        static const Enum::Value mgmt_lsd_app_state_zombie;
-        static const Enum::Value mgmt_lsd_app_state_recover;
+        static const Enum::YLeaf mgmt_lsd_app_state_active;
+        static const Enum::YLeaf mgmt_lsd_app_state_zombie;
+        static const Enum::YLeaf mgmt_lsd_app_state_recover;
 
 };
 
 class MgmtLsdIntfStateEnum : public Enum
 {
     public:
-        static const Enum::Value mgmt_lsd_intf_state_unknown;
-        static const Enum::Value mgmt_lsd_intf_state_up;
-        static const Enum::Value mgmt_lsd_intf_state_down;
+        static const Enum::YLeaf mgmt_lsd_intf_state_unknown;
+        static const Enum::YLeaf mgmt_lsd_intf_state_up;
+        static const Enum::YLeaf mgmt_lsd_intf_state_down;
 
 };
 

@@ -24,8 +24,9 @@ class MplsStatic : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable; //type: empty
 
+
+        YLeaf enable; //type: empty
 
     class Vrfs : public Entity
     {
@@ -42,6 +43,7 @@ class MplsStatic : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -55,9 +57,10 @@ class MplsStatic : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value enable; //type: empty
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf enable; //type: empty
 
             class LabelSwitchedPaths : public Entity
             {
@@ -74,6 +77,7 @@ class MplsStatic : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LabelSwitchedPath : public Entity
                 {
                     public:
@@ -87,9 +91,10 @@ class MplsStatic : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lsp_name; //type: string
-                        Value enable; //type: empty
 
+
+                        YLeaf lsp_name; //type: string
+                        YLeaf enable; //type: empty
 
                     class InLabel : public Entity
                     {
@@ -104,13 +109,13 @@ class MplsStatic : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value in_label_value; //type: uint32
-                            Value label_mode; //type: MplsStaticLabelModeEnum
-                            Value prefix; //type: string
-                            Value prefix_length; //type: int32
 
 
-                            class MplsStaticLabelModeEnum;
+                            YLeaf in_label_value; //type: uint32
+                            YLeaf label_mode; //type: MplsStaticLabelModeEnum
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_length; //type: int32
+
 
 
                     }; // MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel
@@ -131,6 +136,7 @@ class MplsStatic : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Path : public Entity
                         {
                             public:
@@ -144,16 +150,15 @@ class MplsStatic : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value path_id; //type: uint32
-                                Value path_type; //type: MplsStaticPathEnum
-                                Value label_type; //type: MplsStaticOutLabelTypesEnum
-                                Value next_hop_label; //type: uint32
-                                Value next_hop_address; //type: string
-                                Value interface_name; //type: string
 
 
-                                class MplsStaticOutLabelTypesEnum;
-                                class MplsStaticPathEnum;
+                                YLeaf path_id; //type: uint32
+                                YLeaf path_type; //type: MplsStaticPathEnum
+                                YLeaf label_type; //type: MplsStaticOutLabelTypesEnum
+                                YLeaf next_hop_label; //type: uint32
+                                YLeaf next_hop_address; //type: string
+                                YLeaf interface_name; //type: string
+
 
 
                         }; // MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path
@@ -193,6 +198,7 @@ class MplsStatic : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Af : public Entity
                 {
                     public:
@@ -206,9 +212,10 @@ class MplsStatic : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi; //type: MplsStaticAddressFamilyEnum
-                        Value enable; //type: empty
 
+
+                        YLeaf afi; //type: MplsStaticAddressFamilyEnum
+                        YLeaf enable; //type: empty
 
                     class TopLabelHash : public Entity
                     {
@@ -223,6 +230,7 @@ class MplsStatic : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
+
 
 
                         class LocalLabels : public Entity
@@ -240,6 +248,7 @@ class MplsStatic : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class LocalLabel : public Entity
                             {
                                 public:
@@ -253,8 +262,9 @@ class MplsStatic : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value local_label_id; //type: uint32
 
+
+                                    YLeaf local_label_id; //type: uint32
 
                                 class LabelType : public Entity
                                 {
@@ -269,12 +279,12 @@ class MplsStatic : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value label_mode; //type: MplsStaticLabelModeEnum
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: int32
 
 
-                                        class MplsStaticLabelModeEnum;
+                                        YLeaf label_mode; //type: MplsStaticLabelModeEnum
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: int32
+
 
 
                                 }; // MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType
@@ -295,6 +305,7 @@ class MplsStatic : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Path : public Entity
                                     {
                                         public:
@@ -308,16 +319,15 @@ class MplsStatic : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value path_id; //type: uint32
-                                            Value path_type; //type: MplsStaticPathEnum
-                                            Value label_type; //type: MplsStaticOutLabelTypesEnum
-                                            Value next_hop_label; //type: uint32
-                                            Value next_hop_address; //type: string
-                                            Value interface_name; //type: string
 
 
-                                            class MplsStaticOutLabelTypesEnum;
-                                            class MplsStaticPathEnum;
+                                            YLeaf path_id; //type: uint32
+                                            YLeaf path_type; //type: MplsStaticPathEnum
+                                            YLeaf label_type; //type: MplsStaticOutLabelTypesEnum
+                                            YLeaf next_hop_label; //type: uint32
+                                            YLeaf next_hop_address; //type: string
+                                            YLeaf interface_name; //type: string
+
 
 
                                     }; // MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path
@@ -363,6 +373,7 @@ class MplsStatic : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class LocalLabel : public Entity
                         {
                             public:
@@ -376,8 +387,9 @@ class MplsStatic : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value local_label_id; //type: uint32
 
+
+                                YLeaf local_label_id; //type: uint32
 
                             class LabelType : public Entity
                             {
@@ -392,12 +404,12 @@ class MplsStatic : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label_mode; //type: MplsStaticLabelModeEnum
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: int32
 
 
-                                    class MplsStaticLabelModeEnum;
+                                    YLeaf label_mode; //type: MplsStaticLabelModeEnum
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: int32
+
 
 
                             }; // MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType
@@ -418,6 +430,7 @@ class MplsStatic : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Path : public Entity
                                 {
                                     public:
@@ -431,16 +444,15 @@ class MplsStatic : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value path_id; //type: uint32
-                                        Value path_type; //type: MplsStaticPathEnum
-                                        Value label_type; //type: MplsStaticOutLabelTypesEnum
-                                        Value next_hop_label; //type: uint32
-                                        Value next_hop_address; //type: string
-                                        Value interface_name; //type: string
 
 
-                                        class MplsStaticOutLabelTypesEnum;
-                                        class MplsStaticPathEnum;
+                                        YLeaf path_id; //type: uint32
+                                        YLeaf path_type; //type: MplsStaticPathEnum
+                                        YLeaf label_type; //type: MplsStaticOutLabelTypesEnum
+                                        YLeaf next_hop_label; //type: uint32
+                                        YLeaf next_hop_address; //type: string
+                                        YLeaf interface_name; //type: string
+
 
 
                                 }; // MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path
@@ -467,7 +479,6 @@ class MplsStatic : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_mpls_static_cfg::MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels> local_labels;
                         std::unique_ptr<Cisco_IOS_XR_mpls_static_cfg::MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash> top_label_hash;
-                        class MplsStaticAddressFamilyEnum;
 
 
                 }; // MplsStatic::Vrfs::Vrf::Afs::Af
@@ -507,6 +518,7 @@ class MplsStatic : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -520,8 +532,9 @@ class MplsStatic : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
 
+
+                YLeaf interface_name; //type: string
 
 
 
@@ -547,8 +560,9 @@ class MplsStatic : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value enable; //type: empty
 
+
+            YLeaf enable; //type: empty
 
         class LabelSwitchedPaths : public Entity
         {
@@ -565,6 +579,7 @@ class MplsStatic : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class LabelSwitchedPath : public Entity
             {
                 public:
@@ -578,9 +593,10 @@ class MplsStatic : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lsp_name; //type: string
-                    Value enable; //type: empty
 
+
+                    YLeaf lsp_name; //type: string
+                    YLeaf enable; //type: empty
 
                 class InLabel : public Entity
                 {
@@ -595,13 +611,13 @@ class MplsStatic : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value in_label_value; //type: uint32
-                        Value label_mode; //type: MplsStaticLabelModeEnum
-                        Value prefix; //type: string
-                        Value prefix_length; //type: int32
 
 
-                        class MplsStaticLabelModeEnum;
+                        YLeaf in_label_value; //type: uint32
+                        YLeaf label_mode; //type: MplsStaticLabelModeEnum
+                        YLeaf prefix; //type: string
+                        YLeaf prefix_length; //type: int32
+
 
 
                 }; // MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel
@@ -622,6 +638,7 @@ class MplsStatic : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Path : public Entity
                     {
                         public:
@@ -635,16 +652,15 @@ class MplsStatic : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value path_id; //type: uint32
-                            Value path_type; //type: MplsStaticPathEnum
-                            Value label_type; //type: MplsStaticOutLabelTypesEnum
-                            Value next_hop_label; //type: uint32
-                            Value next_hop_address; //type: string
-                            Value interface_name; //type: string
 
 
-                            class MplsStaticOutLabelTypesEnum;
-                            class MplsStaticPathEnum;
+                            YLeaf path_id; //type: uint32
+                            YLeaf path_type; //type: MplsStaticPathEnum
+                            YLeaf label_type; //type: MplsStaticOutLabelTypesEnum
+                            YLeaf next_hop_label; //type: uint32
+                            YLeaf next_hop_address; //type: string
+                            YLeaf interface_name; //type: string
+
 
 
                     }; // MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path
@@ -684,6 +700,7 @@ class MplsStatic : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Af : public Entity
             {
                 public:
@@ -697,9 +714,10 @@ class MplsStatic : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value afi; //type: MplsStaticAddressFamilyEnum
-                    Value enable; //type: empty
 
+
+                    YLeaf afi; //type: MplsStaticAddressFamilyEnum
+                    YLeaf enable; //type: empty
 
                 class TopLabelHash : public Entity
                 {
@@ -714,6 +732,7 @@ class MplsStatic : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class LocalLabels : public Entity
@@ -731,6 +750,7 @@ class MplsStatic : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class LocalLabel : public Entity
                         {
                             public:
@@ -744,8 +764,9 @@ class MplsStatic : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value local_label_id; //type: uint32
 
+
+                                YLeaf local_label_id; //type: uint32
 
                             class LabelType : public Entity
                             {
@@ -760,12 +781,12 @@ class MplsStatic : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label_mode; //type: MplsStaticLabelModeEnum
-                                    Value prefix; //type: string
-                                    Value prefix_length; //type: int32
 
 
-                                    class MplsStaticLabelModeEnum;
+                                    YLeaf label_mode; //type: MplsStaticLabelModeEnum
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_length; //type: int32
+
 
 
                             }; // MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType
@@ -786,6 +807,7 @@ class MplsStatic : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Path : public Entity
                                 {
                                     public:
@@ -799,16 +821,15 @@ class MplsStatic : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value path_id; //type: uint32
-                                        Value path_type; //type: MplsStaticPathEnum
-                                        Value label_type; //type: MplsStaticOutLabelTypesEnum
-                                        Value next_hop_label; //type: uint32
-                                        Value next_hop_address; //type: string
-                                        Value interface_name; //type: string
 
 
-                                        class MplsStaticOutLabelTypesEnum;
-                                        class MplsStaticPathEnum;
+                                        YLeaf path_id; //type: uint32
+                                        YLeaf path_type; //type: MplsStaticPathEnum
+                                        YLeaf label_type; //type: MplsStaticOutLabelTypesEnum
+                                        YLeaf next_hop_label; //type: uint32
+                                        YLeaf next_hop_address; //type: string
+                                        YLeaf interface_name; //type: string
+
 
 
                                 }; // MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path
@@ -854,6 +875,7 @@ class MplsStatic : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class LocalLabel : public Entity
                     {
                         public:
@@ -867,8 +889,9 @@ class MplsStatic : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value local_label_id; //type: uint32
 
+
+                            YLeaf local_label_id; //type: uint32
 
                         class LabelType : public Entity
                         {
@@ -883,12 +906,12 @@ class MplsStatic : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label_mode; //type: MplsStaticLabelModeEnum
-                                Value prefix; //type: string
-                                Value prefix_length; //type: int32
 
 
-                                class MplsStaticLabelModeEnum;
+                                YLeaf label_mode; //type: MplsStaticLabelModeEnum
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: int32
+
 
 
                         }; // MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType
@@ -909,6 +932,7 @@ class MplsStatic : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Path : public Entity
                             {
                                 public:
@@ -922,16 +946,15 @@ class MplsStatic : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value path_id; //type: uint32
-                                    Value path_type; //type: MplsStaticPathEnum
-                                    Value label_type; //type: MplsStaticOutLabelTypesEnum
-                                    Value next_hop_label; //type: uint32
-                                    Value next_hop_address; //type: string
-                                    Value interface_name; //type: string
 
 
-                                    class MplsStaticOutLabelTypesEnum;
-                                    class MplsStaticPathEnum;
+                                    YLeaf path_id; //type: uint32
+                                    YLeaf path_type; //type: MplsStaticPathEnum
+                                    YLeaf label_type; //type: MplsStaticOutLabelTypesEnum
+                                    YLeaf next_hop_label; //type: uint32
+                                    YLeaf next_hop_address; //type: string
+                                    YLeaf interface_name; //type: string
+
 
 
                             }; // MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path
@@ -958,7 +981,6 @@ class MplsStatic : public Entity
 
                     std::unique_ptr<Cisco_IOS_XR_mpls_static_cfg::MplsStatic::DefaultVrf::Afs::Af::LocalLabels> local_labels;
                     std::unique_ptr<Cisco_IOS_XR_mpls_static_cfg::MplsStatic::DefaultVrf::Afs::Af::TopLabelHash> top_label_hash;
-                    class MplsStaticAddressFamilyEnum;
 
 
             }; // MplsStatic::DefaultVrf::Afs::Af
@@ -988,34 +1010,34 @@ class MplsStatic : public Entity
 class MplsStaticOutLabelTypesEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value out_label;
-        static const Enum::Value pop;
-        static const Enum::Value exp_null;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf out_label;
+        static const Enum::YLeaf pop;
+        static const Enum::YLeaf exp_null;
 
 };
 
 class MplsStaticLabelModeEnum : public Enum
 {
     public:
-        static const Enum::Value per_vrf;
-        static const Enum::Value per_prefix;
-        static const Enum::Value lsp;
+        static const Enum::YLeaf per_vrf;
+        static const Enum::YLeaf per_prefix;
+        static const Enum::YLeaf lsp;
 
 };
 
 class MplsStaticPathEnum : public Enum
 {
     public:
-        static const Enum::Value pop_and_lookup;
-        static const Enum::Value cross_connect;
+        static const Enum::YLeaf pop_and_lookup;
+        static const Enum::YLeaf cross_connect;
 
 };
 
 class MplsStaticAddressFamilyEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4_unicast;
+        static const Enum::YLeaf ipv4_unicast;
 
 };
 

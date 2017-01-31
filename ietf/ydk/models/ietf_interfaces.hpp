@@ -38,6 +38,7 @@ class Interfaces : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Interface : public Entity
     {
         public:
@@ -51,12 +52,13 @@ class Interfaces : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value name; //type: string
-            Value description; //type: string
-            Value type; //type: InterfaceTypeIdentity
-            Value enabled; //type: boolean
-            Value link_up_down_trap_enable; //type: LinkUpDownTrapEnableEnum
 
+
+            YLeaf name; //type: string
+            YLeaf description; //type: string
+            YLeaf type; //type: InterfaceTypeIdentity
+            YLeaf enabled; //type: boolean
+            YLeaf link_up_down_trap_enable; //type: LinkUpDownTrapEnableEnum
 
             class LinkUpDownTrapEnableEnum;
 
@@ -85,6 +87,7 @@ class InterfacesState : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Interface : public Entity
     {
         public:
@@ -98,19 +101,20 @@ class InterfacesState : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value name; //type: string
-            Value type; //type: InterfaceTypeIdentity
-            Value admin_status; //type: AdminStatusEnum
-            Value oper_status; //type: OperStatusEnum
-            Value last_change; //type: string
-            Value if_index; //type: int32
-            Value phys_address; //type: string
-            Value speed; //type: uint64
-            //type: list of  string (refers to ietf_interfaces::InterfacesState::Interface::name)
-            ValueList higher_layer_if;
-            //type: list of  string (refers to ietf_interfaces::InterfacesState::Interface::name)
-            ValueList lower_layer_if;
 
+
+            YLeaf name; //type: string
+            YLeaf type; //type: InterfaceTypeIdentity
+            YLeaf admin_status; //type: AdminStatusEnum
+            YLeaf oper_status; //type: OperStatusEnum
+            YLeaf last_change; //type: string
+            YLeaf if_index; //type: int32
+            YLeaf phys_address; //type: string
+            YLeaf speed; //type: uint64
+            //type: list of  string (refers to ietf_interfaces::InterfacesState::Interface::name)
+            YLeafList higher_layer_if;
+            //type: list of  string (refers to ietf_interfaces::InterfacesState::Interface::name)
+            YLeafList lower_layer_if;
 
         class Statistics : public Entity
         {
@@ -125,23 +129,24 @@ class InterfacesState : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value discontinuity_time; //type: string
-                Value in_octets; //type: uint64
-                Value in_unicast_pkts; //type: uint64
-                Value in_broadcast_pkts; //type: uint64
-                Value in_multicast_pkts; //type: uint64
-                Value in_discards; //type: uint32
-                Value in_errors; //type: uint32
-                Value in_unknown_protos; //type: uint32
-                Value out_octets; //type: uint64
-                Value out_unicast_pkts; //type: uint64
-                Value out_broadcast_pkts; //type: uint64
-                Value out_multicast_pkts; //type: uint64
-                Value out_discards; //type: uint32
-                Value out_errors; //type: uint32
-                Value in_pkts; //type: uint64
-                Value out_pkts; //type: uint64
 
+
+                YLeaf discontinuity_time; //type: string
+                YLeaf in_octets; //type: uint64
+                YLeaf in_unicast_pkts; //type: uint64
+                YLeaf in_broadcast_pkts; //type: uint64
+                YLeaf in_multicast_pkts; //type: uint64
+                YLeaf in_discards; //type: uint32
+                YLeaf in_errors; //type: uint32
+                YLeaf in_unknown_protos; //type: uint32
+                YLeaf out_octets; //type: uint64
+                YLeaf out_unicast_pkts; //type: uint64
+                YLeaf out_broadcast_pkts; //type: uint64
+                YLeaf out_multicast_pkts; //type: uint64
+                YLeaf out_discards; //type: uint32
+                YLeaf out_errors; //type: uint32
+                YLeaf in_pkts; //type: uint64
+                YLeaf out_pkts; //type: uint64
 
 
 
@@ -161,9 +166,10 @@ class InterfacesState : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value value_; //type: uint64
-                Value units; //type: string
 
+
+                YLeaf value_; //type: uint64
+                YLeaf units; //type: string
 
 
 
@@ -188,30 +194,30 @@ class InterfacesState : public Entity
 class Interfaces::Interface::LinkUpDownTrapEnableEnum : public Enum
 {
     public:
-        static const Enum::Value enabled;
-        static const Enum::Value disabled;
+        static const Enum::YLeaf enabled;
+        static const Enum::YLeaf disabled;
 
 };
 
 class InterfacesState::Interface::AdminStatusEnum : public Enum
 {
     public:
-        static const Enum::Value up;
-        static const Enum::Value down;
-        static const Enum::Value testing;
+        static const Enum::YLeaf up;
+        static const Enum::YLeaf down;
+        static const Enum::YLeaf testing;
 
 };
 
 class InterfacesState::Interface::OperStatusEnum : public Enum
 {
     public:
-        static const Enum::Value up;
-        static const Enum::Value down;
-        static const Enum::Value testing;
-        static const Enum::Value unknown;
-        static const Enum::Value dormant;
-        static const Enum::Value not_present;
-        static const Enum::Value lower_layer_down;
+        static const Enum::YLeaf up;
+        static const Enum::YLeaf down;
+        static const Enum::YLeaf testing;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf dormant;
+        static const Enum::YLeaf not_present;
+        static const Enum::YLeaf lower_layer_down;
 
 };
 

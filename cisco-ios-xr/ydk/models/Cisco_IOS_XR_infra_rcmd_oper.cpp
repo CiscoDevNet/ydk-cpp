@@ -64,7 +64,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -182,7 +182,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -289,7 +289,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -468,7 +468,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -662,7 +662,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -808,7 +808,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventSt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -970,7 +970,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1086,7 +1086,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1200,7 +1200,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1304,7 +1304,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1408,7 +1408,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1516,9 +1516,9 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary
     return is_set(operation)
 	|| is_set(level.operation)
 	|| is_set(threshold_exceeded.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation))
-	|| (route_statistics !=  nullptr && is_set(route_statistics->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation())
+	|| (route_statistics !=  nullptr && route_statistics->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::get_segment_path() const
@@ -1535,7 +1535,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1752,7 +1752,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1918,7 +1918,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2038,7 +2038,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2152,7 +2152,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2256,7 +2256,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2360,7 +2360,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2468,9 +2468,9 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRu
     return is_set(operation)
 	|| is_set(level.operation)
 	|| is_set(threshold_exceeded.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation))
-	|| (route_statistics !=  nullptr && is_set(route_statistics->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation())
+	|| (route_statistics !=  nullptr && route_statistics->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::get_segment_path() const
@@ -2487,7 +2487,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2673,7 +2673,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2769,7 +2769,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2865,7 +2865,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2961,7 +2961,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3057,7 +3057,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3153,7 +3153,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3249,7 +3249,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3345,7 +3345,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3441,7 +3441,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3524,7 +3524,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRu
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(speed.operation)
-	|| (fib_complete !=  nullptr && is_set(fib_complete->operation));
+	|| (fib_complete !=  nullptr && fib_complete->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::get_segment_path() const
@@ -3541,7 +3541,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3655,7 +3655,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3738,7 +3738,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRu
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(speed.operation)
-	|| (fib_complete !=  nullptr && is_set(fib_complete->operation));
+	|| (fib_complete !=  nullptr && fib_complete->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::get_segment_path() const
@@ -3755,7 +3755,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3904,14 +3904,14 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRu
             return true;
     }
     return is_set(operation)
-	|| (ldp_enter !=  nullptr && is_set(ldp_enter->operation))
-	|| (ldp_exit !=  nullptr && is_set(ldp_exit->operation))
-	|| (lsd_enter !=  nullptr && is_set(lsd_enter->operation))
-	|| (lsd_exit !=  nullptr && is_set(lsd_exit->operation))
-	|| (ri_bv4_enter !=  nullptr && is_set(ri_bv4_enter->operation))
-	|| (ri_bv4_exit !=  nullptr && is_set(ri_bv4_exit->operation))
-	|| (ri_bv4_redistribute !=  nullptr && is_set(ri_bv4_redistribute->operation))
-	|| (route_origin !=  nullptr && is_set(route_origin->operation));
+	|| (ldp_enter !=  nullptr && ldp_enter->has_operation())
+	|| (ldp_exit !=  nullptr && ldp_exit->has_operation())
+	|| (lsd_enter !=  nullptr && lsd_enter->has_operation())
+	|| (lsd_exit !=  nullptr && lsd_exit->has_operation())
+	|| (ri_bv4_enter !=  nullptr && ri_bv4_enter->has_operation())
+	|| (ri_bv4_exit !=  nullptr && ri_bv4_exit->has_operation())
+	|| (ri_bv4_redistribute !=  nullptr && ri_bv4_redistribute->has_operation())
+	|| (route_origin !=  nullptr && route_origin->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::get_segment_path() const
@@ -3928,7 +3928,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4242,7 +4242,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4330,7 +4330,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4431,7 +4431,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRu
             return true;
     }
     return is_set(operation)
-	|| (priority_summary !=  nullptr && is_set(priority_summary->operation));
+	|| (priority_summary !=  nullptr && priority_summary->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::get_segment_path() const
@@ -4448,7 +4448,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4639,7 +4639,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4792,7 +4792,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4995,7 +4995,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5109,7 +5109,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5213,7 +5213,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5320,9 +5320,9 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaA
 	|| is_set(type3ls_as.operation)
 	|| is_set(type4ls_as.operation)
 	|| is_set(type57ls_as.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation))
-	|| (route_statistics !=  nullptr && is_set(route_statistics->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation())
+	|| (route_statistics !=  nullptr && route_statistics->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::get_segment_path() const
@@ -5339,7 +5339,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5514,7 +5514,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5610,7 +5610,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5706,7 +5706,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5802,7 +5802,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5898,7 +5898,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5994,7 +5994,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6090,7 +6090,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6186,7 +6186,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6282,7 +6282,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6365,7 +6365,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaA
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(speed.operation)
-	|| (fib_complete !=  nullptr && is_set(fib_complete->operation));
+	|| (fib_complete !=  nullptr && fib_complete->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::get_segment_path() const
@@ -6382,7 +6382,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6496,7 +6496,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6579,7 +6579,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaA
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(speed.operation)
-	|| (fib_complete !=  nullptr && is_set(fib_complete->operation));
+	|| (fib_complete !=  nullptr && fib_complete->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::get_segment_path() const
@@ -6596,7 +6596,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6745,14 +6745,14 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaA
             return true;
     }
     return is_set(operation)
-	|| (ldp_enter !=  nullptr && is_set(ldp_enter->operation))
-	|| (ldp_exit !=  nullptr && is_set(ldp_exit->operation))
-	|| (lsd_enter !=  nullptr && is_set(lsd_enter->operation))
-	|| (lsd_exit !=  nullptr && is_set(lsd_exit->operation))
-	|| (ri_bv4_enter !=  nullptr && is_set(ri_bv4_enter->operation))
-	|| (ri_bv4_exit !=  nullptr && is_set(ri_bv4_exit->operation))
-	|| (ri_bv4_redistribute !=  nullptr && is_set(ri_bv4_redistribute->operation))
-	|| (route_origin !=  nullptr && is_set(route_origin->operation));
+	|| (ldp_enter !=  nullptr && ldp_enter->has_operation())
+	|| (ldp_exit !=  nullptr && ldp_exit->has_operation())
+	|| (lsd_enter !=  nullptr && lsd_enter->has_operation())
+	|| (lsd_exit !=  nullptr && lsd_exit->has_operation())
+	|| (ri_bv4_enter !=  nullptr && ri_bv4_enter->has_operation())
+	|| (ri_bv4_exit !=  nullptr && ri_bv4_exit->has_operation())
+	|| (ri_bv4_redistribute !=  nullptr && ri_bv4_redistribute->has_operation())
+	|| (route_origin !=  nullptr && route_origin->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::get_segment_path() const
@@ -6769,7 +6769,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7083,7 +7083,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7171,7 +7171,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7272,7 +7272,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaA
             return true;
     }
     return is_set(operation)
-	|| (priority_summary !=  nullptr && is_set(priority_summary->operation));
+	|| (priority_summary !=  nullptr && priority_summary->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::get_segment_path() const
@@ -7289,7 +7289,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7472,7 +7472,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7583,7 +7583,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::has_operat
     }
     return is_set(operation)
 	|| is_set(spf_run_number.operation)
-	|| (spf_summary !=  nullptr && is_set(spf_summary->operation));
+	|| (spf_summary !=  nullptr && spf_summary->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::get_segment_path() const
@@ -7600,7 +7600,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7762,7 +7762,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7884,7 +7884,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8002,7 +8002,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8109,7 +8109,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8288,7 +8288,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8482,7 +8482,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8598,7 +8598,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8712,7 +8712,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8816,7 +8816,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8920,7 +8920,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9028,9 +9028,9 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary:
     return is_set(operation)
 	|| is_set(level.operation)
 	|| is_set(threshold_exceeded.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation))
-	|| (route_statistics !=  nullptr && is_set(route_statistics->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation())
+	|| (route_statistics !=  nullptr && route_statistics->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::get_segment_path() const
@@ -9047,7 +9047,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9264,7 +9264,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9430,7 +9430,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9550,7 +9550,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9664,7 +9664,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9768,7 +9768,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9872,7 +9872,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9980,9 +9980,9 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun
     return is_set(operation)
 	|| is_set(level.operation)
 	|| is_set(threshold_exceeded.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation))
-	|| (route_statistics !=  nullptr && is_set(route_statistics->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation())
+	|| (route_statistics !=  nullptr && route_statistics->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::get_segment_path() const
@@ -9999,7 +9999,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10185,7 +10185,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10281,7 +10281,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10377,7 +10377,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10473,7 +10473,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10569,7 +10569,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10665,7 +10665,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10761,7 +10761,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10857,7 +10857,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10953,7 +10953,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11036,7 +11036,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(speed.operation)
-	|| (fib_complete !=  nullptr && is_set(fib_complete->operation));
+	|| (fib_complete !=  nullptr && fib_complete->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::get_segment_path() const
@@ -11053,7 +11053,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11167,7 +11167,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11250,7 +11250,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(speed.operation)
-	|| (fib_complete !=  nullptr && is_set(fib_complete->operation));
+	|| (fib_complete !=  nullptr && fib_complete->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::get_segment_path() const
@@ -11267,7 +11267,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11416,14 +11416,14 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun
             return true;
     }
     return is_set(operation)
-	|| (ldp_enter !=  nullptr && is_set(ldp_enter->operation))
-	|| (ldp_exit !=  nullptr && is_set(ldp_exit->operation))
-	|| (lsd_enter !=  nullptr && is_set(lsd_enter->operation))
-	|| (lsd_exit !=  nullptr && is_set(lsd_exit->operation))
-	|| (ri_bv4_enter !=  nullptr && is_set(ri_bv4_enter->operation))
-	|| (ri_bv4_exit !=  nullptr && is_set(ri_bv4_exit->operation))
-	|| (ri_bv4_redistribute !=  nullptr && is_set(ri_bv4_redistribute->operation))
-	|| (route_origin !=  nullptr && is_set(route_origin->operation));
+	|| (ldp_enter !=  nullptr && ldp_enter->has_operation())
+	|| (ldp_exit !=  nullptr && ldp_exit->has_operation())
+	|| (lsd_enter !=  nullptr && lsd_enter->has_operation())
+	|| (lsd_exit !=  nullptr && lsd_exit->has_operation())
+	|| (ri_bv4_enter !=  nullptr && ri_bv4_enter->has_operation())
+	|| (ri_bv4_exit !=  nullptr && ri_bv4_exit->has_operation())
+	|| (ri_bv4_redistribute !=  nullptr && ri_bv4_redistribute->has_operation())
+	|| (route_origin !=  nullptr && route_origin->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::get_segment_path() const
@@ -11440,7 +11440,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11754,7 +11754,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11842,7 +11842,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11943,7 +11943,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun
             return true;
     }
     return is_set(operation)
-	|| (priority_summary !=  nullptr && is_set(priority_summary->operation));
+	|| (priority_summary !=  nullptr && priority_summary->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::get_segment_path() const
@@ -11960,7 +11960,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12151,7 +12151,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12304,7 +12304,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12507,7 +12507,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12621,7 +12621,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12725,7 +12725,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12832,9 +12832,9 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAn
 	|| is_set(type3ls_as.operation)
 	|| is_set(type4ls_as.operation)
 	|| is_set(type57ls_as.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation))
-	|| (route_statistics !=  nullptr && is_set(route_statistics->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation())
+	|| (route_statistics !=  nullptr && route_statistics->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::get_segment_path() const
@@ -12851,7 +12851,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13026,7 +13026,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13122,7 +13122,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13218,7 +13218,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13314,7 +13314,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13410,7 +13410,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13506,7 +13506,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13602,7 +13602,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13698,7 +13698,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13794,7 +13794,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13877,7 +13877,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAn
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(speed.operation)
-	|| (fib_complete !=  nullptr && is_set(fib_complete->operation));
+	|| (fib_complete !=  nullptr && fib_complete->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::get_segment_path() const
@@ -13894,7 +13894,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14008,7 +14008,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14091,7 +14091,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAn
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(speed.operation)
-	|| (fib_complete !=  nullptr && is_set(fib_complete->operation));
+	|| (fib_complete !=  nullptr && fib_complete->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::get_segment_path() const
@@ -14108,7 +14108,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14257,14 +14257,14 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAn
             return true;
     }
     return is_set(operation)
-	|| (ldp_enter !=  nullptr && is_set(ldp_enter->operation))
-	|| (ldp_exit !=  nullptr && is_set(ldp_exit->operation))
-	|| (lsd_enter !=  nullptr && is_set(lsd_enter->operation))
-	|| (lsd_exit !=  nullptr && is_set(lsd_exit->operation))
-	|| (ri_bv4_enter !=  nullptr && is_set(ri_bv4_enter->operation))
-	|| (ri_bv4_exit !=  nullptr && is_set(ri_bv4_exit->operation))
-	|| (ri_bv4_redistribute !=  nullptr && is_set(ri_bv4_redistribute->operation))
-	|| (route_origin !=  nullptr && is_set(route_origin->operation));
+	|| (ldp_enter !=  nullptr && ldp_enter->has_operation())
+	|| (ldp_exit !=  nullptr && ldp_exit->has_operation())
+	|| (lsd_enter !=  nullptr && lsd_enter->has_operation())
+	|| (lsd_exit !=  nullptr && lsd_exit->has_operation())
+	|| (ri_bv4_enter !=  nullptr && ri_bv4_enter->has_operation())
+	|| (ri_bv4_exit !=  nullptr && ri_bv4_exit->has_operation())
+	|| (ri_bv4_redistribute !=  nullptr && ri_bv4_redistribute->has_operation())
+	|| (route_origin !=  nullptr && route_origin->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::get_segment_path() const
@@ -14281,7 +14281,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14595,7 +14595,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14683,7 +14683,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14784,7 +14784,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAn
             return true;
     }
     return is_set(operation)
-	|| (priority_summary !=  nullptr && is_set(priority_summary->operation));
+	|| (priority_summary !=  nullptr && priority_summary->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::get_segment_path() const
@@ -14801,7 +14801,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14984,7 +14984,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15095,7 +15095,7 @@ bool Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::has_operati
     }
     return is_set(operation)
 	|| is_set(spf_run_number.operation)
-	|| (spf_summary !=  nullptr && is_set(spf_summary->operation));
+	|| (spf_summary !=  nullptr && spf_summary->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::get_segment_path() const
@@ -15112,7 +15112,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15274,7 +15274,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15384,7 +15384,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15488,7 +15488,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15598,7 +15598,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15722,7 +15722,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15858,7 +15858,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15969,7 +15969,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16065,7 +16065,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16196,7 +16196,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16378,7 +16378,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16551,8 +16551,8 @@ bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExte
 	|| is_set(spf_run_no.operation)
 	|| is_set(threshold_exceeded.operation)
 	|| is_set(trigger_time.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::get_segment_path() const
@@ -16569,7 +16569,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16861,7 +16861,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16971,7 +16971,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17075,7 +17075,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17185,7 +17185,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17309,7 +17309,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17445,7 +17445,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17556,7 +17556,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17652,7 +17652,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17783,7 +17783,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17965,7 +17965,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18138,8 +18138,8 @@ bool Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::
 	|| is_set(spf_run_no.operation)
 	|| is_set(threshold_exceeded.operation)
 	|| is_set(trigger_time.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::get_segment_path() const
@@ -18156,7 +18156,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18448,7 +18448,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18558,7 +18558,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18662,7 +18662,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18772,7 +18772,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18896,7 +18896,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19032,7 +19032,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19143,7 +19143,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19239,7 +19239,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19370,7 +19370,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19552,7 +19552,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19725,8 +19725,8 @@ bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExter
 	|| is_set(spf_run_no.operation)
 	|| is_set(threshold_exceeded.operation)
 	|| is_set(trigger_time.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::get_segment_path() const
@@ -19743,7 +19743,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20035,7 +20035,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20145,7 +20145,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20249,7 +20249,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20359,7 +20359,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20483,7 +20483,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20619,7 +20619,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20730,7 +20730,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20826,7 +20826,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20957,7 +20957,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21139,7 +21139,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21312,8 +21312,8 @@ bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::h
 	|| is_set(spf_run_no.operation)
 	|| is_set(threshold_exceeded.operation)
 	|| is_set(trigger_time.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::get_segment_path() const
@@ -21330,7 +21330,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21622,7 +21622,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21768,7 +21768,7 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventStatistics::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21958,16 +21958,16 @@ bool Rcmd::Ospf::Instances::Instance::has_operation() const
 {
     return is_set(operation)
 	|| is_set(instance_name.operation)
-	|| (ipfrr_event_offlines !=  nullptr && is_set(ipfrr_event_offlines->operation))
-	|| (ipfrr_event_summaries !=  nullptr && is_set(ipfrr_event_summaries->operation))
-	|| (prefix_event_offlines !=  nullptr && is_set(prefix_event_offlines->operation))
-	|| (prefix_event_statistics !=  nullptr && is_set(prefix_event_statistics->operation))
-	|| (prefix_event_summaries !=  nullptr && is_set(prefix_event_summaries->operation))
-	|| (spf_run_offlines !=  nullptr && is_set(spf_run_offlines->operation))
-	|| (spf_run_summaries !=  nullptr && is_set(spf_run_summaries->operation))
-	|| (summary_external_event_offlines !=  nullptr && is_set(summary_external_event_offlines->operation))
-	|| (summary_external_event_statistics !=  nullptr && is_set(summary_external_event_statistics->operation))
-	|| (summary_external_event_summaries !=  nullptr && is_set(summary_external_event_summaries->operation));
+	|| (ipfrr_event_offlines !=  nullptr && ipfrr_event_offlines->has_operation())
+	|| (ipfrr_event_summaries !=  nullptr && ipfrr_event_summaries->has_operation())
+	|| (prefix_event_offlines !=  nullptr && prefix_event_offlines->has_operation())
+	|| (prefix_event_statistics !=  nullptr && prefix_event_statistics->has_operation())
+	|| (prefix_event_summaries !=  nullptr && prefix_event_summaries->has_operation())
+	|| (spf_run_offlines !=  nullptr && spf_run_offlines->has_operation())
+	|| (spf_run_summaries !=  nullptr && spf_run_summaries->has_operation())
+	|| (summary_external_event_offlines !=  nullptr && summary_external_event_offlines->has_operation())
+	|| (summary_external_event_statistics !=  nullptr && summary_external_event_statistics->has_operation())
+	|| (summary_external_event_summaries !=  nullptr && summary_external_event_summaries->has_operation());
 }
 
 std::string Rcmd::Ospf::Instances::Instance::get_segment_path() const
@@ -22388,7 +22388,7 @@ bool Rcmd::Ospf::has_data() const
 bool Rcmd::Ospf::has_operation() const
 {
     return is_set(operation)
-	|| (instances !=  nullptr && is_set(instances->operation));
+	|| (instances !=  nullptr && instances->has_operation());
 }
 
 std::string Rcmd::Ospf::get_segment_path() const
@@ -24078,8 +24078,8 @@ bool Rcmd::Server::has_data() const
 bool Rcmd::Server::has_operation() const
 {
     return is_set(operation)
-	|| (detail !=  nullptr && is_set(detail->operation))
-	|| (normal !=  nullptr && is_set(normal->operation));
+	|| (detail !=  nullptr && detail->has_operation())
+	|| (normal !=  nullptr && normal->has_operation());
 }
 
 std::string Rcmd::Server::get_segment_path() const
@@ -24514,7 +24514,7 @@ EntityPath Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24632,7 +24632,7 @@ EntityPath Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24739,7 +24739,7 @@ EntityPath Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24918,7 +24918,7 @@ EntityPath Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25112,7 +25112,7 @@ EntityPath Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25258,7 +25258,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventSt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25420,7 +25420,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventStatistics::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25536,7 +25536,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25650,7 +25650,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25754,7 +25754,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25858,7 +25858,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25966,9 +25966,9 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary
     return is_set(operation)
 	|| is_set(level.operation)
 	|| is_set(threshold_exceeded.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation))
-	|| (route_statistics !=  nullptr && is_set(route_statistics->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation())
+	|| (route_statistics !=  nullptr && route_statistics->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::get_segment_path() const
@@ -25985,7 +25985,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26199,7 +26199,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26360,7 +26360,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Node
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26474,7 +26474,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Trig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26584,7 +26584,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26698,7 +26698,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26802,7 +26802,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26906,7 +26906,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27014,9 +27014,9 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::
     return is_set(operation)
 	|| is_set(level.operation)
 	|| is_set(threshold_exceeded.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation))
-	|| (route_statistics !=  nullptr && is_set(route_statistics->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation())
+	|| (route_statistics !=  nullptr && route_statistics->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::get_segment_path() const
@@ -27033,7 +27033,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27219,7 +27219,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27315,7 +27315,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27411,7 +27411,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27507,7 +27507,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27603,7 +27603,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27699,7 +27699,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27795,7 +27795,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27891,7 +27891,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27987,7 +27987,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28070,7 +28070,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(speed.operation)
-	|| (fib_complete !=  nullptr && is_set(fib_complete->operation));
+	|| (fib_complete !=  nullptr && fib_complete->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp::get_segment_path() const
@@ -28087,7 +28087,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28201,7 +28201,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28284,7 +28284,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(speed.operation)
-	|| (fib_complete !=  nullptr && is_set(fib_complete->operation));
+	|| (fib_complete !=  nullptr && fib_complete->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls::get_segment_path() const
@@ -28301,7 +28301,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28450,14 +28450,14 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::
             return true;
     }
     return is_set(operation)
-	|| (ldp_enter !=  nullptr && is_set(ldp_enter->operation))
-	|| (ldp_exit !=  nullptr && is_set(ldp_exit->operation))
-	|| (lsd_enter !=  nullptr && is_set(lsd_enter->operation))
-	|| (lsd_exit !=  nullptr && is_set(lsd_exit->operation))
-	|| (ri_bv4_enter !=  nullptr && is_set(ri_bv4_enter->operation))
-	|| (ri_bv4_exit !=  nullptr && is_set(ri_bv4_exit->operation))
-	|| (ri_bv4_redistribute !=  nullptr && is_set(ri_bv4_redistribute->operation))
-	|| (route_origin !=  nullptr && is_set(route_origin->operation));
+	|| (ldp_enter !=  nullptr && ldp_enter->has_operation())
+	|| (ldp_exit !=  nullptr && ldp_exit->has_operation())
+	|| (lsd_enter !=  nullptr && lsd_enter->has_operation())
+	|| (lsd_exit !=  nullptr && lsd_exit->has_operation())
+	|| (ri_bv4_enter !=  nullptr && ri_bv4_enter->has_operation())
+	|| (ri_bv4_exit !=  nullptr && ri_bv4_exit->has_operation())
+	|| (ri_bv4_redistribute !=  nullptr && ri_bv4_redistribute->has_operation())
+	|| (route_origin !=  nullptr && route_origin->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::get_segment_path() const
@@ -28474,7 +28474,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28788,7 +28788,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28876,7 +28876,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28977,7 +28977,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::
             return true;
     }
     return is_set(operation)
-	|| (priority_summary !=  nullptr && is_set(priority_summary->operation));
+	|| (priority_summary !=  nullptr && priority_summary->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::get_segment_path() const
@@ -28994,7 +28994,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Prio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29179,7 +29179,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29292,7 +29292,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29446,8 +29446,8 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::has_operat
 	|| is_set(reason.operation)
 	|| is_set(start_time.operation)
 	|| is_set(wait_time.operation)
-	|| (node_statistics !=  nullptr && is_set(node_statistics->operation))
-	|| (spf_summary !=  nullptr && is_set(spf_summary->operation));
+	|| (node_statistics !=  nullptr && node_statistics->has_operation())
+	|| (spf_summary !=  nullptr && spf_summary->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::get_segment_path() const
@@ -29464,7 +29464,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29716,7 +29716,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunSummaries::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29838,7 +29838,7 @@ EntityPath Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29956,7 +29956,7 @@ EntityPath Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30063,7 +30063,7 @@ EntityPath Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30242,7 +30242,7 @@ EntityPath Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30436,7 +30436,7 @@ EntityPath Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30552,7 +30552,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30666,7 +30666,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30770,7 +30770,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30874,7 +30874,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30982,9 +30982,9 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary:
     return is_set(operation)
 	|| is_set(level.operation)
 	|| is_set(threshold_exceeded.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation))
-	|| (route_statistics !=  nullptr && is_set(route_statistics->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation())
+	|| (route_statistics !=  nullptr && route_statistics->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::get_segment_path() const
@@ -31001,7 +31001,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31215,7 +31215,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31376,7 +31376,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::NodeS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31490,7 +31490,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Trigg
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31600,7 +31600,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31714,7 +31714,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31818,7 +31818,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31922,7 +31922,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32030,9 +32030,9 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::P
     return is_set(operation)
 	|| is_set(level.operation)
 	|| is_set(threshold_exceeded.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation))
-	|| (route_statistics !=  nullptr && is_set(route_statistics->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation())
+	|| (route_statistics !=  nullptr && route_statistics->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::get_segment_path() const
@@ -32049,7 +32049,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32235,7 +32235,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32331,7 +32331,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32427,7 +32427,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32523,7 +32523,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32619,7 +32619,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32715,7 +32715,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32811,7 +32811,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32907,7 +32907,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33003,7 +33003,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33086,7 +33086,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::C
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(speed.operation)
-	|| (fib_complete !=  nullptr && is_set(fib_complete->operation));
+	|| (fib_complete !=  nullptr && fib_complete->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp::get_segment_path() const
@@ -33103,7 +33103,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33217,7 +33217,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33300,7 +33300,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::C
     return is_set(operation)
 	|| is_set(node_name.operation)
 	|| is_set(speed.operation)
-	|| (fib_complete !=  nullptr && is_set(fib_complete->operation));
+	|| (fib_complete !=  nullptr && fib_complete->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls::get_segment_path() const
@@ -33317,7 +33317,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33466,14 +33466,14 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::C
             return true;
     }
     return is_set(operation)
-	|| (ldp_enter !=  nullptr && is_set(ldp_enter->operation))
-	|| (ldp_exit !=  nullptr && is_set(ldp_exit->operation))
-	|| (lsd_enter !=  nullptr && is_set(lsd_enter->operation))
-	|| (lsd_exit !=  nullptr && is_set(lsd_exit->operation))
-	|| (ri_bv4_enter !=  nullptr && is_set(ri_bv4_enter->operation))
-	|| (ri_bv4_exit !=  nullptr && is_set(ri_bv4_exit->operation))
-	|| (ri_bv4_redistribute !=  nullptr && is_set(ri_bv4_redistribute->operation))
-	|| (route_origin !=  nullptr && is_set(route_origin->operation));
+	|| (ldp_enter !=  nullptr && ldp_enter->has_operation())
+	|| (ldp_exit !=  nullptr && ldp_exit->has_operation())
+	|| (lsd_enter !=  nullptr && lsd_enter->has_operation())
+	|| (lsd_exit !=  nullptr && lsd_exit->has_operation())
+	|| (ri_bv4_enter !=  nullptr && ri_bv4_enter->has_operation())
+	|| (ri_bv4_exit !=  nullptr && ri_bv4_exit->has_operation())
+	|| (ri_bv4_redistribute !=  nullptr && ri_bv4_redistribute->has_operation())
+	|| (route_origin !=  nullptr && route_origin->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::get_segment_path() const
@@ -33490,7 +33490,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33804,7 +33804,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33892,7 +33892,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33993,7 +33993,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::h
             return true;
     }
     return is_set(operation)
-	|| (priority_summary !=  nullptr && is_set(priority_summary->operation));
+	|| (priority_summary !=  nullptr && priority_summary->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::get_segment_path() const
@@ -34010,7 +34010,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prior
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34195,7 +34195,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34308,7 +34308,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspRe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34462,8 +34462,8 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::has_operati
 	|| is_set(reason.operation)
 	|| is_set(start_time.operation)
 	|| is_set(wait_time.operation)
-	|| (node_statistics !=  nullptr && is_set(node_statistics->operation))
-	|| (spf_summary !=  nullptr && is_set(spf_summary->operation));
+	|| (node_statistics !=  nullptr && node_statistics->has_operation())
+	|| (spf_summary !=  nullptr && spf_summary->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::get_segment_path() const
@@ -34480,7 +34480,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34732,7 +34732,7 @@ EntityPath Rcmd::Isis::Instances::Instance::SpfRunOfflines::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34842,7 +34842,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34946,7 +34946,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35056,7 +35056,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35180,7 +35180,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35316,7 +35316,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35427,7 +35427,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35523,7 +35523,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35654,7 +35654,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35836,7 +35836,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36009,8 +36009,8 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::
 	|| is_set(spf_run_no.operation)
 	|| is_set(threshold_exceeded.operation)
 	|| is_set(trigger_time.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::get_segment_path() const
@@ -36027,7 +36027,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36319,7 +36319,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventSummaries::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36429,7 +36429,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36533,7 +36533,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36643,7 +36643,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36767,7 +36767,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36903,7 +36903,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37014,7 +37014,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37110,7 +37110,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37241,7 +37241,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37423,7 +37423,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37596,8 +37596,8 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::h
 	|| is_set(spf_run_no.operation)
 	|| is_set(threshold_exceeded.operation)
 	|| is_set(trigger_time.operation)
-	|| (ip_convergence_time !=  nullptr && is_set(ip_convergence_time->operation))
-	|| (mpls_convergence_time !=  nullptr && is_set(mpls_convergence_time->operation));
+	|| (ip_convergence_time !=  nullptr && ip_convergence_time->has_operation())
+	|| (mpls_convergence_time !=  nullptr && mpls_convergence_time->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::get_segment_path() const
@@ -37614,7 +37614,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37906,7 +37906,7 @@ EntityPath Rcmd::Isis::Instances::Instance::PrefixEventOfflines::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38028,7 +38028,7 @@ EntityPath Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38150,7 +38150,7 @@ EntityPath Rcmd::Isis::Instances::Instance::LspRegenerateds::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38276,14 +38276,14 @@ bool Rcmd::Isis::Instances::Instance::has_operation() const
 {
     return is_set(operation)
 	|| is_set(instance_name.operation)
-	|| (ipfrr_event_offlines !=  nullptr && is_set(ipfrr_event_offlines->operation))
-	|| (ipfrr_event_summaries !=  nullptr && is_set(ipfrr_event_summaries->operation))
-	|| (lsp_regenerateds !=  nullptr && is_set(lsp_regenerateds->operation))
-	|| (prefix_event_offlines !=  nullptr && is_set(prefix_event_offlines->operation))
-	|| (prefix_event_statistics !=  nullptr && is_set(prefix_event_statistics->operation))
-	|| (prefix_event_summaries !=  nullptr && is_set(prefix_event_summaries->operation))
-	|| (spf_run_offlines !=  nullptr && is_set(spf_run_offlines->operation))
-	|| (spf_run_summaries !=  nullptr && is_set(spf_run_summaries->operation));
+	|| (ipfrr_event_offlines !=  nullptr && ipfrr_event_offlines->has_operation())
+	|| (ipfrr_event_summaries !=  nullptr && ipfrr_event_summaries->has_operation())
+	|| (lsp_regenerateds !=  nullptr && lsp_regenerateds->has_operation())
+	|| (prefix_event_offlines !=  nullptr && prefix_event_offlines->has_operation())
+	|| (prefix_event_statistics !=  nullptr && prefix_event_statistics->has_operation())
+	|| (prefix_event_summaries !=  nullptr && prefix_event_summaries->has_operation())
+	|| (spf_run_offlines !=  nullptr && spf_run_offlines->has_operation())
+	|| (spf_run_summaries !=  nullptr && spf_run_summaries->has_operation());
 }
 
 std::string Rcmd::Isis::Instances::Instance::get_segment_path() const
@@ -38658,7 +38658,7 @@ bool Rcmd::Isis::has_data() const
 bool Rcmd::Isis::has_operation() const
 {
     return is_set(operation)
-	|| (instances !=  nullptr && is_set(instances->operation));
+	|| (instances !=  nullptr && instances->has_operation());
 }
 
 std::string Rcmd::Isis::get_segment_path() const
@@ -39551,7 +39551,7 @@ EntityPath Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39688,7 +39688,7 @@ EntityPath Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39822,7 +39822,7 @@ EntityPath Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40279,7 +40279,7 @@ EntityPath Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40416,7 +40416,7 @@ EntityPath Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40550,7 +40550,7 @@ EntityPath Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40985,9 +40985,9 @@ bool Rcmd::Ldp::has_data() const
 bool Rcmd::Ldp::has_operation() const
 {
     return is_set(operation)
-	|| (remote_lfa_s !=  nullptr && is_set(remote_lfa_s->operation))
-	|| (remote_lfa_summaries !=  nullptr && is_set(remote_lfa_summaries->operation))
-	|| (sessions !=  nullptr && is_set(sessions->operation));
+	|| (remote_lfa_s !=  nullptr && remote_lfa_s->has_operation())
+	|| (remote_lfa_summaries !=  nullptr && remote_lfa_summaries->has_operation())
+	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
 std::string Rcmd::Ldp::get_segment_path() const
@@ -41370,7 +41370,7 @@ bool Rcmd::Intf::has_data() const
 bool Rcmd::Intf::has_operation() const
 {
     return is_set(operation)
-	|| (events !=  nullptr && is_set(events->operation));
+	|| (events !=  nullptr && events->has_operation());
 }
 
 std::string Rcmd::Intf::get_segment_path() const
@@ -43269,9 +43269,9 @@ bool Rcmd::Process::has_data() const
 bool Rcmd::Process::has_operation() const
 {
     return is_set(operation)
-	|| (isis !=  nullptr && is_set(isis->operation))
-	|| (ldp !=  nullptr && is_set(ldp->operation))
-	|| (ospf !=  nullptr && is_set(ospf->operation));
+	|| (isis !=  nullptr && isis->has_operation())
+	|| (ldp !=  nullptr && ldp->has_operation())
+	|| (ospf !=  nullptr && ospf->has_operation());
 }
 
 std::string Rcmd::Process::get_segment_path() const
@@ -43453,14 +43453,14 @@ bool Rcmd::has_data() const
 bool Rcmd::has_operation() const
 {
     return is_set(operation)
-	|| (intf !=  nullptr && is_set(intf->operation))
-	|| (isis !=  nullptr && is_set(isis->operation))
-	|| (ldp !=  nullptr && is_set(ldp->operation))
-	|| (memory !=  nullptr && is_set(memory->operation))
-	|| (node !=  nullptr && is_set(node->operation))
-	|| (ospf !=  nullptr && is_set(ospf->operation))
-	|| (process !=  nullptr && is_set(process->operation))
-	|| (server !=  nullptr && is_set(server->operation));
+	|| (intf !=  nullptr && intf->has_operation())
+	|| (isis !=  nullptr && isis->has_operation())
+	|| (ldp !=  nullptr && ldp->has_operation())
+	|| (memory !=  nullptr && memory->has_operation())
+	|| (node !=  nullptr && node->has_operation())
+	|| (ospf !=  nullptr && ospf->has_operation())
+	|| (process !=  nullptr && process->has_operation())
+	|| (server !=  nullptr && server->has_operation());
 }
 
 std::string Rcmd::get_segment_path() const
@@ -43477,7 +43477,7 @@ EntityPath Rcmd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -43702,141 +43702,141 @@ std::unique_ptr<Entity> Rcmd::clone_ptr()
     return std::make_unique<Rcmd>();
 }
 
-const Enum::Value RcmdBagEnblDsblEnum::dsbl {0, "dsbl"};
-const Enum::Value RcmdBagEnblDsblEnum::enbl {1, "enbl"};
+const Enum::YLeaf RcmdBagEnblDsblEnum::dsbl {0, "dsbl"};
+const Enum::YLeaf RcmdBagEnblDsblEnum::enbl {1, "enbl"};
 
-const Enum::Value RcmdBoolYesNoEnum::no {0, "no"};
-const Enum::Value RcmdBoolYesNoEnum::yes {1, "yes"};
+const Enum::YLeaf RcmdBoolYesNoEnum::no {0, "no"};
+const Enum::YLeaf RcmdBoolYesNoEnum::yes {1, "yes"};
 
-const Enum::Value RcmdPriorityLevelEnum::critical {0, "critical"};
-const Enum::Value RcmdPriorityLevelEnum::high {1, "high"};
-const Enum::Value RcmdPriorityLevelEnum::medium {2, "medium"};
-const Enum::Value RcmdPriorityLevelEnum::low {3, "low"};
+const Enum::YLeaf RcmdPriorityLevelEnum::critical {0, "critical"};
+const Enum::YLeaf RcmdPriorityLevelEnum::high {1, "high"};
+const Enum::YLeaf RcmdPriorityLevelEnum::medium {2, "medium"};
+const Enum::YLeaf RcmdPriorityLevelEnum::low {3, "low"};
 
-const Enum::Value RcmdSpfStateEnum::complete {0, "complete"};
-const Enum::Value RcmdSpfStateEnum::in_complete {1, "in-complete"};
-const Enum::Value RcmdSpfStateEnum::collecting {2, "collecting"};
-const Enum::Value RcmdSpfStateEnum::no_route_change {3, "no-route-change"};
+const Enum::YLeaf RcmdSpfStateEnum::complete {0, "complete"};
+const Enum::YLeaf RcmdSpfStateEnum::in_complete {1, "in-complete"};
+const Enum::YLeaf RcmdSpfStateEnum::collecting {2, "collecting"};
+const Enum::YLeaf RcmdSpfStateEnum::no_route_change {3, "no-route-change"};
 
-const Enum::Value RcmdShowIpfrrLfaEnum::none {0, "none"};
-const Enum::Value RcmdShowIpfrrLfaEnum::local {1, "local"};
-const Enum::Value RcmdShowIpfrrLfaEnum::remote {2, "remote"};
+const Enum::YLeaf RcmdShowIpfrrLfaEnum::none {0, "none"};
+const Enum::YLeaf RcmdShowIpfrrLfaEnum::local {1, "local"};
+const Enum::YLeaf RcmdShowIpfrrLfaEnum::remote {2, "remote"};
 
-const Enum::Value RcmdShowPrcsStateEnum::success {0, "success"};
-const Enum::Value RcmdShowPrcsStateEnum::cpu {1, "cpu"};
-const Enum::Value RcmdShowPrcsStateEnum::memory {2, "memory"};
+const Enum::YLeaf RcmdShowPrcsStateEnum::success {0, "success"};
+const Enum::YLeaf RcmdShowPrcsStateEnum::cpu {1, "cpu"};
+const Enum::YLeaf RcmdShowPrcsStateEnum::memory {2, "memory"};
 
-const Enum::Value RcmdShowCompIdEnum::ospf {0, "ospf"};
-const Enum::Value RcmdShowCompIdEnum::isis {1, "isis"};
-const Enum::Value RcmdShowCompIdEnum::un_known {2, "un-known"};
+const Enum::YLeaf RcmdShowCompIdEnum::ospf {0, "ospf"};
+const Enum::YLeaf RcmdShowCompIdEnum::isis {1, "isis"};
+const Enum::YLeaf RcmdShowCompIdEnum::un_known {2, "un-known"};
 
-const Enum::Value RcmdShowLdpSessionStateEnum::gr_down {0, "gr-down"};
-const Enum::Value RcmdShowLdpSessionStateEnum::gr_converging {1, "gr-converging"};
-const Enum::Value RcmdShowLdpSessionStateEnum::establishing {2, "establishing"};
-const Enum::Value RcmdShowLdpSessionStateEnum::converging {3, "converging"};
-const Enum::Value RcmdShowLdpSessionStateEnum::converged {4, "converged"};
-const Enum::Value RcmdShowLdpSessionStateEnum::retrying {5, "retrying"};
-const Enum::Value RcmdShowLdpSessionStateEnum::total {6, "total"};
+const Enum::YLeaf RcmdShowLdpSessionStateEnum::gr_down {0, "gr-down"};
+const Enum::YLeaf RcmdShowLdpSessionStateEnum::gr_converging {1, "gr-converging"};
+const Enum::YLeaf RcmdShowLdpSessionStateEnum::establishing {2, "establishing"};
+const Enum::YLeaf RcmdShowLdpSessionStateEnum::converging {3, "converging"};
+const Enum::YLeaf RcmdShowLdpSessionStateEnum::converged {4, "converged"};
+const Enum::YLeaf RcmdShowLdpSessionStateEnum::retrying {5, "retrying"};
+const Enum::YLeaf RcmdShowLdpSessionStateEnum::total {6, "total"};
 
-const Enum::Value RcmdProtocolIdEnum::ospf {0, "ospf"};
-const Enum::Value RcmdProtocolIdEnum::isis {1, "isis"};
-const Enum::Value RcmdProtocolIdEnum::na {2, "na"};
+const Enum::YLeaf RcmdProtocolIdEnum::ospf {0, "ospf"};
+const Enum::YLeaf RcmdProtocolIdEnum::isis {1, "isis"};
+const Enum::YLeaf RcmdProtocolIdEnum::na {2, "na"};
 
-const Enum::Value RcmdShowLdpConvStateEnum::not_full {0, "not-full"};
-const Enum::Value RcmdShowLdpConvStateEnum::fully_covered {1, "fully-covered"};
-const Enum::Value RcmdShowLdpConvStateEnum::coverage_above_threshold {2, "coverage-above-threshold"};
-const Enum::Value RcmdShowLdpConvStateEnum::coverage_below_threshold {3, "coverage-below-threshold"};
-const Enum::Value RcmdShowLdpConvStateEnum::coverage_flapping {4, "coverage-flapping"};
+const Enum::YLeaf RcmdShowLdpConvStateEnum::not_full {0, "not-full"};
+const Enum::YLeaf RcmdShowLdpConvStateEnum::fully_covered {1, "fully-covered"};
+const Enum::YLeaf RcmdShowLdpConvStateEnum::coverage_above_threshold {2, "coverage-above-threshold"};
+const Enum::YLeaf RcmdShowLdpConvStateEnum::coverage_below_threshold {3, "coverage-below-threshold"};
+const Enum::YLeaf RcmdShowLdpConvStateEnum::coverage_flapping {4, "coverage-flapping"};
 
-const Enum::Value RcmdLinecardSpeedEnum::other {0, "other"};
-const Enum::Value RcmdLinecardSpeedEnum::fastest {1, "fastest"};
-const Enum::Value RcmdLinecardSpeedEnum::slowest {2, "slowest"};
+const Enum::YLeaf RcmdLinecardSpeedEnum::other {0, "other"};
+const Enum::YLeaf RcmdLinecardSpeedEnum::fastest {1, "fastest"};
+const Enum::YLeaf RcmdLinecardSpeedEnum::slowest {2, "slowest"};
 
-const Enum::Value RcmdShowNodeEnum::unknown {0, "unknown"};
-const Enum::Value RcmdShowNodeEnum::lc {1, "lc"};
-const Enum::Value RcmdShowNodeEnum::rp {2, "rp"};
+const Enum::YLeaf RcmdShowNodeEnum::unknown {0, "unknown"};
+const Enum::YLeaf RcmdShowNodeEnum::lc {1, "lc"};
+const Enum::YLeaf RcmdShowNodeEnum::rp {2, "rp"};
 
-const Enum::Value RcmdShowLdpNeighbourStatusEnum::down {0, "down"};
-const Enum::Value RcmdShowLdpNeighbourStatusEnum::up {1, "up"};
+const Enum::YLeaf RcmdShowLdpNeighbourStatusEnum::down {0, "down"};
+const Enum::YLeaf RcmdShowLdpNeighbourStatusEnum::up {1, "up"};
 
-const Enum::Value RcmdIsisSpfEnum::full {0, "full"};
-const Enum::Value RcmdIsisSpfEnum::incremental {1, "incremental"};
-const Enum::Value RcmdIsisSpfEnum::next_hop {2, "next-hop"};
-const Enum::Value RcmdIsisSpfEnum::partial_route {3, "partial-route"};
+const Enum::YLeaf RcmdIsisSpfEnum::full {0, "full"};
+const Enum::YLeaf RcmdIsisSpfEnum::incremental {1, "incremental"};
+const Enum::YLeaf RcmdIsisSpfEnum::next_hop {2, "next-hop"};
+const Enum::YLeaf RcmdIsisSpfEnum::partial_route {3, "partial-route"};
 
-const Enum::Value RcmdShowRoutePathChangeEnum::primary {0, "primary"};
-const Enum::Value RcmdShowRoutePathChangeEnum::backup {1, "backup"};
+const Enum::YLeaf RcmdShowRoutePathChangeEnum::primary {0, "primary"};
+const Enum::YLeaf RcmdShowRoutePathChangeEnum::backup {1, "backup"};
 
-const Enum::Value RcmdIsisLvlEnum::l1 {0, "l1"};
-const Enum::Value RcmdIsisLvlEnum::l2 {1, "l2"};
+const Enum::YLeaf RcmdIsisLvlEnum::l1 {0, "l1"};
+const Enum::YLeaf RcmdIsisLvlEnum::l2 {1, "l2"};
 
-const Enum::Value RcmdChangeEnum::none {0, "none"};
-const Enum::Value RcmdChangeEnum::add {1, "add"};
-const Enum::Value RcmdChangeEnum::delete_ {2, "delete"};
-const Enum::Value RcmdChangeEnum::modify {3, "modify"};
-const Enum::Value RcmdChangeEnum::no_change {4, "no-change"};
+const Enum::YLeaf RcmdChangeEnum::none {0, "none"};
+const Enum::YLeaf RcmdChangeEnum::add {1, "add"};
+const Enum::YLeaf RcmdChangeEnum::delete_ {2, "delete"};
+const Enum::YLeaf RcmdChangeEnum::modify {3, "modify"};
+const Enum::YLeaf RcmdChangeEnum::no_change {4, "no-change"};
 
-const Enum::Value RcmdShowRouteEnum::ospf {0, "ospf"};
-const Enum::Value RcmdShowRouteEnum::intra {1, "intra"};
-const Enum::Value RcmdShowRouteEnum::inter {2, "inter"};
-const Enum::Value RcmdShowRouteEnum::ext_1 {3, "ext-1"};
-const Enum::Value RcmdShowRouteEnum::ext_2 {4, "ext-2"};
-const Enum::Value RcmdShowRouteEnum::nssa_1 {5, "nssa-1"};
-const Enum::Value RcmdShowRouteEnum::nssa_2 {6, "nssa-2"};
-const Enum::Value RcmdShowRouteEnum::isis {7, "isis"};
-const Enum::Value RcmdShowRouteEnum::l1_summary {8, "l1-summary"};
-const Enum::Value RcmdShowRouteEnum::l1 {9, "l1"};
-const Enum::Value RcmdShowRouteEnum::l2_summary {10, "l2-summary"};
-const Enum::Value RcmdShowRouteEnum::l2 {11, "l2"};
-const Enum::Value RcmdShowRouteEnum::inter_area_summary {12, "inter-area-summary"};
-const Enum::Value RcmdShowRouteEnum::inter_area {13, "inter-area"};
-const Enum::Value RcmdShowRouteEnum::default_attached {14, "default-attached"};
+const Enum::YLeaf RcmdShowRouteEnum::ospf {0, "ospf"};
+const Enum::YLeaf RcmdShowRouteEnum::intra {1, "intra"};
+const Enum::YLeaf RcmdShowRouteEnum::inter {2, "inter"};
+const Enum::YLeaf RcmdShowRouteEnum::ext_1 {3, "ext-1"};
+const Enum::YLeaf RcmdShowRouteEnum::ext_2 {4, "ext-2"};
+const Enum::YLeaf RcmdShowRouteEnum::nssa_1 {5, "nssa-1"};
+const Enum::YLeaf RcmdShowRouteEnum::nssa_2 {6, "nssa-2"};
+const Enum::YLeaf RcmdShowRouteEnum::isis {7, "isis"};
+const Enum::YLeaf RcmdShowRouteEnum::l1_summary {8, "l1-summary"};
+const Enum::YLeaf RcmdShowRouteEnum::l1 {9, "l1"};
+const Enum::YLeaf RcmdShowRouteEnum::l2_summary {10, "l2-summary"};
+const Enum::YLeaf RcmdShowRouteEnum::l2 {11, "l2"};
+const Enum::YLeaf RcmdShowRouteEnum::inter_area_summary {12, "inter-area-summary"};
+const Enum::YLeaf RcmdShowRouteEnum::inter_area {13, "inter-area"};
+const Enum::YLeaf RcmdShowRouteEnum::default_attached {14, "default-attached"};
 
-const Enum::Value RcmdLdpEventEnum::neighbor {1, "neighbor"};
-const Enum::Value RcmdLdpEventEnum::adjacency {2, "adjacency"};
+const Enum::YLeaf RcmdLdpEventEnum::neighbor {1, "neighbor"};
+const Enum::YLeaf RcmdLdpEventEnum::adjacency {2, "adjacency"};
 
-const Enum::Value RcmdLsaEnum::unknown {0, "unknown"};
-const Enum::Value RcmdLsaEnum::router {1, "router"};
-const Enum::Value RcmdLsaEnum::network {2, "network"};
-const Enum::Value RcmdLsaEnum::summary {3, "summary"};
-const Enum::Value RcmdLsaEnum::asbr {4, "asbr"};
-const Enum::Value RcmdLsaEnum::external {5, "external"};
-const Enum::Value RcmdLsaEnum::multicast {6, "multicast"};
-const Enum::Value RcmdLsaEnum::nssa {7, "nssa"};
+const Enum::YLeaf RcmdLsaEnum::unknown {0, "unknown"};
+const Enum::YLeaf RcmdLsaEnum::router {1, "router"};
+const Enum::YLeaf RcmdLsaEnum::network {2, "network"};
+const Enum::YLeaf RcmdLsaEnum::summary {3, "summary"};
+const Enum::YLeaf RcmdLsaEnum::asbr {4, "asbr"};
+const Enum::YLeaf RcmdLsaEnum::external {5, "external"};
+const Enum::YLeaf RcmdLsaEnum::multicast {6, "multicast"};
+const Enum::YLeaf RcmdLsaEnum::nssa {7, "nssa"};
 
-const Enum::Value RcmdShowMemEnum::standard {0, "standard"};
-const Enum::Value RcmdShowMemEnum::chunk {1, "chunk"};
-const Enum::Value RcmdShowMemEnum::edm {2, "edm"};
-const Enum::Value RcmdShowMemEnum::string {3, "string"};
-const Enum::Value RcmdShowMemEnum::static_ {4, "static"};
-const Enum::Value RcmdShowMemEnum::unknown {5, "unknown"};
+const Enum::YLeaf RcmdShowMemEnum::standard {0, "standard"};
+const Enum::YLeaf RcmdShowMemEnum::chunk {1, "chunk"};
+const Enum::YLeaf RcmdShowMemEnum::edm {2, "edm"};
+const Enum::YLeaf RcmdShowMemEnum::string {3, "string"};
+const Enum::YLeaf RcmdShowMemEnum::static_ {4, "static"};
+const Enum::YLeaf RcmdShowMemEnum::unknown {5, "unknown"};
 
-const Enum::Value RcmdBagEnableDisableEnum::disable {0, "disable"};
-const Enum::Value RcmdBagEnableDisableEnum::enable {1, "enable"};
+const Enum::YLeaf RcmdBagEnableDisableEnum::disable {0, "disable"};
+const Enum::YLeaf RcmdBagEnableDisableEnum::enable {1, "enable"};
 
-const Enum::Value RcmdShowInstStateEnum::unknown {0, "unknown"};
-const Enum::Value RcmdShowInstStateEnum::active {1, "active"};
-const Enum::Value RcmdShowInstStateEnum::in_active {2, "in-active"};
-const Enum::Value RcmdShowInstStateEnum::na {3, "na"};
+const Enum::YLeaf RcmdShowInstStateEnum::unknown {0, "unknown"};
+const Enum::YLeaf RcmdShowInstStateEnum::active {1, "active"};
+const Enum::YLeaf RcmdShowInstStateEnum::in_active {2, "in-active"};
+const Enum::YLeaf RcmdShowInstStateEnum::na {3, "na"};
 
-const Enum::Value RcmdLsChangeEnum::new_ {0, "new"};
-const Enum::Value RcmdLsChangeEnum::delete_ {1, "delete"};
-const Enum::Value RcmdLsChangeEnum::modify {2, "modify"};
-const Enum::Value RcmdLsChangeEnum::noop {3, "noop"};
+const Enum::YLeaf RcmdLsChangeEnum::new_ {0, "new"};
+const Enum::YLeaf RcmdLsChangeEnum::delete_ {1, "delete"};
+const Enum::YLeaf RcmdLsChangeEnum::modify {2, "modify"};
+const Enum::YLeaf RcmdLsChangeEnum::noop {3, "noop"};
 
-const Enum::Value RcmdShowIntfEventEnum::create {1, "create"};
-const Enum::Value RcmdShowIntfEventEnum::delete_ {2, "delete"};
-const Enum::Value RcmdShowIntfEventEnum::link_up {3, "link-up"};
-const Enum::Value RcmdShowIntfEventEnum::link_down {4, "link-down"};
-const Enum::Value RcmdShowIntfEventEnum::primary_address {5, "primary-address"};
-const Enum::Value RcmdShowIntfEventEnum::secondary_address {6, "secondary-address"};
-const Enum::Value RcmdShowIntfEventEnum::ipv6_link_local_address {7, "ipv6-link-local-address"};
-const Enum::Value RcmdShowIntfEventEnum::ipv6_global_address {8, "ipv6-global-address"};
-const Enum::Value RcmdShowIntfEventEnum::mtu {9, "mtu"};
-const Enum::Value RcmdShowIntfEventEnum::band_width {10, "band-width"};
-const Enum::Value RcmdShowIntfEventEnum::ldp_sync {11, "ldp-sync"};
-const Enum::Value RcmdShowIntfEventEnum::forward_reference {12, "forward-reference"};
-const Enum::Value RcmdShowIntfEventEnum::ldp_no_sync {13, "ldp-no-sync"};
+const Enum::YLeaf RcmdShowIntfEventEnum::create {1, "create"};
+const Enum::YLeaf RcmdShowIntfEventEnum::delete_ {2, "delete"};
+const Enum::YLeaf RcmdShowIntfEventEnum::link_up {3, "link-up"};
+const Enum::YLeaf RcmdShowIntfEventEnum::link_down {4, "link-down"};
+const Enum::YLeaf RcmdShowIntfEventEnum::primary_address {5, "primary-address"};
+const Enum::YLeaf RcmdShowIntfEventEnum::secondary_address {6, "secondary-address"};
+const Enum::YLeaf RcmdShowIntfEventEnum::ipv6_link_local_address {7, "ipv6-link-local-address"};
+const Enum::YLeaf RcmdShowIntfEventEnum::ipv6_global_address {8, "ipv6-global-address"};
+const Enum::YLeaf RcmdShowIntfEventEnum::mtu {9, "mtu"};
+const Enum::YLeaf RcmdShowIntfEventEnum::band_width {10, "band-width"};
+const Enum::YLeaf RcmdShowIntfEventEnum::ldp_sync {11, "ldp-sync"};
+const Enum::YLeaf RcmdShowIntfEventEnum::forward_reference {12, "forward-reference"};
+const Enum::YLeaf RcmdShowIntfEventEnum::ldp_no_sync {13, "ldp-no-sync"};
 
 
 }

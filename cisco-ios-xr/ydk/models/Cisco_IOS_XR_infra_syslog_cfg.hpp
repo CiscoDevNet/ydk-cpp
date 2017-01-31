@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_infra_alarm_logger_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_infra_syslog_cfg {
@@ -28,6 +27,7 @@ class SyslogService : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Timestamps : public Entity
     {
         public:
@@ -41,8 +41,9 @@ class SyslogService : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value enable; //type: empty
 
+
+            YLeaf enable; //type: empty
 
         class Log : public Entity
         {
@@ -57,9 +58,10 @@ class SyslogService : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value log_uptime; //type: empty
-                Value log_timestamp_disable; //type: empty
 
+
+                YLeaf log_uptime; //type: empty
+                YLeaf log_timestamp_disable; //type: empty
 
             class LogDatetime : public Entity
             {
@@ -76,6 +78,7 @@ class SyslogService : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LogDatetimeValue : public Entity
                 {
                     public:
@@ -89,16 +92,13 @@ class SyslogService : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value time_stamp_value; //type: TimeInfoEnum
-                        Value msec; //type: TimeInfoEnum
-                        Value time_zone; //type: TimeInfoEnum
-                        Value year; //type: TimeInfoEnum
 
 
-                        class TimeInfoEnum;
-                        class TimeInfoEnum;
-                        class TimeInfoEnum;
-                        class TimeInfoEnum;
+                        YLeaf time_stamp_value; //type: TimeInfoEnum
+                        YLeaf msec; //type: TimeInfoEnum
+                        YLeaf time_zone; //type: TimeInfoEnum
+                        YLeaf year; //type: TimeInfoEnum
+
 
 
                 }; // SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue
@@ -129,9 +129,10 @@ class SyslogService : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value debug_timestamp_disable; //type: empty
-                Value debug_uptime; //type: empty
 
+
+                YLeaf debug_timestamp_disable; //type: empty
+                YLeaf debug_uptime; //type: empty
 
             class DebugDatetime : public Entity
             {
@@ -148,6 +149,7 @@ class SyslogService : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DatetimeValue : public Entity
                 {
                     public:
@@ -161,16 +163,13 @@ class SyslogService : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value time_stamp_value; //type: TimeInfoEnum
-                        Value msec; //type: TimeInfoEnum
-                        Value time_zone; //type: TimeInfoEnum
-                        Value year; //type: TimeInfoEnum
 
 
-                        class TimeInfoEnum;
-                        class TimeInfoEnum;
-                        class TimeInfoEnum;
-                        class TimeInfoEnum;
+                        YLeaf time_stamp_value; //type: TimeInfoEnum
+                        YLeaf msec; //type: TimeInfoEnum
+                        YLeaf time_zone; //type: TimeInfoEnum
+                        YLeaf year; //type: TimeInfoEnum
+
 
 
                 }; // SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue
@@ -214,11 +213,12 @@ class Syslog : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value host_name_prefix; //type: string
-        Value local_log_file_size; //type: uint32
-        Value enable_console_logging; //type: boolean
-        Value suppress_duplicates; //type: empty
 
+
+        YLeaf host_name_prefix; //type: string
+        YLeaf local_log_file_size; //type: uint32
+        YLeaf enable_console_logging; //type: boolean
+        YLeaf suppress_duplicates; //type: empty
 
     class MonitorLogging : public Entity
     {
@@ -233,8 +233,9 @@ class Syslog : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value logging_level; //type: LoggingLevelsEnum
 
+
+            YLeaf logging_level; //type: LoggingLevelsEnum
 
         class MonitorDiscriminator : public Entity
         {
@@ -249,13 +250,14 @@ class Syslog : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value match2; //type: string
-                Value nomatch1; //type: string
-                Value match1; //type: string
-                Value nomatch3; //type: string
-                Value match3; //type: string
-                Value nomatch2; //type: string
 
+
+                YLeaf match2; //type: string
+                YLeaf nomatch1; //type: string
+                YLeaf match1; //type: string
+                YLeaf nomatch3; //type: string
+                YLeaf match3; //type: string
+                YLeaf nomatch2; //type: string
 
 
 
@@ -263,7 +265,6 @@ class Syslog : public Entity
 
 
             std::unique_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::MonitorLogging::MonitorDiscriminator> monitor_discriminator;
-            class LoggingLevelsEnum;
 
 
     }; // Syslog::MonitorLogging
@@ -282,11 +283,11 @@ class Syslog : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value history_size; //type: uint32
-            Value logging_level; //type: LoggingLevelsEnum
 
 
-            class LoggingLevelsEnum;
+            YLeaf history_size; //type: uint32
+            YLeaf logging_level; //type: LoggingLevelsEnum
+
 
 
     }; // Syslog::HistoryLogging
@@ -305,10 +306,10 @@ class Syslog : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value facility_level; //type: FacilityEnum
 
 
-            class FacilityEnum;
+            YLeaf facility_level; //type: FacilityEnum
+
 
 
     }; // Syslog::LoggingFacilities
@@ -327,10 +328,10 @@ class Syslog : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value logging_level; //type: LoggingLevelsEnum
 
 
-            class LoggingLevelsEnum;
+            YLeaf logging_level; //type: LoggingLevelsEnum
+
 
 
     }; // Syslog::TrapLogging
@@ -349,9 +350,10 @@ class Syslog : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value logging_level; //type: LoggingLevelsEnum
-            Value buffer_size; //type: uint32
 
+
+            YLeaf logging_level; //type: LoggingLevelsEnum
+            YLeaf buffer_size; //type: uint32
 
         class BufferedDiscriminator : public Entity
         {
@@ -366,13 +368,14 @@ class Syslog : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value match2; //type: string
-                Value nomatch1; //type: string
-                Value match1; //type: string
-                Value nomatch3; //type: string
-                Value match3; //type: string
-                Value nomatch2; //type: string
 
+
+                YLeaf match2; //type: string
+                YLeaf nomatch1; //type: string
+                YLeaf match1; //type: string
+                YLeaf nomatch3; //type: string
+                YLeaf match3; //type: string
+                YLeaf nomatch2; //type: string
 
 
 
@@ -380,7 +383,6 @@ class Syslog : public Entity
 
 
             std::unique_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::BufferedLogging::BufferedDiscriminator> buffered_discriminator;
-            class LoggingLevelsEnum;
 
 
     }; // Syslog::BufferedLogging
@@ -401,6 +403,7 @@ class Syslog : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrfs : public Entity
         {
             public:
@@ -416,6 +419,7 @@ class Syslog : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Vrf : public Entity
             {
                 public:
@@ -429,8 +433,9 @@ class Syslog : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value vrf_name; //type: string
 
+
+                    YLeaf vrf_name; //type: string
 
                 class Ipv6S : public Entity
                 {
@@ -447,6 +452,7 @@ class Syslog : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Ipv6 : public Entity
                     {
                         public:
@@ -460,8 +466,9 @@ class Syslog : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
 
+
+                            YLeaf address; //type: string
 
                         class Ipv6SeverityPort : public Entity
                         {
@@ -476,9 +483,10 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value severity; //type: int32
-                                Value port; //type: int32
 
+
+                                YLeaf severity; //type: int32
+                                YLeaf port; //type: int32
 
 
 
@@ -498,13 +506,14 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value nomatch2; //type: string
-                                Value match3; //type: string
-                                Value nomatch3; //type: string
-                                Value match1; //type: string
-                                Value nomatch1; //type: string
-                                Value match2; //type: string
 
+
+                                YLeaf nomatch2; //type: string
+                                YLeaf match3; //type: string
+                                YLeaf nomatch3; //type: string
+                                YLeaf match1; //type: string
+                                YLeaf nomatch1; //type: string
+                                YLeaf match2; //type: string
 
 
 
@@ -526,6 +535,7 @@ class Syslog : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Ipv6SeverityLevel : public Entity
                             {
                                 public:
@@ -539,10 +549,10 @@ class Syslog : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value severity; //type: LogSeverityEnum
 
 
-                                    class LogSeverityEnum;
+                                    YLeaf severity; //type: LogSeverityEnum
+
 
 
                             }; // Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel
@@ -583,6 +593,7 @@ class Syslog : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Host : public Entity
                     {
                         public:
@@ -596,8 +607,9 @@ class Syslog : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value host_name; //type: string
 
+
+                            YLeaf host_name; //type: string
 
                         class HostNameSeverities : public Entity
                         {
@@ -614,6 +626,7 @@ class Syslog : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class HostNameSeverity : public Entity
                             {
                                 public:
@@ -627,10 +640,10 @@ class Syslog : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value severity; //type: LogSeverityEnum
 
 
-                                    class LogSeverityEnum;
+                                    YLeaf severity; //type: LogSeverityEnum
+
 
 
                             }; // Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity
@@ -655,13 +668,14 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value nomatch2; //type: string
-                                Value match3; //type: string
-                                Value nomatch3; //type: string
-                                Value match1; //type: string
-                                Value nomatch1; //type: string
-                                Value match2; //type: string
 
+
+                                YLeaf nomatch2; //type: string
+                                YLeaf match3; //type: string
+                                YLeaf nomatch3; //type: string
+                                YLeaf match1; //type: string
+                                YLeaf nomatch1; //type: string
+                                YLeaf match2; //type: string
 
 
 
@@ -681,9 +695,10 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value severity; //type: int32
-                                Value port; //type: int32
 
+
+                                YLeaf severity; //type: int32
+                                YLeaf port; //type: int32
 
 
 
@@ -719,6 +734,7 @@ class Syslog : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Ipv4 : public Entity
                     {
                         public:
@@ -732,8 +748,9 @@ class Syslog : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
 
+
+                            YLeaf address; //type: string
 
                         class Ipv4SeverityLevels : public Entity
                         {
@@ -750,6 +767,7 @@ class Syslog : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Ipv4SeverityLevel : public Entity
                             {
                                 public:
@@ -763,10 +781,10 @@ class Syslog : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value severity; //type: LogSeverityEnum
 
 
-                                    class LogSeverityEnum;
+                                    YLeaf severity; //type: LogSeverityEnum
+
 
 
                             }; // Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel
@@ -791,9 +809,10 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value severity; //type: int32
-                                Value port; //type: int32
 
+
+                                YLeaf severity; //type: int32
+                                YLeaf port; //type: int32
 
 
 
@@ -813,13 +832,14 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value nomatch2; //type: string
-                                Value match3; //type: string
-                                Value nomatch3; //type: string
-                                Value match1; //type: string
-                                Value nomatch1; //type: string
-                                Value match2; //type: string
 
+
+                                YLeaf nomatch2; //type: string
+                                YLeaf match3; //type: string
+                                YLeaf nomatch3; //type: string
+                                YLeaf match1; //type: string
+                                YLeaf nomatch1; //type: string
+                                YLeaf match2; //type: string
 
 
 
@@ -873,8 +893,9 @@ class Syslog : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value logging_level; //type: LoggingLevelsEnum
 
+
+            YLeaf logging_level; //type: LoggingLevelsEnum
 
         class ConsoleDiscriminator : public Entity
         {
@@ -889,13 +910,14 @@ class Syslog : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value match2; //type: string
-                Value nomatch1; //type: string
-                Value match1; //type: string
-                Value nomatch3; //type: string
-                Value match3; //type: string
-                Value nomatch2; //type: string
 
+
+                YLeaf match2; //type: string
+                YLeaf nomatch1; //type: string
+                YLeaf match1; //type: string
+                YLeaf nomatch3; //type: string
+                YLeaf match3; //type: string
+                YLeaf nomatch2; //type: string
 
 
 
@@ -903,7 +925,6 @@ class Syslog : public Entity
 
 
             std::unique_ptr<Cisco_IOS_XR_infra_syslog_cfg::Syslog::ConsoleLogging::ConsoleDiscriminator> console_discriminator;
-            class LoggingLevelsEnum;
 
 
     }; // Syslog::ConsoleLogging
@@ -924,6 +945,7 @@ class Syslog : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class File : public Entity
         {
             public:
@@ -937,8 +959,9 @@ class Syslog : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value file_name; //type: string
 
+
+                YLeaf file_name; //type: string
 
             class FileSpecification : public Entity
             {
@@ -953,10 +976,11 @@ class Syslog : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value path; //type: string
-                    Value max_file_size; //type: int32
-                    Value severity; //type: int32
 
+
+                    YLeaf path; //type: string
+                    YLeaf max_file_size; //type: int32
+                    YLeaf severity; //type: int32
 
 
 
@@ -976,9 +1000,10 @@ class Syslog : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value max_file_size; //type: int32
-                    Value severity; //type: int32
 
+
+                    YLeaf max_file_size; //type: int32
+                    YLeaf severity; //type: int32
 
 
 
@@ -998,13 +1023,14 @@ class Syslog : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value nomatch2; //type: string
-                    Value match3; //type: string
-                    Value nomatch3; //type: string
-                    Value match1; //type: string
-                    Value nomatch1; //type: string
-                    Value match2; //type: string
 
+
+                    YLeaf nomatch2; //type: string
+                    YLeaf match3; //type: string
+                    YLeaf nomatch3; //type: string
+                    YLeaf match1; //type: string
+                    YLeaf nomatch1; //type: string
+                    YLeaf match2; //type: string
 
 
 
@@ -1040,6 +1066,7 @@ class Syslog : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Dscp : public Entity
         {
             public:
@@ -1053,14 +1080,12 @@ class Syslog : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: LoggingDscpEnum
-                Value unused; //type: one of uint32, enumeration
-                Value value_; //type: one of uint32, enumeration
 
 
-                class LoggingDscpEnum;
-                class LoggingPrecedenceValueEnum;
-                class LoggingDscpValueEnum;
+                YLeaf type; //type: LoggingDscpEnum
+                YLeaf unused; //type: one of uint32, enumeration
+                YLeaf value_; //type: one of uint32, enumeration
+
 
 
         }; // Syslog::Ipv4::Dscp
@@ -1079,14 +1104,12 @@ class Syslog : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: LoggingTosEnum
-                Value precedence; //type: one of uint32, enumeration
-                Value dscp; //type: one of uint32, enumeration
 
 
-                class LoggingDscpValueEnum;
-                class LoggingPrecedenceValueEnum;
-                class LoggingTosEnum;
+                YLeaf type; //type: LoggingTosEnum
+                YLeaf precedence; //type: one of uint32, enumeration
+                YLeaf dscp; //type: one of uint32, enumeration
+
 
 
         }; // Syslog::Ipv4::Tos
@@ -1105,14 +1128,12 @@ class Syslog : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: LoggingPrecedenceEnum
-                Value value_; //type: one of uint32, enumeration
-                Value unused; //type: one of uint32, enumeration
 
 
-                class LoggingPrecedenceEnum;
-                class LoggingDscpValueEnum;
-                class LoggingPrecedenceValueEnum;
+                YLeaf type; //type: LoggingPrecedenceEnum
+                YLeaf value_; //type: one of uint32, enumeration
+                YLeaf unused; //type: one of uint32, enumeration
+
 
 
         }; // Syslog::Ipv4::Precedence
@@ -1139,17 +1160,16 @@ class Syslog : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value size; //type: uint32
-            Value file_size; //type: uint32
-            Value device; //type: string
-            Value threshold; //type: uint32
-            Value frequency; //type: LogCollectFrequencyEnum
-            Value severity; //type: LogMessageSeverityEnum
-            Value length; //type: uint32
 
 
-            class LogCollectFrequencyEnum;
-            class LogMessageSeverityEnum;
+            YLeaf size; //type: uint32
+            YLeaf file_size; //type: uint32
+            YLeaf device; //type: string
+            YLeaf threshold; //type: uint32
+            YLeaf frequency; //type: LogCollectFrequencyEnum
+            YLeaf severity; //type: LogMessageSeverityEnum
+            YLeaf length; //type: uint32
+
 
 
     }; // Syslog::Archive
@@ -1170,6 +1190,7 @@ class Syslog : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Dscp : public Entity
         {
             public:
@@ -1183,14 +1204,12 @@ class Syslog : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: LoggingDscpEnum
-                Value unused; //type: one of uint32, enumeration
-                Value value_; //type: one of uint32, enumeration
 
 
-                class LoggingDscpEnum;
-                class LoggingPrecedenceValueEnum;
-                class LoggingDscpValueEnum;
+                YLeaf type; //type: LoggingDscpEnum
+                YLeaf unused; //type: one of uint32, enumeration
+                YLeaf value_; //type: one of uint32, enumeration
+
 
 
         }; // Syslog::Ipv6::Dscp
@@ -1209,14 +1228,12 @@ class Syslog : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: LoggingTosEnum
-                Value precedence; //type: one of uint32, enumeration
-                Value dscp; //type: one of uint32, enumeration
 
 
-                class LoggingDscpValueEnum;
-                class LoggingPrecedenceValueEnum;
-                class LoggingTosEnum;
+                YLeaf type; //type: LoggingTosEnum
+                YLeaf precedence; //type: one of uint32, enumeration
+                YLeaf dscp; //type: one of uint32, enumeration
+
 
 
         }; // Syslog::Ipv6::TrafficClass
@@ -1235,14 +1252,12 @@ class Syslog : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: LoggingPrecedenceEnum
-                Value value_; //type: one of uint32, enumeration
-                Value unused; //type: one of uint32, enumeration
 
 
-                class LoggingPrecedenceEnum;
-                class LoggingDscpValueEnum;
-                class LoggingPrecedenceValueEnum;
+                YLeaf type; //type: LoggingPrecedenceEnum
+                YLeaf value_; //type: one of uint32, enumeration
+                YLeaf unused; //type: one of uint32, enumeration
+
 
 
         }; // Syslog::Ipv6::Precedence
@@ -1271,6 +1286,7 @@ class Syslog : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SourceInterfaceValues : public Entity
         {
             public:
@@ -1286,6 +1302,7 @@ class Syslog : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class SourceInterfaceValue : public Entity
             {
                 public:
@@ -1299,8 +1316,9 @@ class Syslog : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value src_interface_name_value; //type: string
 
+
+                    YLeaf src_interface_name_value; //type: string
 
                 class SourceInterfaceVrfs : public Entity
                 {
@@ -1317,6 +1335,7 @@ class Syslog : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SourceInterfaceVrf : public Entity
                     {
                         public:
@@ -1330,8 +1349,9 @@ class Syslog : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vrf_name; //type: string
 
+
+                            YLeaf vrf_name; //type: string
 
 
 
@@ -1375,13 +1395,13 @@ class Syslog : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value severity_level; //type: AlarmLoggerSeverityLevelEnum
-            Value buffer_size; //type: uint32
-            Value source_location; //type: empty
-            Value threshold; //type: uint32
 
 
-            class AlarmLoggerSeverityLevelEnum;
+            YLeaf severity_level; //type: AlarmLoggerSeverityLevelEnum
+            YLeaf buffer_size; //type: uint32
+            YLeaf source_location; //type: empty
+            YLeaf threshold; //type: uint32
+
 
 
     }; // Syslog::AlarmLogger
@@ -1400,8 +1420,9 @@ class Syslog : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value buffer_size; //type: uint32
 
+
+            YLeaf buffer_size; //type: uint32
 
         class Rules : public Entity
         {
@@ -1418,6 +1439,7 @@ class Syslog : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Rule : public Entity
             {
                 public:
@@ -1431,8 +1453,9 @@ class Syslog : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
 
+
+                    YLeaf name; //type: string
 
                 class Definition : public Entity
                 {
@@ -1447,38 +1470,39 @@ class Syslog : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value timeout; //type: uint32
-                        Value category_name_entry1; //type: string
-                        Value group_name_entry1; //type: string
-                        Value message_code_entry1; //type: string
-                        Value category_name_entry2; //type: string
-                        Value group_name_entry2; //type: string
-                        Value message_code_entry2; //type: string
-                        Value category_name_entry3; //type: string
-                        Value group_name_entry3; //type: string
-                        Value message_code_entry3; //type: string
-                        Value category_name_entry4; //type: string
-                        Value group_name_entry4; //type: string
-                        Value message_code_entry4; //type: string
-                        Value category_name_entry5; //type: string
-                        Value group_name_entry5; //type: string
-                        Value message_code_entry5; //type: string
-                        Value category_name_entry6; //type: string
-                        Value group_name_entry6; //type: string
-                        Value message_code_entry6; //type: string
-                        Value category_name_entry7; //type: string
-                        Value group_name_entry7; //type: string
-                        Value message_code_entry7; //type: string
-                        Value category_name_entry8; //type: string
-                        Value group_name_entry8; //type: string
-                        Value message_code_entry8; //type: string
-                        Value category_name_entry9; //type: string
-                        Value group_name_entry9; //type: string
-                        Value message_code_entry9; //type: string
-                        Value category_name_entry10; //type: string
-                        Value group_name_entry10; //type: string
-                        Value message_code_entry10; //type: string
 
+
+                        YLeaf timeout; //type: uint32
+                        YLeaf category_name_entry1; //type: string
+                        YLeaf group_name_entry1; //type: string
+                        YLeaf message_code_entry1; //type: string
+                        YLeaf category_name_entry2; //type: string
+                        YLeaf group_name_entry2; //type: string
+                        YLeaf message_code_entry2; //type: string
+                        YLeaf category_name_entry3; //type: string
+                        YLeaf group_name_entry3; //type: string
+                        YLeaf message_code_entry3; //type: string
+                        YLeaf category_name_entry4; //type: string
+                        YLeaf group_name_entry4; //type: string
+                        YLeaf message_code_entry4; //type: string
+                        YLeaf category_name_entry5; //type: string
+                        YLeaf group_name_entry5; //type: string
+                        YLeaf message_code_entry5; //type: string
+                        YLeaf category_name_entry6; //type: string
+                        YLeaf group_name_entry6; //type: string
+                        YLeaf message_code_entry6; //type: string
+                        YLeaf category_name_entry7; //type: string
+                        YLeaf group_name_entry7; //type: string
+                        YLeaf message_code_entry7; //type: string
+                        YLeaf category_name_entry8; //type: string
+                        YLeaf group_name_entry8; //type: string
+                        YLeaf message_code_entry8; //type: string
+                        YLeaf category_name_entry9; //type: string
+                        YLeaf group_name_entry9; //type: string
+                        YLeaf message_code_entry9; //type: string
+                        YLeaf category_name_entry10; //type: string
+                        YLeaf group_name_entry10; //type: string
+                        YLeaf message_code_entry10; //type: string
 
 
 
@@ -1498,10 +1522,11 @@ class Syslog : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value context_correlation; //type: empty
-                        Value timeout_root_cause; //type: uint32
-                        Value timeout; //type: uint32
 
+
+                        YLeaf context_correlation; //type: empty
+                        YLeaf timeout_root_cause; //type: uint32
+                        YLeaf timeout; //type: uint32
 
                     class NonRootCauses : public Entity
                     {
@@ -1518,6 +1543,7 @@ class Syslog : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NonRootCause : public Entity
                         {
                             public:
@@ -1531,10 +1557,11 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value category; //type: string
-                                Value group; //type: string
-                                Value message_code; //type: string
 
+
+                                YLeaf category; //type: string
+                                YLeaf group; //type: string
+                                YLeaf message_code; //type: string
 
 
 
@@ -1560,10 +1587,11 @@ class Syslog : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value category; //type: string
-                            Value group; //type: string
-                            Value message_code; //type: string
 
+
+                            YLeaf category; //type: string
+                            YLeaf group; //type: string
+                            YLeaf message_code; //type: string
 
 
 
@@ -1590,12 +1618,13 @@ class Syslog : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value reparent; //type: empty
-                        Value reissue; //type: empty
-                        Value context_correlation; //type: empty
-                        Value timeout_root_cause; //type: uint32
-                        Value timeout; //type: uint32
 
+
+                        YLeaf reparent; //type: empty
+                        YLeaf reissue; //type: empty
+                        YLeaf context_correlation; //type: empty
+                        YLeaf timeout_root_cause; //type: uint32
+                        YLeaf timeout; //type: uint32
 
                     class NonRootCauses : public Entity
                     {
@@ -1612,6 +1641,7 @@ class Syslog : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NonRootCause : public Entity
                         {
                             public:
@@ -1625,10 +1655,11 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value category; //type: string
-                                Value group; //type: string
-                                Value message_code; //type: string
 
+
+                                YLeaf category; //type: string
+                                YLeaf group; //type: string
+                                YLeaf message_code; //type: string
 
 
 
@@ -1654,10 +1685,11 @@ class Syslog : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value category; //type: string
-                            Value group; //type: string
-                            Value message_code; //type: string
 
+
+                            YLeaf category; //type: string
+                            YLeaf group; //type: string
+                            YLeaf message_code; //type: string
 
 
 
@@ -1684,8 +1716,9 @@ class Syslog : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value all_of_router; //type: empty
 
+
+                        YLeaf all_of_router; //type: empty
 
                     class Contexts : public Entity
                     {
@@ -1700,8 +1733,9 @@ class Syslog : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList context; //type: list of  string
 
+
+                            YLeafList context; //type: list of  string
 
 
 
@@ -1721,8 +1755,9 @@ class Syslog : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList location; //type: list of  string
 
+
+                            YLeafList location; //type: list of  string
 
 
 
@@ -1749,8 +1784,9 @@ class Syslog : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value all; //type: empty
 
+
+                        YLeaf all; //type: empty
 
                     class Contexts : public Entity
                     {
@@ -1767,6 +1803,7 @@ class Syslog : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Context : public Entity
                         {
                             public:
@@ -1780,8 +1817,9 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value context; //type: string
 
+
+                                YLeaf context; //type: string
 
 
 
@@ -1809,6 +1847,7 @@ class Syslog : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Location : public Entity
                         {
                             public:
@@ -1822,8 +1861,9 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value location; //type: string
 
+
+                                YLeaf location; //type: string
 
 
 
@@ -1874,6 +1914,7 @@ class Syslog : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RuleSet : public Entity
             {
                 public:
@@ -1887,8 +1928,9 @@ class Syslog : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
 
+
+                    YLeaf name; //type: string
 
                 class Rulenames : public Entity
                 {
@@ -1905,6 +1947,7 @@ class Syslog : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Rulename : public Entity
                     {
                         public:
@@ -1918,8 +1961,9 @@ class Syslog : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rulename; //type: string
 
+
+                            YLeaf rulename; //type: string
 
 
 
@@ -1945,8 +1989,9 @@ class Syslog : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value all; //type: empty
 
+
+                        YLeaf all; //type: empty
 
                     class Contexts : public Entity
                     {
@@ -1963,6 +2008,7 @@ class Syslog : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Context : public Entity
                         {
                             public:
@@ -1976,8 +2022,9 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value context; //type: string
 
+
+                                YLeaf context; //type: string
 
 
 
@@ -2005,6 +2052,7 @@ class Syslog : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Location : public Entity
                         {
                             public:
@@ -2018,8 +2066,9 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value location; //type: string
 
+
+                                YLeaf location; //type: string
 
 
 
@@ -2074,6 +2123,7 @@ class Syslog : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Rules : public Entity
         {
             public:
@@ -2089,6 +2139,7 @@ class Syslog : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Rule : public Entity
             {
                 public:
@@ -2102,9 +2153,10 @@ class Syslog : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
-                    Value all_alarms; //type: empty
 
+
+                    YLeaf name; //type: string
+                    YLeaf all_alarms; //type: empty
 
                 class AppliedTo : public Entity
                 {
@@ -2119,8 +2171,9 @@ class Syslog : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value all; //type: empty
 
+
+                        YLeaf all; //type: empty
 
                     class Sources : public Entity
                     {
@@ -2137,6 +2190,7 @@ class Syslog : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Source : public Entity
                         {
                             public:
@@ -2150,8 +2204,9 @@ class Syslog : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value source; //type: string
 
+
+                                YLeaf source; //type: string
 
 
 
@@ -2185,6 +2240,7 @@ class Syslog : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AlarmCause : public Entity
                     {
                         public:
@@ -2198,10 +2254,11 @@ class Syslog : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value category; //type: string
-                            Value group; //type: string
-                            Value code; //type: string
 
+
+                            YLeaf category; //type: string
+                            YLeaf group; //type: string
+                            YLeaf code; //type: string
 
 
 
@@ -2256,154 +2313,154 @@ class Syslog : public Entity
 class LogSeverityEnum : public Enum
 {
     public:
-        static const Enum::Value emergency;
-        static const Enum::Value alert;
-        static const Enum::Value critical;
-        static const Enum::Value error;
-        static const Enum::Value warning;
-        static const Enum::Value notice;
-        static const Enum::Value informational;
-        static const Enum::Value debug;
+        static const Enum::YLeaf emergency;
+        static const Enum::YLeaf alert;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf error;
+        static const Enum::YLeaf warning;
+        static const Enum::YLeaf notice;
+        static const Enum::YLeaf informational;
+        static const Enum::YLeaf debug;
 
 };
 
 class FacilityEnum : public Enum
 {
     public:
-        static const Enum::Value kern;
-        static const Enum::Value user;
-        static const Enum::Value mail;
-        static const Enum::Value daemon;
-        static const Enum::Value auth;
-        static const Enum::Value syslog;
-        static const Enum::Value lpr;
-        static const Enum::Value news;
-        static const Enum::Value uucp;
-        static const Enum::Value cron;
-        static const Enum::Value authpriv;
-        static const Enum::Value ftp;
-        static const Enum::Value local0;
-        static const Enum::Value local1;
-        static const Enum::Value local2;
-        static const Enum::Value local3;
-        static const Enum::Value local4;
-        static const Enum::Value local5;
-        static const Enum::Value local6;
-        static const Enum::Value local7;
-        static const Enum::Value sys9;
-        static const Enum::Value sys10;
-        static const Enum::Value sys11;
-        static const Enum::Value sys12;
-        static const Enum::Value sys13;
-        static const Enum::Value sys14;
+        static const Enum::YLeaf kern;
+        static const Enum::YLeaf user;
+        static const Enum::YLeaf mail;
+        static const Enum::YLeaf daemon;
+        static const Enum::YLeaf auth;
+        static const Enum::YLeaf syslog;
+        static const Enum::YLeaf lpr;
+        static const Enum::YLeaf news;
+        static const Enum::YLeaf uucp;
+        static const Enum::YLeaf cron;
+        static const Enum::YLeaf authpriv;
+        static const Enum::YLeaf ftp;
+        static const Enum::YLeaf local0;
+        static const Enum::YLeaf local1;
+        static const Enum::YLeaf local2;
+        static const Enum::YLeaf local3;
+        static const Enum::YLeaf local4;
+        static const Enum::YLeaf local5;
+        static const Enum::YLeaf local6;
+        static const Enum::YLeaf local7;
+        static const Enum::YLeaf sys9;
+        static const Enum::YLeaf sys10;
+        static const Enum::YLeaf sys11;
+        static const Enum::YLeaf sys12;
+        static const Enum::YLeaf sys13;
+        static const Enum::YLeaf sys14;
 
 };
 
 class LogCollectFrequencyEnum : public Enum
 {
     public:
-        static const Enum::Value weekly;
-        static const Enum::Value daily;
+        static const Enum::YLeaf weekly;
+        static const Enum::YLeaf daily;
 
 };
 
 class LoggingPrecedenceValueEnum : public Enum
 {
     public:
-        static const Enum::Value routine;
-        static const Enum::Value priority;
-        static const Enum::Value immediate;
-        static const Enum::Value flash;
-        static const Enum::Value flash_override;
-        static const Enum::Value critical;
-        static const Enum::Value internet;
-        static const Enum::Value network;
+        static const Enum::YLeaf routine;
+        static const Enum::YLeaf priority;
+        static const Enum::YLeaf immediate;
+        static const Enum::YLeaf flash;
+        static const Enum::YLeaf flash_override;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf internet;
+        static const Enum::YLeaf network;
 
 };
 
 class LoggingTosEnum : public Enum
 {
     public:
-        static const Enum::Value precedence;
-        static const Enum::Value dscp;
+        static const Enum::YLeaf precedence;
+        static const Enum::YLeaf dscp;
 
 };
 
 class LoggingLevelsEnum : public Enum
 {
     public:
-        static const Enum::Value emergency;
-        static const Enum::Value alert;
-        static const Enum::Value critical;
-        static const Enum::Value error;
-        static const Enum::Value warning;
-        static const Enum::Value notice;
-        static const Enum::Value info;
-        static const Enum::Value debug;
-        static const Enum::Value disable;
+        static const Enum::YLeaf emergency;
+        static const Enum::YLeaf alert;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf error;
+        static const Enum::YLeaf warning;
+        static const Enum::YLeaf notice;
+        static const Enum::YLeaf info;
+        static const Enum::YLeaf debug;
+        static const Enum::YLeaf disable;
 
 };
 
 class LoggingPrecedenceEnum : public Enum
 {
     public:
-        static const Enum::Value precedence;
+        static const Enum::YLeaf precedence;
 
 };
 
 class LoggingDscpValueEnum : public Enum
 {
     public:
-        static const Enum::Value default_;
-        static const Enum::Value af11;
-        static const Enum::Value af12;
-        static const Enum::Value af13;
-        static const Enum::Value af21;
-        static const Enum::Value af22;
-        static const Enum::Value af23;
-        static const Enum::Value af31;
-        static const Enum::Value af32;
-        static const Enum::Value af33;
-        static const Enum::Value af41;
-        static const Enum::Value af42;
-        static const Enum::Value af43;
-        static const Enum::Value ef;
-        static const Enum::Value cs1;
-        static const Enum::Value cs2;
-        static const Enum::Value cs3;
-        static const Enum::Value cs4;
-        static const Enum::Value cs5;
-        static const Enum::Value cs6;
-        static const Enum::Value cs7;
+        static const Enum::YLeaf default_;
+        static const Enum::YLeaf af11;
+        static const Enum::YLeaf af12;
+        static const Enum::YLeaf af13;
+        static const Enum::YLeaf af21;
+        static const Enum::YLeaf af22;
+        static const Enum::YLeaf af23;
+        static const Enum::YLeaf af31;
+        static const Enum::YLeaf af32;
+        static const Enum::YLeaf af33;
+        static const Enum::YLeaf af41;
+        static const Enum::YLeaf af42;
+        static const Enum::YLeaf af43;
+        static const Enum::YLeaf ef;
+        static const Enum::YLeaf cs1;
+        static const Enum::YLeaf cs2;
+        static const Enum::YLeaf cs3;
+        static const Enum::YLeaf cs4;
+        static const Enum::YLeaf cs5;
+        static const Enum::YLeaf cs6;
+        static const Enum::YLeaf cs7;
 
 };
 
 class LogMessageSeverityEnum : public Enum
 {
     public:
-        static const Enum::Value emergency;
-        static const Enum::Value alert;
-        static const Enum::Value critical;
-        static const Enum::Value error;
-        static const Enum::Value warning;
-        static const Enum::Value notice;
-        static const Enum::Value informational;
-        static const Enum::Value debug;
+        static const Enum::YLeaf emergency;
+        static const Enum::YLeaf alert;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf error;
+        static const Enum::YLeaf warning;
+        static const Enum::YLeaf notice;
+        static const Enum::YLeaf informational;
+        static const Enum::YLeaf debug;
 
 };
 
 class TimeInfoEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value enable;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf enable;
 
 };
 
 class LoggingDscpEnum : public Enum
 {
     public:
-        static const Enum::Value dscp;
+        static const Enum::YLeaf dscp;
 
 };
 

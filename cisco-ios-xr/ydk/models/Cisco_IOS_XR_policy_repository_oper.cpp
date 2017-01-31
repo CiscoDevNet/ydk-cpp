@@ -148,7 +148,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPol
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -158,12 +158,13 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUs
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies::get_segment_path() const
@@ -180,7 +181,7 @@ EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::Dire
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -239,7 +240,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Se
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets::has_data() const
 {
-    for (auto const & leaf : set_name.getValues())
+    for (auto const & leaf : set_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -249,13 +250,14 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSet
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets::has_operation() const
 {
-    for (auto const & leaf : set_name.getValues())
+    for (auto const & leaf : set_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| is_set(set_domain.operation);
+	|| is_set(set_domain.operation)
+	|| is_set(set_name.operation);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets::get_segment_path() const
@@ -272,7 +274,7 @@ EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllU
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -365,7 +367,7 @@ EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllU
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -444,7 +446,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSet
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets::has_data() const
 {
-    for (auto const & leaf : set_name.getValues())
+    for (auto const & leaf : set_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -454,13 +456,14 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUs
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets::has_operation() const
 {
-    for (auto const & leaf : set_name.getValues())
+    for (auto const & leaf : set_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| is_set(set_domain.operation);
+	|| is_set(set_domain.operation)
+	|| is_set(set_name.operation);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets::get_segment_path() const
@@ -477,7 +480,7 @@ EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::Dire
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -570,7 +573,7 @@ EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::Dire
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -648,7 +651,7 @@ RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -658,12 +661,13 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPol
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies::get_segment_path() const
@@ -680,7 +684,7 @@ EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllU
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -762,10 +766,10 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::has_data()
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::has_operation() const
 {
     return is_set(operation)
-	|| (all_used_policies !=  nullptr && is_set(all_used_policies->operation))
-	|| (all_used_sets !=  nullptr && is_set(all_used_sets->operation))
-	|| (directly_used_policies !=  nullptr && is_set(directly_used_policies->operation))
-	|| (directly_used_sets !=  nullptr && is_set(directly_used_sets->operation));
+	|| (all_used_policies !=  nullptr && all_used_policies->has_operation())
+	|| (all_used_sets !=  nullptr && all_used_sets->has_operation())
+	|| (directly_used_policies !=  nullptr && directly_used_policies->has_operation())
+	|| (directly_used_sets !=  nullptr && directly_used_sets->has_operation());
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::get_segment_path() const
@@ -782,7 +786,7 @@ EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -955,7 +959,7 @@ EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Referenc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1052,7 +1056,7 @@ EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1210,7 +1214,7 @@ EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Bindin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1392,7 +1396,7 @@ EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1493,9 +1497,9 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::has_operation() const
 {
     return is_set(operation)
 	|| is_set(route_policy_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (policy_uses !=  nullptr && is_set(policy_uses->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (policy_uses !=  nullptr && policy_uses->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::get_segment_path() const
@@ -1746,7 +1750,7 @@ RoutingPolicy::Policies::Unused::~Unused()
 
 bool RoutingPolicy::Policies::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1756,12 +1760,13 @@ bool RoutingPolicy::Policies::Unused::has_data() const
 
 bool RoutingPolicy::Policies::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Policies::Unused::get_segment_path() const
@@ -1836,7 +1841,7 @@ RoutingPolicy::Policies::Inactive::~Inactive()
 
 bool RoutingPolicy::Policies::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1846,12 +1851,13 @@ bool RoutingPolicy::Policies::Inactive::has_data() const
 
 bool RoutingPolicy::Policies::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Policies::Inactive::get_segment_path() const
@@ -1926,7 +1932,7 @@ RoutingPolicy::Policies::Active::~Active()
 
 bool RoutingPolicy::Policies::Active::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1936,12 +1942,13 @@ bool RoutingPolicy::Policies::Active::has_data() const
 
 bool RoutingPolicy::Policies::Active::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Policies::Active::get_segment_path() const
@@ -2040,10 +2047,10 @@ bool RoutingPolicy::Policies::has_data() const
 bool RoutingPolicy::Policies::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (route_policies !=  nullptr && is_set(route_policies->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (route_policies !=  nullptr && route_policies->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Policies::get_segment_path() const
@@ -2233,7 +2240,7 @@ EntityPath RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2330,7 +2337,7 @@ EntityPath RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2488,7 +2495,7 @@ EntityPath RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2670,7 +2677,7 @@ EntityPath RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2766,8 +2773,8 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::Set::has_operation() const
 {
     return is_set(operation)
 	|| is_set(set_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Sets::OspfArea::Sets_::Set::get_segment_path() const
@@ -2995,7 +3002,7 @@ RoutingPolicy::Sets::OspfArea::Unused::~Unused()
 
 bool RoutingPolicy::Sets::OspfArea::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3005,12 +3012,13 @@ bool RoutingPolicy::Sets::OspfArea::Unused::has_data() const
 
 bool RoutingPolicy::Sets::OspfArea::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::OspfArea::Unused::get_segment_path() const
@@ -3085,7 +3093,7 @@ RoutingPolicy::Sets::OspfArea::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::OspfArea::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3095,12 +3103,13 @@ bool RoutingPolicy::Sets::OspfArea::Inactive::has_data() const
 
 bool RoutingPolicy::Sets::OspfArea::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::OspfArea::Inactive::get_segment_path() const
@@ -3175,7 +3184,7 @@ RoutingPolicy::Sets::OspfArea::Active::~Active()
 
 bool RoutingPolicy::Sets::OspfArea::Active::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3185,12 +3194,13 @@ bool RoutingPolicy::Sets::OspfArea::Active::has_data() const
 
 bool RoutingPolicy::Sets::OspfArea::Active::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::OspfArea::Active::get_segment_path() const
@@ -3289,10 +3299,10 @@ bool RoutingPolicy::Sets::OspfArea::has_data() const
 bool RoutingPolicy::Sets::OspfArea::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (sets !=  nullptr && is_set(sets->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (sets !=  nullptr && sets->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Sets::OspfArea::get_segment_path() const
@@ -3482,7 +3492,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Ref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3579,7 +3589,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3737,7 +3747,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::B
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3919,7 +3929,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4015,8 +4025,8 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::has_operation() c
 {
     return is_set(operation)
 	|| is_set(set_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::get_segment_path() const
@@ -4244,7 +4254,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::~Unused()
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4254,12 +4264,13 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::get_segment_path() const
@@ -4334,7 +4345,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4344,12 +4355,13 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::get_segment_path() const
@@ -4424,7 +4436,7 @@ RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::~Active()
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4434,12 +4446,13 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::get_segment_path() const
@@ -4538,10 +4551,10 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::has_data() const
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (sets !=  nullptr && is_set(sets->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (sets !=  nullptr && sets->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::get_segment_path() const
@@ -4731,7 +4744,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Refe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4828,7 +4841,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4986,7 +4999,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Bi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5168,7 +5181,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5264,8 +5277,8 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::has_operation() co
 {
     return is_set(operation)
 	|| is_set(set_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::get_segment_path() const
@@ -5493,7 +5506,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::~Unused()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -5503,12 +5516,13 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::get_segment_path() const
@@ -5583,7 +5597,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -5593,12 +5607,13 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::get_segment_path() const
@@ -5673,7 +5688,7 @@ RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::~Active()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -5683,12 +5698,13 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::get_segment_path() const
@@ -5787,10 +5803,10 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::has_data() const
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (sets !=  nullptr && is_set(sets->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (sets !=  nullptr && sets->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::get_segment_path() const
@@ -5980,7 +5996,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Refere
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6077,7 +6093,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6235,7 +6251,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Bind
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6417,7 +6433,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6513,8 +6529,8 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::has_operation() cons
 {
     return is_set(operation)
 	|| is_set(set_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::get_segment_path() const
@@ -6742,7 +6758,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::~Unused()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -6752,12 +6768,13 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::get_segment_path() const
@@ -6832,7 +6849,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -6842,12 +6859,13 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::get_segment_path() const
@@ -6922,7 +6940,7 @@ RoutingPolicy::Sets::ExtendedCommunitySoo::Active::~Active()
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Active::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -6932,12 +6950,13 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Active::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Active::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Active::get_segment_path() const
@@ -7036,10 +7055,10 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::has_data() const
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (sets !=  nullptr && is_set(sets->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (sets !=  nullptr && sets->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::get_segment_path() const
@@ -7229,7 +7248,7 @@ EntityPath RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7326,7 +7345,7 @@ EntityPath RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7484,7 +7503,7 @@ EntityPath RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7666,7 +7685,7 @@ EntityPath RoutingPolicy::Sets::Tag::Sets_::Set::Attached::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7762,8 +7781,8 @@ bool RoutingPolicy::Sets::Tag::Sets_::Set::has_operation() const
 {
     return is_set(operation)
 	|| is_set(set_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Sets::Tag::Sets_::Set::get_segment_path() const
@@ -7991,7 +8010,7 @@ RoutingPolicy::Sets::Tag::Unused::~Unused()
 
 bool RoutingPolicy::Sets::Tag::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8001,12 +8020,13 @@ bool RoutingPolicy::Sets::Tag::Unused::has_data() const
 
 bool RoutingPolicy::Sets::Tag::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::Tag::Unused::get_segment_path() const
@@ -8081,7 +8101,7 @@ RoutingPolicy::Sets::Tag::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::Tag::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8091,12 +8111,13 @@ bool RoutingPolicy::Sets::Tag::Inactive::has_data() const
 
 bool RoutingPolicy::Sets::Tag::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::Tag::Inactive::get_segment_path() const
@@ -8171,7 +8192,7 @@ RoutingPolicy::Sets::Tag::Active::~Active()
 
 bool RoutingPolicy::Sets::Tag::Active::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8181,12 +8202,13 @@ bool RoutingPolicy::Sets::Tag::Active::has_data() const
 
 bool RoutingPolicy::Sets::Tag::Active::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::Tag::Active::get_segment_path() const
@@ -8285,10 +8307,10 @@ bool RoutingPolicy::Sets::Tag::has_data() const
 bool RoutingPolicy::Sets::Tag::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (sets !=  nullptr && is_set(sets->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (sets !=  nullptr && sets->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Sets::Tag::get_segment_path() const
@@ -8478,7 +8500,7 @@ EntityPath RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8575,7 +8597,7 @@ EntityPath RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8733,7 +8755,7 @@ EntityPath RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8915,7 +8937,7 @@ EntityPath RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9011,8 +9033,8 @@ bool RoutingPolicy::Sets::Prefix::Sets_::Set::has_operation() const
 {
     return is_set(operation)
 	|| is_set(set_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Sets::Prefix::Sets_::Set::get_segment_path() const
@@ -9240,7 +9262,7 @@ RoutingPolicy::Sets::Prefix::Unused::~Unused()
 
 bool RoutingPolicy::Sets::Prefix::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9250,12 +9272,13 @@ bool RoutingPolicy::Sets::Prefix::Unused::has_data() const
 
 bool RoutingPolicy::Sets::Prefix::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::Prefix::Unused::get_segment_path() const
@@ -9330,7 +9353,7 @@ RoutingPolicy::Sets::Prefix::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::Prefix::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9340,12 +9363,13 @@ bool RoutingPolicy::Sets::Prefix::Inactive::has_data() const
 
 bool RoutingPolicy::Sets::Prefix::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::Prefix::Inactive::get_segment_path() const
@@ -9420,7 +9444,7 @@ RoutingPolicy::Sets::Prefix::Active::~Active()
 
 bool RoutingPolicy::Sets::Prefix::Active::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9430,12 +9454,13 @@ bool RoutingPolicy::Sets::Prefix::Active::has_data() const
 
 bool RoutingPolicy::Sets::Prefix::Active::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::Prefix::Active::get_segment_path() const
@@ -9534,10 +9559,10 @@ bool RoutingPolicy::Sets::Prefix::has_data() const
 bool RoutingPolicy::Sets::Prefix::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (sets !=  nullptr && is_set(sets->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (sets !=  nullptr && sets->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Sets::Prefix::get_segment_path() const
@@ -9727,7 +9752,7 @@ EntityPath RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9824,7 +9849,7 @@ EntityPath RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9982,7 +10007,7 @@ EntityPath RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10164,7 +10189,7 @@ EntityPath RoutingPolicy::Sets::Community::Sets_::Set::Attached::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10260,8 +10285,8 @@ bool RoutingPolicy::Sets::Community::Sets_::Set::has_operation() const
 {
     return is_set(operation)
 	|| is_set(set_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Sets::Community::Sets_::Set::get_segment_path() const
@@ -10489,7 +10514,7 @@ RoutingPolicy::Sets::Community::Unused::~Unused()
 
 bool RoutingPolicy::Sets::Community::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10499,12 +10524,13 @@ bool RoutingPolicy::Sets::Community::Unused::has_data() const
 
 bool RoutingPolicy::Sets::Community::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::Community::Unused::get_segment_path() const
@@ -10579,7 +10605,7 @@ RoutingPolicy::Sets::Community::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::Community::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10589,12 +10615,13 @@ bool RoutingPolicy::Sets::Community::Inactive::has_data() const
 
 bool RoutingPolicy::Sets::Community::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::Community::Inactive::get_segment_path() const
@@ -10669,7 +10696,7 @@ RoutingPolicy::Sets::Community::Active::~Active()
 
 bool RoutingPolicy::Sets::Community::Active::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10679,12 +10706,13 @@ bool RoutingPolicy::Sets::Community::Active::has_data() const
 
 bool RoutingPolicy::Sets::Community::Active::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::Community::Active::get_segment_path() const
@@ -10783,10 +10811,10 @@ bool RoutingPolicy::Sets::Community::has_data() const
 bool RoutingPolicy::Sets::Community::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (sets !=  nullptr && is_set(sets->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (sets !=  nullptr && sets->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Sets::Community::get_segment_path() const
@@ -10976,7 +11004,7 @@ EntityPath RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11073,7 +11101,7 @@ EntityPath RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11231,7 +11259,7 @@ EntityPath RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11413,7 +11441,7 @@ EntityPath RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11509,8 +11537,8 @@ bool RoutingPolicy::Sets::AsPath::Sets_::Set::has_operation() const
 {
     return is_set(operation)
 	|| is_set(set_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Sets::AsPath::Sets_::Set::get_segment_path() const
@@ -11738,7 +11766,7 @@ RoutingPolicy::Sets::AsPath::Unused::~Unused()
 
 bool RoutingPolicy::Sets::AsPath::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11748,12 +11776,13 @@ bool RoutingPolicy::Sets::AsPath::Unused::has_data() const
 
 bool RoutingPolicy::Sets::AsPath::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::AsPath::Unused::get_segment_path() const
@@ -11828,7 +11857,7 @@ RoutingPolicy::Sets::AsPath::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::AsPath::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11838,12 +11867,13 @@ bool RoutingPolicy::Sets::AsPath::Inactive::has_data() const
 
 bool RoutingPolicy::Sets::AsPath::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::AsPath::Inactive::get_segment_path() const
@@ -11918,7 +11948,7 @@ RoutingPolicy::Sets::AsPath::Active::~Active()
 
 bool RoutingPolicy::Sets::AsPath::Active::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11928,12 +11958,13 @@ bool RoutingPolicy::Sets::AsPath::Active::has_data() const
 
 bool RoutingPolicy::Sets::AsPath::Active::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::AsPath::Active::get_segment_path() const
@@ -12032,10 +12063,10 @@ bool RoutingPolicy::Sets::AsPath::has_data() const
 bool RoutingPolicy::Sets::AsPath::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (sets !=  nullptr && is_set(sets->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (sets !=  nullptr && sets->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Sets::AsPath::get_segment_path() const
@@ -12225,7 +12256,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12322,7 +12353,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12480,7 +12511,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12662,7 +12693,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12758,8 +12789,8 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::has_operation(
 {
     return is_set(operation)
 	|| is_set(set_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::get_segment_path() const
@@ -12987,7 +13018,7 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::~Unused()
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -12997,12 +13028,13 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::get_segment_path() const
@@ -13077,7 +13109,7 @@ RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -13087,12 +13119,13 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::get_segment_path() const
@@ -13186,9 +13219,9 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::has_data() const
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::has_operation() const
 {
     return is_set(operation)
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (sets !=  nullptr && is_set(sets->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (sets !=  nullptr && sets->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::get_segment_path() const
@@ -13355,7 +13388,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Referen
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13452,7 +13485,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13610,7 +13643,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Bindi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13792,7 +13825,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13888,8 +13921,8 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::has_operation() const
 {
     return is_set(operation)
 	|| is_set(set_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::get_segment_path() const
@@ -14117,7 +14150,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Unused::~Unused()
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14127,12 +14160,13 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Unused::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Unused::get_segment_path() const
@@ -14207,7 +14241,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14217,12 +14251,13 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::get_segment_path() const
@@ -14297,7 +14332,7 @@ RoutingPolicy::Sets::ExtendedCommunityRt::Active::~Active()
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Active::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14307,12 +14342,13 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Active::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Active::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Active::get_segment_path() const
@@ -14411,10 +14447,10 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::has_data() const
 bool RoutingPolicy::Sets::ExtendedCommunityRt::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (sets !=  nullptr && is_set(sets->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (sets !=  nullptr && sets->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::get_segment_path() const
@@ -14604,7 +14640,7 @@ EntityPath RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14701,7 +14737,7 @@ EntityPath RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14859,7 +14895,7 @@ EntityPath RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15041,7 +15077,7 @@ EntityPath RoutingPolicy::Sets::Rd::Sets_::Set::Attached::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15137,8 +15173,8 @@ bool RoutingPolicy::Sets::Rd::Sets_::Set::has_operation() const
 {
     return is_set(operation)
 	|| is_set(set_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Sets::Rd::Sets_::Set::get_segment_path() const
@@ -15366,7 +15402,7 @@ RoutingPolicy::Sets::Rd::Unused::~Unused()
 
 bool RoutingPolicy::Sets::Rd::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -15376,12 +15412,13 @@ bool RoutingPolicy::Sets::Rd::Unused::has_data() const
 
 bool RoutingPolicy::Sets::Rd::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::Rd::Unused::get_segment_path() const
@@ -15456,7 +15493,7 @@ RoutingPolicy::Sets::Rd::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::Rd::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -15466,12 +15503,13 @@ bool RoutingPolicy::Sets::Rd::Inactive::has_data() const
 
 bool RoutingPolicy::Sets::Rd::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::Rd::Inactive::get_segment_path() const
@@ -15546,7 +15584,7 @@ RoutingPolicy::Sets::Rd::Active::~Active()
 
 bool RoutingPolicy::Sets::Rd::Active::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -15556,12 +15594,13 @@ bool RoutingPolicy::Sets::Rd::Active::has_data() const
 
 bool RoutingPolicy::Sets::Rd::Active::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::Rd::Active::get_segment_path() const
@@ -15660,10 +15699,10 @@ bool RoutingPolicy::Sets::Rd::has_data() const
 bool RoutingPolicy::Sets::Rd::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (sets !=  nullptr && is_set(sets->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (sets !=  nullptr && sets->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Sets::Rd::get_segment_path() const
@@ -15853,7 +15892,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Refer
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15950,7 +15989,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16108,7 +16147,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Bin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16290,7 +16329,7 @@ EntityPath RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16386,8 +16425,8 @@ bool RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::has_operation() con
 {
     return is_set(operation)
 	|| is_set(set_name.operation)
-	|| (attached !=  nullptr && is_set(attached->operation))
-	|| (used_by !=  nullptr && is_set(used_by->operation));
+	|| (attached !=  nullptr && attached->has_operation())
+	|| (used_by !=  nullptr && used_by->has_operation());
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::get_segment_path() const
@@ -16615,7 +16654,7 @@ RoutingPolicy::Sets::ExtendedCommunityCost::Unused::~Unused()
 
 bool RoutingPolicy::Sets::ExtendedCommunityCost::Unused::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -16625,12 +16664,13 @@ bool RoutingPolicy::Sets::ExtendedCommunityCost::Unused::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityCost::Unused::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityCost::Unused::get_segment_path() const
@@ -16705,7 +16745,7 @@ RoutingPolicy::Sets::ExtendedCommunityCost::Inactive::~Inactive()
 
 bool RoutingPolicy::Sets::ExtendedCommunityCost::Inactive::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -16715,12 +16755,13 @@ bool RoutingPolicy::Sets::ExtendedCommunityCost::Inactive::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityCost::Inactive::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityCost::Inactive::get_segment_path() const
@@ -16795,7 +16836,7 @@ RoutingPolicy::Sets::ExtendedCommunityCost::Active::~Active()
 
 bool RoutingPolicy::Sets::ExtendedCommunityCost::Active::has_data() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -16805,12 +16846,13 @@ bool RoutingPolicy::Sets::ExtendedCommunityCost::Active::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityCost::Active::has_operation() const
 {
-    for (auto const & leaf : object.getValues())
+    for (auto const & leaf : object.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(object.operation);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityCost::Active::get_segment_path() const
@@ -16909,10 +16951,10 @@ bool RoutingPolicy::Sets::ExtendedCommunityCost::has_data() const
 bool RoutingPolicy::Sets::ExtendedCommunityCost::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (sets !=  nullptr && is_set(sets->operation))
-	|| (unused !=  nullptr && is_set(unused->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (sets !=  nullptr && sets->has_operation())
+	|| (unused !=  nullptr && unused->has_operation());
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityCost::get_segment_path() const
@@ -17137,18 +17179,18 @@ bool RoutingPolicy::Sets::has_data() const
 bool RoutingPolicy::Sets::has_operation() const
 {
     return is_set(operation)
-	|| (as_path !=  nullptr && is_set(as_path->operation))
-	|| (community !=  nullptr && is_set(community->operation))
-	|| (extended_community_bandwidth !=  nullptr && is_set(extended_community_bandwidth->operation))
-	|| (extended_community_cost !=  nullptr && is_set(extended_community_cost->operation))
-	|| (extended_community_opaque !=  nullptr && is_set(extended_community_opaque->operation))
-	|| (extended_community_rt !=  nullptr && is_set(extended_community_rt->operation))
-	|| (extended_community_seg_nh !=  nullptr && is_set(extended_community_seg_nh->operation))
-	|| (extended_community_soo !=  nullptr && is_set(extended_community_soo->operation))
-	|| (ospf_area !=  nullptr && is_set(ospf_area->operation))
-	|| (prefix !=  nullptr && is_set(prefix->operation))
-	|| (rd !=  nullptr && is_set(rd->operation))
-	|| (tag !=  nullptr && is_set(tag->operation));
+	|| (as_path !=  nullptr && as_path->has_operation())
+	|| (community !=  nullptr && community->has_operation())
+	|| (extended_community_bandwidth !=  nullptr && extended_community_bandwidth->has_operation())
+	|| (extended_community_cost !=  nullptr && extended_community_cost->has_operation())
+	|| (extended_community_opaque !=  nullptr && extended_community_opaque->has_operation())
+	|| (extended_community_rt !=  nullptr && extended_community_rt->has_operation())
+	|| (extended_community_seg_nh !=  nullptr && extended_community_seg_nh->has_operation())
+	|| (extended_community_soo !=  nullptr && extended_community_soo->has_operation())
+	|| (ospf_area !=  nullptr && ospf_area->has_operation())
+	|| (prefix !=  nullptr && prefix->has_operation())
+	|| (rd !=  nullptr && rd->has_operation())
+	|| (tag !=  nullptr && tag->has_operation());
 }
 
 std::string RoutingPolicy::Sets::get_segment_path() const
@@ -17512,9 +17554,9 @@ bool RoutingPolicy::has_data() const
 bool RoutingPolicy::has_operation() const
 {
     return is_set(operation)
-	|| (limits !=  nullptr && is_set(limits->operation))
-	|| (policies !=  nullptr && is_set(policies->operation))
-	|| (sets !=  nullptr && is_set(sets->operation));
+	|| (limits !=  nullptr && limits->has_operation())
+	|| (policies !=  nullptr && policies->has_operation())
+	|| (sets !=  nullptr && sets->has_operation());
 }
 
 std::string RoutingPolicy::get_segment_path() const
@@ -17531,7 +17573,7 @@ EntityPath RoutingPolicy::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -17641,39 +17683,39 @@ std::unique_ptr<Entity> RoutingPolicy::clone_ptr()
     return std::make_unique<RoutingPolicy>();
 }
 
-const Enum::Value GroupEnum::address_family_group {0, "address-family-group"};
-const Enum::Value GroupEnum::session_group {1, "session-group"};
-const Enum::Value GroupEnum::neighbor_group {2, "neighbor-group"};
-const Enum::Value GroupEnum::neighbor {3, "neighbor"};
-const Enum::Value GroupEnum::error_group {4, "error-group"};
+const Enum::YLeaf GroupEnum::address_family_group {0, "address-family-group"};
+const Enum::YLeaf GroupEnum::session_group {1, "session-group"};
+const Enum::YLeaf GroupEnum::neighbor_group {2, "neighbor-group"};
+const Enum::YLeaf GroupEnum::neighbor {3, "neighbor"};
+const Enum::YLeaf GroupEnum::error_group {4, "error-group"};
 
-const Enum::Value AttachPointDirectionEnum::in {0, "in"};
-const Enum::Value AttachPointDirectionEnum::out {1, "out"};
+const Enum::YLeaf AttachPointDirectionEnum::in {0, "in"};
+const Enum::YLeaf AttachPointDirectionEnum::out {1, "out"};
 
-const Enum::Value SubAddressFamilyEnum::unicast {0, "unicast"};
-const Enum::Value SubAddressFamilyEnum::multicast {1, "multicast"};
-const Enum::Value SubAddressFamilyEnum::label {2, "label"};
-const Enum::Value SubAddressFamilyEnum::tunnel {3, "tunnel"};
-const Enum::Value SubAddressFamilyEnum::vpn {4, "vpn"};
-const Enum::Value SubAddressFamilyEnum::mdt {5, "mdt"};
-const Enum::Value SubAddressFamilyEnum::vpls {6, "vpls"};
-const Enum::Value SubAddressFamilyEnum::rt_constraint {7, "rt-constraint"};
-const Enum::Value SubAddressFamilyEnum::mvpn {8, "mvpn"};
-const Enum::Value SubAddressFamilyEnum::flow {9, "flow"};
-const Enum::Value SubAddressFamilyEnum::vpn_mcast {10, "vpn-mcast"};
-const Enum::Value SubAddressFamilyEnum::saf_none {11, "saf-none"};
-const Enum::Value SubAddressFamilyEnum::saf_unknown {12, "saf-unknown"};
+const Enum::YLeaf SubAddressFamilyEnum::unicast {0, "unicast"};
+const Enum::YLeaf SubAddressFamilyEnum::multicast {1, "multicast"};
+const Enum::YLeaf SubAddressFamilyEnum::label {2, "label"};
+const Enum::YLeaf SubAddressFamilyEnum::tunnel {3, "tunnel"};
+const Enum::YLeaf SubAddressFamilyEnum::vpn {4, "vpn"};
+const Enum::YLeaf SubAddressFamilyEnum::mdt {5, "mdt"};
+const Enum::YLeaf SubAddressFamilyEnum::vpls {6, "vpls"};
+const Enum::YLeaf SubAddressFamilyEnum::rt_constraint {7, "rt-constraint"};
+const Enum::YLeaf SubAddressFamilyEnum::mvpn {8, "mvpn"};
+const Enum::YLeaf SubAddressFamilyEnum::flow {9, "flow"};
+const Enum::YLeaf SubAddressFamilyEnum::vpn_mcast {10, "vpn-mcast"};
+const Enum::YLeaf SubAddressFamilyEnum::saf_none {11, "saf-none"};
+const Enum::YLeaf SubAddressFamilyEnum::saf_unknown {12, "saf-unknown"};
 
-const Enum::Value AddressFamilyEnum::ipv4 {0, "ipv4"};
-const Enum::Value AddressFamilyEnum::ipv6 {1, "ipv6"};
-const Enum::Value AddressFamilyEnum::l2vpn {2, "l2vpn"};
-const Enum::Value AddressFamilyEnum::ls {3, "ls"};
-const Enum::Value AddressFamilyEnum::af_none {4, "af-none"};
-const Enum::Value AddressFamilyEnum::af_unknown {5, "af-unknown"};
+const Enum::YLeaf AddressFamilyEnum::ipv4 {0, "ipv4"};
+const Enum::YLeaf AddressFamilyEnum::ipv6 {1, "ipv6"};
+const Enum::YLeaf AddressFamilyEnum::l2vpn {2, "l2vpn"};
+const Enum::YLeaf AddressFamilyEnum::ls {3, "ls"};
+const Enum::YLeaf AddressFamilyEnum::af_none {4, "af-none"};
+const Enum::YLeaf AddressFamilyEnum::af_unknown {5, "af-unknown"};
 
-const Enum::Value ObjectStatusEnum::active {0, "active"};
-const Enum::Value ObjectStatusEnum::inactive {1, "inactive"};
-const Enum::Value ObjectStatusEnum::unused {2, "unused"};
+const Enum::YLeaf ObjectStatusEnum::active {0, "active"};
+const Enum::YLeaf ObjectStatusEnum::inactive {1, "inactive"};
+const Enum::YLeaf ObjectStatusEnum::unused {2, "unused"};
 
 
 }

@@ -26,6 +26,7 @@ class InfraStatistics : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Interfaces : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class InfraStatistics : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class InfraStatistics : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
 
+
+                YLeaf interface_name; //type: string
 
             class Cache : public Entity
             {
@@ -70,6 +73,7 @@ class InfraStatistics : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Protocols : public Entity
@@ -87,6 +91,7 @@ class InfraStatistics : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Protocol : public Entity
                     {
                         public:
@@ -100,18 +105,19 @@ class InfraStatistics : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value protocol_name; //type: string
-                            Value bytes_received; //type: uint64
-                            Value packets_received; //type: uint64
-                            Value bytes_sent; //type: uint64
-                            Value packets_sent; //type: uint64
-                            Value protocol; //type: uint32
-                            Value last_data_time; //type: uint32
-                            Value input_data_rate; //type: uint64
-                            Value input_packet_rate; //type: uint64
-                            Value output_data_rate; //type: uint64
-                            Value output_packet_rate; //type: uint64
 
+
+                            YLeaf protocol_name; //type: string
+                            YLeaf bytes_received; //type: uint64
+                            YLeaf packets_received; //type: uint64
+                            YLeaf bytes_sent; //type: uint64
+                            YLeaf packets_sent; //type: uint64
+                            YLeaf protocol; //type: uint32
+                            YLeaf last_data_time; //type: uint32
+                            YLeaf input_data_rate; //type: uint64
+                            YLeaf input_packet_rate; //type: uint64
+                            YLeaf output_data_rate; //type: uint64
+                            YLeaf output_packet_rate; //type: uint64
 
 
 
@@ -137,43 +143,44 @@ class InfraStatistics : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value packets_received; //type: uint64
-                        Value bytes_received; //type: uint64
-                        Value packets_sent; //type: uint64
-                        Value bytes_sent; //type: uint64
-                        Value multicast_packets_received; //type: uint64
-                        Value broadcast_packets_received; //type: uint64
-                        Value multicast_packets_sent; //type: uint64
-                        Value broadcast_packets_sent; //type: uint64
-                        Value output_drops; //type: uint32
-                        Value output_queue_drops; //type: uint32
-                        Value input_drops; //type: uint32
-                        Value input_queue_drops; //type: uint32
-                        Value runt_packets_received; //type: uint32
-                        Value giant_packets_received; //type: uint32
-                        Value throttled_packets_received; //type: uint32
-                        Value parity_packets_received; //type: uint32
-                        Value unknown_protocol_packets_received; //type: uint32
-                        Value input_errors; //type: uint32
-                        Value crc_errors; //type: uint32
-                        Value input_overruns; //type: uint32
-                        Value framing_errors_received; //type: uint32
-                        Value input_ignored_packets; //type: uint32
-                        Value input_aborts; //type: uint32
-                        Value output_errors; //type: uint32
-                        Value output_underruns; //type: uint32
-                        Value output_buffer_failures; //type: uint32
-                        Value output_buffers_swapped_out; //type: uint32
-                        Value applique; //type: uint32
-                        Value resets; //type: uint32
-                        Value carrier_transitions; //type: uint32
-                        Value availability_flag; //type: uint32
-                        Value last_data_time; //type: uint32
-                        Value seconds_since_last_clear_counters; //type: uint32
-                        Value last_discontinuity_time; //type: uint32
-                        Value seconds_since_packet_received; //type: uint32
-                        Value seconds_since_packet_sent; //type: uint32
 
+
+                        YLeaf packets_received; //type: uint64
+                        YLeaf bytes_received; //type: uint64
+                        YLeaf packets_sent; //type: uint64
+                        YLeaf bytes_sent; //type: uint64
+                        YLeaf multicast_packets_received; //type: uint64
+                        YLeaf broadcast_packets_received; //type: uint64
+                        YLeaf multicast_packets_sent; //type: uint64
+                        YLeaf broadcast_packets_sent; //type: uint64
+                        YLeaf output_drops; //type: uint32
+                        YLeaf output_queue_drops; //type: uint32
+                        YLeaf input_drops; //type: uint32
+                        YLeaf input_queue_drops; //type: uint32
+                        YLeaf runt_packets_received; //type: uint32
+                        YLeaf giant_packets_received; //type: uint32
+                        YLeaf throttled_packets_received; //type: uint32
+                        YLeaf parity_packets_received; //type: uint32
+                        YLeaf unknown_protocol_packets_received; //type: uint32
+                        YLeaf input_errors; //type: uint32
+                        YLeaf crc_errors; //type: uint32
+                        YLeaf input_overruns; //type: uint32
+                        YLeaf framing_errors_received; //type: uint32
+                        YLeaf input_ignored_packets; //type: uint32
+                        YLeaf input_aborts; //type: uint32
+                        YLeaf output_errors; //type: uint32
+                        YLeaf output_underruns; //type: uint32
+                        YLeaf output_buffer_failures; //type: uint32
+                        YLeaf output_buffers_swapped_out; //type: uint32
+                        YLeaf applique; //type: uint32
+                        YLeaf resets; //type: uint32
+                        YLeaf carrier_transitions; //type: uint32
+                        YLeaf availability_flag; //type: uint32
+                        YLeaf last_data_time; //type: uint32
+                        YLeaf seconds_since_last_clear_counters; //type: uint32
+                        YLeaf last_discontinuity_time; //type: uint32
+                        YLeaf seconds_since_packet_received; //type: uint32
+                        YLeaf seconds_since_packet_sent; //type: uint32
 
 
 
@@ -193,20 +200,21 @@ class InfraStatistics : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value input_data_rate; //type: uint64
-                        Value input_packet_rate; //type: uint64
-                        Value output_data_rate; //type: uint64
-                        Value output_packet_rate; //type: uint64
-                        Value peak_input_data_rate; //type: uint64
-                        Value peak_input_packet_rate; //type: uint64
-                        Value peak_output_data_rate; //type: uint64
-                        Value peak_output_packet_rate; //type: uint64
-                        Value bandwidth; //type: uint32
-                        Value load_interval; //type: uint32
-                        Value output_load; //type: uint8
-                        Value input_load; //type: uint8
-                        Value reliability; //type: uint8
 
+
+                        YLeaf input_data_rate; //type: uint64
+                        YLeaf input_packet_rate; //type: uint64
+                        YLeaf output_data_rate; //type: uint64
+                        YLeaf output_packet_rate; //type: uint64
+                        YLeaf peak_input_data_rate; //type: uint64
+                        YLeaf peak_input_packet_rate; //type: uint64
+                        YLeaf peak_output_data_rate; //type: uint64
+                        YLeaf peak_output_packet_rate; //type: uint64
+                        YLeaf bandwidth; //type: uint32
+                        YLeaf load_interval; //type: uint32
+                        YLeaf output_load; //type: uint8
+                        YLeaf input_load; //type: uint8
+                        YLeaf reliability; //type: uint8
 
 
 
@@ -226,43 +234,44 @@ class InfraStatistics : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value packets_received; //type: uint64
-                        Value bytes_received; //type: uint64
-                        Value packets_sent; //type: uint64
-                        Value bytes_sent; //type: uint64
-                        Value multicast_packets_received; //type: uint64
-                        Value broadcast_packets_received; //type: uint64
-                        Value multicast_packets_sent; //type: uint64
-                        Value broadcast_packets_sent; //type: uint64
-                        Value output_drops; //type: uint32
-                        Value output_queue_drops; //type: uint32
-                        Value input_drops; //type: uint32
-                        Value input_queue_drops; //type: uint32
-                        Value runt_packets_received; //type: uint32
-                        Value giant_packets_received; //type: uint32
-                        Value throttled_packets_received; //type: uint32
-                        Value parity_packets_received; //type: uint32
-                        Value unknown_protocol_packets_received; //type: uint32
-                        Value input_errors; //type: uint32
-                        Value crc_errors; //type: uint32
-                        Value input_overruns; //type: uint32
-                        Value framing_errors_received; //type: uint32
-                        Value input_ignored_packets; //type: uint32
-                        Value input_aborts; //type: uint32
-                        Value output_errors; //type: uint32
-                        Value output_underruns; //type: uint32
-                        Value output_buffer_failures; //type: uint32
-                        Value output_buffers_swapped_out; //type: uint32
-                        Value applique; //type: uint32
-                        Value resets; //type: uint32
-                        Value carrier_transitions; //type: uint32
-                        Value availability_flag; //type: uint32
-                        Value last_data_time; //type: uint32
-                        Value seconds_since_last_clear_counters; //type: uint32
-                        Value last_discontinuity_time; //type: uint32
-                        Value seconds_since_packet_received; //type: uint32
-                        Value seconds_since_packet_sent; //type: uint32
 
+
+                        YLeaf packets_received; //type: uint64
+                        YLeaf bytes_received; //type: uint64
+                        YLeaf packets_sent; //type: uint64
+                        YLeaf bytes_sent; //type: uint64
+                        YLeaf multicast_packets_received; //type: uint64
+                        YLeaf broadcast_packets_received; //type: uint64
+                        YLeaf multicast_packets_sent; //type: uint64
+                        YLeaf broadcast_packets_sent; //type: uint64
+                        YLeaf output_drops; //type: uint32
+                        YLeaf output_queue_drops; //type: uint32
+                        YLeaf input_drops; //type: uint32
+                        YLeaf input_queue_drops; //type: uint32
+                        YLeaf runt_packets_received; //type: uint32
+                        YLeaf giant_packets_received; //type: uint32
+                        YLeaf throttled_packets_received; //type: uint32
+                        YLeaf parity_packets_received; //type: uint32
+                        YLeaf unknown_protocol_packets_received; //type: uint32
+                        YLeaf input_errors; //type: uint32
+                        YLeaf crc_errors; //type: uint32
+                        YLeaf input_overruns; //type: uint32
+                        YLeaf framing_errors_received; //type: uint32
+                        YLeaf input_ignored_packets; //type: uint32
+                        YLeaf input_aborts; //type: uint32
+                        YLeaf output_errors; //type: uint32
+                        YLeaf output_underruns; //type: uint32
+                        YLeaf output_buffer_failures; //type: uint32
+                        YLeaf output_buffers_swapped_out; //type: uint32
+                        YLeaf applique; //type: uint32
+                        YLeaf resets; //type: uint32
+                        YLeaf carrier_transitions; //type: uint32
+                        YLeaf availability_flag; //type: uint32
+                        YLeaf last_data_time; //type: uint32
+                        YLeaf seconds_since_last_clear_counters; //type: uint32
+                        YLeaf last_discontinuity_time; //type: uint32
+                        YLeaf seconds_since_packet_received; //type: uint32
+                        YLeaf seconds_since_packet_sent; //type: uint32
 
 
 
@@ -293,6 +302,7 @@ class InfraStatistics : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Protocols : public Entity
                 {
                     public:
@@ -308,6 +318,7 @@ class InfraStatistics : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Protocol : public Entity
                     {
                         public:
@@ -321,18 +332,19 @@ class InfraStatistics : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value protocol_name; //type: string
-                            Value bytes_received; //type: uint64
-                            Value packets_received; //type: uint64
-                            Value bytes_sent; //type: uint64
-                            Value packets_sent; //type: uint64
-                            Value protocol; //type: uint32
-                            Value last_data_time; //type: uint32
-                            Value input_data_rate; //type: uint64
-                            Value input_packet_rate; //type: uint64
-                            Value output_data_rate; //type: uint64
-                            Value output_packet_rate; //type: uint64
 
+
+                            YLeaf protocol_name; //type: string
+                            YLeaf bytes_received; //type: uint64
+                            YLeaf packets_received; //type: uint64
+                            YLeaf bytes_sent; //type: uint64
+                            YLeaf packets_sent; //type: uint64
+                            YLeaf protocol; //type: uint32
+                            YLeaf last_data_time; //type: uint32
+                            YLeaf input_data_rate; //type: uint64
+                            YLeaf input_packet_rate; //type: uint64
+                            YLeaf output_data_rate; //type: uint64
+                            YLeaf output_packet_rate; //type: uint64
 
 
 
@@ -358,43 +370,44 @@ class InfraStatistics : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value packets_received; //type: uint64
-                        Value bytes_received; //type: uint64
-                        Value packets_sent; //type: uint64
-                        Value bytes_sent; //type: uint64
-                        Value multicast_packets_received; //type: uint64
-                        Value broadcast_packets_received; //type: uint64
-                        Value multicast_packets_sent; //type: uint64
-                        Value broadcast_packets_sent; //type: uint64
-                        Value output_drops; //type: uint32
-                        Value output_queue_drops; //type: uint32
-                        Value input_drops; //type: uint32
-                        Value input_queue_drops; //type: uint32
-                        Value runt_packets_received; //type: uint32
-                        Value giant_packets_received; //type: uint32
-                        Value throttled_packets_received; //type: uint32
-                        Value parity_packets_received; //type: uint32
-                        Value unknown_protocol_packets_received; //type: uint32
-                        Value input_errors; //type: uint32
-                        Value crc_errors; //type: uint32
-                        Value input_overruns; //type: uint32
-                        Value framing_errors_received; //type: uint32
-                        Value input_ignored_packets; //type: uint32
-                        Value input_aborts; //type: uint32
-                        Value output_errors; //type: uint32
-                        Value output_underruns; //type: uint32
-                        Value output_buffer_failures; //type: uint32
-                        Value output_buffers_swapped_out; //type: uint32
-                        Value applique; //type: uint32
-                        Value resets; //type: uint32
-                        Value carrier_transitions; //type: uint32
-                        Value availability_flag; //type: uint32
-                        Value last_data_time; //type: uint32
-                        Value seconds_since_last_clear_counters; //type: uint32
-                        Value last_discontinuity_time; //type: uint32
-                        Value seconds_since_packet_received; //type: uint32
-                        Value seconds_since_packet_sent; //type: uint32
 
+
+                        YLeaf packets_received; //type: uint64
+                        YLeaf bytes_received; //type: uint64
+                        YLeaf packets_sent; //type: uint64
+                        YLeaf bytes_sent; //type: uint64
+                        YLeaf multicast_packets_received; //type: uint64
+                        YLeaf broadcast_packets_received; //type: uint64
+                        YLeaf multicast_packets_sent; //type: uint64
+                        YLeaf broadcast_packets_sent; //type: uint64
+                        YLeaf output_drops; //type: uint32
+                        YLeaf output_queue_drops; //type: uint32
+                        YLeaf input_drops; //type: uint32
+                        YLeaf input_queue_drops; //type: uint32
+                        YLeaf runt_packets_received; //type: uint32
+                        YLeaf giant_packets_received; //type: uint32
+                        YLeaf throttled_packets_received; //type: uint32
+                        YLeaf parity_packets_received; //type: uint32
+                        YLeaf unknown_protocol_packets_received; //type: uint32
+                        YLeaf input_errors; //type: uint32
+                        YLeaf crc_errors; //type: uint32
+                        YLeaf input_overruns; //type: uint32
+                        YLeaf framing_errors_received; //type: uint32
+                        YLeaf input_ignored_packets; //type: uint32
+                        YLeaf input_aborts; //type: uint32
+                        YLeaf output_errors; //type: uint32
+                        YLeaf output_underruns; //type: uint32
+                        YLeaf output_buffer_failures; //type: uint32
+                        YLeaf output_buffers_swapped_out; //type: uint32
+                        YLeaf applique; //type: uint32
+                        YLeaf resets; //type: uint32
+                        YLeaf carrier_transitions; //type: uint32
+                        YLeaf availability_flag; //type: uint32
+                        YLeaf last_data_time; //type: uint32
+                        YLeaf seconds_since_last_clear_counters; //type: uint32
+                        YLeaf last_discontinuity_time; //type: uint32
+                        YLeaf seconds_since_packet_received; //type: uint32
+                        YLeaf seconds_since_packet_sent; //type: uint32
 
 
 
@@ -414,20 +427,21 @@ class InfraStatistics : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value input_data_rate; //type: uint64
-                        Value input_packet_rate; //type: uint64
-                        Value output_data_rate; //type: uint64
-                        Value output_packet_rate; //type: uint64
-                        Value peak_input_data_rate; //type: uint64
-                        Value peak_input_packet_rate; //type: uint64
-                        Value peak_output_data_rate; //type: uint64
-                        Value peak_output_packet_rate; //type: uint64
-                        Value bandwidth; //type: uint32
-                        Value load_interval; //type: uint32
-                        Value output_load; //type: uint8
-                        Value input_load; //type: uint8
-                        Value reliability; //type: uint8
 
+
+                        YLeaf input_data_rate; //type: uint64
+                        YLeaf input_packet_rate; //type: uint64
+                        YLeaf output_data_rate; //type: uint64
+                        YLeaf output_packet_rate; //type: uint64
+                        YLeaf peak_input_data_rate; //type: uint64
+                        YLeaf peak_input_packet_rate; //type: uint64
+                        YLeaf peak_output_data_rate; //type: uint64
+                        YLeaf peak_output_packet_rate; //type: uint64
+                        YLeaf bandwidth; //type: uint32
+                        YLeaf load_interval; //type: uint32
+                        YLeaf output_load; //type: uint8
+                        YLeaf input_load; //type: uint8
+                        YLeaf reliability; //type: uint8
 
 
 
@@ -447,43 +461,44 @@ class InfraStatistics : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value packets_received; //type: uint64
-                        Value bytes_received; //type: uint64
-                        Value packets_sent; //type: uint64
-                        Value bytes_sent; //type: uint64
-                        Value multicast_packets_received; //type: uint64
-                        Value broadcast_packets_received; //type: uint64
-                        Value multicast_packets_sent; //type: uint64
-                        Value broadcast_packets_sent; //type: uint64
-                        Value output_drops; //type: uint32
-                        Value output_queue_drops; //type: uint32
-                        Value input_drops; //type: uint32
-                        Value input_queue_drops; //type: uint32
-                        Value runt_packets_received; //type: uint32
-                        Value giant_packets_received; //type: uint32
-                        Value throttled_packets_received; //type: uint32
-                        Value parity_packets_received; //type: uint32
-                        Value unknown_protocol_packets_received; //type: uint32
-                        Value input_errors; //type: uint32
-                        Value crc_errors; //type: uint32
-                        Value input_overruns; //type: uint32
-                        Value framing_errors_received; //type: uint32
-                        Value input_ignored_packets; //type: uint32
-                        Value input_aborts; //type: uint32
-                        Value output_errors; //type: uint32
-                        Value output_underruns; //type: uint32
-                        Value output_buffer_failures; //type: uint32
-                        Value output_buffers_swapped_out; //type: uint32
-                        Value applique; //type: uint32
-                        Value resets; //type: uint32
-                        Value carrier_transitions; //type: uint32
-                        Value availability_flag; //type: uint32
-                        Value last_data_time; //type: uint32
-                        Value seconds_since_last_clear_counters; //type: uint32
-                        Value last_discontinuity_time; //type: uint32
-                        Value seconds_since_packet_received; //type: uint32
-                        Value seconds_since_packet_sent; //type: uint32
 
+
+                        YLeaf packets_received; //type: uint64
+                        YLeaf bytes_received; //type: uint64
+                        YLeaf packets_sent; //type: uint64
+                        YLeaf bytes_sent; //type: uint64
+                        YLeaf multicast_packets_received; //type: uint64
+                        YLeaf broadcast_packets_received; //type: uint64
+                        YLeaf multicast_packets_sent; //type: uint64
+                        YLeaf broadcast_packets_sent; //type: uint64
+                        YLeaf output_drops; //type: uint32
+                        YLeaf output_queue_drops; //type: uint32
+                        YLeaf input_drops; //type: uint32
+                        YLeaf input_queue_drops; //type: uint32
+                        YLeaf runt_packets_received; //type: uint32
+                        YLeaf giant_packets_received; //type: uint32
+                        YLeaf throttled_packets_received; //type: uint32
+                        YLeaf parity_packets_received; //type: uint32
+                        YLeaf unknown_protocol_packets_received; //type: uint32
+                        YLeaf input_errors; //type: uint32
+                        YLeaf crc_errors; //type: uint32
+                        YLeaf input_overruns; //type: uint32
+                        YLeaf framing_errors_received; //type: uint32
+                        YLeaf input_ignored_packets; //type: uint32
+                        YLeaf input_aborts; //type: uint32
+                        YLeaf output_errors; //type: uint32
+                        YLeaf output_underruns; //type: uint32
+                        YLeaf output_buffer_failures; //type: uint32
+                        YLeaf output_buffers_swapped_out; //type: uint32
+                        YLeaf applique; //type: uint32
+                        YLeaf resets; //type: uint32
+                        YLeaf carrier_transitions; //type: uint32
+                        YLeaf availability_flag; //type: uint32
+                        YLeaf last_data_time; //type: uint32
+                        YLeaf seconds_since_last_clear_counters; //type: uint32
+                        YLeaf last_discontinuity_time; //type: uint32
+                        YLeaf seconds_since_packet_received; //type: uint32
+                        YLeaf seconds_since_packet_sent; //type: uint32
 
 
 
@@ -514,6 +529,7 @@ class InfraStatistics : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Protocols : public Entity
                 {
                     public:
@@ -529,6 +545,7 @@ class InfraStatistics : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Protocol : public Entity
                     {
                         public:
@@ -542,18 +559,19 @@ class InfraStatistics : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value protocol_name; //type: string
-                            Value bytes_received; //type: uint64
-                            Value packets_received; //type: uint64
-                            Value bytes_sent; //type: uint64
-                            Value packets_sent; //type: uint64
-                            Value protocol; //type: uint32
-                            Value last_data_time; //type: uint32
-                            Value input_data_rate; //type: uint64
-                            Value input_packet_rate; //type: uint64
-                            Value output_data_rate; //type: uint64
-                            Value output_packet_rate; //type: uint64
 
+
+                            YLeaf protocol_name; //type: string
+                            YLeaf bytes_received; //type: uint64
+                            YLeaf packets_received; //type: uint64
+                            YLeaf bytes_sent; //type: uint64
+                            YLeaf packets_sent; //type: uint64
+                            YLeaf protocol; //type: uint32
+                            YLeaf last_data_time; //type: uint32
+                            YLeaf input_data_rate; //type: uint64
+                            YLeaf input_packet_rate; //type: uint64
+                            YLeaf output_data_rate; //type: uint64
+                            YLeaf output_packet_rate; //type: uint64
 
 
 
@@ -579,43 +597,44 @@ class InfraStatistics : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value packets_received; //type: uint64
-                        Value bytes_received; //type: uint64
-                        Value packets_sent; //type: uint64
-                        Value bytes_sent; //type: uint64
-                        Value multicast_packets_received; //type: uint64
-                        Value broadcast_packets_received; //type: uint64
-                        Value multicast_packets_sent; //type: uint64
-                        Value broadcast_packets_sent; //type: uint64
-                        Value output_drops; //type: uint32
-                        Value output_queue_drops; //type: uint32
-                        Value input_drops; //type: uint32
-                        Value input_queue_drops; //type: uint32
-                        Value runt_packets_received; //type: uint32
-                        Value giant_packets_received; //type: uint32
-                        Value throttled_packets_received; //type: uint32
-                        Value parity_packets_received; //type: uint32
-                        Value unknown_protocol_packets_received; //type: uint32
-                        Value input_errors; //type: uint32
-                        Value crc_errors; //type: uint32
-                        Value input_overruns; //type: uint32
-                        Value framing_errors_received; //type: uint32
-                        Value input_ignored_packets; //type: uint32
-                        Value input_aborts; //type: uint32
-                        Value output_errors; //type: uint32
-                        Value output_underruns; //type: uint32
-                        Value output_buffer_failures; //type: uint32
-                        Value output_buffers_swapped_out; //type: uint32
-                        Value applique; //type: uint32
-                        Value resets; //type: uint32
-                        Value carrier_transitions; //type: uint32
-                        Value availability_flag; //type: uint32
-                        Value last_data_time; //type: uint32
-                        Value seconds_since_last_clear_counters; //type: uint32
-                        Value last_discontinuity_time; //type: uint32
-                        Value seconds_since_packet_received; //type: uint32
-                        Value seconds_since_packet_sent; //type: uint32
 
+
+                        YLeaf packets_received; //type: uint64
+                        YLeaf bytes_received; //type: uint64
+                        YLeaf packets_sent; //type: uint64
+                        YLeaf bytes_sent; //type: uint64
+                        YLeaf multicast_packets_received; //type: uint64
+                        YLeaf broadcast_packets_received; //type: uint64
+                        YLeaf multicast_packets_sent; //type: uint64
+                        YLeaf broadcast_packets_sent; //type: uint64
+                        YLeaf output_drops; //type: uint32
+                        YLeaf output_queue_drops; //type: uint32
+                        YLeaf input_drops; //type: uint32
+                        YLeaf input_queue_drops; //type: uint32
+                        YLeaf runt_packets_received; //type: uint32
+                        YLeaf giant_packets_received; //type: uint32
+                        YLeaf throttled_packets_received; //type: uint32
+                        YLeaf parity_packets_received; //type: uint32
+                        YLeaf unknown_protocol_packets_received; //type: uint32
+                        YLeaf input_errors; //type: uint32
+                        YLeaf crc_errors; //type: uint32
+                        YLeaf input_overruns; //type: uint32
+                        YLeaf framing_errors_received; //type: uint32
+                        YLeaf input_ignored_packets; //type: uint32
+                        YLeaf input_aborts; //type: uint32
+                        YLeaf output_errors; //type: uint32
+                        YLeaf output_underruns; //type: uint32
+                        YLeaf output_buffer_failures; //type: uint32
+                        YLeaf output_buffers_swapped_out; //type: uint32
+                        YLeaf applique; //type: uint32
+                        YLeaf resets; //type: uint32
+                        YLeaf carrier_transitions; //type: uint32
+                        YLeaf availability_flag; //type: uint32
+                        YLeaf last_data_time; //type: uint32
+                        YLeaf seconds_since_last_clear_counters; //type: uint32
+                        YLeaf last_discontinuity_time; //type: uint32
+                        YLeaf seconds_since_packet_received; //type: uint32
+                        YLeaf seconds_since_packet_sent; //type: uint32
 
 
 
@@ -635,20 +654,21 @@ class InfraStatistics : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value input_data_rate; //type: uint64
-                        Value input_packet_rate; //type: uint64
-                        Value output_data_rate; //type: uint64
-                        Value output_packet_rate; //type: uint64
-                        Value peak_input_data_rate; //type: uint64
-                        Value peak_input_packet_rate; //type: uint64
-                        Value peak_output_data_rate; //type: uint64
-                        Value peak_output_packet_rate; //type: uint64
-                        Value bandwidth; //type: uint32
-                        Value load_interval; //type: uint32
-                        Value output_load; //type: uint8
-                        Value input_load; //type: uint8
-                        Value reliability; //type: uint8
 
+
+                        YLeaf input_data_rate; //type: uint64
+                        YLeaf input_packet_rate; //type: uint64
+                        YLeaf output_data_rate; //type: uint64
+                        YLeaf output_packet_rate; //type: uint64
+                        YLeaf peak_input_data_rate; //type: uint64
+                        YLeaf peak_input_packet_rate; //type: uint64
+                        YLeaf peak_output_data_rate; //type: uint64
+                        YLeaf peak_output_packet_rate; //type: uint64
+                        YLeaf bandwidth; //type: uint32
+                        YLeaf load_interval; //type: uint32
+                        YLeaf output_load; //type: uint8
+                        YLeaf input_load; //type: uint8
+                        YLeaf reliability; //type: uint8
 
 
 
@@ -668,43 +688,44 @@ class InfraStatistics : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value packets_received; //type: uint64
-                        Value bytes_received; //type: uint64
-                        Value packets_sent; //type: uint64
-                        Value bytes_sent; //type: uint64
-                        Value multicast_packets_received; //type: uint64
-                        Value broadcast_packets_received; //type: uint64
-                        Value multicast_packets_sent; //type: uint64
-                        Value broadcast_packets_sent; //type: uint64
-                        Value output_drops; //type: uint32
-                        Value output_queue_drops; //type: uint32
-                        Value input_drops; //type: uint32
-                        Value input_queue_drops; //type: uint32
-                        Value runt_packets_received; //type: uint32
-                        Value giant_packets_received; //type: uint32
-                        Value throttled_packets_received; //type: uint32
-                        Value parity_packets_received; //type: uint32
-                        Value unknown_protocol_packets_received; //type: uint32
-                        Value input_errors; //type: uint32
-                        Value crc_errors; //type: uint32
-                        Value input_overruns; //type: uint32
-                        Value framing_errors_received; //type: uint32
-                        Value input_ignored_packets; //type: uint32
-                        Value input_aborts; //type: uint32
-                        Value output_errors; //type: uint32
-                        Value output_underruns; //type: uint32
-                        Value output_buffer_failures; //type: uint32
-                        Value output_buffers_swapped_out; //type: uint32
-                        Value applique; //type: uint32
-                        Value resets; //type: uint32
-                        Value carrier_transitions; //type: uint32
-                        Value availability_flag; //type: uint32
-                        Value last_data_time; //type: uint32
-                        Value seconds_since_last_clear_counters; //type: uint32
-                        Value last_discontinuity_time; //type: uint32
-                        Value seconds_since_packet_received; //type: uint32
-                        Value seconds_since_packet_sent; //type: uint32
 
+
+                        YLeaf packets_received; //type: uint64
+                        YLeaf bytes_received; //type: uint64
+                        YLeaf packets_sent; //type: uint64
+                        YLeaf bytes_sent; //type: uint64
+                        YLeaf multicast_packets_received; //type: uint64
+                        YLeaf broadcast_packets_received; //type: uint64
+                        YLeaf multicast_packets_sent; //type: uint64
+                        YLeaf broadcast_packets_sent; //type: uint64
+                        YLeaf output_drops; //type: uint32
+                        YLeaf output_queue_drops; //type: uint32
+                        YLeaf input_drops; //type: uint32
+                        YLeaf input_queue_drops; //type: uint32
+                        YLeaf runt_packets_received; //type: uint32
+                        YLeaf giant_packets_received; //type: uint32
+                        YLeaf throttled_packets_received; //type: uint32
+                        YLeaf parity_packets_received; //type: uint32
+                        YLeaf unknown_protocol_packets_received; //type: uint32
+                        YLeaf input_errors; //type: uint32
+                        YLeaf crc_errors; //type: uint32
+                        YLeaf input_overruns; //type: uint32
+                        YLeaf framing_errors_received; //type: uint32
+                        YLeaf input_ignored_packets; //type: uint32
+                        YLeaf input_aborts; //type: uint32
+                        YLeaf output_errors; //type: uint32
+                        YLeaf output_underruns; //type: uint32
+                        YLeaf output_buffer_failures; //type: uint32
+                        YLeaf output_buffers_swapped_out; //type: uint32
+                        YLeaf applique; //type: uint32
+                        YLeaf resets; //type: uint32
+                        YLeaf carrier_transitions; //type: uint32
+                        YLeaf availability_flag; //type: uint32
+                        YLeaf last_data_time; //type: uint32
+                        YLeaf seconds_since_last_clear_counters; //type: uint32
+                        YLeaf last_discontinuity_time; //type: uint32
+                        YLeaf seconds_since_packet_received; //type: uint32
+                        YLeaf seconds_since_packet_sent; //type: uint32
 
 
 
@@ -735,6 +756,7 @@ class InfraStatistics : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Protocol : public Entity
                 {
                     public:
@@ -748,18 +770,19 @@ class InfraStatistics : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value protocol_name; //type: string
-                        Value bytes_received; //type: uint64
-                        Value packets_received; //type: uint64
-                        Value bytes_sent; //type: uint64
-                        Value packets_sent; //type: uint64
-                        Value protocol; //type: uint32
-                        Value last_data_time; //type: uint32
-                        Value input_data_rate; //type: uint64
-                        Value input_packet_rate; //type: uint64
-                        Value output_data_rate; //type: uint64
-                        Value output_packet_rate; //type: uint64
 
+
+                        YLeaf protocol_name; //type: string
+                        YLeaf bytes_received; //type: uint64
+                        YLeaf packets_received; //type: uint64
+                        YLeaf bytes_sent; //type: uint64
+                        YLeaf packets_sent; //type: uint64
+                        YLeaf protocol; //type: uint32
+                        YLeaf last_data_time; //type: uint32
+                        YLeaf input_data_rate; //type: uint64
+                        YLeaf input_packet_rate; //type: uint64
+                        YLeaf output_data_rate; //type: uint64
+                        YLeaf output_packet_rate; //type: uint64
 
 
 
@@ -785,43 +808,44 @@ class InfraStatistics : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value packets_received; //type: uint64
-                    Value bytes_received; //type: uint64
-                    Value packets_sent; //type: uint64
-                    Value bytes_sent; //type: uint64
-                    Value multicast_packets_received; //type: uint64
-                    Value broadcast_packets_received; //type: uint64
-                    Value multicast_packets_sent; //type: uint64
-                    Value broadcast_packets_sent; //type: uint64
-                    Value output_drops; //type: uint32
-                    Value output_queue_drops; //type: uint32
-                    Value input_drops; //type: uint32
-                    Value input_queue_drops; //type: uint32
-                    Value runt_packets_received; //type: uint32
-                    Value giant_packets_received; //type: uint32
-                    Value throttled_packets_received; //type: uint32
-                    Value parity_packets_received; //type: uint32
-                    Value unknown_protocol_packets_received; //type: uint32
-                    Value input_errors; //type: uint32
-                    Value crc_errors; //type: uint32
-                    Value input_overruns; //type: uint32
-                    Value framing_errors_received; //type: uint32
-                    Value input_ignored_packets; //type: uint32
-                    Value input_aborts; //type: uint32
-                    Value output_errors; //type: uint32
-                    Value output_underruns; //type: uint32
-                    Value output_buffer_failures; //type: uint32
-                    Value output_buffers_swapped_out; //type: uint32
-                    Value applique; //type: uint32
-                    Value resets; //type: uint32
-                    Value carrier_transitions; //type: uint32
-                    Value availability_flag; //type: uint32
-                    Value last_data_time; //type: uint32
-                    Value seconds_since_last_clear_counters; //type: uint32
-                    Value last_discontinuity_time; //type: uint32
-                    Value seconds_since_packet_received; //type: uint32
-                    Value seconds_since_packet_sent; //type: uint32
 
+
+                    YLeaf packets_received; //type: uint64
+                    YLeaf bytes_received; //type: uint64
+                    YLeaf packets_sent; //type: uint64
+                    YLeaf bytes_sent; //type: uint64
+                    YLeaf multicast_packets_received; //type: uint64
+                    YLeaf broadcast_packets_received; //type: uint64
+                    YLeaf multicast_packets_sent; //type: uint64
+                    YLeaf broadcast_packets_sent; //type: uint64
+                    YLeaf output_drops; //type: uint32
+                    YLeaf output_queue_drops; //type: uint32
+                    YLeaf input_drops; //type: uint32
+                    YLeaf input_queue_drops; //type: uint32
+                    YLeaf runt_packets_received; //type: uint32
+                    YLeaf giant_packets_received; //type: uint32
+                    YLeaf throttled_packets_received; //type: uint32
+                    YLeaf parity_packets_received; //type: uint32
+                    YLeaf unknown_protocol_packets_received; //type: uint32
+                    YLeaf input_errors; //type: uint32
+                    YLeaf crc_errors; //type: uint32
+                    YLeaf input_overruns; //type: uint32
+                    YLeaf framing_errors_received; //type: uint32
+                    YLeaf input_ignored_packets; //type: uint32
+                    YLeaf input_aborts; //type: uint32
+                    YLeaf output_errors; //type: uint32
+                    YLeaf output_underruns; //type: uint32
+                    YLeaf output_buffer_failures; //type: uint32
+                    YLeaf output_buffers_swapped_out; //type: uint32
+                    YLeaf applique; //type: uint32
+                    YLeaf resets; //type: uint32
+                    YLeaf carrier_transitions; //type: uint32
+                    YLeaf availability_flag; //type: uint32
+                    YLeaf last_data_time; //type: uint32
+                    YLeaf seconds_since_last_clear_counters; //type: uint32
+                    YLeaf last_discontinuity_time; //type: uint32
+                    YLeaf seconds_since_packet_received; //type: uint32
+                    YLeaf seconds_since_packet_sent; //type: uint32
 
 
 
@@ -841,20 +865,21 @@ class InfraStatistics : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value input_data_rate; //type: uint64
-                    Value input_packet_rate; //type: uint64
-                    Value output_data_rate; //type: uint64
-                    Value output_packet_rate; //type: uint64
-                    Value peak_input_data_rate; //type: uint64
-                    Value peak_input_packet_rate; //type: uint64
-                    Value peak_output_data_rate; //type: uint64
-                    Value peak_output_packet_rate; //type: uint64
-                    Value bandwidth; //type: uint32
-                    Value load_interval; //type: uint32
-                    Value output_load; //type: uint8
-                    Value input_load; //type: uint8
-                    Value reliability; //type: uint8
 
+
+                    YLeaf input_data_rate; //type: uint64
+                    YLeaf input_packet_rate; //type: uint64
+                    YLeaf output_data_rate; //type: uint64
+                    YLeaf output_packet_rate; //type: uint64
+                    YLeaf peak_input_data_rate; //type: uint64
+                    YLeaf peak_input_packet_rate; //type: uint64
+                    YLeaf peak_output_data_rate; //type: uint64
+                    YLeaf peak_output_packet_rate; //type: uint64
+                    YLeaf bandwidth; //type: uint32
+                    YLeaf load_interval; //type: uint32
+                    YLeaf output_load; //type: uint8
+                    YLeaf input_load; //type: uint8
+                    YLeaf reliability; //type: uint8
 
 
 
@@ -874,43 +899,44 @@ class InfraStatistics : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value packets_received; //type: uint64
-                    Value bytes_received; //type: uint64
-                    Value packets_sent; //type: uint64
-                    Value bytes_sent; //type: uint64
-                    Value multicast_packets_received; //type: uint64
-                    Value broadcast_packets_received; //type: uint64
-                    Value multicast_packets_sent; //type: uint64
-                    Value broadcast_packets_sent; //type: uint64
-                    Value output_drops; //type: uint32
-                    Value output_queue_drops; //type: uint32
-                    Value input_drops; //type: uint32
-                    Value input_queue_drops; //type: uint32
-                    Value runt_packets_received; //type: uint32
-                    Value giant_packets_received; //type: uint32
-                    Value throttled_packets_received; //type: uint32
-                    Value parity_packets_received; //type: uint32
-                    Value unknown_protocol_packets_received; //type: uint32
-                    Value input_errors; //type: uint32
-                    Value crc_errors; //type: uint32
-                    Value input_overruns; //type: uint32
-                    Value framing_errors_received; //type: uint32
-                    Value input_ignored_packets; //type: uint32
-                    Value input_aborts; //type: uint32
-                    Value output_errors; //type: uint32
-                    Value output_underruns; //type: uint32
-                    Value output_buffer_failures; //type: uint32
-                    Value output_buffers_swapped_out; //type: uint32
-                    Value applique; //type: uint32
-                    Value resets; //type: uint32
-                    Value carrier_transitions; //type: uint32
-                    Value availability_flag; //type: uint32
-                    Value last_data_time; //type: uint32
-                    Value seconds_since_last_clear_counters; //type: uint32
-                    Value last_discontinuity_time; //type: uint32
-                    Value seconds_since_packet_received; //type: uint32
-                    Value seconds_since_packet_sent; //type: uint32
 
+
+                    YLeaf packets_received; //type: uint64
+                    YLeaf bytes_received; //type: uint64
+                    YLeaf packets_sent; //type: uint64
+                    YLeaf bytes_sent; //type: uint64
+                    YLeaf multicast_packets_received; //type: uint64
+                    YLeaf broadcast_packets_received; //type: uint64
+                    YLeaf multicast_packets_sent; //type: uint64
+                    YLeaf broadcast_packets_sent; //type: uint64
+                    YLeaf output_drops; //type: uint32
+                    YLeaf output_queue_drops; //type: uint32
+                    YLeaf input_drops; //type: uint32
+                    YLeaf input_queue_drops; //type: uint32
+                    YLeaf runt_packets_received; //type: uint32
+                    YLeaf giant_packets_received; //type: uint32
+                    YLeaf throttled_packets_received; //type: uint32
+                    YLeaf parity_packets_received; //type: uint32
+                    YLeaf unknown_protocol_packets_received; //type: uint32
+                    YLeaf input_errors; //type: uint32
+                    YLeaf crc_errors; //type: uint32
+                    YLeaf input_overruns; //type: uint32
+                    YLeaf framing_errors_received; //type: uint32
+                    YLeaf input_ignored_packets; //type: uint32
+                    YLeaf input_aborts; //type: uint32
+                    YLeaf output_errors; //type: uint32
+                    YLeaf output_underruns; //type: uint32
+                    YLeaf output_buffer_failures; //type: uint32
+                    YLeaf output_buffers_swapped_out; //type: uint32
+                    YLeaf applique; //type: uint32
+                    YLeaf resets; //type: uint32
+                    YLeaf carrier_transitions; //type: uint32
+                    YLeaf availability_flag; //type: uint32
+                    YLeaf last_data_time; //type: uint32
+                    YLeaf seconds_since_last_clear_counters; //type: uint32
+                    YLeaf last_discontinuity_time; //type: uint32
+                    YLeaf seconds_since_packet_received; //type: uint32
+                    YLeaf seconds_since_packet_sent; //type: uint32
 
 
 

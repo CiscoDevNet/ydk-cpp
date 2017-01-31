@@ -49,7 +49,7 @@ EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSuppl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -294,7 +294,7 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Inf
 	|| is_set(udi_description.operation)
 	|| is_set(udi_name.operation)
 	|| is_set(vid.operation)
-	|| (rma !=  nullptr && is_set(rma->operation));
+	|| (rma !=  nullptr && rma->has_operation());
 }
 
 std::string Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::get_segment_path() const
@@ -311,7 +311,7 @@ EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSuppl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -679,7 +679,7 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::has
 {
     return is_set(operation)
 	|| is_set(power_supply_name.operation)
-	|| (information !=  nullptr && is_set(information->operation));
+	|| (information !=  nullptr && information->has_operation());
 }
 
 std::string Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::get_segment_path() const
@@ -696,7 +696,7 @@ EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSuppl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -806,7 +806,7 @@ EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -897,7 +897,7 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(power_shelf_name.operation)
-	|| (power_supplies !=  nullptr && is_set(power_supplies->operation));
+	|| (power_supplies !=  nullptr && power_supplies->has_operation());
 }
 
 std::string Diag::Racks::Rack::PowerShelfs::PowerShelf::get_segment_path() const
@@ -914,7 +914,7 @@ EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1024,7 +1024,7 @@ EntityPath Diag::Racks::Rack::PowerShelfs::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1131,7 +1131,7 @@ EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1376,7 +1376,7 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::has_opera
 	|| is_set(udi_description.operation)
 	|| is_set(udi_name.operation)
 	|| is_set(vid.operation)
-	|| (rma !=  nullptr && is_set(rma->operation));
+	|| (rma !=  nullptr && rma->has_operation());
 }
 
 std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::get_segment_path() const
@@ -1393,7 +1393,7 @@ EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1761,7 +1761,7 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::has_operation() const
 {
     return is_set(operation)
 	|| is_set(fans_name.operation)
-	|| (information !=  nullptr && is_set(information->operation));
+	|| (information !=  nullptr && information->has_operation());
 }
 
 std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_segment_path() const
@@ -1778,7 +1778,7 @@ EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1888,7 +1888,7 @@ EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1979,7 +1979,7 @@ bool Diag::Racks::Rack::FanTraies::FanTray::has_operation() const
 {
     return is_set(operation)
 	|| is_set(fan_tray_name.operation)
-	|| (fanses !=  nullptr && is_set(fanses->operation));
+	|| (fanses !=  nullptr && fanses->has_operation());
 }
 
 std::string Diag::Racks::Rack::FanTraies::FanTray::get_segment_path() const
@@ -1996,7 +1996,7 @@ EntityPath Diag::Racks::Rack::FanTraies::FanTray::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2106,7 +2106,7 @@ EntityPath Diag::Racks::Rack::FanTraies::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2213,7 +2213,7 @@ EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInst
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2458,7 +2458,7 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::
 	|| is_set(udi_description.operation)
 	|| is_set(udi_name.operation)
 	|| is_set(vid.operation)
-	|| (rma !=  nullptr && is_set(rma->operation));
+	|| (rma !=  nullptr && rma->has_operation());
 }
 
 std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::get_segment_path() const
@@ -2475,7 +2475,7 @@ EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInst
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2843,7 +2843,7 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::has_operation(
 {
     return is_set(operation)
 	|| is_set(node_operational_state.operation)
-	|| (card_instance !=  nullptr && is_set(card_instance->operation));
+	|| (card_instance !=  nullptr && card_instance->has_operation());
 }
 
 std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_segment_path() const
@@ -2860,7 +2860,7 @@ EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2953,7 +2953,7 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (detail !=  nullptr && is_set(detail->operation));
+	|| (detail !=  nullptr && detail->has_operation());
 }
 
 std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_segment_path() const
@@ -2970,7 +2970,7 @@ EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3080,7 +3080,7 @@ EntityPath Diag::Racks::Rack::Slots::Slot::Instances::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3171,7 +3171,7 @@ bool Diag::Racks::Rack::Slots::Slot::has_operation() const
 {
     return is_set(operation)
 	|| is_set(slot_name.operation)
-	|| (instances !=  nullptr && is_set(instances->operation));
+	|| (instances !=  nullptr && instances->has_operation());
 }
 
 std::string Diag::Racks::Rack::Slots::Slot::get_segment_path() const
@@ -3188,7 +3188,7 @@ EntityPath Diag::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3298,7 +3298,7 @@ EntityPath Diag::Racks::Rack::Slots::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3405,7 +3405,7 @@ EntityPath Diag::Racks::Rack::Chassis::Rma::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3650,7 +3650,7 @@ bool Diag::Racks::Rack::Chassis::has_operation() const
 	|| is_set(udi_description.operation)
 	|| is_set(udi_name.operation)
 	|| is_set(vid.operation)
-	|| (rma !=  nullptr && is_set(rma->operation));
+	|| (rma !=  nullptr && rma->has_operation());
 }
 
 std::string Diag::Racks::Rack::Chassis::get_segment_path() const
@@ -3667,7 +3667,7 @@ EntityPath Diag::Racks::Rack::Chassis::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4050,10 +4050,10 @@ bool Diag::Racks::Rack::has_operation() const
 {
     return is_set(operation)
 	|| is_set(rack_name.operation)
-	|| (chassis !=  nullptr && is_set(chassis->operation))
-	|| (fan_traies !=  nullptr && is_set(fan_traies->operation))
-	|| (power_shelfs !=  nullptr && is_set(power_shelfs->operation))
-	|| (slots !=  nullptr && is_set(slots->operation));
+	|| (chassis !=  nullptr && chassis->has_operation())
+	|| (fan_traies !=  nullptr && fan_traies->has_operation())
+	|| (power_shelfs !=  nullptr && power_shelfs->has_operation())
+	|| (slots !=  nullptr && slots->has_operation());
 }
 
 std::string Diag::Racks::Rack::get_segment_path() const
@@ -4336,7 +4336,7 @@ bool Diag::has_data() const
 bool Diag::has_operation() const
 {
     return is_set(operation)
-	|| (racks !=  nullptr && is_set(racks->operation));
+	|| (racks !=  nullptr && racks->has_operation());
 }
 
 std::string Diag::get_segment_path() const
@@ -4353,7 +4353,7 @@ EntityPath Diag::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

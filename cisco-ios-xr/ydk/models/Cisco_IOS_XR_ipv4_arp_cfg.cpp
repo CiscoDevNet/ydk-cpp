@@ -49,7 +49,7 @@ EntityPath Arp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -152,7 +152,7 @@ EntityPath Arpgmp::Vrf::Entries::Entry::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -259,7 +259,7 @@ EntityPath Arpgmp::Vrf::Entries::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -350,7 +350,7 @@ bool Arpgmp::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (entries !=  nullptr && is_set(entries->operation));
+	|| (entries !=  nullptr && entries->has_operation());
 }
 
 std::string Arpgmp::Vrf::get_segment_path() const
@@ -477,7 +477,7 @@ EntityPath Arpgmp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -579,7 +579,7 @@ EntityPath ArpRedundancy::Redundancy::Groups::Group::Peers::Peer::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -666,7 +666,7 @@ EntityPath ArpRedundancy::Redundancy::Groups::Group::Peers::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -770,7 +770,7 @@ EntityPath ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -862,7 +862,7 @@ EntityPath ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -953,7 +953,7 @@ bool ArpRedundancy::Redundancy::Groups::Group::InterfaceList::has_operation() co
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string ArpRedundancy::Redundancy::Groups::Group::InterfaceList::get_segment_path() const
@@ -970,7 +970,7 @@ EntityPath ArpRedundancy::Redundancy::Groups::Group::InterfaceList::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1068,8 +1068,8 @@ bool ArpRedundancy::Redundancy::Groups::Group::has_operation() const
     return is_set(operation)
 	|| is_set(group_id.operation)
 	|| is_set(source_interface.operation)
-	|| (interface_list !=  nullptr && is_set(interface_list->operation))
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (interface_list !=  nullptr && interface_list->has_operation())
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string ArpRedundancy::Redundancy::Groups::Group::get_segment_path() const
@@ -1315,7 +1315,7 @@ bool ArpRedundancy::Redundancy::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (groups !=  nullptr && is_set(groups->operation));
+	|| (groups !=  nullptr && groups->has_operation());
 }
 
 std::string ArpRedundancy::Redundancy::get_segment_path() const
@@ -1418,7 +1418,7 @@ bool ArpRedundancy::has_data() const
 bool ArpRedundancy::has_operation() const
 {
     return is_set(operation)
-	|| (redundancy !=  nullptr && is_set(redundancy->operation));
+	|| (redundancy !=  nullptr && redundancy->has_operation());
 }
 
 std::string ArpRedundancy::get_segment_path() const
@@ -1435,7 +1435,7 @@ EntityPath ArpRedundancy::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1499,13 +1499,13 @@ std::unique_ptr<Entity> ArpRedundancy::clone_ptr()
     return std::make_unique<ArpRedundancy>();
 }
 
-const Enum::Value ArpEntryEnum::static_ {0, "static"};
-const Enum::Value ArpEntryEnum::alias {1, "alias"};
+const Enum::YLeaf ArpEntryEnum::static_ {0, "static"};
+const Enum::YLeaf ArpEntryEnum::alias {1, "alias"};
 
-const Enum::Value ArpEncapEnum::arpa {1, "arpa"};
-const Enum::Value ArpEncapEnum::srp {4, "srp"};
-const Enum::Value ArpEncapEnum::srpa {5, "srpa"};
-const Enum::Value ArpEncapEnum::srpb {6, "srpb"};
+const Enum::YLeaf ArpEncapEnum::arpa {1, "arpa"};
+const Enum::YLeaf ArpEncapEnum::srp {4, "srp"};
+const Enum::YLeaf ArpEncapEnum::srpa {5, "srpa"};
+const Enum::YLeaf ArpEncapEnum::srpb {6, "srpb"};
 
 
 }

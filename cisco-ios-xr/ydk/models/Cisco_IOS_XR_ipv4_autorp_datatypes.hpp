@@ -14,8 +14,8 @@ namespace Cisco_IOS_XR_ipv4_autorp_datatypes {
 class AutoRpProtocolModeEnum : public Enum
 {
     public:
-        static const Enum::Value sparse;
-        static const Enum::Value bidirectional;
+        static const Enum::YLeaf sparse;
+        static const Enum::YLeaf bidirectional;
 
 };
 

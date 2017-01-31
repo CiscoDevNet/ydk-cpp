@@ -26,6 +26,7 @@ class Netconf : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Agent : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Netconf : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Tty : public Entity
@@ -56,6 +58,7 @@ class Netconf : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sessions : public Entity
             {
                 public:
@@ -71,6 +74,7 @@ class Netconf : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Session : public Entity
                 {
                     public:
@@ -84,22 +88,21 @@ class Netconf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_id; //type: int32
-                        Value username; //type: string
-                        Value state; //type: XrXmlSessionStateEnum
-                        Value client_address; //type: string
-                        Value client_port; //type: uint32
-                        Value config_session_id; //type: string
-                        Value admin_config_session_id; //type: string
-                        Value alarm_notification; //type: XrXmlSessionAlarmRegisterEnum
-                        Value vrf_name; //type: string
-                        Value start_time; //type: uint32
-                        Value elapsed_time; //type: uint32
-                        Value last_state_change; //type: uint32
 
 
-                        class XrXmlSessionAlarmRegisterEnum;
-                        class XrXmlSessionStateEnum;
+                        YLeaf session_id; //type: int32
+                        YLeaf username; //type: string
+                        YLeaf state; //type: XrXmlSessionStateEnum
+                        YLeaf client_address; //type: string
+                        YLeaf client_port; //type: uint32
+                        YLeaf config_session_id; //type: string
+                        YLeaf admin_config_session_id; //type: string
+                        YLeaf alarm_notification; //type: XrXmlSessionAlarmRegisterEnum
+                        YLeaf vrf_name; //type: string
+                        YLeaf start_time; //type: uint32
+                        YLeaf elapsed_time; //type: uint32
+                        YLeaf last_state_change; //type: uint32
+
 
 
                 }; // Netconf::Agent::Tty::Sessions::Session
@@ -144,6 +147,7 @@ class XrXml : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Agent : public Entity
     {
         public:
@@ -157,6 +161,7 @@ class XrXml : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Tty : public Entity
@@ -174,6 +179,7 @@ class XrXml : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sessions : public Entity
             {
                 public:
@@ -189,6 +195,7 @@ class XrXml : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Session : public Entity
                 {
                     public:
@@ -202,22 +209,21 @@ class XrXml : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_id; //type: int32
-                        Value username; //type: string
-                        Value state; //type: XrXmlSessionStateEnum
-                        Value client_address; //type: string
-                        Value client_port; //type: uint32
-                        Value config_session_id; //type: string
-                        Value admin_config_session_id; //type: string
-                        Value alarm_notification; //type: XrXmlSessionAlarmRegisterEnum
-                        Value vrf_name; //type: string
-                        Value start_time; //type: uint32
-                        Value elapsed_time; //type: uint32
-                        Value last_state_change; //type: uint32
 
 
-                        class XrXmlSessionAlarmRegisterEnum;
-                        class XrXmlSessionStateEnum;
+                        YLeaf session_id; //type: int32
+                        YLeaf username; //type: string
+                        YLeaf state; //type: XrXmlSessionStateEnum
+                        YLeaf client_address; //type: string
+                        YLeaf client_port; //type: uint32
+                        YLeaf config_session_id; //type: string
+                        YLeaf admin_config_session_id; //type: string
+                        YLeaf alarm_notification; //type: XrXmlSessionAlarmRegisterEnum
+                        YLeaf vrf_name; //type: string
+                        YLeaf start_time; //type: uint32
+                        YLeaf elapsed_time; //type: uint32
+                        YLeaf last_state_change; //type: uint32
+
 
 
                 }; // XrXml::Agent::Tty::Sessions::Session
@@ -250,6 +256,7 @@ class XrXml : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sessions : public Entity
             {
                 public:
@@ -265,6 +272,7 @@ class XrXml : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Session : public Entity
                 {
                     public:
@@ -278,22 +286,21 @@ class XrXml : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_id; //type: int32
-                        Value username; //type: string
-                        Value state; //type: XrXmlSessionStateEnum
-                        Value client_address; //type: string
-                        Value client_port; //type: uint32
-                        Value config_session_id; //type: string
-                        Value admin_config_session_id; //type: string
-                        Value alarm_notification; //type: XrXmlSessionAlarmRegisterEnum
-                        Value vrf_name; //type: string
-                        Value start_time; //type: uint32
-                        Value elapsed_time; //type: uint32
-                        Value last_state_change; //type: uint32
 
 
-                        class XrXmlSessionAlarmRegisterEnum;
-                        class XrXmlSessionStateEnum;
+                        YLeaf session_id; //type: int32
+                        YLeaf username; //type: string
+                        YLeaf state; //type: XrXmlSessionStateEnum
+                        YLeaf client_address; //type: string
+                        YLeaf client_port; //type: uint32
+                        YLeaf config_session_id; //type: string
+                        YLeaf admin_config_session_id; //type: string
+                        YLeaf alarm_notification; //type: XrXmlSessionAlarmRegisterEnum
+                        YLeaf vrf_name; //type: string
+                        YLeaf start_time; //type: uint32
+                        YLeaf elapsed_time; //type: uint32
+                        YLeaf last_state_change; //type: uint32
+
 
 
                 }; // XrXml::Agent::Default_::Sessions::Session
@@ -326,6 +333,7 @@ class XrXml : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sessions : public Entity
             {
                 public:
@@ -341,6 +349,7 @@ class XrXml : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Session : public Entity
                 {
                     public:
@@ -354,22 +363,21 @@ class XrXml : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_id; //type: int32
-                        Value username; //type: string
-                        Value state; //type: XrXmlSessionStateEnum
-                        Value client_address; //type: string
-                        Value client_port; //type: uint32
-                        Value config_session_id; //type: string
-                        Value admin_config_session_id; //type: string
-                        Value alarm_notification; //type: XrXmlSessionAlarmRegisterEnum
-                        Value vrf_name; //type: string
-                        Value start_time; //type: uint32
-                        Value elapsed_time; //type: uint32
-                        Value last_state_change; //type: uint32
 
 
-                        class XrXmlSessionAlarmRegisterEnum;
-                        class XrXmlSessionStateEnum;
+                        YLeaf session_id; //type: int32
+                        YLeaf username; //type: string
+                        YLeaf state; //type: XrXmlSessionStateEnum
+                        YLeaf client_address; //type: string
+                        YLeaf client_port; //type: uint32
+                        YLeaf config_session_id; //type: string
+                        YLeaf admin_config_session_id; //type: string
+                        YLeaf alarm_notification; //type: XrXmlSessionAlarmRegisterEnum
+                        YLeaf vrf_name; //type: string
+                        YLeaf start_time; //type: uint32
+                        YLeaf elapsed_time; //type: uint32
+                        YLeaf last_state_change; //type: uint32
+
 
 
                 }; // XrXml::Agent::Ssl::Sessions::Session
@@ -404,16 +412,16 @@ class XrXml : public Entity
 class XrXmlSessionAlarmRegisterEnum : public Enum
 {
     public:
-        static const Enum::Value registered;
-        static const Enum::Value not_registered;
+        static const Enum::YLeaf registered;
+        static const Enum::YLeaf not_registered;
 
 };
 
 class XrXmlSessionStateEnum : public Enum
 {
     public:
-        static const Enum::Value idle;
-        static const Enum::Value busy;
+        static const Enum::YLeaf idle;
+        static const Enum::YLeaf busy;
 
 };
 

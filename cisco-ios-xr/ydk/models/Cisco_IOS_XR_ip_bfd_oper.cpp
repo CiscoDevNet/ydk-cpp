@@ -234,8 +234,8 @@ bool Bfd::LabelSessionBriefs::LabelSessionBrief::StatusBriefInformation::has_dat
 bool Bfd::LabelSessionBriefs::LabelSessionBrief::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::LabelSessionBriefs::LabelSessionBrief::StatusBriefInformation::get_segment_path() const
@@ -384,7 +384,7 @@ bool Bfd::LabelSessionBriefs::LabelSessionBrief::has_operation() const
 	|| is_set(session_subtype.operation)
 	|| is_set(session_type.operation)
 	|| is_set(state.operation)
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation));
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation());
 }
 
 std::string Bfd::LabelSessionBriefs::LabelSessionBrief::get_segment_path() const
@@ -737,7 +737,7 @@ bool Bfd::Ipv4BfDoMplsteTailSummary::has_data() const
 bool Bfd::Ipv4BfDoMplsteTailSummary::has_operation() const
 {
     return is_set(operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteTailSummary::get_segment_path() const
@@ -1066,7 +1066,7 @@ bool Bfd::Ipv6SingleHopCounters::has_data() const
 bool Bfd::Ipv6SingleHopCounters::has_operation() const
 {
     return is_set(operation)
-	|| (ipv6_single_hop_packet_counters !=  nullptr && is_set(ipv6_single_hop_packet_counters->operation));
+	|| (ipv6_single_hop_packet_counters !=  nullptr && ipv6_single_hop_packet_counters->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopCounters::get_segment_path() const
@@ -1395,7 +1395,7 @@ bool Bfd::Counters::has_data() const
 bool Bfd::Counters::has_operation() const
 {
     return is_set(operation)
-	|| (packet_counters !=  nullptr && is_set(packet_counters->operation));
+	|| (packet_counters !=  nullptr && packet_counters->has_operation());
 }
 
 std::string Bfd::Counters::get_segment_path() const
@@ -1516,7 +1516,7 @@ EntityPath Bfd::ClientDetails::ClientDetail::Brief::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1609,7 +1609,7 @@ EntityPath Bfd::ClientDetails::ClientDetail::Flags::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1692,8 +1692,8 @@ bool Bfd::ClientDetails::ClientDetail::has_operation() const
     return is_set(operation)
 	|| is_set(client_name.operation)
 	|| is_set(recreate_time.operation)
-	|| (brief !=  nullptr && is_set(brief->operation))
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (brief !=  nullptr && brief->has_operation())
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string Bfd::ClientDetails::ClientDetail::get_segment_path() const
@@ -2039,7 +2039,7 @@ bool Bfd::Ipv4SingleHopSummary::has_data() const
 bool Bfd::Ipv4SingleHopSummary::has_operation() const
 {
     return is_set(operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopSummary::get_segment_path() const
@@ -2244,7 +2244,7 @@ bool Bfd::Ipv6SingleHopSummary::has_data() const
 bool Bfd::Ipv6SingleHopSummary::has_operation() const
 {
     return is_set(operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopSummary::get_segment_path() const
@@ -3410,8 +3410,8 @@ bool Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::StatusInformati
 bool Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::StatusInformation::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::StatusInformation::StatusBriefInformation::get_segment_path() const
@@ -4066,15 +4066,15 @@ bool Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::StatusInformati
 	|| is_set(sessiontype.operation)
 	|| is_set(state.operation)
 	|| is_set(to_up_state_count.operation)
-	|| (async_receive_statistics !=  nullptr && is_set(async_receive_statistics->operation))
-	|| (async_transmit_statistics !=  nullptr && is_set(async_transmit_statistics->operation))
-	|| (echo_received_statistics !=  nullptr && is_set(echo_received_statistics->operation))
-	|| (echo_transmit_statistics !=  nullptr && is_set(echo_transmit_statistics->operation))
-	|| (last_state_change !=  nullptr && is_set(last_state_change->operation))
-	|| (receive_packet !=  nullptr && is_set(receive_packet->operation))
-	|| (source_address !=  nullptr && is_set(source_address->operation))
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation))
-	|| (transmit_packet !=  nullptr && is_set(transmit_packet->operation));
+	|| (async_receive_statistics !=  nullptr && async_receive_statistics->has_operation())
+	|| (async_transmit_statistics !=  nullptr && async_transmit_statistics->has_operation())
+	|| (echo_received_statistics !=  nullptr && echo_received_statistics->has_operation())
+	|| (echo_transmit_statistics !=  nullptr && echo_transmit_statistics->has_operation())
+	|| (last_state_change !=  nullptr && last_state_change->has_operation())
+	|| (receive_packet !=  nullptr && receive_packet->has_operation())
+	|| (source_address !=  nullptr && source_address->has_operation())
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation())
+	|| (transmit_packet !=  nullptr && transmit_packet->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::StatusInformation::get_segment_path() const
@@ -4521,7 +4521,7 @@ bool Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::MpDownloadState
 {
     return is_set(operation)
 	|| is_set(mp_download_state.operation)
-	|| (change_time !=  nullptr && is_set(change_time->operation));
+	|| (change_time !=  nullptr && change_time->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::MpDownloadState::get_segment_path() const
@@ -4929,9 +4929,9 @@ bool Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::LspPingInfo::ha
 	|| is_set(lsp_ping_tx_error_count.operation)
 	|| is_set(lsp_ping_tx_last_error_rc.operation)
 	|| is_set(lsp_ping_tx_last_rc.operation)
-	|| (lsp_ping_rx_last_time !=  nullptr && is_set(lsp_ping_rx_last_time->operation))
-	|| (lsp_ping_tx_last_error_time !=  nullptr && is_set(lsp_ping_tx_last_error_time->operation))
-	|| (lsp_ping_tx_last_time !=  nullptr && is_set(lsp_ping_tx_last_time->operation));
+	|| (lsp_ping_rx_last_time !=  nullptr && lsp_ping_rx_last_time->has_operation())
+	|| (lsp_ping_tx_last_error_time !=  nullptr && lsp_ping_tx_last_error_time->has_operation())
+	|| (lsp_ping_tx_last_time !=  nullptr && lsp_ping_tx_last_time->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::LspPingInfo::get_segment_path() const
@@ -5684,8 +5684,8 @@ bool Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInfo
 {
     return is_set(operation)
 	|| is_set(bfdfe_ctype.operation)
-	|| (dummy !=  nullptr && is_set(dummy->operation))
-	|| (te_s2l_fec !=  nullptr && is_set(te_s2l_fec->operation));
+	|| (dummy !=  nullptr && dummy->has_operation())
+	|| (te_s2l_fec !=  nullptr && te_s2l_fec->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::get_segment_path() const
@@ -5952,10 +5952,10 @@ bool Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInfo
 	|| is_set(sbfd_target_type.operation)
 	|| is_set(session_key_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (bfdfec !=  nullptr && is_set(bfdfec->operation))
-	|| (ip_destination_address !=  nullptr && is_set(ip_destination_address->operation))
-	|| (ip_source_address !=  nullptr && is_set(ip_source_address->operation))
-	|| (target_address !=  nullptr && is_set(target_address->operation));
+	|| (bfdfec !=  nullptr && bfdfec->has_operation())
+	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation())
+	|| (ip_source_address !=  nullptr && ip_source_address->has_operation())
+	|| (target_address !=  nullptr && target_address->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation::SessionKey::get_segment_path() const
@@ -6284,7 +6284,7 @@ bool Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInfo
     return is_set(operation)
 	|| is_set(local_discriminator.operation)
 	|| is_set(sessiontype.operation)
-	|| (session_key !=  nullptr && is_set(session_key->operation));
+	|| (session_key !=  nullptr && session_key->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation::get_segment_path() const
@@ -6464,9 +6464,9 @@ bool Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::has_operation()
 	|| is_set(location.operation)
 	|| is_set(source_address.operation)
 	|| is_set(vrf_name.operation)
-	|| (lsp_ping_info !=  nullptr && is_set(lsp_ping_info->operation))
-	|| (mp_download_state !=  nullptr && is_set(mp_download_state->operation))
-	|| (status_information !=  nullptr && is_set(status_information->operation));
+	|| (lsp_ping_info !=  nullptr && lsp_ping_info->has_operation())
+	|| (mp_download_state !=  nullptr && mp_download_state->has_operation())
+	|| (status_information !=  nullptr && status_information->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::get_segment_path() const
@@ -7606,8 +7606,8 @@ bool Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::StatusInforma
 bool Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::StatusInformation::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::StatusInformation::StatusBriefInformation::get_segment_path() const
@@ -8262,15 +8262,15 @@ bool Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::StatusInforma
 	|| is_set(sessiontype.operation)
 	|| is_set(state.operation)
 	|| is_set(to_up_state_count.operation)
-	|| (async_receive_statistics !=  nullptr && is_set(async_receive_statistics->operation))
-	|| (async_transmit_statistics !=  nullptr && is_set(async_transmit_statistics->operation))
-	|| (echo_received_statistics !=  nullptr && is_set(echo_received_statistics->operation))
-	|| (echo_transmit_statistics !=  nullptr && is_set(echo_transmit_statistics->operation))
-	|| (last_state_change !=  nullptr && is_set(last_state_change->operation))
-	|| (receive_packet !=  nullptr && is_set(receive_packet->operation))
-	|| (source_address !=  nullptr && is_set(source_address->operation))
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation))
-	|| (transmit_packet !=  nullptr && is_set(transmit_packet->operation));
+	|| (async_receive_statistics !=  nullptr && async_receive_statistics->has_operation())
+	|| (async_transmit_statistics !=  nullptr && async_transmit_statistics->has_operation())
+	|| (echo_received_statistics !=  nullptr && echo_received_statistics->has_operation())
+	|| (echo_transmit_statistics !=  nullptr && echo_transmit_statistics->has_operation())
+	|| (last_state_change !=  nullptr && last_state_change->has_operation())
+	|| (receive_packet !=  nullptr && receive_packet->has_operation())
+	|| (source_address !=  nullptr && source_address->has_operation())
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation())
+	|| (transmit_packet !=  nullptr && transmit_packet->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::StatusInformation::get_segment_path() const
@@ -8717,7 +8717,7 @@ bool Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::MpDownloadSta
 {
     return is_set(operation)
 	|| is_set(mp_download_state.operation)
-	|| (change_time !=  nullptr && is_set(change_time->operation));
+	|| (change_time !=  nullptr && change_time->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::MpDownloadState::get_segment_path() const
@@ -9125,9 +9125,9 @@ bool Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::LspPingInfo::
 	|| is_set(lsp_ping_tx_error_count.operation)
 	|| is_set(lsp_ping_tx_last_error_rc.operation)
 	|| is_set(lsp_ping_tx_last_rc.operation)
-	|| (lsp_ping_rx_last_time !=  nullptr && is_set(lsp_ping_rx_last_time->operation))
-	|| (lsp_ping_tx_last_error_time !=  nullptr && is_set(lsp_ping_tx_last_error_time->operation))
-	|| (lsp_ping_tx_last_time !=  nullptr && is_set(lsp_ping_tx_last_time->operation));
+	|| (lsp_ping_rx_last_time !=  nullptr && lsp_ping_rx_last_time->has_operation())
+	|| (lsp_ping_tx_last_error_time !=  nullptr && lsp_ping_tx_last_error_time->has_operation())
+	|| (lsp_ping_tx_last_time !=  nullptr && lsp_ping_tx_last_time->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::LspPingInfo::get_segment_path() const
@@ -9880,8 +9880,8 @@ bool Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationIn
 {
     return is_set(operation)
 	|| is_set(bfdfe_ctype.operation)
-	|| (dummy !=  nullptr && is_set(dummy->operation))
-	|| (te_s2l_fec !=  nullptr && is_set(te_s2l_fec->operation));
+	|| (dummy !=  nullptr && dummy->has_operation())
+	|| (te_s2l_fec !=  nullptr && te_s2l_fec->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::get_segment_path() const
@@ -10148,10 +10148,10 @@ bool Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationIn
 	|| is_set(sbfd_target_type.operation)
 	|| is_set(session_key_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (bfdfec !=  nullptr && is_set(bfdfec->operation))
-	|| (ip_destination_address !=  nullptr && is_set(ip_destination_address->operation))
-	|| (ip_source_address !=  nullptr && is_set(ip_source_address->operation))
-	|| (target_address !=  nullptr && is_set(target_address->operation));
+	|| (bfdfec !=  nullptr && bfdfec->has_operation())
+	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation())
+	|| (ip_source_address !=  nullptr && ip_source_address->has_operation())
+	|| (target_address !=  nullptr && target_address->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation::SessionKey::get_segment_path() const
@@ -10480,7 +10480,7 @@ bool Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationIn
     return is_set(operation)
 	|| is_set(local_discriminator.operation)
 	|| is_set(sessiontype.operation)
-	|| (session_key !=  nullptr && is_set(session_key->operation));
+	|| (session_key !=  nullptr && session_key->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation::get_segment_path() const
@@ -10657,9 +10657,9 @@ bool Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::has_operation
 	|| is_set(destination_address.operation)
 	|| is_set(interface_name.operation)
 	|| is_set(location.operation)
-	|| (lsp_ping_info !=  nullptr && is_set(lsp_ping_info->operation))
-	|| (mp_download_state !=  nullptr && is_set(mp_download_state->operation))
-	|| (status_information !=  nullptr && is_set(status_information->operation));
+	|| (lsp_ping_info !=  nullptr && lsp_ping_info->has_operation())
+	|| (mp_download_state !=  nullptr && mp_download_state->has_operation())
+	|| (status_information !=  nullptr && status_information->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::get_segment_path() const
@@ -11186,8 +11186,8 @@ bool Bfd::Ipv4MultiHopSessionBriefs::Ipv4MultiHopSessionBrief::StatusBriefInform
 bool Bfd::Ipv4MultiHopSessionBriefs::Ipv4MultiHopSessionBrief::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopSessionBriefs::Ipv4MultiHopSessionBrief::StatusBriefInformation::get_segment_path() const
@@ -11339,7 +11339,7 @@ bool Bfd::Ipv4MultiHopSessionBriefs::Ipv4MultiHopSessionBrief::has_operation() c
 	|| is_set(source_address.operation)
 	|| is_set(state.operation)
 	|| is_set(vrf_name.operation)
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation));
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopSessionBriefs::Ipv4MultiHopSessionBrief::get_segment_path() const
@@ -12126,7 +12126,7 @@ EntityPath Bfd::Ipv4SingleHopNodeLocationSummaries::Ipv4SingleHopNodeLocationSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12221,7 +12221,7 @@ bool Bfd::Ipv4SingleHopNodeLocationSummaries::Ipv4SingleHopNodeLocationSummary::
 {
     return is_set(operation)
 	|| is_set(location.operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopNodeLocationSummaries::Ipv4SingleHopNodeLocationSummary::get_segment_path() const
@@ -12539,7 +12539,7 @@ bool Bfd::LabelSummary::has_data() const
 bool Bfd::LabelSummary::has_operation() const
 {
     return is_set(operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::LabelSummary::get_segment_path() const
@@ -12845,8 +12845,8 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionBriefs::Ipv4BfDoMplsteHeadSessionBrief::Statu
 bool Bfd::Ipv4BfDoMplsteHeadSessionBriefs::Ipv4BfDoMplsteHeadSessionBrief::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadSessionBriefs::Ipv4BfDoMplsteHeadSessionBrief::StatusBriefInformation::get_segment_path() const
@@ -13028,7 +13028,7 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionBriefs::Ipv4BfDoMplsteHeadSessionBrief::has_o
 	|| is_set(session_type.operation)
 	|| is_set(state.operation)
 	|| is_set(vrf_name.operation)
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation));
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadSessionBriefs::Ipv4BfDoMplsteHeadSessionBrief::get_segment_path() const
@@ -14145,8 +14145,8 @@ bool Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::Sta
 bool Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::StatusInformation::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::StatusInformation::StatusBriefInformation::get_segment_path() const
@@ -14801,15 +14801,15 @@ bool Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::Sta
 	|| is_set(sessiontype.operation)
 	|| is_set(state.operation)
 	|| is_set(to_up_state_count.operation)
-	|| (async_receive_statistics !=  nullptr && is_set(async_receive_statistics->operation))
-	|| (async_transmit_statistics !=  nullptr && is_set(async_transmit_statistics->operation))
-	|| (echo_received_statistics !=  nullptr && is_set(echo_received_statistics->operation))
-	|| (echo_transmit_statistics !=  nullptr && is_set(echo_transmit_statistics->operation))
-	|| (last_state_change !=  nullptr && is_set(last_state_change->operation))
-	|| (receive_packet !=  nullptr && is_set(receive_packet->operation))
-	|| (source_address !=  nullptr && is_set(source_address->operation))
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation))
-	|| (transmit_packet !=  nullptr && is_set(transmit_packet->operation));
+	|| (async_receive_statistics !=  nullptr && async_receive_statistics->has_operation())
+	|| (async_transmit_statistics !=  nullptr && async_transmit_statistics->has_operation())
+	|| (echo_received_statistics !=  nullptr && echo_received_statistics->has_operation())
+	|| (echo_transmit_statistics !=  nullptr && echo_transmit_statistics->has_operation())
+	|| (last_state_change !=  nullptr && last_state_change->has_operation())
+	|| (receive_packet !=  nullptr && receive_packet->has_operation())
+	|| (source_address !=  nullptr && source_address->has_operation())
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation())
+	|| (transmit_packet !=  nullptr && transmit_packet->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::StatusInformation::get_segment_path() const
@@ -15256,7 +15256,7 @@ bool Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::MpD
 {
     return is_set(operation)
 	|| is_set(mp_download_state.operation)
-	|| (change_time !=  nullptr && is_set(change_time->operation));
+	|| (change_time !=  nullptr && change_time->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::MpDownloadState::get_segment_path() const
@@ -15664,9 +15664,9 @@ bool Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::Lsp
 	|| is_set(lsp_ping_tx_error_count.operation)
 	|| is_set(lsp_ping_tx_last_error_rc.operation)
 	|| is_set(lsp_ping_tx_last_rc.operation)
-	|| (lsp_ping_rx_last_time !=  nullptr && is_set(lsp_ping_rx_last_time->operation))
-	|| (lsp_ping_tx_last_error_time !=  nullptr && is_set(lsp_ping_tx_last_error_time->operation))
-	|| (lsp_ping_tx_last_time !=  nullptr && is_set(lsp_ping_tx_last_time->operation));
+	|| (lsp_ping_rx_last_time !=  nullptr && lsp_ping_rx_last_time->has_operation())
+	|| (lsp_ping_tx_last_error_time !=  nullptr && lsp_ping_tx_last_error_time->has_operation())
+	|| (lsp_ping_tx_last_time !=  nullptr && lsp_ping_tx_last_time->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::LspPingInfo::get_segment_path() const
@@ -16419,8 +16419,8 @@ bool Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::Ass
 {
     return is_set(operation)
 	|| is_set(bfdfe_ctype.operation)
-	|| (dummy !=  nullptr && is_set(dummy->operation))
-	|| (te_s2l_fec !=  nullptr && is_set(te_s2l_fec->operation));
+	|| (dummy !=  nullptr && dummy->has_operation())
+	|| (te_s2l_fec !=  nullptr && te_s2l_fec->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation::SessionKey::Bfdfec::get_segment_path() const
@@ -16687,10 +16687,10 @@ bool Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::Ass
 	|| is_set(sbfd_target_type.operation)
 	|| is_set(session_key_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (bfdfec !=  nullptr && is_set(bfdfec->operation))
-	|| (ip_destination_address !=  nullptr && is_set(ip_destination_address->operation))
-	|| (ip_source_address !=  nullptr && is_set(ip_source_address->operation))
-	|| (target_address !=  nullptr && is_set(target_address->operation));
+	|| (bfdfec !=  nullptr && bfdfec->has_operation())
+	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation())
+	|| (ip_source_address !=  nullptr && ip_source_address->has_operation())
+	|| (target_address !=  nullptr && target_address->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation::SessionKey::get_segment_path() const
@@ -17019,7 +17019,7 @@ bool Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::Ass
     return is_set(operation)
 	|| is_set(local_discriminator.operation)
 	|| is_set(sessiontype.operation)
-	|| (session_key !=  nullptr && is_set(session_key->operation));
+	|| (session_key !=  nullptr && session_key->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation::get_segment_path() const
@@ -17226,9 +17226,9 @@ bool Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::has
 	|| is_set(incoming_label.operation)
 	|| is_set(location.operation)
 	|| is_set(vrf_name.operation)
-	|| (lsp_ping_info !=  nullptr && is_set(lsp_ping_info->operation))
-	|| (mp_download_state !=  nullptr && is_set(mp_download_state->operation))
-	|| (status_information !=  nullptr && is_set(status_information->operation));
+	|| (lsp_ping_info !=  nullptr && lsp_ping_info->has_operation())
+	|| (mp_download_state !=  nullptr && mp_download_state->has_operation())
+	|| (status_information !=  nullptr && status_information->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::get_segment_path() const
@@ -17629,7 +17629,7 @@ EntityPath Bfd::Ipv4MultiHopNodeLocationSummaries::Ipv4MultiHopNodeLocationSumma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17724,7 +17724,7 @@ bool Bfd::Ipv4MultiHopNodeLocationSummaries::Ipv4MultiHopNodeLocationSummary::ha
 {
     return is_set(operation)
 	|| is_set(location.operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopNodeLocationSummaries::Ipv4MultiHopNodeLocationSummary::get_segment_path() const
@@ -18143,8 +18143,8 @@ bool Bfd::Ipv4BfDoMplsteTailSessionBriefs::Ipv4BfDoMplsteTailSessionBrief::Statu
 bool Bfd::Ipv4BfDoMplsteTailSessionBriefs::Ipv4BfDoMplsteTailSessionBrief::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteTailSessionBriefs::Ipv4BfDoMplsteTailSessionBrief::StatusBriefInformation::get_segment_path() const
@@ -18323,7 +18323,7 @@ bool Bfd::Ipv4BfDoMplsteTailSessionBriefs::Ipv4BfDoMplsteTailSessionBrief::has_o
 	|| is_set(session_type.operation)
 	|| is_set(state.operation)
 	|| is_set(vrf_name.operation)
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation));
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteTailSessionBriefs::Ipv4BfDoMplsteTailSessionBrief::get_segment_path() const
@@ -18651,7 +18651,7 @@ EntityPath Bfd::Ipv6MultiHopNodeLocationSummaries::Ipv6MultiHopNodeLocationSumma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18746,7 +18746,7 @@ bool Bfd::Ipv6MultiHopNodeLocationSummaries::Ipv6MultiHopNodeLocationSummary::ha
 {
     return is_set(operation)
 	|| is_set(location.operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopNodeLocationSummaries::Ipv6MultiHopNodeLocationSummary::get_segment_path() const
@@ -19064,7 +19064,7 @@ bool Bfd::Ipv4MultiHopSummary::has_data() const
 bool Bfd::Ipv4MultiHopSummary::has_operation() const
 {
     return is_set(operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopSummary::get_segment_path() const
@@ -19393,7 +19393,7 @@ bool Bfd::Ipv4SingleHopCounters::has_data() const
 bool Bfd::Ipv4SingleHopCounters::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4_single_hop_packet_counters !=  nullptr && is_set(ipv4_single_hop_packet_counters->operation));
+	|| (ipv4_single_hop_packet_counters !=  nullptr && ipv4_single_hop_packet_counters->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopCounters::get_segment_path() const
@@ -20307,8 +20307,8 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::get_segment_path() const
@@ -20963,15 +20963,15 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 	|| is_set(sessiontype.operation)
 	|| is_set(state.operation)
 	|| is_set(to_up_state_count.operation)
-	|| (async_receive_statistics !=  nullptr && is_set(async_receive_statistics->operation))
-	|| (async_transmit_statistics !=  nullptr && is_set(async_transmit_statistics->operation))
-	|| (echo_received_statistics !=  nullptr && is_set(echo_received_statistics->operation))
-	|| (echo_transmit_statistics !=  nullptr && is_set(echo_transmit_statistics->operation))
-	|| (last_state_change !=  nullptr && is_set(last_state_change->operation))
-	|| (receive_packet !=  nullptr && is_set(receive_packet->operation))
-	|| (source_address !=  nullptr && is_set(source_address->operation))
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation))
-	|| (transmit_packet !=  nullptr && is_set(transmit_packet->operation));
+	|| (async_receive_statistics !=  nullptr && async_receive_statistics->has_operation())
+	|| (async_transmit_statistics !=  nullptr && async_transmit_statistics->has_operation())
+	|| (echo_received_statistics !=  nullptr && echo_received_statistics->has_operation())
+	|| (echo_transmit_statistics !=  nullptr && echo_transmit_statistics->has_operation())
+	|| (last_state_change !=  nullptr && last_state_change->has_operation())
+	|| (receive_packet !=  nullptr && receive_packet->has_operation())
+	|| (source_address !=  nullptr && source_address->has_operation())
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation())
+	|| (transmit_packet !=  nullptr && transmit_packet->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::get_segment_path() const
@@ -21418,7 +21418,7 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState
 {
     return is_set(operation)
 	|| is_set(mp_download_state.operation)
-	|| (change_time !=  nullptr && is_set(change_time->operation));
+	|| (change_time !=  nullptr && change_time->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::get_segment_path() const
@@ -21826,9 +21826,9 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::ha
 	|| is_set(lsp_ping_tx_error_count.operation)
 	|| is_set(lsp_ping_tx_last_error_rc.operation)
 	|| is_set(lsp_ping_tx_last_rc.operation)
-	|| (lsp_ping_rx_last_time !=  nullptr && is_set(lsp_ping_rx_last_time->operation))
-	|| (lsp_ping_tx_last_error_time !=  nullptr && is_set(lsp_ping_tx_last_error_time->operation))
-	|| (lsp_ping_tx_last_time !=  nullptr && is_set(lsp_ping_tx_last_time->operation));
+	|| (lsp_ping_rx_last_time !=  nullptr && lsp_ping_rx_last_time->has_operation())
+	|| (lsp_ping_tx_last_error_time !=  nullptr && lsp_ping_tx_last_error_time->has_operation())
+	|| (lsp_ping_tx_last_time !=  nullptr && lsp_ping_tx_last_time->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::get_segment_path() const
@@ -22581,8 +22581,8 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInfo
 {
     return is_set(operation)
 	|| is_set(bfdfe_ctype.operation)
-	|| (dummy !=  nullptr && is_set(dummy->operation))
-	|| (te_s2l_fec !=  nullptr && is_set(te_s2l_fec->operation));
+	|| (dummy !=  nullptr && dummy->has_operation())
+	|| (te_s2l_fec !=  nullptr && te_s2l_fec->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::get_segment_path() const
@@ -22849,10 +22849,10 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInfo
 	|| is_set(sbfd_target_type.operation)
 	|| is_set(session_key_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (bfdfec !=  nullptr && is_set(bfdfec->operation))
-	|| (ip_destination_address !=  nullptr && is_set(ip_destination_address->operation))
-	|| (ip_source_address !=  nullptr && is_set(ip_source_address->operation))
-	|| (target_address !=  nullptr && is_set(target_address->operation));
+	|| (bfdfec !=  nullptr && bfdfec->has_operation())
+	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation())
+	|| (ip_source_address !=  nullptr && ip_source_address->has_operation())
+	|| (target_address !=  nullptr && target_address->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::get_segment_path() const
@@ -23181,7 +23181,7 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInfo
     return is_set(operation)
 	|| is_set(local_discriminator.operation)
 	|| is_set(sessiontype.operation)
-	|| (session_key !=  nullptr && is_set(session_key->operation));
+	|| (session_key !=  nullptr && session_key->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::get_segment_path() const
@@ -23361,9 +23361,9 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::has_operation()
 	|| is_set(location.operation)
 	|| is_set(source_address.operation)
 	|| is_set(vrf_name.operation)
-	|| (lsp_ping_info !=  nullptr && is_set(lsp_ping_info->operation))
-	|| (mp_download_state !=  nullptr && is_set(mp_download_state->operation))
-	|| (status_information !=  nullptr && is_set(status_information->operation));
+	|| (lsp_ping_info !=  nullptr && lsp_ping_info->has_operation())
+	|| (mp_download_state !=  nullptr && mp_download_state->has_operation())
+	|| (status_information !=  nullptr && status_information->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::get_segment_path() const
@@ -24186,7 +24186,7 @@ bool Bfd::Ipv4BfDoMplsteHeadCounters::has_data() const
 bool Bfd::Ipv4BfDoMplsteHeadCounters::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4bf_do_mplste_head_packet_counters !=  nullptr && is_set(ipv4bf_do_mplste_head_packet_counters->operation));
+	|| (ipv4bf_do_mplste_head_packet_counters !=  nullptr && ipv4bf_do_mplste_head_packet_counters->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadCounters::get_segment_path() const
@@ -24310,7 +24310,7 @@ EntityPath Bfd::SessionMibs::SessionMib::DestAddress::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24455,7 +24455,7 @@ bool Bfd::SessionMibs::SessionMib::has_operation() const
 	|| is_set(sessionversion.operation)
 	|| is_set(trap_bitmap.operation)
 	|| is_set(up_counter.operation)
-	|| (dest_address !=  nullptr && is_set(dest_address->operation));
+	|| (dest_address !=  nullptr && dest_address->has_operation());
 }
 
 std::string Bfd::SessionMibs::SessionMib::get_segment_path() const
@@ -24873,7 +24873,7 @@ bool Bfd::Ipv6MultiHopSummary::has_data() const
 bool Bfd::Ipv6MultiHopSummary::has_operation() const
 {
     return is_set(operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopSummary::get_segment_path() const
@@ -25003,7 +25003,7 @@ EntityPath Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25098,7 +25098,7 @@ bool Bfd::LabelSummaryNodes::LabelSummaryNode::has_operation() const
 {
     return is_set(operation)
 	|| is_set(location_name.operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::LabelSummaryNodes::LabelSummaryNode::get_segment_path() const
@@ -25517,8 +25517,8 @@ bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInform
 bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::get_segment_path() const
@@ -25670,7 +25670,7 @@ bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::has_operation() c
 	|| is_set(source_address.operation)
 	|| is_set(state.operation)
 	|| is_set(vrf_name.operation)
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation));
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::get_segment_path() const
@@ -26129,8 +26129,8 @@ bool Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::has_data() const
 bool Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::get_segment_path() const
@@ -26279,7 +26279,7 @@ bool Bfd::SessionBriefs::SessionBrief::has_operation() const
 	|| is_set(session_subtype.operation)
 	|| is_set(session_type.operation)
 	|| is_set(state.operation)
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation));
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation());
 }
 
 std::string Bfd::SessionBriefs::SessionBrief::get_segment_path() const
@@ -26557,7 +26557,7 @@ EntityPath Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSum
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26652,7 +26652,7 @@ bool Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::
 {
     return is_set(operation)
 	|| is_set(location.operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::get_segment_path() const
@@ -26970,7 +26970,7 @@ bool Bfd::Summary::has_data() const
 bool Bfd::Summary::has_operation() const
 {
     return is_set(operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Summary::get_segment_path() const
@@ -27100,7 +27100,7 @@ EntityPath Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27195,7 +27195,7 @@ bool Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::has_oper
 {
     return is_set(operation)
 	|| is_set(location_name.operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::get_segment_path() const
@@ -27438,7 +27438,7 @@ EntityPath Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27533,7 +27533,7 @@ bool Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::has_oper
 {
     return is_set(operation)
 	|| is_set(location_name.operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::get_segment_path() const
@@ -27776,7 +27776,7 @@ EntityPath Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::Ses
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27871,7 +27871,7 @@ bool Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::has_opera
 {
     return is_set(operation)
 	|| is_set(location_name.operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::get_segment_path() const
@@ -28898,8 +28898,8 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBrie
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::get_segment_path() const
@@ -29554,15 +29554,15 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::has_operat
 	|| is_set(sessiontype.operation)
 	|| is_set(state.operation)
 	|| is_set(to_up_state_count.operation)
-	|| (async_receive_statistics !=  nullptr && is_set(async_receive_statistics->operation))
-	|| (async_transmit_statistics !=  nullptr && is_set(async_transmit_statistics->operation))
-	|| (echo_received_statistics !=  nullptr && is_set(echo_received_statistics->operation))
-	|| (echo_transmit_statistics !=  nullptr && is_set(echo_transmit_statistics->operation))
-	|| (last_state_change !=  nullptr && is_set(last_state_change->operation))
-	|| (receive_packet !=  nullptr && is_set(receive_packet->operation))
-	|| (source_address !=  nullptr && is_set(source_address->operation))
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation))
-	|| (transmit_packet !=  nullptr && is_set(transmit_packet->operation));
+	|| (async_receive_statistics !=  nullptr && async_receive_statistics->has_operation())
+	|| (async_transmit_statistics !=  nullptr && async_transmit_statistics->has_operation())
+	|| (echo_received_statistics !=  nullptr && echo_received_statistics->has_operation())
+	|| (echo_transmit_statistics !=  nullptr && echo_transmit_statistics->has_operation())
+	|| (last_state_change !=  nullptr && last_state_change->has_operation())
+	|| (receive_packet !=  nullptr && receive_packet->has_operation())
+	|| (source_address !=  nullptr && source_address->has_operation())
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation())
+	|| (transmit_packet !=  nullptr && transmit_packet->has_operation());
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::get_segment_path() const
@@ -30009,7 +30009,7 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::has_operatio
 {
     return is_set(operation)
 	|| is_set(mp_download_state.operation)
-	|| (change_time !=  nullptr && is_set(change_time->operation));
+	|| (change_time !=  nullptr && change_time->has_operation());
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::get_segment_path() const
@@ -30417,9 +30417,9 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::has_operation() 
 	|| is_set(lsp_ping_tx_error_count.operation)
 	|| is_set(lsp_ping_tx_last_error_rc.operation)
 	|| is_set(lsp_ping_tx_last_rc.operation)
-	|| (lsp_ping_rx_last_time !=  nullptr && is_set(lsp_ping_rx_last_time->operation))
-	|| (lsp_ping_tx_last_error_time !=  nullptr && is_set(lsp_ping_tx_last_error_time->operation))
-	|| (lsp_ping_tx_last_time !=  nullptr && is_set(lsp_ping_tx_last_time->operation));
+	|| (lsp_ping_rx_last_time !=  nullptr && lsp_ping_rx_last_time->has_operation())
+	|| (lsp_ping_tx_last_error_time !=  nullptr && lsp_ping_tx_last_error_time->has_operation())
+	|| (lsp_ping_tx_last_time !=  nullptr && lsp_ping_tx_last_time->has_operation());
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::get_segment_path() const
@@ -31172,8 +31172,8 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sessi
 {
     return is_set(operation)
 	|| is_set(bfdfe_ctype.operation)
-	|| (dummy !=  nullptr && is_set(dummy->operation))
-	|| (te_s2l_fec !=  nullptr && is_set(te_s2l_fec->operation));
+	|| (dummy !=  nullptr && dummy->has_operation())
+	|| (te_s2l_fec !=  nullptr && te_s2l_fec->has_operation());
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::get_segment_path() const
@@ -31440,10 +31440,10 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sessi
 	|| is_set(sbfd_target_type.operation)
 	|| is_set(session_key_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (bfdfec !=  nullptr && is_set(bfdfec->operation))
-	|| (ip_destination_address !=  nullptr && is_set(ip_destination_address->operation))
-	|| (ip_source_address !=  nullptr && is_set(ip_source_address->operation))
-	|| (target_address !=  nullptr && is_set(target_address->operation));
+	|| (bfdfec !=  nullptr && bfdfec->has_operation())
+	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation())
+	|| (ip_source_address !=  nullptr && ip_source_address->has_operation())
+	|| (target_address !=  nullptr && target_address->has_operation());
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::get_segment_path() const
@@ -31772,7 +31772,7 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::has_o
     return is_set(operation)
 	|| is_set(local_discriminator.operation)
 	|| is_set(sessiontype.operation)
-	|| (session_key !=  nullptr && is_set(session_key->operation));
+	|| (session_key !=  nullptr && session_key->has_operation());
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::get_segment_path() const
@@ -31949,9 +31949,9 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::has_operation() const
 	|| is_set(incoming_label.operation)
 	|| is_set(interface_name.operation)
 	|| is_set(location.operation)
-	|| (lsp_ping_info !=  nullptr && is_set(lsp_ping_info->operation))
-	|| (mp_download_state !=  nullptr && is_set(mp_download_state->operation))
-	|| (status_information !=  nullptr && is_set(status_information->operation));
+	|| (lsp_ping_info !=  nullptr && lsp_ping_info->has_operation())
+	|| (mp_download_state !=  nullptr && mp_download_state->has_operation())
+	|| (status_information !=  nullptr && status_information->has_operation());
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::get_segment_path() const
@@ -33086,8 +33086,8 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::get_segment_path() const
@@ -33742,15 +33742,15 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 	|| is_set(sessiontype.operation)
 	|| is_set(state.operation)
 	|| is_set(to_up_state_count.operation)
-	|| (async_receive_statistics !=  nullptr && is_set(async_receive_statistics->operation))
-	|| (async_transmit_statistics !=  nullptr && is_set(async_transmit_statistics->operation))
-	|| (echo_received_statistics !=  nullptr && is_set(echo_received_statistics->operation))
-	|| (echo_transmit_statistics !=  nullptr && is_set(echo_transmit_statistics->operation))
-	|| (last_state_change !=  nullptr && is_set(last_state_change->operation))
-	|| (receive_packet !=  nullptr && is_set(receive_packet->operation))
-	|| (source_address !=  nullptr && is_set(source_address->operation))
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation))
-	|| (transmit_packet !=  nullptr && is_set(transmit_packet->operation));
+	|| (async_receive_statistics !=  nullptr && async_receive_statistics->has_operation())
+	|| (async_transmit_statistics !=  nullptr && async_transmit_statistics->has_operation())
+	|| (echo_received_statistics !=  nullptr && echo_received_statistics->has_operation())
+	|| (echo_transmit_statistics !=  nullptr && echo_transmit_statistics->has_operation())
+	|| (last_state_change !=  nullptr && last_state_change->has_operation())
+	|| (receive_packet !=  nullptr && receive_packet->has_operation())
+	|| (source_address !=  nullptr && source_address->has_operation())
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation())
+	|| (transmit_packet !=  nullptr && transmit_packet->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::get_segment_path() const
@@ -34197,7 +34197,7 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadSta
 {
     return is_set(operation)
 	|| is_set(mp_download_state.operation)
-	|| (change_time !=  nullptr && is_set(change_time->operation));
+	|| (change_time !=  nullptr && change_time->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::get_segment_path() const
@@ -34605,9 +34605,9 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::
 	|| is_set(lsp_ping_tx_error_count.operation)
 	|| is_set(lsp_ping_tx_last_error_rc.operation)
 	|| is_set(lsp_ping_tx_last_rc.operation)
-	|| (lsp_ping_rx_last_time !=  nullptr && is_set(lsp_ping_rx_last_time->operation))
-	|| (lsp_ping_tx_last_error_time !=  nullptr && is_set(lsp_ping_tx_last_error_time->operation))
-	|| (lsp_ping_tx_last_time !=  nullptr && is_set(lsp_ping_tx_last_time->operation));
+	|| (lsp_ping_rx_last_time !=  nullptr && lsp_ping_rx_last_time->has_operation())
+	|| (lsp_ping_tx_last_error_time !=  nullptr && lsp_ping_tx_last_error_time->has_operation())
+	|| (lsp_ping_tx_last_time !=  nullptr && lsp_ping_tx_last_time->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::get_segment_path() const
@@ -35360,8 +35360,8 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationIn
 {
     return is_set(operation)
 	|| is_set(bfdfe_ctype.operation)
-	|| (dummy !=  nullptr && is_set(dummy->operation))
-	|| (te_s2l_fec !=  nullptr && is_set(te_s2l_fec->operation));
+	|| (dummy !=  nullptr && dummy->has_operation())
+	|| (te_s2l_fec !=  nullptr && te_s2l_fec->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::get_segment_path() const
@@ -35628,10 +35628,10 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationIn
 	|| is_set(sbfd_target_type.operation)
 	|| is_set(session_key_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (bfdfec !=  nullptr && is_set(bfdfec->operation))
-	|| (ip_destination_address !=  nullptr && is_set(ip_destination_address->operation))
-	|| (ip_source_address !=  nullptr && is_set(ip_source_address->operation))
-	|| (target_address !=  nullptr && is_set(target_address->operation));
+	|| (bfdfec !=  nullptr && bfdfec->has_operation())
+	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation())
+	|| (ip_source_address !=  nullptr && ip_source_address->has_operation())
+	|| (target_address !=  nullptr && target_address->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::get_segment_path() const
@@ -35960,7 +35960,7 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationIn
     return is_set(operation)
 	|| is_set(local_discriminator.operation)
 	|| is_set(sessiontype.operation)
-	|| (session_key !=  nullptr && is_set(session_key->operation));
+	|| (session_key !=  nullptr && session_key->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::get_segment_path() const
@@ -36137,9 +36137,9 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::has_operation
 	|| is_set(destination_address.operation)
 	|| is_set(interface_name.operation)
 	|| is_set(location.operation)
-	|| (lsp_ping_info !=  nullptr && is_set(lsp_ping_info->operation))
-	|| (mp_download_state !=  nullptr && is_set(mp_download_state->operation))
-	|| (status_information !=  nullptr && is_set(status_information->operation));
+	|| (lsp_ping_info !=  nullptr && lsp_ping_info->has_operation())
+	|| (mp_download_state !=  nullptr && mp_download_state->has_operation())
+	|| (status_information !=  nullptr && status_information->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::get_segment_path() const
@@ -36713,7 +36713,7 @@ bool Bfd::Ipv4MultiHopCounters::has_data() const
 bool Bfd::Ipv4MultiHopCounters::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4_multi_hop_packet_counters !=  nullptr && is_set(ipv4_multi_hop_packet_counters->operation));
+	|| (ipv4_multi_hop_packet_counters !=  nullptr && ipv4_multi_hop_packet_counters->has_operation());
 }
 
 std::string Bfd::Ipv4MultiHopCounters::get_segment_path() const
@@ -37627,8 +37627,8 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformati
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::get_segment_path() const
@@ -38283,15 +38283,15 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::has_operation() cons
 	|| is_set(sessiontype.operation)
 	|| is_set(state.operation)
 	|| is_set(to_up_state_count.operation)
-	|| (async_receive_statistics !=  nullptr && is_set(async_receive_statistics->operation))
-	|| (async_transmit_statistics !=  nullptr && is_set(async_transmit_statistics->operation))
-	|| (echo_received_statistics !=  nullptr && is_set(echo_received_statistics->operation))
-	|| (echo_transmit_statistics !=  nullptr && is_set(echo_transmit_statistics->operation))
-	|| (last_state_change !=  nullptr && is_set(last_state_change->operation))
-	|| (receive_packet !=  nullptr && is_set(receive_packet->operation))
-	|| (source_address !=  nullptr && is_set(source_address->operation))
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation))
-	|| (transmit_packet !=  nullptr && is_set(transmit_packet->operation));
+	|| (async_receive_statistics !=  nullptr && async_receive_statistics->has_operation())
+	|| (async_transmit_statistics !=  nullptr && async_transmit_statistics->has_operation())
+	|| (echo_received_statistics !=  nullptr && echo_received_statistics->has_operation())
+	|| (echo_transmit_statistics !=  nullptr && echo_transmit_statistics->has_operation())
+	|| (last_state_change !=  nullptr && last_state_change->has_operation())
+	|| (receive_packet !=  nullptr && receive_packet->has_operation())
+	|| (source_address !=  nullptr && source_address->has_operation())
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation())
+	|| (transmit_packet !=  nullptr && transmit_packet->has_operation());
 }
 
 std::string Bfd::SessionDetails::SessionDetail::StatusInformation::get_segment_path() const
@@ -38738,7 +38738,7 @@ bool Bfd::SessionDetails::SessionDetail::MpDownloadState::has_operation() const
 {
     return is_set(operation)
 	|| is_set(mp_download_state.operation)
-	|| (change_time !=  nullptr && is_set(change_time->operation));
+	|| (change_time !=  nullptr && change_time->has_operation());
 }
 
 std::string Bfd::SessionDetails::SessionDetail::MpDownloadState::get_segment_path() const
@@ -39146,9 +39146,9 @@ bool Bfd::SessionDetails::SessionDetail::LspPingInfo::has_operation() const
 	|| is_set(lsp_ping_tx_error_count.operation)
 	|| is_set(lsp_ping_tx_last_error_rc.operation)
 	|| is_set(lsp_ping_tx_last_rc.operation)
-	|| (lsp_ping_rx_last_time !=  nullptr && is_set(lsp_ping_rx_last_time->operation))
-	|| (lsp_ping_tx_last_error_time !=  nullptr && is_set(lsp_ping_tx_last_error_time->operation))
-	|| (lsp_ping_tx_last_time !=  nullptr && is_set(lsp_ping_tx_last_time->operation));
+	|| (lsp_ping_rx_last_time !=  nullptr && lsp_ping_rx_last_time->has_operation())
+	|| (lsp_ping_tx_last_error_time !=  nullptr && lsp_ping_tx_last_error_time->has_operation())
+	|| (lsp_ping_tx_last_time !=  nullptr && lsp_ping_tx_last_time->has_operation());
 }
 
 std::string Bfd::SessionDetails::SessionDetail::LspPingInfo::get_segment_path() const
@@ -39901,8 +39901,8 @@ bool Bfd::SessionDetails::SessionDetail::AssociationInformation::SessionKey::Bfd
 {
     return is_set(operation)
 	|| is_set(bfdfe_ctype.operation)
-	|| (dummy !=  nullptr && is_set(dummy->operation))
-	|| (te_s2l_fec !=  nullptr && is_set(te_s2l_fec->operation));
+	|| (dummy !=  nullptr && dummy->has_operation())
+	|| (te_s2l_fec !=  nullptr && te_s2l_fec->has_operation());
 }
 
 std::string Bfd::SessionDetails::SessionDetail::AssociationInformation::SessionKey::Bfdfec::get_segment_path() const
@@ -40169,10 +40169,10 @@ bool Bfd::SessionDetails::SessionDetail::AssociationInformation::SessionKey::has
 	|| is_set(sbfd_target_type.operation)
 	|| is_set(session_key_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (bfdfec !=  nullptr && is_set(bfdfec->operation))
-	|| (ip_destination_address !=  nullptr && is_set(ip_destination_address->operation))
-	|| (ip_source_address !=  nullptr && is_set(ip_source_address->operation))
-	|| (target_address !=  nullptr && is_set(target_address->operation));
+	|| (bfdfec !=  nullptr && bfdfec->has_operation())
+	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation())
+	|| (ip_source_address !=  nullptr && ip_source_address->has_operation())
+	|| (target_address !=  nullptr && target_address->has_operation());
 }
 
 std::string Bfd::SessionDetails::SessionDetail::AssociationInformation::SessionKey::get_segment_path() const
@@ -40501,7 +40501,7 @@ bool Bfd::SessionDetails::SessionDetail::AssociationInformation::has_operation()
     return is_set(operation)
 	|| is_set(local_discriminator.operation)
 	|| is_set(sessiontype.operation)
-	|| (session_key !=  nullptr && is_set(session_key->operation));
+	|| (session_key !=  nullptr && session_key->has_operation());
 }
 
 std::string Bfd::SessionDetails::SessionDetail::AssociationInformation::get_segment_path() const
@@ -40678,9 +40678,9 @@ bool Bfd::SessionDetails::SessionDetail::has_operation() const
 	|| is_set(destination_address.operation)
 	|| is_set(interface_name.operation)
 	|| is_set(location.operation)
-	|| (lsp_ping_info !=  nullptr && is_set(lsp_ping_info->operation))
-	|| (mp_download_state !=  nullptr && is_set(mp_download_state->operation))
-	|| (status_information !=  nullptr && is_set(status_information->operation));
+	|| (lsp_ping_info !=  nullptr && lsp_ping_info->has_operation())
+	|| (mp_download_state !=  nullptr && mp_download_state->has_operation())
+	|| (status_information !=  nullptr && status_information->has_operation());
 }
 
 std::string Bfd::SessionDetails::SessionDetail::get_segment_path() const
@@ -41459,8 +41459,8 @@ bool Bfd::Ipv4SingleHopSessionBriefs::Ipv4SingleHopSessionBrief::StatusBriefInfo
 bool Bfd::Ipv4SingleHopSessionBriefs::Ipv4SingleHopSessionBrief::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopSessionBriefs::Ipv4SingleHopSessionBrief::StatusBriefInformation::get_segment_path() const
@@ -41609,7 +41609,7 @@ bool Bfd::Ipv4SingleHopSessionBriefs::Ipv4SingleHopSessionBrief::has_operation()
 	|| is_set(session_subtype.operation)
 	|| is_set(session_type.operation)
 	|| is_set(state.operation)
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation));
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation());
 }
 
 std::string Bfd::Ipv4SingleHopSessionBriefs::Ipv4SingleHopSessionBrief::get_segment_path() const
@@ -42110,7 +42110,7 @@ bool Bfd::Ipv6MultiHopCounters::has_data() const
 bool Bfd::Ipv6MultiHopCounters::has_operation() const
 {
     return is_set(operation)
-	|| (ipv6_multi_hop_packet_counters !=  nullptr && is_set(ipv6_multi_hop_packet_counters->operation));
+	|| (ipv6_multi_hop_packet_counters !=  nullptr && ipv6_multi_hop_packet_counters->has_operation());
 }
 
 std::string Bfd::Ipv6MultiHopCounters::get_segment_path() const
@@ -42240,7 +42240,7 @@ EntityPath Bfd::Ipv6SingleHopLocationSummaries::Ipv6SingleHopLocationSummary::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42335,7 +42335,7 @@ bool Bfd::Ipv6SingleHopLocationSummaries::Ipv6SingleHopLocationSummary::has_oper
 {
     return is_set(operation)
 	|| is_set(location_name.operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopLocationSummaries::Ipv6SingleHopLocationSummary::get_segment_path() const
@@ -42785,7 +42785,7 @@ bool Bfd::LabelCounters::has_data() const
 bool Bfd::LabelCounters::has_operation() const
 {
     return is_set(operation)
-	|| (label_packet_counters !=  nullptr && is_set(label_packet_counters->operation));
+	|| (label_packet_counters !=  nullptr && label_packet_counters->has_operation());
 }
 
 std::string Bfd::LabelCounters::get_segment_path() const
@@ -43699,8 +43699,8 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Sta
 bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::StatusInformation::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::StatusInformation::StatusBriefInformation::get_segment_path() const
@@ -44355,15 +44355,15 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Sta
 	|| is_set(sessiontype.operation)
 	|| is_set(state.operation)
 	|| is_set(to_up_state_count.operation)
-	|| (async_receive_statistics !=  nullptr && is_set(async_receive_statistics->operation))
-	|| (async_transmit_statistics !=  nullptr && is_set(async_transmit_statistics->operation))
-	|| (echo_received_statistics !=  nullptr && is_set(echo_received_statistics->operation))
-	|| (echo_transmit_statistics !=  nullptr && is_set(echo_transmit_statistics->operation))
-	|| (last_state_change !=  nullptr && is_set(last_state_change->operation))
-	|| (receive_packet !=  nullptr && is_set(receive_packet->operation))
-	|| (source_address !=  nullptr && is_set(source_address->operation))
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation))
-	|| (transmit_packet !=  nullptr && is_set(transmit_packet->operation));
+	|| (async_receive_statistics !=  nullptr && async_receive_statistics->has_operation())
+	|| (async_transmit_statistics !=  nullptr && async_transmit_statistics->has_operation())
+	|| (echo_received_statistics !=  nullptr && echo_received_statistics->has_operation())
+	|| (echo_transmit_statistics !=  nullptr && echo_transmit_statistics->has_operation())
+	|| (last_state_change !=  nullptr && last_state_change->has_operation())
+	|| (receive_packet !=  nullptr && receive_packet->has_operation())
+	|| (source_address !=  nullptr && source_address->has_operation())
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation())
+	|| (transmit_packet !=  nullptr && transmit_packet->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::StatusInformation::get_segment_path() const
@@ -44810,7 +44810,7 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::MpD
 {
     return is_set(operation)
 	|| is_set(mp_download_state.operation)
-	|| (change_time !=  nullptr && is_set(change_time->operation));
+	|| (change_time !=  nullptr && change_time->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::MpDownloadState::get_segment_path() const
@@ -45218,9 +45218,9 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Lsp
 	|| is_set(lsp_ping_tx_error_count.operation)
 	|| is_set(lsp_ping_tx_last_error_rc.operation)
 	|| is_set(lsp_ping_tx_last_rc.operation)
-	|| (lsp_ping_rx_last_time !=  nullptr && is_set(lsp_ping_rx_last_time->operation))
-	|| (lsp_ping_tx_last_error_time !=  nullptr && is_set(lsp_ping_tx_last_error_time->operation))
-	|| (lsp_ping_tx_last_time !=  nullptr && is_set(lsp_ping_tx_last_time->operation));
+	|| (lsp_ping_rx_last_time !=  nullptr && lsp_ping_rx_last_time->has_operation())
+	|| (lsp_ping_tx_last_error_time !=  nullptr && lsp_ping_tx_last_error_time->has_operation())
+	|| (lsp_ping_tx_last_time !=  nullptr && lsp_ping_tx_last_time->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::get_segment_path() const
@@ -45973,8 +45973,8 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
 {
     return is_set(operation)
 	|| is_set(bfdfe_ctype.operation)
-	|| (dummy !=  nullptr && is_set(dummy->operation))
-	|| (te_s2l_fec !=  nullptr && is_set(te_s2l_fec->operation));
+	|| (dummy !=  nullptr && dummy->has_operation())
+	|| (te_s2l_fec !=  nullptr && te_s2l_fec->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::SessionKey::Bfdfec::get_segment_path() const
@@ -46241,10 +46241,10 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
 	|| is_set(sbfd_target_type.operation)
 	|| is_set(session_key_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (bfdfec !=  nullptr && is_set(bfdfec->operation))
-	|| (ip_destination_address !=  nullptr && is_set(ip_destination_address->operation))
-	|| (ip_source_address !=  nullptr && is_set(ip_source_address->operation))
-	|| (target_address !=  nullptr && is_set(target_address->operation));
+	|| (bfdfec !=  nullptr && bfdfec->has_operation())
+	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation())
+	|| (ip_source_address !=  nullptr && ip_source_address->has_operation())
+	|| (target_address !=  nullptr && target_address->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::SessionKey::get_segment_path() const
@@ -46573,7 +46573,7 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
     return is_set(operation)
 	|| is_set(local_discriminator.operation)
 	|| is_set(sessiontype.operation)
-	|| (session_key !=  nullptr && is_set(session_key->operation));
+	|| (session_key !=  nullptr && session_key->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::get_segment_path() const
@@ -46783,9 +46783,9 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::has
 	|| is_set(interface_name.operation)
 	|| is_set(location.operation)
 	|| is_set(vrf_name.operation)
-	|| (lsp_ping_info !=  nullptr && is_set(lsp_ping_info->operation))
-	|| (mp_download_state !=  nullptr && is_set(mp_download_state->operation))
-	|| (status_information !=  nullptr && is_set(status_information->operation));
+	|| (lsp_ping_info !=  nullptr && lsp_ping_info->has_operation())
+	|| (mp_download_state !=  nullptr && mp_download_state->has_operation())
+	|| (status_information !=  nullptr && status_information->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::get_segment_path() const
@@ -48587,8 +48587,8 @@ bool Bfd::RelationDetails::RelationDetail::AssociationInformation::SessionKey::B
 {
     return is_set(operation)
 	|| is_set(bfdfe_ctype.operation)
-	|| (dummy !=  nullptr && is_set(dummy->operation))
-	|| (te_s2l_fec !=  nullptr && is_set(te_s2l_fec->operation));
+	|| (dummy !=  nullptr && dummy->has_operation())
+	|| (te_s2l_fec !=  nullptr && te_s2l_fec->has_operation());
 }
 
 std::string Bfd::RelationDetails::RelationDetail::AssociationInformation::SessionKey::Bfdfec::get_segment_path() const
@@ -48855,10 +48855,10 @@ bool Bfd::RelationDetails::RelationDetail::AssociationInformation::SessionKey::h
 	|| is_set(sbfd_target_type.operation)
 	|| is_set(session_key_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (bfdfec !=  nullptr && is_set(bfdfec->operation))
-	|| (ip_destination_address !=  nullptr && is_set(ip_destination_address->operation))
-	|| (ip_source_address !=  nullptr && is_set(ip_source_address->operation))
-	|| (target_address !=  nullptr && is_set(target_address->operation));
+	|| (bfdfec !=  nullptr && bfdfec->has_operation())
+	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation())
+	|| (ip_source_address !=  nullptr && ip_source_address->has_operation())
+	|| (target_address !=  nullptr && target_address->has_operation());
 }
 
 std::string Bfd::RelationDetails::RelationDetail::AssociationInformation::SessionKey::get_segment_path() const
@@ -49187,7 +49187,7 @@ bool Bfd::RelationDetails::RelationDetail::AssociationInformation::has_operation
     return is_set(operation)
 	|| is_set(local_discriminator.operation)
 	|| is_set(sessiontype.operation)
-	|| (session_key !=  nullptr && is_set(session_key->operation));
+	|| (session_key !=  nullptr && session_key->has_operation());
 }
 
 std::string Bfd::RelationDetails::RelationDetail::AssociationInformation::get_segment_path() const
@@ -49932,7 +49932,7 @@ bool Bfd::Ipv4BfDoMplsteTailCounters::has_data() const
 bool Bfd::Ipv4BfDoMplsteTailCounters::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4bf_do_mplste_tail_packet_counters !=  nullptr && is_set(ipv4bf_do_mplste_tail_packet_counters->operation));
+	|| (ipv4bf_do_mplste_tail_packet_counters !=  nullptr && ipv4bf_do_mplste_tail_packet_counters->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteTailCounters::get_segment_path() const
@@ -50238,8 +50238,8 @@ bool Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInfo
 bool Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::has_operation() const
 {
     return is_set(operation)
-	|| (async_interval_multiplier !=  nullptr && is_set(async_interval_multiplier->operation))
-	|| (echo_interval_multiplier !=  nullptr && is_set(echo_interval_multiplier->operation));
+	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
+	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::get_segment_path() const
@@ -50388,7 +50388,7 @@ bool Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::has_operation()
 	|| is_set(session_subtype.operation)
 	|| is_set(session_type.operation)
 	|| is_set(state.operation)
-	|| (status_brief_information !=  nullptr && is_set(status_brief_information->operation));
+	|| (status_brief_information !=  nullptr && status_brief_information->has_operation());
 }
 
 std::string Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::get_segment_path() const
@@ -51333,7 +51333,7 @@ bool Bfd::Ipv4BfDoMplsteHeadSummary::has_data() const
 bool Bfd::Ipv4BfDoMplsteHeadSummary::has_operation() const
 {
     return is_set(operation)
-	|| (session_state !=  nullptr && is_set(session_state->operation));
+	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadSummary::get_segment_path() const
@@ -51699,60 +51699,60 @@ bool Bfd::has_data() const
 bool Bfd::has_operation() const
 {
     return is_set(operation)
-	|| (client_briefs !=  nullptr && is_set(client_briefs->operation))
-	|| (client_details !=  nullptr && is_set(client_details->operation))
-	|| (counters !=  nullptr && is_set(counters->operation))
-	|| (generic_summaries !=  nullptr && is_set(generic_summaries->operation))
-	|| (ipv4_multi_hop_counters !=  nullptr && is_set(ipv4_multi_hop_counters->operation))
-	|| (ipv4_multi_hop_multi_paths !=  nullptr && is_set(ipv4_multi_hop_multi_paths->operation))
-	|| (ipv4_multi_hop_node_location_summaries !=  nullptr && is_set(ipv4_multi_hop_node_location_summaries->operation))
-	|| (ipv4_multi_hop_session_briefs !=  nullptr && is_set(ipv4_multi_hop_session_briefs->operation))
-	|| (ipv4_multi_hop_session_details !=  nullptr && is_set(ipv4_multi_hop_session_details->operation))
-	|| (ipv4_multi_hop_summary !=  nullptr && is_set(ipv4_multi_hop_summary->operation))
-	|| (ipv4_single_hop_counters !=  nullptr && is_set(ipv4_single_hop_counters->operation))
-	|| (ipv4_single_hop_location_summaries !=  nullptr && is_set(ipv4_single_hop_location_summaries->operation))
-	|| (ipv4_single_hop_multi_paths !=  nullptr && is_set(ipv4_single_hop_multi_paths->operation))
-	|| (ipv4_single_hop_node_location_summaries !=  nullptr && is_set(ipv4_single_hop_node_location_summaries->operation))
-	|| (ipv4_single_hop_session_briefs !=  nullptr && is_set(ipv4_single_hop_session_briefs->operation))
-	|| (ipv4_single_hop_session_details !=  nullptr && is_set(ipv4_single_hop_session_details->operation))
-	|| (ipv4_single_hop_summary !=  nullptr && is_set(ipv4_single_hop_summary->operation))
-	|| (ipv4bf_do_mplste_head_counters !=  nullptr && is_set(ipv4bf_do_mplste_head_counters->operation))
-	|| (ipv4bf_do_mplste_head_multi_paths !=  nullptr && is_set(ipv4bf_do_mplste_head_multi_paths->operation))
-	|| (ipv4bf_do_mplste_head_session_briefs !=  nullptr && is_set(ipv4bf_do_mplste_head_session_briefs->operation))
-	|| (ipv4bf_do_mplste_head_session_details !=  nullptr && is_set(ipv4bf_do_mplste_head_session_details->operation))
-	|| (ipv4bf_do_mplste_head_summary !=  nullptr && is_set(ipv4bf_do_mplste_head_summary->operation))
-	|| (ipv4bf_do_mplste_tail_counters !=  nullptr && is_set(ipv4bf_do_mplste_tail_counters->operation))
-	|| (ipv4bf_do_mplste_tail_multi_paths !=  nullptr && is_set(ipv4bf_do_mplste_tail_multi_paths->operation))
-	|| (ipv4bf_do_mplste_tail_session_briefs !=  nullptr && is_set(ipv4bf_do_mplste_tail_session_briefs->operation))
-	|| (ipv4bf_do_mplste_tail_session_details !=  nullptr && is_set(ipv4bf_do_mplste_tail_session_details->operation))
-	|| (ipv4bf_do_mplste_tail_summary !=  nullptr && is_set(ipv4bf_do_mplste_tail_summary->operation))
-	|| (ipv4bfd_mplste_head_summary_nodes !=  nullptr && is_set(ipv4bfd_mplste_head_summary_nodes->operation))
-	|| (ipv4bfd_mplste_tail_node_summaries !=  nullptr && is_set(ipv4bfd_mplste_tail_node_summaries->operation))
-	|| (ipv6_multi_hop_counters !=  nullptr && is_set(ipv6_multi_hop_counters->operation))
-	|| (ipv6_multi_hop_multi_paths !=  nullptr && is_set(ipv6_multi_hop_multi_paths->operation))
-	|| (ipv6_multi_hop_node_location_summaries !=  nullptr && is_set(ipv6_multi_hop_node_location_summaries->operation))
-	|| (ipv6_multi_hop_session_briefs !=  nullptr && is_set(ipv6_multi_hop_session_briefs->operation))
-	|| (ipv6_multi_hop_session_details !=  nullptr && is_set(ipv6_multi_hop_session_details->operation))
-	|| (ipv6_multi_hop_summary !=  nullptr && is_set(ipv6_multi_hop_summary->operation))
-	|| (ipv6_single_hop_counters !=  nullptr && is_set(ipv6_single_hop_counters->operation))
-	|| (ipv6_single_hop_location_summaries !=  nullptr && is_set(ipv6_single_hop_location_summaries->operation))
-	|| (ipv6_single_hop_multi_paths !=  nullptr && is_set(ipv6_single_hop_multi_paths->operation))
-	|| (ipv6_single_hop_node_location_summaries !=  nullptr && is_set(ipv6_single_hop_node_location_summaries->operation))
-	|| (ipv6_single_hop_session_briefs !=  nullptr && is_set(ipv6_single_hop_session_briefs->operation))
-	|| (ipv6_single_hop_session_details !=  nullptr && is_set(ipv6_single_hop_session_details->operation))
-	|| (ipv6_single_hop_summary !=  nullptr && is_set(ipv6_single_hop_summary->operation))
-	|| (label_counters !=  nullptr && is_set(label_counters->operation))
-	|| (label_multi_paths !=  nullptr && is_set(label_multi_paths->operation))
-	|| (label_session_briefs !=  nullptr && is_set(label_session_briefs->operation))
-	|| (label_session_details !=  nullptr && is_set(label_session_details->operation))
-	|| (label_summary !=  nullptr && is_set(label_summary->operation))
-	|| (label_summary_nodes !=  nullptr && is_set(label_summary_nodes->operation))
-	|| (relation_briefs !=  nullptr && is_set(relation_briefs->operation))
-	|| (relation_details !=  nullptr && is_set(relation_details->operation))
-	|| (session_briefs !=  nullptr && is_set(session_briefs->operation))
-	|| (session_details !=  nullptr && is_set(session_details->operation))
-	|| (session_mibs !=  nullptr && is_set(session_mibs->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (client_briefs !=  nullptr && client_briefs->has_operation())
+	|| (client_details !=  nullptr && client_details->has_operation())
+	|| (counters !=  nullptr && counters->has_operation())
+	|| (generic_summaries !=  nullptr && generic_summaries->has_operation())
+	|| (ipv4_multi_hop_counters !=  nullptr && ipv4_multi_hop_counters->has_operation())
+	|| (ipv4_multi_hop_multi_paths !=  nullptr && ipv4_multi_hop_multi_paths->has_operation())
+	|| (ipv4_multi_hop_node_location_summaries !=  nullptr && ipv4_multi_hop_node_location_summaries->has_operation())
+	|| (ipv4_multi_hop_session_briefs !=  nullptr && ipv4_multi_hop_session_briefs->has_operation())
+	|| (ipv4_multi_hop_session_details !=  nullptr && ipv4_multi_hop_session_details->has_operation())
+	|| (ipv4_multi_hop_summary !=  nullptr && ipv4_multi_hop_summary->has_operation())
+	|| (ipv4_single_hop_counters !=  nullptr && ipv4_single_hop_counters->has_operation())
+	|| (ipv4_single_hop_location_summaries !=  nullptr && ipv4_single_hop_location_summaries->has_operation())
+	|| (ipv4_single_hop_multi_paths !=  nullptr && ipv4_single_hop_multi_paths->has_operation())
+	|| (ipv4_single_hop_node_location_summaries !=  nullptr && ipv4_single_hop_node_location_summaries->has_operation())
+	|| (ipv4_single_hop_session_briefs !=  nullptr && ipv4_single_hop_session_briefs->has_operation())
+	|| (ipv4_single_hop_session_details !=  nullptr && ipv4_single_hop_session_details->has_operation())
+	|| (ipv4_single_hop_summary !=  nullptr && ipv4_single_hop_summary->has_operation())
+	|| (ipv4bf_do_mplste_head_counters !=  nullptr && ipv4bf_do_mplste_head_counters->has_operation())
+	|| (ipv4bf_do_mplste_head_multi_paths !=  nullptr && ipv4bf_do_mplste_head_multi_paths->has_operation())
+	|| (ipv4bf_do_mplste_head_session_briefs !=  nullptr && ipv4bf_do_mplste_head_session_briefs->has_operation())
+	|| (ipv4bf_do_mplste_head_session_details !=  nullptr && ipv4bf_do_mplste_head_session_details->has_operation())
+	|| (ipv4bf_do_mplste_head_summary !=  nullptr && ipv4bf_do_mplste_head_summary->has_operation())
+	|| (ipv4bf_do_mplste_tail_counters !=  nullptr && ipv4bf_do_mplste_tail_counters->has_operation())
+	|| (ipv4bf_do_mplste_tail_multi_paths !=  nullptr && ipv4bf_do_mplste_tail_multi_paths->has_operation())
+	|| (ipv4bf_do_mplste_tail_session_briefs !=  nullptr && ipv4bf_do_mplste_tail_session_briefs->has_operation())
+	|| (ipv4bf_do_mplste_tail_session_details !=  nullptr && ipv4bf_do_mplste_tail_session_details->has_operation())
+	|| (ipv4bf_do_mplste_tail_summary !=  nullptr && ipv4bf_do_mplste_tail_summary->has_operation())
+	|| (ipv4bfd_mplste_head_summary_nodes !=  nullptr && ipv4bfd_mplste_head_summary_nodes->has_operation())
+	|| (ipv4bfd_mplste_tail_node_summaries !=  nullptr && ipv4bfd_mplste_tail_node_summaries->has_operation())
+	|| (ipv6_multi_hop_counters !=  nullptr && ipv6_multi_hop_counters->has_operation())
+	|| (ipv6_multi_hop_multi_paths !=  nullptr && ipv6_multi_hop_multi_paths->has_operation())
+	|| (ipv6_multi_hop_node_location_summaries !=  nullptr && ipv6_multi_hop_node_location_summaries->has_operation())
+	|| (ipv6_multi_hop_session_briefs !=  nullptr && ipv6_multi_hop_session_briefs->has_operation())
+	|| (ipv6_multi_hop_session_details !=  nullptr && ipv6_multi_hop_session_details->has_operation())
+	|| (ipv6_multi_hop_summary !=  nullptr && ipv6_multi_hop_summary->has_operation())
+	|| (ipv6_single_hop_counters !=  nullptr && ipv6_single_hop_counters->has_operation())
+	|| (ipv6_single_hop_location_summaries !=  nullptr && ipv6_single_hop_location_summaries->has_operation())
+	|| (ipv6_single_hop_multi_paths !=  nullptr && ipv6_single_hop_multi_paths->has_operation())
+	|| (ipv6_single_hop_node_location_summaries !=  nullptr && ipv6_single_hop_node_location_summaries->has_operation())
+	|| (ipv6_single_hop_session_briefs !=  nullptr && ipv6_single_hop_session_briefs->has_operation())
+	|| (ipv6_single_hop_session_details !=  nullptr && ipv6_single_hop_session_details->has_operation())
+	|| (ipv6_single_hop_summary !=  nullptr && ipv6_single_hop_summary->has_operation())
+	|| (label_counters !=  nullptr && label_counters->has_operation())
+	|| (label_multi_paths !=  nullptr && label_multi_paths->has_operation())
+	|| (label_session_briefs !=  nullptr && label_session_briefs->has_operation())
+	|| (label_session_details !=  nullptr && label_session_details->has_operation())
+	|| (label_summary !=  nullptr && label_summary->has_operation())
+	|| (label_summary_nodes !=  nullptr && label_summary_nodes->has_operation())
+	|| (relation_briefs !=  nullptr && relation_briefs->has_operation())
+	|| (relation_details !=  nullptr && relation_details->has_operation())
+	|| (session_briefs !=  nullptr && session_briefs->has_operation())
+	|| (session_details !=  nullptr && session_details->has_operation())
+	|| (session_mibs !=  nullptr && session_mibs->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Bfd::get_segment_path() const
@@ -51769,7 +51769,7 @@ EntityPath Bfd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -53052,62 +53052,62 @@ std::unique_ptr<Entity> Bfd::clone_ptr()
     return std::make_unique<Bfd>();
 }
 
-const Enum::Value BfdApiFecEnum::bfd_api_fec_type_none {0, "bfd-api-fec-type-none"};
-const Enum::Value BfdApiFecEnum::bfd_api_fec_type_p2p_te {1, "bfd-api-fec-type-p2p-te"};
+const Enum::YLeaf BfdApiFecEnum::bfd_api_fec_type_none {0, "bfd-api-fec-type-none"};
+const Enum::YLeaf BfdApiFecEnum::bfd_api_fec_type_p2p_te {1, "bfd-api-fec-type-p2p-te"};
 
-const Enum::Value BfdSessionEnum::undefined {0, "undefined"};
-const Enum::Value BfdSessionEnum::bundle_member {1, "bundle-member"};
-const Enum::Value BfdSessionEnum::bundle_interface {2, "bundle-interface"};
-const Enum::Value BfdSessionEnum::state_inheriting {3, "state-inheriting"};
-const Enum::Value BfdSessionEnum::bundle_vlan {4, "bundle-vlan"};
-const Enum::Value BfdSessionEnum::mpls_tp {5, "mpls-tp"};
-const Enum::Value BfdSessionEnum::gre {6, "gre"};
-const Enum::Value BfdSessionEnum::pseudowire_headend {7, "pseudowire-headend"};
-const Enum::Value BfdSessionEnum::ip_single_hop {8, "ip-single-hop"};
+const Enum::YLeaf BfdSessionEnum::undefined {0, "undefined"};
+const Enum::YLeaf BfdSessionEnum::bundle_member {1, "bundle-member"};
+const Enum::YLeaf BfdSessionEnum::bundle_interface {2, "bundle-interface"};
+const Enum::YLeaf BfdSessionEnum::state_inheriting {3, "state-inheriting"};
+const Enum::YLeaf BfdSessionEnum::bundle_vlan {4, "bundle-vlan"};
+const Enum::YLeaf BfdSessionEnum::mpls_tp {5, "mpls-tp"};
+const Enum::YLeaf BfdSessionEnum::gre {6, "gre"};
+const Enum::YLeaf BfdSessionEnum::pseudowire_headend {7, "pseudowire-headend"};
+const Enum::YLeaf BfdSessionEnum::ip_single_hop {8, "ip-single-hop"};
 
-const Enum::Value BfdAfIdEnum::bfd_af_id_none {0, "bfd-af-id-none"};
-const Enum::Value BfdAfIdEnum::bfd_af_id_ipv4 {2, "bfd-af-id-ipv4"};
-const Enum::Value BfdAfIdEnum::bfd_af_id_ipv6 {10, "bfd-af-id-ipv6"};
+const Enum::YLeaf BfdAfIdEnum::bfd_af_id_none {0, "bfd-af-id-none"};
+const Enum::YLeaf BfdAfIdEnum::bfd_af_id_ipv4 {2, "bfd-af-id-ipv4"};
+const Enum::YLeaf BfdAfIdEnum::bfd_af_id_ipv6 {10, "bfd-af-id-ipv6"};
 
-const Enum::Value BfdMpDownloadStateEnum::bfd_mp_download_none {0, "bfd-mp-download-none"};
-const Enum::Value BfdMpDownloadStateEnum::bfd_mp_download_no_lc {1, "bfd-mp-download-no-lc"};
-const Enum::Value BfdMpDownloadStateEnum::bfd_mp_download_downloaded {2, "bfd-mp-download-downloaded"};
-const Enum::Value BfdMpDownloadStateEnum::bfd_mp_download_ack {3, "bfd-mp-download-ack"};
-const Enum::Value BfdMpDownloadStateEnum::bfd_mp_download_nack {4, "bfd-mp-download-nack"};
-const Enum::Value BfdMpDownloadStateEnum::bfd_mp_download_delete {5, "bfd-mp-download-delete"};
+const Enum::YLeaf BfdMpDownloadStateEnum::bfd_mp_download_none {0, "bfd-mp-download-none"};
+const Enum::YLeaf BfdMpDownloadStateEnum::bfd_mp_download_no_lc {1, "bfd-mp-download-no-lc"};
+const Enum::YLeaf BfdMpDownloadStateEnum::bfd_mp_download_downloaded {2, "bfd-mp-download-downloaded"};
+const Enum::YLeaf BfdMpDownloadStateEnum::bfd_mp_download_ack {3, "bfd-mp-download-ack"};
+const Enum::YLeaf BfdMpDownloadStateEnum::bfd_mp_download_nack {4, "bfd-mp-download-nack"};
+const Enum::YLeaf BfdMpDownloadStateEnum::bfd_mp_download_delete {5, "bfd-mp-download-delete"};
 
-const Enum::Value BfdMgmtSessionStateEnum::bfd_mgmt_session_state_admin_down {0, "bfd-mgmt-session-state-admin-down"};
-const Enum::Value BfdMgmtSessionStateEnum::bfd_mgmt_session_state_down {1, "bfd-mgmt-session-state-down"};
-const Enum::Value BfdMgmtSessionStateEnum::bfd_mgmt_session_state_init {2, "bfd-mgmt-session-state-init"};
-const Enum::Value BfdMgmtSessionStateEnum::bfd_mgmt_session_state_up {3, "bfd-mgmt-session-state-up"};
-const Enum::Value BfdMgmtSessionStateEnum::bfd_mgmt_session_state_failing {4, "bfd-mgmt-session-state-failing"};
-const Enum::Value BfdMgmtSessionStateEnum::bfd_mgmt_session_state_unknown {6, "bfd-mgmt-session-state-unknown"};
+const Enum::YLeaf BfdMgmtSessionStateEnum::bfd_mgmt_session_state_admin_down {0, "bfd-mgmt-session-state-admin-down"};
+const Enum::YLeaf BfdMgmtSessionStateEnum::bfd_mgmt_session_state_down {1, "bfd-mgmt-session-state-down"};
+const Enum::YLeaf BfdMgmtSessionStateEnum::bfd_mgmt_session_state_init {2, "bfd-mgmt-session-state-init"};
+const Enum::YLeaf BfdMgmtSessionStateEnum::bfd_mgmt_session_state_up {3, "bfd-mgmt-session-state-up"};
+const Enum::YLeaf BfdMgmtSessionStateEnum::bfd_mgmt_session_state_failing {4, "bfd-mgmt-session-state-failing"};
+const Enum::YLeaf BfdMgmtSessionStateEnum::bfd_mgmt_session_state_unknown {6, "bfd-mgmt-session-state-unknown"};
 
-const Enum::Value BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_none {0, "bfd-mgmt-session-diag-none"};
-const Enum::Value BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_control_detect_expired {1, "bfd-mgmt-session-diag-control-detect-expired"};
-const Enum::Value BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_echo_function_failed {2, "bfd-mgmt-session-diag-echo-function-failed"};
-const Enum::Value BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_nb_or_signaled_down {3, "bfd-mgmt-session-diag-nb-or-signaled-down"};
-const Enum::Value BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_fwding_plane_reset {4, "bfd-mgmt-session-diag-fwding-plane-reset"};
-const Enum::Value BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_path_down {5, "bfd-mgmt-session-diag-path-down"};
-const Enum::Value BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_conc_path_down {6, "bfd-mgmt-session-diag-conc-path-down"};
-const Enum::Value BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_admin_down {7, "bfd-mgmt-session-diag-admin-down"};
-const Enum::Value BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_rev_conc_path_down {8, "bfd-mgmt-session-diag-rev-conc-path-down"};
-const Enum::Value BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_num {10, "bfd-mgmt-session-diag-num"};
+const Enum::YLeaf BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_none {0, "bfd-mgmt-session-diag-none"};
+const Enum::YLeaf BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_control_detect_expired {1, "bfd-mgmt-session-diag-control-detect-expired"};
+const Enum::YLeaf BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_echo_function_failed {2, "bfd-mgmt-session-diag-echo-function-failed"};
+const Enum::YLeaf BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_nb_or_signaled_down {3, "bfd-mgmt-session-diag-nb-or-signaled-down"};
+const Enum::YLeaf BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_fwding_plane_reset {4, "bfd-mgmt-session-diag-fwding-plane-reset"};
+const Enum::YLeaf BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_path_down {5, "bfd-mgmt-session-diag-path-down"};
+const Enum::YLeaf BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_conc_path_down {6, "bfd-mgmt-session-diag-conc-path-down"};
+const Enum::YLeaf BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_admin_down {7, "bfd-mgmt-session-diag-admin-down"};
+const Enum::YLeaf BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_rev_conc_path_down {8, "bfd-mgmt-session-diag-rev-conc-path-down"};
+const Enum::YLeaf BfdMgmtSessionDiagEnum::bfd_mgmt_session_diag_num {10, "bfd-mgmt-session-diag-num"};
 
-const Enum::Value BfdMgmtPktDisplayEnum::bfd_mgmt_pkt_display_type_none {0, "bfd-mgmt-pkt-display-type-none"};
-const Enum::Value BfdMgmtPktDisplayEnum::bfd_mgmt_pkt_display_type_bob_mbr {1, "bfd-mgmt-pkt-display-type-bob-mbr"};
-const Enum::Value BfdMgmtPktDisplayEnum::bfd_mgmt_pkt_display_type_max {2, "bfd-mgmt-pkt-display-type-max"};
+const Enum::YLeaf BfdMgmtPktDisplayEnum::bfd_mgmt_pkt_display_type_none {0, "bfd-mgmt-pkt-display-type-none"};
+const Enum::YLeaf BfdMgmtPktDisplayEnum::bfd_mgmt_pkt_display_type_bob_mbr {1, "bfd-mgmt-pkt-display-type-bob-mbr"};
+const Enum::YLeaf BfdMgmtPktDisplayEnum::bfd_mgmt_pkt_display_type_max {2, "bfd-mgmt-pkt-display-type-max"};
 
-const Enum::Value MplsLibCEnum::mpls_lib_c_type_null {0, "mpls-lib-c-type-null"};
-const Enum::Value MplsLibCEnum::mpls_lib_c_type_ipv4 {1, "mpls-lib-c-type-ipv4"};
-const Enum::Value MplsLibCEnum::mpls_lib_c_type_ipv4_p2p_tunnel {7, "mpls-lib-c-type-ipv4-p2p-tunnel"};
-const Enum::Value MplsLibCEnum::mpls_lib_c_type_ipv6_p2p_tunnel {8, "mpls-lib-c-type-ipv6-p2p-tunnel"};
-const Enum::Value MplsLibCEnum::mpls_lib_c_type_ipv4_uni {9, "mpls-lib-c-type-ipv4-uni"};
-const Enum::Value MplsLibCEnum::mpls_lib_c_type_ipv4_p2mp_tunnel {13, "mpls-lib-c-type-ipv4-p2mp-tunnel"};
-const Enum::Value MplsLibCEnum::mpls_lib_c_type_ipv6_p2mp_tunnel {14, "mpls-lib-c-type-ipv6-p2mp-tunnel"};
-const Enum::Value MplsLibCEnum::mpls_lib_c_type_ipv4_tp_tunnel {15, "mpls-lib-c-type-ipv4-tp-tunnel"};
-const Enum::Value MplsLibCEnum::mpls_lib_c_type_ipv6_tp_tunnel {16, "mpls-lib-c-type-ipv6-tp-tunnel"};
-const Enum::Value MplsLibCEnum::mpls_lib_c_type_p2p_binding_label {17, "mpls-lib-c-type-p2p-binding-label"};
+const Enum::YLeaf MplsLibCEnum::mpls_lib_c_type_null {0, "mpls-lib-c-type-null"};
+const Enum::YLeaf MplsLibCEnum::mpls_lib_c_type_ipv4 {1, "mpls-lib-c-type-ipv4"};
+const Enum::YLeaf MplsLibCEnum::mpls_lib_c_type_ipv4_p2p_tunnel {7, "mpls-lib-c-type-ipv4-p2p-tunnel"};
+const Enum::YLeaf MplsLibCEnum::mpls_lib_c_type_ipv6_p2p_tunnel {8, "mpls-lib-c-type-ipv6-p2p-tunnel"};
+const Enum::YLeaf MplsLibCEnum::mpls_lib_c_type_ipv4_uni {9, "mpls-lib-c-type-ipv4-uni"};
+const Enum::YLeaf MplsLibCEnum::mpls_lib_c_type_ipv4_p2mp_tunnel {13, "mpls-lib-c-type-ipv4-p2mp-tunnel"};
+const Enum::YLeaf MplsLibCEnum::mpls_lib_c_type_ipv6_p2mp_tunnel {14, "mpls-lib-c-type-ipv6-p2mp-tunnel"};
+const Enum::YLeaf MplsLibCEnum::mpls_lib_c_type_ipv4_tp_tunnel {15, "mpls-lib-c-type-ipv4-tp-tunnel"};
+const Enum::YLeaf MplsLibCEnum::mpls_lib_c_type_ipv6_tp_tunnel {16, "mpls-lib-c-type-ipv6-tp-tunnel"};
+const Enum::YLeaf MplsLibCEnum::mpls_lib_c_type_p2p_binding_label {17, "mpls-lib-c-type-p2p-binding-label"};
 
 
 }

@@ -138,7 +138,7 @@ EntityPath Banners::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -205,12 +205,12 @@ std::unique_ptr<Entity> Banners::clone_ptr()
     return std::make_unique<Banners>();
 }
 
-const Enum::Value BannerEnum::exec {0, "exec"};
-const Enum::Value BannerEnum::incoming {1, "incoming"};
-const Enum::Value BannerEnum::motd {2, "motd"};
-const Enum::Value BannerEnum::login {3, "login"};
-const Enum::Value BannerEnum::slip_ppp {4, "slip-ppp"};
-const Enum::Value BannerEnum::prompt_timeout {5, "prompt-timeout"};
+const Enum::YLeaf BannerEnum::exec {0, "exec"};
+const Enum::YLeaf BannerEnum::incoming {1, "incoming"};
+const Enum::YLeaf BannerEnum::motd {2, "motd"};
+const Enum::YLeaf BannerEnum::login {3, "login"};
+const Enum::YLeaf BannerEnum::slip_ppp {4, "slip-ppp"};
+const Enum::YLeaf BannerEnum::prompt_timeout {5, "prompt-timeout"};
 
 
 }

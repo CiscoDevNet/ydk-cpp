@@ -273,7 +273,7 @@ bool RedundancyGroupManager::has_data() const
 bool RedundancyGroupManager::has_operation() const
 {
     return is_set(operation)
-	|| (controllers !=  nullptr && is_set(controllers->operation));
+	|| (controllers !=  nullptr && controllers->has_operation());
 }
 
 std::string RedundancyGroupManager::get_segment_path() const
@@ -290,7 +290,7 @@ EntityPath RedundancyGroupManager::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
